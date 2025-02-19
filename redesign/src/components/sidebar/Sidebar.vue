@@ -17,7 +17,7 @@ const { profileActive, configuratorActive } = storeToRefs(userStore)
 <template>
   <aside class="flex w-[500px] flex-col items-center justify-center gap-6 bg-black px-10">
     <Header />
-    <div class="flex max-h-[60%] w-full flex-col items-center gap-4 overflow-scroll">
+    <div class="flex max-h-[536px] w-full flex-col items-center gap-4 overflow-scroll">
       <Transition mode="out-in">
         <Start v-if="!profileActive" />
         <ProfileSettings v-else-if="profileActive" />
