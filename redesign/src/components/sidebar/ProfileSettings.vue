@@ -27,6 +27,7 @@ async function validateData() {
       } else if (!validateApiKey.value.success) {
         reject({ message: validateApiKey.value.message});
       } else {
+        configuratorActive.value = true
         resolve({ message: 'toasts.dataVerifying.validationSuccess' });
       }
     }, 1000);
@@ -38,10 +39,7 @@ const search = () => {
     validateData(),
     {
       loading: t('toasts.dataVerifying.loading'),
-      success: () => {
-        t('toasts.dataVerifying.success')
-        configuratorActive.value = true
-      },
+      success: t('toasts.dataVerifying.success'),
       error: t('toasts.dataVerifying.error'),
       description: (data: any) => t(data.message),
     }
