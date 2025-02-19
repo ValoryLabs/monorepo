@@ -39,13 +39,13 @@ const {
             <Button
               v-if="configuratorShow"
               variant="outline"
-              class="border-red-500 px-2 text-red-500 hover:bg-red-500/10 hover:text-red-500"
+              class="border-red-500 p-2 text-xs text-red-500 hover:bg-red-500/10 hover:text-red-500"
               @click="overlaySettingsStore.reset"
             >
               Reset
             </Button>
           </Transition>
-          <Button variant="outline" class="px-2" @click="userStore.toggleConfiguratorShow">
+          <Button variant="outline" class="p-2 text-xs" @click="userStore.toggleConfiguratorShow">
             Show
           </Button>
         </div>
