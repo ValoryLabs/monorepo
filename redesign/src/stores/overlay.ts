@@ -8,11 +8,32 @@ export const useOverlayStore = defineStore('overlayStore', () => {
   const progressColor: Ref<string> = ref('#61baa4');
   const progressBgColor: Ref<string> = ref('#f2f2f2');
 
-  const background: Ref<boolean> = ref(false);
-  const backgroundGradient: Ref<boolean> = ref(false);
-  const lastMatchPoints: Ref<boolean> = ref(false);
-  const winLose: Ref<boolean> = ref(false);
-  const progress: Ref<boolean> = ref(false);
+  const disabledBackground: Ref<boolean> = ref(false);
+  const disabledBackgroundGradient: Ref<boolean> = ref(false);
+  const disabledLastMatchPoints: Ref<boolean> = ref(false);
+  const disabledWinLose: Ref<boolean> = ref(false);
+  const disabledProgress: Ref<boolean> = ref(false);
+
+  const toggleBackground = () => {
+    disabledBackground.value = !disabledBackground.value
+  }
+
+  const toggleBackgroundGradient = () => {
+    disabledBackgroundGradient.value = !disabledBackgroundGradient.value
+  }
+
+  const toggleLastMatchPoints = () => {
+    disabledLastMatchPoints.value = !disabledLastMatchPoints.value
+  }
+
+  const toggleWinLose = () => {
+    disabledWinLose.value = !disabledWinLose.value
+  }
+
+  const toggleProgress = () => {
+    disabledProgress.value = !disabledProgress.value
+  }
+
 
   const reset = () => {
     backgroundColor.value = '#f2f2f2';
@@ -21,11 +42,11 @@ export const useOverlayStore = defineStore('overlayStore', () => {
     progressColor.value = '#61baa4';
     progressBgColor.value = '#f2f2f2';
 
-    background.value = false;
-    backgroundGradient.value = false;
-    lastMatchPoints.value = false;
-    winLose.value = false;
-    progress.value = false;
+    disabledBackground.value = false;
+    disabledBackgroundGradient.value = false;
+    disabledLastMatchPoints.value = false;
+    disabledWinLose.value = false;
+    disabledProgress.value = false;
 
     localStorage.removeItem('overlayStore');
   }
@@ -36,11 +57,16 @@ export const useOverlayStore = defineStore('overlayStore', () => {
     primaryTextColor,
     progressColor,
     progressBgColor,
-    background,
-    backgroundGradient,
-    lastMatchPoints,
-    winLose,
-    progress,
+    disabledBackground,
+    disabledBackgroundGradient,
+    disabledLastMatchPoints,
+    disabledWinLose,
+    disabledProgress,
+    toggleBackground,
+    toggleBackgroundGradient,
+    toggleLastMatchPoints,
+    toggleWinLose,
+    toggleProgress,
     reset
   };
 }, {

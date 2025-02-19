@@ -10,7 +10,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 
-import Language from "@/components/icons/language.vue";
+import Language from "@/components/icons/Language.vue";
 
 import { AVAILABLE_LOCALES } from '@/i18n.ts'
 import { useLocalStorage } from '@vueuse/core'

@@ -1,49 +1,29 @@
 import { defineStore } from 'pinia';
-import { ref, computed } from 'vue';
-
-interface ValidationResult {
-  success: boolean;
-  message: string;
-}
+import { ref, type Ref } from "vue";
 
 export const useUserStore = defineStore('userStore', () => {
-  const riotID = ref<string>('');
-  const apiKey = ref<string>('');
+  const profileActive: Ref<boolean> = ref(false)
+  const configuratorActive: Ref<boolean> = ref(false)
+  const configuratorShow: Ref<boolean> = ref(false)
 
-  const riotIdPattern = /^[\p{L}\p{N}]{3,16}#[\p{L}\p{N}]{3,5}$/u;
-  const apiKeyPattern = /^HDEV-[\da-f]{8}-([\da-f]{4}-){3}[\da-f]{12}$/i;
+  const toggleProfile = () => {
+    profileActive.value = !profileActive.value
+  }
 
-  const isRiotIdValid = computed(() => riotIdPattern.test(riotID.value));
-  const isApiKeyValid = computed(() => apiKeyPattern.test(apiKey.value));
+  const toggleConfigurator = () => {
+    configuratorActive.value = !configuratorActive.value
+  }
 
-  const validateRiotId = computed((): ValidationResult => {
-    if (!riotID.value) {
-      return { success: false, message: 'toasts.dataVerifying.validateRiotId.value' };
-    }
-    if (!riotIdPattern.test(riotID.value)) {
-      return { success: false, message: 'toasts.dataVerifying.validateRiotId.pattern' };
-    }
-    return { success: true, message: 'toasts.dataVerifying.validateRiotId.valid' };
-  });
-
-  const validateApiKey = computed((): ValidationResult => {
-    if (!apiKey.value) {
-      return { success: false, message: 'toasts.dataVerifying.validateApiKey.value' };
-    }
-    if (!apiKeyPattern.test(apiKey.value)) {
-      return { success: false, message: 'toasts.dataVerifying.validateApiKey.pattern' };
-    }
-    return { success: true, message: 'toasts.dataVerifying.validateApiKey.valid' };
-  });
+  const toggleConfiguratorShow = () => {
+    configuratorShow.value = !configuratorShow.value
+  }
 
   return {
-    riotID,
-    apiKey,
-    isRiotIdValid,
-    isApiKeyValid,
-    validateRiotId,
-    validateApiKey,
+    profileActive,
+    configuratorActive,
+    configuratorShow,
+    toggleProfile,
+    toggleConfigurator,
+    toggleConfiguratorShow
   };
-}, {
-  persist: true,
 });
