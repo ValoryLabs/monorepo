@@ -7,6 +7,7 @@ import Start from '@/components/sidebar/Start.vue'
 import Header from '@/components/sidebar/Header.vue'
 import Footer from '@/components/sidebar/Footer.vue'
 import Configurator from '@/components/sidebar/Configurator.vue'
+import Atom from "@/components/icons/Atom.vue";
 
 const userStore = useUserStore()
 
@@ -25,6 +26,7 @@ const { profileActive, configuratorActive } = storeToRefs(userStore)
         <Configurator />
       </Transition>
       <Button variant="outline" v-if="profileActive && configuratorActive" class="w-11/12 hover:bg-white/10">
+        <Atom :size="16"/>
         {{ $t('sidebar.buttons.generate') }}
       </Button>
     </div>
