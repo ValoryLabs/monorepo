@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Russo+One&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: #000;
+    --foreground: #f2f2f2;
+
+    --muted: #ffffff1a;
+    --muted-foreground: 217.9 10.6% 64.9%;
+
+    --popover: #000;
+    --popover-foreground: #f2f2f2;
+
+    --card: 224 71.4% 4.1%;
+    --card-foreground: 210 20% 98%;
+
+    --border: #ffffff1a;
+    --input: #f2f2f21A;
+
+    --primary: 210 20% 98%;
+    --primary-foreground: 220.9 39.3% 11%;
+
+    --secondary: 215 27.9% 16.9%;
+    --secondary-foreground: 210 20% 98%;
+
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 210 20% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 20% 98%;
+
+    --ring: 216 12.2% 83.9%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer utilities {
+  ::-webkit-scrollbar {
+    width: 5px;
+    background-color: transparent;
+  }
+  ::-webkit-scrollbar-track {
+    border-radius:10px;
+    background-color: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    border-radius:10px;
+    background-color: #ffffff0d;
+  }
+
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: #ffffff0d transparent;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+:root {
+  font-family: 'Inter',
+    -apple-system,
+    BlinkMacSystemFont,
+    Segoe UI,
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif,
+    'Apple Color Emoji',
+    'Segoe UI Emoji',
+    Segoe UI Symbol;
+  font-synthesis: none;
+  font-feature-settings: normal;
+  font-variation-settings: normal;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  color: #f2f2f2;
+  background-color: #000;
+}
+
+.valory-text {
+  font-family: "Russo One", sans-serif;
+}

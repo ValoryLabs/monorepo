@@ -1,0 +1,52 @@
+{
+  "sidebar": {
+    "header": {
+      "badge": "STREAM OVERLAY",
+      "description": "Catch your audience's attention \nwith real-time Valorant stats! "
+    },
+    "features": {
+      "first": "Customize your overlay according\nto your stream. ",
+      "second": "It's absolutely free!\nThere is support for many popular\nstreaming programs like OBS and others.",
+      "third": " Configure once, enjoy seamless\noperation forever! "
+    },
+    "profile": {
+      "title": "Profile settings",
+      "description": "Enter your Riot ID and Henrik's API KEY\nto search for your profile",
+      "instructions": "How do I get an API key?"
+    },
+    "configuration": {
+      "title": "Configuration",
+      "description": "Adjust available options of the chosen variant to reflect your brand."
+    },
+    "buttons": {
+      "start": "Let's start create!",
+      "search": "Search"
+    },
+    "footer": {
+      "powered": "Powered by",
+      "made": "Made with ❤️ on 🌎 Earth © Valory \nAll rights reserved."
+    }
+  },
+  "preview": "Your preview will be located here.\nPlease enter your profile to see it.",
+  "toasts": {
+    "dataVerifying": {
+      "loading": "Data verification...",
+      "success": "Success!",
+      "error": "Error checking the values!",
+      "validateRiotId": {
+        "value": "Please enter your Riot ID.",
+        "pattern": "Please enter a valid Riot ID.",
+        "valid": "Riot ID is valid."
+      },
+      "validateApiKey": {
+        "value": "Please enter your Henrik's API key.",
+        "pattern": "Please enter a valid Henrik's API key.",
+        "valid": "API key is valid."
+      },
+      "validationSuccess": "Data verification was successful!"
+    }
+  },
+  "components": {
+    "languageSwitcher": "Language"
+  }
+}
