@@ -6,6 +6,7 @@ import ColorPicker from '@/components/ui/ColorPicker.vue'
 import { useOverlayStore } from '@/stores/overlay.ts'
 import { storeToRefs } from 'pinia'
 import { useUserStore } from '@/stores/user.ts'
+import SelectLayout from "@/components/ui/SelectLayout.vue";
 
 const userStore = useUserStore()
 
@@ -29,7 +30,7 @@ const {
 <template>
   <div
     v-if="profileActive && configuratorActive"
-    class="flex w-11/12 flex-col gap-4 rounded-2xl bg-white/5 p-5"
+    class="flex w-11/12 flex-col gap-4 rounded-lg bg-white/5 p-5"
   >
     <div class="flex flex-col gap-3">
       <div class="flex items-center justify-between">
