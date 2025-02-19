@@ -59,7 +59,7 @@ const {
         <div v-if="configuratorShow" class="flex flex-col gap-3">
           <div>
             <Label class="text-gray-400">
-              Styles (default: Old style)
+              {{ $t('sidebar.configuration.settings.styles') }}
             </Label>
             <SelectLayout v-model="overlayStyle" />
           </div>

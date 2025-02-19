@@ -24,10 +24,7 @@ const modelValue = useVModel(props, 'modelValue', emits, {
   defaultValue: props.defaultValue,
 })
 
-const styles: Record<string, string> = {
-  'old': 'Old style',
-  'new': 'New style'
-}
+const styles: string[] = ['old', 'new']
 </script>
 
 <template>
@@ -39,10 +36,10 @@ const styles: Record<string, string> = {
       <SelectGroup>
         <SelectLabel>Styles</SelectLabel>
         <SelectItem
-          v-for="(value, key) in styles"
-          :key="key"
-          :value="key">
-          {{ value }}
+          v-for="style in styles"
+          :key="style"
+          :value="style">
+          {{ $t('components.selectLayout.' + style) }}
         </SelectItem>
       </SelectGroup>
     </SelectContent>
