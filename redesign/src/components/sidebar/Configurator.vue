@@ -19,6 +19,7 @@ const {
   primaryTextColor,
   progressColor,
   progressBgColor,
+  overlayStyle,
   disabledBackground,
   disabledBackgroundGradient,
   disabledLastMatchPoints,
@@ -56,6 +57,12 @@ const {
       </span>
       <Transition>
         <div v-if="configuratorShow" class="flex flex-col gap-3">
+          <div>
+            <Label class="text-gray-400">
+              Styles (default: Old style)
+            </Label>
+            <SelectLayout v-model="overlayStyle" />
+          </div>
           <div>
             <Label for="background-color" class="text-gray-400">
               {{ $t('sidebar.configuration.settings.background') }}
