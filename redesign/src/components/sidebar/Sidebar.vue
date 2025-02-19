@@ -24,7 +24,7 @@ const { profileActive, configuratorActive } = storeToRefs(userStore)
       <Transition mode="out-in">
         <Configurator />
       </Transition>
-      <Button variant="outline" v-if="configuratorActive" class="w-11/12 hover:bg-white/10">
+      <Button variant="outline" v-if="profileActive && configuratorActive" class="w-11/12 hover:bg-white/10">
         {{ $t('sidebar.buttons.generate') }}
       </Button>
     </div>
