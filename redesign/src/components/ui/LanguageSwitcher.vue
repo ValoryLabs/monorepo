@@ -10,7 +10,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 
-import Language from "@/components/icons/Language.vue";
+import Language from '@/components/icons/Language.vue'
 
 import { AVAILABLE_LOCALES } from '@/i18n.ts'
 import { useLocalStorage } from '@vueuse/core'
@@ -23,13 +23,13 @@ const currentLocale = useLocalStorage<string>('lang', 'en')
 <template>
   <DropdownMenu>
     <DropdownMenuTrigger as-child>
-      <Button variant="ghost" class="px-2 w-9">
-        <Language :size="16"/>
+      <Button variant="ghost" class="w-9 px-2">
+        <Language :size="16" />
       </Button>
     </DropdownMenuTrigger>
     <DropdownMenuContent class="w-40">
       <DropdownMenuLabel>
-        {{  $t('components.languageSwitcher') }}
+        {{ $t('components.languageSwitcher') }}
       </DropdownMenuLabel>
       <DropdownMenuSeparator />
       <DropdownMenuRadioGroup v-model="currentLocale">

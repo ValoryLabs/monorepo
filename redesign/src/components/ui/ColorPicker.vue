@@ -1,13 +1,9 @@
 <script lang="ts" setup>
 import tinycolor from 'tinycolor2'
 import { onMounted, reactive, ref, watch } from 'vue'
-import InputWithIcon from "@/components/ui/InputWithIcon.vue";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@/components/ui/popover'
-import { Input } from "@/components/ui/input";
+import InputWithIcon from '@/components/ui/InputWithIcon.vue'
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
+import { Input } from '@/components/ui/input'
 
 interface RGB {
   r: number
@@ -164,8 +160,8 @@ onMounted(() => {
     <InputWithIcon v-model="hex" @blur="updateColorFromHex" class="relative">
       <PopoverTrigger
         :style="{
-            backgroundColor: hex,
-          }"
+          backgroundColor: hex,
+        }"
         class="h-5 w-5 rounded-md"
       />
     </InputWithIcon>
@@ -192,10 +188,30 @@ onMounted(() => {
           <div :style="{ left: `calc(${(hue / 360) * 100}% - 7px)` }" class="hue-pointer"></div>
         </div>
         <div class="inputs">
-          <Input class="text-xs hover:bg-white/5 transition-colors h-8" id="hex" v-model="hex" @focusout="updateColorFromHex"/>
-          <Input class="text-xs hover:bg-white/5 transition-colors h-8" id="r" v-model.number="rgb.r" @focusout="updateColorFromRGB" />
-          <Input class="text-xs hover:bg-white/5 transition-colors h-8" id="g" v-model.number="rgb.g" @focusout="updateColorFromRGB" />
-          <Input class="text-xs hover:bg-white/5 transition-colors h-8" id="b" v-model.number="rgb.b" @focusout="updateColorFromRGB" />
+          <Input
+            class="h-8 text-xs transition-colors hover:bg-white/5"
+            id="hex"
+            v-model="hex"
+            @focusout="updateColorFromHex"
+          />
+          <Input
+            class="h-8 text-xs transition-colors hover:bg-white/5"
+            id="r"
+            v-model.number="rgb.r"
+            @focusout="updateColorFromRGB"
+          />
+          <Input
+            class="h-8 text-xs transition-colors hover:bg-white/5"
+            id="g"
+            v-model.number="rgb.g"
+            @focusout="updateColorFromRGB"
+          />
+          <Input
+            class="h-8 text-xs transition-colors hover:bg-white/5"
+            id="b"
+            v-model.number="rgb.b"
+            @focusout="updateColorFromRGB"
+          />
         </div>
 
         <div class="presets">

@@ -2,17 +2,14 @@ import messages from '@intlify/unplugin-vue-i18n/messages'
 import { useLocalStorage } from '@vueuse/core'
 import { nextTick, watch } from 'vue'
 import type { Locale } from 'vue-i18n'
-import {
-  createI18n,
-  registerMessageResolver,
-} from 'vue-i18n'
-import {
-  resolveValue,
-} from '@intlify/core-base'
+import { createI18n, registerMessageResolver } from 'vue-i18n'
+import { resolveValue } from '@intlify/core-base'
 
 registerMessageResolver(resolveValue)
 
-const getResourceMessages = (resource: { default: Record<string, string> }): Record<string, string> => resource.default || resource
+const getResourceMessages = (resource: {
+  default: Record<string, string>
+}): Record<string, string> => resource.default || resource
 
 async function loadLocaleMessages(i18n: I18n, locale: Locale) {
   const messages = await import(`@/locales/${locale}.json`).then(getResourceMessages)

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useSeoMeta } from '@unhead/vue'
-import { Toaster } from "vue-sonner";
+import { Toaster } from 'vue-sonner'
 
 const metaImg = 'meta.webp'
 const metaTitle = 'Stream Overlays for Valorant - VALORY'
@@ -26,8 +26,8 @@ useSeoMeta({
   twitterDescription: metaDescription,
   twitterImage: metaImg,
   author: 'MAGICX, misha@valory.su',
-  keywords: metaKeywords
-});
+  keywords: metaKeywords,
+})
 </script>
 
 <template>
@@ -37,6 +37,5 @@ useSeoMeta({
       class: 'bg-black/80 text-[#f2f2f2] backdrop-blur, border border-white/10',
     }"
   />
-  <RouterView/>
+  <RouterView />
 </template>
-

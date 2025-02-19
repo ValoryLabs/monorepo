@@ -1,5 +1,5 @@
-import { defineStore } from 'pinia';
-import { ref, type Ref } from "vue";
+import { defineStore } from 'pinia'
+import { ref, type Ref } from 'vue'
 
 export const useUserStore = defineStore('userStore', () => {
   const profileActive: Ref<boolean> = ref(false)
@@ -24,6 +24,6 @@ export const useUserStore = defineStore('userStore', () => {
     configuratorShow,
     toggleProfile,
     toggleConfigurator,
-    toggleConfiguratorShow
-  };
-});
+    toggleConfiguratorShow,
+  }
+})
