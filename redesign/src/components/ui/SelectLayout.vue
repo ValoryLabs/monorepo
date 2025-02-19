@@ -34,7 +34,9 @@ const styles: string[] = ['old', 'new']
     </SelectTrigger>
     <SelectContent>
       <SelectGroup>
-        <SelectLabel>Styles</SelectLabel>
+        <SelectLabel>
+          {{ $t('components.selectLayout.title') }}
+        </SelectLabel>
         <SelectItem
           v-for="style in styles"
           :key="style"
