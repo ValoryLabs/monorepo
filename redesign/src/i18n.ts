@@ -1,7 +1,7 @@
 import messages from '@intlify/unplugin-vue-i18n/messages'
 import { useLocalStorage } from '@vueuse/core'
 import { nextTick, watch } from 'vue'
-import type { Locale } from 'vue-i18n'
+import type { I18n, Locale } from "vue-i18n";
 import { createI18n, registerMessageResolver } from 'vue-i18n'
 import { resolveValue } from '@intlify/core-base'
 
