@@ -16,11 +16,26 @@
     },
     "configuration": {
       "title": "Конфигуратор",
-      "description": "Отрегулируйте доступные параметры выбранного варианта в соответствии с вашим брендом."
+      "description": "Отрегулируйте доступные параметры выбранного варианта в соответствии с вашим брендом.",
+      "settings": {
+        "background": "Фон",
+        "disableBackground": "Выключить фон",
+        "disableBackgroundGradient": "Выключить градиент у фона",
+        "text": "Текст",
+        "disableLastMatchPoints": "Выключить последние очки за матч",
+        "disableWinLose": "Выключить количество побед/поражений",
+        "primary": "Основной текст",
+        "progress": "Прогресс",
+        "progressBackground": "Фон прогресса",
+        "disableProgress": "Выключить прогресс"
+      }
     },
     "buttons": {
       "start": "Давайте начнем!",
-      "search": "Поиск"
+      "search": "Поиск",
+      "generate": "Генерировать",
+      "reset": "Сбросить",
+      "show": "Показать"
     },
     "footer": {
       "powered": "Работает на",

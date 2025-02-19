@@ -16,11 +16,26 @@
     },
     "configuration": {
       "title": "Configuration",
-      "description": "Adjust available options of the chosen variant to reflect your brand."
+      "description": "Adjust available options of the chosen variant to reflect your brand.",
+      "settings": {
+        "background": "Background",
+        "disableBackground": "Disable background",
+        "disableBackgroundGradient": "Disable background gradient",
+        "text": "Text",
+        "disableLastMatchPoints": "Disable last match points",
+        "disableWinLose": "Disable win/lose",
+        "primary": "Primary text",
+        "progress": "Progress",
+        "progressBackground": "Progress background",
+        "disableProgress": "Disable progress"
+      }
     },
     "buttons": {
       "start": "Let's start create!",
-      "search": "Search"
+      "search": "Search",
+      "generate": "Generate",
+      "reset": "Reset",
+      "show": "Show"
     },
     "footer": {
       "powered": "Powered by",

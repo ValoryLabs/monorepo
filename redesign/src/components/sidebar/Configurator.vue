@@ -42,11 +42,11 @@ const {
               class="border-red-500 p-2 text-xs text-red-500 hover:bg-red-500/10 hover:text-red-500"
               @click="overlaySettingsStore.reset"
             >
-              Reset
+              {{ $t('sidebar.buttons.reset') }}
             </Button>
           </Transition>
           <Button variant="outline" class="p-2 text-xs" @click="userStore.toggleConfiguratorShow">
-            Show
+            {{ $t('sidebar.buttons.show') }}
           </Button>
         </div>
       </div>
@@ -56,7 +56,9 @@ const {
       <Transition>
         <div v-if="configuratorShow" class="flex flex-col gap-3">
           <div>
-            <Label for="background-color" class="text-gray-400">Background</Label>
+            <Label for="background-color" class="text-gray-400">
+              {{ $t('sidebar.configuration.settings.background') }}
+            </Label>
             <ColorPicker v-model="backgroundColor" id="background-color" />
           </div>
           <div class="flex items-center space-x-2">
@@ -65,7 +67,9 @@ const {
               :checked="disabledBackground"
               @update:checked="overlaySettingsStore.toggleBackground"
             />
-            <Label for="background" class="text-sm font-bold">Disable background</Label>
+            <Label for="background" class="text-sm font-bold">
+              {{ $t('sidebar.configuration.settings.disableBackground') }}
+            </Label>
           </div>
           <div class="flex items-center space-x-2">
             <Switch
@@ -73,12 +77,15 @@ const {
               :checked="disabledBackgroundGradient"
               @update:checked="overlaySettingsStore.toggleBackgroundGradient"
             />
-            <Label for="backgroundGradient" class="text-sm font-bold"
-              >Disable background gradient</Label
+            <Label for="backgroundGradient" class="text-sm font-bold">
+              {{ $t('sidebar.configuration.settings.disableBackgroundGradient') }}
+            </Label
             >
           </div>
           <div>
-            <Label for="background-color" class="text-gray-400">Text</Label>
+            <Label for="background-color" class="text-gray-400">
+              {{ $t('sidebar.configuration.settings.text') }}
+            </Label>
             <ColorPicker v-model="textColor" id="background-color" />
           </div>
           <div class="flex items-center space-x-2">
@@ -87,7 +94,9 @@ const {
               :checked="disabledLastMatchPoints"
               @update:checked="overlaySettingsStore.toggleLastMatchPoints"
             />
-            <Label for="lastPoints" class="text-sm font-bold">Disable last match points</Label>
+            <Label for="lastPoints" class="text-sm font-bold">
+              {{ $t('sidebar.configuration.settings.disableLastMatchPoints') }}
+            </Label>
           </div>
           <div class="flex items-center space-x-2">
             <Switch
@@ -95,18 +104,26 @@ const {
               :checked="disabledWinLose"
               @update:checked="overlaySettingsStore.toggleWinLose"
             />
-            <Label for="winLose" class="text-sm font-bold">Disable win/lose</Label>
+            <Label for="winLose" class="text-sm font-bold">
+              {{ $t('sidebar.configuration.settings.disableWinLose') }}
+            </Label>
           </div>
           <div>
-            <Label for="background-color" class="text-gray-400">Primary text</Label>
+            <Label for="background-color" class="text-gray-400">
+              {{ $t('sidebar.configuration.settings.primary') }}
+            </Label>
             <ColorPicker v-model="primaryTextColor" id="background-color" />
           </div>
           <div>
-            <Label for="background-color" class="text-gray-400">Progress</Label>
+            <Label for="background-color" class="text-gray-400">
+              {{ $t('sidebar.configuration.settings.progress') }}
+            </Label>
             <ColorPicker v-model="progressColor" id="background-color" />
           </div>
           <div>
-            <Label for="background-color" class="text-gray-400">Progress background</Label>
+            <Label for="background-color" class="text-gray-400">
+              {{ $t('sidebar.configuration.settings.progressBackground') }}
+            </Label>
             <ColorPicker v-model="progressBgColor" id="background-color" />
           </div>
           <div class="flex items-center space-x-2">
@@ -115,7 +132,9 @@ const {
               :checked="disabledProgress"
               @update:checked="overlaySettingsStore.toggleProgress"
             />
-            <Label for="progress" class="text-sm font-bold">Disable progress</Label>
+            <Label for="progress" class="text-sm font-bold">
+              {{ $t('sidebar.configuration.settings.disableProgress') }}
+            </Label>
           </div>
         </div>
       </Transition>
