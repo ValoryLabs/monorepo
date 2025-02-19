@@ -67,8 +67,8 @@ const search = () => {
         <ArrowLeft :size="16" />
       </Button>
       <Button class="w-full" @click="search()">
-        {{ t('sidebar.buttons.search') }}
         <Search :size="16" color="black" />
+        {{ t('sidebar.buttons.search') }}
       </Button>
     </div>
   </div>
