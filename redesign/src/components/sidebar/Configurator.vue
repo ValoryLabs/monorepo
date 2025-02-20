@@ -7,6 +7,9 @@ import { useOverlayStore } from '@/stores/overlay.ts'
 import { storeToRefs } from 'pinia'
 import { useUserStore } from '@/stores/user.ts'
 import SelectLayout from "@/components/ui/SelectLayout.vue";
+import Reset from "@/components/icons/reset.vue";
+import ArrowDown from "@/components/icons/ArrowDown.vue";
+import ArrowUp from "@/components/icons/ArrowUp.vue";
 
 const userStore = useUserStore()
 
@@ -36,19 +39,20 @@ const {
     <div class="flex flex-col gap-3">
       <div class="flex items-center justify-between">
         <span class="text-lg font-semibold">{{ $t('sidebar.configuration.title') }}</span>
-        <div class="flex flex-row gap-2">
+        <div class="flex flex-row gap-1">
           <Transition>
             <Button
               v-if="configuratorShow"
               variant="outline"
-              class="border-red-500 p-2 text-xs text-red-500 hover:bg-red-500/10 hover:text-red-500"
+              class="border-transparent hover:border-white/10 w-9 p-2 text-xs hover:bg-white/10"
               @click="overlaySettingsStore.reset"
             >
-              {{ $t('sidebar.buttons.reset') }}
+              <Reset :size="16"/>
             </Button>
           </Transition>
           <Button variant="outline" class="p-2 text-xs" @click="userStore.toggleConfiguratorShow">
-            {{ $t('sidebar.buttons.show') }}
+            <ArrowDown v-if="!configuratorShow" :size="16"/>
+            <ArrowUp v-else :size="16"/>
           </Button>
         </div>
       </div>
