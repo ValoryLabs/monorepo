@@ -31,7 +31,6 @@ export const AVAILABLE_LOCALES = [
 
 export function setLocale(i18n: I18n, locale: Locale) {
   i18n.global.locale = locale
-  document.querySelector('html').setAttribute('lang', locale)
 }
 
 function setupI18n() {
