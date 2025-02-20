@@ -3,7 +3,7 @@ import { useSeoMeta } from '@unhead/vue'
 import { Toaster } from 'vue-sonner'
 
 const metaImg = 'meta.webp'
-const metaTitle = 'Stream Overlays for Valorant - VALORY'
+const metaTitle = 'Stream Overlay for Valorant - VALORY'
 const metaDescription =
   'Enhance your Valorant stream with VALORY overlays. ' +
   'Engage viewers, showcase progress, and make your stream unforgettable!'
