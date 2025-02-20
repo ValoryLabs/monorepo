@@ -83,7 +83,7 @@ const {
               {{ $t('sidebar.configuration.settings.disableBackground') }}
             </Label>
           </div>
-          <div class="flex items-center space-x-2">
+          <div v-if="overlayStyle === 'old'" class="flex items-center space-x-2">
             <Switch
               id="backgroundGradient"
               :checked="disabledBackgroundGradient"
