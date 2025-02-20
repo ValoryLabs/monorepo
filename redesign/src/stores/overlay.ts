@@ -9,6 +9,8 @@ export const useOverlayStore = defineStore(
     const primaryTextColor: Ref<string> = ref('#f2f2f2')
     const progressColor: Ref<string> = ref('#61baa4')
     const progressBgColor: Ref<string> = ref('#f2f2f2')
+    const winColor: Ref<string> = ref('#61baa4')
+    const loseColor: Ref<string> = ref('#FF7986')
 
     const overlayStyle: Ref<string> = ref('old')
 
@@ -38,6 +40,42 @@ export const useOverlayStore = defineStore(
       disabledProgress.value = !disabledProgress.value
     }
 
+    const defaultOldstyle = () => {
+      backgroundColor.value = '#f2f2f2'
+      textColor.value = '#f2f2f2'
+      primaryTextColor.value = '#f2f2f2'
+      progressColor.value = '#61baa4'
+      progressBgColor.value = '#f2f2f2'
+      overlayStyle.value = 'old'
+
+      disabledBackground.value = false
+      disabledBackgroundGradient.value = false
+      disabledLastMatchPoints.value = false
+      disabledWinLose.value = false
+      disabledProgress.value = false
+
+      localStorage.removeItem('overlayStore')
+    }
+
+    const defaultNewstyle = () => {
+      backgroundColor.value = '#07090E'
+      textColor.value = '#f2f2f2'
+      primaryTextColor.value = '#f2f2f2'
+      progressColor.value = '#61baa4'
+      progressBgColor.value = '#f2f2f2'
+      winColor.value ='#61baa4'
+      loseColor.value ='#FF7986'
+      overlayStyle.value = 'new'
+
+      disabledBackground.value = false
+      disabledBackgroundGradient.value = false
+      disabledLastMatchPoints.value = false
+      disabledWinLose.value = false
+      disabledProgress.value = false
+
+      localStorage.removeItem('overlayStore')
+    }
+
     const reset = () => {
       backgroundColor.value = '#f2f2f2'
       textColor.value = '#f2f2f2'
@@ -61,6 +99,8 @@ export const useOverlayStore = defineStore(
       primaryTextColor,
       progressColor,
       progressBgColor,
+      winColor,
+      loseColor,
       overlayStyle,
       disabledBackground,
       disabledBackgroundGradient,
