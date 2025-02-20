@@ -48,7 +48,7 @@ const props = withDefaults(defineProps<Props>(), {
       </span>
       <span
         v-if="!disabledWinLose"
-        :class="cn(`text-[17px] leading-[1] text-[var(--text-color)]`)"
+        class="text-[17px] leading-[1] text-[var(--text-color)]"
       >
         Win:
         <span class="text-[var(--primary-text-color)]">
@@ -70,7 +70,7 @@ const props = withDefaults(defineProps<Props>(), {
         <span :class="(`text-[15px] uppercase leading-[1] text-[var(--text-color)]`)">
           Last match:
         </span>
-        <span :class="cn(`text-[15px] uppercase leading-[1] text-[var(--primary-text-color)]`)">
+        <span class="text-[15px] uppercase leading-[1] text-[var(--primary-text-color)]">
           32 PTS
         </span>
       </div>
