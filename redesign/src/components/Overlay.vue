@@ -26,5 +26,16 @@ const { backgroundColor, textColor, primaryTextColor, progressColor,
     :disabled-win-lose="disabledWinLose"
     :disabled-progress="disabledProgress"
     v-if="overlayStyle === 'old'"/>
-  <NewOverlay v-else/>
+  <NewOverlay
+    :background-color="backgroundColor"
+    :text-color="textColor"
+    :primary-text-color="primaryTextColor"
+    :progress-color="progressColor"
+    :progress-bg-color="progressBgColor"
+    :win-color="winColor"
+    :lose-color="loseColor"
+    :disabled-background="disabledBackground"
+    :disabled-win-lose="disabledWinLose"
+    :disabled-progress="disabledProgress"
+    v-else/>
 </template>

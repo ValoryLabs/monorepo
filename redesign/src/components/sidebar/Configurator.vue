@@ -100,7 +100,7 @@ const {
             </Label>
             <ColorPicker v-model="textColor" id="background-color" />
           </div>
-          <div class="flex items-center space-x-2">
+          <div v-if="overlayStyle === 'old'" class="flex items-center space-x-2">
             <Switch
               id="lastPoints"
               :checked="disabledLastMatchPoints"

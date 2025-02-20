@@ -43,7 +43,7 @@ export const useOverlayStore = defineStore(
     const defaultOldstyle = () => {
       backgroundColor.value = '#f2f2f2'
       textColor.value = '#f2f2f2'
-      primaryTextColor.value = '#f2f2f2'
+      primaryTextColor.value = '#B9B4B4'
       progressColor.value = '#61baa4'
       progressBgColor.value = '#f2f2f2'
       overlayStyle.value = 'old'
@@ -61,9 +61,9 @@ export const useOverlayStore = defineStore(
       backgroundColor.value = '#07090E'
       textColor.value = '#f2f2f2'
       primaryTextColor.value = '#f2f2f2'
-      progressColor.value = '#61baa4'
+      progressColor.value = '#00FFE3'
       progressBgColor.value = '#f2f2f2'
-      winColor.value ='#61baa4'
+      winColor.value ='#00FFE3'
       loseColor.value ='#FF7986'
       overlayStyle.value = 'new'
 
