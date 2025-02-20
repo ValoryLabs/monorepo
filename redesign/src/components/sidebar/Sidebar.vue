@@ -1,13 +1,15 @@
 <script setup lang="ts">
 import Button from '@/components/ui/button/Button.vue'
 import { storeToRefs } from 'pinia'
-import ProfileSettings from '@/components/sidebar/ProfileSettings.vue'
 import { useUserStore } from '@/stores/user.ts'
 import Start from '@/components/sidebar/Start.vue'
 import Header from '@/components/sidebar/Header.vue'
 import Footer from '@/components/sidebar/Footer.vue'
-import Configurator from '@/components/sidebar/Configurator.vue'
 import Atom from "@/components/icons/Atom.vue";
+import { defineAsyncComponent } from "vue";
+
+const ProfileSettings = defineAsyncComponent(() => import('@/components/sidebar/ProfileSettings.vue'));
+const Configurator = defineAsyncComponent(() => import('@/components/sidebar/Configurator.vue'));
 
 const userStore = useUserStore()
 

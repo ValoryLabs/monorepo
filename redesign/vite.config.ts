@@ -5,7 +5,8 @@ import vue from '@vitejs/plugin-vue'
 import autoprefixer from 'autoprefixer'
 import tailwind from 'tailwindcss'
 import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite'
-import path from "path";
+import path from "path"
+import { ViteMinifyPlugin } from 'vite-plugin-minify'
 
 export default defineConfig({
   clearScreen: false,
@@ -15,6 +16,7 @@ export default defineConfig({
     },
   },
   plugins: [
+    ViteMinifyPlugin({}),
     vue(),
     VueI18nPlugin({
       module: 'petite-vue-i18n',
@@ -24,6 +26,13 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
+    },
+  },
+  rollupOptions: {
+    output: {
+      manualChunks: {
+        vendor: ['vue', 'vue-router', 'vue-i18n'],
+      },
     },
   },
 })
