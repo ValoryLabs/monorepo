@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { cn } from '@/utils.ts'
-
 interface Props {
   backgroundColor?: string
   textColor?: string
