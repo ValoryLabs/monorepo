@@ -58,7 +58,7 @@ const search = () => {
       <Key :size="16" />
     </InputWithIcon>
     <div class="flex flex-row items-center gap-1">
-      <span class="cursor-pointer text-sm text-blue-400 underline">
+      <span class="cursor-pointer text-sm font-bold text-blue-400 underline">
         {{ t('sidebar.profile.instructions') }}
       </span>
     </div>
