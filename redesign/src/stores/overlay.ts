@@ -68,8 +68,6 @@ export const useOverlayStore = defineStore(
       overlayStyle.value = 'new'
 
       disabledBackground.value = false
-      disabledBackgroundGradient.value = false
-      disabledLastMatchPoints.value = false
       disabledWinLose.value = false
       disabledProgress.value = false
 
@@ -77,20 +75,11 @@ export const useOverlayStore = defineStore(
     }
 
     const reset = () => {
-      backgroundColor.value = '#f2f2f2'
-      textColor.value = '#f2f2f2'
-      primaryTextColor.value = '#f2f2f2'
-      progressColor.value = '#61baa4'
-      progressBgColor.value = '#f2f2f2'
-      overlayStyle.value = 'old'
-
-      disabledBackground.value = false
-      disabledBackgroundGradient.value = false
-      disabledLastMatchPoints.value = false
-      disabledWinLose.value = false
-      disabledProgress.value = false
-
-      localStorage.removeItem('overlayStore')
+      if (overlayStyle.value === 'old') {
+        defaultOldstyle()
+      } else {
+        defaultNewstyle()
+      }
     }
 
     return {

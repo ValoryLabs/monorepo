@@ -5,10 +5,26 @@ import { storeToRefs } from "pinia";
 import NewOverlay from "@/components/overlays/NewOverlay.vue";
 
 const overlaySettingsStore = useOverlayStore()
-const { overlayStyle }    = storeToRefs(overlaySettingsStore)
+const { backgroundColor, textColor, primaryTextColor, progressColor,
+      progressBgColor, winColor, loseColor, overlayStyle,
+      disabledBackground, disabledBackgroundGradient,
+      disabledLastMatchPoints, disabledWinLose, disabledProgress }
+  = storeToRefs(overlaySettingsStore)
+
 </script>
 
 <template>
-  <OldOverlay v-if="overlayStyle === 'old'"/>
+  <OldOverlay
+    :background-color="backgroundColor"
+    :text-color="textColor"
+    :primary-text-color="primaryTextColor"
+    :progress-color="progressColor"
+    :progress-bg-color="progressBgColor"
+    :disabled-background="disabledBackground"
+    :disabled-background-gradient="disabledBackgroundGradient"
+    :disabled-last-match-points="disabledLastMatchPoints"
+    :disabled-win-lose="disabledWinLose"
+    :disabled-progress="disabledProgress"
+    v-if="overlayStyle === 'old'"/>
   <NewOverlay v-else/>
 </template>

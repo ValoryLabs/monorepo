@@ -64,7 +64,7 @@
         </div>
       </div>
     </div>
-    <div class="absolute bottom-0 left-0 w-full h-2 bg-[#00FFE3] rounded-b-[8px]"></div>
+    <div class="absolute -bottom-1 left-0 w-full h-2 bg-[#00FFE3] rounded-b-[8px]"></div>
   </div>
 </div>
 </template>
