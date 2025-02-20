@@ -34,7 +34,7 @@ const props = withDefaults(defineProps<Props>(), {
     :class="{ 'bg-gradient-to-b from-[#ff000000] to-[#00000091]': !disabledBackgroundGradient }"
   >
     <div
-      :class="cn(`flex w-[100px] items-center justify-center bg-[var(--background-color)]/20`)"
+      class="flex w-[100px] items-center justify-center bg-[var(--background-color)]/20"
       :style="{ backgroundColor: disabledBackground ? 'transparent' : `${props.backgroundColor}40` }"
     >
       <img src="/ranks/26.webp" alt="" height="80" width="80" />
@@ -42,10 +42,10 @@ const props = withDefaults(defineProps<Props>(), {
     <div
       class="ml-5 flex w-[340px] flex-col flex-nowrap content-between items-start justify-center gap-[6px] py-5 font-bold"
     >
-      <span :class="cn(`text-[20px] uppercase leading-[1] text-[var(--text-color)]`)">
+      <span class="text-[20px] uppercase leading-[1] text-[var(--text-color)]">
         RATING
       </span>
-      <span :class="cn(`text-[24px] uppercase leading-[1] text-[var(--primary-text-color)]`)">
+      <span class="text-[24px] uppercase leading-[1] text-[var(--primary-text-color)]">
         Diamond 1 - 82RR
       </span>
       <span
@@ -63,9 +63,9 @@ const props = withDefaults(defineProps<Props>(), {
       </span>
       <div
         v-if="!disabledProgress"
-        :class="cn(`relative my-[1px] flex h-3 w-64 flex-col justify-center rounded-[10px] py-[6px]
+        class="relative my-[1px] flex h-3 w-64 flex-col justify-center rounded-[10px] py-[6px]
          after:absolute after:flex after:h-3 after:w-56 after:flex-col after:justify-center after:rounded-[10px]
-         after:bg-[var(--progress-color)] after:transition after:content-['']`)"
+         after:bg-[var(--progress-color)] after:transition after:content-['']"
         :style="{ backgroundColor: `${props.progressBgColor}45`}"
       ></div>
       <div v-if="!disabledLastMatchPoints" class="flex flex-row gap-1 text-base">
