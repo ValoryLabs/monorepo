@@ -508,52 +508,15 @@ document.querySelector("#app").innerHTML = `
           </footer>
         </div>
       </div>
-      <div x-data="
-      {
-        currentSlide: 2,
-        slides: [
-          '/img/previews/ascent.webp',
-          '/img/previews/bind.webp',
-          '/img/previews/breeze.webp',
-          '/img/previews/fracture.webp',
-          '/img/previews/haven.webp',
-          '/img/previews/icebox.webp',
-          '/img/previews/lotus.webp',
-          '/img/previews/pearl.webp',
-          '/img/previews/split.webp',
-          '/img/previews/sunset.webp'
-        ],
-        thumbnails: [
-          '/img/previews/thumbnails/ascent.webp',
-          '/img/previews/thumbnails/bind.webp',
-          '/img/previews/thumbnails/breeze.webp',
-          '/img/previews/thumbnails/fracture.webp',
-          '/img/previews/thumbnails/haven.webp',
-          '/img/previews/thumbnails/icebox.webp',
-          '/img/previews/thumbnails/lotus.webp',
-          '/img/previews/thumbnails/pearl.webp',
-          '/img/previews/thumbnails/split.webp',
-          '/img/previews/thumbnails/sunset.webp'
-        ]
-      }"
-       class="preview">
+      <div class="preview">
         <div id="divframe">
           <h1 x-show="!search" class="no_iframe">Your preview will be located here. Please enter your profile to see it.</h1>
           <div x-transition x-show="search" title="" id="iframe"></div>
         </div>
         <div class="preview__background">
-          <template x-for="(slide, index) in slides" :key="index">
-            <div class="preview__background__image" :style="index === currentSlide ? 'opacity: 1': 'opacity: 0'">
-              <img :src="slide" alt="Слайд"/>
-            </div>
-          </template>
-        </div>
-        <div class="preview__thumbnails">
-          <template x-for="(slide, index) in thumbnails" :key="index">
-            <div @click="currentSlide = index" class="thumbnail" :class="{ 'active': index === currentSlide }">
-              <img :src="slide" alt="Миниатюра" />
-            </div>
-          </template>
+          <div class="preview__background__image">
+            <img src="/img/preview.webp" alt="Слайд"/>
+          </div>
         </div>
       </div>
       <div x-cloak x-show="alert" class="alert" x-transition>
