@@ -7,13 +7,14 @@ import Header from '@/components/sidebar/Header.vue'
 import Footer from '@/components/sidebar/Footer.vue'
 import Atom from "@/components/icons/Atom.vue";
 import { defineAsyncComponent } from "vue";
+import Generate from "@/components/sidebar/Generate.vue";
+import Configurator from "@/components/sidebar/Configurator.vue";
 
 const ProfileSettings = defineAsyncComponent(() => import('@/components/sidebar/ProfileSettings.vue'));
-const Configurator = defineAsyncComponent(() => import('@/components/sidebar/Configurator.vue'));
 
 const userStore = useUserStore()
 
-const { profileActive, configuratorActive } = storeToRefs(userStore)
+const { profileActive, configuratorActive, generateActive } = storeToRefs(userStore)
 </script>
 
 <template>
@@ -21,15 +22,30 @@ const { profileActive, configuratorActive } = storeToRefs(userStore)
     <Header />
     <div class="flex max-h-[536px] w-full flex-col items-center gap-4 overflow-scroll">
       <Transition mode="out-in">
-        <Start v-if="!profileActive" />
+        <Start v-if="!profileActive && !generateActive" />
         <ProfileSettings v-else-if="profileActive" />
       </Transition>
       <Transition mode="out-in">
         <Configurator />
       </Transition>
-      <Button variant="outline" v-if="profileActive && configuratorActive" class="w-11/12 hover:bg-white/10">
+      <Transition mode="out-in">
+        <Generate/>
+      </Transition>
+      <Button
+        @click="userStore.toggleProfile(); userStore.toggleConfigurator(); generateActive = true"
+        variant="outline"
+        v-if="profileActive && configuratorActive"
+        class="w-11/12 hover:bg-white/10">
         <Atom :size="16"/>
         {{ $t('sidebar.buttons.generate') }}
+      </Button>
+      <Button
+        @click="userStore.toggleProfile(); userStore.toggleConfigurator();  generateActive = false"
+        variant="outline"
+        v-if="generateActive"
+        class="w-11/12 hover:bg-white/10"
+      >
+        Back to configurator
       </Button>
     </div>
     <Footer />

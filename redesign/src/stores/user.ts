@@ -5,6 +5,7 @@ export const useUserStore = defineStore('userStore', () => {
   const profileActive: Ref<boolean> = ref(false)
   const configuratorActive: Ref<boolean> = ref(false)
   const configuratorShow: Ref<boolean> = ref(false)
+  const generateActive: Ref<boolean> = ref(false)
 
   const toggleProfile = () => {
     profileActive.value = !profileActive.value
@@ -22,6 +23,7 @@ export const useUserStore = defineStore('userStore', () => {
     profileActive,
     configuratorActive,
     configuratorShow,
+    generateActive,
     toggleProfile,
     toggleConfigurator,
     toggleConfiguratorShow,
