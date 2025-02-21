@@ -10,6 +10,7 @@ import { storeToRefs } from 'pinia'
 import { toast } from 'vue-sonner'
 import { useUserStore } from '@/stores/user.ts'
 import { useI18n } from 'vue-i18n'
+import InstructionModal from "@/components/ui/instructionkey/InstructionModal.vue";
 
 const { t } = useI18n()
 
@@ -59,7 +60,7 @@ const search = () => {
     </InputWithIcon>
     <div class="flex flex-row items-center gap-1">
       <span class="cursor-pointer text-sm font-bold text-blue-400 underline">
-        {{ t('sidebar.profile.instructions') }}
+        <InstructionModal />
       </span>
     </div>
     <div class="flex w-full flex-row justify-center gap-2">
