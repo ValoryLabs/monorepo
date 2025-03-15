@@ -5,15 +5,18 @@ import { useUserStore } from '@/stores/user.ts'
 import Start from '@/components/sidebar/Start.vue'
 import Header from '@/components/sidebar/Header.vue'
 import Footer from '@/components/sidebar/Footer.vue'
-import { Atom } from 'lucide-vue-next'
+import { Atom, ArrowLeft } from 'lucide-vue-next'
 import Generate from '@/components/sidebar/Generate.vue'
 import Configurator from '@/components/sidebar/Configurator.vue'
 import ProfileSettings from '@/components/sidebar/ProfileSettings.vue'
-import { ArrowLeft } from 'lucide-vue-next'
 
 const userStore = useUserStore()
-
 const { profileActive, configuratorActive, generateActive } = storeToRefs(userStore)
+
+const toggleProfileAndConfigurator = () => {
+  userStore.toggleProfile()
+  userStore.toggleConfigurator()
+}
 </script>
 
 <template>
@@ -33,8 +36,7 @@ const { profileActive, configuratorActive, generateActive } = storeToRefs(userSt
       <Button
         @click="
           () => {
-            userStore.toggleProfile()
-            userStore.toggleConfigurator()
+            toggleProfileAndConfigurator()
             generateActive = true
           }
         "
@@ -48,8 +50,7 @@ const { profileActive, configuratorActive, generateActive } = storeToRefs(userSt
       <Button
         @click="
           () => {
-            userStore.toggleProfile()
-            userStore.toggleConfigurator()
+            toggleProfileAndConfigurator()
             generateActive = false
           }
         "
@@ -58,7 +59,7 @@ const { profileActive, configuratorActive, generateActive } = storeToRefs(userSt
         class="w-11/12 hover:bg-white/10"
       >
         <ArrowLeft class="h-4 w-4" />
-        Back to configurator
+        {{ $t('sidebar.buttons.back') }}
       </Button>
     </div>
     <Footer />

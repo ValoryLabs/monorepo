@@ -31,10 +31,16 @@
         "disableProgress": "Disable progress"
       }
     },
+    "generate": {
+      "title": "Overlay URL: Streaming Software",
+      "description": "Copy the URL below and paste it into your streaming software as \"Browser\".",
+      "tooltip": "Copy URL"
+    },
     "buttons": {
       "start": "Let's start create!",
       "search": "Search",
       "generate": "Generate",
+      "back": "Back to configurator",
       "reset": "Reset",
       "show": "Show"
     },
