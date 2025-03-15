@@ -3,8 +3,15 @@ import { storeToRefs } from 'pinia'
 import { useUserStore } from '@/stores/user.ts'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
+import { useOverlayStore } from '@/stores/overlay.ts'
+import { computed } from 'vue'
 
 const userStore = useUserStore()
+
+const overlayStore = useOverlayStore()
+
+const queryString = overlayStore.getSettingsAsQuery()
+const url = computed(() => `https://valory.su/overlay?${queryString}`)
 
 const { generateActive } = storeToRefs(userStore)
 </script>
@@ -17,7 +24,7 @@ const { generateActive } = storeToRefs(userStore)
         Copy the URL below and paste it into your streaming software as "Browser".
       </span>
       <div class="flex flex-row items-center gap-2">
-        <Input disabled="true" class="cursor-text bg-transparent" />
+        <Input v-model="url" disabled="true" class="cursor-text bg-transparent" />
         <Button>Copy</Button>
       </div>
     </div>
