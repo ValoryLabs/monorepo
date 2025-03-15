@@ -17,6 +17,16 @@ const toggleProfileAndConfigurator = () => {
   userStore.toggleProfile()
   userStore.toggleConfigurator()
 }
+
+const handleGenerateClick = () => {
+  toggleProfileAndConfigurator()
+  userStore.toggleGenerate()
+}
+
+const handleBackClick = () => {
+  toggleProfileAndConfigurator()
+  userStore.toggleGenerate()
+}
 </script>
 
 <template>
@@ -34,12 +44,7 @@ const toggleProfileAndConfigurator = () => {
         <Generate v-if="generateActive" />
       </Transition>
       <Button
-        @click="
-          () => {
-            toggleProfileAndConfigurator()
-            generateActive = true
-          }
-        "
+        @click="handleGenerateClick"
         variant="outline"
         v-if="profileActive && configuratorActive"
         class="w-11/12 hover:bg-white/10"
@@ -48,12 +53,7 @@ const toggleProfileAndConfigurator = () => {
         {{ $t('sidebar.buttons.generate') }}
       </Button>
       <Button
-        @click="
-          () => {
-            toggleProfileAndConfigurator()
-            generateActive = false
-          }
-        "
+        @click="handleBackClick"
         variant="outline"
         v-if="generateActive"
         class="w-11/12 hover:bg-white/10"

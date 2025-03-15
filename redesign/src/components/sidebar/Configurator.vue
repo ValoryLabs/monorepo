@@ -54,7 +54,7 @@ const {
       <span class="whitespace-pre-line text-sm">
         {{ $t('sidebar.configuration.description') }}
       </span>
-      <Transition>
+      <Transition mode="out-in">
         <div v-if="configuratorShow" class="flex flex-col gap-3">
           <div>
             <Label class="text-gray-400">
