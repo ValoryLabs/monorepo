@@ -11,7 +11,7 @@ import { ArrowUp, ArrowDown, RotateCcw } from 'lucide-vue-next'
 
 const userStore = useUserStore()
 
-const { profileActive, configuratorActive, configuratorShow } = storeToRefs(userStore)
+const { configuratorShow } = storeToRefs(userStore)
 
 const overlaySettingsStore = useOverlayStore()
 const {
@@ -30,10 +30,7 @@ const {
 </script>
 
 <template>
-  <div
-    v-if="profileActive && configuratorActive"
-    class="flex w-11/12 flex-col gap-4 rounded-lg bg-white/5 p-5"
-  >
+  <div class="flex w-11/12 flex-col gap-4 rounded-lg bg-white/5 p-5">
     <div class="flex flex-col gap-3">
       <div class="flex items-center justify-between">
         <span class="text-lg font-semibold">{{ $t('sidebar.configuration.title') }}</span>

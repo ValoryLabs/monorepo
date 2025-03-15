@@ -5,7 +5,7 @@ import { useUserStore } from '@/stores/user.ts'
 import Start from '@/components/sidebar/Start.vue'
 import Header from '@/components/sidebar/Header.vue'
 import Footer from '@/components/sidebar/Footer.vue'
-import Atom from '@/components/icons/Atom.vue'
+import { Atom } from 'lucide-vue-next'
 import Generate from '@/components/sidebar/Generate.vue'
 import Configurator from '@/components/sidebar/Configurator.vue'
 import ProfileSettings from '@/components/sidebar/ProfileSettings.vue'
@@ -24,11 +24,11 @@ const { profileActive, configuratorActive, generateActive } = storeToRefs(userSt
         <Start v-if="!profileActive && !generateActive" />
         <ProfileSettings v-else-if="profileActive" />
       </Transition>
-      <Transition mode="out-in">
-        <Configurator />
+      <Transition>
+        <Configurator v-if="profileActive && configuratorActive" />
       </Transition>
-      <Transition mode="out-in">
-        <Generate />
+      <Transition>
+        <Generate v-if="generateActive" />
       </Transition>
       <Button
         @click="
@@ -42,7 +42,7 @@ const { profileActive, configuratorActive, generateActive } = storeToRefs(userSt
         v-if="profileActive && configuratorActive"
         class="w-11/12 hover:bg-white/10"
       >
-        <Atom :size="16" />
+        <Atom class="size-4" />
         {{ $t('sidebar.buttons.generate') }}
       </Button>
       <Button
@@ -68,7 +68,7 @@ const { profileActive, configuratorActive, generateActive } = storeToRefs(userSt
 <style scoped>
 .v-enter-active,
 .v-leave-active {
-  transition: opacity 0.1s linear;
+  transition: opacity 0.2s;
 }
 
 .v-enter-from,
