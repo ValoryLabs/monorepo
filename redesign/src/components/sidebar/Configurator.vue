@@ -6,10 +6,8 @@ import ColorPicker from '@/components/ui/ColorPicker.vue'
 import { useOverlayStore } from '@/stores/overlay.ts'
 import { storeToRefs } from 'pinia'
 import { useUserStore } from '@/stores/user.ts'
-import SelectLayout from "@/components/ui/SelectLayout.vue";
-import Reset from "@/components/icons/reset.vue";
-import ArrowDown from "@/components/icons/ArrowDown.vue";
-import ArrowUp from "@/components/icons/ArrowUp.vue";
+import SelectLayout from '@/components/ui/SelectLayout.vue'
+import { ArrowUp, ArrowDown, RotateCcw } from 'lucide-vue-next'
 
 const userStore = useUserStore()
 
@@ -44,15 +42,15 @@ const {
             <Button
               v-if="configuratorShow"
               variant="outline"
-              class="border-transparent hover:border-white/10 w-9 p-2 text-xs hover:bg-white/10"
+              class="w-9 border-transparent p-2 text-xs hover:border-white/10 hover:bg-white/10"
               @click="overlaySettingsStore.reset"
             >
-              <Reset :size="16"/>
+              <RotateCcw class="size-4" />
             </Button>
           </Transition>
           <Button variant="outline" class="p-2 text-xs" @click="userStore.toggleConfiguratorShow">
-            <ArrowDown v-if="!configuratorShow" :size="16"/>
-            <ArrowUp v-else :size="16"/>
+            <ArrowDown v-if="!configuratorShow" class="size-4" />
+            <ArrowUp v-else class="size-4" />
           </Button>
         </div>
       </div>
@@ -91,8 +89,7 @@ const {
             />
             <Label for="backgroundGradient" class="text-sm font-bold">
               {{ $t('sidebar.configuration.settings.disableBackgroundGradient') }}
-            </Label
-            >
+            </Label>
           </div>
           <div>
             <Label for="background-color" class="text-gray-400">

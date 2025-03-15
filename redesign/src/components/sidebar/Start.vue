@@ -1,9 +1,7 @@
 <script setup lang="ts">
 import LanguageSwitcher from '@/components/ui/LanguageSwitcher.vue'
-import Brush from '@/components/icons/Brush.vue'
-import Hearts from '@/components/icons/Hearts.vue'
-import Button from '../ui/button/Button.vue'
-import Tools from '@/components/icons/Tools.vue'
+import { Paintbrush, PackageOpen, PencilRuler } from 'lucide-vue-next'
+import Button from '@/components/ui/button/Button.vue'
 import { useUserStore } from '@/stores/user.ts'
 
 const userStore = useUserStore()
@@ -13,19 +11,19 @@ const userStore = useUserStore()
   <div class="flex w-11/12 flex-col items-center justify-center gap-6">
     <ul class="flex flex-col items-start gap-3">
       <li class="flex flex-row items-center justify-center gap-3 leading-5">
-        <Brush />
+        <Paintbrush class="size-6" />
         <span class="whitespace-pre-line">
           {{ $t('sidebar.features.first') }}
         </span>
       </li>
       <li class="flex flex-row items-center justify-center gap-3 leading-5">
-        <Hearts />
+        <PackageOpen class="size-6" />
         <span class="whitespace-pre-line">
           {{ $t('sidebar.features.second') }}
         </span>
       </li>
       <li class="flex flex-row items-center justify-center gap-3 leading-5">
-        <Tools />
+        <PencilRuler class="size-6" />
         <span class="whitespace-pre-line">
           {{ $t('sidebar.features.third') }}
         </span>

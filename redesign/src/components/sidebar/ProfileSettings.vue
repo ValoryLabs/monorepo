@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import Riot from '@/components/icons/Riot.vue'
-import ArrowLeft from '@/components/icons/ArrowLeft.vue'
-import Key from '@/components/icons/Key.vue'
 import InputWithIcon from '@/components/ui/InputWithIcon.vue'
 import Button from '@/components/ui/button/Button.vue'
 import { useUserSettingsStore } from '@/stores/userSettings.ts'
@@ -11,7 +9,7 @@ import { useUserStore } from '@/stores/user.ts'
 import { useI18n } from 'vue-i18n'
 import InstructionModal from '@/components/ui/instructionkey/InstructionModal.vue'
 import { ref } from 'vue'
-import { Search } from 'lucide-vue-next'
+import { Search, KeyRound, ArrowLeft } from 'lucide-vue-next'
 
 const { t } = useI18n()
 
@@ -61,7 +59,7 @@ const search = () => {
       <Riot :size="16" />
     </InputWithIcon>
     <InputWithIcon v-model="apiKey" placeholder="Henrik's DEV API Key">
-      <Key :size="16" />
+      <KeyRound class="size-4" />
     </InputWithIcon>
     <div class="flex flex-row items-center gap-1">
       <span class="cursor-pointer text-sm font-bold text-blue-400 underline">
@@ -70,7 +68,7 @@ const search = () => {
     </div>
     <div class="flex w-full flex-row justify-center gap-2">
       <Button @click="userStore.toggleProfile" variant="outline" class="w-9 px-2">
-        <ArrowLeft :size="16" />
+        <ArrowLeft class="size-4" />
       </Button>
       <Button
         class="w-full transition"

@@ -2,7 +2,7 @@
 import { openLink } from '@/utils.ts'
 import Twitch from '@/components/icons/socials/Twitch.vue'
 import Hearts from '@/components/icons/Hearts.vue'
-import Button from '../ui/button/Button.vue'
+import Button from '@/components/ui/button/Button.vue'
 import Github from '@/components/icons/socials/Github.vue'
 import Telegram from '@/components/icons/socials/Telegram.vue'
 </script>
