@@ -60,6 +60,37 @@ export const useOverlayStore = defineStore(
       defaultStyle()
     }
 
+    const getSettingsAsQuery = () => {
+      const settings = {
+        backgroundColor: backgroundColor.value,
+        textColor: textColor.value,
+        primaryTextColor: primaryTextColor.value,
+        progressColor: progressColor.value,
+        progressBgColor: progressBgColor.value,
+        winColor: winColor.value,
+        loseColor: loseColor.value,
+        overlayStyle: overlayStyle.value,
+        disabledBackground: disabledBackground.value,
+        disabledBackgroundGradient: disabledBackgroundGradient.value,
+        disabledLastMatchPoints: disabledLastMatchPoints.value,
+        disabledWinLose: disabledWinLose.value,
+        disabledProgress: disabledProgress.value,
+      }
+
+      const queryString = Object.keys(settings)
+        .map((key) => {
+          const value = settings[key as keyof typeof settings]
+          if (typeof value === 'boolean') {
+            return `${key}=${value ? 'true' : 'false'}`
+          } else {
+            return `${key}=${encodeURIComponent(value)}`
+          }
+        })
+        .join('&')
+
+      return queryString
+    }
+
     return {
       backgroundColor,
       textColor,
@@ -80,6 +111,7 @@ export const useOverlayStore = defineStore(
       toggleWinLose,
       toggleProgress,
       reset,
+      getSettingsAsQuery,
     }
   },
   {
