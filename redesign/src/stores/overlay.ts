@@ -48,7 +48,6 @@ export const useOverlayStore = defineStore(
       progressBgColor.value = '#f2f2f2'
       winColor.value = '#00FFE3'
       loseColor.value = '#FF7986'
-      overlayStyle.value = 'new'
 
       disabledBackground.value = false
       disabledWinLose.value = false

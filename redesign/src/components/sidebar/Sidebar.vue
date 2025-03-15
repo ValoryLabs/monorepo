@@ -9,6 +9,7 @@ import Atom from '@/components/icons/Atom.vue'
 import Generate from '@/components/sidebar/Generate.vue'
 import Configurator from '@/components/sidebar/Configurator.vue'
 import ProfileSettings from '@/components/sidebar/ProfileSettings.vue'
+import { ArrowLeft } from 'lucide-vue-next'
 
 const userStore = useUserStore()
 
@@ -56,6 +57,7 @@ const { profileActive, configuratorActive, generateActive } = storeToRefs(userSt
         v-if="generateActive"
         class="w-11/12 hover:bg-white/10"
       >
+        <ArrowLeft class="h-4 w-4" />
         Back to configurator
       </Button>
     </div>
