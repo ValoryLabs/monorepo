@@ -32,15 +32,20 @@ const handleBackClick = () => {
 <template>
   <aside class="flex w-[500px] flex-col items-center justify-center gap-6 bg-black px-10">
     <Header />
-    <div class="flex max-h-[536px] w-full flex-col items-center gap-4 overflow-scroll">
-      <Transition mode="out-in">
+    <div
+      class="flex max-h-[536px] w-full flex-col items-center gap-4 overflow-scroll transition-all"
+    >
+      <Transition
+        mode="out-in"
+        :key="!profileActive && !generateActive ? 'start' : profileActive ? 'profile' : 'generate'"
+      >
         <Start v-if="!profileActive && !generateActive" />
         <ProfileSettings v-else-if="profileActive" />
       </Transition>
-      <Transition>
+      <Transition :key="profileActive && configuratorActive ? 'configurator' : null">
         <Configurator v-if="profileActive && configuratorActive" />
       </Transition>
-      <Transition>
+      <Transition :key="generateActive ? 'generate' : null">
         <Generate v-if="generateActive" />
       </Transition>
       <Button
