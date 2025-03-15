@@ -5,12 +5,10 @@ import { useUserStore } from '@/stores/user.ts'
 import Start from '@/components/sidebar/Start.vue'
 import Header from '@/components/sidebar/Header.vue'
 import Footer from '@/components/sidebar/Footer.vue'
-import Atom from "@/components/icons/Atom.vue";
-import { defineAsyncComponent } from "vue";
-import Generate from "@/components/sidebar/Generate.vue";
-import Configurator from "@/components/sidebar/Configurator.vue";
-
-const ProfileSettings = defineAsyncComponent(() => import('@/components/sidebar/ProfileSettings.vue'));
+import Atom from '@/components/icons/Atom.vue'
+import Generate from '@/components/sidebar/Generate.vue'
+import Configurator from '@/components/sidebar/Configurator.vue'
+import ProfileSettings from '@/components/sidebar/ProfileSettings.vue'
 
 const userStore = useUserStore()
 
@@ -29,18 +27,31 @@ const { profileActive, configuratorActive, generateActive } = storeToRefs(userSt
         <Configurator />
       </Transition>
       <Transition mode="out-in">
-        <Generate/>
+        <Generate />
       </Transition>
       <Button
-        @click="userStore.toggleProfile(); userStore.toggleConfigurator(); generateActive = true"
+        @click="
+          () => {
+            userStore.toggleProfile()
+            userStore.toggleConfigurator()
+            generateActive = true
+          }
+        "
         variant="outline"
         v-if="profileActive && configuratorActive"
-        class="w-11/12 hover:bg-white/10">
-        <Atom :size="16"/>
+        class="w-11/12 hover:bg-white/10"
+      >
+        <Atom :size="16" />
         {{ $t('sidebar.buttons.generate') }}
       </Button>
       <Button
-        @click="userStore.toggleProfile(); userStore.toggleConfigurator();  generateActive = false"
+        @click="
+          () => {
+            userStore.toggleProfile()
+            userStore.toggleConfigurator()
+            generateActive = false
+          }
+        "
         variant="outline"
         v-if="generateActive"
         class="w-11/12 hover:bg-white/10"

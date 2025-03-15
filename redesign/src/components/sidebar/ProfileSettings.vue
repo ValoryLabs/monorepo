@@ -10,7 +10,7 @@ import { storeToRefs } from 'pinia'
 import { toast } from 'vue-sonner'
 import { useUserStore } from '@/stores/user.ts'
 import { useI18n } from 'vue-i18n'
-import InstructionModal from "@/components/ui/instructionkey/InstructionModal.vue";
+import InstructionModal from '@/components/ui/instructionkey/InstructionModal.vue'
 
 const { t } = useI18n()
 
