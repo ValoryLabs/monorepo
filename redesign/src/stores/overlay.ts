@@ -91,6 +91,18 @@ export const useOverlayStore = defineStore(
       return queryString
     }
 
+    const updateFromQuery = (params: Record<string, string>) => {
+      Object.entries(params).forEach(([key, value]) => {
+        if (key in this) {
+          if (value === 'true' || value === 'false') {
+            this[key] = value === 'true'
+          } else {
+            this[key] = decodeURIComponent(value)
+          }
+        }
+      })
+    }
+
     return {
       backgroundColor,
       textColor,
@@ -112,6 +124,7 @@ export const useOverlayStore = defineStore(
       toggleProgress,
       reset,
       getSettingsAsQuery,
+      updateFromQuery,
     }
   },
   {

@@ -11,7 +11,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/comp
 const overlayStore = useOverlayStore()
 
 const queryString = overlayStore.getSettingsAsQuery()
-const url = computed(() => `https://valory.su/overlay?${queryString}`)
+const url = computed(() => `${window.location.href}overlay?${queryString}`)
 const { copy } = useClipboard({ url })
 
 const copyUrl = () => {
