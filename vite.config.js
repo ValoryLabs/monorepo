@@ -8,8 +8,8 @@ export default {
   css: {
     preprocessorOptions: {
       scss: {
-        api: 'modern-compiler',
-        silenceDeprecations: ['legacy-js-api'],
+        api: "modern-compiler",
+        silenceDeprecations: ["legacy-js-api"],
       },
     },
   },
@@ -17,7 +17,7 @@ export default {
   clearScreen: false,
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url)),
+      "@": fileURLToPath(new URL("./src", import.meta.url)),
     },
   },
   build: {
@@ -30,5 +30,9 @@ export default {
       },
     },
   },
-  base: '/',
+  server: {
+    host: true,
+    port: 3000,
+  },
+  base: "/",
 };
