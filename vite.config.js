@@ -31,8 +31,11 @@ export default {
     },
   },
   server: {
-    host: true,
-    port: 3000,
+    host: "0.0.0.0",
+    port: 80,
+    hmr: {
+      clientPort: 443,
+    },
   },
   base: "/",
 };
