@@ -30,12 +30,9 @@ export default {
       },
     },
   },
-  server: {
-    port: 8000,
+  preview: {
+    port: 3000,
     host: true,
-    watch: {
-      usePolling: true,
-    },
   },
   base: "/",
 };
