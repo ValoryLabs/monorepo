@@ -30,9 +30,9 @@ export default {
       },
     },
   },
-  server: {
-    host: "0.0.0.0",
+  preview: {
     port: 3000,
+    host: true,
   },
   base: "/",
 };
