@@ -24,7 +24,7 @@ const modelValue = useVModel(props, 'modelValue', emits, {
   defaultValue: props.defaultValue,
 })
 
-const styles: string[] = ['old', 'new', 'minimal']
+const styles: string[] = ['old', 'new', 'new_v2', 'minimal']
 </script>
 
 <template>

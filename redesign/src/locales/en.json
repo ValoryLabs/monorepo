@@ -73,7 +73,8 @@
     "selectLayout": {
       "title": "Select styles",
       "old": "Old style",
-      "new": "New style",
+      "new": "Modern style",
+      "new_v2": "Modern OP style",
       "minimal": "Minimal"
     }
   }
