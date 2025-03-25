@@ -3,6 +3,7 @@ import OldOverlay from '@/components/overlays/OldOverlay.vue'
 import { useOverlayStore } from '@/stores/overlay.ts'
 import { storeToRefs } from 'pinia'
 import NewOverlay from '@/components/overlays/NewOverlay.vue'
+import MiniOverlay from './overlays/MiniOverlay.vue'
 
 const overlaySettingsStore = useOverlayStore()
 const {
@@ -24,7 +25,9 @@ const {
 
 <template>
   <component
-    :is="overlayStyle === 'old' ? OldOverlay : NewOverlay"
+    :is="
+      overlayStyle === 'old' ? OldOverlay : overlayStyle === 'minimal' ? MiniOverlay : NewOverlay
+    "
     :background-color="backgroundColor"
     :text-color="textColor"
     :primary-text-color="primaryTextColor"

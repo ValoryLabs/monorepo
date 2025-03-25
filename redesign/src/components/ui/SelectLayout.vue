@@ -8,7 +8,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { useVModel } from "@vueuse/core";
+import { useVModel } from '@vueuse/core'
 
 const props = defineProps<{
   defaultValue?: string
@@ -24,7 +24,7 @@ const modelValue = useVModel(props, 'modelValue', emits, {
   defaultValue: props.defaultValue,
 })
 
-const styles: string[] = ['old', 'new']
+const styles: string[] = ['old', 'new', 'minimal']
 </script>
 
 <template>
@@ -37,10 +37,7 @@ const styles: string[] = ['old', 'new']
         <SelectLabel>
           {{ $t('components.selectLayout.title') }}
         </SelectLabel>
-        <SelectItem
-          v-for="style in styles"
-          :key="style"
-          :value="style">
+        <SelectItem v-for="style in styles" :key="style" :value="style">
           {{ $t('components.selectLayout.' + style) }}
         </SelectItem>
       </SelectGroup>

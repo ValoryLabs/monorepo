@@ -73,7 +73,8 @@
     "selectLayout": {
       "title": "Select styles",
       "old": "Old style",
-      "new": "New style"
+      "new": "New style",
+      "minimal": "Minimal"
     }
   }
 }
