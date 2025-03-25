@@ -88,7 +88,7 @@ const {
               {{ $t('sidebar.configuration.settings.disableBackgroundGradient') }}
             </Label>
           </div>
-          <div>
+          <div v-if="overlayStyle !== 'minimal'">
             <Label for="background-color" class="text-gray-400">
               {{ $t('sidebar.configuration.settings.text') }}
             </Label>
@@ -120,19 +120,19 @@ const {
             </Label>
             <ColorPicker v-model="primaryTextColor" id="background-color" />
           </div>
-          <div>
+          <div v-if="overlayStyle !== 'minimal'">
             <Label for="background-color" class="text-gray-400">
               {{ $t('sidebar.configuration.settings.progress') }}
             </Label>
             <ColorPicker v-model="progressColor" id="background-color" />
           </div>
-          <div>
+          <div v-if="overlayStyle !== 'minimal'">
             <Label for="background-color" class="text-gray-400">
               {{ $t('sidebar.configuration.settings.progressBackground') }}
             </Label>
             <ColorPicker v-model="progressBgColor" id="background-color" />
           </div>
-          <div class="flex items-center space-x-2">
+          <div v-if="overlayStyle !== 'minimal'" class="flex items-center space-x-2">
             <Switch
               id="progress"
               :checked="disabledProgress"
