@@ -18,7 +18,7 @@ const { showOverlay } = storeToRefs(userStore)
         </div>
       </div>
       <div
-        class="absolute left-1/2 top-1/2 size-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#FA4454] opacity-10 blur-[350px]"
+        class="absolute left-1/2 top-1/2 size-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[rgb(46,62,117)] opacity-40 blur-[350px]"
       ></div>
     </div>
     <div class="pointer-events-none absolute inset-0 bg-[url(/grid.png)] bg-cover opacity-40"></div>
