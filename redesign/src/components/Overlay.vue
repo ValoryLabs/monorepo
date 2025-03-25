@@ -21,10 +21,6 @@ const {
   disabledWinLose,
   disabledProgress,
 } = storeToRefs(overlaySettingsStore)
-
-defineProps<{
-  class?: HTMLAttributes['class']
-}>()
 </script>
 
 <template>
@@ -44,6 +40,5 @@ defineProps<{
     :disabled-progress="disabledProgress"
     :win-color="winColor"
     :lose-color="loseColor"
-    :class="class"
   />
 </template>
