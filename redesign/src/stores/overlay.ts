@@ -4,12 +4,12 @@ import { type Ref, ref } from 'vue'
 export const useOverlayStore = defineStore(
   'overlayStore',
   () => {
-    const backgroundColor: Ref<string> = ref('#f2f2f2')
+    const backgroundColor: Ref<string> = ref('#07090E')
     const textColor: Ref<string> = ref('#f2f2f2')
     const primaryTextColor: Ref<string> = ref('#f2f2f2')
-    const progressColor: Ref<string> = ref('#61baa4')
+    const progressColor: Ref<string> = ref('#00FFE3')
     const progressBgColor: Ref<string> = ref('#f2f2f2')
-    const winColor: Ref<string> = ref('#61baa4')
+    const winColor: Ref<string> = ref('#00FFE3')
     const loseColor: Ref<string> = ref('#FF7986')
 
     const overlayStyle: Ref<string> = ref('old')
