@@ -30,7 +30,9 @@ const handleBackClick = () => {
 </script>
 
 <template>
-  <aside class="flex w-[500px] flex-col items-center justify-center gap-6 bg-black px-10">
+  <aside
+    class="flex w-[500px] flex-col items-center justify-center gap-6 border-r border-white/10 bg-black px-10"
+  >
     <Header />
     <div
       class="flex max-h-[536px] w-full flex-col items-center gap-4 overflow-scroll transition-all"
