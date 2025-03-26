@@ -36,7 +36,7 @@ const props = withDefaults(defineProps<Props>(), {
       :class="{ 'border-[2px] border-white/10': !disabledBackground }"
     >
       <div class="px-5 py-7">
-        <img src="/ranks/26.webp" alt="" height="55" width="55" />
+        <img src="/ranks/26.webp" alt="" height="55" width="55" preload="high" />
       </div>
       <div class="flex h-fit flex-1 flex-row justify-between py-3 pr-7">
         <div class="flex h-fit flex-col gap-[5px]">

@@ -36,7 +36,7 @@ const props = withDefaults(defineProps<Props>(), {
   >
     <div class="flex flex-row items-center justify-center gap-2">
       <div class="relative">
-        <img src="/ranks/26.webp" alt="" height="40" width="40" />
+        <img src="/ranks/26.webp" alt="" height="40" width="40" preload="high" />
         <span
           class="absolute right-0 top-0 flex size-4 flex-col items-center justify-center rounded-full bg-white text-sm font-medium leading-none text-black"
         >

@@ -27,83 +27,74 @@ const props = withDefaults(defineProps<Props>(), {
 </script>
 
 <template>
-<div class="new-style flex flex-col w-[360px]">
-  <div
-    class="relative flex flex-row items-center  rounded-[8px]"
-    :style="{ backgroundColor: disabledBackground ? 'transparent' : `${props.backgroundColor}99` }"
-    :class="{ 'border-[2px] border-white/10': !disabledBackground }"
-  >
-    <div class="py-7 px-5">
-      <img src="/ranks/26.webp" alt="" height="55" width="55">
-    </div>
-    <div class="flex flex-row py-3 h-fit">
-      <div class="flex flex-col gap-[5px] h-fit">
-        <span class="uppercase text-[18px] font-bold leading-[1] text-[var(--primary-text-color)]">
-          IMMORTAL3 #46
-        </span>
-        <span class="text-base text-[var(--text-color)] font-medium leading-[1] flex flex-row items-center gap-2">
-          1838 elo - 123RR
-          <span class="text-[var(--win-color)] font-normal text-[10px]">+5</span>
-        </span>
-        <div v-if="!disabledWinLose" class="flex flex-row gap-2 items-center">
-          <div class="flex flex-row gap-1 items-center mt-[2px]">
-            <span
-              class="
-                flex flex-col justify-center items-center font-bold text-xs text-[var(--win-color)] leading-[1] w-5 h-5
-                 rounded-[4px]
-              "
-              :style="{  backgroundColor: `${props.winColor}80` }"
-            >
-              W
-            </span>
-            <span
-              class="
-                flex flex-col justify-center items-center font-bold text-xs text-[var(--lose-color)] leading-[1] w-5 h-5
-                rounded-[4px]
-              "
-              :style="{  backgroundColor: `${props.loseColor}80` }"
-            >
-              L
-            </span>
-            <span
-              class="
-                flex flex-col justify-center items-center font-bold text-xs text-[var(--win-color)] leading-[1] w-5 h-5
-                 rounded-[4px]
-              "
-              :style="{  backgroundColor: `${props.winColor}80` }"
-            >
-              W
-            </span>
-            <span
-              class="
-                flex flex-col justify-center items-center font-bold text-xs text-[var(--lose-color)] leading-[1] w-5 h-5
-                rounded-[4px]
-              "
-              :style="{  backgroundColor: `${props.loseColor}80` }"
-            >
-              L
-            </span>
-            <span
-              class="
-                flex flex-col justify-center items-center font-bold text-xs text-[var(--win-color)] leading-[1] w-5 h-5
-                bg-[#61c4b9b3] rounded-[4px]
-              "
-              :style="{  backgroundColor: `${props.winColor}80` }"
-            >
-              W
-            </span>
+  <div class="new-style flex w-[360px] flex-col">
+    <div
+      class="relative flex flex-row items-center rounded-[8px]"
+      :style="{
+        backgroundColor: disabledBackground ? 'transparent' : `${props.backgroundColor}99`,
+      }"
+      :class="{ 'border-[2px] border-white/10': !disabledBackground }"
+    >
+      <div class="px-5 py-7">
+        <img src="/ranks/26.webp" alt="" height="55" width="55" preload="high" />
+      </div>
+      <div class="flex h-fit flex-row py-3">
+        <div class="flex h-fit flex-col gap-[5px]">
+          <span
+            class="text-[18px] font-bold uppercase leading-[1] text-[var(--primary-text-color)]"
+          >
+            IMMORTAL3 #46
+          </span>
+          <span
+            class="flex flex-row items-center gap-2 text-base font-medium leading-[1] text-[var(--text-color)]"
+          >
+            1838 elo - 123RR
+            <span class="text-[10px] font-normal text-[var(--win-color)]">+5</span>
+          </span>
+          <div v-if="!disabledWinLose" class="flex flex-row items-center gap-2">
+            <div class="mt-[2px] flex flex-row items-center gap-1">
+              <span
+                class="flex h-5 w-5 flex-col items-center justify-center rounded-[4px] text-xs font-bold leading-[1] text-[var(--win-color)]"
+                :style="{ backgroundColor: `${props.winColor}80` }"
+              >
+                W
+              </span>
+              <span
+                class="flex h-5 w-5 flex-col items-center justify-center rounded-[4px] text-xs font-bold leading-[1] text-[var(--lose-color)]"
+                :style="{ backgroundColor: `${props.loseColor}80` }"
+              >
+                L
+              </span>
+              <span
+                class="flex h-5 w-5 flex-col items-center justify-center rounded-[4px] text-xs font-bold leading-[1] text-[var(--win-color)]"
+                :style="{ backgroundColor: `${props.winColor}80` }"
+              >
+                W
+              </span>
+              <span
+                class="flex h-5 w-5 flex-col items-center justify-center rounded-[4px] text-xs font-bold leading-[1] text-[var(--lose-color)]"
+                :style="{ backgroundColor: `${props.loseColor}80` }"
+              >
+                L
+              </span>
+              <span
+                class="flex h-5 w-5 flex-col items-center justify-center rounded-[4px] bg-[#61c4b9b3] text-xs font-bold leading-[1] text-[var(--win-color)]"
+                :style="{ backgroundColor: `${props.winColor}80` }"
+              >
+                W
+              </span>
+            </div>
+            <span class="text-sm font-medium leading-[1] text-[var(--text-color)]">40%</span>
           </div>
-          <span class="font-medium text-sm text-[var(--text-color)] leading-[1]">40%</span>
         </div>
       </div>
+      <div
+        v-if="!disabledProgress"
+        class="absolute -bottom-[5px] left-0 h-2 w-full rounded-b-[8px]"
+        :style="{ backgroundColor: `${props.progressColor}` }"
+      ></div>
     </div>
-    <div
-      v-if="!disabledProgress"
-      class="absolute -bottom-[5px] left-0 w-full h-2 rounded-b-[8px]"
-      :style="{ backgroundColor: `${props.progressColor}` }"
-    ></div>
   </div>
-</div>
 </template>
 
 <style scoped>
