@@ -35,8 +35,23 @@ const props = withDefaults(defineProps<Props>(), {
       }"
       :class="{ 'border-[2px] border-white/10': !disabledBackground }"
     >
-      <div class="px-5 py-7">
-        <img src="/ranks/26.webp" alt="" height="55" width="55" preload="high" />
+      <div class="relative px-5 py-7">
+        <img
+          src="/ranks/26.webp"
+          class="relative z-10"
+          alt=""
+          height="55"
+          width="55"
+          preload="high"
+        />
+        <img
+          src="/ranks/26.webp"
+          class="absolute left-1/2 top-1/2 z-0 size-14 max-w-[unset] -translate-x-1/2 -translate-y-1/2 transform blur-[20px]"
+          alt=""
+          height="55"
+          width="55"
+          preload="high"
+        />
       </div>
       <div class="flex h-fit flex-1 flex-row justify-between py-3 pr-7">
         <div class="flex h-fit flex-col justify-center gap-[5px]">
@@ -52,7 +67,7 @@ const props = withDefaults(defineProps<Props>(), {
             Level: 200
           </span>
         </div>
-        <div class="flex flex-col items-center justify-center gap-0">
+        <div v-if="!disabledWinLose" class="flex flex-col items-center justify-center gap-0">
           <span
             class="text-2xl font-extrabold leading-none text-[var(--win-color)] drop-shadow-[0px_0px_12px_var(--win-color)]"
             >54%</span

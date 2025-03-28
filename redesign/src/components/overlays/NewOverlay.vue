@@ -35,8 +35,23 @@ const props = withDefaults(defineProps<Props>(), {
       }"
       :class="{ 'border-[2px] border-white/10': !disabledBackground }"
     >
-      <div class="px-5 py-7">
-        <img src="/ranks/26.webp" alt="" height="55" width="55" preload="high" />
+      <div class="relative px-5 py-7">
+        <img
+          src="/ranks/26.webp"
+          class="relative z-10"
+          alt=""
+          height="55"
+          width="55"
+          preload="high"
+        />
+        <img
+          src="/ranks/26.webp"
+          class="absolute left-1/2 top-1/2 z-0 size-14 max-w-[unset] -translate-x-1/2 -translate-y-1/2 transform blur-[20px]"
+          alt=""
+          height="55"
+          width="55"
+          preload="high"
+        />
       </div>
       <div class="flex h-fit flex-row py-3">
         <div class="flex h-fit flex-col gap-[5px]">
@@ -49,42 +64,45 @@ const props = withDefaults(defineProps<Props>(), {
             class="flex flex-row items-center gap-2 text-base font-medium leading-[1] text-[var(--text-color)]"
           >
             1838 elo - 123RR
-            <span class="text-[10px] font-normal text-[var(--win-color)]">+5</span>
+            <span
+              class="text-[10px] font-medium text-[var(--win-color)] drop-shadow-[0px_0px_6px_var(--win-color)]"
+              >+5</span
+            >
           </span>
           <div v-if="!disabledWinLose" class="flex flex-row items-center gap-2">
             <div class="mt-[2px] flex flex-row items-center gap-1">
               <span
-                class="flex h-5 w-5 flex-col items-center justify-center rounded-[4px] text-xs font-bold leading-[1] text-[var(--win-color)]"
+                class="flex h-5 w-5 flex-col items-center justify-center rounded-[4px] text-xs font-bold leading-[1] text-[var(--win-color)] drop-shadow-[0px_0px_12px_var(--win-color)]"
                 :style="{ backgroundColor: `${props.winColor}80` }"
               >
                 W
               </span>
               <span
-                class="flex h-5 w-5 flex-col items-center justify-center rounded-[4px] text-xs font-bold leading-[1] text-[var(--lose-color)]"
+                class="flex h-5 w-5 flex-col items-center justify-center rounded-[4px] text-xs font-bold leading-[1] text-[var(--lose-color)] drop-shadow-[0px_0px_12px_var(--lose-color)]"
                 :style="{ backgroundColor: `${props.loseColor}80` }"
               >
                 L
               </span>
               <span
-                class="flex h-5 w-5 flex-col items-center justify-center rounded-[4px] text-xs font-bold leading-[1] text-[var(--win-color)]"
+                class="flex h-5 w-5 flex-col items-center justify-center rounded-[4px] text-xs font-bold leading-[1] text-[var(--win-color)] drop-shadow-[0px_0px_12px_var(--win-color)]"
                 :style="{ backgroundColor: `${props.winColor}80` }"
               >
                 W
               </span>
               <span
-                class="flex h-5 w-5 flex-col items-center justify-center rounded-[4px] text-xs font-bold leading-[1] text-[var(--lose-color)]"
+                class="flex h-5 w-5 flex-col items-center justify-center rounded-[4px] text-xs font-bold leading-[1] text-[var(--lose-color)] drop-shadow-[0px_0px_12px_var(--lose-color)]"
                 :style="{ backgroundColor: `${props.loseColor}80` }"
               >
                 L
               </span>
               <span
-                class="flex h-5 w-5 flex-col items-center justify-center rounded-[4px] bg-[#61c4b9b3] text-xs font-bold leading-[1] text-[var(--win-color)]"
+                class="flex h-5 w-5 flex-col items-center justify-center rounded-[4px] bg-[#61c4b9b3] text-xs font-bold leading-[1] text-[var(--win-color)] drop-shadow-[0px_0px_12px_var(--win-color)]"
                 :style="{ backgroundColor: `${props.winColor}80` }"
               >
                 W
               </span>
             </div>
-            <span class="text-sm font-medium leading-[1] text-[var(--text-color)]">40%</span>
+            <span class="text-sm font-bold leading-[1] text-[var(--text-color)]">40%</span>
           </div>
         </div>
       </div>
