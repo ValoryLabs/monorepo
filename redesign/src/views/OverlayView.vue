@@ -5,6 +5,8 @@ import { useOverlayStore } from '@/stores/overlay.ts'
 import { storeToRefs } from 'pinia'
 import { useRoute } from 'vue-router'
 import { onMounted, watch } from 'vue'
+import MiniOverlay from '@/components/overlays/MiniOverlay.vue'
+import NewV2Overlay from '@/components/overlays/NewV2Overlay.vue'
 
 const route = useRoute()
 const overlaySettingsStore = useOverlayStore()
@@ -48,18 +50,26 @@ const {
 
 <template>
   <component
-    :is="overlayStyle === 'old' ? OldOverlay : NewOverlay"
+    :is="
+      overlayStyle === 'old'
+        ? OldOverlay
+        : overlayStyle === 'minimal'
+          ? MiniOverlay
+          : overlayStyle === 'new_v2'
+            ? NewV2Overlay
+            : NewOverlay
+    "
     :background-color="backgroundColor"
     :text-color="textColor"
     :primary-text-color="primaryTextColor"
     :progress-color="progressColor"
     :progress-bg-color="progressBgColor"
-    :win-color="winColor"
-    :lose-color="loseColor"
     :disabled-background="disabledBackground"
     :disabled-background-gradient="disabledBackgroundGradient"
     :disabled-last-match-points="disabledLastMatchPoints"
     :disabled-win-lose="disabledWinLose"
     :disabled-progress="disabledProgress"
+    :win-color="winColor"
+    :lose-color="loseColor"
   />
 </template>
