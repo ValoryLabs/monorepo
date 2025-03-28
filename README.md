@@ -62,7 +62,7 @@ We welcome contributions! Here’s how to get involved:
 </div>
 
 ## 📈 Stats
-![Alt](https://repobeats.axiom.co/api/embed/e71816a7a6515ea08c255c65b6cc812da80d4796.svg "Repobeats analytics image")
+![Alt](https://repobeats.axiom.co/api/embed/46fc0e8f5e8f71d357c6b50b3061373503744541.svg "Repobeats analytics image")
 
 ## 📜 License
 Licensed under the **[MIT License](https://github.com/ValoryLabs/Valory/blob/main/LICENSE)**
