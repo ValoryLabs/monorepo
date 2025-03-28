@@ -20,6 +20,8 @@ const {
   primaryTextColor,
   progressColor,
   progressBgColor,
+  winColor,
+  loseColor,
   overlayStyle,
   disabledBackground,
   disabledBackgroundGradient,
@@ -55,7 +57,7 @@ const {
         {{ $t('sidebar.configuration.description') }}
       </span>
       <Transition mode="out-in">
-        <div v-if="configuratorShow" class="flex flex-col gap-3">
+        <div v-if="configuratorShow" class="flex flex-col gap-2">
           <div>
             <Label class="text-gray-400">
               {{ $t('sidebar.configuration.settings.styles') }}
@@ -103,6 +105,18 @@ const {
             <Label for="lastPoints" class="text-sm">
               {{ $t('sidebar.configuration.settings.disableLastMatchPoints') }}
             </Label>
+          </div>
+          <div>
+            <Label for="win-color" class="text-gray-400">
+              {{ $t('sidebar.configuration.settings.winColor') }}
+            </Label>
+            <ColorPicker v-model="winColor" id="win-color" />
+          </div>
+          <div>
+            <Label for="lose-color" class="text-gray-400">
+              {{ $t('sidebar.configuration.settings.loseColor') }}
+            </Label>
+            <ColorPicker v-model="loseColor" id="lose-color" />
           </div>
           <div class="flex items-center space-x-2">
             <Switch

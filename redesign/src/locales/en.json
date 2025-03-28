@@ -24,6 +24,8 @@
         "disableBackgroundGradient": "Disable background gradient",
         "text": "Text",
         "disableLastMatchPoints": "Disable last match points",
+        "winColor": "Win color",
+        "loseColor": "Lose color",
         "disableWinLose": "Disable win/lose",
         "primary": "Primary text",
         "progress": "Progress",

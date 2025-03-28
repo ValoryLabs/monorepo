@@ -24,6 +24,8 @@
         "disableBackgroundGradient": "Выключить градиент у фона",
         "text": "Текст",
         "disableLastMatchPoints": "Выключить последние очки за матч",
+        "winColor": "Цвет побед",
+        "loseColor": "Цвет поражений",
         "disableWinLose": "Выключить количество побед/поражений",
         "primary": "Основной текст",
         "progress": "Прогресс",

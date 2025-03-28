@@ -40,7 +40,7 @@ const presetColors: string[] = [
   '#f2c1d1',
   '#f1b79b',
   '#f4a300',
-  '#0d7a56',
+  '#09bc8a',
   '#e8c6d2',
   '#4c8c8b',
   '#00ffe3',
