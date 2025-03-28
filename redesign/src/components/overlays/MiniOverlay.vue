@@ -30,9 +30,9 @@ const props = withDefaults(defineProps<Props>(), {
 
 <template>
   <div
-    class="minimal-style flex flex-row items-center justify-between gap-3 overflow-hidden rounded-full bg-black/90 px-3 py-1"
+    class="minimal-style flex flex-row items-center justify-between gap-3 rounded-full bg-black/90 px-3 py-1"
     :style="{ backgroundColor: disabledBackground ? 'transparent' : `${props.backgroundColor}99` }"
-    :class="{ 'border-[2px] border-white/10': !disabledBackground }"
+    :class="{ 'overflow-hidden border-[2px] border-white/10': !disabledBackground }"
   >
     <div class="flex flex-row items-center justify-center gap-2">
       <div class="relative">
