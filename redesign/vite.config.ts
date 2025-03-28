@@ -5,7 +5,7 @@ import vue from '@vitejs/plugin-vue'
 import autoprefixer from 'autoprefixer'
 import tailwind from 'tailwindcss'
 import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite'
-import path from "path"
+import path from 'path'
 import { ViteMinifyPlugin } from 'vite-plugin-minify'
 
 export default defineConfig({
@@ -25,7 +25,7 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
   rollupOptions: {
@@ -35,4 +35,5 @@ export default defineConfig({
       },
     },
   },
+  base: '/',
 })
