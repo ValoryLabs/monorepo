@@ -74,7 +74,7 @@ const {
               :checked="disabledBackground"
               @update:checked="overlaySettingsStore.toggleBackground"
             />
-            <Label for="background" class="text-sm font-bold">
+            <Label for="background" class="text-sm">
               {{ $t('sidebar.configuration.settings.disableBackground') }}
             </Label>
           </div>
@@ -84,7 +84,7 @@ const {
               :checked="disabledBackgroundGradient"
               @update:checked="overlaySettingsStore.toggleBackgroundGradient"
             />
-            <Label for="backgroundGradient" class="text-sm font-bold">
+            <Label for="backgroundGradient" class="text-sm">
               {{ $t('sidebar.configuration.settings.disableBackgroundGradient') }}
             </Label>
           </div>
@@ -100,7 +100,7 @@ const {
               :checked="disabledLastMatchPoints"
               @update:checked="overlaySettingsStore.toggleLastMatchPoints"
             />
-            <Label for="lastPoints" class="text-sm font-bold">
+            <Label for="lastPoints" class="text-sm">
               {{ $t('sidebar.configuration.settings.disableLastMatchPoints') }}
             </Label>
           </div>
@@ -110,7 +110,7 @@ const {
               :checked="disabledWinLose"
               @update:checked="overlaySettingsStore.toggleWinLose"
             />
-            <Label for="winLose" class="text-sm font-bold">
+            <Label for="winLose" class="text-sm">
               {{ $t('sidebar.configuration.settings.disableWinLose') }}
             </Label>
           </div>
@@ -141,7 +141,7 @@ const {
               :checked="disabledProgress"
               @update:checked="overlaySettingsStore.toggleProgress"
             />
-            <Label for="progress" class="text-sm font-bold">
+            <Label for="progress" class="text-sm">
               {{ $t('sidebar.configuration.settings.disableProgress') }}
             </Label>
           </div>

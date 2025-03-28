@@ -28,22 +28,24 @@ const rgb = reactive<RGB>({ r: 255, g: 255, b: 255 })
 const hex = ref<string>(props.modelValue)
 
 const presetColors: string[] = [
-  '#BB2649',
-  '#F25C54',
-  '#A78EC1',
-  '#FF9F00',
-  '#43B2A1',
-  '#F1F2F2',
-  '#FF9E6D',
-  '#004F8C',
-  '#B4A0D0',
-  '#F2C1D1',
-  '#F1B79B',
-  '#F4A300',
-  '#0D7A56',
-  '#E8C6D2',
-  '#4C8C8B',
-  '#07090E',
+  '#bb2649',
+  '#f25c54',
+  '#a78ec1',
+  '#ff9f00',
+  '#43b2a1',
+  '#f2f2f2',
+  '#ff9e6d',
+  '#004f8c',
+  '#b4a0d0',
+  '#f2c1d1',
+  '#f1b79b',
+  '#f4a300',
+  '#0d7a56',
+  '#e8c6d2',
+  '#4c8c8b',
+  '#00ffe3',
+  '#ff7986',
+  '#07090e',
 ]
 
 const saturationRef = ref<HTMLDivElement | null>(null)
@@ -157,15 +159,21 @@ onMounted(() => {
 
 <template>
   <Popover>
-    <InputWithIcon v-model="hex" @blur="updateColorFromHex" class="relative">
+    <InputWithIcon v-model="hex" @blur="updateColorFromHex" class="relative uppercase">
+      <div
+        :style="{
+          backgroundColor: hex,
+        }"
+        class="absolute h-5 w-5 rounded-md blur-[20px]"
+      ></div>
       <PopoverTrigger
         :style="{
           backgroundColor: hex,
         }"
-        class="h-5 w-5 rounded-md"
+        class="z-10 h-5 w-5 rounded-md"
       />
     </InputWithIcon>
-    <PopoverContent>
+    <PopoverContent align="start">
       <div class="color-picker grid gap-3">
         <div
           ref="saturationRef"
@@ -184,30 +192,33 @@ onMounted(() => {
           <div class="saturation-white"></div>
           <div class="saturation-black"></div>
         </div>
-        <div ref="hueRef" class="hue" @mousedown="startHueDrag">
-          <div :style="{ left: `calc(${(hue / 360) * 100}% - 7px)` }" class="hue-pointer"></div>
+        <div class="relative">
+          <div ref="hueRef" class="hue relative z-10" @mousedown="startHueDrag">
+            <div :style="{ left: `calc(${(hue / 360) * 100}% - 7px)` }" class="hue-pointer"></div>
+          </div>
+          <div class="hue absolute top-0 blur-[16px]"></div>
         </div>
         <div class="inputs">
           <Input
-            class="h-8 text-xs transition-colors hover:bg-white/5"
+            class="h-8 bg-transparent text-xs font-medium uppercase transition-colors hover:bg-white/5"
             id="hex"
             v-model="hex"
             @focusout="updateColorFromHex"
           />
           <Input
-            class="h-8 text-xs transition-colors hover:bg-white/5"
+            class="h-8 bg-transparent text-xs font-medium transition-colors hover:bg-white/5"
             id="r"
             v-model.number="rgb.r"
             @focusout="updateColorFromRGB"
           />
           <Input
-            class="h-8 text-xs transition-colors hover:bg-white/5"
+            class="h-8 bg-transparent text-xs font-medium transition-colors hover:bg-white/5"
             id="g"
             v-model.number="rgb.g"
             @focusout="updateColorFromRGB"
           />
           <Input
-            class="h-8 text-xs transition-colors hover:bg-white/5"
+            class="h-8 bg-transparent text-xs font-medium transition-colors hover:bg-white/5"
             id="b"
             v-model.number="rgb.b"
             @focusout="updateColorFromRGB"
@@ -220,6 +231,7 @@ onMounted(() => {
             :key="color"
             :style="{ backgroundColor: color }"
             class="preset-color"
+            :class="[hex === color ? 'active' : '']"
             @click="setPresetColor(color)"
           ></div>
         </div>
@@ -238,6 +250,7 @@ onMounted(() => {
     height: 150px;
     background: red;
     cursor: crosshair;
+    border-radius: calc(var(--radius) - 4px);
 
     .saturation-white {
       position: absolute;
@@ -251,50 +264,54 @@ onMounted(() => {
 
     .saturation-pointer {
       position: absolute;
-      width: 10px;
-      height: 10px;
+      width: 14px;
+      height: 14px;
       border: 2px solid #fff;
       z-index: 999;
-      box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
       border-radius: 50%;
       transform: translate(-50%, -50%);
     }
   }
 
   .hue {
-    position: relative;
     width: 100%;
     height: 10px;
     background: linear-gradient(to right, red, yellow, lime, aqua, blue, magenta, red);
     cursor: pointer;
-    border-radius: 2.5px;
+    border-radius: 999px;
 
     .hue-pointer {
       position: absolute;
       width: 14px;
       height: 14px;
-      background-color: #fff;
+      background-color: transparent;
       border-radius: 999px;
       border: 3px solid #fff;
       cursor: pointer;
+      z-index: 999;
       transform: translateY(-50%);
       top: 50%;
     }
   }
 
   .presets {
-    display: flex;
-    gap: 0.5rem;
-    justify-content: center;
-    flex-direction: row;
+    display: inline-flex;
     flex-wrap: wrap;
+    gap: 7px;
 
     .preset-color {
       width: 22px;
       height: 22px;
-      border: 1px solid rgba(0, 0, 0, 0.1);
-      border-radius: 5px;
+      box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
+      transition: 0.2s box-shadow;
+      border-radius: calc(var(--radius) - 2px);
       cursor: pointer;
+
+      &.active,
+      &:hover {
+        box-shadow: 0 0 0 2px rgba(255, 255, 255, 1);
+      }
     }
   }
 

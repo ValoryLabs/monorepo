@@ -26,7 +26,10 @@ const modelValue = useVModel(props, 'modelValue', emits, {
 </script>
 
 <template>
-  <div class="relative w-full max-w-sm items-center">
+  <div class="relative w-full max-w-sm items-center overflow-hidden">
+    <span class="absolute inset-y-0 start-0 flex items-center justify-center pl-3">
+      <slot />
+    </span>
     <Input
       v-model="modelValue"
       :id="props.id"
@@ -34,13 +37,10 @@ const modelValue = useVModel(props, 'modelValue', emits, {
       :placeholder="props.placeholder"
       :class="
         cn(
-          'border-white/10 bg-transparent pl-10 transition-colors hover:bg-white/5 focus-visible:bg-white/5',
+          'border-white/10 bg-transparent pl-10 font-medium transition-colors hover:bg-white/5 focus-visible:bg-white/5',
           props.class,
         )
       "
     />
-    <span class="absolute inset-y-0 start-0 flex items-center justify-center pl-3">
-      <slot />
-    </span>
   </div>
 </template>
