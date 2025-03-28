@@ -39,7 +39,7 @@ const props = withDefaults(defineProps<Props>(), {
         <img src="/ranks/26.webp" alt="" height="55" width="55" preload="high" />
       </div>
       <div class="flex h-fit flex-1 flex-row justify-between py-3 pr-7">
-        <div class="flex h-fit flex-col gap-[5px]">
+        <div class="flex h-fit flex-col justify-center gap-[5px]">
           <span class="text-sm font-medium leading-[1] text-[var(--primary-text-color)]">
             MAGICX#1337
           </span>
@@ -52,8 +52,11 @@ const props = withDefaults(defineProps<Props>(), {
             Level: 200
           </span>
         </div>
-        <div class="flex flex-col items-end gap-1">
-          <span class="text-2xl font-extrabold text-[var(--win-color)]">54%</span>
+        <div class="flex flex-col items-center justify-center gap-0">
+          <span
+            class="text-2xl font-extrabold leading-none text-[var(--win-color)] drop-shadow-[0px_0px_12px_var(--win-color)]"
+            >54%</span
+          >
           <span class="text-xs">Win rate</span>
         </div>
       </div>
