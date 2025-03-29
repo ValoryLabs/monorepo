@@ -20,6 +20,10 @@ const router = createRouter({
           path: '/configurator',
           component: () => import('@/pages/Configurator/Index.vue'),
         },
+        {
+          path: '/configurator/settings',
+          component: () => import('@/pages/Configurator/Settings.vue'),
+        },
       ],
     },
     {

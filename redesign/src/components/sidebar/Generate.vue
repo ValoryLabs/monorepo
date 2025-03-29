@@ -44,6 +44,9 @@ const copyUrl = () => {
           </Tooltip>
         </TooltipProvider>
       </div>
+      <span class="text-sm text-muted-foreground"
+        >{{ $t('sidebar.generate.dimensions') }} 120 х 50</span
+      >
     </div>
   </div>
 </template>
