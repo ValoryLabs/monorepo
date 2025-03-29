@@ -36,10 +36,10 @@ const {
     <div class="flex flex-col gap-3">
       <div class="flex items-center justify-between">
         <span class="text-lg font-semibold">{{ $t('sidebar.configuration.title') }}</span>
-        <div class="flex flex-row gap-1">
+        <div class="flex flex-row gap-2">
           <Button
             variant="outline"
-            class="w-9 border-transparent p-2 text-xs hover:border-white/10 hover:bg-white/10"
+            class="w-9 p-2 text-xs hover:border-white/10 hover:bg-white/10"
             @click="overlaySettingsStore.reset"
           >
             <RotateCcw class="size-4" />
