@@ -9,7 +9,7 @@ const rows = Array.from({ length: 3 }, (_, i) =>
 </script>
 <template>
   <div
-    class="relative flex h-screen w-full flex-col items-center justify-center gap-3 overflow-hidden rounded-lg"
+    class="relative flex h-screen w-1/2 flex-col items-center justify-center gap-3 overflow-hidden rounded-lg"
   >
     <Marquee
       v-for="(row, index) in rows"

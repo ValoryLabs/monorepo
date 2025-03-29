@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import LanguageSwitcher from '@/components/ui/LanguageSwitcher.vue'
 import { Paintbrush, PackageOpen, PencilRuler } from 'lucide-vue-next'
 import Button from '@/components/ui/button/Button.vue'
 import Header from '@/components/home/Header.vue'
@@ -10,7 +9,7 @@ import StreamersMarquee from '@/components/StreamersMarquee.vue'
 
 <template>
   <main class="inline-flex h-screen w-screen items-center">
-    <div class="m-auto flex w-11/12 flex-col items-center justify-center gap-6">
+    <div class="m-auto flex w-1/2 flex-col items-center justify-center gap-6">
       <Header />
       <ul class="flex flex-col items-start gap-3">
         <li class="flex flex-row items-center justify-center gap-3 leading-5">
