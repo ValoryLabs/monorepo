@@ -2,20 +2,11 @@
 import { openLink } from '@/utils.ts'
 import Button from '@/components/ui/button/Button.vue'
 import { SocialLinksData } from '@/data/SocialLinks.data.ts'
+import LanguageSwitcher from '@/components/ui/LanguageSwitcher.vue'
 </script>
 
 <template>
   <footer class="flex flex-col items-center gap-2 text-sm font-semibold">
-    <span
-      >{{ $t('sidebar.footer.powered') }}
-      <span
-        class="cursor-pointer transition-colors hover:text-gray-300"
-        @click="openLink('https://github.com/Henrik-3/unofficial-valorant-api')"
-      >
-        Henrik's API
-      </span>
-      🥰
-    </span>
     <span class="whitespace-pre-line text-center leading-5">
       {{ $t('sidebar.footer.made') }}
     </span>
@@ -29,6 +20,7 @@ import { SocialLinksData } from '@/data/SocialLinks.data.ts'
       >
         <component :is="link.icon" :size="18" />
       </Button>
+      <LanguageSwitcher />
     </span>
   </footer>
 </template>

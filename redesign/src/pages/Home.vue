@@ -32,12 +32,9 @@ import StreamersMarquee from '@/components/StreamersMarquee.vue'
           </span>
         </li>
       </ul>
-      <div class="flex flex-row gap-2">
-        <LanguageSwitcher />
-        <Button @click="router.push('/configurator')">
-          {{ $t('sidebar.buttons.start') }}
-        </Button>
-      </div>
+      <Button @click="router.push('/configurator')">
+        {{ $t('sidebar.buttons.start') }}
+      </Button>
       <Footer />
     </div>
     <StreamersMarquee />

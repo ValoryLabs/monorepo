@@ -1,12 +1,13 @@
 <script setup lang="ts">
-import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { useOverlayStore } from '@/stores/overlay.ts'
 import { computed } from 'vue'
-import { Copy } from 'lucide-vue-next'
+import { Copy, KeyRound } from 'lucide-vue-next'
 import { useClipboard } from '@vueuse/core'
 import { toast } from 'vue-sonner'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
+import InputWithIcon from '@/components/ui/InputWithIcon.vue'
+import { Link } from 'lucide-vue-next'
 
 const overlayStore = useOverlayStore()
 
@@ -28,7 +29,9 @@ const copyUrl = () => {
         {{ $t('sidebar.generate.description') }}
       </span>
       <div class="flex flex-row items-center gap-2">
-        <Input v-model="url" disabled="true" class="cursor-text bg-transparent" />
+        <InputWithIcon v-model="url" disabled="true" class="cursor-text bg-transparent">
+          <Link class="size-4" />
+        </InputWithIcon>
 
         <TooltipProvider>
           <Tooltip>
