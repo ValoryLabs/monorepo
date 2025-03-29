@@ -2,9 +2,19 @@
 import Marquee from '@/components/ui/Marquee.vue'
 import StreamersCard from '@/components/ui/StreamersCard.vue'
 import { STREAMERS_DATA } from '@/data/Streamers.data'
-const rowSize = Math.ceil(STREAMERS_DATA.length / 3)
+
+function shuffleArray(array: any[]) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[array[i], array[j]] = [array[j], array[i]]
+  }
+  return array
+}
+
+const shuffledStreamers = shuffleArray([...STREAMERS_DATA])
+const rowSize = Math.ceil(shuffledStreamers.length / 3)
 const rows = Array.from({ length: 3 }, (_, i) =>
-  STREAMERS_DATA.slice(i * rowSize, (i + 1) * rowSize),
+  shuffledStreamers.slice(i * rowSize, (i + 1) * rowSize),
 )
 </script>
 <template>
