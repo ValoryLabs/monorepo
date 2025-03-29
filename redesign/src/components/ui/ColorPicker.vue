@@ -160,12 +160,6 @@ onMounted(() => {
 <template>
   <Popover>
     <InputWithIcon v-model="hex" @blur="updateColorFromHex" class="relative uppercase">
-      <div
-        :style="{
-          backgroundColor: hex,
-        }"
-        class="absolute h-5 w-5 rounded-md blur-[30px]"
-      ></div>
       <PopoverTrigger
         :style="{
           backgroundColor: hex,
