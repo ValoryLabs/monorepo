@@ -68,7 +68,7 @@
 
 :root {
   font-family:
-    'Geist',
+    'Inter',
     -apple-system,
     BlinkMacSystemFont,
     Segoe UI,
@@ -93,6 +93,6 @@ body {
   background-color: #000;
 }
 
-.valory-text {
+.font-valory {
   font-family: 'Russo One', sans-serif;
 }

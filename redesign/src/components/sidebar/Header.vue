@@ -10,7 +10,7 @@ import Valory from '@/components/icons/Valory.vue'
     <div class="flex flex-row items-center gap-3">
       <Valory :size="48" />
       <span
-        class="valory-text inline-block bg-gradient-to-b from-[#f2f2f2] to-[#dddddd] bg-clip-text text-3xl text-transparent"
+        class="font-valory inline-block bg-gradient-to-b from-[#f2f2f2] to-[#dddddd] bg-clip-text text-3xl text-transparent"
       >
         VALORY
       </span>

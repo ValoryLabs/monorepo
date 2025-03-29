@@ -2,9 +2,6 @@
 import Button from '@/components/ui/button/Button.vue'
 import { storeToRefs } from 'pinia'
 import { useUserStore } from '@/stores/user.ts'
-import Start from '@/components/sidebar/Start.vue'
-import Header from '@/components/sidebar/Header.vue'
-import Footer from '@/components/sidebar/Footer.vue'
 import { Atom, ArrowLeft } from 'lucide-vue-next'
 import Generate from '@/components/sidebar/Generate.vue'
 import Configurator from '@/components/sidebar/Configurator.vue'
@@ -14,7 +11,6 @@ const userStore = useUserStore()
 const { profileActive, configuratorActive, generateActive } = storeToRefs(userStore)
 
 const toggleProfileAndConfigurator = () => {
-  userStore.toggleProfile()
   userStore.toggleConfigurator()
 }
 
@@ -33,17 +29,10 @@ const handleBackClick = () => {
   <aside
     class="flex w-[500px] flex-col items-center justify-center gap-6 border-r border-white/10 bg-black px-10"
   >
-    <Header />
     <div
-      class="flex max-h-[536px] w-full flex-col items-center gap-4 overflow-scroll transition-all"
+      class="flex max-h-[90dvh] w-full flex-col items-center gap-4 overflow-scroll transition-all"
     >
-      <Transition
-        mode="out-in"
-        :key="!profileActive && !generateActive ? 'start' : profileActive ? 'profile' : 'generate'"
-      >
-        <Start v-if="!profileActive && !generateActive" />
-        <ProfileSettings v-else-if="profileActive" />
-      </Transition>
+      <ProfileSettings v-if="profileActive && !generateActive" />
       <Transition :key="profileActive && configuratorActive ? 'configurator' : null">
         <Configurator v-if="profileActive && configuratorActive" />
       </Transition>
@@ -69,7 +58,6 @@ const handleBackClick = () => {
         {{ $t('sidebar.buttons.back') }}
       </Button>
     </div>
-    <Footer />
   </aside>
 </template>
 

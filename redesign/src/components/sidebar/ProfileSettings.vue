@@ -9,7 +9,7 @@ import { useUserStore } from '@/stores/user.ts'
 import { useI18n } from 'vue-i18n'
 import InstructionModal from '@/components/ui/instructionkey/InstructionModal.vue'
 import { ref } from 'vue'
-import { Search, KeyRound, ArrowLeft } from 'lucide-vue-next'
+import { Search, KeyRound } from 'lucide-vue-next'
 
 const { t } = useI18n()
 
@@ -66,9 +66,6 @@ const search = () => {
       </span>
     </div>
     <div class="flex w-full flex-row justify-center gap-2">
-      <Button @click="userStore.toggleProfile" variant="outline" class="w-9 px-2">
-        <ArrowLeft class="size-4" />
-      </Button>
       <Button
         class="w-full transition"
         @click="search()"

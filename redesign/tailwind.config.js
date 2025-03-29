@@ -11,8 +11,8 @@ module.exports = {
 
   theme: {
     fontFamily: {
-      sans: ['Geist', 'sans-serif'],
-      mono: ['Geist Mono', 'sans-serif'],
+      sans: ['Inter', 'sans-serif'],
+      mono: ['Geist Mono', 'monospace'],
     },
     container: {
       center: true,

@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import Sidebar from '@/components/sidebar/Sidebar.vue'
 import Content from '@/components/Content.vue'
+import Header from '@/components/ui/Header.vue'
 </script>
 
 <template>
-  <div class="flex h-dvh w-dvw flex-row">
+  <Header />
+  <div class="flex h-[calc(100dvh-3.5rem)] w-dvw flex-row">
     <Sidebar />
     <Content />
   </div>

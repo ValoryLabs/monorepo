@@ -1,25 +1,30 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '@/pages/HomeView.vue'
-import OverlayView from '@/pages/OverlayView.vue'
-import NotFoundView from '@/pages/NotFoundView.vue'
+import Home from '@/pages/Home.vue'
+import Overlay from '@/pages/Overlay.vue'
+import NotFound from '@/pages/NotFound.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
-      name: 'VALORY',
-      component: HomeView,
+      name: 'home',
+      component: Home,
+    },
+    {
+      path: '/configurator',
+      name: 'configurator',
+      component: () => import('@/pages/Configurator.vue'),
     },
     {
       path: '/overlay',
       name: 'overlay',
-      component: OverlayView,
+      component: Overlay,
     },
     {
       path: '/:pathMatch(.*)*',
       name: '404',
-      component: NotFoundView,
+      component: NotFound,
     },
   ],
 })

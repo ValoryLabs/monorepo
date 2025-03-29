@@ -2,15 +2,11 @@ import { defineStore } from 'pinia'
 import { ref, type Ref } from 'vue'
 
 export const useUserStore = defineStore('userStore', () => {
-  const profileActive: Ref<boolean> = ref(false)
+  const profileActive: Ref<boolean> = ref(true)
   const configuratorActive: Ref<boolean> = ref(false)
   const configuratorShow: Ref<boolean> = ref(false)
   const generateActive: Ref<boolean> = ref(false)
   const showOverlay: Ref<boolean> = ref(false)
-
-  const toggleProfile = () => {
-    profileActive.value = !profileActive.value
-  }
 
   const toggleConfigurator = () => {
     configuratorActive.value = !configuratorActive.value
@@ -29,7 +25,6 @@ export const useUserStore = defineStore('userStore', () => {
     configuratorActive,
     configuratorShow,
     generateActive,
-    toggleProfile,
     toggleConfigurator,
     toggleConfiguratorShow,
     toggleGenerate,
