@@ -3,8 +3,6 @@ interface Props {
   backgroundColor?: string
   textColor?: string
   primaryTextColor?: string
-  progressColor?: string
-  progressBgColor?: string
   winColor?: string
   loseColor?: string
   disabledBackground?: boolean
@@ -16,8 +14,6 @@ const props = withDefaults(defineProps<Props>(), {
   backgroundColor: '#07090e',
   textColor: '#f2f2f2',
   primaryTextColor: '#B9B4B4',
-  progressColor: '#00FFE3',
-  progressBgColor: '#f2f2f2',
   winColor: '#00FFE3',
   loseColor: '#FF7986',
   disabledBackground: false,
@@ -106,11 +102,6 @@ const props = withDefaults(defineProps<Props>(), {
           </div>
         </div>
       </div>
-      <div
-        v-if="!disabledProgress"
-        class="absolute -bottom-[5px] left-0 h-2 w-full rounded-b-[8px]"
-        :style="{ backgroundColor: `${props.progressColor}` }"
-      ></div>
     </div>
   </div>
 </template>
@@ -119,7 +110,6 @@ const props = withDefaults(defineProps<Props>(), {
 .new-style {
   --text-color: v-bind(textColor);
   --primary-text-color: v-bind(primaryTextColor);
-  --progress-color: v-bind(progressColor);
   --win-color: v-bind(winColor);
   --lose-color: v-bind(loseColor);
 }

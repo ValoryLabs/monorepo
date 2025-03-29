@@ -164,7 +164,7 @@ onMounted(() => {
         :style="{
           backgroundColor: hex,
         }"
-        class="absolute h-5 w-5 rounded-md blur-[20px]"
+        class="absolute h-5 w-5 rounded-md blur-[30px]"
       ></div>
       <PopoverTrigger
         :style="{

@@ -134,22 +134,19 @@ const {
             </Label>
             <ColorPicker v-model="primaryTextColor" id="background-color" />
           </div>
-          <div v-if="overlayStyle !== 'minimal' && overlayStyle !== 'new_v2'">
+          <div v-if="overlayStyle === 'old'">
             <Label for="background-color" class="text-gray-400">
               {{ $t('sidebar.configuration.settings.progress') }}
             </Label>
             <ColorPicker v-model="progressColor" id="background-color" />
           </div>
-          <div v-if="overlayStyle !== 'minimal' && overlayStyle !== 'new_v2'">
+          <div v-if="overlayStyle === 'old'">
             <Label for="background-color" class="text-gray-400">
               {{ $t('sidebar.configuration.settings.progressBackground') }}
             </Label>
             <ColorPicker v-model="progressBgColor" id="background-color" />
           </div>
-          <div
-            v-if="overlayStyle !== 'minimal' && overlayStyle !== 'new_v2'"
-            class="flex items-center space-x-2"
-          >
+          <div v-if="overlayStyle === 'old'" class="flex items-center space-x-2">
             <Switch
               id="progress"
               :checked="disabledProgress"
