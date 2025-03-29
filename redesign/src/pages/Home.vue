@@ -5,10 +5,11 @@ import Button from '@/components/ui/button/Button.vue'
 import Header from '@/components/home/Header.vue'
 import router from '@/router'
 import Footer from '@/components/home/Footer.vue'
+import StreamersMarquee from '@/components/StreamersMarquee.vue'
 </script>
 
 <template>
-  <main class="flex h-screen items-center">
+  <main class="inline-flex h-screen w-screen items-center">
     <div class="m-auto flex w-11/12 flex-col items-center justify-center gap-6">
       <Header />
       <ul class="flex flex-col items-start gap-3">
@@ -39,5 +40,6 @@ import Footer from '@/components/home/Footer.vue'
       </div>
       <Footer />
     </div>
+    <StreamersMarquee />
   </main>
 </template>

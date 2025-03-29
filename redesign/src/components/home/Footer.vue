@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { openLink } from '@/utils.ts'
-import Button from '../ui/button/Button.vue'
-import { SocialLinksData } from '@/data/SocialLinks.d'
+import Button from '@/components/ui/button/Button.vue'
+import { SocialLinksData } from '@/data/SocialLinks.data.ts'
 </script>
 
 <template>

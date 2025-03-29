@@ -7,8 +7,9 @@ import Valory from '@/components/icons/Valory.vue'
     <span class="flex flex-row items-center justify-center gap-1 text-xs font-bold">
       {{ $t('sidebar.header.badge') }}
     </span>
-    <div class="flex flex-row items-center gap-3">
+    <div class="relative flex flex-row items-center gap-3">
       <Valory :size="48" />
+      <Valory :size="96" class="absolute left-0 blur-[120px]" />
       <span
         class="font-valory inline-block bg-gradient-to-b from-[#f2f2f2] to-[#dddddd] bg-clip-text text-3xl text-transparent"
       >
