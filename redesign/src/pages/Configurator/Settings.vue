@@ -39,7 +39,6 @@ const {
         <span class="text-lg font-semibold">{{ $t('sidebar.configuration.title') }}</span>
         <div class="flex flex-row gap-1">
           <Button
-            v-if="configuratorShow"
             variant="outline"
             class="w-9 border-transparent p-2 text-xs hover:border-white/10 hover:bg-white/10"
             @click="overlaySettingsStore.reset"
