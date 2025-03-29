@@ -18,7 +18,7 @@ const loading = ref(false)
 const userSettingsStore = useUserSettingsStore()
 const userStore = useUserStore()
 const { riotID, apiKey, validateRiotId, validateApiKey } = storeToRefs(userSettingsStore)
-const { configuratorActive, showOverlay } = storeToRefs(userStore)
+const { configuratorActive } = storeToRefs(userStore)
 
 async function validateData() {
   return new Promise((resolve, reject) => {
@@ -28,7 +28,6 @@ async function validateData() {
         reject({ message: validateRiotId.value.message })
       } else {
         configuratorActive.value = true
-        showOverlay.value = true
         resolve({ message: 'toasts.dataVerifying.validationSuccess' })
       }
       loading.value = false

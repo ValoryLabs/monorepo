@@ -5,14 +5,14 @@ import Overlay from '@/components/Overlay.vue'
 import { generateMeshGradient } from 'meshgrad'
 
 const userStore = useUserStore()
-const { showOverlay } = storeToRefs(userStore)
+const { configuratorActive } = storeToRefs(userStore)
 </script>
 
 <template>
   <aside class="relative flex flex-1 items-center justify-center bg-background">
     <div id="preview" class="relative">
       <div class="relative z-10">
-        <Overlay v-if="showOverlay" />
+        <Overlay v-if="configuratorActive" />
         <div v-else class="w-fit whitespace-pre-line text-center font-medium leading-[1.15]">
           {{ $t('preview') }}
         </div>

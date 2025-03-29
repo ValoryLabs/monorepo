@@ -2,12 +2,13 @@
 import { Button } from '@/components/ui/button'
 import { useOverlayStore } from '@/stores/overlay.ts'
 import { computed } from 'vue'
-import { Copy, KeyRound } from 'lucide-vue-next'
+import { ArrowLeft, Copy } from 'lucide-vue-next'
 import { useClipboard } from '@vueuse/core'
 import { toast } from 'vue-sonner'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 import InputWithIcon from '@/components/ui/InputWithIcon.vue'
 import { Link } from 'lucide-vue-next'
+import router from '@/router'
 
 const overlayStore = useOverlayStore()
 
@@ -49,4 +50,12 @@ const copyUrl = () => {
       >
     </div>
   </div>
+  <Button
+    @click="router.push('/configurator/')"
+    variant="outline"
+    class="w-11/12 hover:bg-white/10"
+  >
+    <ArrowLeft class="h-4 w-4" />
+    {{ $t('sidebar.buttons.back') }}
+  </Button>
 </template>
