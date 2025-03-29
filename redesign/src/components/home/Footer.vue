@@ -6,7 +6,7 @@ import LanguageSwitcher from '@/components/ui/LanguageSwitcher.vue'
 </script>
 
 <template>
-  <footer class="flex flex-col items-center gap-2 text-sm font-semibold">
+  <footer class="flex flex-col items-center gap-4 text-sm font-semibold">
     <span class="whitespace-pre-line text-center leading-5">
       {{ $t('sidebar.footer.made') }}
     </span>
