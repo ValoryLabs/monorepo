@@ -32,7 +32,7 @@ const {
 </script>
 
 <template>
-  <div class="flex w-11/12 flex-col gap-4 rounded-lg bg-white/5 p-5">
+  <div class="flex w-11/12 flex-col gap-4 rounded-lg">
     <div class="flex flex-col gap-3">
       <div class="flex items-center justify-between">
         <span class="text-lg font-semibold">{{ $t('sidebar.configuration.title') }}</span>

@@ -47,7 +47,7 @@ const search = () => {
 </script>
 
 <template>
-  <div class="flex w-11/12 flex-col gap-4 rounded-lg bg-white/5 p-5">
+  <div class="flex w-11/12 flex-col gap-4 rounded-lg">
     <div class="flex flex-col gap-3">
       <span class="text-lg font-semibold">{{ t('sidebar.profile.title') }}</span>
       <span class="whitespace-pre-line text-sm">

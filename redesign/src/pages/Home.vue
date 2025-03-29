@@ -2,9 +2,9 @@
 import LanguageSwitcher from '@/components/ui/LanguageSwitcher.vue'
 import { Paintbrush, PackageOpen, PencilRuler } from 'lucide-vue-next'
 import Button from '@/components/ui/button/Button.vue'
-import Header from '@/components/sidebar/Header.vue'
+import Header from '@/components/home/Header.vue'
 import router from '@/router'
-import Footer from '@/components/sidebar/Footer.vue'
+import Footer from '@/components/home/Footer.vue'
 </script>
 
 <template>
@@ -33,7 +33,7 @@ import Footer from '@/components/sidebar/Footer.vue'
       </ul>
       <div class="flex flex-row gap-2">
         <LanguageSwitcher />
-        <Button @click="router.push({ name: 'configurator' })">
+        <Button @click="router.push('/configurator')">
           {{ $t('sidebar.buttons.start') }}
         </Button>
       </div>

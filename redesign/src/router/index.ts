@@ -14,7 +14,13 @@ const router = createRouter({
     {
       path: '/configurator',
       name: 'configurator',
-      component: () => import('@/pages/Configurator.vue'),
+      component: () => import('@/layouts/Configurator.vue'),
+      children: [
+        {
+          path: '/configurator',
+          component: () => import('@/pages/Configurator/Index.vue'),
+        },
+      ],
     },
     {
       path: '/overlay',

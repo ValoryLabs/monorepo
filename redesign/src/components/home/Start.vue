@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import LanguageSwitcher from '@/components/ui/LanguageSwitcher.vue'
 import { Paintbrush, PackageOpen, PencilRuler } from 'lucide-vue-next'
-import Button from '@/components/ui/button/Button.vue'
+import Button from '../ui/button/Button.vue'
 import { useUserStore } from '@/stores/user.ts'
 
 const userStore = useUserStore()

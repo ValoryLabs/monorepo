@@ -2,14 +2,14 @@
 import { useUserStore } from '@/stores/user.ts'
 import { storeToRefs } from 'pinia'
 import Overlay from '@/components/Overlay.vue'
+import { generateMeshGradient } from 'meshgrad'
 
 const userStore = useUserStore()
-
 const { showOverlay } = storeToRefs(userStore)
 </script>
 
 <template>
-  <main class="relative flex flex-1 items-center justify-center bg-[#010101]">
+  <aside class="relative flex flex-1 items-center justify-center bg-background">
     <div id="preview" class="relative">
       <div class="relative z-10">
         <Overlay v-if="showOverlay" />
@@ -17,10 +17,11 @@ const { showOverlay } = storeToRefs(userStore)
           {{ $t('preview') }}
         </div>
       </div>
-      <div
-        class="absolute left-1/2 top-1/2 size-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[rgb(46,62,117)] opacity-40 blur-[350px]"
-      ></div>
     </div>
+    <div
+      class="absolute left-1/2 top-1/2 size-[350px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-20 blur-[300px]"
+      :style="generateMeshGradient(8)"
+    ></div>
     <div class="pointer-events-none absolute inset-0 bg-[url(/grid.png)] bg-cover opacity-40"></div>
-  </main>
+  </aside>
 </template>
