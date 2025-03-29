@@ -12,8 +12,6 @@ import router from '@/router'
 
 const userStore = useUserStore()
 
-const { configuratorShow } = storeToRefs(userStore)
-
 const overlaySettingsStore = useOverlayStore()
 const {
   backgroundColor,
@@ -26,6 +24,7 @@ const {
   overlayStyle,
   disabledBackground,
   disabledBackgroundGradient,
+  disabledGlowEffect,
   disabledLastMatchPoints,
   disabledProgress,
   disabledWinLose,
@@ -84,6 +83,16 @@ const {
           />
           <Label for="backgroundGradient" class="text-sm">
             {{ $t('sidebar.configuration.settings.disableBackgroundGradient') }}
+          </Label>
+        </div>
+        <div v-if="overlayStyle !== 'old'" class="flex items-center space-x-2">
+          <Switch
+            id="glowEffect"
+            :checked="disabledGlowEffect"
+            @update:checked="overlaySettingsStore.toggleGlowEffect"
+          />
+          <Label for="glowEffect" class="text-sm">
+            {{ $t('sidebar.configuration.settings.glowEffect') }}
           </Label>
         </div>
         <div v-if="overlayStyle !== 'minimal'">

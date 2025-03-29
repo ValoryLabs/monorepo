@@ -6,6 +6,7 @@ interface Props {
   winColor?: string
   loseColor?: string
   disabledBackground?: boolean
+  disabledGlowEffect?: boolean
   disabledWinLose?: boolean
   disabledProgress?: boolean
 }
@@ -17,6 +18,7 @@ const props = withDefaults(defineProps<Props>(), {
   winColor: '#00FFE3',
   loseColor: '#FF7986',
   disabledBackground: false,
+  disabledGlowEffect: false,
   disabledWinLose: false,
   disabledProgress: false,
 })
@@ -41,6 +43,7 @@ const props = withDefaults(defineProps<Props>(), {
           preload="high"
         />
         <img
+          v-if="!disabledGlowEffect"
           src="/ranks/26.webp"
           class="absolute left-1/2 top-1/2 z-0 size-14 max-w-[unset] -translate-x-1/2 -translate-y-1/2 transform blur-[20px]"
           alt=""
@@ -61,38 +64,44 @@ const props = withDefaults(defineProps<Props>(), {
           >
             1838 elo - 123RR
             <span
-              class="text-[10px] font-medium text-[var(--win-color)] drop-shadow-[0px_0px_6px_var(--win-color)]"
+              class="text-[10px] font-medium text-[var(--win-color)]"
+              :class="{ 'drop-shadow-[0px_0px_6px_var(--win-color)]': !disabledGlowEffect }"
               >+5</span
             >
           </span>
           <div v-if="!disabledWinLose" class="flex flex-row items-center gap-2">
             <div class="mt-[2px] flex flex-row items-center gap-1">
               <span
-                class="flex h-5 w-5 flex-col items-center justify-center rounded-[4px] text-xs font-bold leading-[1] text-[var(--win-color)] drop-shadow-[0px_0px_12px_var(--win-color)]"
+                class="flex h-5 w-5 flex-col items-center justify-center rounded-[4px] text-xs font-bold leading-[1] text-[var(--win-color)]"
+                :class="{ 'drop-shadow-[0px_0px_12px_var(--win-color)]': !disabledGlowEffect }"
                 :style="{ backgroundColor: `${props.winColor}80` }"
               >
                 W
               </span>
               <span
-                class="flex h-5 w-5 flex-col items-center justify-center rounded-[4px] text-xs font-bold leading-[1] text-[var(--lose-color)] drop-shadow-[0px_0px_12px_var(--lose-color)]"
+                class="flex h-5 w-5 flex-col items-center justify-center rounded-[4px] text-xs font-bold leading-[1] text-[var(--lose-color)]"
+                :class="{ 'drop-shadow-[0px_0px_12px_var(--lose-color)]': !disabledGlowEffect }"
                 :style="{ backgroundColor: `${props.loseColor}80` }"
               >
                 L
               </span>
               <span
-                class="flex h-5 w-5 flex-col items-center justify-center rounded-[4px] text-xs font-bold leading-[1] text-[var(--win-color)] drop-shadow-[0px_0px_12px_var(--win-color)]"
+                class="flex h-5 w-5 flex-col items-center justify-center rounded-[4px] text-xs font-bold leading-[1] text-[var(--win-color)]"
+                :class="{ 'drop-shadow-[0px_0px_12px_var(--win-color)]': !disabledGlowEffect }"
                 :style="{ backgroundColor: `${props.winColor}80` }"
               >
                 W
               </span>
               <span
-                class="flex h-5 w-5 flex-col items-center justify-center rounded-[4px] text-xs font-bold leading-[1] text-[var(--lose-color)] drop-shadow-[0px_0px_12px_var(--lose-color)]"
+                class="flex h-5 w-5 flex-col items-center justify-center rounded-[4px] text-xs font-bold leading-[1] text-[var(--lose-color)]"
+                :class="{ 'drop-shadow-[0px_0px_12px_var(--lose-color)]': !disabledGlowEffect }"
                 :style="{ backgroundColor: `${props.loseColor}80` }"
               >
                 L
               </span>
               <span
-                class="flex h-5 w-5 flex-col items-center justify-center rounded-[4px] bg-[#61c4b9b3] text-xs font-bold leading-[1] text-[var(--win-color)] drop-shadow-[0px_0px_12px_var(--win-color)]"
+                class="flex h-5 w-5 flex-col items-center justify-center rounded-[4px] bg-[#61c4b9b3] text-xs font-bold leading-[1] text-[var(--win-color)]"
+                :class="{ 'drop-shadow-[0px_0px_12px_var(--win-color)]': !disabledGlowEffect }"
                 :style="{ backgroundColor: `${props.winColor}80` }"
               >
                 W

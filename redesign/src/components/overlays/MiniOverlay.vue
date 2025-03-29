@@ -10,6 +10,7 @@ interface Props {
   winColor?: string
   loseColor?: string
   disabledBackground?: boolean
+  disabledGlowEffect?: boolean
   disabledWinLose?: boolean
   disabledProgress?: boolean
 }
@@ -25,6 +26,7 @@ const props = withDefaults(defineProps<Props>(), {
   disabledBackground: false,
   disabledWinLose: false,
   disabledProgress: false,
+  disabledGlowEffect: false,
 })
 </script>
 
@@ -40,6 +42,7 @@ const props = withDefaults(defineProps<Props>(), {
           <img src="/ranks/26.webp" class="z-[2]" alt="" height="40" width="40" preload="high" />
           <img
             class="absolute left-1/2 top-1/2 size-10 max-w-[unset] -translate-x-1/2 -translate-y-1/2 transform blur-[10px]"
+            v-if="!disabledGlowEffect"
             src="/ranks/26.webp"
             alt=""
             preload="high"
@@ -52,26 +55,30 @@ const props = withDefaults(defineProps<Props>(), {
         </span>
       </div>
       <div
-        class="font-bold text-[var(--primary-text-color)] drop-shadow-[0px_0px_6px_var(--primary-text-color)]"
+        class="font-bold text-[var(--primary-text-color)]"
+        :class="{ 'drop-shadow-[0px_0px_6px_var(--primary-text-color)]': !disabledGlowEffect }"
       >
         2000 RR
       </div>
     </div>
     <div v-if="!disabledWinLose" class="flex flex-row items-center gap-2">
       <span
-        class="flex flex-row items-center gap-1 font-bold text-[var(--win-color)] drop-shadow-[0px_0px_6px_var(--win-color)]"
+        class="flex flex-row items-center gap-1 font-bold text-[var(--win-color)]"
+        :class="{ 'drop-shadow-[0px_0px_6px_var(--win-color)]': !disabledGlowEffect }"
       >
         <ArrowUp />
         2
       </span>
       <span
-        class="flex flex-row items-center gap-1 font-bold text-[var(--lose-color)] drop-shadow-[0px_0px_6px_var(--lose-color)]"
+        class="flex flex-row items-center gap-1 font-bold text-[var(--lose-color)]"
+        :class="{ 'drop-shadow-[0px_0px_6px_var(--lose-color)]': !disabledGlowEffect }"
       >
         <ArrowDown />
         0
       </span>
       <span
-        class="flex flex-row items-center gap-1 font-bold text-[var(--win-color)] drop-shadow-[0px_0px_6px_var(--win-color)]"
+        class="flex flex-row items-center gap-1 font-bold text-[var(--win-color)]"
+        :class="{ 'drop-shadow-[0px_0px_6px_var(--win-color)]': !disabledGlowEffect }"
       >
         <TrendingUp />
         15

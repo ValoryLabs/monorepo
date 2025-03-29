@@ -8,6 +8,7 @@ interface Props {
   winColor?: string
   loseColor?: string
   disabledBackground?: boolean
+  disabledGlowEffect?: boolean
   disabledWinLose?: boolean
   disabledProgress?: boolean
 }
@@ -21,6 +22,7 @@ const props = withDefaults(defineProps<Props>(), {
   winColor: '#00FFE3',
   loseColor: '#FF7986',
   disabledBackground: false,
+  disabledGlowEffect: false,
   disabledWinLose: false,
   disabledProgress: false,
 })
@@ -45,6 +47,7 @@ const props = withDefaults(defineProps<Props>(), {
           preload="high"
         />
         <img
+          v-if="!disabledGlowEffect"
           src="/ranks/26.webp"
           class="absolute left-1/2 top-1/2 z-0 size-14 max-w-[unset] -translate-x-1/2 -translate-y-1/2 transform blur-[20px]"
           alt=""
@@ -60,6 +63,7 @@ const props = withDefaults(defineProps<Props>(), {
           </span>
           <span
             class="flex flex-row items-center gap-2 text-xl font-extrabold capitalize leading-[1] text-[var(--text-color)]"
+            :class="{ 'drop-shadow-[0px_0px_12px_var(--text-color)]': !disabledGlowEffect }"
           >
             Immortal 3
           </span>
@@ -69,7 +73,8 @@ const props = withDefaults(defineProps<Props>(), {
         </div>
         <div v-if="!disabledWinLose" class="flex flex-col items-center justify-center gap-0">
           <span
-            class="text-2xl font-extrabold leading-none text-[var(--win-color)] drop-shadow-[0px_0px_12px_var(--win-color)]"
+            class="text-2xl font-extrabold leading-none text-[var(--win-color)]"
+            :class="{ 'drop-shadow-[0px_0px_12px_var(--win-color)]': !disabledGlowEffect }"
             >54%</span
           >
           <span class="text-xs">Win rate</span>

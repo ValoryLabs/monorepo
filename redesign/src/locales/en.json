@@ -22,6 +22,7 @@
         "background": "Background",
         "disableBackground": "Disable background",
         "disableBackgroundGradient": "Disable background gradient",
+        "glowEffect": "Disable glow effect",
         "text": "Text",
         "disableLastMatchPoints": "Disable last match points",
         "winColor": "Win color",

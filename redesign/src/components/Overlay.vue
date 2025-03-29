@@ -18,6 +18,7 @@ const {
   overlayStyle,
   disabledBackground,
   disabledBackgroundGradient,
+  disabledGlowEffect,
   disabledLastMatchPoints,
   disabledWinLose,
   disabledProgress,
@@ -42,6 +43,7 @@ const {
     :progress-bg-color="progressBgColor"
     :disabled-background="disabledBackground"
     :disabled-background-gradient="disabledBackgroundGradient"
+    :disabled-glow-effect="disabledGlowEffect"
     :disabled-last-match-points="disabledLastMatchPoints"
     :disabled-win-lose="disabledWinLose"
     :disabled-progress="disabledProgress"

@@ -16,6 +16,7 @@ export const useOverlayStore = defineStore(
 
     const disabledBackground: Ref<boolean> = ref(false)
     const disabledBackgroundGradient: Ref<boolean> = ref(false)
+    const disabledGlowEffect: Ref<boolean> = ref(false)
     const disabledLastMatchPoints: Ref<boolean> = ref(false)
     const disabledWinLose: Ref<boolean> = ref(false)
     const disabledProgress: Ref<boolean> = ref(false)
@@ -26,6 +27,10 @@ export const useOverlayStore = defineStore(
 
     const toggleBackgroundGradient = () => {
       disabledBackgroundGradient.value = !disabledBackgroundGradient.value
+    }
+
+    const toggleGlowEffect = () => {
+      disabledGlowEffect.value = !disabledGlowEffect.value
     }
 
     const toggleLastMatchPoints = () => {
@@ -50,6 +55,7 @@ export const useOverlayStore = defineStore(
       loseColor.value = '#FF7986'
 
       disabledBackground.value = false
+      disabledGlowEffect.value = false
       disabledWinLose.value = false
       disabledProgress.value = false
 
@@ -75,6 +81,7 @@ export const useOverlayStore = defineStore(
         disabledLastMatchPoints: disabledLastMatchPoints.value,
         disabledWinLose: disabledWinLose.value,
         disabledProgress: disabledProgress.value,
+        disabledGlowEffect: disabledGlowEffect.value,
       }
 
       const queryString = Object.keys(settings)
@@ -114,11 +121,13 @@ export const useOverlayStore = defineStore(
       overlayStyle,
       disabledBackground,
       disabledBackgroundGradient,
+      disabledGlowEffect,
       disabledLastMatchPoints,
       disabledWinLose,
       disabledProgress,
       toggleBackground,
       toggleBackgroundGradient,
+      toggleGlowEffect,
       toggleLastMatchPoints,
       toggleWinLose,
       toggleProgress,
