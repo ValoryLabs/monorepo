@@ -37,11 +37,12 @@ export default defineConfig({
   },
   base: '/',
   preview: {
-      port: 3000,
-      host: true,
+    port: 3000,
+    host: true,
+    allowedHosts: ['re.valory.su'],
   },
   server: {
-      host: true,
-      port: 3000
+    host: true,
+    port: 3000
   }
 })
