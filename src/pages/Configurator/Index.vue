@@ -2,7 +2,7 @@
 import Button from '../../components/ui/button/Button.vue'
 import { Atom } from 'lucide-vue-next'
 import Configurator from '@/components/sidebar/Configurator.vue'
-import ProfileSettings from '@/components/sidebar/ProfileSettings.vue'
+import Profile from '@/components/sidebar/Profile.vue'
 import { useUserStore } from '@/stores/user'
 import router from '@/router'
 import { storeToRefs } from 'pinia'
@@ -12,7 +12,7 @@ const { configuratorActive } = storeToRefs(userStore)
 </script>
 
 <template>
-  <ProfileSettings />
+  <Profile />
   <Configurator v-if="configuratorActive" />
   <Button
     v-if="configuratorActive"

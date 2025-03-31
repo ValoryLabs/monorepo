@@ -28,6 +28,10 @@ const router = createRouter({
           path: '/configurator/generate',
           component: () => import('@/pages/Configurator/Generate.vue'),
         },
+        {
+          path: '/configurator/profile',
+          component: () => import('@/pages/Configurator/Profile.vue'),
+        },
       ],
     },
     {
