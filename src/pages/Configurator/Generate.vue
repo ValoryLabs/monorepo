@@ -23,7 +23,7 @@ const copyUrl = () => {
 </script>
 
 <template>
-  <div class="generate">
+  <div class="generate flex flex-col gap-4">
     <div class="flex w-11/12 flex-col gap-4 rounded-lg">
       <div class="flex flex-col gap-3">
         <span class="text-lg font-semibold"> {{ $t('sidebar.generate.title') }} </span>
