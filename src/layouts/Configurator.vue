@@ -9,8 +9,33 @@ import Header from '@/components/ui/Header.vue'
     <main
       class="flex w-1/4 flex-col justify-center gap-10 overflow-scroll border-r border-white/10 bg-background p-10 transition-all"
     >
-      <router-view />
+      <router-view v-slot="{ Component, route }">
+        <Transition name="fade" mode="out-in">
+          <component :is="Component" :key="route.path" />
+        </Transition>
+      </router-view>
     </main>
     <Content />
   </div>
 </template>
+
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.fade-enter-to,
+.fade-leave-from {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>

@@ -23,39 +23,41 @@ const copyUrl = () => {
 </script>
 
 <template>
-  <div class="flex w-11/12 flex-col gap-4 rounded-lg">
-    <div class="flex flex-col gap-3">
-      <span class="text-lg font-semibold"> {{ $t('sidebar.generate.title') }} </span>
-      <span class="whitespace-pre-line text-sm">
-        {{ $t('sidebar.generate.description') }}
-      </span>
-      <div class="flex flex-row items-center gap-2">
-        <InputWithIcon v-model="url" disabled="true" class="cursor-text bg-transparent">
-          <Link class="size-4" />
-        </InputWithIcon>
+  <div class="generate">
+    <div class="flex w-11/12 flex-col gap-4 rounded-lg">
+      <div class="flex flex-col gap-3">
+        <span class="text-lg font-semibold"> {{ $t('sidebar.generate.title') }} </span>
+        <span class="whitespace-pre-line text-sm">
+          {{ $t('sidebar.generate.description') }}
+        </span>
+        <div class="flex flex-row items-center gap-2">
+          <InputWithIcon v-model="url" disabled="true" class="cursor-text bg-transparent">
+            <Link class="size-4" />
+          </InputWithIcon>
 
-        <TooltipProvider>
-          <Tooltip>
-            <TooltipTrigger>
-              <Button size="icon" @click="copyUrl"><Copy class="size-4" /></Button>
-            </TooltipTrigger>
-            <TooltipContent>
-              <p>{{ $t('sidebar.generate.tooltip') }}</p>
-            </TooltipContent>
-          </Tooltip>
-        </TooltipProvider>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger>
+                <Button size="icon" @click="copyUrl"><Copy class="size-4" /></Button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>{{ $t('sidebar.generate.tooltip') }}</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+        </div>
+        <span class="text-sm text-muted-foreground"
+          >{{ $t('sidebar.generate.dimensions') }} 120 х 50</span
+        >
       </div>
-      <span class="text-sm text-muted-foreground"
-        >{{ $t('sidebar.generate.dimensions') }} 120 х 50</span
-      >
     </div>
+    <Button
+      @click="router.push('/configurator/')"
+      variant="outline"
+      class="w-11/12 hover:bg-white/10"
+    >
+      <ArrowLeft class="h-4 w-4" />
+      {{ $t('sidebar.buttons.back') }}
+    </Button>
   </div>
-  <Button
-    @click="router.push('/configurator/')"
-    variant="outline"
-    class="w-11/12 hover:bg-white/10"
-  >
-    <ArrowLeft class="h-4 w-4" />
-    {{ $t('sidebar.buttons.back') }}
-  </Button>
 </template>

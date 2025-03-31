@@ -12,15 +12,17 @@ const { configuratorActive } = storeToRefs(userStore)
 </script>
 
 <template>
-  <Profile />
-  <Configurator v-if="configuratorActive" />
-  <Button
-    v-if="configuratorActive"
-    @click="router.push('/configurator/generate')"
-    variant="outline"
-    class="w-11/12 hover:bg-white/10"
-  >
-    <Atom class="size-4" />
-    {{ $t('sidebar.buttons.generate') }}
-  </Button>
+  <div class="configurator flex flex-col gap-10">
+    <Profile />
+    <Configurator v-if="configuratorActive" />
+    <Button
+      v-if="configuratorActive"
+      @click="router.push('/configurator/generate')"
+      variant="outline"
+      class="w-11/12 hover:bg-white/10"
+    >
+      <Atom class="size-4" />
+      {{ $t('sidebar.buttons.generate') }}
+    </Button>
+  </div>
 </template>
