@@ -69,11 +69,11 @@
         "pattern": "Please enter a valid Henrik's API key.",
         "valid": "API key is valid."
       },
-    "validationSuccess": "Data verification was successful!",
-    "invalidApiKey": "Invalid Henrik's API key.",
-    "userNotFound": "User not found.",
-    "rateLimit": "Too many requests. Please wait.",
-    "networkError": "Network error. Please check your internet connection."
+      "validationSuccess": "Data verification was successful!",
+      "invalidApiKey": "Invalid Henrik's API key.",
+      "userNotFound": "User not found.",
+      "rateLimit": "Too many requests. Please wait.",
+      "networkError": "Network error. Please check your internet connection."
     }
   },
   "components": {
