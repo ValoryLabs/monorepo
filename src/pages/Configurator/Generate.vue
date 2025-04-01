@@ -9,6 +9,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/comp
 import InputWithIcon from '@/components/ui/InputWithIcon.vue'
 import { Link } from 'lucide-vue-next'
 import router from '@/router'
+import { storeToRefs } from 'pinia'
 
 const overlayStore = useOverlayStore()
 
@@ -20,6 +21,16 @@ const copyUrl = () => {
   copy(url.value)
   toast.success('URL copied to clipboard')
 }
+
+const dimensions = computed(() => {
+  const { overlayStyle } = storeToRefs(overlayStore)
+
+  if (overlayStyle.value === 'old') return '460 x 154'
+  else if (overlayStyle.value === 'new') return '360 x 112'
+  else if (overlayStyle.value === 'new_v2') return '360 x 112'
+  else if (overlayStyle.value === 'minimal') return '293 x 50'
+  else return 'Error'
+})
 </script>
 
 <template>
@@ -47,7 +58,7 @@ const copyUrl = () => {
           </TooltipProvider>
         </div>
         <span class="text-sm text-muted-foreground"
-          >{{ $t('sidebar.generate.dimensions') }} 120 х 50</span
+          >{{ $t('sidebar.generate.dimensions') }} {{ dimensions }}</span
         >
       </div>
     </div>
