@@ -27,6 +27,8 @@ async function validateData() {
     setTimeout(() => {
       if (!validateRiotId.value.success) {
         reject({ message: validateRiotId.value.message })
+      } else if (!validateApiKey.value.success) {
+        reject({ message: validateApiKey.value.message })
       } else {
         configuratorActive.value = true
         resolve({ message: 'toasts.dataVerifying.validationSuccess' })
