@@ -11,6 +11,7 @@ import InstructionModal from '@/components/ui/instructionkey/InstructionModal.vu
 import { ref } from 'vue'
 import { Search, KeyRound, ArrowLeft } from 'lucide-vue-next'
 import router from "@/router";
+import { UserValidator } from '@/api/auth/user.validator'
 
 const { t } = useI18n()
 
@@ -18,17 +19,16 @@ const loading = ref(false)
 
 const userSettingsStore = useUserSettingsStore()
 const userStore = useUserStore()
-const { riotID, apiKey, validateRiotId, validateApiKey } = storeToRefs(userSettingsStore)
+const { riotID, apiKey } = storeToRefs(userSettingsStore)
 const { configuratorActive } = storeToRefs(userStore)
 
 async function validateData() {
   return new Promise((resolve, reject) => {
     loading.value = true
-    setTimeout(() => {
-      if (!validateRiotId.value.success) {
-        reject({ message: validateRiotId.value.message })
-      } else if (!validateApiKey.value.success) {
-        reject({ message: validateApiKey.value.message })
+    setTimeout(async () => {
+      const validationResult = await UserValidator.validate();
+      if (!validationResult.success) {
+        reject({ message: validationResult.message })
       } else {
         configuratorActive.value = true
         resolve({ message: 'toasts.dataVerifying.validationSuccess' })
