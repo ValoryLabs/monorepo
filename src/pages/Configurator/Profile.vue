@@ -66,7 +66,7 @@ const search = () => {
     <InputWithIcon v-model="riotID" placeholder="nickname#tag">
       <Riot :size="16" />
     </InputWithIcon>
-    <InputWithIcon v-model="apiKey" placeholder="Henrik's DEV API Key">
+    <InputWithIcon v-model="apiKey" type="password" placeholder="Henrik's DEV API Key">
       <KeyRound class="size-4" />
     </InputWithIcon>
     <div class="flex flex-row items-center gap-1">

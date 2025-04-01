@@ -10,9 +10,11 @@ interface Props {
   id?: string
   class?: HTMLAttributes['class']
   disabled?: InputHTMLAttributes['disabled']
+  type?: InputHTMLAttributes['type']
 }
 
 const props = withDefaults(defineProps<Props>(), {
+  type: 'text',
   placeholder: '',
   id: '',
 })
@@ -37,7 +39,7 @@ const modelValue = useVModel(props, 'modelValue', emits, {
     <Input
       v-model="modelValue"
       :id="props.id"
-      type="text"
+      :type="props.type"
       :placeholder="props.placeholder"
       :disabled="props.disabled"
       :class="
