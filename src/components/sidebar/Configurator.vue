@@ -11,8 +11,9 @@ import router from '@/router'
         <span class="text-lg font-semibold">{{ $t('sidebar.configuration.title') }}</span>
         <div class="flex flex-row gap-1">
           <Button
+            size="icon"
             variant="outline"
-            class="p-2 text-xs"
+            class="text-xs"
             @click="router.push({ name: 'configurator.settings' })"
           >
             <Settings class="size-4" />

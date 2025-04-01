@@ -35,13 +35,14 @@ const {
         <span class="text-lg font-semibold">{{ $t('sidebar.configuration.title') }}</span>
         <div class="flex flex-row gap-2">
           <Button
+            size="icon"
             variant="outline"
             class="w-9 p-2 text-xs hover:border-white/10 hover:bg-white/10"
             @click="overlaySettingsStore.reset"
           >
             <RotateCcw class="size-4" />
           </Button>
-          <Button variant="outline" class="p-2 text-xs" @click="router.push({ name: 'configurator.index' })">
+          <Button size="icon" variant="outline" class="p-2 text-xs" @click="router.push({ name: 'configurator.index' })">
             <ArrowLeft class="size-4" />
           </Button>
         </div>

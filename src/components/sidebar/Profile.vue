@@ -11,8 +11,9 @@ import {Settings} from "lucide-vue-next";
         <span class="text-lg font-semibold">{{ $t('sidebar.profile.title') }}</span>
         <div class="flex flex-row gap-1">
           <Button
+            size="icon"
             variant="outline"
-            class="p-2 text-xs"
+            class="text-xs"
             @click="router.push({ name: 'configurator.profile' })"
           >
             <Settings class="size-4" />

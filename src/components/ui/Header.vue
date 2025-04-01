@@ -16,7 +16,7 @@ import LanguageSwitcher from '@/components/ui/LanguageSwitcher.vue'
       <Button
         v-for="link in SocialLinksData"
         :key="link.name"
-        class="h-fit px-2"
+        size="icon"
         variant="ghost"
         @click="openLink(link.url)"
       >

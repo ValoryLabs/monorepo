@@ -52,7 +52,7 @@ const search = () => {
       <div class="flex items-center justify-between">
         <span class="text-lg font-semibold">{{ t('sidebar.profile.title') }}</span>
         <div class="flex flex-row gap-2">
-          <Button variant="outline" class="p-2 text-xs" @click="router.push({ name: 'configurator.index' })">
+          <Button variant="outline" size="icon" class="p-2 text-xs" @click="router.push({ name: 'configurator.index' })">
             <ArrowLeft class="size-4" />
           </Button>
         </div>
