@@ -28,10 +28,12 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
-  rollupOptions: {
-    output: {
-      manualChunks: {
-        vendor: ['vue', 'vue-router', 'vue-i18n'],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['vue', 'vue-router', 'vue-i18n'],
+        },
       },
     },
   },
