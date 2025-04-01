@@ -1,16 +1,13 @@
 <script setup lang="ts">
-import Button from '../../components/ui/button/Button.vue'
+import Button from '@/components/ui/button/Button.vue'
 import { Switch } from '@/components/ui/switch'
 import { Label } from '@/components/ui/label'
 import ColorPicker from '@/components/ui/ColorPicker.vue'
 import { useOverlayStore } from '@/stores/overlay.ts'
 import { storeToRefs } from 'pinia'
-import { useUserStore } from '@/stores/user.ts'
 import SelectLayout from '@/components/ui/SelectLayout.vue'
 import { ArrowLeft, RotateCcw } from 'lucide-vue-next'
 import router from '@/router'
-
-const userStore = useUserStore()
 
 const overlaySettingsStore = useOverlayStore()
 const {
@@ -44,7 +41,7 @@ const {
           >
             <RotateCcw class="size-4" />
           </Button>
-          <Button variant="outline" class="p-2 text-xs" @click="router.push('/configurator')">
+          <Button variant="outline" class="p-2 text-xs" @click="router.push({ name: 'configurator.index' })">
             <ArrowLeft class="size-4" />
           </Button>
         </div>

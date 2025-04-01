@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Paintbrush, PackageOpen, PencilRuler } from 'lucide-vue-next'
-import Button from '../components/ui/button/Button.vue'
+import Button from '@/components/ui/button/Button.vue'
 import Header from '@/components/home/Header.vue'
 import router from '@/router'
 import Footer from '@/components/home/Footer.vue'
@@ -31,7 +31,7 @@ import StreamersMarquee from '@/components/StreamersMarquee.vue'
           </span>
         </li>
       </ul>
-      <Button @click="router.push('/configurator')">
+      <Button @click="router.push({ name: 'configurator.index' })">
         {{ $t('sidebar.buttons.start') }}
       </Button>
       <Footer />

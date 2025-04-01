@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Button from '../../components/ui/button/Button.vue'
+import Button from '@/components/ui/button/Button.vue'
 import { Atom } from 'lucide-vue-next'
 import Configurator from '@/components/sidebar/Configurator.vue'
 import Profile from '@/components/sidebar/Profile.vue'
@@ -17,7 +17,7 @@ const { configuratorActive } = storeToRefs(userStore)
     <Configurator v-if="configuratorActive" />
     <Button
       v-if="configuratorActive"
-      @click="router.push('/configurator/generate')"
+      @click="router.push({ name: 'configurator.generate' })"
       variant="outline"
       class="w-11/12 hover:bg-white/10"
     >

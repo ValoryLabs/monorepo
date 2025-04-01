@@ -13,7 +13,7 @@ import {Settings} from "lucide-vue-next";
           <Button
             variant="outline"
             class="p-2 text-xs"
-            @click="router.push('/configurator/profile')"
+            @click="router.push({ name: 'configurator.profile' })"
           >
             <Settings class="size-4" />
           </Button>

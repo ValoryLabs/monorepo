@@ -13,7 +13,7 @@ import router from '@/router'
           <Button
             variant="outline"
             class="p-2 text-xs"
-            @click="router.push('/configurator/settings')"
+            @click="router.push({ name: 'configurator.settings' })"
           >
             <Settings class="size-4" />
           </Button>

@@ -52,7 +52,7 @@ const copyUrl = () => {
       </div>
     </div>
     <Button
-      @click="router.push('/configurator/')"
+      @click="router.push({ name: 'configurator.index' })"
       variant="outline"
       class="w-11/12 hover:bg-white/10"
     >

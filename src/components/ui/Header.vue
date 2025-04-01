@@ -2,7 +2,7 @@
 import Valory from '@/components/icons/Valory.vue'
 import { SocialLinksData } from '@/data/SocialLinks.data.ts'
 import { openLink } from '@/utils.ts'
-import Button from './button/Button.vue'
+import Button from '@/components/ui/button/Button.vue'
 import LanguageSwitcher from '@/components/ui/LanguageSwitcher.vue'
 </script>
 

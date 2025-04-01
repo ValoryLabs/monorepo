@@ -18,18 +18,22 @@ const router = createRouter({
       children: [
         {
           path: '/configurator',
+          name: 'configurator.index',
           component: () => import('@/pages/Configurator/Index.vue'),
         },
         {
           path: '/configurator/settings',
+          name: 'configurator.settings',
           component: () => import('@/pages/Configurator/Settings.vue'),
         },
         {
           path: '/configurator/generate',
+          name: 'configurator.generate',
           component: () => import('@/pages/Configurator/Generate.vue'),
         },
         {
           path: '/configurator/profile',
+          name: 'configurator.profile',
           component: () => import('@/pages/Configurator/Profile.vue'),
         },
       ],

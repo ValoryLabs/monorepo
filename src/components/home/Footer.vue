@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { openLink } from '@/utils.ts'
-import Button from '../ui/button/Button.vue'
+import Button from '@/components/ui/button/Button.vue'
 import { SocialLinksData } from '@/data/SocialLinks.data.ts'
 import LanguageSwitcher from '@/components/ui/LanguageSwitcher.vue'
 </script>
