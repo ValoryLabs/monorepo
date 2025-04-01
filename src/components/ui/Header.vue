@@ -7,12 +7,12 @@ import LanguageSwitcher from '@/components/ui/LanguageSwitcher.vue'
 </script>
 
 <template>
-  <header class="relative flex h-14 items-center justify-between border-b bg-background px-10">
-    <span @click="$router.push('/')" class="flex w-56 cursor-pointer items-center gap-3">
+  <header class="relative flex h-14 items-center justify-between border-b bg-background">
+    <div @click="$router.push('/')" class="flex w-1/4 h-full border-r cursor-pointer items-center gap-3 pl-10">
       <Valory :size="30" />
       <span class="font-valory mt-px text-lg leading-none">VALORY</span>
-    </span>
-    <div class="inline-flex gap-3">
+    </div>
+    <div class="inline-flex gap-3 pr-10">
       <Button
         v-for="link in SocialLinksData"
         :key="link.name"
