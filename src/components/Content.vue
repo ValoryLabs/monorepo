@@ -33,7 +33,7 @@ const updateGradient = () => {
 // Устанавливаем интервал при монтировании компонента
 onMounted(() => {
   // Обновляем градиент каждые 10 секунд
-  intervalId = setInterval(updateGradient, 10000)
+  intervalId = setInterval(updateGradient, 30000)
 })
 
 // Очищаем интервал при размонтировании компонента
