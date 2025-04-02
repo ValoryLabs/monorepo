@@ -26,7 +26,7 @@ import PatternBackground from "@/components/ui/PatternBackground/PatternBackgrou
       :speed="PATTERN_BACKGROUND_SPEED.Slow"
     >
       <div id="preview" class="relative z-20">
-        <div class="relative z-10">
+        <div class="relative z-10 drop-shadow-[0_0_10px_rgba(0,0,0,0.5)]">
           <Overlay v-if="configuratorActive" />
           <div v-else class="w-fit whitespace-pre-line text-center font-medium leading-[1.15]">
             {{ $t('preview') }}
