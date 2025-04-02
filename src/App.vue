@@ -34,7 +34,7 @@ useSeoMeta({
   <Toaster
     position="top-right"
     :toastOptions="{
-      class: 'bg-black/80 text-[#f2f2f2] flex gap-3 backdrop-blur-sm border border-white/10',
+      class: 'bg-black/10 text-[#f2f2f2] flex gap-3 backdrop-blur-md border border-white/10',
     }"
   />
   <RouterView />
