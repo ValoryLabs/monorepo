@@ -73,6 +73,7 @@ export const UserValidator = {
 
       // Check Riot ID format
       if (!PATTERNS.riotId.test(riotID.value)) {
+        puuid.value = ''
         return {
           success: false,
           message: 'toasts.dataVerifying.validateRiotId.pattern'
@@ -85,6 +86,8 @@ export const UserValidator = {
       // Save PUUID to store
       if (accountData?.puuid) {
         puuid.value = accountData.puuid
+      } else {
+        puuid.value = ''
       }
 
       return {
