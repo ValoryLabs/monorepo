@@ -182,4 +182,11 @@ export const STREAMERS_DATA: StreamersData[] = [
     live: true,
     verified: false,
   },
+  {
+    username: 'kospa1n',
+    followers: '479',
+    img: 'https://static-cdn.jtvnw.net/jtv_user_pictures/e2372f24-07a5-46ff-8996-6ca8b3718f99-profile_image-70x70.png',
+    live: false,
+    verified: false,
+  },
 ]
