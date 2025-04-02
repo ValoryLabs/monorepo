@@ -38,7 +38,5 @@ import PatternBackground from "@/components/ui/PatternBackground/PatternBackgrou
         ></div>
       </div>
     </PatternBackground>
-    
-    <!-- <div class="pointer-events-none absolute inset-0 bg-[url(/grid.png)] bg-cover opacity-40"></div> -->
   </aside>
 </template>
