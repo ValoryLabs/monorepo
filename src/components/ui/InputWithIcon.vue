@@ -1,8 +1,11 @@
 <script setup lang="ts">
 import type { HTMLAttributes, InputHTMLAttributes } from 'vue'
+import Button from '@/components/ui/button/Button.vue'
+import { Eye, EyeClosed } from 'lucide-vue-next'
 import { Input } from '@/components/ui/input'
 import { cn } from '@/utils.ts'
 import { useVModel } from '@vueuse/core'
+import { ref } from 'vue'
 
 interface Props {
   modelValue?: string | number
@@ -26,10 +29,18 @@ const emits = defineEmits<{
 const modelValue = useVModel(props, 'modelValue', emits, {
   passive: true,
 })
+
+// Создаем локальное состояние для типа ввода
+const inputType = ref(props.type)
+
+// Функция для переключения типа ввода
+const toggleInputType = () => {
+  inputType.value = inputType.value === 'password' ? 'text' : 'password'
+}
 </script>
 
 <template>
-  <div class="relative w-full max-w-sm items-center overflow-hidden">
+  <div class="group relative w-full max-w-sm items-center overflow-hidden border border-white/10 rounded-md">
     <span class="absolute inset-y-0 start-0 flex items-center justify-center pl-3">
       <slot />
     </span>
@@ -39,15 +50,21 @@ const modelValue = useVModel(props, 'modelValue', emits, {
     <Input
       v-model="modelValue"
       :id="props.id"
-      :type="props.type"
+      :type="inputType"
       :placeholder="props.placeholder"
       :disabled="props.disabled"
       :class="
         cn(
-          'border-white/10 bg-transparent pl-10 font-medium transition-colors hover:bg-white/5 focus-visible:bg-white/5',
+          'border-transparent bg-transparent pl-10 font-medium transition-colors hover:bg-white/5 focus-visible:bg-white/5',
           props.class,
         )
       "
     />
+    <div v-if="props.type === 'password'" class="show-password opacity-0 group-hover:opacity-100 transition-opacity">
+      <Button @click="toggleInputType" class="absolute flex items-center border-l border-white/10 rounded-none justify-center h-full backdrop-blur-md inset-y-0 end-0" size="icon" variant="ghost">
+        <Eye v-if="inputType === 'password'" class="size-4"/>
+        <EyeClosed v-else class="size-4" />
+      </Button>
+    </div>
   </div>
 </template>
