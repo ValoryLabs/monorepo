@@ -16,27 +16,20 @@ import {
 import PatternBackground from "@/components/ui/PatternBackground/PatternBackground.vue";
 import { onBeforeUnmount, onMounted, ref } from 'vue'
 
-// Создаем реактивное состояние для хранения стиля градиента
 const gradientStyle = ref(generateMeshGradient(8))
-// Ключ для принудительного перерендеринга элемента с Transition
 const gradientKey = ref(0)
 
-// Переменная для хранения идентификатора интервала
-let intervalId = null
+let intervalId: number | null = null
 
-// Функция для обновления градиента
 const updateGradient = () => {
-  gradientKey.value++  // Увеличиваем ключ для перерендеринга
+  gradientKey.value++
   gradientStyle.value = generateMeshGradient(8)
 }
 
-// Устанавливаем интервал при монтировании компонента
 onMounted(() => {
-  // Обновляем градиент каждые 10 секунд
   intervalId = setInterval(updateGradient, 30000)
 })
 
-// Очищаем интервал при размонтировании компонента
 onBeforeUnmount(() => {
   if (intervalId !== null) {
     clearInterval(intervalId)
