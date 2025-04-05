@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Valory from '@/components/icons/Valory.vue'
 import { SocialLinksData } from '@/data/SocialLinks.data.ts'
-import { openLink } from '@/utils.ts'
+import { openLink } from '@/lib/utils'
 import Button from '@/components/ui/button/Button.vue'
 import LanguageSwitcher from '@/components/ui/LanguageSwitcher.vue'
 </script>

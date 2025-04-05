@@ -2,20 +2,15 @@ import { fileURLToPath, URL } from 'node:url'
 
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import autoprefixer from 'autoprefixer'
-import tailwind from 'tailwindcss'
+import tailwindcss from "@tailwindcss/vite";
 import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite'
 import path from 'path'
 import { ViteMinifyPlugin } from 'vite-plugin-minify'
 
 export default defineConfig({
   clearScreen: false,
-  css: {
-    postcss: {
-      plugins: [tailwind(), autoprefixer()],
-    },
-  },
   plugins: [
+    tailwindcss(),
     ViteMinifyPlugin({}),
     vue(),
     VueI18nPlugin({

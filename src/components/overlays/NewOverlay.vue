@@ -55,12 +55,12 @@ const props = withDefaults(defineProps<Props>(), {
       <div class="flex h-fit flex-row py-3">
         <div class="flex h-fit flex-col gap-[5px]">
           <span
-            class="text-[18px] font-bold uppercase leading-[1] text-[var(--primary-text-color)]"
+            class="text-[18px] font-bold uppercase leading-none text-[var(--primary-text-color)]"
           >
             IMMORTAL3 #46
           </span>
           <span
-            class="flex flex-row items-center gap-2 text-base font-medium leading-[1] text-[var(--text-color)]"
+            class="flex flex-row items-center gap-2 text-base font-medium leading-none text-[var(--text-color)]"
           >
             1838 elo - 123RR
             <span
@@ -72,42 +72,42 @@ const props = withDefaults(defineProps<Props>(), {
           <div v-if="!disabledWinLose" class="flex flex-row items-center gap-2">
             <div class="mt-[2px] flex flex-row items-center gap-1">
               <span
-                class="flex h-5 w-5 flex-col items-center justify-center rounded-[4px] text-xs font-bold leading-[1] text-[var(--win-color)]"
+                class="flex h-5 w-5 flex-col items-center justify-center rounded-[4px] text-xs font-bold leading-none text-[var(--win-color)]"
                 :class="{ 'drop-shadow-[0px_0px_12px_var(--win-color)]': !disabledGlowEffect }"
                 :style="{ backgroundColor: `${props.winColor}80` }"
               >
                 W
               </span>
               <span
-                class="flex h-5 w-5 flex-col items-center justify-center rounded-[4px] text-xs font-bold leading-[1] text-[var(--lose-color)]"
+                class="flex h-5 w-5 flex-col items-center justify-center rounded-[4px] text-xs font-bold leading-none text-[var(--lose-color)]"
                 :class="{ 'drop-shadow-[0px_0px_12px_var(--lose-color)]': !disabledGlowEffect }"
                 :style="{ backgroundColor: `${props.loseColor}80` }"
               >
                 L
               </span>
               <span
-                class="flex h-5 w-5 flex-col items-center justify-center rounded-[4px] text-xs font-bold leading-[1] text-[var(--win-color)]"
+                class="flex h-5 w-5 flex-col items-center justify-center rounded-[4px] text-xs font-bold leading-none text-[var(--win-color)]"
                 :class="{ 'drop-shadow-[0px_0px_12px_var(--win-color)]': !disabledGlowEffect }"
                 :style="{ backgroundColor: `${props.winColor}80` }"
               >
                 W
               </span>
               <span
-                class="flex h-5 w-5 flex-col items-center justify-center rounded-[4px] text-xs font-bold leading-[1] text-[var(--lose-color)]"
+                class="flex h-5 w-5 flex-col items-center justify-center rounded-[4px] text-xs font-bold leading-none text-[var(--lose-color)]"
                 :class="{ 'drop-shadow-[0px_0px_12px_var(--lose-color)]': !disabledGlowEffect }"
                 :style="{ backgroundColor: `${props.loseColor}80` }"
               >
                 L
               </span>
               <span
-                class="flex h-5 w-5 flex-col items-center justify-center rounded-[4px] bg-[#61c4b9b3] text-xs font-bold leading-[1] text-[var(--win-color)]"
+                class="flex h-5 w-5 flex-col items-center justify-center rounded-[4px] bg-[#61c4b9b3] text-xs font-bold leading-none text-[var(--win-color)]"
                 :class="{ 'drop-shadow-[0px_0px_12px_var(--win-color)]': !disabledGlowEffect }"
                 :style="{ backgroundColor: `${props.winColor}80` }"
               >
                 W
               </span>
             </div>
-            <span class="text-sm font-bold leading-[1] text-[var(--text-color)]">40%</span>
+            <span class="text-sm font-bold leading-none text-[var(--text-color)]">40%</span>
           </div>
         </div>
       </div>

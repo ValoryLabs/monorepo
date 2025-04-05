@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { cn } from '@/utils.ts'
+import { cn } from '@/lib/utils'
 
 const props = withDefaults(
   defineProps<{

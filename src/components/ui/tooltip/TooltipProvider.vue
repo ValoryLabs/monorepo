@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import type { TooltipProviderProps } from 'radix-vue'
-import { TooltipProvider } from 'radix-vue'
+import { TooltipProvider, type TooltipProviderProps } from 'reka-ui'
 
-const props = defineProps<TooltipProviderProps>()
+const props = withDefaults(defineProps<TooltipProviderProps>(), {
+  delayDuration: 0,
+})
 </script>
 
 <template>

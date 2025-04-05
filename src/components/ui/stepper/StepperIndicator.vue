@@ -1,10 +1,9 @@
 <script lang="ts" setup>
-import type { StepperIndicatorProps } from 'radix-vue'
-import type { HTMLAttributes } from 'vue'
-import { cn } from '@/utils'
+import type { StepperIndicatorProps } from 'reka-ui'
+import { cn } from '@/lib/utils'
+import { StepperIndicator, useForwardProps } from 'reka-ui'
 
-import { StepperIndicator, useForwardProps } from 'radix-vue'
-import { computed } from 'vue'
+import { computed, type HTMLAttributes } from 'vue'
 
 const props = defineProps<StepperIndicatorProps & { class?: HTMLAttributes['class'] }>()
 
@@ -21,7 +20,7 @@ const forwarded = useForwardProps(delegatedProps)
   <StepperIndicator
     v-bind="forwarded"
     :class="cn(
-      'inline-flex items-center justify-center rounded-full text-muted-foreground/50 w-10 h-10',
+      'inline-flex items-center justify-center rounded-full text-muted-foreground/50 w-8 h-8',
       // Disabled
       'group-data-[disabled]:text-muted-foreground group-data-[disabled]:opacity-50',
       // Active

@@ -29,7 +29,7 @@ const props = withDefaults(defineProps<Props>(), {
 <template>
   <div
     class="old-style flex max-h-40 min-h-32 flex-row rounded-br-[90px]"
-    :class="{ 'bg-gradient-to-b from-[#ff000000] to-[#00000091]': !disabledBackgroundGradient }"
+    :class="{ 'bg-linear-to-b from-[#ff000000] to-[#00000091]': !disabledBackgroundGradient }"
   >
     <div
       class="bg-[var(--background-color)]/20 flex w-[100px] items-center justify-center"
@@ -42,11 +42,11 @@ const props = withDefaults(defineProps<Props>(), {
     <div
       class="ml-5 flex w-[340px] flex-col flex-nowrap content-between items-start justify-center gap-[6px] py-5 font-bold"
     >
-      <span class="text-[20px] uppercase leading-[1] text-[var(--text-color)]"> RATING </span>
-      <span class="text-[24px] uppercase leading-[1] text-[var(--primary-text-color)]">
+      <span class="text-[20px] uppercase leading-none text-[var(--text-color)]"> RATING </span>
+      <span class="text-[24px] uppercase leading-none text-[var(--primary-text-color)]">
         Diamond 1 - 82RR
       </span>
-      <span v-if="!disabledWinLose" class="text-[17px] leading-[1] text-[var(--text-color)]">
+      <span v-if="!disabledWinLose" class="text-[17px] leading-none text-[var(--text-color)]">
         Win:
         <span class="text-[var(--primary-text-color)]"> 0 </span>
         Lose:
@@ -58,10 +58,10 @@ const props = withDefaults(defineProps<Props>(), {
         :style="{ backgroundColor: `${props.progressBgColor}45` }"
       ></div>
       <div v-if="!disabledLastMatchPoints" class="flex flex-row gap-1 text-base">
-        <span :class="`text-[15px] uppercase leading-[1] text-[var(--text-color)]`">
+        <span :class="`text-[15px] uppercase leading-none text-[var(--text-color)]`">
           Last match:
         </span>
-        <span class="text-[15px] uppercase leading-[1] text-[var(--primary-text-color)]">
+        <span class="text-[15px] uppercase leading-none text-[var(--primary-text-color)]">
           32 PTS
         </span>
       </div>

@@ -3,7 +3,7 @@ import type { HTMLAttributes, InputHTMLAttributes } from 'vue'
 import Button from '@/components/ui/button/Button.vue'
 import { Eye, EyeClosed } from 'lucide-vue-next'
 import { Input } from '@/components/ui/input'
-import { cn } from '@/utils.ts'
+import { cn } from '@/lib/utils'
 import { useVModel } from '@vueuse/core'
 import { ref } from 'vue'
 

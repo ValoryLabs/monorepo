@@ -11,7 +11,7 @@ import {
 
 import { Stepper, StepperDescription, StepperItem, StepperSeparator, StepperTitle, StepperTrigger } from '@/components/ui/stepper'
 import { Check, Circle, Dot } from 'lucide-vue-next'
-import { openLink } from "@/utils.ts";
+import { openLink } from "@/lib/utils";
 
 const steps = [
   {

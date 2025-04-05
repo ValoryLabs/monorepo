@@ -2,7 +2,7 @@
 import type { PrimitiveProps } from 'radix-vue'
 import type { HTMLAttributes } from 'vue'
 import type { ButtonVariants } from './index'
-import { cn } from '@/utils'
+import { cn } from '@/lib/utils'
 import { Primitive } from 'radix-vue'
 import { buttonVariants } from './index'
 import { type LucideIcon, LoaderCircle } from 'lucide-vue-next'

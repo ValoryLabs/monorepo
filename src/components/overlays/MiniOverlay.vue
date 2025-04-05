@@ -39,7 +39,7 @@ const props = withDefaults(defineProps<Props>(), {
     <div class="flex flex-row items-center justify-center gap-2">
       <div class="relative">
         <div class="relative flex">
-          <img src="/ranks/26.webp" class="z-[2]" alt="" height="40" width="40" preload="high" />
+          <img src="/ranks/26.webp" class="z-2" alt="" height="40" width="40" preload="high" />
           <img
             class="absolute left-1/2 top-1/2 size-10 max-w-[unset] -translate-x-1/2 -translate-y-1/2 transform blur-[10px]"
             v-if="!disabledGlowEffect"
@@ -49,7 +49,7 @@ const props = withDefaults(defineProps<Props>(), {
           />
         </div>
         <span
-          class="absolute right-0 top-0 z-[2] flex size-4 flex-col items-center justify-center rounded-full bg-white text-sm font-medium leading-none text-black"
+          class="absolute right-0 top-0 z-2 flex size-4 flex-col items-center justify-center rounded-full bg-white text-sm font-medium leading-none text-black"
         >
           3
         </span>

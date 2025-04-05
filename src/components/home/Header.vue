@@ -11,7 +11,7 @@ import Valory from '@/components/icons/Valory.vue'
       <Valory :size="48" />
       <Valory :size="96" class="absolute left-0 blur-[120px]" />
       <span
-        class="font-valory inline-block bg-gradient-to-b from-[#f2f2f2] to-[#dddddd] bg-clip-text text-3xl text-transparent"
+        class="font-valory inline-block bg-linear-to-b from-[#f2f2f2] to-[#dddddd] bg-clip-text text-3xl text-transparent"
       >
         VALORY
       </span>

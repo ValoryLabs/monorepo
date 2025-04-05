@@ -58,16 +58,16 @@ const props = withDefaults(defineProps<Props>(), {
       </div>
       <div class="flex h-fit flex-1 flex-row justify-between py-3 pr-7">
         <div class="flex h-fit flex-col justify-center gap-[5px]">
-          <span class="text-sm font-medium leading-[1] text-[var(--primary-text-color)]">
+          <span class="text-sm font-medium leading-none text-[var(--primary-text-color)]">
             MAGICX#1337
           </span>
           <span
-            class="flex flex-row items-center gap-2 text-xl font-extrabold capitalize leading-[1] text-[var(--text-color)]"
+            class="flex flex-row items-center gap-2 text-xl font-extrabold capitalize leading-none text-[var(--text-color)]"
             :class="{ 'drop-shadow-[0px_0px_12px_var(--text-color)]': !disabledGlowEffect }"
           >
             Immortal 3
           </span>
-          <span class="text-sm font-medium capitalize leading-[1] text-[var(--primary-text-color)]">
+          <span class="text-sm font-medium capitalize leading-none text-[var(--primary-text-color)]">
             Level: 200
           </span>
         </div>

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import TwitchVerify from '@/components/icons/TwitchVerify.vue'
-import { openLink } from '@/utils.ts'
+import { openLink } from '@/lib/utils'
 
 interface Props {
   img: string

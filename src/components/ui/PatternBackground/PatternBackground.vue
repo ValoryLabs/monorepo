@@ -21,7 +21,7 @@
 </template>
 
 <script setup lang="ts">
-import { cn } from "@/utils";
+import { cn } from "@/lib/utils";
 import type { BaseProps as Props } from "./index";
 import {
   PATTERN_BACKGROUND_DIRECTION,
