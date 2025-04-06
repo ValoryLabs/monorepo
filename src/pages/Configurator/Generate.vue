@@ -65,6 +65,7 @@ const dimensions = computed(() => {
     <Button
       @click="router.push({ name: 'configurator.index' })"
       variant="outline"
+      size="lg"
       class="w-11/12 hover:bg-white/10"
     >
       <ArrowLeft class="h-4 w-4" />

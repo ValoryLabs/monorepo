@@ -30,7 +30,7 @@ const styles: string[] = ['old', 'new', 'new_v2', 'minimal']
 <template>
   <Select v-model="modelValue">
     <SelectTrigger class="w-full bg-transparent">
-      <SelectValue placeholder="Select layout" />
+      <SelectValue placeholder="Select style" />
     </SelectTrigger>
     <SelectContent>
       <SelectGroup>

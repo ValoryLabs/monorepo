@@ -40,7 +40,7 @@ const toggleInputType = () => {
 </script>
 
 <template>
-  <div class="group relative w-full max-w-sm items-center overflow-hidden border border-white/10 rounded-md">
+  <div class="group relative w-full max-w-sm items-center overflow-hidden border border-white/10 rounded-md hover:border-white/15">
     <span class="absolute inset-y-0 start-0 flex items-center justify-center pl-3">
       <slot />
     </span>
@@ -61,7 +61,7 @@ const toggleInputType = () => {
       "
     />
     <div v-if="props.type === 'password'" class="show-password opacity-0 group-hover:opacity-100 transition-opacity">
-      <Button @click="toggleInputType" class="absolute flex items-center border-l border-white/10 rounded-none justify-center h-full backdrop-blur-md inset-y-0 end-0" size="icon" variant="ghost">
+      <Button @click="toggleInputType" class="absolute flex items-center border-l border-white/15 rounded-none justify-center h-full backdrop-blur-sm inset-y-0 end-0" size="icon" variant="ghost">
         <Eye v-if="inputType === 'password'" class="size-4"/>
         <EyeClosed v-else class="size-4" />
       </Button>

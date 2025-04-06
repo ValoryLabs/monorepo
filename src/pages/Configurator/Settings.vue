@@ -37,7 +37,7 @@ const {
           <Button
             size="icon"
             variant="outline"
-            class="w-9 p-2 text-xs hover:border-white/10 hover:bg-white/10"
+            class="w-9 p-2 text-xs"
             @click="overlaySettingsStore.reset"
           >
             <RotateCcw class="size-4" />
@@ -52,13 +52,13 @@ const {
       </span>
       <div class="flex flex-col gap-2">
         <div>
-          <Label class="text-gray-400">
+          <Label class="text-muted">
             {{ $t('sidebar.configuration.settings.styles') }}
           </Label>
           <SelectLayout v-model="overlayStyle" />
         </div>
         <div>
-          <Label for="background-color" class="text-gray-400">
+          <Label for="background-color" class="text-muted">
             {{ $t('sidebar.configuration.settings.background') }}
           </Label>
           <ColorPicker v-model="backgroundColor" id="background-color" />
@@ -94,7 +94,7 @@ const {
           </Label>
         </div>
         <div v-if="overlayStyle !== 'minimal'">
-          <Label for="background-color" class="text-gray-400">
+          <Label for="background-color" class="text-muted">
             {{ $t('sidebar.configuration.settings.text') }}
           </Label>
           <ColorPicker v-model="textColor" id="background-color" />
@@ -110,13 +110,13 @@ const {
           </Label>
         </div>
         <div>
-          <Label for="win-color" class="text-gray-400">
+          <Label for="win-color" class="text-muted">
             {{ $t('sidebar.configuration.settings.winColor') }}
           </Label>
           <ColorPicker v-model="winColor" id="win-color" />
         </div>
         <div>
-          <Label for="lose-color" class="text-gray-400">
+          <Label for="lose-color" class="text-muted">
             {{ $t('sidebar.configuration.settings.loseColor') }}
           </Label>
           <ColorPicker v-model="loseColor" id="lose-color" />
@@ -132,19 +132,19 @@ const {
           </Label>
         </div>
         <div>
-          <Label for="background-color" class="text-gray-400">
+          <Label for="background-color" class="text-muted">
             {{ $t('sidebar.configuration.settings.primary') }}
           </Label>
           <ColorPicker v-model="primaryTextColor" id="background-color" />
         </div>
         <div v-if="overlayStyle === 'old'">
-          <Label for="background-color" class="text-gray-400">
+          <Label for="background-color" class="text-muted">
             {{ $t('sidebar.configuration.settings.progress') }}
           </Label>
           <ColorPicker v-model="progressColor" id="background-color" />
         </div>
         <div v-if="overlayStyle === 'old'">
-          <Label for="background-color" class="text-gray-400">
+          <Label for="background-color" class="text-muted">
             {{ $t('sidebar.configuration.settings.progressBackground') }}
           </Label>
           <ColorPicker v-model="progressBgColor" id="background-color" />
