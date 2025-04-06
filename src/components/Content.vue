@@ -16,18 +16,24 @@ import {
 import PatternBackground from "@/components/ui/PatternBackground/PatternBackground.vue";
 import { onBeforeUnmount, onMounted, ref } from 'vue'
 
-const gradientStyle = ref(generateMeshGradient(8))
-const gradientKey = ref(0)
+const currentGradient = ref(generateMeshGradient(8))
+const nextGradient = ref(generateMeshGradient(8))
+const isTransitioning = ref(false)
 
 let intervalId: number | null = null
 
 const updateGradient = () => {
-  gradientKey.value++
-  gradientStyle.value = generateMeshGradient(8)
+  isTransitioning.value = true
+  nextGradient.value = generateMeshGradient(8)
+  
+  setTimeout(() => {
+    currentGradient.value = nextGradient.value
+    isTransitioning.value = false
+  }, 2000) // Duration of the transition
 }
 
 onMounted(() => {
-  intervalId = setInterval(updateGradient, 30000)
+  intervalId = setInterval(updateGradient, 10000)
 })
 
 onBeforeUnmount(() => {
@@ -54,26 +60,34 @@ onBeforeUnmount(() => {
             {{ $t('preview') }}
           </div>
         </div>
-        <Transition name="fade" mode="out-in">
+        <div class="opacity-30 animate-spin-slow">
           <div
-            :key="gradientKey"
-            class="absolute left-1/2 top-1/2 size-[350px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-30 blur-[300px]"
-            :style="gradientStyle"
+            class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 size-[350px] rounded-full blur-[300px] transition-opacity duration-2000"
+            :style="currentGradient"
+            :class="{ 'opacity-0': isTransitioning }"
           ></div>
-        </Transition>
+          <div
+            class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 size-[350px] rounded-full blur-[300px] transition-opacity duration-2000"
+            :style="nextGradient"
+            :class="{ 'opacity-0': !isTransitioning }"
+          ></div>
+        </div>
       </div>
     </PatternBackground>
   </aside>
 </template>
 
 <style scoped>
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 2s ease;
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
 }
 </style>
