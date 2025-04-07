@@ -25,7 +25,7 @@ const modelValue = useVModel(props, 'modelValue', emits, {
   defaultValue: props.defaultValue,
 })
 
-const styles: string[] = [
+const fonts: string[] = [
   'Lora',
   'Inter',
   'Geist',
@@ -46,7 +46,7 @@ const styles: string[] = [
 <template>
   <Select v-model="modelValue">
     <SelectTrigger class="w-full cursor-pointer bg-transparent">
-      <SelectValue placeholder="Select style" />
+      <SelectValue :placeholder="$t('components.selectFont')" />
     </SelectTrigger>
     <SelectContent>
       <SelectGroup>
@@ -54,8 +54,14 @@ const styles: string[] = [
           {{ $t('components.selectFont') }}
         </SelectLabel>
         <SelectSeparator />
-        <SelectItem class="cursor-pointer" v-for="style in styles" :key="style" :value="style">
-          {{ style }}
+        <SelectItem
+          class="cursor-pointer"
+          v-for="font in fonts"
+          :style="{ fontFamily: font }"
+          :key="font"
+          :value="font"
+        >
+          {{ font }}
         </SelectItem>
       </SelectGroup>
     </SelectContent>

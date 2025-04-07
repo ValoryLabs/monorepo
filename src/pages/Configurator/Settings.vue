@@ -61,14 +61,6 @@ const {
         </span>
       </div>
       <div class="flex flex-col gap-2 divide-y divide-white/10">
-        <!-- Font section -->
-        <SettingsSection>
-          <SettingsContent>
-            <Label> Font </Label>
-            <SelectFont v-model="overlayFont" />
-          </SettingsContent>
-        </SettingsSection>
-
         <!-- Style section -->
         <SettingsSection>
           <SettingsContent>
@@ -76,6 +68,14 @@ const {
               {{ $t('sidebar.configuration.settings.styles') }}
             </Label>
             <SelectLayout v-model="overlayStyle" />
+          </SettingsContent>
+        </SettingsSection>
+
+        <!-- Font section -->
+        <SettingsSection>
+          <SettingsContent>
+            <Label> Font </Label>
+            <SelectFont v-model="overlayFont" />
           </SettingsContent>
         </SettingsSection>
 

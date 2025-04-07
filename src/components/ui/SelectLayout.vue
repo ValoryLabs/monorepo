@@ -31,7 +31,7 @@ const styles: string[] = ['old', 'new', 'new_v2', 'minimal']
 <template>
   <Select v-model="modelValue">
     <SelectTrigger class="w-full cursor-pointer bg-transparent">
-      <SelectValue placeholder="Select style" />
+      <SelectValue :placeholder="$t('components.selectLayout.title')" />
     </SelectTrigger>
     <SelectContent>
       <SelectGroup>
