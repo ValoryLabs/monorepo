@@ -148,15 +148,15 @@
 
 @layer utilities {
   ::-webkit-scrollbar {
-    width: 5px;
+    width: 1px;
     background-color: transparent;
   }
   ::-webkit-scrollbar-track {
-    border-radius: 10px;
+    border-radius: 1px;
     background-color: transparent;
   }
   ::-webkit-scrollbar-thumb {
-    border-radius: 10px;
+    border-radius: 1px;
     background-color: #ffffff0d;
   }
 

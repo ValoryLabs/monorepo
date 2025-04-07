@@ -55,7 +55,9 @@ export const useOverlayStore = defineStore(
       loseColor.value = '#FF7986'
 
       disabledBackground.value = false
+      disabledBackgroundGradient.value = false
       disabledGlowEffect.value = false
+      disabledLastMatchPoints.value = false
       disabledWinLose.value = false
       disabledProgress.value = false
 
