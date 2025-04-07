@@ -80,6 +80,10 @@
   "components": {
     "languageSwitcher": "Language",
     "selectFont": "Select font",
+    "switchToggle": {
+      "on": "On",
+      "off": "Off"
+    },
     "selectLayout": {
       "title": "Select styles",
       "old": "Old style",

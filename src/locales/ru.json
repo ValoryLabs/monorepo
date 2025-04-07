@@ -80,6 +80,10 @@
   "components": {
     "languageSwitcher": "Выбор языка",
     "selectFont": "Выбор шрифта",
+    "switchToggle": {
+      "on": "Вкл",
+      "off": "Выкл"
+    },
     "selectLayout": {
       "title": "Выберите стиль",
       "old": "Старый стиль",
