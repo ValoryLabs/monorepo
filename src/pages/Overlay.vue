@@ -40,6 +40,7 @@ const {
   winColor,
   loseColor,
   overlayStyle,
+  overlayFont,
   disabledBackground,
   disabledBackgroundGradient,
   disabledLastMatchPoints,
@@ -71,5 +72,6 @@ const {
     :disabled-progress="disabledProgress"
     :win-color="winColor"
     :lose-color="loseColor"
+    :overlay-font="overlayFont"
   />
 </template>

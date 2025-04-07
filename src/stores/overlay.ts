@@ -13,6 +13,7 @@ export const useOverlayStore = defineStore(
     const loseColor: Ref<string> = ref('#FF7986')
 
     const overlayStyle: Ref<string> = ref('old')
+    const overlayFont: Ref<string> = ref('Inter')
 
     const disabledBackground: Ref<boolean> = ref(false)
     const disabledBackgroundGradient: Ref<boolean> = ref(false)
@@ -53,6 +54,8 @@ export const useOverlayStore = defineStore(
       progressBgColor.value = '#f2f2f2'
       winColor.value = '#00FFE3'
       loseColor.value = '#FF7986'
+
+      overlayFont.value = 'Inter'
 
       disabledBackground.value = false
       disabledBackgroundGradient.value = false
@@ -121,6 +124,7 @@ export const useOverlayStore = defineStore(
       winColor,
       loseColor,
       overlayStyle,
+      overlayFont,
       disabledBackground,
       disabledBackgroundGradient,
       disabledGlowEffect,

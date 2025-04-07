@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import Button from '@/components/ui/button/Button.vue'
-import { Switch } from '@/components/ui/switch'
 import { Label } from '@/components/ui/label'
 import ColorPicker from '@/components/ui/ColorPicker.vue'
 import { useOverlayStore } from '@/stores/overlay.ts'
 import { storeToRefs } from 'pinia'
 import SelectLayout from '@/components/ui/SelectLayout.vue'
+import SelectFont from '@/components/ui/SelectFont.vue'
 import { ArrowLeft, RotateCcw } from 'lucide-vue-next'
 import router from '@/router'
 import { SettingsSection, SettingsContent } from '@/components/settings'
@@ -21,6 +21,7 @@ const {
   winColor,
   loseColor,
   overlayStyle,
+  overlayFont,
   disabledBackground,
   disabledBackgroundGradient,
   disabledGlowEffect,
@@ -60,6 +61,14 @@ const {
         </span>
       </div>
       <div class="flex flex-col gap-2 divide-y divide-white/10">
+        <!-- Font section -->
+        <SettingsSection>
+          <SettingsContent>
+            <Label> Font </Label>
+            <SelectFont v-model="overlayFont" />
+          </SettingsContent>
+        </SettingsSection>
+
         <!-- Style section -->
         <SettingsSection>
           <SettingsContent>

@@ -11,6 +11,7 @@ interface Props {
   disabledGlowEffect?: boolean
   disabledWinLose?: boolean
   disabledProgress?: boolean
+  overlayFont?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -25,6 +26,7 @@ const props = withDefaults(defineProps<Props>(), {
   disabledGlowEffect: false,
   disabledWinLose: false,
   disabledProgress: false,
+  overlayFont: 'Inter',
 })
 </script>
 
@@ -34,6 +36,7 @@ const props = withDefaults(defineProps<Props>(), {
       class="relative flex flex-row items-center rounded-[8px]"
       :style="{
         backgroundColor: disabledBackground ? 'transparent' : `${props.backgroundColor}99`,
+        fontFamily: props.overlayFont,
       }"
       :class="{ 'border-[2px] border-white/10': !disabledBackground }"
     >
@@ -49,7 +52,7 @@ const props = withDefaults(defineProps<Props>(), {
         <img
           v-if="!disabledGlowEffect"
           src="/ranks/26.webp"
-          class="absolute left-1/2 top-1/2 z-0 size-14 max-w-[unset] -translate-x-1/2 -translate-y-1/2 transform blur-[20px]"
+          class="absolute top-1/2 left-1/2 z-0 size-14 max-w-[unset] -translate-x-1/2 -translate-y-1/2 transform blur-[20px]"
           alt=""
           height="55"
           width="55"
@@ -58,22 +61,24 @@ const props = withDefaults(defineProps<Props>(), {
       </div>
       <div class="flex h-fit flex-1 flex-row justify-between py-3 pr-7">
         <div class="flex h-fit flex-col justify-center gap-[5px]">
-          <span class="text-sm font-medium leading-none text-[var(--primary-text-color)]">
+          <span class="text-sm leading-none font-medium text-[var(--primary-text-color)]">
             MAGICX#1337
           </span>
           <span
-            class="flex flex-row items-center gap-2 text-xl font-extrabold capitalize leading-none text-[var(--text-color)]"
+            class="flex flex-row items-center gap-2 text-xl leading-none font-extrabold text-[var(--text-color)] capitalize"
             :class="{ 'drop-shadow-[0px_0px_12px_var(--text-color)]': !disabledGlowEffect }"
           >
             Immortal 3
           </span>
-          <span class="text-sm font-medium capitalize leading-none text-[var(--primary-text-color)]">
+          <span
+            class="text-sm leading-none font-medium text-[var(--primary-text-color)] capitalize"
+          >
             Level: 200
           </span>
         </div>
         <div v-if="!disabledWinLose" class="flex flex-col items-center justify-center gap-0">
           <span
-            class="text-2xl font-extrabold leading-none text-[var(--win-color)]"
+            class="text-2xl leading-none font-extrabold text-[var(--win-color)]"
             :class="{ 'drop-shadow-[0px_0px_12px_var(--win-color)]': !disabledGlowEffect }"
             >54%</span
           >

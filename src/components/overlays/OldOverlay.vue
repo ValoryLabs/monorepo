@@ -10,6 +10,7 @@ interface Props {
   disabledLastMatchPoints?: boolean
   disabledWinLose?: boolean
   disabledProgress?: boolean
+  overlayFont?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -23,6 +24,7 @@ const props = withDefaults(defineProps<Props>(), {
   disabledLastMatchPoints: false,
   disabledWinLose: false,
   disabledProgress: false,
+  overlayFont: 'Inter',
 })
 </script>
 
@@ -30,9 +32,10 @@ const props = withDefaults(defineProps<Props>(), {
   <div
     class="old-style flex max-h-40 min-h-32 flex-row rounded-br-[90px]"
     :class="{ 'bg-linear-to-b from-[#ff000000] to-[#00000091]': !disabledBackgroundGradient }"
+    :style="{ fontFamily: props.overlayFont }"
   >
     <div
-      class="bg-[var(--background-color)]/20 flex w-[100px] items-center justify-center"
+      class="flex w-[100px] items-center justify-center bg-[var(--background-color)]/20"
       :style="{
         backgroundColor: disabledBackground ? 'transparent' : `${props.backgroundColor}40`,
       }"
@@ -42,8 +45,8 @@ const props = withDefaults(defineProps<Props>(), {
     <div
       class="ml-5 flex w-[340px] flex-col flex-nowrap content-between items-start justify-center gap-[6px] py-5 font-bold"
     >
-      <span class="text-[20px] uppercase leading-none text-[var(--text-color)]"> RATING </span>
-      <span class="text-[24px] uppercase leading-none text-[var(--primary-text-color)]">
+      <span class="text-[20px] leading-none text-[var(--text-color)] uppercase"> RATING </span>
+      <span class="text-[24px] leading-none text-[var(--primary-text-color)] uppercase">
         Diamond 1 - 82RR
       </span>
       <span v-if="!disabledWinLose" class="text-[17px] leading-none text-[var(--text-color)]">
@@ -58,10 +61,10 @@ const props = withDefaults(defineProps<Props>(), {
         :style="{ backgroundColor: `${props.progressBgColor}45` }"
       ></div>
       <div v-if="!disabledLastMatchPoints" class="flex flex-row gap-1 text-base">
-        <span :class="`text-[15px] uppercase leading-none text-[var(--text-color)]`">
+        <span :class="`text-[15px] leading-none text-[var(--text-color)] uppercase`">
           Last match:
         </span>
-        <span class="text-[15px] uppercase leading-none text-[var(--primary-text-color)]">
+        <span class="text-[15px] leading-none text-[var(--primary-text-color)] uppercase">
           32 PTS
         </span>
       </div>

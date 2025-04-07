@@ -9,6 +9,7 @@ interface Props {
   disabledGlowEffect?: boolean
   disabledWinLose?: boolean
   disabledProgress?: boolean
+  overlayFont?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -21,6 +22,7 @@ const props = withDefaults(defineProps<Props>(), {
   disabledGlowEffect: false,
   disabledWinLose: false,
   disabledProgress: false,
+  overlayFont: 'Inter',
 })
 </script>
 
@@ -30,6 +32,7 @@ const props = withDefaults(defineProps<Props>(), {
       class="relative flex flex-row items-center rounded-[8px]"
       :style="{
         backgroundColor: disabledBackground ? 'transparent' : `${props.backgroundColor}99`,
+        fontFamily: props.overlayFont,
       }"
       :class="{ 'border-[2px] border-white/10': !disabledBackground }"
     >
@@ -45,7 +48,7 @@ const props = withDefaults(defineProps<Props>(), {
         <img
           v-if="!disabledGlowEffect"
           src="/ranks/26.webp"
-          class="absolute left-1/2 top-1/2 z-0 size-14 max-w-[unset] -translate-x-1/2 -translate-y-1/2 transform blur-[20px]"
+          class="absolute top-1/2 left-1/2 z-0 size-14 max-w-[unset] -translate-x-1/2 -translate-y-1/2 transform blur-[20px]"
           alt=""
           height="55"
           width="55"
@@ -55,12 +58,12 @@ const props = withDefaults(defineProps<Props>(), {
       <div class="flex h-fit flex-row py-3">
         <div class="flex h-fit flex-col gap-[5px]">
           <span
-            class="text-[18px] font-bold uppercase leading-none text-[var(--primary-text-color)]"
+            class="text-[18px] leading-none font-bold text-[var(--primary-text-color)] uppercase"
           >
             IMMORTAL3 #46
           </span>
           <span
-            class="flex flex-row items-center gap-2 text-base font-medium leading-none text-[var(--text-color)]"
+            class="flex flex-row items-center gap-2 text-base leading-none font-medium text-[var(--text-color)]"
           >
             1838 elo - 123RR
             <span
@@ -72,42 +75,42 @@ const props = withDefaults(defineProps<Props>(), {
           <div v-if="!disabledWinLose" class="flex flex-row items-center gap-2">
             <div class="mt-[2px] flex flex-row items-center gap-1">
               <span
-                class="flex h-5 w-5 flex-col items-center justify-center rounded-[4px] text-xs font-bold leading-none text-[var(--win-color)]"
+                class="flex h-5 w-5 flex-col items-center justify-center rounded-[4px] text-xs leading-none font-bold text-[var(--win-color)]"
                 :class="{ 'drop-shadow-[0px_0px_12px_var(--win-color)]': !disabledGlowEffect }"
                 :style="{ backgroundColor: `${props.winColor}80` }"
               >
                 W
               </span>
               <span
-                class="flex h-5 w-5 flex-col items-center justify-center rounded-[4px] text-xs font-bold leading-none text-[var(--lose-color)]"
+                class="flex h-5 w-5 flex-col items-center justify-center rounded-[4px] text-xs leading-none font-bold text-[var(--lose-color)]"
                 :class="{ 'drop-shadow-[0px_0px_12px_var(--lose-color)]': !disabledGlowEffect }"
                 :style="{ backgroundColor: `${props.loseColor}80` }"
               >
                 L
               </span>
               <span
-                class="flex h-5 w-5 flex-col items-center justify-center rounded-[4px] text-xs font-bold leading-none text-[var(--win-color)]"
+                class="flex h-5 w-5 flex-col items-center justify-center rounded-[4px] text-xs leading-none font-bold text-[var(--win-color)]"
                 :class="{ 'drop-shadow-[0px_0px_12px_var(--win-color)]': !disabledGlowEffect }"
                 :style="{ backgroundColor: `${props.winColor}80` }"
               >
                 W
               </span>
               <span
-                class="flex h-5 w-5 flex-col items-center justify-center rounded-[4px] text-xs font-bold leading-none text-[var(--lose-color)]"
+                class="flex h-5 w-5 flex-col items-center justify-center rounded-[4px] text-xs leading-none font-bold text-[var(--lose-color)]"
                 :class="{ 'drop-shadow-[0px_0px_12px_var(--lose-color)]': !disabledGlowEffect }"
                 :style="{ backgroundColor: `${props.loseColor}80` }"
               >
                 L
               </span>
               <span
-                class="flex h-5 w-5 flex-col items-center justify-center rounded-[4px] bg-[#61c4b9b3] text-xs font-bold leading-none text-[var(--win-color)]"
+                class="flex h-5 w-5 flex-col items-center justify-center rounded-[4px] bg-[#61c4b9b3] text-xs leading-none font-bold text-[var(--win-color)]"
                 :class="{ 'drop-shadow-[0px_0px_12px_var(--win-color)]': !disabledGlowEffect }"
                 :style="{ backgroundColor: `${props.winColor}80` }"
               >
                 W
               </span>
             </div>
-            <span class="text-sm font-bold leading-none text-[var(--text-color)]">40%</span>
+            <span class="text-sm leading-none font-bold text-[var(--text-color)]">40%</span>
           </div>
         </div>
       </div>

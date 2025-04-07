@@ -13,6 +13,7 @@ interface Props {
   disabledGlowEffect?: boolean
   disabledWinLose?: boolean
   disabledProgress?: boolean
+  overlayFont?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -27,13 +28,17 @@ const props = withDefaults(defineProps<Props>(), {
   disabledWinLose: false,
   disabledProgress: false,
   disabledGlowEffect: false,
+  overlayFont: 'Inter',
 })
 </script>
 
 <template>
   <div
     class="minimal-style flex flex-row items-center justify-between gap-3 rounded-full bg-black/90 px-3 py-1"
-    :style="{ backgroundColor: disabledBackground ? 'transparent' : `${props.backgroundColor}99` }"
+    :style="{
+      backgroundColor: disabledBackground ? 'transparent' : `${props.backgroundColor}99`,
+      fontFamily: props.overlayFont,
+    }"
     :class="{ 'overflow-hidden border-[2px] border-white/10': !disabledBackground }"
   >
     <div class="flex flex-row items-center justify-center gap-2">
@@ -41,7 +46,7 @@ const props = withDefaults(defineProps<Props>(), {
         <div class="relative flex">
           <img src="/ranks/26.webp" class="z-2" alt="" height="40" width="40" preload="high" />
           <img
-            class="absolute left-1/2 top-1/2 size-10 max-w-[unset] -translate-x-1/2 -translate-y-1/2 transform blur-[10px]"
+            class="absolute top-1/2 left-1/2 size-10 max-w-[unset] -translate-x-1/2 -translate-y-1/2 transform blur-[10px]"
             v-if="!disabledGlowEffect"
             src="/ranks/26.webp"
             alt=""
@@ -49,7 +54,7 @@ const props = withDefaults(defineProps<Props>(), {
           />
         </div>
         <span
-          class="absolute right-0 top-0 z-2 flex size-4 flex-col items-center justify-center rounded-full bg-white text-sm font-medium leading-none text-black"
+          class="absolute top-0 right-0 z-2 flex size-4 flex-col items-center justify-center rounded-full bg-white text-sm leading-none font-medium text-black"
         >
           3
         </span>

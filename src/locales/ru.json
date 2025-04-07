@@ -18,6 +18,7 @@
       "title": "Конфигуратор",
       "description": "Отрегулируйте доступные параметры\n выбранного варианта в соответствии с вашим брендом.",
       "settings": {
+        "font": "Шрифт",
         "styles": "Стиль оверлея",
         "background": "Фон",
         "disableBackground": "Выключить фон",
@@ -78,6 +79,7 @@
   },
   "components": {
     "languageSwitcher": "Выбор языка",
+    "selectFont": "Выбор шрифта",
     "selectLayout": {
       "title": "Выберите стиль",
       "old": "Старый стиль",
