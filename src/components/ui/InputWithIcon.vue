@@ -60,7 +60,7 @@ const toggleInputType = () => {
         )
       "
     />
-    <div v-if="props.type === 'password'" class="show-password opacity-0 group-hover:opacity-100 transition-opacity">
+    <div v-if="props.type === 'password'" class="show-password opacity-0 group-hover:opacity-100 transition-all">
       <Button @click="toggleInputType" class="absolute flex items-center border-l border-white/15 rounded-none justify-center h-full backdrop-blur-sm inset-y-0 end-0" size="icon" variant="ghost">
         <Eye v-if="inputType === 'password'" class="size-4"/>
         <EyeClosed v-else class="size-4" />
