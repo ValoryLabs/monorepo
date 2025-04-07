@@ -40,6 +40,7 @@
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
 
+  --color-valory: var(--valory);
   --radius-xl: calc(var(--radius) + 4px);
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
@@ -141,6 +142,8 @@
     --destructive-foreground: oklch(96.8% 0.003 251.27);
 
     --ring: oklch(82.7% 0.011 251.27);
+
+    --valory: oklch(0.66 0.216 20.95);
 
     --radius: 0.625rem;
   }
