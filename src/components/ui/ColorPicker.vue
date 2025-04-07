@@ -164,7 +164,7 @@ onMounted(() => {
         :style="{
           backgroundColor: hex,
         }"
-        class="z-10 h-5 w-5 rounded-md"
+        class="z-10 h-5 w-5 cursor-pointer rounded-md"
       />
     </InputWithIcon>
     <PopoverContent align="start">

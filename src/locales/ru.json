@@ -18,10 +18,10 @@
       "title": "Конфигуратор",
       "description": "Отрегулируйте доступные параметры\n выбранного варианта в соответствии с вашим брендом.",
       "settings": {
-        "styles": "Стили (по-умолчанию: Старый стиль)",
+        "styles": "Стиль оверлея",
         "background": "Фон",
         "disableBackground": "Выключить фон",
-        "disableBackgroundGradient": "Выключить градиент у фона",
+        "disableBackgroundGradient": "Выключить градиент",
         "glowEffect": "Выключить эффект свечения",
         "text": "Текст",
         "disableLastMatchPoints": "Выключить последние очки за матч",

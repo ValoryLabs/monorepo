@@ -9,6 +9,7 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { useVModel } from '@vueuse/core'
+import SelectSeparator from './select/SelectSeparator.vue'
 
 const props = defineProps<{
   defaultValue?: string
@@ -29,7 +30,7 @@ const styles: string[] = ['old', 'new', 'new_v2', 'minimal']
 
 <template>
   <Select v-model="modelValue">
-    <SelectTrigger class="w-full bg-transparent">
+    <SelectTrigger class="w-full cursor-pointer bg-transparent">
       <SelectValue placeholder="Select style" />
     </SelectTrigger>
     <SelectContent>
@@ -37,7 +38,8 @@ const styles: string[] = ['old', 'new', 'new_v2', 'minimal']
         <SelectLabel>
           {{ $t('components.selectLayout.title') }}
         </SelectLabel>
-        <SelectItem v-for="style in styles" :key="style" :value="style">
+        <SelectSeparator />
+        <SelectItem class="cursor-pointer" v-for="style in styles" :key="style" :value="style">
           {{ $t('components.selectLayout.' + style) }}
         </SelectItem>
       </SelectGroup>

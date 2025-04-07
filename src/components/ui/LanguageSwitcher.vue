@@ -27,7 +27,7 @@ const currentLocale = useLocalStorage<string>('lang', 'en')
         <Languages class="size-4" />
       </Button>
     </DropdownMenuTrigger>
-    <DropdownMenuContent class="w-40">
+    <DropdownMenuContent align="end" class="w-40">
       <DropdownMenuLabel>
         {{ $t('components.languageSwitcher') }}
       </DropdownMenuLabel>

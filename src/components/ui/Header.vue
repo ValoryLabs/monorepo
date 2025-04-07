@@ -7,8 +7,11 @@ import LanguageSwitcher from '@/components/ui/LanguageSwitcher.vue'
 </script>
 
 <template>
-  <header class="relative flex h-14 items-center justify-between border-b bg-background">
-    <div @click="$router.push('/')" class="flex w-1/4 h-full border-r cursor-pointer items-center gap-3 pl-10">
+  <header class="bg-background relative flex h-14 items-center justify-between border-b">
+    <div
+      @click="$router.push('/')"
+      class="flex h-full w-1/4 cursor-pointer items-center gap-3 border-r pl-10"
+    >
       <Valory :size="30" />
       <span class="font-valory mt-px text-lg leading-none">VALORY</span>
     </div>
@@ -24,6 +27,6 @@ import LanguageSwitcher from '@/components/ui/LanguageSwitcher.vue'
       </Button>
       <LanguageSwitcher />
     </div>
-    <div class="absolute -left-10 -top-10 size-20 rounded-full bg-[#FA4454] blur-[100px]" />
+    <div class="absolute -top-10 -left-10 z-2 size-20 rounded-full bg-[#FA4454] blur-[100px]" />
   </header>
 </template>

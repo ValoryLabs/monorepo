@@ -13,6 +13,12 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
+  --color-switch: var(--switch);
+  --color-switch-foreground: var(--switch-foreground);
+
+  --color-switch-checked: var(--switch-checked);
+  --color-switch-checked-foreground: var(--switch-checked-foreground);
+
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
 
@@ -109,6 +115,12 @@
 
     --popover: oklch(13% 0 0);
     --popover-foreground: oklch(95% 0 0);
+
+    --switch: oklch(0% 0 0 / 1);
+    --switch-foreground: oklch(95% 0 0 / 0.3);
+
+    --switch-checked: oklch(100% 0 0 / 1);
+    --switch-checked-foreground: oklch(0% 0 0);
 
     --card: oklch(20.3% 0.003 262.44);
     --card-foreground: oklch(96.8% 0.003 251.27);

@@ -18,10 +18,10 @@
       "title": "Configuration",
       "description": "Adjust available options of the chosen variant to reflect your brand.",
       "settings": {
-        "styles": "Styles (default: Old style)",
+        "styles": "Overlay Style",
         "background": "Background",
         "disableBackground": "Disable background",
-        "disableBackgroundGradient": "Disable background gradient",
+        "disableBackgroundGradient": "Disable gradient",
         "glowEffect": "Disable glow effect",
         "text": "Text",
         "disableLastMatchPoints": "Disable last match points",
