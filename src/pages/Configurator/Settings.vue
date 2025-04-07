@@ -51,12 +51,16 @@ const {
         {{ $t('sidebar.configuration.description') }}
       </span>
       <div class="flex flex-col gap-2">
+
+        <!-- Style section -->
         <div>
           <Label class="text-muted">
             {{ $t('sidebar.configuration.settings.styles') }}
           </Label>
           <SelectLayout v-model="overlayStyle" />
         </div>
+
+        <!-- Background section -->
         <div>
           <Label for="background-color" class="text-muted">
             {{ $t('sidebar.configuration.settings.background') }}
@@ -83,6 +87,8 @@ const {
             {{ $t('sidebar.configuration.settings.disableBackgroundGradient') }}
           </Label>
         </div>
+
+        <!-- Glow effect section -->
         <div v-if="overlayStyle !== 'old'" class="flex items-center space-x-2">
           <Switch
             id="glowEffect"
@@ -93,12 +99,22 @@ const {
             {{ $t('sidebar.configuration.settings.glowEffect') }}
           </Label>
         </div>
+
+        <!-- Text section -->
         <div v-if="overlayStyle !== 'minimal'">
           <Label for="background-color" class="text-muted">
             {{ $t('sidebar.configuration.settings.text') }}
           </Label>
           <ColorPicker v-model="textColor" id="background-color" />
         </div>
+        <div>
+          <Label for="background-color" class="text-muted">
+            {{ $t('sidebar.configuration.settings.primary') }}
+          </Label>
+          <ColorPicker v-model="primaryTextColor" id="background-color" />
+        </div>
+
+        <!-- Last match PTS section -->
         <div v-if="overlayStyle === 'old'" class="flex items-center space-x-2">
           <Switch
             id="lastPoints"
@@ -109,6 +125,8 @@ const {
             {{ $t('sidebar.configuration.settings.disableLastMatchPoints') }}
           </Label>
         </div>
+
+        <!-- Win/lose section -->
         <div>
           <Label for="win-color" class="text-muted">
             {{ $t('sidebar.configuration.settings.winColor') }}
@@ -131,12 +149,8 @@ const {
             {{ $t('sidebar.configuration.settings.disableWinLose') }}
           </Label>
         </div>
-        <div>
-          <Label for="background-color" class="text-muted">
-            {{ $t('sidebar.configuration.settings.primary') }}
-          </Label>
-          <ColorPicker v-model="primaryTextColor" id="background-color" />
-        </div>
+
+        <!-- Progress section -->
         <div v-if="overlayStyle === 'old'">
           <Label for="background-color" class="text-muted">
             {{ $t('sidebar.configuration.settings.progress') }}
