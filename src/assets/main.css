@@ -119,13 +119,13 @@
     --switch: oklch(0% 0 0 / 1);
     --switch-foreground: oklch(95% 0 0 / 0.3);
 
-    --switch-checked: oklch(100% 0 0 / 1);
+    --switch-checked: oklch(95% 0 0 / 1);
     --switch-checked-foreground: oklch(0% 0 0);
 
     --card: oklch(20.3% 0.003 262.44);
     --card-foreground: oklch(96.8% 0.003 251.27);
 
-    --border: oklch(100% 0 0 / 0.1);
+    --border: oklch(95% 0 0 / 0.1);
     --input: oklch(95% 0 0 / 0.1);
 
     --primary: oklch(96.8% 0.003 251.27);
@@ -134,7 +134,7 @@
     --secondary: oklch(38.2% 0.018 251.27);
     --secondary-foreground: oklch(96.8% 0.003 251.27);
 
-    --accent: oklch(100% 0 0 / 0.1);
+    --accent: oklch(95% 0 0 / 0.1);
     --accent-foreground: oklch(96.8% 0.003 251.27);
 
     --destructive: oklch(45.2% 0.145 27.16);

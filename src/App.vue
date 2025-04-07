@@ -34,8 +34,24 @@ useSeoMeta({
   <Toaster
     position="top-right"
     :toastOptions="{
-      class: 'bg-black/10 text-[#f2f2f2] flex gap-3 backdrop-blur-md border border-white/10',
+      unstyled: true,
+      class:
+        'bg-black/10 p-4 text-foreground rounded-md flex w-[356px] items-center text-sm gap-3 backdrop-blur-md border border-white/10',
     }"
   />
   <RouterView />
 </template>
+
+<!--
+padding: 16px;
+  background: var(--normal-bg);
+  border: 1px solid var(--normal-border);
+  color: var(--normal-text);
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 12px rgba(0,0,0,.1);
+  width: var(--width);
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+--->
