@@ -11,6 +11,7 @@ interface Props extends PrimitiveProps {
   class?: HTMLAttributes['class']
   loading?: boolean
   icon?: LucideIcon
+  ariaLabel?: HTMLAttributes['aria-label']
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -25,6 +26,7 @@ const props = withDefaults(defineProps<Props>(), {
     :as-child="asChild"
     :class="cn(buttonVariants({ variant, size }), props.class)"
     :loading="loading"
+    :aria-label="ariaLabel"
   >
     <component :is="icon" v-if="icon && !loading" class="h-4 w-4" />
     <LoaderCircle v-if="loading" class="h-4 w-4 animate-spin" />

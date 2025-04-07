@@ -24,6 +24,7 @@ const {
   overlayFont,
   disabledBackground,
   disabledBackgroundGradient,
+  disabledBorder,
   disabledGlowEffect,
   disabledLastMatchPoints,
   disabledProgress,
@@ -105,6 +106,17 @@ const {
               id="backgroundGradient"
               :checked="disabledBackgroundGradient"
               @update:checked="overlaySettingsStore.toggleBackgroundGradient"
+            />
+          </SettingsContent>
+          <SettingsContent v-if="overlayStyle !== 'old'" class="flex items-center space-x-2">
+            <Label for="disableBorder">
+              {{ $t('sidebar.configuration.settings.disableBorder') }}
+            </Label>
+            <SwitchToggle
+              id="disableBorder"
+              :disabled="disabledBackground"
+              :checked="disabledBorder"
+              @update:checked="overlaySettingsStore.toggleBorder"
             />
           </SettingsContent>
         </SettingsSection>

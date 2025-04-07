@@ -16,6 +16,7 @@ export const useOverlayStore = defineStore(
     const overlayFont: Ref<string> = ref('Inter')
 
     const disabledBackground: Ref<boolean> = ref(false)
+    const disabledBorder: Ref<boolean> = ref(false)
     const disabledBackgroundGradient: Ref<boolean> = ref(false)
     const disabledGlowEffect: Ref<boolean> = ref(false)
     const disabledLastMatchPoints: Ref<boolean> = ref(false)
@@ -24,6 +25,12 @@ export const useOverlayStore = defineStore(
 
     const toggleBackground = () => {
       disabledBackground.value = !disabledBackground.value
+    }
+
+    const toggleBorder = () => {
+      if (!disabledBackground.value) {
+        disabledBorder.value = !disabledBorder.value
+      }
     }
 
     const toggleBackgroundGradient = () => {
@@ -59,6 +66,7 @@ export const useOverlayStore = defineStore(
 
       disabledBackground.value = false
       disabledBackgroundGradient.value = false
+      disabledBorder.value = false
       disabledGlowEffect.value = false
       disabledLastMatchPoints.value = false
       disabledWinLose.value = false
@@ -81,8 +89,10 @@ export const useOverlayStore = defineStore(
         winColor: winColor.value,
         loseColor: loseColor.value,
         overlayStyle: overlayStyle.value,
+        overlayFont: overlayFont.value,
         disabledBackground: disabledBackground.value,
         disabledBackgroundGradient: disabledBackgroundGradient.value,
+        disabledBorder: disabledBorder.value,
         disabledLastMatchPoints: disabledLastMatchPoints.value,
         disabledWinLose: disabledWinLose.value,
         disabledProgress: disabledProgress.value,
@@ -127,12 +137,14 @@ export const useOverlayStore = defineStore(
       overlayFont,
       disabledBackground,
       disabledBackgroundGradient,
+      disabledBorder,
       disabledGlowEffect,
       disabledLastMatchPoints,
       disabledWinLose,
       disabledProgress,
       toggleBackground,
       toggleBackgroundGradient,
+      toggleBorder,
       toggleGlowEffect,
       toggleLastMatchPoints,
       toggleWinLose,

@@ -23,6 +23,7 @@
         "background": "Background",
         "disableBackground": "Disable background",
         "disableBackgroundGradient": "Disable gradient",
+        "disableBorder": "Disable border",
         "glowEffect": "Disable glow effect",
         "text": "Text",
         "disableLastMatchPoints": "Disable last match points",

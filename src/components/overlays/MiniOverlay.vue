@@ -10,6 +10,7 @@ interface Props {
   winColor?: string
   loseColor?: string
   disabledBackground?: boolean
+  disabledBorder?: boolean
   disabledGlowEffect?: boolean
   disabledWinLose?: boolean
   disabledProgress?: boolean
@@ -25,6 +26,7 @@ const props = withDefaults(defineProps<Props>(), {
   winColor: '#00FFE3',
   loseColor: '#FF7986',
   disabledBackground: false,
+  disabledBorder: false,
   disabledWinLose: false,
   disabledProgress: false,
   disabledGlowEffect: false,
@@ -39,7 +41,10 @@ const props = withDefaults(defineProps<Props>(), {
       backgroundColor: disabledBackground ? 'transparent' : `${props.backgroundColor}99`,
       fontFamily: props.overlayFont,
     }"
-    :class="{ 'overflow-hidden border-[2px] border-white/10': !disabledBackground }"
+    :class="{
+      'overflow-hidden border-[2px] border-white/10': !disabledBackground,
+      'border-none': disabledBorder,
+    }"
   >
     <div class="flex flex-row items-center justify-center gap-2">
       <div class="relative">

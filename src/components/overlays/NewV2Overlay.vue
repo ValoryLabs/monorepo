@@ -9,6 +9,7 @@ interface Props {
   loseColor?: string
   disabledBackground?: boolean
   disabledGlowEffect?: boolean
+  disabledBorder?: boolean
   disabledWinLose?: boolean
   disabledProgress?: boolean
   overlayFont?: string
@@ -24,6 +25,7 @@ const props = withDefaults(defineProps<Props>(), {
   loseColor: '#FF7986',
   disabledBackground: false,
   disabledGlowEffect: false,
+  disabledBorder: false,
   disabledWinLose: false,
   disabledProgress: false,
   overlayFont: 'Inter',
@@ -38,7 +40,7 @@ const props = withDefaults(defineProps<Props>(), {
         backgroundColor: disabledBackground ? 'transparent' : `${props.backgroundColor}99`,
         fontFamily: props.overlayFont,
       }"
-      :class="{ 'border-[2px] border-white/10': !disabledBackground }"
+      :class="{ 'border-[2px] border-white/10': !disabledBackground && !disabledBorder }"
     >
       <div class="relative px-5 py-7">
         <img

@@ -13,6 +13,7 @@ import LanguageSwitcher from '@/components/ui/LanguageSwitcher.vue'
     <span class="flex flex-row items-center justify-center gap-2">
       <Button
         v-for="link in SocialLinksData"
+        :aria-label="link.name"
         :key="link.name"
         size="icon"
         variant="ghost"

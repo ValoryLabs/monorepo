@@ -23,6 +23,7 @@
         "background": "Фон",
         "disableBackground": "Выключить фон",
         "disableBackgroundGradient": "Выключить градиент",
+        "disableBorder": "Выключить обводку",
         "glowEffect": "Выключить эффект свечения",
         "text": "Текст",
         "disableLastMatchPoints": "Выключить последние очки за матч",
