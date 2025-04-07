@@ -7,18 +7,18 @@ import LanguageSwitcher from '@/components/ui/LanguageSwitcher.vue'
 
 <template>
   <footer class="flex flex-col items-center gap-4 text-sm font-semibold">
-    <span class="whitespace-pre-line text-center leading-5">
+    <span class="text-center leading-5 whitespace-pre-line">
       {{ $t('sidebar.footer.made') }}
     </span>
     <span class="flex flex-row items-center justify-center gap-2">
       <Button
         v-for="link in SocialLinksData"
         :key="link.name"
-        class="h-fit px-2"
+        size="icon"
         variant="ghost"
         @click="openLink(link.url)"
       >
-        <component :is="link.icon" :size="18" />
+        <component :is="link.icon" />
       </Button>
       <LanguageSwitcher />
     </span>

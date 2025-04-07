@@ -23,7 +23,7 @@ const currentLocale = useLocalStorage<string>('lang', 'en')
 <template>
   <DropdownMenu>
     <DropdownMenuTrigger as-child>
-      <Button variant="ghost" class="w-9 px-2">
+      <Button variant="ghost" size="icon">
         <Languages class="size-4" />
       </Button>
     </DropdownMenuTrigger>
