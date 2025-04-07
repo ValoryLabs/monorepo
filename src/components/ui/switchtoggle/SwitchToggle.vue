@@ -29,7 +29,7 @@ const updateChecked = () => {
       class="flex h-full w-1/2 flex-col items-center justify-center rounded transition-colors"
       :class="
         checked
-          ? 'bg-switch-checked text-switch-checked-foreground shadow-inner'
+          ? 'bg-switch-checked text-switch-checked-foreground shadow-inner drop-shadow-[0_0_10px_#ffffff4f]'
           : 'text-switch-foreground'
       "
       >On</span
@@ -38,7 +38,7 @@ const updateChecked = () => {
       class="flex h-full w-1/2 flex-col items-center justify-center rounded transition-colors"
       :class="
         !checked
-          ? 'bg-switch-checked text-switch-checked-foreground shadow-inner'
+          ? 'bg-switch-checked text-switch-checked-foreground shadow-inner drop-shadow-[0_0_10px_#ffffff4f]'
           : 'text-switch-foreground'
       "
       >Off</span
