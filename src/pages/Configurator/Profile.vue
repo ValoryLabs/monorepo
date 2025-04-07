@@ -10,7 +10,7 @@ import { useI18n } from 'vue-i18n'
 import InstructionModal from '@/components/ui/instructionkey/InstructionModal.vue'
 import { ref } from 'vue'
 import { Search, KeyRound, ArrowLeft } from 'lucide-vue-next'
-import router from "@/router";
+import router from '@/router'
 import { UserValidator } from '@/api/auth/user.validator'
 
 const { t } = useI18n()
@@ -26,7 +26,7 @@ async function validateData() {
   return new Promise((resolve, reject) => {
     loading.value = true
     setTimeout(async () => {
-      const validationResult = await UserValidator.validate();
+      const validationResult = await UserValidator.validate()
       if (!validationResult.success) {
         reject({ message: validationResult.message })
       } else {
@@ -49,26 +49,33 @@ const search = () => {
 </script>
 
 <template>
-  <div class="flex w-11/12 flex-col gap-4 rounded-lg">
+  <div class="flex w-full flex-col gap-4 rounded-lg">
     <div class="flex flex-col gap-3">
       <div class="flex items-center justify-between">
         <span class="text-lg font-semibold">{{ t('sidebar.profile.title') }}</span>
         <div class="flex flex-row gap-2">
-          <Button variant="outline" size="icon" class="p-2 text-xs" @click="router.push({ name: 'configurator.index' })">
+          <Button
+            variant="outline"
+            size="icon"
+            class="p-2 text-xs"
+            @click="router.push({ name: 'configurator.index' })"
+          >
             <ArrowLeft class="size-4" />
           </Button>
         </div>
       </div>
-      <span class="whitespace-pre-line text-sm">
+      <span class="text-sm whitespace-pre-line">
         {{ t('sidebar.profile.description') }}
       </span>
     </div>
-    <InputWithIcon v-model="riotID" placeholder="nickname#tag">
-      <Riot :size="16" />
-    </InputWithIcon>
-    <InputWithIcon v-model="apiKey" type="password" placeholder="Henrik's DEV API Key">
-      <KeyRound class="size-4" />
-    </InputWithIcon>
+    <div class="flex w-full flex-col gap-4">
+      <InputWithIcon v-model="riotID" placeholder="nickname#tag">
+        <Riot :size="16" />
+      </InputWithIcon>
+      <InputWithIcon v-model="apiKey" type="password" placeholder="Henrik's DEV API Key">
+        <KeyRound class="size-4" />
+      </InputWithIcon>
+    </div>
     <div class="flex flex-row items-center gap-1">
       <span class="cursor-pointer text-sm font-bold text-blue-400 underline">
         <InstructionModal />

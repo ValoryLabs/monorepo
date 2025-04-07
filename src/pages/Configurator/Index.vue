@@ -20,7 +20,7 @@ const { configuratorActive } = storeToRefs(userStore)
       @click="router.push({ name: 'configurator.generate' })"
       variant="outline"
       size="lg"
-      class="w-11/12 hover:bg-white/10"
+      class="w-full hover:bg-white/10"
     >
       <Atom class="size-4" />
       {{ $t('sidebar.buttons.generate') }}

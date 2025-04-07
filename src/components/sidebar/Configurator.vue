@@ -5,7 +5,7 @@ import router from '@/router'
 </script>
 
 <template>
-  <div class="flex w-11/12 flex-col gap-4 rounded-lg">
+  <div class="flex w-full flex-col gap-4 rounded-lg">
     <div class="flex flex-col gap-3">
       <div class="flex items-center justify-between">
         <span class="text-lg font-semibold">{{ $t('sidebar.configuration.title') }}</span>
@@ -20,7 +20,7 @@ import router from '@/router'
           </Button>
         </div>
       </div>
-      <span class="whitespace-pre-line text-sm">
+      <span class="text-sm whitespace-pre-line">
         {{ $t('sidebar.configuration.description') }}
       </span>
     </div>

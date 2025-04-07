@@ -35,10 +35,10 @@ const dimensions = computed(() => {
 
 <template>
   <div class="generate flex flex-col gap-4">
-    <div class="flex w-11/12 flex-col gap-4 rounded-lg">
+    <div class="flex w-full flex-col gap-4 rounded-lg">
       <div class="flex flex-col gap-3">
         <span class="text-lg font-semibold"> {{ $t('sidebar.generate.title') }} </span>
-        <span class="whitespace-pre-line text-sm">
+        <span class="text-sm whitespace-pre-line">
           {{ $t('sidebar.generate.description') }}
         </span>
         <div class="flex flex-row items-center gap-2">
@@ -57,7 +57,7 @@ const dimensions = computed(() => {
             </Tooltip>
           </TooltipProvider>
         </div>
-        <span class="text-sm text-muted-foreground"
+        <span class="text-muted-foreground text-sm"
           >{{ $t('sidebar.generate.dimensions') }} {{ dimensions }}</span
         >
       </div>
@@ -66,7 +66,7 @@ const dimensions = computed(() => {
       @click="router.push({ name: 'configurator.index' })"
       variant="outline"
       size="lg"
-      class="w-11/12 hover:bg-white/10"
+      class="w-full hover:bg-white/10"
     >
       <ArrowLeft class="h-4 w-4" />
       {{ $t('sidebar.buttons.back') }}

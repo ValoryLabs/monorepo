@@ -7,7 +7,7 @@ import Header from '@/components/ui/Header.vue'
   <Header />
   <div class="flex h-[calc(100dvh-3.5rem)] w-dvw flex-row">
     <main
-      class="bg-background flex w-1/4 flex-col justify-start gap-10 overflow-scroll border-r border-white/10 p-10 transition-all"
+      class="bg-background flex w-1/5 flex-col justify-start gap-10 overflow-scroll border-r border-white/10 px-5 py-10 transition-all"
     >
       <router-view v-slot="{ Component, route }">
         <Transition name="fade" mode="out-in">

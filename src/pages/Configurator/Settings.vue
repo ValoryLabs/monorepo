@@ -32,9 +32,9 @@ const {
 </script>
 
 <template>
-  <div class="flex w-11/12 flex-col gap-4 rounded-lg">
+  <div class="flex w-full flex-col gap-4 rounded-lg">
     <div class="flex flex-col gap-3">
-      <div class="bg-background sticky top-0 flex flex-col gap-3 border-b border-white/10 pb-5">
+      <div class="bg-background z-20 flex flex-col gap-3 border-b border-white/10 pb-5">
         <div class="flex items-center justify-between">
           <span class="text-lg font-semibold">{{ $t('sidebar.configuration.title') }}</span>
           <div class="flex flex-row gap-2">
@@ -74,7 +74,7 @@ const {
         <!-- Font section -->
         <SettingsSection>
           <SettingsContent>
-            <Label> Font </Label>
+            <Label> {{ $t('sidebar.configuration.settings.font') }}</Label>
             <SelectFont v-model="overlayFont" />
           </SettingsContent>
         </SettingsSection>
