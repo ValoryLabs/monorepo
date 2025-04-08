@@ -142,7 +142,7 @@ onBeforeUnmount(() => {
   <aside class="bg-background relative flex flex-1 items-center justify-center">
     <div class="flex h-full w-full bg-[url('/breeze.webp')] bg-cover bg-center" ref="containerRef">
       <div id="preview" class="relative z-20 h-full w-full">
-        <div class="relative z-10 size-full drop-shadow-[0_0_10px_rgba(0,0,0,0.3)]">
+        <div class="relative z-10 size-full">
           <div
             class="draggable-preview"
             ref="previewRef"
