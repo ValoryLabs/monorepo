@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import Button from '@/components/ui/button/Button.vue'
 import { Atom } from 'lucide-vue-next'
-import Configurator from '@/components/sidebar/Configurator.vue'
-import Profile from '@/components/sidebar/Profile.vue'
+import { Configurator, Profile, Preview } from '@/components/sidebar'
 import { useUserStore } from '@/stores/user'
 import router from '@/router'
 import { storeToRefs } from 'pinia'
@@ -15,6 +14,7 @@ const { configuratorActive } = storeToRefs(userStore)
   <div class="configurator flex flex-col gap-10">
     <Profile />
     <Configurator v-if="configuratorActive" />
+    <!-- <Preview /> -->
     <Button
       v-if="configuratorActive"
       @click="router.push({ name: 'configurator.generate' })"

@@ -46,12 +46,8 @@ onBeforeUnmount(() => {
 
 <template>
   <aside class="bg-background relative flex flex-1 items-center justify-center">
-    <PatternBackground
-      :animate="true"
-      :direction="PATTERN_BACKGROUND_DIRECTION.TopRight"
-      :variant="PATTERN_BACKGROUND_VARIANT.Dot"
-      class="flex h-full w-full items-center justify-center"
-      :speed="PATTERN_BACKGROUND_SPEED.Slow"
+    <div
+      class="flex h-full w-full items-center justify-center bg-[url('/breeze.webp')] bg-cover bg-center"
     >
       <div id="preview" class="relative z-20">
         <div class="relative z-10 drop-shadow-[0_0_10px_rgba(0,0,0,0.3)]">
@@ -60,7 +56,7 @@ onBeforeUnmount(() => {
             {{ $t('preview') }}
           </div>
         </div>
-        <div
+        <!-- <div
           class="animate-spin-slow absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-30"
         >
           <div
@@ -73,9 +69,9 @@ onBeforeUnmount(() => {
             :style="nextGradient"
             :class="{ 'opacity-0': !isTransitioning }"
           ></div>
-        </div>
+        </div> -->
       </div>
-    </PatternBackground>
+    </div>
   </aside>
 </template>
 
