@@ -5,6 +5,7 @@ import { storeToRefs } from 'pinia'
 import NewOverlay from '@/components/overlays/NewOverlay.vue'
 import MiniOverlay from './overlays/MiniOverlay.vue'
 import NewV2Overlay from '@/components/overlays/NewV2Overlay.vue'
+import { computed } from 'vue'
 
 const overlaySettingsStore = useOverlayStore()
 const {
@@ -25,19 +26,24 @@ const {
   disabledWinLose,
   disabledProgress,
 } = storeToRefs(overlaySettingsStore)
+
+const overlay = computed(() => {
+  switch (overlayStyle.value) {
+    case 'old':
+      return OldOverlay
+    case 'minimal':
+      return MiniOverlay
+    case 'new_v2':
+      return NewV2Overlay
+    default:
+      return NewOverlay
+  }
+})
 </script>
 
 <template>
   <component
-    :is="
-      overlayStyle === 'old'
-        ? OldOverlay
-        : overlayStyle === 'minimal'
-          ? MiniOverlay
-          : overlayStyle === 'new_v2'
-            ? NewV2Overlay
-            : NewOverlay
-    "
+    :is="overlay"
     :background-color="backgroundColor"
     :text-color="textColor"
     :primary-text-color="primaryTextColor"

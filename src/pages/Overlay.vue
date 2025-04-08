@@ -4,7 +4,7 @@ import NewOverlay from '@/components/overlays/NewOverlay.vue'
 import { useOverlayStore } from '@/stores/overlay.ts'
 import { storeToRefs } from 'pinia'
 import { useRoute } from 'vue-router'
-import { onMounted, watch } from 'vue'
+import { onMounted, watch, computed } from 'vue'
 import MiniOverlay from '@/components/overlays/MiniOverlay.vue'
 import NewV2Overlay from '@/components/overlays/NewV2Overlay.vue'
 
@@ -49,19 +49,24 @@ const {
   disabledWinLose,
   disabledProgress,
 } = storeToRefs(overlaySettingsStore)
+
+const overlay = computed(() => {
+  switch (overlayStyle.value) {
+    case 'old':
+      return OldOverlay
+    case 'minimal':
+      return MiniOverlay
+    case 'new_v2':
+      return NewV2Overlay
+    default:
+      return NewOverlay
+  }
+})
 </script>
 
 <template>
   <component
-    :is="
-      overlayStyle === 'old'
-        ? OldOverlay
-        : overlayStyle === 'minimal'
-          ? MiniOverlay
-          : overlayStyle === 'new_v2'
-            ? NewV2Overlay
-            : NewOverlay
-    "
+    :is="overlay"
     :background-color="backgroundColor"
     :text-color="textColor"
     :primary-text-color="primaryTextColor"
