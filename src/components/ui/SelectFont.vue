@@ -26,19 +26,21 @@ const modelValue = useVModel(props, 'modelValue', emits, {
 })
 
 const fonts: string[] = [
+  'Lato',
   'Lora',
   'Inter',
   'Geist',
   'Onest',
+  'Roboto',
   'Manrope',
   'Poppins',
+  'Open Sans',
   'Geist Mono',
   'Space Mono',
   'Russo one',
   'Montserrat',
   'Space Grotesk',
   'JetBrains Mono',
-  'DM Serif Display',
   'Bricolage Grotesque',
 ]
 </script>

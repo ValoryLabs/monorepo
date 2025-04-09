@@ -61,7 +61,7 @@ const {
           {{ $t('sidebar.configuration.description') }}
         </span>
       </div>
-      <div class="flex flex-col gap-2 divide-y divide-white/10">
+      <div class="flex flex-col divide-y divide-white/10">
         <!-- Style section -->
         <SettingsSection>
           <SettingsContent>
