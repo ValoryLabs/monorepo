@@ -5,7 +5,7 @@ import Overlay from '@/components/Overlay.vue'
 import { Button } from '@/components/ui/button'
 import { generateMeshGradient } from 'meshgrad'
 
-import { Hand } from 'lucide-vue-next'
+import { Expand, Hand } from 'lucide-vue-next'
 
 import { onBeforeUnmount, onMounted, ref, reactive, onUnmounted, nextTick } from 'vue'
 import { openLink } from '@/lib/utils'
@@ -201,6 +201,13 @@ onBeforeUnmount(() => {
               </div>
             </div>
           </Transition>
+          <Button
+            class="absolute bottom-2 left-2 inline-flex cursor-pointer items-center gap-1 rounded-md border border-white/10 text-sm font-medium"
+            size="icon"
+            @click="userStore.toggleSidebar()"
+          >
+            <Expand class="size-6" />
+          </Button>
           <div
             @click="openLink('https://www.twitch.tv/ssseikatsu')"
             class="bg-background/40 absolute right-2 bottom-2 inline-flex cursor-pointer items-center gap-1 rounded-full border border-white/10 px-3 py-1 text-sm font-medium"

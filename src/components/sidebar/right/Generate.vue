@@ -7,7 +7,6 @@ import { useClipboard } from '@vueuse/core'
 import { toast } from 'vue-sonner'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 import { Input } from '@/components/ui/input'
-import { Link } from 'lucide-vue-next'
 import { storeToRefs } from 'pinia'
 
 const overlayStore = useOverlayStore()
@@ -45,9 +44,7 @@ const dimensions = computed(() => {
       </span>
     </div>
     <div class="flex flex-row items-center gap-2">
-      <Input v-model="url" disabled="true" class="cursor-text bg-transparent">
-        <Link class="size-4" />
-      </Input>
+      <Input v-model="url" disabled="true" class="cursor-text bg-transparent" />
 
       <TooltipProvider>
         <Tooltip>

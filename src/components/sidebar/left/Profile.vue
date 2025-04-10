@@ -62,14 +62,12 @@ const search = () => {
       <InputWithIcon v-model="riotID" placeholder="nickname#tag">
         <Riot :size="16" />
       </InputWithIcon>
-      <InputWithIcon v-model="apiKey" type="password" placeholder="Henrik's DEV API Key">
-        <KeyRound class="size-4" />
-      </InputWithIcon>
-    </div>
-    <div class="flex flex-row items-center gap-1">
-      <span class="cursor-pointer text-sm font-bold text-blue-400 underline">
+      <div class="inline-flex items-center gap-2">
+        <InputWithIcon v-model="apiKey" type="password" placeholder="Henrik's DEV API Key">
+          <KeyRound class="size-4" />
+        </InputWithIcon>
         <InstructionModal />
-      </span>
+      </div>
     </div>
     <div class="flex w-full flex-row justify-center gap-2">
       <Button
