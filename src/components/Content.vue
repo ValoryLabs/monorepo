@@ -5,10 +5,11 @@ import { storeToRefs } from 'pinia'
 import Overlay from '@/components/Overlay.vue'
 import { Button } from '@/components/ui/button'
 
-import { Expand, Hand, RotateCcw } from 'lucide-vue-next'
+import { Expand, Hand, RotateCcw, Command } from 'lucide-vue-next'
 
 import { onBeforeUnmount, onMounted, ref, reactive, onUnmounted, nextTick } from 'vue'
 import { openLink } from '@/lib/utils'
+import Shortcuts from './ui/Shortcuts.vue'
 
 const overlaySettingsStore = useOverlayStore()
 const userStore = useUserStore()
@@ -40,7 +41,6 @@ const centerPreview = () => {
   position.x = (containerRect.width - previewRect.width) / 2
   position.y = (containerRect.height - previewRect.height) / 2
 
-  // Обновляем размеры после центрирования
   updateOverlayDimensions()
 }
 
@@ -92,7 +92,6 @@ const resizeObserver = new ResizeObserver(() => {
   if (!isDragging.value) {
     centerPreview()
   }
-  // Обновляем размеры при изменении размера
   updateOverlayDimensions()
 })
 
@@ -105,7 +104,6 @@ const handleResize = () => {
   if (!isDragging.value) {
     centerPreview()
   }
-  // Обновляем размеры при изменении размера окна
   updateOverlayDimensions()
 }
 
@@ -114,7 +112,6 @@ onMounted(() => {
   if (previewRef.value) {
     resizeObserver.observe(previewRef.value)
   }
-  // Инициализируем размеры при монтировании
   nextTick(() => {
     updateOverlayDimensions()
   })
@@ -191,15 +188,18 @@ onBeforeUnmount(() => {
               </div>
             </div>
           </Transition>
-          <div
-            class="-transform-left-1/2 absolute bottom-2 left-1/2 inline-flex items-center gap-1"
-          >
+          <div class="absolute bottom-2 left-1/2 inline-flex -translate-x-1/2 items-center gap-1">
             <Button variant="secondary" size="icon" @click="userStore.toggleSidebar()">
               <Expand class="size-6" />
             </Button>
             <Button variant="secondary" size="icon" @click="overlaySettingsStore.reset">
               <RotateCcw class="size-6" />
             </Button>
+            <Shortcuts>
+              <Button variant="secondary" size="icon">
+                <Command class="size-6" />
+              </Button>
+            </Shortcuts>
           </div>
 
           <div

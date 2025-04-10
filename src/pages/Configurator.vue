@@ -4,10 +4,24 @@ import Header from '@/components/ui/Header.vue'
 import { RightSidebar } from '@/components/sidebar/right/'
 import { LeftSidebar } from '@/components/sidebar/left/'
 import { useUserStore } from '@/stores/user'
+import { useOverlayStore } from '@/stores/overlay'
 import { storeToRefs } from 'pinia'
+import { useMagicKeys } from '@vueuse/core'
+import { watch } from 'vue'
 
 const userStore = useUserStore()
+const overlayStore = useOverlayStore()
 const { showLeftSidebar, showRightSidebar } = storeToRefs(userStore)
+
+const { F, R } = useMagicKeys()
+
+watch(F, (v) => {
+  if (v) userStore.toggleSidebar()
+})
+
+watch(R, (v) => {
+  if (v) overlayStore.reset()
+})
 </script>
 
 <template>

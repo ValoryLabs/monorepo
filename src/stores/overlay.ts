@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import { type Ref, ref } from 'vue'
+import { toast } from 'vue-sonner'
 
 export const useOverlayStore = defineStore(
   'overlayStore',
@@ -76,6 +77,7 @@ export const useOverlayStore = defineStore(
     }
 
     const reset = () => {
+      toast.success('Overlay settings reset')
       defaultStyle()
     }
 
