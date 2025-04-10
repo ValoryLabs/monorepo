@@ -10,7 +10,7 @@
       "third": " Configure once, enjoy seamless\noperation forever! "
     },
     "profile": {
-      "title": "Profile settings",
+      "title": "Profile",
       "description": "Enter your Riot ID and Henrik's API KEY\nto search for your profile",
       "instructions": "How do I get an API key?"
     },

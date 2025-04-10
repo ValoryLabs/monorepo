@@ -6,8 +6,7 @@ import { useOverlayStore } from '@/stores/overlay.ts'
 import { storeToRefs } from 'pinia'
 import SelectLayout from '@/components/ui/SelectLayout.vue'
 import SelectFont from '@/components/ui/SelectFont.vue'
-import { ArrowLeft, RotateCcw } from 'lucide-vue-next'
-import router from '@/router'
+import { RotateCcw } from 'lucide-vue-next'
 import { SettingsSection, SettingsContent } from '@/components/settings'
 import { SwitchToggle } from '@/components/ui/switchtoggle'
 
@@ -46,14 +45,6 @@ const {
               @click="overlaySettingsStore.reset"
             >
               <RotateCcw class="size-4" />
-            </Button>
-            <Button
-              size="icon"
-              variant="outline"
-              class="p-2 text-xs"
-              @click="router.push({ name: 'configurator.index' })"
-            >
-              <ArrowLeft class="size-4" />
             </Button>
           </div>
         </div>

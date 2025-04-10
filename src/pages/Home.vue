@@ -31,7 +31,7 @@ import StreamersMarquee from '@/components/StreamersMarquee.vue'
           </span>
         </li>
       </ul>
-      <Button @click="router.push({ name: 'configurator.index' })">
+      <Button @click="router.push({ name: 'configurator' })">
         {{ $t('sidebar.buttons.start') }}
       </Button>
       <Footer />

@@ -9,8 +9,7 @@ import { useUserStore } from '@/stores/user.ts'
 import { useI18n } from 'vue-i18n'
 import InstructionModal from '@/components/ui/instructionkey/InstructionModal.vue'
 import { ref } from 'vue'
-import { Search, KeyRound, ArrowLeft } from 'lucide-vue-next'
-import router from '@/router'
+import { Search, KeyRound } from 'lucide-vue-next'
 import { UserValidator } from '@/api/auth/user.validator'
 
 const { t } = useI18n()
@@ -51,19 +50,7 @@ const search = () => {
 <template>
   <div class="flex w-full flex-col gap-4 rounded-lg">
     <div class="flex flex-col gap-3">
-      <div class="flex items-center justify-between">
-        <span class="text-lg font-semibold">{{ t('sidebar.profile.title') }}</span>
-        <div class="flex flex-row gap-2">
-          <Button
-            variant="outline"
-            size="icon"
-            class="p-2 text-xs"
-            @click="router.push({ name: 'configurator.index' })"
-          >
-            <ArrowLeft class="size-4" />
-          </Button>
-        </div>
-      </div>
+      <span class="text-lg font-semibold">{{ t('sidebar.profile.title') }}</span>
       <span class="text-sm whitespace-pre-line">
         {{ t('sidebar.profile.description') }}
       </span>

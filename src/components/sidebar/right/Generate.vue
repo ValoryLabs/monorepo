@@ -2,13 +2,12 @@
 import { Button } from '@/components/ui/button'
 import { useOverlayStore } from '@/stores/overlay.ts'
 import { computed } from 'vue'
-import { ArrowLeft, Copy } from 'lucide-vue-next'
+import { Copy } from 'lucide-vue-next'
 import { useClipboard } from '@vueuse/core'
 import { toast } from 'vue-sonner'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
-import InputWithIcon from '@/components/ui/InputWithIcon.vue'
+import { Input } from '@/components/ui/input'
 import { Link } from 'lucide-vue-next'
-import router from '@/router'
 import { storeToRefs } from 'pinia'
 
 const overlayStore = useOverlayStore()
@@ -42,9 +41,9 @@ const dimensions = computed(() => {
           {{ $t('sidebar.generate.description') }}
         </span>
         <div class="flex flex-row items-center gap-2">
-          <InputWithIcon v-model="url" disabled="true" class="cursor-text bg-transparent">
+          <Input v-model="url" disabled="true" class="cursor-text bg-transparent">
             <Link class="size-4" />
-          </InputWithIcon>
+          </Input>
 
           <TooltipProvider>
             <Tooltip>
@@ -62,14 +61,5 @@ const dimensions = computed(() => {
         >
       </div>
     </div>
-    <Button
-      @click="router.push({ name: 'configurator.index' })"
-      variant="outline"
-      size="lg"
-      class="w-full hover:bg-white/10"
-    >
-      <ArrowLeft class="h-4 w-4" />
-      {{ $t('sidebar.buttons.back') }}
-    </Button>
   </div>
 </template>

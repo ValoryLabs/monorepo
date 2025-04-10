@@ -29,6 +29,5 @@ import { Languages } from 'lucide-vue-next'
         </Button>
       </LanguageSwitcher>
     </div>
-    <div class="absolute -top-10 -left-10 z-100 size-20 rounded-full bg-[#FA4454] blur-[100px]" />
   </header>
 </template>
