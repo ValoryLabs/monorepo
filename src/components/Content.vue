@@ -1,14 +1,16 @@
 <script setup lang="ts">
 import { useUserStore } from '@/stores/user.ts'
+import { useOverlayStore } from '@/stores/overlay.ts'
 import { storeToRefs } from 'pinia'
 import Overlay from '@/components/Overlay.vue'
 import { Button } from '@/components/ui/button'
 
-import { Expand, Hand } from 'lucide-vue-next'
+import { Expand, Hand, RotateCcw } from 'lucide-vue-next'
 
 import { onBeforeUnmount, onMounted, ref, reactive, onUnmounted, nextTick } from 'vue'
 import { openLink } from '@/lib/utils'
 
+const overlaySettingsStore = useOverlayStore()
 const userStore = useUserStore()
 const { configuratorActive, previewDraggable, previewImage, overlayDimensions } =
   storeToRefs(userStore)
@@ -189,13 +191,17 @@ onBeforeUnmount(() => {
               </div>
             </div>
           </Transition>
-          <Button
-            class="absolute bottom-2 left-2 inline-flex cursor-pointer items-center gap-1 rounded-md border border-white/10 text-sm font-medium"
-            size="icon"
-            @click="userStore.toggleSidebar()"
+          <div
+            class="-transform-left-1/2 absolute bottom-2 left-1/2 inline-flex items-center gap-1"
           >
-            <Expand class="size-6" />
-          </Button>
+            <Button variant="secondary" size="icon" @click="userStore.toggleSidebar()">
+              <Expand class="size-6" />
+            </Button>
+            <Button variant="secondary" size="icon" @click="overlaySettingsStore.reset">
+              <RotateCcw class="size-6" />
+            </Button>
+          </div>
+
           <div
             @click="openLink('https://www.twitch.tv/ssseikatsu')"
             class="bg-background/40 absolute right-2 bottom-2 inline-flex cursor-pointer items-center gap-1 rounded-full border border-white/10 px-3 py-1 text-sm font-medium"
