@@ -62,7 +62,7 @@ const images = [
       <TiltCard
         class="rounded outline-2 outline-offset-3 outline-[hsl(222deg,10%,17%)] transition-all group-hover:scale-102 group-hover:outline-white"
         :class="[previewImage === image.name.toLowerCase() ? 'outline-white' : '']"
-        ><img class="w-38" :src="image.src" :alt="image.name"
+        ><img class="w-30" :src="image.src" :alt="image.name"
       /></TiltCard>
 
       <div

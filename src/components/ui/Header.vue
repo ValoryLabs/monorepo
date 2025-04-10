@@ -11,7 +11,10 @@ import { Languages } from 'lucide-vue-next'
   <header class="bg-header relative flex h-10 items-center justify-between border-b px-5">
     <div @click="$router.push('/')" class="flex h-full cursor-pointer items-center gap-2">
       <Valory class="size-6" />
-      <span class="font-valory mt-px text-base leading-none">VALORY</span>
+      <span
+        class="font-valory mt-px inline-block bg-linear-to-b from-[#f2f2f2] to-[#dddddd] bg-clip-text text-base leading-none"
+        >VALORY</span
+      >
     </div>
     <div class="inline-flex items-center gap-3">
       <Button
