@@ -14,7 +14,7 @@ const { configuratorActive } = storeToRefs(userStore)
   <div class="configurator flex flex-col gap-10">
     <Profile />
     <Configurator v-if="configuratorActive" />
-    <!-- <Preview /> -->
+    <Preview />
     <Button
       v-if="configuratorActive"
       @click="router.push({ name: 'configurator.generate' })"

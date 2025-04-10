@@ -3,13 +3,13 @@ import Button from '@/components/ui/button/Button.vue'
 import { storeToRefs } from 'pinia'
 import { useUserStore } from '@/stores/user'
 const userStore = useUserStore()
-const { previewActive } = storeToRefs(userStore)
+const { previewActive, previewImage } = storeToRefs(userStore)
 import { ArrowDown, ArrowUp } from 'lucide-vue-next'
 
 const images = [
   {
-    name: 'Abyss',
-    src: '/thumbnails/abyss.webp',
+    name: 'Ascent',
+    src: '/thumbnails/ascent.webp',
   },
   {
     name: 'Bind',
@@ -70,20 +70,24 @@ const images = [
         leave-active-class="transition duration-300"
       >
         <div v-if="previewActive" class="flex flex-wrap justify-between pt-3">
-          <button
+          <div
             class="group flex cursor-pointer flex-col items-start gap-3 pb-3 text-sm"
             v-for="image in images"
+            @click="previewImage = image.name.toLowerCase()"
             :key="image.name"
           >
             <img
               class="group-hover:outline-valory pointer-events-none w-40 rounded outline-2 outline-offset-2 outline-[hsl(222deg,10%,17%)] transition-all group-hover:scale-105"
+              :class="[previewImage === image.name.toLowerCase() ? 'outline-valory' : '']"
               :src="image.src"
               :alt="image.name"
             />
-            <span class="text-muted group-hover:text-valory transition-colors">{{
-              image.name
-            }}</span>
-          </button>
+            <span
+              class="text-muted group-hover:text-valory transition-colors"
+              :class="[previewImage === image.name.toLowerCase() ? 'text-valory' : '']"
+              >{{ image.name }}</span
+            >
+          </div>
         </div>
       </Transition>
     </div>

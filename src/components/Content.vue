@@ -5,8 +5,9 @@ import Overlay from '@/components/Overlay.vue'
 import { generateMeshGradient } from 'meshgrad'
 
 const userStore = useUserStore()
-const { configuratorActive, previewDraggable } = storeToRefs(userStore)
+const { configuratorActive, previewDraggable, previewImage } = storeToRefs(userStore)
 import { onBeforeUnmount, onMounted, ref, reactive, onUnmounted, nextTick } from 'vue'
+import { openLink } from '@/lib/utils'
 
 const currentGradient = ref(generateMeshGradient(8))
 const nextGradient = ref(generateMeshGradient(8))
@@ -140,7 +141,11 @@ onBeforeUnmount(() => {
 
 <template>
   <aside class="bg-background relative flex flex-1 items-center justify-center">
-    <div class="flex h-full w-full bg-[url('/breeze.webp')] bg-cover bg-center" ref="containerRef">
+    <div
+      class="flex h-full w-full bg-cover bg-center"
+      :style="{ backgroundImage: `url(/previews/${previewImage}.webp)` }"
+      ref="containerRef"
+    >
       <div id="preview" class="relative z-20 h-full w-full">
         <div class="relative z-10 size-full">
           <div
@@ -175,6 +180,12 @@ onBeforeUnmount(() => {
               </div>
             </div>
           </Transition>
+          <div
+            @click="openLink('https://www.twitch.tv/ssseikatsu')"
+            class="bg-background/40 absolute right-2 bottom-2 inline-flex cursor-pointer rounded-full border border-white/10 px-3 py-1 text-sm font-medium"
+          >
+            Preview by ssseikatsu
+          </div>
         </div>
       </div>
     </div>
