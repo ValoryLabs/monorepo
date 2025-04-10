@@ -57,12 +57,7 @@ const {
     <SettingsRoot>
       <!-- Style section -->
       <SettingsSection>
-        <SettingsContent>
-          <Label>
-            {{ $t('sidebar.configuration.settings.styles') }}
-          </Label>
-          <SelectLayout v-model="overlayStyle" />
-        </SettingsContent>
+        <SelectLayout v-model="overlayStyle" />
       </SettingsSection>
 
       <!-- Background section -->

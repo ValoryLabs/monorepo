@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import Button from '@/components/ui/button/Button.vue'
 import { storeToRefs } from 'pinia'
 import { useUserStore } from '@/stores/user'
 const userStore = useUserStore()
-const { previewActive, previewImage } = storeToRefs(userStore)
-import { ArrowDown, ArrowUp, Check } from 'lucide-vue-next'
+const { previewImage } = storeToRefs(userStore)
+import { Check } from 'lucide-vue-next'
 import TiltCard from '@/components/ui/TiltCard.vue'
 
 const images = [
@@ -53,7 +52,7 @@ const images = [
 
 <template>
   <div class="flex w-full flex-wrap justify-center gap-6">
-    <div
+    <button
       class="group flex cursor-pointer flex-col items-start gap-3 text-sm"
       v-for="image in images"
       @click="previewImage = image.name.toLowerCase()"
@@ -77,6 +76,6 @@ const images = [
         />
         <span>{{ image.name }}</span>
       </div>
-    </div>
+    </button>
   </div>
 </template>

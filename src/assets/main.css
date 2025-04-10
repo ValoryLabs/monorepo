@@ -112,7 +112,7 @@
 @layer base {
   :root {
     --header: oklch(0 0 0);
-    --background: oklch(0.13 0 0);
+    --background: oklch(0 0 0);
     --foreground: oklch(95% 0 0);
 
     --muted: oklch(95% 0 0 / 0.5);
