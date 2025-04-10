@@ -3,7 +3,6 @@ import { useUserStore } from '@/stores/user.ts'
 import { storeToRefs } from 'pinia'
 import Overlay from '@/components/Overlay.vue'
 import { Button } from '@/components/ui/button'
-import { generateMeshGradient } from 'meshgrad'
 
 import { Expand, Hand } from 'lucide-vue-next'
 
@@ -12,36 +11,6 @@ import { openLink } from '@/lib/utils'
 
 const userStore = useUserStore()
 const { configuratorActive, previewDraggable, previewImage } = storeToRefs(userStore)
-
-const currentGradient = ref(generateMeshGradient(8))
-const nextGradient = ref(generateMeshGradient(8))
-const isTransitioning = ref(false)
-
-let intervalId: number | null = null
-
-const updateGradient = () => {
-  isTransitioning.value = true
-  nextGradient.value = generateMeshGradient(8)
-
-  setTimeout(() => {
-    currentGradient.value = nextGradient.value
-    isTransitioning.value = false
-  }, 2000) // Duration of the transition
-}
-
-onMounted(() => {
-  intervalId = window.setInterval(updateGradient, 10000)
-  nextTick(() => {
-    centerPreview()
-  })
-})
-
-onBeforeUnmount(() => {
-  if (intervalId !== null) {
-    clearInterval(intervalId)
-    intervalId = null
-  }
-})
 
 const position = reactive({ x: 0, y: 0 })
 const startPos = reactive({ x: 0, y: 0 })
@@ -114,11 +83,6 @@ const resizeObserver = new ResizeObserver(() => {
 onUnmounted(() => {
   window.removeEventListener('mousemove', onDrag)
   window.removeEventListener('mouseup', stopDrag)
-
-  if (intervalId !== null) {
-    clearInterval(intervalId)
-    intervalId = null
-  }
 })
 
 const handleResize = () => {
@@ -135,6 +99,9 @@ onMounted(() => {
 })
 
 onBeforeUnmount(() => {
+  nextTick(() => {
+    centerPreview()
+  })
   window.removeEventListener('resize', handleResize)
   if (previewRef.value) {
     resizeObserver.unobserve(previewRef.value)

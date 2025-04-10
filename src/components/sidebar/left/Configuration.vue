@@ -164,7 +164,7 @@ const {
             @update:checked="overlaySettingsStore.toggleWinLose"
           />
         </SettingsContent>
-        <SettingsContent class="flex items-center space-x-2">
+        <SettingsContent class="flex items-center space-x-2" v-if="overlayStyle === 'old'">
           <Label for="lastPoints">
             {{ $t('sidebar.configuration.settings.disableLastMatchPoints') }}
           </Label>
@@ -172,7 +172,6 @@ const {
             id="lastPoints"
             :checked="disabledLastMatchPoints"
             @update:checked="overlaySettingsStore.toggleLastMatchPoints"
-            v-if="overlayStyle === 'old'"
           />
         </SettingsContent>
       </SettingsSection>

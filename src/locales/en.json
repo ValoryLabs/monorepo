@@ -99,9 +99,9 @@
     },
     "selectLayout": {
       "title": "Select styles",
-      "old": "Old style",
-      "new": "Modern style",
-      "new_v2": "Modern style v2",
+      "old": "Old",
+      "new": "Modern",
+      "new_v2": "Modern v2",
       "minimal": "Minimal"
     }
   }
