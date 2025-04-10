@@ -10,6 +10,8 @@ export const useUserStore = defineStore(
     const previewImage: Ref<string | null> = ref('bind')
     const previewDraggable: Ref<boolean> = ref(true)
 
+    const overlayDimensions: Ref<string | null> = ref('0 x 0')
+
     const showLeftSidebar: Ref<boolean> = ref(true)
     const showRightSidebar: Ref<boolean> = ref(true)
 
@@ -40,6 +42,7 @@ export const useUserStore = defineStore(
       previewActive,
       previewImage,
       previewDraggable,
+      overlayDimensions,
       showLeftSidebar,
       showRightSidebar,
       toggleConfigurator,

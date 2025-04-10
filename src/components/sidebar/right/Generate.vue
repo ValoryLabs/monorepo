@@ -8,8 +8,12 @@ import { toast } from 'vue-sonner'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 import { Input } from '@/components/ui/input'
 import { storeToRefs } from 'pinia'
+import { useUserStore } from '@/stores/user.ts'
 
 const overlayStore = useOverlayStore()
+
+const userStore = useUserStore()
+const { overlayDimensions } = storeToRefs(userStore)
 
 const queryString = overlayStore.getSettingsAsQuery()
 const url = computed(() => `${window.location.origin}/overlay?${queryString}`)
@@ -19,16 +23,6 @@ const copyUrl = () => {
   copy(url.value)
   toast.success('URL copied to clipboard')
 }
-
-const dimensions = computed(() => {
-  const { overlayStyle } = storeToRefs(overlayStore)
-
-  if (overlayStyle.value === 'old') return '460 x 154'
-  else if (overlayStyle.value === 'new') return '360 x 112'
-  else if (overlayStyle.value === 'new_v2') return '360 x 112'
-  else if (overlayStyle.value === 'minimal') return '293 x 50'
-  else return 'Error'
-})
 </script>
 
 <template>
@@ -58,7 +52,7 @@ const dimensions = computed(() => {
       </TooltipProvider>
     </div>
     <span class="text-muted-foreground text-sm"
-      >{{ $t('sidebar.generate.dimensions') }} {{ dimensions }}</span
+      >{{ $t('sidebar.generate.dimensions') }} {{ overlayDimensions }}</span
     >
   </div>
 </template>

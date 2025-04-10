@@ -10,7 +10,8 @@ import { onBeforeUnmount, onMounted, ref, reactive, onUnmounted, nextTick } from
 import { openLink } from '@/lib/utils'
 
 const userStore = useUserStore()
-const { configuratorActive, previewDraggable, previewImage } = storeToRefs(userStore)
+const { configuratorActive, previewDraggable, previewImage, overlayDimensions } =
+  storeToRefs(userStore)
 
 const position = reactive({ x: 0, y: 0 })
 const startPos = reactive({ x: 0, y: 0 })
@@ -20,6 +21,14 @@ const isDragging = ref(false)
 const containerRef = ref<HTMLElement | null>(null)
 const previewRef = ref<HTMLElement | null>(null)
 
+const updateOverlayDimensions = () => {
+  if (!previewRef.value) return
+
+  const rect = previewRef.value.getBoundingClientRect()
+
+  overlayDimensions.value = `${Math.round(rect.width)} x ${Math.round(rect.height)}`
+}
+
 const centerPreview = () => {
   if (!containerRef.value || !previewRef.value) return
 
@@ -28,6 +37,9 @@ const centerPreview = () => {
 
   position.x = (containerRect.width - previewRect.width) / 2
   position.y = (containerRect.height - previewRect.height) / 2
+
+  // Обновляем размеры после центрирования
+  updateOverlayDimensions()
 }
 
 const startDrag = (event: MouseEvent) => {
@@ -78,6 +90,8 @@ const resizeObserver = new ResizeObserver(() => {
   if (!isDragging.value) {
     centerPreview()
   }
+  // Обновляем размеры при изменении размера
+  updateOverlayDimensions()
 })
 
 onUnmounted(() => {
@@ -89,6 +103,8 @@ const handleResize = () => {
   if (!isDragging.value) {
     centerPreview()
   }
+  // Обновляем размеры при изменении размера окна
+  updateOverlayDimensions()
 }
 
 onMounted(() => {
@@ -96,6 +112,10 @@ onMounted(() => {
   if (previewRef.value) {
     resizeObserver.observe(previewRef.value)
   }
+  // Инициализируем размеры при монтировании
+  nextTick(() => {
+    updateOverlayDimensions()
+  })
 })
 
 onBeforeUnmount(() => {
@@ -131,6 +151,7 @@ onBeforeUnmount(() => {
           >
             <Overlay v-if="configuratorActive" />
           </div>
+
           <Transition
             enter-from-class="opacity-0"
             leave-to-class="opacity-0"
