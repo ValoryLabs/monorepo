@@ -33,33 +33,31 @@ const dimensions = computed(() => {
 </script>
 
 <template>
-  <div class="generate flex flex-col gap-4">
-    <div class="flex w-full flex-col gap-4 rounded-lg">
-      <div class="flex flex-col gap-3">
-        <span class="text-lg font-semibold"> {{ $t('sidebar.generate.title') }} </span>
-        <span class="text-sm whitespace-pre-line">
-          {{ $t('sidebar.generate.description') }}
-        </span>
-        <div class="flex flex-row items-center gap-2">
-          <Input v-model="url" disabled="true" class="cursor-text bg-transparent">
-            <Link class="size-4" />
-          </Input>
-
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger>
-                <Button size="icon" @click="copyUrl"><Copy class="size-4" /></Button>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>{{ $t('sidebar.generate.tooltip') }}</p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
-        </div>
-        <span class="text-muted-foreground text-sm"
-          >{{ $t('sidebar.generate.dimensions') }} {{ dimensions }}</span
-        >
-      </div>
+  <div class="flex flex-col gap-4">
+    <div class="flex flex-col gap-2">
+      <span class="text-lg font-semibold"> {{ $t('sidebar.generate.title') }} </span>
+      <span class="text-sm whitespace-pre-line text-white/70">
+        {{ $t('sidebar.generate.description') }}
+      </span>
     </div>
+    <div class="flex flex-row items-center gap-2">
+      <Input v-model="url" disabled="true" class="cursor-text bg-transparent">
+        <Link class="size-4" />
+      </Input>
+
+      <TooltipProvider>
+        <Tooltip>
+          <TooltipTrigger>
+            <Button size="icon" @click="copyUrl"><Copy class="size-4" /></Button>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>{{ $t('sidebar.generate.tooltip') }}</p>
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
+    </div>
+    <span class="text-muted-foreground text-sm"
+      >{{ $t('sidebar.generate.dimensions') }} {{ dimensions }}</span
+    >
   </div>
 </template>
