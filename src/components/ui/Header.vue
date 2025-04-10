@@ -4,28 +4,30 @@ import { SocialLinksData } from '@/data/SocialLinks.data.ts'
 import { openLink } from '@/lib/utils'
 import Button from '@/components/ui/button/Button.vue'
 import LanguageSwitcher from '@/components/ui/LanguageSwitcher.vue'
+import { Languages } from 'lucide-vue-next'
 </script>
 
 <template>
-  <header class="bg-background relative flex h-14 items-center justify-between border-b">
-    <div
-      @click="$router.push('/')"
-      class="flex h-full w-1/5 cursor-pointer items-center gap-3 border-r pl-5"
-    >
-      <Valory :size="30" />
-      <span class="font-valory mt-px text-lg leading-none">VALORY</span>
+  <header class="bg-header relative flex h-10 items-center justify-between border-b px-5">
+    <div @click="$router.push('/')" class="flex h-full cursor-pointer items-center gap-2">
+      <Valory class="size-6" />
+      <span class="font-valory mt-px text-base leading-none">VALORY</span>
     </div>
-    <div class="inline-flex gap-3 pr-5">
+    <div class="inline-flex items-center gap-3">
       <Button
         v-for="link in SocialLinksData"
         :key="link.name"
-        size="icon"
+        class="size-7"
         variant="ghost"
         @click="openLink(link.url)"
       >
         <component :is="link.icon" :size="18" />
       </Button>
-      <LanguageSwitcher />
+      <LanguageSwitcher>
+        <Button variant="ghost" class="size-7" aria-label="Language Switcher">
+          <Languages class="size-4" />
+        </Button>
+      </LanguageSwitcher>
     </div>
     <div class="absolute -top-10 -left-10 z-100 size-20 rounded-full bg-[#FA4454] blur-[100px]" />
   </header>

@@ -36,7 +36,7 @@ useSeoMeta({
     :toastOptions="{
       unstyled: true,
       class:
-        'bg-black/10 p-4 text-foreground rounded-md flex w-[356px] items-center text-sm gap-3 backdrop-blur-md border border-white/10',
+        'bg-black/70 p-4 text-foreground rounded-md flex w-[356px] items-center text-sm gap-3 backdrop-blur-md border border-white/10',
     }"
   />
   <RouterView />

@@ -7,6 +7,7 @@
   --font-sans: Inter, sans-serif;
   --font-mono: Geist Mono, monospace;
 
+  --color-header: var(--header);
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
@@ -108,7 +109,8 @@
 
 @layer base {
   :root {
-    --background: oklch(0 0 0);
+    --header: oklch(0 0 0);
+    --background: oklch(0.13 0 0);
     --foreground: oklch(95% 0 0);
 
     --muted: oklch(95% 0 0 / 0.5);

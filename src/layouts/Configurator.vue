@@ -5,8 +5,8 @@ import Header from '@/components/ui/Header.vue'
 
 <template>
   <Header />
-  <div class="flex h-[calc(100dvh-3.5rem)] w-dvw flex-row">
-    <main
+  <div class="flex h-[calc(100dvh-2.5rem)] w-dvw flex-row">
+    <aside
       class="bg-background flex w-1/5 flex-col justify-start gap-10 overflow-scroll border-r border-white/10 px-5 py-10 transition-all"
     >
       <router-view v-slot="{ Component, route }">
@@ -14,7 +14,7 @@ import Header from '@/components/ui/Header.vue'
           <component :is="Component" :key="route.path" />
         </Transition>
       </router-view>
-    </main>
+    </aside>
     <Content />
   </div>
 </template>

@@ -144,7 +144,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <aside class="bg-background relative flex flex-1 items-center justify-center">
+  <main class="bg-background relative flex flex-1 items-center justify-center">
     <div
       class="flex h-full w-full bg-cover bg-center"
       :style="{ backgroundImage: `url(/previews/${previewImage}.webp)` }"
@@ -211,7 +211,7 @@ onBeforeUnmount(() => {
         </div>
       </div>
     </div>
-  </aside>
+  </main>
 </template>
 
 <style scoped>
