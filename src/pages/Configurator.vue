@@ -8,6 +8,11 @@ import { useOverlayStore } from '@/stores/overlay'
 import { storeToRefs } from 'pinia'
 import { useMagicKeys } from '@vueuse/core'
 import { watch } from 'vue'
+import { useHead } from '@unhead/vue'
+
+useHead({
+  title: 'Configurator',
+})
 
 const userStore = useUserStore()
 const overlayStore = useOverlayStore()

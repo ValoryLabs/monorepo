@@ -8,6 +8,12 @@ import { onMounted, watch, computed } from 'vue'
 import MiniOverlay from '@/components/overlays/MiniOverlay.vue'
 import NewV2Overlay from '@/components/overlays/NewV2Overlay.vue'
 
+import { useHead } from '@unhead/vue'
+
+useHead({
+  title: 'Overlay',
+})
+
 const route = useRoute()
 const overlaySettingsStore = useOverlayStore()
 
