@@ -1,7 +1,12 @@
 <script setup lang="ts">
-import { useSeoMeta } from '@unhead/vue'
+import { useHead, useSeoMeta } from '@unhead/vue'
 import { Toaster } from 'vue-sonner'
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 
+import Valory from '@/components/icons/Valory.vue'
+
+const titleMain = 'VALORY'
 const metaImg = 'meta.webp'
 const metaTitle = 'Stream Overlay for Valorant - VALORY'
 const metaDescription =
@@ -15,9 +20,16 @@ const metaKeywords =
   'valorant stream tools, valorant stream customization, valorant stream widgets, ' +
   'valorant stream plugins, valorant stream resources, valorant stream overlays, valory'
 
+useHead({
+  title: metaTitle,
+  titleTemplate: (title) => (title === metaTitle ? title : `${title} - ${titleMain}`),
+  meta: [{ name: 'viewport', content: 'width=device-width, initial-scale=1' }],
+})
+
 useSeoMeta({
   title: metaTitle,
   description: metaDescription,
+  viewport: 'width=device-width, initial-scale=1',
   ogTitle: metaTitle,
   ogDescription: metaDescription,
   ogImage: metaImg,
@@ -28,6 +40,10 @@ useSeoMeta({
   author: 'MAGICX, misha@valory.su',
   keywords: metaKeywords,
 })
+
+const isRouterReady = ref(false)
+const router = useRouter()
+router.isReady().finally(() => (isRouterReady.value = true))
 </script>
 
 <template>
@@ -39,19 +55,22 @@ useSeoMeta({
         'bg-black/70 p-4 text-foreground rounded-md flex w-[356px] items-center text-sm gap-3 backdrop-blur-md border border-white/10',
     }"
   />
-  <RouterView />
+  <Transition>
+    <div v-if="!isRouterReady" class="z-9999 flex h-[100dvh] items-center justify-center">
+      <Valory :size="32" />
+    </div>
+    <RouterView v-else />
+  </Transition>
 </template>
 
-<!--
-padding: 16px;
-  background: var(--normal-bg);
-  border: 1px solid var(--normal-border);
-  color: var(--normal-text);
-  border-radius: var(--border-radius);
-  box-shadow: 0 4px 12px rgba(0,0,0,.1);
-  width: var(--width);
-  font-size: 13px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
---->
+<style scoped>
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.2s linear;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+</style>
