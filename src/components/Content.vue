@@ -5,7 +5,7 @@ import Overlay from '@/components/Overlay.vue'
 import { generateMeshGradient } from 'meshgrad'
 
 const userStore = useUserStore()
-const { configuratorActive } = storeToRefs(userStore)
+const { configuratorActive, previewDraggable } = storeToRefs(userStore)
 import { onBeforeUnmount, onMounted, ref, reactive, onUnmounted, nextTick } from 'vue'
 
 const currentGradient = ref(generateMeshGradient(8))
@@ -158,6 +158,23 @@ onBeforeUnmount(() => {
               {{ $t('preview') }}
             </div>
           </div>
+          <Transition
+            enter-from-class="opacity-0"
+            leave-to-class="opacity-0"
+            enter-active-class="transition duration-300"
+            leave-active-class="transition duration-300"
+          >
+            <div
+              v-if="previewDraggable"
+              class="absolute top-0 left-0 z-50 flex h-full w-full items-center justify-center bg-black/50 backdrop-blur-md"
+              @click="previewDraggable = false"
+            >
+              <div class="flex flex-col items-center">
+                <span class="font-bold">You can move the overlay to preview</span>
+                <span class="text-sm">Click for continue</span>
+              </div>
+            </div>
+          </Transition>
         </div>
       </div>
     </div>

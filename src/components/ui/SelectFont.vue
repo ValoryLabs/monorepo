@@ -34,6 +34,7 @@ const fonts: string[] = [
   'Roboto',
   'Manrope',
   'Poppins',
+  'Gabarito',
   'Rajdhani',
   'Russo one',
   'Open Sans',
@@ -49,7 +50,7 @@ const fonts: string[] = [
 <template>
   <Select v-model="modelValue">
     <SelectTrigger class="w-full cursor-pointer bg-transparent">
-      <SelectValue :placeholder="$t('components.selectFont')" />
+      <SelectValue :style="{ fontFamily: modelValue }" :placeholder="$t('components.selectFont')" />
     </SelectTrigger>
     <SelectContent>
       <SelectGroup>
