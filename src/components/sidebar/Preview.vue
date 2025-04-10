@@ -4,7 +4,7 @@ import { storeToRefs } from 'pinia'
 import { useUserStore } from '@/stores/user'
 const userStore = useUserStore()
 const { previewActive, previewImage } = storeToRefs(userStore)
-import { ArrowDown, ArrowUp } from 'lucide-vue-next'
+import { ArrowDown, ArrowUp, Check } from 'lucide-vue-next'
 
 const images = [
   {
@@ -77,16 +77,23 @@ const images = [
             :key="image.name"
           >
             <img
-              class="group-hover:outline-valory pointer-events-none w-40 rounded outline-2 outline-offset-2 outline-[hsl(222deg,10%,17%)] transition-all group-hover:scale-105"
-              :class="[previewImage === image.name.toLowerCase() ? 'outline-valory' : '']"
+              class="pointer-events-none w-40 rounded outline-2 outline-offset-3 outline-[hsl(222deg,10%,17%)] transition-all group-hover:scale-102 group-hover:outline-white"
+              :class="[previewImage === image.name.toLowerCase() ? 'outline-white' : '']"
               :src="image.src"
               :alt="image.name"
             />
-            <span
-              class="text-muted group-hover:text-valory transition-colors"
-              :class="[previewImage === image.name.toLowerCase() ? 'text-valory' : '']"
-              >{{ image.name }}</span
+            <div
+              class="text-muted inline-flex items-center gap-2 font-medium transition-colors group-hover:text-white"
+              :class="[previewImage === image.name.toLowerCase() ? 'text-white' : '']"
             >
+              <Check
+                v-if="previewImage === image.name.toLowerCase()"
+                class="size-5"
+                :stroke-width="2.75"
+                absoluteStrokeWidth
+              />
+              <span>{{ image.name }}</span>
+            </div>
           </div>
         </div>
       </Transition>
