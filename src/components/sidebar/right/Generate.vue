@@ -35,7 +35,11 @@ const dimensions = computed(() => {
 <template>
   <div class="flex flex-col gap-4">
     <div class="flex flex-col gap-2">
-      <span class="text-lg font-semibold"> {{ $t('sidebar.generate.title') }} </span>
+      <span
+        class="inline-block bg-linear-to-b from-[#f2f2f2] to-[#dddddd] bg-clip-text text-lg font-semibold"
+      >
+        {{ $t('sidebar.generate.title') }}
+      </span>
       <span class="text-sm whitespace-pre-line text-white/70">
         {{ $t('sidebar.generate.description') }}
       </span>

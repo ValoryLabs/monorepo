@@ -41,10 +41,10 @@
       "description": "Preview your overlay before generating the URL."
     },
     "generate": {
-      "title": "Overlay URL: Streaming Software",
-      "description": "Copy the URL below and paste it into your streaming software as \"Browser\".",
+      "title": "Overlay URL",
+      "description": "Copy the URL below and paste it into your streaming app (in OBS Studio: Sources → Browser).",
       "tooltip": "Copy URL",
-      "dimensions": "Widget dimensions:"
+      "dimensions": "Dimensions:"
     },
     "buttons": {
       "start": "Let's start create!",

@@ -35,7 +35,10 @@ const {
   <div class="flex flex-col gap-3">
     <div class="bg-background z-20 flex flex-col gap-2 pb-5">
       <div class="flex items-center justify-between">
-        <span class="text-lg font-semibold">{{ $t('sidebar.configuration.title') }}</span>
+        <span
+          class="inline-block bg-linear-to-b from-[#f2f2f2] to-[#dddddd] bg-clip-text text-lg font-semibold"
+          >{{ $t('sidebar.configuration.title') }}</span
+        >
         <div class="flex flex-row gap-2">
           <Button
             size="icon"
