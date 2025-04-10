@@ -59,7 +59,15 @@
       "made": "Made with ❤️ on 🌎 © Valory \nAll rights reserved."
     }
   },
-  "preview": "Your preview will be located here.\nPlease enter your profile to see it.",
+  "preview": {
+    "main": "Your preview will be located here.\nPlease enter your profile to see it.",
+    "imageBy": "Image by",
+    "drag": {
+      "title": "Position the overlay as you like\n for the perfect broadcast layout.",
+      "description": "Click and drag with your mouse\n to adjust the position.",
+      "continue": "Continue"
+    }
+  },
   "toasts": {
     "dataVerifying": {
       "loading": "Data verification...",

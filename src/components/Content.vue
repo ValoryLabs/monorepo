@@ -2,12 +2,16 @@
 import { useUserStore } from '@/stores/user.ts'
 import { storeToRefs } from 'pinia'
 import Overlay from '@/components/Overlay.vue'
+import { Button } from '@/components/ui/button'
 import { generateMeshGradient } from 'meshgrad'
+
+import { Hand } from 'lucide-vue-next'
+
+import { onBeforeUnmount, onMounted, ref, reactive, onUnmounted, nextTick } from 'vue'
+import { openLink } from '@/lib/utils'
 
 const userStore = useUserStore()
 const { configuratorActive, previewDraggable, previewImage } = storeToRefs(userStore)
-import { onBeforeUnmount, onMounted, ref, reactive, onUnmounted, nextTick } from 'vue'
-import { openLink } from '@/lib/utils'
 
 const currentGradient = ref(generateMeshGradient(8))
 const nextGradient = ref(generateMeshGradient(8))
@@ -160,7 +164,7 @@ onBeforeUnmount(() => {
           >
             <Overlay v-if="configuratorActive" />
             <div v-else class="w-fit text-center leading-[1.15] font-medium whitespace-pre-line">
-              {{ $t('preview') }}
+              {{ $t('preview.main') }}
             </div>
           </div>
           <Transition
@@ -172,19 +176,27 @@ onBeforeUnmount(() => {
             <div
               v-if="previewDraggable"
               class="absolute top-0 left-0 z-50 flex h-full w-full items-center justify-center bg-black/50 backdrop-blur-md"
-              @click="previewDraggable = false"
             >
-              <div class="flex flex-col items-center">
-                <span class="font-bold">You can move the overlay to preview</span>
-                <span class="text-sm">Click for continue</span>
+              <div class="flex flex-col items-center gap-4">
+                <Hand class="size-10" />
+                <span class="text-center font-bold whitespace-pre-line">{{
+                  $t('preview.drag.title')
+                }}</span>
+                <span class="text-center text-sm whitespace-pre-line">{{
+                  $t('preview.drag.description')
+                }}</span>
+                <Button @click="previewDraggable = false">
+                  {{ $t('preview.drag.continue') }}
+                </Button>
               </div>
             </div>
           </Transition>
           <div
             @click="openLink('https://www.twitch.tv/ssseikatsu')"
-            class="bg-background/40 absolute right-2 bottom-2 inline-flex cursor-pointer rounded-full border border-white/10 px-3 py-1 text-sm font-medium"
+            class="bg-background/40 absolute right-2 bottom-2 inline-flex cursor-pointer items-center gap-1 rounded-full border border-white/10 px-3 py-1 text-sm font-medium"
           >
-            Preview by ssseikatsu
+            <span>{{ $t('preview.imageBy') }} </span>
+            <span class="font-bold">ssseikatsu</span>
           </div>
         </div>
       </div>
