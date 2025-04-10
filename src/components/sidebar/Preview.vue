@@ -5,6 +5,7 @@ import { useUserStore } from '@/stores/user'
 const userStore = useUserStore()
 const { previewActive, previewImage } = storeToRefs(userStore)
 import { ArrowDown, ArrowUp, Check } from 'lucide-vue-next'
+import TiltCard from '../ui/TiltCard.vue'
 
 const images = [
   {
@@ -76,12 +77,12 @@ const images = [
             @click="previewImage = image.name.toLowerCase()"
             :key="image.name"
           >
-            <img
-              class="pointer-events-none w-38 rounded outline-2 outline-offset-3 outline-[hsl(222deg,10%,17%)] transition-all group-hover:scale-102 group-hover:outline-white"
+            <TiltCard
+              class="rounded outline-2 outline-offset-3 outline-[hsl(222deg,10%,17%)] transition-all group-hover:scale-102 group-hover:outline-white"
               :class="[previewImage === image.name.toLowerCase() ? 'outline-white' : '']"
-              :src="image.src"
-              :alt="image.name"
-            />
+              ><img class="w-38" :src="image.src" :alt="image.name"
+            /></TiltCard>
+
             <div
               class="text-muted inline-flex items-center gap-2 font-medium transition-colors group-hover:text-white"
               :class="[previewImage === image.name.toLowerCase() ? 'text-white' : '']"

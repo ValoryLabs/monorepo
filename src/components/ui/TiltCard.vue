@@ -74,7 +74,7 @@ const glowY = computed(() => `${mousePosition.y * 100}%`)
 <template>
   <div
     ref="cardRef"
-    class="relative size-fit cursor-pointer perspective-[3000px]"
+    class="relative size-fit cursor-pointer perspective-[600px]"
     @mouseenter="handleMouseEnter"
     @mouseleave="handleMouseLeave"
   >
