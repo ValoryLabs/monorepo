@@ -163,9 +163,6 @@ onBeforeUnmount(() => {
             @mousedown="startDrag"
           >
             <Overlay v-if="configuratorActive" />
-            <div v-else class="w-fit text-center leading-[1.15] font-medium whitespace-pre-line">
-              {{ $t('preview.main') }}
-            </div>
           </div>
           <Transition
             enter-from-class="opacity-0"
@@ -174,7 +171,20 @@ onBeforeUnmount(() => {
             leave-active-class="transition duration-300"
           >
             <div
-              v-if="previewDraggable"
+              v-if="!configuratorActive"
+              class="absolute top-0 left-0 z-50 flex h-full w-full items-center justify-center bg-black/50 text-center font-medium whitespace-pre-line backdrop-blur-md"
+            >
+              {{ $t('preview.main') }}
+            </div>
+          </Transition>
+          <Transition
+            enter-from-class="opacity-0"
+            leave-to-class="opacity-0"
+            enter-active-class="transition duration-300"
+            leave-active-class="transition duration-300"
+          >
+            <div
+              v-if="previewDraggable && configuratorActive"
               class="absolute top-0 left-0 z-50 flex h-full w-full items-center justify-center bg-black/50 backdrop-blur-md"
             >
               <div class="flex flex-col items-center gap-4">

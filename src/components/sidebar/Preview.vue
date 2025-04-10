@@ -77,7 +77,7 @@ const images = [
             :key="image.name"
           >
             <img
-              class="pointer-events-none w-40 rounded outline-2 outline-offset-3 outline-[hsl(222deg,10%,17%)] transition-all group-hover:scale-102 group-hover:outline-white"
+              class="pointer-events-none w-38 rounded outline-2 outline-offset-3 outline-[hsl(222deg,10%,17%)] transition-all group-hover:scale-102 group-hover:outline-white"
               :class="[previewImage === image.name.toLowerCase() ? 'outline-white' : '']"
               :src="image.src"
               :alt="image.name"
