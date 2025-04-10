@@ -20,20 +20,26 @@
       "settings": {
         "font": "Font",
         "styles": "Overlay Style",
-        "background": "Background",
-        "disableBackground": "Disable background",
-        "disableBackgroundGradient": "Disable gradient",
-        "disableBorder": "Disable border",
-        "glowEffect": "Disable glow effect",
+        "backgroundColor": "Color",
+        "disableBackground": "Background",
+        "disableBackgroundGradient": "Gradient",
+        "disableBorder": "Border",
+        "glowEffect": "Glow effect",
         "text": "Text",
-        "disableLastMatchPoints": "Disable last match points",
-        "winColor": "Win color",
-        "loseColor": "Lose color",
-        "disableWinLose": "Disable win/lose",
+        "disableLastMatchPoints": "Last match points",
+        "winColor": "Win",
+        "loseColor": "Lose",
+        "disableWinLose": "Win/lose",
         "primary": "Primary text",
-        "progress": "Progress",
+        "progress": "Progress color",
         "progressBackground": "Progress background",
-        "disableProgress": "Disable progress"
+        "disableProgress": "Progress bar",
+        "label": {
+          "background": "Background",
+          "text": "Text",
+          "winLose": "Win/Lose",
+          "progressbar": "Progress bar"
+        }
       }
     },
     "preview": {

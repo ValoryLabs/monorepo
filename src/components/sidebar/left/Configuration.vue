@@ -66,10 +66,10 @@ const {
       </SettingsSection>
 
       <!-- Background section -->
-      <SettingsSection label="Background">
+      <SettingsSection :label="$t('sidebar.configuration.settings.label.background')">
         <SettingsContent>
           <Label for="background-color">
-            {{ $t('sidebar.configuration.settings.background') }}
+            {{ $t('sidebar.configuration.settings.backgroundColor') }}
           </Label>
           <ColorPicker v-model="backgroundColor" id="background-color" />
         </SettingsContent>
@@ -79,7 +79,7 @@ const {
           </Label>
           <SwitchToggle
             id="background"
-            :checked="disabledBackground"
+            :checked="!disabledBackground"
             @update:checked="overlaySettingsStore.toggleBackground"
           />
         </SettingsContent>
@@ -89,7 +89,7 @@ const {
           </Label>
           <SwitchToggle
             id="backgroundGradient"
-            :checked="disabledBackgroundGradient"
+            :checked="!disabledBackgroundGradient"
             @update:checked="overlaySettingsStore.toggleBackgroundGradient"
           />
         </SettingsContent>
@@ -100,28 +100,25 @@ const {
           <SwitchToggle
             id="disableBorder"
             :disabled="disabledBackground"
-            :checked="disabledBorder"
+            :checked="!disabledBorder"
             @update:checked="overlaySettingsStore.toggleBorder"
           />
         </SettingsContent>
-      </SettingsSection>
-
-      <!-- Glow effect section -->
-      <SettingsSection v-if="overlayStyle !== 'old'">
-        <SettingsContent class="flex items-center space-x-2">
+        <!-- Glow effect section -->
+        <SettingsContent class="flex items-center space-x-2" v-if="overlayStyle !== 'old'">
           <Label for="glowEffect">
             {{ $t('sidebar.configuration.settings.glowEffect') }}
           </Label>
           <SwitchToggle
             id="glowEffect"
-            :checked="disabledGlowEffect"
+            :checked="!disabledGlowEffect"
             @update:checked="overlaySettingsStore.toggleGlowEffect"
           />
         </SettingsContent>
       </SettingsSection>
 
       <!-- Text section -->
-      <SettingsSection label="Text">
+      <SettingsSection :label="$t('sidebar.configuration.settings.label.text')">
         <SettingsContent>
           <Label> {{ $t('sidebar.configuration.settings.font') }}</Label>
           <SelectFont v-model="overlayFont" />
@@ -141,7 +138,7 @@ const {
       </SettingsSection>
 
       <!-- Win/lose section -->
-      <SettingsSection label="Win/Lose">
+      <SettingsSection :label="$t('sidebar.configuration.settings.label.winLose')">
         <SettingsContent>
           <Label for="win-color">
             {{ $t('sidebar.configuration.settings.winColor') }}
@@ -160,7 +157,7 @@ const {
           </Label>
           <SwitchToggle
             id="winLose"
-            :checked="disabledWinLose"
+            :checked="!disabledWinLose"
             @update:checked="overlaySettingsStore.toggleWinLose"
           />
         </SettingsContent>
@@ -170,14 +167,17 @@ const {
           </Label>
           <SwitchToggle
             id="lastPoints"
-            :checked="disabledLastMatchPoints"
+            :checked="!disabledLastMatchPoints"
             @update:checked="overlaySettingsStore.toggleLastMatchPoints"
           />
         </SettingsContent>
       </SettingsSection>
 
       <!-- Progress section -->
-      <SettingsSection v-if="overlayStyle === 'old'" label="Progress bar">
+      <SettingsSection
+        v-if="overlayStyle === 'old'"
+        :label="$t('sidebar.configuration.settings.label.progressbar')"
+      >
         <SettingsContent>
           <Label for="background-color">
             {{ $t('sidebar.configuration.settings.progress') }}
@@ -196,7 +196,7 @@ const {
           </Label>
           <SwitchToggle
             id="progress"
-            :checked="disabledProgress"
+            :checked="!disabledProgress"
             @update:checked="overlaySettingsStore.toggleProgress"
           />
         </SettingsContent>

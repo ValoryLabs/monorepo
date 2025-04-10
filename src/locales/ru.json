@@ -20,20 +20,26 @@
       "settings": {
         "font": "Шрифт",
         "styles": "Стиль оверлея",
-        "background": "Фон",
-        "disableBackground": "Выключить фон",
-        "disableBackgroundGradient": "Выключить градиент",
-        "disableBorder": "Выключить обводку",
-        "glowEffect": "Выключить эффект свечения",
+        "backgroundColor": "Цвет",
+        "disableBackground": "Фон",
+        "disableBackgroundGradient": "Градиент",
+        "disableBorder": "Обводка",
+        "glowEffect": "Эффект свечения",
         "text": "Текст",
-        "disableLastMatchPoints": "Выключить последние очки за матч",
-        "winColor": "Цвет побед",
-        "loseColor": "Цвет поражений",
-        "disableWinLose": "Выключить количество побед/поражений",
+        "disableLastMatchPoints": "Последние очки за матч",
+        "winColor": "Победа",
+        "loseColor": "Поражение",
+        "disableWinLose": "Количество побед/поражений",
         "primary": "Основной текст",
-        "progress": "Прогресс",
-        "progressBackground": "Фон прогресса",
-        "disableProgress": "Выключить прогресс"
+        "progress": "Цвет",
+        "progressBackground": "Цвет фона",
+        "disableProgress": "Процесс",
+        "label": {
+          "background": "Фон",
+          "text": "Текст",
+          "winLose": "Победы/Поражения",
+          "progressbar": "Прогресс"
+        }
       }
     },
     "preview": {
@@ -41,7 +47,7 @@
       "description": "Предпросмотр вашего оверлея перед генерацией URL."
     },
     "generate": {
-      "title": "Ссылка на оверлейй",
+      "title": "Ссылка на оверлей",
       "description": "Скопируйте URL ниже и вставьте его в ваше стриминговое приложение (в OBS Studio: Источники → Браузер)",
       "tooltip": "Скопировать URL",
       "dimensions": "Размеры:"
