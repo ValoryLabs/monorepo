@@ -14,6 +14,7 @@ export const useUserStore = defineStore(
 
     const showLeftSidebar: Ref<boolean> = ref(true)
     const showRightSidebar: Ref<boolean> = ref(true)
+    const showHeader: Ref<boolean> = ref(true)
 
     const toggleConfigurator = () => {
       configuratorActive.value = !configuratorActive.value
@@ -32,6 +33,7 @@ export const useUserStore = defineStore(
     }
 
     const toggleSidebar = () => {
+      showHeader.value = !showHeader.value
       showLeftSidebar.value = !showLeftSidebar.value
       showRightSidebar.value = !showRightSidebar.value
     }
@@ -45,6 +47,7 @@ export const useUserStore = defineStore(
       overlayDimensions,
       showLeftSidebar,
       showRightSidebar,
+      showHeader,
       toggleConfigurator,
       togglePreview,
       toggleLeftSidebar,

@@ -16,7 +16,7 @@ useHead({
 
 const userStore = useUserStore()
 const overlayStore = useOverlayStore()
-const { showLeftSidebar, showRightSidebar } = storeToRefs(userStore)
+const { showLeftSidebar, showRightSidebar, showHeader } = storeToRefs(userStore)
 
 const { F, R } = useMagicKeys()
 
@@ -30,8 +30,8 @@ watch(R, (v) => {
 </script>
 
 <template>
-  <Header />
-  <div class="flex h-[calc(100dvh-2.5rem)] w-dvw flex-row">
+  <Header v-if="showHeader" />
+  <div class="flex w-dvw flex-row" :class="showHeader ? 'h-[calc(100dvh-2.5rem)]' : 'h-dvh'">
     <aside
       v-if="showLeftSidebar"
       class="bg-background flex w-80 flex-col overflow-scroll border-r border-white/10 p-5 transition-all"
