@@ -16,16 +16,16 @@ useHead({
 
 const userStore = useUserStore()
 const overlayStore = useOverlayStore()
-const { showLeftSidebar, showRightSidebar, showHeader } = storeToRefs(userStore)
+const { showLeftSidebar, showRightSidebar, showHeader, configuratorActive } = storeToRefs(userStore)
 
 const { F, R } = useMagicKeys()
 
 watch(F, (v) => {
-  if (v) userStore.toggleSidebar()
+  if (v && configuratorActive) userStore.toggleSidebar()
 })
 
 watch(R, (v) => {
-  if (v) overlayStore.reset()
+  if (v && configuratorActive) overlayStore.reset()
 })
 </script>
 
