@@ -61,7 +61,7 @@ const images = [
       <TiltCard
         class="outline-second rounded outline-2 outline-offset-3 transition-all group-hover:scale-102 group-hover:outline-white"
         :class="[previewImage === image.name.toLowerCase() ? 'outline-white' : '']"
-        ><img class="w-30" :src="image.src" :alt="image.name"
+        ><img class="pointer-events-none w-30" :src="image.src" :alt="image.name"
       /></TiltCard>
 
       <div
