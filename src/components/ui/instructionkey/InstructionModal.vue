@@ -23,49 +23,48 @@ import { openLink } from '@/lib/utils'
 const steps = [
   {
     step: 1,
-    title: 'Go Discord server',
-    description: 'Click here to join the Discord server',
+    title: 'components.instruction.step1.title',
+    description: 'components.instruction.step1.description',
   },
   {
     step: 2,
-    title: 'Verify Your User',
-    description: 'Complete the captcha on the #Verify channel to verify your user.',
+    title: 'components.instruction.step2.title',
+    description: 'components.instruction.step2.description',
   },
   {
     step: 3,
-    title: 'Go to Channel',
-    description: 'Locate the #Get-a-key channel in the Discord server and go to it.',
+    title: 'components.instruction.step3.title',
+    description: 'components.instruction.step3.description',
   },
   {
     step: 4,
-    title: 'Click Generate',
-    description: 'Click on the "Generate" button to fill out the key generation form.',
+    title: 'components.instruction.step4.title',
+    description: 'components.instruction.step4.description',
   },
   {
     step: 5,
-    title: 'Select Valorant',
-    description: 'Select "Valorant" in the list of games.',
+    title: 'components.instruction.step5.title',
+    description: 'components.instruction.step5.description',
   },
   {
     step: 6,
-    title: 'Select Basic Key',
-    description: 'Select "Base key" in the list.',
+    title: 'components.instruction.step6.title',
+    description: 'components.instruction.step6.description',
   },
   {
     step: 7,
-    title: 'Fill the form',
-    description:
-      'Fill out the form. In the product name, enter "Valorant overlay", in the product description, enter "Overlay to show rank on stream", then click "Send"',
+    title: 'components.instruction.step7.title',
+    description: 'components.instruction.step7.description',
   },
   {
     step: 8,
-    title: 'Open the DM.',
-    description: 'You will receive your API key on your Discord DMs',
+    title: 'components.instruction.step8.title',
+    description: 'components.instruction.step8.description',
   },
   {
     step: 9,
-    title: 'Copy the API key and use it',
-    description: 'Use the generated key on the overlay page',
+    title: 'components.instruction.step9.title',
+    description: 'components.instruction.step9.description',
   },
 ]
 </script>
@@ -79,8 +78,8 @@ const steps = [
     </DialogTrigger>
     <DialogContent class="max-h-[95dvh] grid-rows-[auto_minmax(0,1fr)_auto] p-0 sm:max-w-[600px]">
       <DialogHeader class="p-6 pb-0">
-        <DialogTitle>Hendrik's API</DialogTitle>
-        <DialogDescription> A little instruction on how to get an API key. </DialogDescription>
+        <DialogTitle>{{ $t('components.instruction.title') }}</DialogTitle>
+        <DialogDescription> {{ $t('components.instruction.description') }} </DialogDescription>
       </DialogHeader>
       <div class="grid w-full gap-4 overflow-scroll px-6 py-2">
         <Stepper orientation="vertical" class="flex w-full flex-col justify-start gap-8">
@@ -93,7 +92,7 @@ const steps = [
           >
             <StepperSeparator
               v-if="step.step !== steps[steps.length - 1].step"
-              class="bg-muted group-data-[state=completed]:bg-primary absolute top-[38px] left-[18px] block h-[93%] w-0.5 shrink-0 rounded-full"
+              class="bg-second absolute top-[38px] left-[18px] block h-[93%] w-0.5 shrink-0 rounded-full opacity-20 group-data-[disabled]:opacity-20 group-data-[state=completed]:opacity-100"
             />
 
             <StepperTrigger as-child>
@@ -119,7 +118,7 @@ const steps = [
                 :class="[state === 'active' && 'text-primary']"
                 class="text-sm font-semibold transition lg:text-base"
               >
-                {{ step.title }}
+                {{ $t(step.title) }}
               </StepperTitle>
               <StepperDescription
                 v-if="step.description"
@@ -127,14 +126,14 @@ const steps = [
                 class="text-muted-foreground sr-only text-xs transition md:not-sr-only lg:text-sm"
               >
                 <span v-if="step.step !== 1">
-                  {{ step.description }}
+                  {{ $t(step.description) }}
                 </span>
                 <span
                   v-else
-                  class="cursor-pointer font-medium transition-colors hover:text-gray-500"
+                  class="cursor-pointer font-medium transition-colors hover:text-white/70"
                   @click="openLink('https://discord.gg/X3GaVkX2YN')"
                 >
-                  {{ step.description }}
+                  {{ $t(step.description) }}
                 </span>
               </StepperDescription>
             </div>

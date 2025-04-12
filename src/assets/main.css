@@ -13,6 +13,7 @@
   --color-ring: var(--ring);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-second: var(--second);
 
   --color-switch: var(--switch);
   --color-switch-foreground: var(--switch-foreground);
@@ -114,6 +115,7 @@
     --header: oklch(0 0 0);
     --background: oklch(0 0 0);
     --foreground: oklch(95% 0 0);
+    --second: oklch(53.3% 0 0);
 
     --muted: oklch(95% 0 0 / 0.5);
     --muted-foreground: oklch(64.9% 0.005 217.9);
@@ -196,13 +198,9 @@
     'Apple Color Emoji',
     'Segoe UI Emoji',
     Segoe UI Symbol;
-  font-synthesis: none;
-  font-feature-settings: normal;
-  font-variation-settings: normal;
-  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
 }
 
 body {
@@ -212,4 +210,8 @@ body {
 
 .font-valory {
   font-family: 'Russo One', sans-serif;
+}
+
+.title {
+  @apply inline-block bg-linear-to-b from-[#f2f2f2] to-[#a4a4a4] bg-clip-text text-lg font-semibold text-transparent;
 }

@@ -28,12 +28,10 @@ const copyUrl = () => {
 <template>
   <div class="flex flex-col gap-4">
     <div class="flex flex-col gap-2">
-      <span
-        class="inline-block bg-linear-to-b from-[#f2f2f2] to-[#dddddd] bg-clip-text text-lg font-semibold"
-      >
+      <span class="title">
         {{ $t('sidebar.generate.title') }}
       </span>
-      <span class="text-sm whitespace-pre-line text-white/70">
+      <span class="text-second text-sm whitespace-pre-line">
         {{ $t('sidebar.generate.description') }}
       </span>
     </div>
@@ -51,7 +49,7 @@ const copyUrl = () => {
         </Tooltip>
       </TooltipProvider>
     </div>
-    <span class="text-muted-foreground text-sm"
+    <span class="text-second text-sm"
       >{{ $t('sidebar.generate.dimensions') }} {{ overlayDimensions }}</span
     >
   </div>

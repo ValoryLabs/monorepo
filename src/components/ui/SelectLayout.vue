@@ -39,13 +39,13 @@ const images = [
       :key="image.codeName"
     >
       <TiltCard
-        class="rounded outline-2 outline-offset-3 outline-[hsl(222deg,10%,17%)] transition-all group-hover:scale-102 group-hover:outline-white"
+        class="outline-second rounded outline-2 outline-offset-3 transition-all group-hover:scale-102 group-hover:outline-white"
         :class="[overlayStyle === image.codeName ? 'outline-white' : '']"
         ><img class="w-30" :src="image.src" :alt="image.name"
       /></TiltCard>
 
       <div
-        class="text-muted inline-flex items-center gap-2 font-medium transition-colors group-hover:text-white"
+        class="text-second inline-flex items-center gap-2 font-medium transition-colors group-hover:text-white"
         :class="[overlayStyle === image.codeName ? 'text-white' : '']"
       >
         <Check

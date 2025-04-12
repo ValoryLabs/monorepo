@@ -50,11 +50,8 @@ const search = () => {
 <template>
   <div class="flex w-full flex-col gap-4 rounded-lg">
     <div class="flex flex-col gap-2">
-      <span
-        class="inline-block bg-linear-to-b from-[#f2f2f2] to-[#dddddd] bg-clip-text text-lg font-semibold"
-        >{{ t('sidebar.profile.title') }}</span
-      >
-      <span class="text-sm whitespace-pre-line text-white/70">
+      <span class="title">{{ t('sidebar.profile.title') }}</span>
+      <span class="text-second text-sm whitespace-pre-line">
         {{ t('sidebar.profile.description') }}
       </span>
     </div>

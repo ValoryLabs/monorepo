@@ -12,7 +12,7 @@ import { Languages } from 'lucide-vue-next'
     <div @click="$router.push('/')" class="flex h-full cursor-pointer items-center gap-2">
       <Valory class="size-6" />
       <span
-        class="font-valory mt-px inline-block bg-linear-to-b from-[#f2f2f2] to-[#dddddd] bg-clip-text text-base leading-none"
+        class="font-valory mt-px inline-block bg-linear-to-b from-[#f2f2f2] to-[#dddddd] bg-clip-text text-base leading-none text-transparent"
         >VALORY</span
       >
     </div>

@@ -109,6 +109,46 @@
       "new": "Modern",
       "new_v2": "Modern v2",
       "minimal": "Minimal"
+    },
+    "instruction": {
+      "title": "Hendrik's API",
+      "description": "A little instruction on how to get an API key.",
+      "step1": {
+        "title": "Go Discord server.",
+        "description": "Click here to join the Discord server."
+      },
+      "step2": {
+        "title": "Verify Your User.",
+        "description": "Complete the captcha on the #Verify channel to verify your user."
+      },
+      "step3": {
+        "title": "Go to Channel.",
+        "description": "Locate the #Get-a-key channel in the Discord server and go to it."
+      },
+      "step4": {
+        "title": "Click Generate.",
+        "description": "Click on the \"Generate\" button to fill out the key generation form."
+      },
+      "step5": {
+        "title": "Select Valorant.",
+        "description": "Select \"Valorant\" in the list of games."
+      },
+      "step6": {
+        "title": "Select Basic Key.",
+        "description": "Select \"Base key\" in the list."
+      },
+      "step7": {
+        "title": "Fill the form.",
+        "description": "Fill out the form. In the product name, enter \"Valorant overlay\", in the product description, enter \"Overlay to show rank on stream\", then click \"Send\"."
+      },
+      "step8": {
+        "title": "Open the DM.",
+        "description": "You will receive your API key on your Discord DMs."
+      },
+      "step9": {
+        "title": "Copy the API key and use it.",
+        "description": "Use the generated key on the overlay page."
+      }
     }
   }
 }

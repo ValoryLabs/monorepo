@@ -32,11 +32,8 @@ const {
 <template>
   <div class="flex flex-col gap-3">
     <div class="bg-background z-20 flex flex-col gap-2 pb-5">
-      <span
-        class="inline-block bg-linear-to-b from-[#f2f2f2] to-[#dddddd] bg-clip-text text-lg font-semibold"
-        >{{ $t('sidebar.configuration.title') }}</span
-      >
-      <span class="text-sm whitespace-pre-line text-white/70">
+      <span class="title">{{ $t('sidebar.configuration.title') }}</span>
+      <span class="text-second text-sm whitespace-pre-line">
         {{ $t('sidebar.configuration.description') }}
       </span>
     </div>
