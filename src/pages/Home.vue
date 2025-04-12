@@ -4,7 +4,7 @@ import Button from '@/components/ui/button/Button.vue'
 import Header from '@/components/home/Header.vue'
 import router from '@/router'
 import Footer from '@/components/home/Footer.vue'
-import StreamersMarquee from '@/components/StreamersMarquee.vue'
+// import StreamersMarquee from '@/components/StreamersMarquee.vue'
 </script>
 
 <template>
@@ -36,6 +36,6 @@ import StreamersMarquee from '@/components/StreamersMarquee.vue'
       </Button>
       <Footer />
     </div>
-    <StreamersMarquee />
+    <!-- <StreamersMarquee /> -->
   </main>
 </template>
