@@ -84,7 +84,7 @@ const props = withDefaults(defineProps<Props>(), {
             :class="{ 'drop-shadow-[0px_0px_12px_var(--win-color)]': !disabledGlowEffect }"
             >54%</span
           >
-          <span class="text-center text-xs leading-none whitespace-pre-line">{{
+          <span class="text-center text-xs leading-none font-medium whitespace-pre-line">{{
             $t('overlays.winrate')
           }}</span>
         </div>
