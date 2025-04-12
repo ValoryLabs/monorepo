@@ -149,6 +149,42 @@
         "title": "Copy the API key and use it.",
         "description": "Use the generated key on the overlay page."
       }
+    },
+    "tooltips": {
+      "fullscreen": "Fullscreen",
+      "reset": "Reset",
+      "shortcuts": "Shortcuts"
+    },
+    "shortcuts": {
+      "title": "Shortcuts",
+      "items": {
+        "fullscreen": "Fullscreen",
+        "reset": "Reset"
+      }
+    }
+  },
+  "overlays": {
+    "level": "Level",
+    "elo": "elo",
+    "rr": "RR",
+    "winrate": "Winrate",
+    "rating": "Rating",
+    "win": "Win",
+    "win_short": "W",
+    "lose": "Lose",
+    "lose_short": "L",
+    "lastMatch": "Last Match",
+    "pts": "pts",
+    "ranks": {
+      "iron": "Iron",
+      "bronze": "Bronze",
+      "silver": "Silver",
+      "gold": "Gold",
+      "platinum": "Platinum",
+      "diamond": "Diamond",
+      "ascendant": "Ascendant",
+      "immortal": "Immortal",
+      "radiant": "Radiant"
     }
   }
 }

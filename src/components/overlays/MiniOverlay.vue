@@ -68,7 +68,7 @@ const props = withDefaults(defineProps<Props>(), {
         class="font-bold text-[var(--primary-text-color)]"
         :class="{ 'drop-shadow-[0px_0px_6px_var(--primary-text-color)]': !disabledGlowEffect }"
       >
-        2000 RR
+        2000 {{ $t('overlays.rr') }}
       </div>
     </div>
     <div v-if="!disabledWinLose" class="flex flex-row items-center gap-2">

@@ -70,21 +70,23 @@ const props = withDefaults(defineProps<Props>(), {
             class="flex flex-row items-center gap-2 text-xl leading-none font-extrabold text-[var(--text-color)] capitalize"
             :class="{ 'drop-shadow-[0px_0px_12px_var(--text-color)]': !disabledGlowEffect }"
           >
-            Immortal 3
+            {{ $t('overlays.ranks.immortal') }} 3
           </span>
           <span
             class="text-sm leading-none font-medium text-[var(--primary-text-color)] capitalize"
           >
-            Level: 200
+            {{ $t('overlays.level') }}: 200
           </span>
         </div>
-        <div v-if="!disabledWinLose" class="flex flex-col items-center justify-center gap-0">
+        <div v-if="!disabledWinLose" class="flex flex-col items-center justify-center gap-1">
           <span
             class="text-2xl leading-none font-extrabold text-[var(--win-color)]"
             :class="{ 'drop-shadow-[0px_0px_12px_var(--win-color)]': !disabledGlowEffect }"
             >54%</span
           >
-          <span class="text-xs">Win rate</span>
+          <span class="text-center text-xs leading-none whitespace-pre-line">{{
+            $t('overlays.winrate')
+          }}</span>
         </div>
       </div>
     </div>

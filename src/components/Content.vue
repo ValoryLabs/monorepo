@@ -1,17 +1,16 @@
 <script setup lang="ts">
 import { useUserStore } from '@/stores/user.ts'
-import { useOverlayStore } from '@/stores/overlay.ts'
 import { storeToRefs } from 'pinia'
 import Overlay from '@/components/Overlay.vue'
 import { Button } from '@/components/ui/button'
 
-import { Expand, Hand, RotateCcw, Command } from 'lucide-vue-next'
+import { Hand } from 'lucide-vue-next'
 
 import { onBeforeUnmount, onMounted, ref, reactive, onUnmounted, nextTick } from 'vue'
 import { openLink } from '@/lib/utils'
-import Shortcuts from './ui/Shortcuts.vue'
 
-const overlaySettingsStore = useOverlayStore()
+import Panel from '@/components/ui/Panel.vue'
+
 const userStore = useUserStore()
 const { configuratorActive, previewDraggable, previewImage, overlayDimensions } =
   storeToRefs(userStore)
@@ -188,19 +187,8 @@ onBeforeUnmount(() => {
               </div>
             </div>
           </Transition>
-          <div class="absolute bottom-2 left-1/2 inline-flex -translate-x-1/2 items-center gap-1">
-            <Button variant="secondary" size="icon" @click="userStore.toggleSidebar()">
-              <Expand class="size-6" />
-            </Button>
-            <Button variant="secondary" size="icon" @click="overlaySettingsStore.reset">
-              <RotateCcw class="size-6" />
-            </Button>
-            <Shortcuts>
-              <Button variant="secondary" size="icon">
-                <Command class="size-6" />
-              </Button>
-            </Shortcuts>
-          </div>
+
+          <Panel />
 
           <div
             @click="openLink('https://www.twitch.tv/ssseikatsu')"

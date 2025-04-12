@@ -6,11 +6,11 @@ import { Kbd } from '@/components/ui/kbd'
 const shortcuts = [
   {
     key: ['F'],
-    description: 'Fullscreen',
+    description: 'components.shortcuts.items.fullscreen',
   },
   {
     key: ['R'],
-    description: 'Reset',
+    description: 'components.shortcuts.items.reset',
   },
 ]
 </script>
@@ -22,13 +22,13 @@ const shortcuts = [
     </PopoverTrigger>
     <PopoverContent>
       <div class="flex flex-col gap-3 font-medium">
-        <span>Shortcuts</span>
+        <span>{{ $t('components.shortcuts.title') }}</span>
         <div
           class="inline-flex items-center justify-between rounded-md bg-white/20 p-2 text-sm"
           v-for="shortcut in shortcuts"
           :key="shortcut.key"
         >
-          <span>{{ shortcut.description }}</span>
+          <span>{{ $t(shortcut.description) }}</span>
           <Kbd :keys="shortcut.key" />
         </div>
       </div>

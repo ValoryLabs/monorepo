@@ -45,14 +45,16 @@ const props = withDefaults(defineProps<Props>(), {
     <div
       class="ml-5 flex w-[340px] flex-col flex-nowrap content-between items-start justify-center gap-[6px] py-5 font-bold"
     >
-      <span class="text-[20px] leading-none text-[var(--text-color)] uppercase"> RATING </span>
+      <span class="text-[20px] leading-none text-[var(--text-color)] uppercase">
+        {{ $t('overlays.rating') }}
+      </span>
       <span class="text-[24px] leading-none text-[var(--primary-text-color)] uppercase">
-        Diamond 1 - 82RR
+        {{ $t('overlays.ranks.immortal') }} 1 - 82 {{ $t('overlays.rr') }}
       </span>
       <span v-if="!disabledWinLose" class="text-[17px] leading-none text-[var(--text-color)]">
-        Win:
+        {{ $t('overlays.win') }}:
         <span class="text-[var(--primary-text-color)]"> 0 </span>
-        Lose:
+        {{ $t('overlays.lose') }}:
         <span class="text-[var(--primary-text-color)]"> 0 </span>
       </span>
       <div
@@ -62,10 +64,10 @@ const props = withDefaults(defineProps<Props>(), {
       ></div>
       <div v-if="!disabledLastMatchPoints" class="flex flex-row gap-1 text-base">
         <span :class="`text-[15px] leading-none text-[var(--text-color)] uppercase`">
-          Last match:
+          {{ $t('overlays.lastMatch') }}:
         </span>
         <span class="text-[15px] leading-none text-[var(--primary-text-color)] uppercase">
-          32 PTS
+          32 {{ $t('overlays.pts') }}
         </span>
       </div>
     </div>

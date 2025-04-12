@@ -62,12 +62,12 @@ const props = withDefaults(defineProps<Props>(), {
           <span
             class="text-[18px] leading-none font-bold text-[var(--primary-text-color)] uppercase"
           >
-            IMMORTAL3 #46
+            {{ $t('overlays.ranks.immortal') }} #46
           </span>
           <span
             class="flex flex-row items-center gap-2 text-base leading-none font-medium text-[var(--text-color)]"
           >
-            1838 elo - 123RR
+            1838 {{ $t('overlays.elo') }} - 123 {{ $t('overlays.rr') }}
             <span
               class="text-[10px] font-medium text-[var(--win-color)]"
               :class="{ 'drop-shadow-[0px_0px_6px_var(--win-color)]': !disabledGlowEffect }"
@@ -81,35 +81,35 @@ const props = withDefaults(defineProps<Props>(), {
                 :class="{ 'drop-shadow-[0px_0px_12px_var(--win-color)]': !disabledGlowEffect }"
                 :style="{ backgroundColor: `${props.winColor}80` }"
               >
-                W
+                {{ $t('overlays.win_short') }}
               </span>
               <span
                 class="flex h-5 w-5 flex-col items-center justify-center rounded-[4px] text-xs leading-none font-bold text-[var(--lose-color)]"
                 :class="{ 'drop-shadow-[0px_0px_12px_var(--lose-color)]': !disabledGlowEffect }"
                 :style="{ backgroundColor: `${props.loseColor}80` }"
               >
-                L
+                {{ $t('overlays.lose_short') }}
               </span>
               <span
                 class="flex h-5 w-5 flex-col items-center justify-center rounded-[4px] text-xs leading-none font-bold text-[var(--win-color)]"
                 :class="{ 'drop-shadow-[0px_0px_12px_var(--win-color)]': !disabledGlowEffect }"
                 :style="{ backgroundColor: `${props.winColor}80` }"
               >
-                W
+                {{ $t('overlays.win_short') }}
               </span>
               <span
                 class="flex h-5 w-5 flex-col items-center justify-center rounded-[4px] text-xs leading-none font-bold text-[var(--lose-color)]"
                 :class="{ 'drop-shadow-[0px_0px_12px_var(--lose-color)]': !disabledGlowEffect }"
                 :style="{ backgroundColor: `${props.loseColor}80` }"
               >
-                L
+                {{ $t('overlays.lose_short') }}
               </span>
               <span
                 class="flex h-5 w-5 flex-col items-center justify-center rounded-[4px] bg-[#61c4b9b3] text-xs leading-none font-bold text-[var(--win-color)]"
                 :class="{ 'drop-shadow-[0px_0px_12px_var(--win-color)]': !disabledGlowEffect }"
                 :style="{ backgroundColor: `${props.winColor}80` }"
               >
-                W
+                {{ $t('overlays.win_short') }}
               </span>
             </div>
             <span class="text-sm leading-none font-bold text-[var(--text-color)]">40%</span>

@@ -8,22 +8,18 @@ import TiltCard from '@/components/ui/TiltCard.vue'
 
 const images = [
   {
-    name: 'Old',
     codeName: 'old',
     src: '/overlays/old.webp',
   },
   {
-    name: 'New',
     codeName: 'new',
     src: '/overlays/new.webp',
   },
   {
-    name: 'New v2',
     codeName: 'new_v2',
     src: '/overlays/new_v2.webp',
   },
   {
-    name: 'Minimal',
     codeName: 'minimal',
     src: '/overlays/minimal.webp',
   },
@@ -41,7 +37,7 @@ const images = [
       <TiltCard
         class="outline-second rounded outline-2 outline-offset-3 transition-all group-hover:scale-102 group-hover:outline-white"
         :class="[overlayStyle === image.codeName ? 'outline-white' : '']"
-        ><img class="w-30" :src="image.src" :alt="image.name"
+        ><img class="w-30" :src="image.src" :alt="image.codeName"
       /></TiltCard>
 
       <div
@@ -54,7 +50,7 @@ const images = [
           :stroke-width="2.75"
           absoluteStrokeWidth
         />
-        <span>{{ image.name }}</span>
+        <span>{{ $t(`components.selectLayout.${image.codeName}`) }}</span>
       </div>
     </button>
   </div>
