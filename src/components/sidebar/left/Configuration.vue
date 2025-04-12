@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Label } from '@/components/ui/label'
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 import ColorPicker from '@/components/ui/ColorPicker.vue'
 import { useOverlayStore } from '@/stores/overlay.ts'
 import { storeToRefs } from 'pinia'
@@ -7,6 +8,7 @@ import SelectLayout from '@/components/ui/SelectLayout.vue'
 import SelectFont from '@/components/ui/SelectFont.vue'
 import { SettingsSection, SettingsContent, SettingsRoot } from '@/components/settings'
 import { SwitchToggle } from '@/components/ui/switchtoggle'
+import { RotateCcw } from 'lucide-vue-next'
 
 const overlaySettingsStore = useOverlayStore()
 const {
@@ -32,7 +34,20 @@ const {
 <template>
   <div class="flex flex-col gap-3">
     <div class="bg-background z-20 flex flex-col gap-2 pb-5">
-      <span class="title">{{ $t('sidebar.configuration.title') }}</span>
+      <div class="inline-flex items-center justify-between">
+        <span class="title">{{ $t('sidebar.configuration.title') }}</span>
+
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger>
+              <RotateCcw @click="overlaySettingsStore.reset" class="size-4" />
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>{{ $t('components.tooltips.reset') }}</p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
+      </div>
       <span class="text-second text-sm whitespace-pre-line">
         {{ $t('sidebar.configuration.description') }}
       </span>
