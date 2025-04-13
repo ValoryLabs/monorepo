@@ -32,6 +32,7 @@ const fonts: string[] = [
   'Geist',
   'Onest',
   'Roboto',
+  'Oxanium',
   'Manrope',
   'Poppins',
   'Gabarito',
