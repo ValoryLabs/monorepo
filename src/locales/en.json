@@ -153,7 +153,9 @@
     "tooltips": {
       "fullscreen": "Fullscreen",
       "reset": "Reset",
-      "shortcuts": "Shortcuts"
+      "shortcuts": "Shortcuts",
+      "apiKey": "How to get API key?",
+      "randomRiotId": "Random Riot ID"
     },
     "shortcuts": {
       "title": "Shortcuts",

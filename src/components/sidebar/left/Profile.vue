@@ -78,7 +78,7 @@ const getRandomPlayer = async () => {
               </Button>
             </TooltipTrigger>
             <TooltipContent>
-              <p>Random Riot ID</p>
+              <p>{{ $t('components.tooltips.randomRiotId') }}</p>
             </TooltipContent>
           </Tooltip>
         </TooltipProvider>

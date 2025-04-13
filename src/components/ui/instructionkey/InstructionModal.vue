@@ -81,7 +81,7 @@ const steps = [
             </Button>
           </TooltipTrigger>
           <TooltipContent>
-            <p>How to get API key?</p>
+            <p>{{ $t('components.tooltips.apiKey') }}</p>
           </TooltipContent>
         </Tooltip>
       </TooltipProvider>
