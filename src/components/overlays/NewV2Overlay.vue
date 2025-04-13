@@ -3,8 +3,6 @@ interface Props {
   backgroundColor?: string
   textColor?: string
   primaryTextColor?: string
-  progressColor?: string
-  progressBgColor?: string
   winColor?: string
   loseColor?: string
   disabledBackground?: boolean
@@ -13,14 +11,18 @@ interface Props {
   disabledWinLose?: boolean
   disabledProgress?: boolean
   overlayFont?: string
+
+  riotId?: string
+  rankIcon?: string
+  rank?: string
+  level?: number
+  seasonWinRate?: number
 }
 
 const props = withDefaults(defineProps<Props>(), {
   backgroundColor: '#07090e',
   textColor: '#f2f2f2',
   primaryTextColor: '#B9B4B4',
-  progressColor: '#00FFE3',
-  progressBgColor: '#f2f2f2',
   winColor: '#00FFE3',
   loseColor: '#FF7986',
   disabledBackground: false,
@@ -29,6 +31,12 @@ const props = withDefaults(defineProps<Props>(), {
   disabledWinLose: false,
   disabledProgress: false,
   overlayFont: 'Inter',
+
+  riotId: 'undefined',
+  rankIcon: 'Unranked',
+  rank: 'Unranked',
+  level: 0,
+  seasonWinRate: 0,
 })
 </script>
 
@@ -44,7 +52,7 @@ const props = withDefaults(defineProps<Props>(), {
     >
       <div class="relative px-5 py-7">
         <img
-          src="/ranks/26.webp"
+          :src="`/ranks/${props.rankIcon}.webp`"
           class="relative z-10"
           alt=""
           height="55"
@@ -53,7 +61,7 @@ const props = withDefaults(defineProps<Props>(), {
         />
         <img
           v-if="!disabledGlowEffect"
-          src="/ranks/26.webp"
+          :src="`/ranks/${props.rankIcon}.webp`"
           class="absolute top-1/2 left-1/2 z-0 size-14 max-w-[unset] -translate-x-1/2 -translate-y-1/2 transform blur-[20px]"
           alt=""
           height="55"
@@ -64,29 +72,36 @@ const props = withDefaults(defineProps<Props>(), {
       <div class="flex h-fit flex-1 flex-row justify-between py-3 pr-7">
         <div class="flex h-fit flex-col justify-center gap-[5px]">
           <span class="text-sm leading-none font-medium text-[var(--primary-text-color)]">
-            MAGICX#1337
+            {{ props.riotId }}
           </span>
           <span
             class="flex flex-row items-center gap-2 text-xl leading-none font-extrabold text-[var(--text-color)] capitalize"
             :class="{ 'drop-shadow-[0px_0px_12px_var(--text-color)]': !disabledGlowEffect }"
           >
-            {{ $t('overlays.ranks.immortal') }} 3
+            {{ props.rank }}
           </span>
           <span
             class="text-sm leading-none font-medium text-[var(--primary-text-color)] capitalize"
           >
-            {{ $t('overlays.level') }}: 200
+            Level: {{ props.level }}
           </span>
         </div>
         <div v-if="!disabledWinLose" class="flex flex-col items-center justify-center gap-1">
           <span
-            class="text-2xl leading-none font-extrabold text-[var(--win-color)]"
-            :class="{ 'drop-shadow-[0px_0px_12px_var(--win-color)]': !disabledGlowEffect }"
-            >54%</span
+            class="text-2xl leading-none font-extrabold"
+            :class="{
+              'drop-shadow-[0px_0px_12px_var(--win-color)]':
+                !disabledGlowEffect && props.seasonWinRate > 50,
+              'drop-shadow-[0px_0px_12px_var(--lose-color)]':
+                !disabledGlowEffect && props.seasonWinRate <= 50,
+              'text-[var(--win-color)]': props.seasonWinRate > 50,
+              'text-[var(--lose-color)]': props.seasonWinRate <= 50,
+            }"
+            >{{ props.seasonWinRate }}%</span
           >
-          <span class="text-center text-xs leading-none font-medium whitespace-pre-line">{{
-            $t('overlays.winrate')
-          }}</span>
+          <span class="text-center text-xs leading-none font-medium whitespace-pre-line"
+            >Winrate</span
+          >
         </div>
       </div>
     </div>
@@ -97,7 +112,6 @@ const props = withDefaults(defineProps<Props>(), {
 .new-style {
   --text-color: v-bind(textColor);
   --primary-text-color: v-bind(primaryTextColor);
-  --progress-color: v-bind(progressColor);
   --win-color: v-bind(winColor);
   --lose-color: v-bind(loseColor);
 }
