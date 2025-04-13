@@ -102,24 +102,21 @@ const props = withDefaults(defineProps<Props>(), {
               >{{ props.ptsDelta }}</span
             >
           </span>
-          <div v-if="!disabledWinLose" class="flex flex-row items-center gap-2">
+          <div v-if="!disabledWinLose" class="mt-[2px] flex flex-row items-center gap-2">
             <div
-              class="mt-[2px] flex flex-row items-center gap-1"
+              class="flex h-5 w-5 flex-col items-center justify-center rounded-[4px] text-xs leading-none font-bold"
               v-for="(result, index) in lastMatches"
               :key="index"
               :class="{
-                'flex h-5 w-5 flex-col items-center justify-center rounded-[4px] text-xs leading-none font-bold text-[var(--win-color)]':
-                  result === 'Win',
+                'text-[var(--win-color)]': result === 'Win',
                 'drop-shadow-[0px_0px_12px_var(--win-color)]':
                   !disabledGlowEffect && result === 'Win',
-                'flex h-5 w-5 flex-col items-center justify-center rounded-[4px] text-xs leading-none font-bold text-[var(--lose-color)]':
-                  result === 'Lose',
+                'text-[var(--lose-color)]': result === 'Lose',
                 'drop-shadow-[0px_0px_12px_var(--lose-color)]':
                   !disabledGlowEffect && result === 'Lose',
-                'flex h-5 w-5 flex-col items-center justify-center rounded-[4px] text-xs leading-none font-bold text-[var(--primary-text-color)]':
-                  result === 'Draw',
+                'text-[var(--primary-text-color)]': result === 'Draw' || result === '-',
                 'drop-shadow-[0px_0px_12px_var(--primary-text-color)]':
-                  !disabledGlowEffect && result === 'Draw' ,
+                  (!disabledGlowEffect && result === 'Draw') || result === '-',
               }"
               :style="{
                 backgroundColor:
