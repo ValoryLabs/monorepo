@@ -40,7 +40,7 @@ const {
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger>
-              <RotateCcw @click="overlaySettingsStore.reset" class="size-4" />
+              <RotateCcw @click="overlaySettingsStore.reset" class="size-4 cursor-pointer" />
             </TooltipTrigger>
             <TooltipContent>
               <p>{{ $t('components.tooltips.reset') }}</p>
