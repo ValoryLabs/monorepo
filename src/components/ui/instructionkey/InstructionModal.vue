@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 import { Button } from '@/components/ui/button'
 import {
   Dialog,
@@ -72,9 +73,18 @@ const steps = [
 <template>
   <Dialog>
     <DialogTrigger as-child>
-      <Button size="icon">
-        <CircleHelp />
-      </Button>
+      <TooltipProvider>
+        <Tooltip>
+          <TooltipTrigger>
+            <Button size="icon">
+              <CircleHelp />
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>How to get API key?</p>
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
     </DialogTrigger>
     <DialogContent class="max-h-[95dvh] grid-rows-[auto_minmax(0,1fr)_auto] p-0 sm:max-w-[600px]">
       <DialogHeader class="p-6 pb-0">

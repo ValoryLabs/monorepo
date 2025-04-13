@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 import Riot from '@/components/icons/Riot.vue'
 import InputWithIcon from '@/components/ui/InputWithIcon.vue'
 import Button from '@/components/ui/button/Button.vue'
@@ -9,8 +10,10 @@ import { useUserStore } from '@/stores/user.ts'
 import { useI18n } from 'vue-i18n'
 import InstructionModal from '@/components/ui/instructionkey/InstructionModal.vue'
 import { ref } from 'vue'
-import { Search, KeyRound } from 'lucide-vue-next'
+import { Search, KeyRound, Dices } from 'lucide-vue-next'
 import { UserValidator } from '@/api/auth/user.validator'
+
+import { getRandomPlayerName } from '@/api/leaderboard'
 
 const { t } = useI18n()
 
@@ -45,6 +48,13 @@ const search = () => {
     description: (data: { message: string }) => t(data.message),
   })
 }
+
+const getRandomPlayer = async () => {
+  const name = await getRandomPlayerName()
+  if (name) {
+    riotID.value = name
+  }
+}
 </script>
 
 <template>
@@ -56,9 +66,23 @@ const search = () => {
       </span>
     </div>
     <div class="flex w-full flex-col gap-4">
-      <InputWithIcon v-model="riotID" placeholder="nickname#tag">
-        <Riot :size="16" />
-      </InputWithIcon>
+      <div class="inline-flex items-center gap-2">
+        <InputWithIcon v-model="riotID" placeholder="nickname#tag">
+          <Riot :size="16" />
+        </InputWithIcon>
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger>
+              <Button size="icon" @click="getRandomPlayer()" :disabled="!configuratorActive">
+                <Dices class="size-4" />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>Random Riot ID</p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
+      </div>
       <div class="inline-flex items-center gap-2">
         <InputWithIcon v-model="apiKey" type="password" placeholder="Henrik's DEV API Key">
           <KeyRound class="size-4" />
