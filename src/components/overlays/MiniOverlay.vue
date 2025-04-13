@@ -1,12 +1,10 @@
 <script setup lang="ts">
-import { ArrowUp, ArrowDown, TrendingUp } from 'lucide-vue-next'
+import { ArrowUp, ArrowDown, TrendingUp, TrendingDown, Minus } from 'lucide-vue-next'
 
 interface Props {
   backgroundColor?: string
   textColor?: string
   primaryTextColor?: string
-  progressColor?: string
-  progressBgColor?: string
   winColor?: string
   loseColor?: string
   disabledBackground?: boolean
@@ -15,14 +13,19 @@ interface Props {
   disabledWinLose?: boolean
   disabledProgress?: boolean
   overlayFont?: string
+
+  rankIcon?: string
+  rank?: string
+  elo?: number
+  win?: number
+  lose?: number
+  ptsDelta?: number
 }
 
 const props = withDefaults(defineProps<Props>(), {
   backgroundColor: '#07090e',
   textColor: '#f2f2f2',
   primaryTextColor: '#B9B4B4',
-  progressColor: '#00FFE3',
-  progressBgColor: '#f2f2f2',
   winColor: '#00FFE3',
   loseColor: '#FF7986',
   disabledBackground: false,
@@ -31,7 +34,19 @@ const props = withDefaults(defineProps<Props>(), {
   disabledProgress: false,
   disabledGlowEffect: false,
   overlayFont: 'Inter',
+
+  rankIcon: 'Unranked',
+  rank: 'Unranked',
+  elo: 0,
+  win: 0,
+  lose: 0,
+  ptsDelta: 0,
 })
+
+function extractRankNumber(rank: string): string {
+  const match = rank.match(/\d+$/)
+  return match ? match[0] : ''
+}
 </script>
 
 <template>
@@ -49,26 +64,34 @@ const props = withDefaults(defineProps<Props>(), {
     <div class="flex flex-row items-center justify-center gap-2">
       <div class="relative">
         <div class="relative flex">
-          <img src="/ranks/26.webp" class="z-2" alt="" height="40" width="40" preload="high" />
+          <img
+            :src="`/ranks/${props.rankIcon}.webp`"
+            class="z-2"
+            alt=""
+            height="40"
+            width="40"
+            preload="high"
+          />
           <img
             class="absolute top-1/2 left-1/2 size-10 max-w-[unset] -translate-x-1/2 -translate-y-1/2 transform blur-[10px]"
             v-if="!disabledGlowEffect"
-            src="/ranks/26.webp"
+            :src="`/ranks/${props.rankIcon}.webp`"
             alt=""
             preload="high"
           />
         </div>
         <span
+          v-if="extractRankNumber(props.rank)"
           class="absolute top-0 right-0 z-2 flex size-4 flex-col items-center justify-center rounded-full bg-white text-sm leading-none font-medium text-black"
         >
-          3
+          {{ extractRankNumber(props.rank) }}
         </span>
       </div>
       <div
-        class="font-bold text-[var(--primary-text-color)]"
+        class="font-bold text-[var(--primary-text-color)] uppercase"
         :class="{ 'drop-shadow-[0px_0px_6px_var(--primary-text-color)]': !disabledGlowEffect }"
       >
-        2000 {{ $t('overlays.rr') }}
+        {{ props.elo }} elo
       </div>
     </div>
     <div v-if="!disabledWinLose" class="flex flex-row items-center gap-2">
@@ -77,21 +100,31 @@ const props = withDefaults(defineProps<Props>(), {
         :class="{ 'drop-shadow-[0px_0px_6px_var(--win-color)]': !disabledGlowEffect }"
       >
         <ArrowUp />
-        2
+        {{ props.win }}
       </span>
       <span
         class="flex flex-row items-center gap-1 font-bold text-[var(--lose-color)]"
         :class="{ 'drop-shadow-[0px_0px_6px_var(--lose-color)]': !disabledGlowEffect }"
       >
         <ArrowDown />
-        0
+        {{ props.lose }}
       </span>
       <span
-        class="flex flex-row items-center gap-1 font-bold text-[var(--win-color)]"
-        :class="{ 'drop-shadow-[0px_0px_6px_var(--win-color)]': !disabledGlowEffect }"
+        class="flex flex-row items-center gap-1 font-bold"
+        :class="{
+          'drop-shadow-[0px_0px_6px_var(--win-color)]': !disabledGlowEffect && props.ptsDelta > 0,
+          'drop-shadow-[0px_0px_6px_var(--lose-color)]': !disabledGlowEffect && props.ptsDelta < 0,
+          'drop-shadow-[0px_0px_6px_var(--primary-text-color)]':
+            !disabledGlowEffect && props.ptsDelta === 0,
+          'text-[var(--win-color)]': props.ptsDelta > 0,
+          'text-[var(--lose-color)]': props.ptsDelta < 0,
+          'text-[var(--primary-text-color)]': props.ptsDelta === 0,
+        }"
       >
-        <TrendingUp />
-        15
+        <TrendingUp v-if="props.ptsDelta > 0" />
+        <TrendingDown v-else-if="props.ptsDelta < 0" />
+        <Minus v-else />
+        {{ props.ptsDelta }}
       </span>
     </div>
   </div>
@@ -101,7 +134,6 @@ const props = withDefaults(defineProps<Props>(), {
 .minimal-style {
   --text-color: v-bind(textColor);
   --primary-text-color: v-bind(primaryTextColor);
-  --progress-color: v-bind(progressColor);
   --win-color: v-bind(winColor);
   --lose-color: v-bind(loseColor);
 }

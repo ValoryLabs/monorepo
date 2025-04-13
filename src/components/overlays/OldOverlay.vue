@@ -1,16 +1,28 @@
 <script setup lang="ts">
+import { ArrowUp, ArrowDown } from 'lucide-vue-next'
+
 interface Props {
   backgroundColor?: string
   textColor?: string
   primaryTextColor?: string
   progressColor?: string
   progressBgColor?: string
+  winColor?: string
+  loseColor?: string
   disabledBackground?: boolean
   disabledBackgroundGradient?: boolean
   disabledLastMatchPoints?: boolean
   disabledWinLose?: boolean
   disabledProgress?: boolean
   overlayFont?: string
+
+  rankIcon?: string
+  rank?: string
+  rr?: number
+  elo?: number
+  win?: number
+  lose?: number
+  ptsDelta?: number
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -19,12 +31,22 @@ const props = withDefaults(defineProps<Props>(), {
   primaryTextColor: '#f2f2f2',
   progressColor: '#61baa4',
   progressBgColor: '#f2f2f2',
+  winColor: '#00FFE3',
+  loseColor: '#FF7986',
   disabledBackground: false,
   disabledBackgroundGradient: false,
   disabledLastMatchPoints: false,
   disabledWinLose: false,
   disabledProgress: false,
   overlayFont: 'Inter',
+
+  rankIcon: 'Unranked',
+  rank: 'Unranked',
+  rr: 0,
+  elo: 0,
+  win: 0,
+  lose: 0,
+  ptsDelta: 0,
 })
 </script>
 
@@ -40,35 +62,43 @@ const props = withDefaults(defineProps<Props>(), {
         backgroundColor: disabledBackground ? 'transparent' : `${props.backgroundColor}40`,
       }"
     >
-      <img src="/ranks/26.webp" alt="" height="80" width="80" preload="high" />
+      <img :src="`/ranks/${props.rankIcon}.webp`" alt="" height="80" width="80" preload="high" />
     </div>
     <div
       class="ml-5 flex w-[340px] flex-col flex-nowrap content-between items-start justify-center gap-[6px] py-5 font-bold"
     >
-      <span class="text-[20px] leading-none text-[var(--text-color)] uppercase">
-        {{ $t('overlays.rating') }}
-      </span>
+      <span class="text-[20px] leading-none text-[var(--text-color)] uppercase"> RATING </span>
       <span class="text-[24px] leading-none text-[var(--primary-text-color)] uppercase">
-        {{ $t('overlays.ranks.immortal') }} 1 - 82 {{ $t('overlays.rr') }}
+        {{ props.rank }} - {{ props.rr }} RR
       </span>
       <span v-if="!disabledWinLose" class="text-[17px] leading-none text-[var(--text-color)]">
-        {{ $t('overlays.win') }}:
-        <span class="text-[var(--primary-text-color)]"> 0 </span>
-        {{ $t('overlays.lose') }}:
-        <span class="text-[var(--primary-text-color)]"> 0 </span>
+        Win:
+        <span class="text-[var(--primary-text-color)]"> {{ props.win }} </span>
+        Lose:
+        <span class="text-[var(--primary-text-color)]"> {{ props.lose }} </span>
       </span>
       <div
         v-if="!disabledProgress"
         class="relative my-[1px] flex h-3 w-64 flex-col justify-center rounded-[10px] py-[6px] after:absolute after:flex after:h-3 after:w-56 after:flex-col after:justify-center after:rounded-[10px] after:bg-[var(--progress-color)] after:transition after:content-['']"
         :style="{ backgroundColor: `${props.progressBgColor}45` }"
       ></div>
-      <div v-if="!disabledLastMatchPoints" class="flex flex-row gap-1 text-base">
+      <div v-if="!disabledLastMatchPoints" class="inline-flex items-center gap-1 text-base">
         <span :class="`text-[15px] leading-none text-[var(--text-color)] uppercase`">
-          {{ $t('overlays.lastMatch') }}:
+          Last match:
         </span>
         <span class="text-[15px] leading-none text-[var(--primary-text-color)] uppercase">
-          32 {{ $t('overlays.pts') }}
+          {{ props.ptsDelta }} PTS
         </span>
+        <ArrowUp
+          v-if="props.ptsDelta > 0"
+          class="size-4"
+          :class="{ 'text-[var(--win-color)]': props.ptsDelta > 0 }"
+        />
+        <ArrowDown
+          v-else-if="props.ptsDelta < 0"
+          class="size-4"
+          :class="{ 'text-[var(--lose-color)]': props.ptsDelta < 0 }"
+        />
       </div>
     </div>
   </div>
@@ -79,5 +109,7 @@ const props = withDefaults(defineProps<Props>(), {
   --text-color: v-bind(textColor);
   --primary-text-color: v-bind(primaryTextColor);
   --progress-color: v-bind(progressColor);
+  --win-color: v-bind(winColor);
+  --lose-color: v-bind(loseColor);
 }
 </style>

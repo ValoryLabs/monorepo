@@ -162,29 +162,5 @@
         "reset": "Reset"
       }
     }
-  },
-  "overlays": {
-    "level": "Level",
-    "elo": "elo",
-    "rr": "RR",
-    "winrate": "Winrate",
-    "rating": "Rating",
-    "win": "Win",
-    "win_short": "W",
-    "lose": "Lose",
-    "lose_short": "L",
-    "lastMatch": "Last Match",
-    "pts": "pts",
-    "ranks": {
-      "iron": "Iron",
-      "bronze": "Bronze",
-      "silver": "Silver",
-      "gold": "Gold",
-      "platinum": "Platinum",
-      "diamond": "Diamond",
-      "ascendant": "Ascendant",
-      "immortal": "Immortal",
-      "radiant": "Radiant"
-    }
   }
 }

@@ -162,29 +162,5 @@
         "reset": "Сброс"
       }
     }
-  },
-  "overlays": {
-    "level": "Уровень",
-    "elo": "эло",
-    "rr": "РР",
-    "winrate": "Процент\nпобед",
-    "rating": "Рейтинг",
-    "win": "Побед",
-    "win_short": "В",
-    "lose": "Поражений",
-    "lose_short": "П",
-    "lastMatch": "Последний матч",
-    "pts": "очков",
-    "ranks": {
-      "iron": "Железо",
-      "bronze": "Бронза",
-      "silver": "Серебро",
-      "gold": "Золото",
-      "platinum": "Платина",
-      "diamond": "Алмаз",
-      "ascendant": "Расцвет",
-      "immortal": "Бессмертный",
-      "radiant": "Радиант"
-    }
   }
 }
