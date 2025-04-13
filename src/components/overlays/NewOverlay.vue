@@ -11,6 +11,16 @@ interface Props {
   disabledWinLose?: boolean
   disabledProgress?: boolean
   overlayFont?: string
+
+  rankIcon?: string
+  rank?: string
+  rr?: number
+  elo?: number
+  win?: number
+  lose?: number
+  ptsDelta?: number
+  lastMatches?: string[]
+  seasonWinRate?: number
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -25,6 +35,16 @@ const props = withDefaults(defineProps<Props>(), {
   disabledWinLose: false,
   disabledProgress: false,
   overlayFont: 'Inter',
+
+  rankIcon: 'Unranked',
+  rank: 'Unranked',
+  rr: 0,
+  elo: 0,
+  win: 0,
+  lose: 0,
+  ptsDelta: 0,
+  lastMatches: () => ['-', '-', '-', '-', '-'],
+  seasonWinRate: 0,
 })
 </script>
 
@@ -40,7 +60,7 @@ const props = withDefaults(defineProps<Props>(), {
     >
       <div class="relative px-5 py-7">
         <img
-          src="/ranks/26.webp"
+          :src="`/ranks/${props.rankIcon}.webp`"
           class="relative z-10"
           alt=""
           height="55"
@@ -49,7 +69,7 @@ const props = withDefaults(defineProps<Props>(), {
         />
         <img
           v-if="!disabledGlowEffect"
-          src="/ranks/26.webp"
+          :src="`/ranks/${props.rankIcon}.webp`"
           class="absolute top-1/2 left-1/2 z-0 size-14 max-w-[unset] -translate-x-1/2 -translate-y-1/2 transform blur-[20px]"
           alt=""
           height="55"
@@ -62,57 +82,62 @@ const props = withDefaults(defineProps<Props>(), {
           <span
             class="text-[18px] leading-none font-bold text-[var(--primary-text-color)] uppercase"
           >
-            {{ $t('overlays.ranks.immortal') }} #46
+            {{ props.rank }}
           </span>
           <span
-            class="flex flex-row items-center gap-2 text-base leading-none font-medium text-[var(--text-color)]"
+            class="flex flex-row items-center gap-2 text-base leading-none font-medium text-[var(--text-color)] uppercase"
           >
-            1838 {{ $t('overlays.elo') }} - 123 {{ $t('overlays.rr') }}
+            {{ props.elo }} elo - {{ props.rr }} rr
             <span
-              class="text-[10px] font-medium text-[var(--win-color)]"
-              :class="{ 'drop-shadow-[0px_0px_6px_var(--win-color)]': !disabledGlowEffect }"
-              >+5</span
+              v-if="props.ptsDelta > 0 || props.ptsDelta < 0"
+              class="text-[10px] font-medium"
+              :class="{
+                'drop-shadow-[0px_0px_6px_var(--win-color)]':
+                  !disabledGlowEffect && props.ptsDelta > 0,
+                'drop-shadow-[0px_0px_6px_var(--lose-color)]':
+                  !disabledGlowEffect && props.ptsDelta < 0,
+                'text-[var(--win-color)]': props.ptsDelta > 0,
+                'text-[var(--lose-color)]': props.ptsDelta < 0,
+              }"
+              >{{ props.ptsDelta }}</span
             >
           </span>
           <div v-if="!disabledWinLose" class="flex flex-row items-center gap-2">
-            <div class="mt-[2px] flex flex-row items-center gap-1">
-              <span
-                class="flex h-5 w-5 flex-col items-center justify-center rounded-[4px] text-xs leading-none font-bold text-[var(--win-color)]"
-                :class="{ 'drop-shadow-[0px_0px_12px_var(--win-color)]': !disabledGlowEffect }"
-                :style="{ backgroundColor: `${props.winColor}80` }"
-              >
-                {{ $t('overlays.win_short') }}
-              </span>
-              <span
-                class="flex h-5 w-5 flex-col items-center justify-center rounded-[4px] text-xs leading-none font-bold text-[var(--lose-color)]"
-                :class="{ 'drop-shadow-[0px_0px_12px_var(--lose-color)]': !disabledGlowEffect }"
-                :style="{ backgroundColor: `${props.loseColor}80` }"
-              >
-                {{ $t('overlays.lose_short') }}
-              </span>
-              <span
-                class="flex h-5 w-5 flex-col items-center justify-center rounded-[4px] text-xs leading-none font-bold text-[var(--win-color)]"
-                :class="{ 'drop-shadow-[0px_0px_12px_var(--win-color)]': !disabledGlowEffect }"
-                :style="{ backgroundColor: `${props.winColor}80` }"
-              >
-                {{ $t('overlays.win_short') }}
-              </span>
-              <span
-                class="flex h-5 w-5 flex-col items-center justify-center rounded-[4px] text-xs leading-none font-bold text-[var(--lose-color)]"
-                :class="{ 'drop-shadow-[0px_0px_12px_var(--lose-color)]': !disabledGlowEffect }"
-                :style="{ backgroundColor: `${props.loseColor}80` }"
-              >
-                {{ $t('overlays.lose_short') }}
-              </span>
-              <span
-                class="flex h-5 w-5 flex-col items-center justify-center rounded-[4px] bg-[#61c4b9b3] text-xs leading-none font-bold text-[var(--win-color)]"
-                :class="{ 'drop-shadow-[0px_0px_12px_var(--win-color)]': !disabledGlowEffect }"
-                :style="{ backgroundColor: `${props.winColor}80` }"
-              >
-                {{ $t('overlays.win_short') }}
-              </span>
+            <div
+              class="mt-[2px] flex flex-row items-center gap-1"
+              v-for="(result, index) in lastMatches"
+              :key="index"
+              :class="{
+                'flex h-5 w-5 flex-col items-center justify-center rounded-[4px] text-xs leading-none font-bold text-[var(--win-color)]':
+                  result === 'Win',
+                'drop-shadow-[0px_0px_12px_var(--win-color)]':
+                  !disabledGlowEffect && result === 'Win',
+                'flex h-5 w-5 flex-col items-center justify-center rounded-[4px] text-xs leading-none font-bold text-[var(--lose-color)]':
+                  result === 'Lose',
+                'drop-shadow-[0px_0px_12px_var(--lose-color)]':
+                  !disabledGlowEffect && result === 'Lose',
+                'flex h-5 w-5 flex-col items-center justify-center rounded-[4px] text-xs leading-none font-bold text-[var(--primary-text-color)]':
+                  result === 'Draw',
+                'drop-shadow-[0px_0px_12px_var(--primary-text-color)]':
+                  !disabledGlowEffect && result === 'Draw' ,
+              }"
+              :style="{
+                backgroundColor:
+                  props.ptsDelta > 0
+                    ? `${props.winColor}80`
+                    : props.ptsDelta < 0
+                      ? `${props.loseColor}80`
+                      : `${props.primaryTextColor}80`,
+              }"
+            >
+              <span v-if="result === 'Win'">W</span>
+              <span v-else-if="result === 'Lose'">L</span>
+              <span v-else-if="result === 'Draw'">D</span>
+              <span v-else> - </span>
             </div>
-            <span class="text-sm leading-none font-bold text-[var(--text-color)]">40%</span>
+            <span class="text-sm leading-none font-bold text-[var(--text-color)]">{{
+              `${props.seasonWinRate}%`
+            }}</span>
           </div>
         </div>
       </div>
