@@ -62,7 +62,13 @@ const props = withDefaults(defineProps<Props>(), {
         backgroundColor: disabledBackground ? 'transparent' : `${props.backgroundColor}40`,
       }"
     >
-      <img :src="`/ranks/${props.rankIcon}.webp`" alt="" height="80" width="80" preload="high" />
+      <img
+        :src="`/ranks/${props.rankIcon}.webp`"
+        alt=""
+        height="80"
+        width="80"
+        fetchpriority="high"
+      />
     </div>
     <div
       class="ml-5 flex w-[340px] flex-col flex-nowrap content-between items-start justify-center gap-[6px] py-5 font-bold"

@@ -70,14 +70,14 @@ function extractRankNumber(rank: string): string {
             alt=""
             height="40"
             width="40"
-            preload="high"
+            fetchpriority="high"
           />
           <img
             class="absolute top-1/2 left-1/2 size-10 max-w-[unset] -translate-x-1/2 -translate-y-1/2 transform blur-[10px]"
             v-if="!disabledGlowEffect"
             :src="`/ranks/${props.rankIcon}.webp`"
             alt=""
-            preload="high"
+            fetchpriority="high"
           />
         </div>
         <span

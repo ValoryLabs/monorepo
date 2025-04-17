@@ -65,7 +65,7 @@ const props = withDefaults(defineProps<Props>(), {
           alt=""
           height="55"
           width="55"
-          preload="high"
+          fetchpriority="high"
         />
         <img
           v-if="!disabledGlowEffect"
@@ -74,7 +74,7 @@ const props = withDefaults(defineProps<Props>(), {
           alt=""
           height="55"
           width="55"
-          preload="high"
+          fetchpriority="high"
         />
       </div>
       <div class="flex h-fit flex-row py-3">
