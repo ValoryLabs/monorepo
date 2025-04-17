@@ -2,7 +2,7 @@ import { fileURLToPath, URL } from 'node:url'
 
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import tailwindcss from "@tailwindcss/vite";
+import tailwindcss from '@tailwindcss/vite'
 import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite'
 import path from 'path'
 import { ViteMinifyPlugin } from 'vite-plugin-minify'
@@ -36,10 +36,10 @@ export default defineConfig({
   preview: {
     port: 3000,
     host: true,
-    allowedHosts: ['re.valory.su'],
+    allowedHosts: ['beta.valory.su'],
   },
   server: {
     host: true,
-    port: 3000
-  }
+    port: 3000,
+  },
 })
