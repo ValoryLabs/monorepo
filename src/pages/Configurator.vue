@@ -37,14 +37,14 @@ watch(R, (v) => {
   >
     <aside
       v-if="showLeftSidebar"
-      class="bg-background flex w-80 flex-col overflow-scroll border-r border-white/10 p-5 transition-all"
+      class="bg-background flex w-80 flex-col overflow-scroll p-5 transition-all"
     >
       <LeftSidebar />
     </aside>
     <Content />
     <aside
       v-if="showRightSidebar"
-      class="bg-background flex w-80 flex-col overflow-scroll border-l border-white/10 p-5 transition-all"
+      class="bg-background flex w-80 flex-col overflow-scroll p-5 transition-all"
     >
       <RightSidebar />
     </aside>

@@ -129,9 +129,9 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <main class="bg-background relative flex flex-1 items-center justify-center">
+  <main class="bg-background relative flex flex-1 items-center justify-center pb-2">
     <div
-      class="flex h-full w-full bg-cover bg-center"
+      class="flex h-full w-full rounded-xl bg-cover bg-center"
       :style="{ backgroundImage: `url(/previews/${previewImage}.webp)` }"
       ref="containerRef"
     >
