@@ -15,6 +15,7 @@ export const useUserStore = defineStore(
     const showLeftSidebar: Ref<boolean> = ref(true)
     const showRightSidebar: Ref<boolean> = ref(true)
     const showHeader: Ref<boolean> = ref(true)
+    const fullscreen: Ref<boolean> = ref(false)
 
     const toggleConfigurator = () => {
       configuratorActive.value = !configuratorActive.value
@@ -36,6 +37,7 @@ export const useUserStore = defineStore(
       showHeader.value = !showHeader.value
       showLeftSidebar.value = !showLeftSidebar.value
       showRightSidebar.value = !showRightSidebar.value
+      fullscreen.value = !fullscreen.value
     }
 
     return {
@@ -48,6 +50,7 @@ export const useUserStore = defineStore(
       showLeftSidebar,
       showRightSidebar,
       showHeader,
+      fullscreen,
       toggleConfigurator,
       togglePreview,
       toggleLeftSidebar,

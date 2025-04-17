@@ -12,7 +12,7 @@ import { openLink } from '@/lib/utils'
 import Panel from '@/components/ui/Panel.vue'
 
 const userStore = useUserStore()
-const { configuratorActive, previewDraggable, previewImage, overlayDimensions } =
+const { configuratorActive, previewDraggable, previewImage, overlayDimensions, fullscreen } =
   storeToRefs(userStore)
 
 const position = reactive({ x: 0, y: 0 })
@@ -129,7 +129,10 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <main class="bg-background relative flex flex-1 items-center justify-center pb-2">
+  <main
+    class="bg-background relative flex flex-1 items-center justify-center"
+    :class="{ 'pb-2': !fullscreen }"
+  >
     <div
       class="flex h-full w-full rounded-xl bg-cover bg-center"
       :style="{ backgroundImage: `url(/previews/${previewImage}.webp)` }"
