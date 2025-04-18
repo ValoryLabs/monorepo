@@ -16,7 +16,7 @@ interface Props {
   disabledProgress?: boolean
   overlayFont?: string
 
-  rankIcon?: string
+  rankIcon?: string | number
   rank?: string
   rr?: number
   elo?: number
@@ -63,7 +63,7 @@ const props = withDefaults(defineProps<Props>(), {
       }"
     >
       <img
-        :src="`/ranks/${props.rankIcon}.webp`"
+        :src="`/ranks/${props.rankIcon.toString()}.webp`"
         alt=""
         height="80"
         width="80"

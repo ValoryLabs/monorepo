@@ -9,11 +9,11 @@ import { toast } from 'vue-sonner'
 import { useUserStore } from '@/stores/user.ts'
 import { useI18n } from 'vue-i18n'
 import InstructionModal from '@/components/ui/instructionkey/InstructionModal.vue'
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { Search, KeyRound, Dices } from 'lucide-vue-next'
 import { UserValidator } from '@/api/auth/user.validator'
-
 import { getRandomPlayerName } from '@/api/leaderboard'
+import { getAccountInformation, getMMRInformation } from '@/api/playerInformation'
 
 const { t } = useI18n()
 
@@ -33,6 +33,8 @@ async function validateData() {
         reject({ message: validationResult.message })
       } else {
         configuratorActive.value = true
+        getAccountInformation()
+        getMMRInformation()
         resolve({ message: 'toasts.dataVerifying.validationSuccess' })
       }
       loading.value = false
@@ -55,6 +57,13 @@ const getRandomPlayer = async () => {
     riotID.value = name
   }
 }
+
+onMounted(() => {
+  if (configuratorActive.value) {
+    getAccountInformation()
+    getMMRInformation()
+  }
+})
 </script>
 
 <template>

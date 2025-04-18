@@ -1,7 +1,7 @@
-import { useUserSettingsStore } from "@/stores/userSettings"
-import { storeToRefs } from "pinia"
-import { apiClient } from ".."
-import type { AxiosError } from "axios"
+import { useUserSettingsStore } from '@/stores/userSettings'
+import { storeToRefs } from 'pinia'
+import { apiClient } from '..'
+import type { AxiosError } from 'axios'
 
 // Data types
 interface ValidationResult {
@@ -36,7 +36,7 @@ interface RiotAccountResponse {
 // Regular expressions for validation
 const PATTERNS = {
   riotId: /^[\p{L}\p{N}]{3,16}#[\p{L}\p{N}]{3,5}$/u,
-  apiKey: /^HDEV-[\da-f]{8}-([\da-f]{4}-){3}[\da-f]{12}$/i
+  apiKey: /^HDEV-[\da-f]{8}-([\da-f]{4}-){3}[\da-f]{12}$/i,
 }
 
 // Error codes and corresponding messages
@@ -44,7 +44,7 @@ const ERROR_MESSAGES = {
   401: 'toasts.dataVerifying.invalidApiKey',
   404: 'toasts.dataVerifying.userNotFound',
   429: 'toasts.dataVerifying.rateLimit',
-  default: 'toasts.dataVerifying.networkError'
+  default: 'toasts.dataVerifying.networkError',
 }
 
 /**
@@ -57,14 +57,14 @@ export const UserValidator = {
    */
   async validate(): Promise<ValidationResult> {
     const userSettingsStore = useUserSettingsStore()
-    const { riotID, apiKey, puuid } = storeToRefs(userSettingsStore)
+    const { riotID, apiKey, puuid, region } = storeToRefs(userSettingsStore)
 
     try {
       // Check API key format
       if (!PATTERNS.apiKey.test(apiKey.value)) {
         return {
           success: false,
-          message: 'toasts.dataVerifying.validateApiKey.pattern'
+          message: 'toasts.dataVerifying.validateApiKey.pattern',
         }
       }
 
@@ -74,15 +74,16 @@ export const UserValidator = {
       // Check Riot ID format
       if (!PATTERNS.riotId.test(riotID.value)) {
         puuid.value = ''
+        region.value = ''
         return {
           success: false,
-          message: 'toasts.dataVerifying.validateRiotId.pattern'
+          message: 'toasts.dataVerifying.validateRiotId.pattern',
         }
       }
 
       // Fetch account data
       const accountData = await this.fetchAccountData(riotID.value)
-      
+
       // Save PUUID to store
       if (accountData?.puuid) {
         puuid.value = accountData.puuid
@@ -90,9 +91,15 @@ export const UserValidator = {
         puuid.value = ''
       }
 
+      if (accountData?.region) {
+        region.value = accountData.region
+      } else {
+        region.value = ''
+      }
+
       return {
         success: true,
-        message: 'toasts.dataVerifying.validationSuccess'
+        message: 'toasts.dataVerifying.validationSuccess',
       }
     } catch (error) {
       return this.handleError(error as AxiosError)
@@ -104,7 +111,7 @@ export const UserValidator = {
    */
   async checkApiKey(): Promise<void> {
     const response = await apiClient.get('/v1/version/eu')
-    
+
     if (response.status !== 200) {
       throw new Error('Invalid API key')
     }
@@ -117,13 +124,13 @@ export const UserValidator = {
    */
   async fetchAccountData(riotId: string): Promise<RiotAccountData | null> {
     const [name, tag] = riotId.split('#')
-    
+
     if (!name || !tag) {
       throw new Error('Invalid Riot ID format')
     }
 
     const response = await apiClient.get<RiotAccountResponse>(
-      `/v2/account/${encodeURIComponent(name)}/${encodeURIComponent(tag)}?force=true`
+      `/v2/account/${encodeURIComponent(name)}/${encodeURIComponent(tag)}?force=true`,
     )
 
     if (response.data.status !== 200 || !response.data.data) {
@@ -140,10 +147,13 @@ export const UserValidator = {
    */
   handleError(error: AxiosError): ValidationResult {
     const statusCode = error.response?.status
-    
+
     return {
       success: false,
-      message: statusCode ? ERROR_MESSAGES[statusCode.toString() as keyof typeof ERROR_MESSAGES] || ERROR_MESSAGES.default : ERROR_MESSAGES.default
+      message: statusCode
+        ? ERROR_MESSAGES[statusCode.toString() as keyof typeof ERROR_MESSAGES] ||
+          ERROR_MESSAGES.default
+        : ERROR_MESSAGES.default,
     }
-  }
+  },
 }

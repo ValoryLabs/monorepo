@@ -12,7 +12,7 @@ interface Props {
   disabledProgress?: boolean
   overlayFont?: string
 
-  rankIcon?: string
+  rankIcon?: string | number
   rank?: string
   rr?: number
   elo?: number
@@ -60,7 +60,7 @@ const props = withDefaults(defineProps<Props>(), {
     >
       <div class="relative px-5 py-7">
         <img
-          :src="`/ranks/${props.rankIcon}.webp`"
+          :src="`/ranks/${props.rankIcon.toString()}.webp`"
           class="relative z-10"
           alt=""
           height="55"
@@ -69,7 +69,7 @@ const props = withDefaults(defineProps<Props>(), {
         />
         <img
           v-if="!disabledGlowEffect"
-          :src="`/ranks/${props.rankIcon}.webp`"
+          :src="`/ranks/${props.rankIcon.toString()}.webp`"
           class="absolute top-1/2 left-1/2 z-0 size-14 max-w-[unset] -translate-x-1/2 -translate-y-1/2 transform blur-[20px]"
           alt=""
           height="55"

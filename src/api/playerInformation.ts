@@ -1,0 +1,110 @@
+import { type AxiosResponse } from 'axios'
+import { apiClient } from '.'
+import { useUserSettingsStore } from '@/stores/userSettings'
+import { usePlayerStore } from '@/stores/player'
+
+/**
+ * Fetches account information for the current user
+ * @returns {Promise<boolean>} Returns true if account info was successfully fetched and stored, false otherwise
+ * @throws {Error} When API request fails or response format is invalid
+ */
+export const getAccountInformation = async (): Promise<boolean> => {
+  try {
+    const userSettingsStore = useUserSettingsStore()
+    const playerStore = usePlayerStore()
+
+    if (!userSettingsStore.puuid) {
+      throw new Error('PUUID is not set')
+    }
+
+    const response: AxiosResponse = await apiClient.get(
+      `/v2/by-puuid/account/${userSettingsStore.puuid}`,
+    )
+
+    const accountInfo = {
+      account_level: 0,
+      name: '',
+      tag: '',
+    }
+
+    if (response.data.status === 200) {
+      if (!response.data.data) {
+        throw new Error('Response data is empty')
+      }
+
+      accountInfo.account_level = response.data.data.account_level
+      accountInfo.name = response.data.data.name
+      accountInfo.tag = response.data.data.tag
+
+      playerStore.AccountInformation = accountInfo
+      return true
+    } else {
+      throw new Error('Invalid response status')
+    }
+  } catch (error) {
+    console.error('Error fetching account information:', error)
+    return false
+  }
+}
+
+/**
+ * Fetches MMR (Matchmaking Rating) information for the current user
+ * @returns {Promise<boolean>} Returns true if MMR info was successfully fetched and stored, false otherwise
+ * @throws {Error} When API request fails or response format is invalid
+ */
+export const getMMRInformation = async (): Promise<boolean> => {
+  try {
+    const userSettingsStore = useUserSettingsStore()
+    const playerStore = usePlayerStore()
+
+    if (!userSettingsStore.puuid || !userSettingsStore.region) {
+      throw new Error('PUUID or region is not set')
+    }
+
+    const response: AxiosResponse = await apiClient.get(
+      `/v3/by-puuid/mmr/${userSettingsStore.region}/pc/${userSettingsStore.puuid}`,
+    )
+
+    const mmrInformation = {
+      peak: {
+        tier: {
+          id: 0,
+          name: '',
+        },
+      },
+      current: {
+        tier: {
+          id: 0,
+          name: '',
+        },
+        rr: 0,
+        last_change: 0,
+        elo: 0,
+      },
+      leaderboard_placement: null,
+    }
+
+    if (response.data.status === 200) {
+      if (!response.data.data) {
+        throw new Error('Response data is empty')
+      }
+
+      mmrInformation.peak.tier.id = response.data.data.peak.tier.id
+      mmrInformation.peak.tier.name = response.data.data.peak.tier.name
+      mmrInformation.current.tier.id = response.data.data.current.tier.id
+      mmrInformation.current.tier.name = response.data.data.current.tier.name
+      mmrInformation.current.rr = response.data.data.current.rr
+      mmrInformation.current.last_change = response.data.data.current.last_change
+      mmrInformation.current.elo = response.data.data.current.elo
+      mmrInformation.leaderboard_placement = response.data.data.current.leaderboard_placement?.rank
+
+      playerStore.MMRInformation = mmrInformation
+      return true
+    } else {
+      throw new Error('Invalid response status')
+    }
+  } catch (error) {
+    console.error('Error fetching MMR information:', error)
+    return false
+  }
+}

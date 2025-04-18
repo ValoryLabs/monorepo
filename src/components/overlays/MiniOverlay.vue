@@ -14,7 +14,7 @@ interface Props {
   disabledProgress?: boolean
   overlayFont?: string
 
-  rankIcon?: string
+  rankIcon?: string | number
   rank?: string
   elo?: number
   win?: number
@@ -65,7 +65,7 @@ function extractRankNumber(rank: string): string {
       <div class="relative">
         <div class="relative flex">
           <img
-            :src="`/ranks/${props.rankIcon}.webp`"
+            :src="`/ranks/${props.rankIcon.toString()}.webp`"
             class="z-2"
             alt=""
             height="40"
@@ -75,7 +75,7 @@ function extractRankNumber(rank: string): string {
           <img
             class="absolute top-1/2 left-1/2 size-10 max-w-[unset] -translate-x-1/2 -translate-y-1/2 transform blur-[10px]"
             v-if="!disabledGlowEffect"
-            :src="`/ranks/${props.rankIcon}.webp`"
+            :src="`/ranks/${props.rankIcon.toString()}.webp`"
             alt=""
             fetchpriority="high"
           />

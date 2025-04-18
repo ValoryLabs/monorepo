@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import OldOverlay from '@/components/overlays/OldOverlay.vue'
 import { useOverlayStore } from '@/stores/overlay.ts'
+import { usePlayerStore } from '@/stores/player.ts'
 import { storeToRefs } from 'pinia'
 import NewOverlay from '@/components/overlays/NewOverlay.vue'
 import MiniOverlay from './overlays/MiniOverlay.vue'
@@ -8,6 +9,7 @@ import NewV2Overlay from '@/components/overlays/NewV2Overlay.vue'
 import { computed } from 'vue'
 
 const overlaySettingsStore = useOverlayStore()
+const playerStore = usePlayerStore()
 const {
   backgroundColor,
   textColor,
@@ -26,6 +28,9 @@ const {
   disabledWinLose,
   disabledProgress,
 } = storeToRefs(overlaySettingsStore)
+
+const { AccountInformation, MMRInformation, lastMarchID, winCount, loseCount } =
+  storeToRefs(playerStore)
 
 const overlay = computed(() => {
   switch (overlayStyle.value) {
@@ -59,5 +64,16 @@ const overlay = computed(() => {
     :win-color="winColor"
     :lose-color="loseColor"
     :overlay-font="overlayFont"
+    :rank-icon="MMRInformation.current.tier.id"
+    :rank="MMRInformation.current.tier.name"
+    :elo="MMRInformation.current.elo"
+    :win="winCount"
+    :lose="loseCount"
+    :ptsDelta="MMRInformation.current.last_change"
+    :rr="MMRInformation.current.rr"
+    :lastMatches="[]"
+    :seasonWinRate="100"
+    :riot-id="`${AccountInformation.name}#${AccountInformation.tag}`"
+    :level="AccountInformation.account_level"
   />
 </template>
