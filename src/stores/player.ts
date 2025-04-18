@@ -55,6 +55,16 @@ export const usePlayerStore = defineStore('playerStore', () => {
   const lastMarchID: Ref<number> = ref(0)
   const winCount: Ref<number> = ref(0)
   const loseCount: Ref<number> = ref(0)
+  const lastMatches: Ref<string[]> = ref(['-', '-', '-', '-', '-'])
+  const seasonWinrate: Ref<number> = ref(0)
 
-  return { AccountInformation, MMRInformation, lastMarchID, winCount, loseCount }
+  return {
+    AccountInformation,
+    MMRInformation,
+    lastMarchID,
+    winCount,
+    loseCount,
+    lastMatches,
+    seasonWinrate,
+  }
 })

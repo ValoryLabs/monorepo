@@ -29,7 +29,7 @@ const {
   disabledProgress,
 } = storeToRefs(overlaySettingsStore)
 
-const { AccountInformation, MMRInformation, lastMarchID, winCount, loseCount } =
+const { AccountInformation, MMRInformation, lastMatches, winCount, loseCount, seasonWinrate } =
   storeToRefs(playerStore)
 
 const overlay = computed(() => {
@@ -71,8 +71,8 @@ const overlay = computed(() => {
     :lose="loseCount"
     :ptsDelta="MMRInformation.current.last_change"
     :rr="MMRInformation.current.rr"
-    :lastMatches="[]"
-    :seasonWinRate="100"
+    :lastMatches="lastMatches"
+    :seasonWinRate="seasonWinrate"
     :riot-id="`${AccountInformation.name}#${AccountInformation.tag}`"
     :level="AccountInformation.account_level"
   />

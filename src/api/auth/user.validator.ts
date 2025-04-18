@@ -35,7 +35,7 @@ interface RiotAccountResponse {
 
 // Regular expressions for validation
 const PATTERNS = {
-  riotId: /^[\p{L}\p{N}]{3,16}#[\p{L}\p{N}]{3,5}$/u,
+  riotId: /^[\p{L}\p{N}]+(?: [\p{L}\p{N}]+)*#[\p{L}\p{N}]{3,5}$/u,
   apiKey: /^HDEV-[\da-f]{8}-([\da-f]{4}-){3}[\da-f]{12}$/i,
 }
 

@@ -99,7 +99,7 @@ const props = withDefaults(defineProps<Props>(), {
                 'text-[var(--win-color)]': props.ptsDelta > 0,
                 'text-[var(--lose-color)]': props.ptsDelta < 0,
               }"
-              >{{ props.ptsDelta }}</span
+              >{{ props.ptsDelta > 0 ? '+' + props.ptsDelta : props.ptsDelta }}</span
             >
           </span>
           <div v-if="!disabledWinLose" class="mt-[2px] flex flex-row items-center gap-2">
@@ -120,9 +120,9 @@ const props = withDefaults(defineProps<Props>(), {
               }"
               :style="{
                 backgroundColor:
-                  props.ptsDelta > 0
+                  result === 'Win'
                     ? `${props.winColor}80`
-                    : props.ptsDelta < 0
+                    : result === 'Lose'
                       ? `${props.loseColor}80`
                       : `${props.primaryTextColor}80`,
               }"
