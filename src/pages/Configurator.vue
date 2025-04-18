@@ -31,10 +31,7 @@ watch(R, (v) => {
 
 <template>
   <Header v-if="showHeader" />
-  <div
-    class="relative flex w-dvw flex-row"
-    :class="showHeader ? 'h-[calc(100dvh-2.5rem)]' : 'h-dvh'"
-  >
+  <div class="relative flex w-dvw flex-row" :class="showHeader ? 'h-[calc(100dvh-3rem)]' : 'h-dvh'">
     <aside
       v-if="showLeftSidebar"
       class="bg-background flex w-80 flex-col overflow-scroll p-5 transition-all"
