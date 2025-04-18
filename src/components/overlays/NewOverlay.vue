@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { ArrowUp, ArrowDown } from 'lucide-vue-next'
+
 interface Props {
   backgroundColor?: string
   textColor?: string
@@ -90,7 +92,7 @@ const props = withDefaults(defineProps<Props>(), {
             {{ props.elo }} elo - {{ props.rr }} rr
             <span
               v-if="props.ptsDelta > 0 || props.ptsDelta < 0"
-              class="text-[10px] font-medium"
+              class="inline-flex items-center gap-1 text-[10px] font-medium"
               :class="{
                 'drop-shadow-[0px_0px_6px_var(--win-color)]':
                   !disabledGlowEffect && props.ptsDelta > 0,
@@ -99,8 +101,11 @@ const props = withDefaults(defineProps<Props>(), {
                 'text-[var(--win-color)]': props.ptsDelta > 0,
                 'text-[var(--lose-color)]': props.ptsDelta < 0,
               }"
-              >{{ props.ptsDelta > 0 ? '+' + props.ptsDelta : props.ptsDelta }}</span
-            >
+              >{{ props.ptsDelta > 0 ? '+' + props.ptsDelta : props.ptsDelta }}
+
+              <ArrowUp class="size-3" v-if="props.ptsDelta > 0" />
+              <ArrowDown class="size-3" v-else-if="props.ptsDelta < 0"
+            /></span>
           </span>
           <div v-if="!disabledWinLose" class="mt-[2px] flex flex-row items-center gap-2">
             <div
