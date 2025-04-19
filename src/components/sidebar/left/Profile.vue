@@ -9,7 +9,7 @@ import { toast } from 'vue-sonner'
 import { useUserStore } from '@/stores/user.ts'
 import { useI18n } from 'vue-i18n'
 import InstructionModal from '@/components/ui/instructionkey/InstructionModal.vue'
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
 import { Search, KeyRound, Dices } from 'lucide-vue-next'
 import { UserValidator } from '@/api/auth/user.validator'
 import { getRandomPlayerName } from '@/api/leaderboard'
@@ -57,13 +57,6 @@ const getRandomPlayer = async () => {
     riotID.value = name
   }
 }
-
-onMounted(() => {
-  if (configuratorActive.value) {
-    getAccountInformation()
-    getMMRInformation()
-  }
-})
 </script>
 
 <template>

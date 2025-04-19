@@ -6,7 +6,12 @@ import { storeToRefs } from 'pinia'
 import NewOverlay from '@/components/overlays/NewOverlay.vue'
 import MiniOverlay from './overlays/MiniOverlay.vue'
 import NewV2Overlay from '@/components/overlays/NewV2Overlay.vue'
-import { computed } from 'vue'
+import { computed, onMounted } from 'vue'
+import { useUserStore } from '@/stores/user.ts'
+import { getAccountInformation, getMMRInformation } from '@/api/playerInformation'
+
+const userStore = useUserStore()
+const { configuratorActive } = storeToRefs(userStore)
 
 const overlaySettingsStore = useOverlayStore()
 const playerStore = usePlayerStore()
@@ -42,6 +47,13 @@ const overlay = computed(() => {
       return NewV2Overlay
     default:
       return NewOverlay
+  }
+})
+
+onMounted(() => {
+  if (configuratorActive.value) {
+    getAccountInformation()
+    getMMRInformation()
   }
 })
 </script>
