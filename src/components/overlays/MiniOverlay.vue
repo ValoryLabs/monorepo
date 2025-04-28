@@ -59,6 +59,7 @@ function extractRankNumber(rank: string): string {
     :class="{
       'overflow-hidden border-[2px] border-white/10': !disabledBackground,
       'border-none': disabledBorder,
+      'h-fit': disabledBackground,
     }"
   >
     <div class="flex flex-row items-center justify-center gap-2">

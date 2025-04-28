@@ -58,7 +58,10 @@ const props = withDefaults(defineProps<Props>(), {
         backgroundColor: disabledBackground ? 'transparent' : `${props.backgroundColor}99`,
         fontFamily: props.overlayFont,
       }"
-      :class="{ 'border-[2px] border-white/10': !disabledBackground && !disabledBorder }"
+      :class="{
+        'border-[2px] border-white/10': !disabledBackground && !disabledBorder,
+        'h-fit': disabledBackground,
+      }"
     >
       <div class="relative px-5 py-7">
         <img
