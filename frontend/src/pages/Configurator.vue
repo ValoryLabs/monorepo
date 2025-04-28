@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import Content from '@/components/Content.vue'
 import Header from '@/components/ui/Header.vue'
-import { RightSidebar } from '@/components/sidebar/right/'
 import { LeftSidebar } from '@/components/sidebar/left/'
 import { useUserStore } from '@/stores/user'
 import { useOverlayStore } from '@/stores/overlay'
@@ -16,7 +15,7 @@ useHead({
 
 const userStore = useUserStore()
 const overlayStore = useOverlayStore()
-const { showLeftSidebar, showRightSidebar, showHeader, configuratorActive } = storeToRefs(userStore)
+const { showLeftSidebar, showHeader, configuratorActive } = storeToRefs(userStore)
 
 const { F, R } = useMagicKeys()
 
@@ -39,11 +38,5 @@ watch(R, (v) => {
       <LeftSidebar />
     </aside>
     <Content />
-    <aside
-      v-if="showRightSidebar"
-      class="bg-background flex w-80 flex-col overflow-scroll p-5 transition-all"
-    >
-      <RightSidebar />
-    </aside>
   </div>
 </template>
