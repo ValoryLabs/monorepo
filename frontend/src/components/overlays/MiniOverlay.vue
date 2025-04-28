@@ -60,7 +60,7 @@ function extractRankNumber(rank: string): string {
 
 <template>
   <div
-    class="minimal-style flex flex-row items-center justify-between gap-3 rounded-full bg-black/90 px-3 py-1"
+    class="minimal-style flex w-full flex-row items-center justify-between gap-3 rounded-full bg-black/90 px-3 py-1"
     :style="{
       backgroundColor: disabledBackground ? 'transparent' : `${props.backgroundColor}99`,
       fontFamily: props.overlayFont,
