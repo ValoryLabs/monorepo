@@ -22,7 +22,7 @@ interface Props {
   lose?: number
   ptsDelta?: number
 
-  peakId?: number
+  peakId?: string | number
   peakName?: string
 }
 
@@ -48,8 +48,8 @@ const props = withDefaults(defineProps<Props>(), {
   lose: 0,
   ptsDelta: 0,
 
-  peakId: 0,
-  peakName: '',
+  peakId: 'Unranked',
+  peakName: 'Unranked',
 })
 
 function extractRankNumber(rank: string): string {

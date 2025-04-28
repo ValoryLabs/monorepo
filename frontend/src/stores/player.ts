@@ -10,7 +10,7 @@ export interface AccountInformation {
 export interface MMRInformation {
   peak: {
     tier: {
-      id: number
+      id: number | string
       name: string
     }
   }
@@ -36,8 +36,8 @@ export const usePlayerStore = defineStore('playerStore', () => {
   const MMRInformation: Ref<MMRInformation> = ref({
     peak: {
       tier: {
-        id: 0,
-        name: '',
+        id: 'Unranked',
+        name: 'Unranked',
       },
     },
     current: {
