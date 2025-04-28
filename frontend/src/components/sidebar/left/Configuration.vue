@@ -21,6 +21,7 @@ const {
   loseColor,
   overlayStyle,
   overlayFont,
+  disabledPeakRank,
   disabledBackground,
   disabledBackgroundGradient,
   disabledBorder,
@@ -97,6 +98,7 @@ const {
             @update:checked="overlaySettingsStore.toggleBorder"
           />
         </SettingsContent>
+
         <!-- Glow effect section -->
         <SettingsContent class="flex items-center space-x-2" v-if="overlayStyle !== 'old'">
           <Label for="glowEffect">
@@ -106,6 +108,23 @@ const {
             id="glowEffect"
             :checked="!disabledGlowEffect"
             @update:checked="overlaySettingsStore.toggleGlowEffect"
+          />
+        </SettingsContent>
+      </SettingsSection>
+
+      <!-- Rank section -->
+      <SettingsSection
+        :label="$t('sidebar.configuration.settings.label.rank')"
+        v-if="overlayStyle === 'minimal'"
+      >
+        <SettingsContent class="flex items-center space-x-2">
+          <Label for="peakRank">
+            {{ $t('sidebar.configuration.settings.peakRank') }}
+          </Label>
+          <SwitchToggle
+            id="peakRank"
+            :checked="!disabledPeakRank"
+            @update:checked="overlaySettingsStore.togglePeakRank"
           />
         </SettingsContent>
       </SettingsSection>

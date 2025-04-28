@@ -25,6 +25,7 @@
         "disableBackgroundGradient": "Градиент",
         "disableBorder": "Обводка",
         "glowEffect": "Эффект свечения",
+        "peakRank": "Пиковый ранг",
         "text": "Текст",
         "disableLastMatchPoints": "Последние очки за матч",
         "winColor": "Победа",
@@ -37,6 +38,7 @@
         "label": {
           "background": "Фон",
           "text": "Текст",
+          "rank": "Ранг",
           "winLose": "Победы/Поражения",
           "progressbar": "Прогресс"
         }

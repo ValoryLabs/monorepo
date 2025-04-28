@@ -25,6 +25,7 @@
         "disableBackgroundGradient": "Gradient",
         "disableBorder": "Border",
         "glowEffect": "Glow effect",
+        "peakRank": "Peak rank",
         "text": "Text",
         "disableLastMatchPoints": "Last match points",
         "winColor": "Win",
@@ -37,6 +38,7 @@
         "label": {
           "background": "Background",
           "text": "Text",
+          "rank": "Rank",
           "winLose": "Win/Lose",
           "progressbar": "Progress bar"
         }

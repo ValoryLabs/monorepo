@@ -16,6 +16,7 @@ export const useOverlayStore = defineStore(
     const overlayStyle: Ref<string> = ref('old')
     const overlayFont: Ref<string> = ref('Inter')
 
+    const disabledPeakRank: Ref<boolean> = ref(false)
     const disabledBackground: Ref<boolean> = ref(false)
     const disabledBorder: Ref<boolean> = ref(false)
     const disabledBackgroundGradient: Ref<boolean> = ref(false)
@@ -23,6 +24,10 @@ export const useOverlayStore = defineStore(
     const disabledLastMatchPoints: Ref<boolean> = ref(false)
     const disabledWinLose: Ref<boolean> = ref(false)
     const disabledProgress: Ref<boolean> = ref(false)
+
+    const togglePeakRank = () => {
+      disabledPeakRank.value = !disabledPeakRank.value
+    }
 
     const toggleBackground = () => {
       disabledBackground.value = !disabledBackground.value
@@ -65,6 +70,7 @@ export const useOverlayStore = defineStore(
 
       overlayFont.value = 'Inter'
 
+      disabledPeakRank.value = false
       disabledBackground.value = false
       disabledBackgroundGradient.value = false
       disabledBorder.value = false
@@ -92,6 +98,7 @@ export const useOverlayStore = defineStore(
         loseColor: loseColor.value,
         overlayStyle: overlayStyle.value,
         overlayFont: overlayFont.value,
+        disabledPeakRank: disabledPeakRank.value,
         disabledBackground: disabledBackground.value,
         disabledBackgroundGradient: disabledBackgroundGradient.value,
         disabledBorder: disabledBorder.value,
@@ -137,6 +144,7 @@ export const useOverlayStore = defineStore(
       loseColor,
       overlayStyle,
       overlayFont,
+      disabledPeakRank,
       disabledBackground,
       disabledBackgroundGradient,
       disabledBorder,
@@ -144,6 +152,7 @@ export const useOverlayStore = defineStore(
       disabledLastMatchPoints,
       disabledWinLose,
       disabledProgress,
+      togglePeakRank,
       toggleBackground,
       toggleBackgroundGradient,
       toggleBorder,

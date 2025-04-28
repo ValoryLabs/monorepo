@@ -25,6 +25,7 @@ const {
   loseColor,
   overlayStyle,
   overlayFont,
+  disabledPeakRank,
   disabledBackground,
   disabledBackgroundGradient,
   disabledBorder,
@@ -66,6 +67,7 @@ onMounted(() => {
     :primary-text-color="primaryTextColor"
     :progress-color="progressColor"
     :progress-bg-color="progressBgColor"
+    :disabled-peak-rank="disabledPeakRank"
     :disabled-background="disabledBackground"
     :disabled-border="disabledBorder"
     :disabled-background-gradient="disabledBackgroundGradient"
@@ -87,5 +89,7 @@ onMounted(() => {
     :seasonWinRate="seasonWinrate"
     :riot-id="`${AccountInformation.name}#${AccountInformation.tag}`"
     :level="AccountInformation.account_level"
+    :peakId="MMRInformation.peak.tier.id"
+    :peakName="MMRInformation.peak.tier.name"
   />
 </template>

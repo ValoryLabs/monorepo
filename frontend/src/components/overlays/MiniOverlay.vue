@@ -7,6 +7,7 @@ interface Props {
   primaryTextColor?: string
   winColor?: string
   loseColor?: string
+  disabledPeakRank?: boolean
   disabledBackground?: boolean
   disabledBorder?: boolean
   disabledGlowEffect?: boolean
@@ -20,6 +21,9 @@ interface Props {
   win?: number
   lose?: number
   ptsDelta?: number
+
+  peakId?: number
+  peakName?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -28,6 +32,8 @@ const props = withDefaults(defineProps<Props>(), {
   primaryTextColor: '#B9B4B4',
   winColor: '#00FFE3',
   loseColor: '#FF7986',
+
+  disabledPeakRank: false,
   disabledBackground: false,
   disabledBorder: false,
   disabledWinLose: false,
@@ -41,6 +47,9 @@ const props = withDefaults(defineProps<Props>(), {
   win: 0,
   lose: 0,
   ptsDelta: 0,
+
+  peakId: 0,
+  peakName: '',
 })
 
 function extractRankNumber(rank: string): string {
@@ -63,6 +72,29 @@ function extractRankNumber(rank: string): string {
     }"
   >
     <div class="flex flex-row items-center justify-center gap-2">
+      <div class="relative" v-if="!disabledPeakRank">
+        <div class="relative flex">
+          <img
+            :src="`/ranks/${props.peakId.toString()}.webp`"
+            class="z-2"
+            alt=""
+            height="40"
+            width="40"
+            fetchpriority="high"
+          />
+          <img
+            class="absolute top-1/2 left-1/2 size-10 max-w-[unset] -translate-x-1/2 -translate-y-1/2 transform blur-[10px]"
+            v-if="!disabledGlowEffect"
+            :src="`/ranks/${props.peakId.toString()}.webp`"
+            alt=""
+            fetchpriority="high"
+          />
+        </div>
+        <span
+          class="absolute top-0 right-0 z-2 flex size-4 flex-col items-center justify-center rounded-full bg-yellow-300"
+        >
+        </span>
+      </div>
       <div class="relative">
         <div class="relative flex">
           <img
