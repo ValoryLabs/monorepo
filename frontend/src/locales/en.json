@@ -54,7 +54,7 @@
     },
     "buttons": {
       "auth": "Let's start create!",
-      "unauth": "Log in with Twitch",
+      "unauth": "Join the Club",
       "search": "Search",
       "generate": "Generate",
       "back": "Back to configurator",
@@ -63,7 +63,8 @@
     },
     "footer": {
       "powered": "Powered by",
-      "made": "Made with ❤️ on 🌎 © Valory \nAll rights reserved."
+      "made": "Made with ❤️ on 🌎 © Valory",
+      "rights": "All rights reserved."
     }
   },
   "preview": {

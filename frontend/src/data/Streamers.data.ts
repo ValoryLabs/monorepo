@@ -189,4 +189,11 @@ export const STREAMERS_DATA: StreamersData[] = [
     live: false,
     verified: false,
   },
+  {
+    username: 'callmeakumu',
+    followers: '547',
+    img: 'https://static-cdn.jtvnw.net/jtv_user_pictures/66fec79a-0000-4a7c-b845-fa326fc91ab7-profile_image-70x70.png',
+    live: false,
+    verified: false,
+  },
 ]

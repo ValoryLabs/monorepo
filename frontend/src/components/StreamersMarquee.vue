@@ -19,7 +19,7 @@ const rows = Array.from({ length: 3 }, (_, i) =>
 </script>
 <template>
   <div
-    class="relative flex h-screen w-1/2 flex-col items-center justify-center gap-3 overflow-hidden rounded-lg"
+    class="relative flex h-fit w-1/2 flex-col items-center justify-center gap-3 overflow-hidden rounded-lg"
   >
     <Marquee
       v-for="(row, index) in rows"
@@ -39,7 +39,7 @@ const rows = Array.from({ length: 3 }, (_, i) =>
       />
     </Marquee>
 
-    <div class="pointer-events-none absolute left-0 top-0 h-full w-1/6">
+    <div class="pointer-events-none absolute top-0 left-0 h-full w-1/6">
       <div
         class="pointer-events-none absolute inset-0 rounded-[inherit]"
         style="
@@ -201,7 +201,7 @@ const rows = Array.from({ length: 3 }, (_, i) =>
         "
       ></div>
     </div>
-    <div class="pointer-events-none absolute right-0 top-0 h-full w-1/6">
+    <div class="pointer-events-none absolute top-0 right-0 h-full w-1/6">
       <div
         class="pointer-events-none absolute inset-0 rounded-[inherit]"
         style="
@@ -364,10 +364,10 @@ const rows = Array.from({ length: 3 }, (_, i) =>
       ></div>
     </div>
     <div
-      class="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-linear-to-r from-background"
+      class="from-background pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-linear-to-r"
     ></div>
     <div
-      class="pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-linear-to-l from-background"
+      class="from-background pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-linear-to-l"
     ></div>
   </div>
 </template>
