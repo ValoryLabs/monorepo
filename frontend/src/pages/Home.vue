@@ -43,10 +43,11 @@ const redirectToAuth = () => {
         </ul>
         <Button v-if="authStore.isAuthenticated" @click="router.push({ name: 'configurator' })">
           {{ $t('sidebar.buttons.auth') }}
+          <PencilRuler class="size-4" />
         </Button>
         <Button v-else @click="redirectToAuth">
           {{ $t('sidebar.buttons.unauth') }}
-          <Twitch color="black" :size="15" />
+          <Twitch color="black" :size="16" />
         </Button>
       </div>
       <StreamersMarquee />
