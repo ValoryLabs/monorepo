@@ -91,6 +91,7 @@ async def callback(request: Request, session: AsyncSession = Depends(get_session
     """
     code, state = request.query_params.get("code"), request.query_params.get("state")
     if not code or state != request.cookies.get("twitch_state"):
+        print('Error')
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST)
 
     api_response = await fetch_twitch_token(code)

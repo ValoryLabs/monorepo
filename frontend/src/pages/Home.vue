@@ -4,7 +4,16 @@ import Button from '@/components/ui/button/Button.vue'
 import Header from '@/components/home/Header.vue'
 import router from '@/router'
 import Footer from '@/components/home/Footer.vue'
+import { Twitch } from '@/components/icons/socials'
 // import StreamersMarquee from '@/components/StreamersMarquee.vue'
+
+import { useAuthStore } from '@/stores/auth'
+
+const authStore = useAuthStore()
+
+const redirectToAuth = () => {
+  window.location.href = `${import.meta.env.APP_BACKEND_URL}/api/auth/login`
+}
 </script>
 
 <template>
@@ -31,8 +40,12 @@ import Footer from '@/components/home/Footer.vue'
           </span>
         </li>
       </ul>
-      <Button @click="router.push({ name: 'configurator' })">
-        {{ $t('sidebar.buttons.start') }}
+      <Button v-if="authStore.isAuthenticated" @click="router.push({ name: 'configurator' })">
+        {{ $t('sidebar.buttons.auth') }}
+      </Button>
+      <Button v-else @click="redirectToAuth">
+        {{ $t('sidebar.buttons.unauth') }}
+        <Twitch color="#000" :size="15" />
       </Button>
       <Footer />
     </div>

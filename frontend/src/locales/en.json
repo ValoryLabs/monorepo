@@ -53,7 +53,8 @@
       "dimensions": "Dimensions:"
     },
     "buttons": {
-      "start": "Let's start create!",
+      "auth": "Let's start create!",
+      "unauth": "Log in with Twitch",
       "search": "Search",
       "generate": "Generate",
       "back": "Back to configurator",

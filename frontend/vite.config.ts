@@ -8,6 +8,7 @@ import path from 'path'
 import { ViteMinifyPlugin } from 'vite-plugin-minify'
 
 export default defineConfig({
+  envPrefix: 'APP_',
   clearScreen: false,
   plugins: [
     tailwindcss(),

@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '@/pages/Home.vue'
-import Test from '@/pages/Test.vue'
 import Overlay from '@/pages/Overlay.vue'
 import NotFound from '@/pages/NotFound.vue'
 
@@ -13,9 +12,14 @@ const router = createRouter({
       component: Home,
     },
     {
+      path: '/callback',
+      name: 'callback',
+      component: () => import('@/pages/Callback.vue'),
+    },
+    {
       path: '/test',
       name: 'test',
-      component: Test,
+      component: () => import('@/pages/Test.vue'),
     },
     {
       path: '/configurator',
