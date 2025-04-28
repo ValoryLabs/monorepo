@@ -131,7 +131,7 @@ onBeforeUnmount(() => {
 <template>
   <main
     class="bg-background relative flex flex-1 items-center justify-center"
-    :class="{ 'pb-2': !fullscreen }"
+    :class="{ 'pr-2 pb-2': !fullscreen }"
   >
     <div
       class="flex h-full w-full rounded-xl bg-cover bg-center"
