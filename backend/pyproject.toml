@@ -1,0 +1,72 @@
+[project]
+name = "valory-backend"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "aiohttp>=3.11.11",
+    "aiosqlite>=0.20.0",
+    "alembic>=1.14.1",
+    "asyncpg>=0.30.0",
+    "fastapi[standard]>=0.115.8",
+    "greenlet>=3.1.1",
+    "passlib>=1.7.4",
+    "psycopg2-binary>=2.9.10",
+    "pydantic-settings>=2.7.1",
+    "python-dotenv>=1.0.1",
+    "python-jose>=3.3.0",
+    "sqlalchemy>=2.0.37",
+    "uuid>=1.30",
+    "uvicorn>=0.34.0",
+]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.9.6",
+]
+
+[tool.ruff]
+line-length = 120
+select = [
+    "E",    # pycodestyle errors
+    "W",    # pycodestyle warnings
+    "F",    # pyflakes
+    "I",    # isort
+    "C",    # flake8-comprehensions
+    "B",    # flake8-bugbear
+    "SIM",  # flake8-simplify
+    "UP",   # pyupgrade
+    "PYI",  # flake8-pyi
+    "ARG",  # flake8-unused-arguments
+    "TRY",  # tryceratops
+    "FURB", # refurb
+]
+ignore = [
+    "E501", # line too long
+]
+fix = true
+
+[tool.ruff.format]
+skip-magic-trailing-comma = false
+line-ending = "auto"
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["INP001"]
+
+[tool.ruff.mccabe]
+max-complexity = 10
+
+[tool.ruff.isort]
+combine-as-imports = true
+force-sort-within-sections = true
+lines-between-types = 1
+
+[tool.ruff.pydocstyle]
+convention = "google"
+
+[tool.ruff.flake8-unused-arguments]
+ignore-variadic-names = true
+
+[tool.ruff.flake8-bugbear]
+extend-immutable-calls = ["fastapi.Depends"]
