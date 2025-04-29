@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ArrowUp, ArrowDown, TrendingUp, TrendingDown, Minus, Earth } from 'lucide-vue-next'
+import { ArrowUp, ArrowDown, TrendingUp, TrendingDown, Minus, Globe } from 'lucide-vue-next'
 
 interface Props {
   backgroundColor?: string
@@ -7,8 +7,9 @@ interface Props {
   primaryTextColor?: string
   winColor?: string
   loseColor?: string
+  disabledPeakRR?: boolean
   disabledLeaderboardPlace?: boolean
-  disabledPeakRank?: boolean
+  disabledPeakRankIcon?: boolean
   disabledBackground?: boolean
   disabledBorder?: boolean
   disabledGlowEffect?: boolean
@@ -36,8 +37,9 @@ const props = withDefaults(defineProps<Props>(), {
   winColor: '#00FFE3',
   loseColor: '#FF7986',
 
+  disabledPeakRR: false,
   disabledLeaderboardPlace: false,
-  disabledPeakRank: false,
+  disabledPeakRankIcon: false,
   disabledBackground: false,
   disabledBorder: false,
   disabledWinLose: false,
@@ -78,7 +80,7 @@ function extractRankNumber(rank: string): string {
     }"
   >
     <div class="inline-flex items-center justify-center gap-2">
-      <div class="relative" v-if="!disabledPeakRank">
+      <div class="relative" v-if="!disabledPeakRankIcon">
         <div class="relative flex">
           <img
             :src="`/ranks/${props.peakId.toString()}.webp`"
@@ -102,6 +104,7 @@ function extractRankNumber(rank: string): string {
         </span>
       </div>
       <div
+        v-if="!disabledPeakRR"
         class="font-bold text-[var(--primary-text-color)] uppercase"
         :class="{ 'drop-shadow-[0px_0px_6px_var(--primary-text-color)]': !disabledGlowEffect }"
       >
@@ -145,7 +148,7 @@ function extractRankNumber(rank: string): string {
         class="inline-flex items-center gap-1 font-bold text-[var(--primary-text-color)] uppercase"
         :class="{ 'drop-shadow-[0px_0px_6px_var(--primary-text-color)]': !disabledGlowEffect }"
       >
-        <Earth />
+        <Globe />
         #{{ props.leaderboardPlace }}
       </span>
       <span

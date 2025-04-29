@@ -5,33 +5,46 @@ import { toast } from 'vue-sonner'
 export const useOverlayStore = defineStore(
   'overlayStore',
   () => {
-    const backgroundColor: Ref<string> = ref('#07090E')
-    const textColor: Ref<string> = ref('#f2f2f2')
-    const primaryTextColor: Ref<string> = ref('#f2f2f2')
-    const progressColor: Ref<string> = ref('#00FFE3')
-    const progressBgColor: Ref<string> = ref('#f2f2f2')
-    const winColor: Ref<string> = ref('#00FFE3')
-    const loseColor: Ref<string> = ref('#FF7986')
-
     const overlayStyle: Ref<string> = ref('old')
-    const overlayFont: Ref<string> = ref('Inter')
 
-    const disabledLeaderboardPlace: Ref<boolean> = ref(false)
-    const disabledPeakRank: Ref<boolean> = ref(false)
+    // Background
+    const backgroundColor: Ref<string> = ref('#07090E')
     const disabledBackground: Ref<boolean> = ref(false)
     const disabledBorder: Ref<boolean> = ref(false)
     const disabledBackgroundGradient: Ref<boolean> = ref(false)
     const disabledGlowEffect: Ref<boolean> = ref(false)
-    const disabledLastMatchPoints: Ref<boolean> = ref(false)
+
+    // Rank
+    const disabledPeakRankIcon: Ref<boolean> = ref(false)
+    const disabledLeaderboardPlace: Ref<boolean> = ref(false)
+    const disabledPeakRR: Ref<boolean> = ref(false)
+
+    // Text
+    const textColor: Ref<string> = ref('#f2f2f2')
+    const primaryTextColor: Ref<string> = ref('#f2f2f2')
+    const overlayFont: Ref<string> = ref('Inter')
+
+    // Win/Lose
+    const winColor: Ref<string> = ref('#00FFE3')
+    const loseColor: Ref<string> = ref('#FF7986')
     const disabledWinLose: Ref<boolean> = ref(false)
+    const disabledLastMatchPoints: Ref<boolean> = ref(false)
+
+    // Progress
     const disabledProgress: Ref<boolean> = ref(false)
+    const progressColor: Ref<string> = ref('#00FFE3')
+    const progressBgColor: Ref<string> = ref('#f2f2f2')
+
+    const togglePeakRR = () => {
+      disabledPeakRR.value = !disabledPeakRR.value
+    }
 
     const toggleLeaderboardPlace = () => {
       disabledLeaderboardPlace.value = !disabledLeaderboardPlace.value
     }
 
-    const togglePeakRank = () => {
-      disabledPeakRank.value = !disabledPeakRank.value
+    const togglePeakRankIcon = () => {
+      disabledPeakRankIcon.value = !disabledPeakRankIcon.value
     }
 
     const toggleBackground = () => {
@@ -75,8 +88,9 @@ export const useOverlayStore = defineStore(
 
       overlayFont.value = 'Inter'
 
+      disabledPeakRR.value = false
       disabledLeaderboardPlace.value = false
-      disabledPeakRank.value = false
+      disabledPeakRankIcon.value = false
       disabledBackground.value = false
       disabledBackgroundGradient.value = false
       disabledBorder.value = false
@@ -104,8 +118,9 @@ export const useOverlayStore = defineStore(
         loseColor: loseColor.value,
         overlayStyle: overlayStyle.value,
         overlayFont: overlayFont.value,
+        disabledPeakRR: disabledPeakRR.value,
         disabledLeaderboardPlace: disabledLeaderboardPlace.value,
-        disabledPeakRank: disabledPeakRank.value,
+        disabledPeakRankIcon: disabledPeakRankIcon.value,
         disabledBackground: disabledBackground.value,
         disabledBackgroundGradient: disabledBackgroundGradient.value,
         disabledBorder: disabledBorder.value,
@@ -151,8 +166,9 @@ export const useOverlayStore = defineStore(
       loseColor,
       overlayStyle,
       overlayFont,
+      disabledPeakRR,
       disabledLeaderboardPlace,
-      disabledPeakRank,
+      disabledPeakRankIcon,
       disabledBackground,
       disabledBackgroundGradient,
       disabledBorder,
@@ -160,8 +176,9 @@ export const useOverlayStore = defineStore(
       disabledLastMatchPoints,
       disabledWinLose,
       disabledProgress,
+      togglePeakRR,
       toggleLeaderboardPlace,
-      togglePeakRank,
+      togglePeakRankIcon,
       toggleBackground,
       toggleBackgroundGradient,
       toggleBorder,

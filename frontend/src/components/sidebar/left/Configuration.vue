@@ -21,8 +21,9 @@ const {
   loseColor,
   overlayStyle,
   overlayFont,
+  disabledPeakRR,
   disabledLeaderboardPlace,
-  disabledPeakRank,
+  disabledPeakRankIcon,
   disabledBackground,
   disabledBackgroundGradient,
   disabledBorder,
@@ -119,13 +120,23 @@ const {
         v-if="overlayStyle === 'minimal'"
       >
         <SettingsContent class="flex items-center space-x-2">
-          <Label for="peakRank">
-            {{ $t('sidebar.configuration.settings.peakRank') }}
+          <Label for="peakRR">
+            {{ $t('sidebar.configuration.settings.peakRR') }}
           </Label>
           <SwitchToggle
-            id="peakRank"
-            :checked="!disabledPeakRank"
-            @update:checked="overlaySettingsStore.togglePeakRank"
+            id="peakRR"
+            :checked="!disabledPeakRR"
+            @update:checked="overlaySettingsStore.togglePeakRR"
+          />
+        </SettingsContent>
+        <SettingsContent class="flex items-center space-x-2">
+          <Label for="peakRankIcon">
+            {{ $t('sidebar.configuration.settings.peakRankIcon') }}
+          </Label>
+          <SwitchToggle
+            id="peakRankIcon"
+            :checked="!disabledPeakRankIcon"
+            @update:checked="overlaySettingsStore.togglePeakRankIcon"
           />
         </SettingsContent>
         <SettingsContent class="flex items-center space-x-2">

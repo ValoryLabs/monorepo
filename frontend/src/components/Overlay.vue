@@ -25,8 +25,9 @@ const {
   loseColor,
   overlayStyle,
   overlayFont,
+  disabledPeakRR,
   disabledLeaderboardPlace,
-  disabledPeakRank,
+  disabledPeakRankIcon,
   disabledBackground,
   disabledBackgroundGradient,
   disabledBorder,
@@ -69,7 +70,8 @@ onMounted(() => {
     :progress-color="progressColor"
     :progress-bg-color="progressBgColor"
     :disabled-leaderboard-place="disabledLeaderboardPlace"
-    :disabled-peak-rank="disabledPeakRank"
+    :disabled-peak-rank-icon="disabledPeakRankIcon"
+    :disabledPeakRR="disabledPeakRR"
     :disabled-background="disabledBackground"
     :disabled-border="disabledBorder"
     :disabled-background-gradient="disabledBackgroundGradient"
