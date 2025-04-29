@@ -21,6 +21,7 @@ const {
   loseColor,
   overlayStyle,
   overlayFont,
+  disabledLeaderboardPlace,
   disabledPeakRank,
   disabledBackground,
   disabledBackgroundGradient,
@@ -125,6 +126,16 @@ const {
             id="peakRank"
             :checked="!disabledPeakRank"
             @update:checked="overlaySettingsStore.togglePeakRank"
+          />
+        </SettingsContent>
+        <SettingsContent class="flex items-center space-x-2">
+          <Label for="leaderboardPlace">
+            {{ $t('sidebar.configuration.settings.leaderboardPlace') }}
+          </Label>
+          <SwitchToggle
+            id="leaderboardPlace"
+            :checked="!disabledLeaderboardPlace"
+            @update:checked="overlaySettingsStore.toggleLeaderboardPlace"
           />
         </SettingsContent>
       </SettingsSection>

@@ -25,6 +25,7 @@ const {
   loseColor,
   overlayStyle,
   overlayFont,
+  disabledLeaderboardPlace,
   disabledPeakRank,
   disabledBackground,
   disabledBackgroundGradient,
@@ -67,6 +68,7 @@ onMounted(() => {
     :primary-text-color="primaryTextColor"
     :progress-color="progressColor"
     :progress-bg-color="progressBgColor"
+    :disabled-leaderboard-place="disabledLeaderboardPlace"
     :disabled-peak-rank="disabledPeakRank"
     :disabled-background="disabledBackground"
     :disabled-border="disabledBorder"
@@ -91,5 +93,7 @@ onMounted(() => {
     :level="AccountInformation.account_level"
     :peakId="MMRInformation.peak.tier.id"
     :peakName="MMRInformation.peak.tier.name"
+    :peakRR="MMRInformation.peak.rr"
+    :leaderboard-place="MMRInformation.leaderboard_placement"
   />
 </template>

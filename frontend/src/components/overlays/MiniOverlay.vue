@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ArrowUp, ArrowDown, TrendingUp, TrendingDown, Minus } from 'lucide-vue-next'
+import { ArrowUp, ArrowDown, TrendingUp, TrendingDown, Minus, Earth } from 'lucide-vue-next'
 
 interface Props {
   backgroundColor?: string
@@ -7,6 +7,7 @@ interface Props {
   primaryTextColor?: string
   winColor?: string
   loseColor?: string
+  disabledLeaderboardPlace?: boolean
   disabledPeakRank?: boolean
   disabledBackground?: boolean
   disabledBorder?: boolean
@@ -17,13 +18,15 @@ interface Props {
 
   rankIcon?: string | number
   rank?: string
-  elo?: number
+  rr?: number
   win?: number
   lose?: number
   ptsDelta?: number
 
+  leaderboardPlace?: number | null
   peakId?: string | number
   peakName?: string
+  peakRR?: number
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -33,6 +36,7 @@ const props = withDefaults(defineProps<Props>(), {
   winColor: '#00FFE3',
   loseColor: '#FF7986',
 
+  disabledLeaderboardPlace: false,
   disabledPeakRank: false,
   disabledBackground: false,
   disabledBorder: false,
@@ -43,13 +47,15 @@ const props = withDefaults(defineProps<Props>(), {
 
   rankIcon: 'Unranked',
   rank: 'Unranked',
-  elo: 0,
+  rr: 0,
   win: 0,
   lose: 0,
   ptsDelta: 0,
 
   peakId: 'Unranked',
   peakName: 'Unranked',
+  peakRR: 0,
+  leaderboardPlace: null,
 })
 
 function extractRankNumber(rank: string): string {
@@ -71,7 +77,7 @@ function extractRankNumber(rank: string): string {
       'h-fit': disabledBackground,
     }"
   >
-    <div class="flex flex-row items-center justify-center gap-2">
+    <div class="inline-flex items-center justify-center gap-2">
       <div class="relative" v-if="!disabledPeakRank">
         <div class="relative flex">
           <img
@@ -94,6 +100,12 @@ function extractRankNumber(rank: string): string {
           class="absolute top-0 right-0 z-2 flex size-4 flex-col items-center justify-center rounded-full bg-yellow-300"
         >
         </span>
+      </div>
+      <div
+        class="font-bold text-[var(--primary-text-color)] uppercase"
+        :class="{ 'drop-shadow-[0px_0px_6px_var(--primary-text-color)]': !disabledGlowEffect }"
+      >
+        {{ props.peakRR }} RR
       </div>
       <div class="relative">
         <div class="relative flex">
@@ -124,19 +136,27 @@ function extractRankNumber(rank: string): string {
         class="font-bold text-[var(--primary-text-color)] uppercase"
         :class="{ 'drop-shadow-[0px_0px_6px_var(--primary-text-color)]': !disabledGlowEffect }"
       >
-        {{ props.elo }} elo
+        {{ props.rr }} RR
       </div>
     </div>
-    <div v-if="!disabledWinLose" class="flex flex-row items-center gap-2">
+    <div v-if="!disabledWinLose" class="inline-flex items-center gap-2">
       <span
-        class="flex flex-row items-center gap-1 font-bold text-[var(--win-color)]"
+        v-if="props.leaderboardPlace && !disabledLeaderboardPlace"
+        class="inline-flex items-center gap-1 font-bold text-[var(--primary-text-color)] uppercase"
+        :class="{ 'drop-shadow-[0px_0px_6px_var(--primary-text-color)]': !disabledGlowEffect }"
+      >
+        <Earth />
+        #{{ props.leaderboardPlace }}
+      </span>
+      <span
+        class="inline-flex items-center gap-1 font-bold text-[var(--win-color)]"
         :class="{ 'drop-shadow-[0px_0px_6px_var(--win-color)]': !disabledGlowEffect }"
       >
         <ArrowUp />
         {{ props.win }}
       </span>
       <span
-        class="flex flex-row items-center gap-1 font-bold text-[var(--lose-color)]"
+        class="inline-flex items-center gap-1 font-bold text-[var(--lose-color)]"
         :class="{ 'drop-shadow-[0px_0px_6px_var(--lose-color)]': !disabledGlowEffect }"
       >
         <ArrowDown />

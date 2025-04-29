@@ -13,6 +13,7 @@ export interface MMRInformation {
       id: number | string
       name: string
     }
+    rr: number
   }
   current: {
     tier: {
@@ -39,6 +40,7 @@ export const usePlayerStore = defineStore('playerStore', () => {
         id: 'Unranked',
         name: 'Unranked',
       },
+      rr: 0,
     },
     current: {
       tier: {

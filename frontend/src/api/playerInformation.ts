@@ -71,6 +71,7 @@ export const getMMRInformation = async (): Promise<boolean> => {
           id: 0,
           name: '',
         },
+        rr: 0,
       },
       current: {
         tier: {
@@ -91,6 +92,7 @@ export const getMMRInformation = async (): Promise<boolean> => {
 
       mmrInformation.peak.tier.id = response.data.data.peak.tier.id
       mmrInformation.peak.tier.name = response.data.data.peak.tier.name
+      mmrInformation.peak.rr = response.data.data.peak.rr
       mmrInformation.current.tier.id = response.data.data.current.tier.id
       mmrInformation.current.tier.name = response.data.data.current.tier.name
       mmrInformation.current.rr = response.data.data.current.rr

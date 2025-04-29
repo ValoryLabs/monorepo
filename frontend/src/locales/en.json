@@ -25,6 +25,7 @@
         "disableBackgroundGradient": "Gradient",
         "disableBorder": "Border",
         "glowEffect": "Glow effect",
+        "leaderboardPlace": "Leaderboard place",
         "peakRank": "Peak rank",
         "text": "Text",
         "disableLastMatchPoints": "Last match points",
