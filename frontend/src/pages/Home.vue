@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Paintbrush, PackageOpen, PencilRuler } from 'lucide-vue-next'
 import Button from '@/components/ui/button/Button.vue'
+import Login from '@/components/ui/Login.vue'
 import Header from '@/components/home/Header.vue'
 import router from '@/router'
 import Footer from '@/components/home/Footer.vue'
@@ -45,10 +46,11 @@ const redirectToAuth = () => {
           {{ $t('sidebar.buttons.auth') }}
           <PencilRuler class="size-4" />
         </Button>
-        <Button v-else @click="redirectToAuth">
+        <Login v-else />
+        <!-- <Button v-else @click="redirectToAuth">
           {{ $t('sidebar.buttons.unauth') }}
           <Twitch color="black" :size="16" />
-        </Button>
+        </Button> -->
       </div>
       <StreamersMarquee />
     </div>

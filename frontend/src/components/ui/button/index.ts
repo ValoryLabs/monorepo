@@ -8,6 +8,7 @@ export const buttonVariants = cva(
     variants: {
       variant: {
         default: 'bg-primary text-black drop-shadow-[0_0_10px_#ffffff4f] hover:bg-primary/90',
+        login: 'bg-[#141414] text-bold text-white hover:bg-[#252525]',
         destructive:
           'bg-destructive text-destructive-foreground hover:bg-destructive/60 focus-visible:ring-destructive/40',
         outline:
