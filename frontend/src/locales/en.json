@@ -58,7 +58,7 @@
     },
     "buttons": {
       "auth": "Let's start create!",
-      "unauth": "Join the Club",
+      "unauth": "Add to Stream",
       "search": "Search",
       "generate": "Generate",
       "back": "Back to configurator",
@@ -103,6 +103,16 @@
     }
   },
   "components": {
+    "login": {
+      "description": "Select a provider to sign in with",
+      "trouble": "Trouble signing in?",
+      "agree": {
+        "text": "By signing in, you agree to our",
+        "and": "and",
+        "terms": "Terms of Service",
+        "privacy": "Privacy Policy"
+      }
+    },
     "languageSwitcher": "Language",
     "selectFont": "Select font",
     "switchToggle": {
