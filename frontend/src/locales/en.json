@@ -59,6 +59,7 @@
     "buttons": {
       "auth": "Let's start create!",
       "unauth": "Add to Stream",
+      "learn": "Learn more",
       "search": "Search",
       "generate": "Generate",
       "back": "Back to configurator",

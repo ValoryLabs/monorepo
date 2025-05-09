@@ -5,16 +5,18 @@ import Login from '@/components/ui/Login.vue'
 import Header from '@/components/home/Header.vue'
 import router from '@/router'
 import Footer from '@/components/home/Footer.vue'
-import { Twitch } from '@/components/icons/socials'
-import StreamersMarquee from '@/components/StreamersMarquee.vue'
+import CarouselOverlay from '@/components/ui/CarouselOverlay.vue'
+// import StreamersMarquee from '@/components/StreamersMarquee.vue'
 
 import { useAuthStore } from '@/stores/auth'
+import MiniOverlay from '@/components/overlays/MiniOverlay.vue'
+import NewOverlay from '@/components/overlays/NewOverlay.vue'
+import NewV2Overlay from '@/components/overlays/NewV2Overlay.vue'
+import OldOverlay from '@/components/overlays/OldOverlay.vue'
 
 const authStore = useAuthStore()
 
-const redirectToAuth = () => {
-  window.location.href = `${import.meta.env.APP_BACKEND_URL}/api/auth/login`
-}
+const slides = [MiniOverlay, NewOverlay, NewV2Overlay, OldOverlay]
 </script>
 
 <template>
@@ -42,17 +44,23 @@ const redirectToAuth = () => {
             </span>
           </li>
         </ul>
-        <Button v-if="authStore.isAuthenticated" @click="router.push({ name: 'configurator' })">
-          {{ $t('sidebar.buttons.auth') }}
-          <PencilRuler class="size-4" />
-        </Button>
-        <Login v-else />
-        <!-- <Button v-else @click="redirectToAuth">
-          {{ $t('sidebar.buttons.unauth') }}
-          <Twitch color="black" :size="16" />
-        </Button> -->
+        <div class="inline-flex items-center justify-center gap-3">
+          <Button v-if="authStore.isAuthenticated" @click="router.push({ name: 'configurator' })">
+            {{ $t('sidebar.buttons.auth') }}
+            <PencilRuler class="size-4" />
+          </Button>
+          <Login v-else />
+          <Button variant="ghost">
+            {{ $t('sidebar.buttons.learn') }}
+          </Button>
+        </div>
       </div>
-      <StreamersMarquee />
+      <div
+        class="relative flex h-full w-1/2 flex-col items-center justify-center gap-3 overflow-hidden"
+      >
+        <CarouselOverlay :slides="slides" />
+      </div>
+      <!-- <StreamersMarquee /> -->
     </div>
     <Footer />
   </main>

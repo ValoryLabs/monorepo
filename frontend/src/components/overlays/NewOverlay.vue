@@ -51,7 +51,7 @@ const props = withDefaults(defineProps<Props>(), {
 </script>
 
 <template>
-  <div class="new-style flex w-[360px] flex-col">
+  <div class="new-style flex h-fit w-[360px] flex-col">
     <div
       class="relative flex flex-row items-center rounded-[8px]"
       :style="{
