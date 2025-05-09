@@ -56,7 +56,7 @@ const slides = [MiniOverlay, NewOverlay, NewV2Overlay, OldOverlay]
         </div>
       </div>
       <div
-        class="relative flex h-full w-1/2 flex-col items-center justify-center gap-3 overflow-hidden"
+        class="relative flex size-1/2 flex-col items-center justify-center gap-3 overflow-hidden rounded-2xl bg-white/1"
       >
         <CarouselOverlay :slides="slides" />
       </div>
