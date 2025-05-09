@@ -56,7 +56,7 @@ const slides = [MiniOverlay, NewOverlay, NewV2Overlay, OldOverlay]
         </div>
       </div>
       <div
-        class="relative flex size-1/2 flex-col items-center justify-center gap-3 overflow-hidden rounded-2xl bg-white/1"
+        class="relative flex size-1/2 flex-col items-center justify-center gap-3 overflow-hidden rounded-2xl bg-[url('previews/breeze.webp')] bg-center"
       >
         <CarouselOverlay :slides="slides" />
       </div>
