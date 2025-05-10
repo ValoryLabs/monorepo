@@ -28,6 +28,8 @@ onUnmounted(() => {
     <transition name="carousel-fade-down" mode="out-in">
       <component
         :is="slides[currentIndex]"
+        :text-color="'white'"
+        :primary-text-color="'white'"
         :rank-icon="27"
         :rank="'Radiant'"
         :seasonWinRate="57"
