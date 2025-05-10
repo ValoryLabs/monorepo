@@ -6,6 +6,7 @@ import { PencilRuler } from 'lucide-vue-next'
 import Github from '@/components/icons/socials/Github.vue'
 import Valory from '@/components/icons/Valory.vue'
 import LanguageSwitcher from '@/components/ui/LanguageSwitcher.vue'
+import Login from '@/components/ui/Login.vue'
 import { Button } from '@/components/ui/button'
 import { NAV_DATA } from '@/data/HeaderNav.data'
 import router from '@/router'
@@ -49,7 +50,7 @@ onUnmounted(() => {
     ]"
   >
     <div
-      class="container flex items-center justify-between gap-48 rounded-full border border-white/10 bg-black/30 px-5 py-1 text-sm backdrop-blur-sm"
+      class="container flex items-center justify-between gap-48 rounded-full bg-black/30 py-1 text-sm backdrop-blur-sm"
     >
       <div class="left flex flex-row gap-8">
         <div class="logo">
