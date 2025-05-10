@@ -33,10 +33,12 @@ export default {
   preview: {
     port: 3000,
     host: true,
+    allowedHosts: ["valory.su"],
   },
   server: {
     host: true,
     port: 3000,
+    allowedHosts: ["valory.su"],
   },
   base: "/",
 };
