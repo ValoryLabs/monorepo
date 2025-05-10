@@ -8,7 +8,7 @@ import { Languages } from 'lucide-vue-next'
 </script>
 
 <template>
-  <header class="bg-header relative flex h-12 items-center justify-between px-5">
+  <header class="bg-header sticky flex h-12 items-center justify-between px-5">
     <div @click="$router.push('/')" class="flex h-full cursor-pointer items-center gap-2">
       <Valory class="size-6" />
       <span

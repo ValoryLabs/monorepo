@@ -1,20 +1,86 @@
 <script setup lang="ts">
+import { useFetch } from '@vueuse/core'
+import { computed, onMounted, onUnmounted, ref } from 'vue'
+import { PencilRuler } from 'lucide-vue-next'
+
+import Github from '@/components/icons/socials/Github.vue'
 import Valory from '@/components/icons/Valory.vue'
+import LanguageSwitcher from '@/components/ui/LanguageSwitcher.vue'
+import { Button } from '@/components/ui/button'
+import { NAV_DATA } from '@/data/HeaderNav.data'
+import router from '@/router'
+import { hidden, openLink, moveTo } from '@/lib/utils'
+
+import { useAuthStore } from '@/stores/auth'
+const authStore = useAuthStore()
+const repoUrl = ref('https://api.github.com/repos/ValoryApp/Valory')
+
+const { data: repoData } = useFetch(repoUrl).get().json()
+
+const starsCount = computed(() => repoData.value?.stargazers_count ?? 0)
+
+const showHeader = ref(true)
+let lastScrollPosition = 0
+
+const handleScroll = () => {
+  const currentScrollPosition = window.scrollY
+  if (currentScrollPosition > lastScrollPosition) {
+    showHeader.value = false
+  } else {
+    showHeader.value = true
+  }
+  lastScrollPosition = currentScrollPosition
+}
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll)
+})
 </script>
 
 <template>
-  <header class="flex flex-col items-start justify-center gap-3">
-    <div class="relative flex flex-row items-center gap-2">
-      <Valory :size="26" />
-      <Valory :size="96" class="absolute left-0 blur-[120px]" />
-      <span
-        class="font-valory inline-block bg-linear-to-b from-[#f2f2f2] to-[#dddddd] bg-clip-text text-lg leading-none text-transparent"
-      >
-        VALORY
-      </span>
+  <header
+    :class="[
+      'fixed right-0 left-0 z-10 flex h-16 w-full justify-center transition-all duration-700',
+      showHeader ? 'top-6' : 'top-[-600px]',
+    ]"
+  >
+    <div
+      class="container flex items-center justify-between gap-48 rounded-full border border-white/10 bg-black/30 px-5 py-1 text-sm backdrop-blur-sm"
+    >
+      <div class="left flex flex-row gap-8">
+        <div class="logo">
+          <Valory :size="30" />
+        </div>
+        <ul v-if="!hidden" class="flex items-center justify-between gap-6">
+          <li
+            v-for="nav in NAV_DATA"
+            :key="nav.name"
+            @click="moveTo(`${nav.point}`)"
+            class="cursor-pointer font-medium text-[#F2F2F2]/80 transition duration-150 hover:text-[#F2F2F2]"
+          >
+            {{ $t(`nav.${nav.point}`) }}
+          </li>
+        </ul>
+      </div>
+      <div class="right flex flex-row items-center gap-1">
+        <Button
+          class="rounded-full border border-transparent bg-transparent text-white opacity-50 transition hover:border-white/10 hover:bg-white/10 hover:opacity-100"
+          @click="openLink('https://github.com/ValoryApp/Valory')"
+        >
+          <Github :size="16" />
+          {{ starsCount }}
+        </Button>
+        <LanguageSwitcher />
+        <Button v-if="authStore.isAuthenticated" @click="router.push({ name: 'configurator' })">
+          {{ $t('sidebar.buttons.auth') }}
+          <PencilRuler class="size-4" />
+        </Button>
+        <Login v-else />
+      </div>
     </div>
-    <span class="text-4xl leading-tight font-bold whitespace-pre-line text-white">
-      {{ $t('sidebar.header.description') }}
-    </span>
   </header>
 </template>

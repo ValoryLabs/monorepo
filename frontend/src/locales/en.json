@@ -1,4 +1,53 @@
 {
+  "streamers": {
+    "category": "LEGENDS",
+    "title": "Streamers Spotlight",
+    "subtitle": "Top Valorant streamers already showcase their stats with our app.\nWant to see your name here? Log in to our platform. We might feature you next!",
+    "card": {
+      "followers": "followers"
+    }
+  },
+  "footer": {
+    "left": {
+      "description": "Track Your Game, Own the Stream"
+    },
+    "right": {
+      "sections": {
+        "first": {
+          "title": "Product",
+          "items": {
+            "about": "About us",
+            "contact": "Contact us",
+            "privacy": "Privacy Policy",
+            "terms": "Terms of Service"
+          }
+        },
+        "second": {
+          "title": "Possibilities",
+          "items": {
+            "how": "How it work?",
+            "better": "Be a better streamer!"
+          }
+        }
+      }
+    },
+    "copyright": "All rights reserved.",
+    "love": "Made with ❤\uFE0F on \uD83C\uDF0E Earth"
+  },
+  "nav": {
+    "features": "Features",
+    "streamers": "Streamers",
+    "source": "Open Source",
+    "language": "Language",
+    "login": "Try for free"
+  },
+  "source": {
+    "title": "Open Source",
+    "category": "Community-Driven Development",
+    "subtitle": "Our application's source code is fully accessible on GitHub.\nWe welcome everyone to view, utilize, and contribute to its development.",
+    "contribute": "Contribute on Github",
+    "star": "Star the Project"
+  },
   "sidebar": {
     "header": {
       "badge": "STREAM OVERLAY",
