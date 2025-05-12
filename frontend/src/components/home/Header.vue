@@ -2,6 +2,7 @@
 import { useFetch } from '@vueuse/core'
 import { computed, onMounted, onUnmounted, ref } from 'vue'
 import { PencilRuler } from 'lucide-vue-next'
+import NumberFlow from '@number-flow/vue'
 
 import Github from '@/components/icons/socials/Github.vue'
 import Valory from '@/components/icons/Valory.vue'
@@ -73,7 +74,7 @@ onUnmounted(() => {
           @click="openLink('https://github.com/ValoryApp/Valory')"
         >
           <Github :size="16" />
-          {{ starsCount }}
+          <NumberFlow :value="starsCount" />
         </Button>
         <LanguageSwitcher />
         <Button v-if="authStore.isAuthenticated" @click="router.push({ name: 'configurator' })">
