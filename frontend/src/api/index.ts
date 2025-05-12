@@ -27,7 +27,7 @@ const { apiKey } = storeToRefs(userSettingsStore)
  * @constant
  */
 export const apiClient = axios.create({
-  baseURL: 'https://api.henrikdev.xyz/valorant',
+  baseURL: 'https://beta.api.henrikdev.xyz/valorant',
   timeout: 10000,
   headers: {
     accept: 'application/json',

@@ -5,7 +5,7 @@ import StreamersMarquee from '@/components/home/StreamersMarquee.vue'
 <template>
   <div id="streamers" class="container m-auto flex flex-col items-center gap-10">
     <div class="flex flex-col items-center gap-6">
-      <span class="inline-block text-sm font-bold text-[#FF930F] uppercase">
+      <span class="inline-block font-mono text-sm font-bold text-[#FF930F] uppercase">
         {{ $t('streamers.category') }}
       </span>
       <span class="text-center text-2xl font-bold uppercase">
