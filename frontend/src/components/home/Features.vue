@@ -19,7 +19,9 @@ const slides = [MiniOverlay, NewOverlay, NewV2Overlay, OldOverlay]
     <div
       class="mx-auto grid max-w-sm grid-cols-1 gap-6 md:max-w-3xl md:grid-cols-2 xl:max-w-6xl xl:auto-rows-fr xl:grid-cols-3"
     >
-      <div class="relative items-start overflow-hidden rounded-xl bg-white/10">
+      <div
+        class="relative items-start overflow-hidden rounded-xl border border-transparent bg-white/10 transition-colors hover:border hover:border-white/10"
+      >
         <div class="flex flex-col gap-2 p-8">
           <div class="text-lg font-bold">Simple Setup</div>
           <div>
@@ -29,7 +31,9 @@ const slides = [MiniOverlay, NewOverlay, NewV2Overlay, OldOverlay]
         </div>
         <StreamAppsMarquee />
       </div>
-      <div class="order-3 rounded-xl bg-white/10 xl:order-none">
+      <div
+        class="order-3 rounded-xl border border-transparent bg-white/10 transition-colors hover:border hover:border-white/10 xl:order-none"
+      >
         <div class="flex flex-col gap-2 p-8">
           <div class="text-lg font-bold">Cloud Hosted</div>
           <div>
@@ -38,7 +42,9 @@ const slides = [MiniOverlay, NewOverlay, NewV2Overlay, OldOverlay]
           </div>
         </div>
       </div>
-      <div class="overflow-hidden rounded-xl bg-white/10 md:row-span-2">
+      <div
+        class="overflow-hidden rounded-xl border border-transparent bg-white/10 transition-colors hover:border hover:border-white/10 md:row-span-2"
+      >
         <div class="flex flex-col gap-2 p-8">
           <div class="text-lg font-bold">Customization</div>
           <div>
@@ -49,7 +55,7 @@ const slides = [MiniOverlay, NewOverlay, NewV2Overlay, OldOverlay]
         <CarouselOverlay :slides="slides" />
       </div>
       <div
-        class="relative order-4 flex flex-col gap-8 overflow-hidden rounded-xl bg-white/10 p-8 md:col-span-2 md:flex-row xl:order-none"
+        class="relative order-4 flex flex-col gap-8 overflow-hidden rounded-xl border border-transparent bg-white/10 p-8 transition-colors hover:border hover:border-white/10 md:col-span-2 md:flex-row xl:order-none"
       >
         <div class="text-lg font-bold">Real-Time Updates</div>
         <div>All stats update instantly on stream-viewers always see the latest data.</div>
