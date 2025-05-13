@@ -9,13 +9,18 @@ const slides = [MiniOverlay, NewOverlay, NewV2Overlay, OldOverlay]
 </script>
 
 <template>
-  <section id="features" class="container mb-20 flex flex-col items-center justify-center gap-8">
+  <section id="features" class="container mb-20 flex flex-col items-center justify-center gap-12">
     <div class="flex flex-col items-center gap-6">
-      <span class="text-center text-3xl font-bold uppercase">
+      <span class="inline-block text-sm font-bold text-[#5AB2F7] uppercase">
+        {{ $t('features.category') }}
+      </span>
+      <span class="text-center text-2xl font-bold uppercase">
         {{ $t('features.title') }}
       </span>
+      <span class="text-center text-base font-normal whitespace-pre-line text-[#CECECE]">
+        {{ $t('features.subtitle') }}
+      </span>
     </div>
-
     <div
       class="mx-auto grid max-w-sm grid-cols-1 gap-6 md:max-w-3xl md:grid-cols-2 xl:max-w-6xl xl:auto-rows-fr xl:grid-cols-3"
     >

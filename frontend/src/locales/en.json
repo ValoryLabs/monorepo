@@ -1,6 +1,8 @@
 {
   "features": {
-    "title": "WHY VALORY?"
+    "category": "Features",
+    "title": "Everything You Need to Elevate Your Stream",
+    "subtitle": " Packed with powerful tools, our app makes it effortless to display and\ncustomize your Valorant stats. From seamless setup to full\npersonalization, we’ve got everything to make your stream shine."
   },
   "streamers": {
     "category": "LEGENDS",
