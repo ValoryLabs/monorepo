@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import Valory from '@/components/icons/Valory.vue'
-import { SocialLinksData } from '@/data/SocialLinks.data.ts'
-import { openLink } from '@/lib/utils'
 import Button from '@/components/ui/button/Button.vue'
 import LanguageSwitcher from '@/components/ui/LanguageSwitcher.vue'
 import { Languages } from 'lucide-vue-next'
+import ProfileMenu from './ProfileMenu.vue'
 </script>
 
 <template>
@@ -17,20 +16,12 @@ import { Languages } from 'lucide-vue-next'
       >
     </div>
     <div class="inline-flex items-center gap-3">
-      <Button
-        v-for="link in SocialLinksData"
-        :key="link.name"
-        class="size-7"
-        variant="ghost"
-        @click="openLink(link.url)"
-      >
-        <component :is="link.icon" :size="18" />
-      </Button>
       <LanguageSwitcher>
         <Button variant="ghost" class="size-7" aria-label="Language Switcher">
           <Languages class="size-4" />
         </Button>
       </LanguageSwitcher>
+      <ProfileMenu />
     </div>
   </header>
 </template>
