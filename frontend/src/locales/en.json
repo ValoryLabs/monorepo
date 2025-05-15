@@ -1,251 +1,251 @@
 {
-  "profile_menu": {
-    "error": "Error",
-    "settings": "Settings",
-    "support": "Support",
-    "privacy": "Privacy Policy",
-    "terms": "Terms of Service",
-    "logout": "Logout"
-  },
-  "features": {
-    "category": "Features",
-    "title": "Everything You Need to Elevate Your Stream",
-    "subtitle": " Packed with powerful tools, our app makes it effortless to display and\ncustomize your Valorant stats. From seamless setup to full\npersonalization, we’ve got everything to make your stream shine."
-  },
-  "streamers": {
-    "category": "LEGENDS",
-    "title": "Streamers Spotlight",
-    "subtitle": "Top Valorant streamers already showcase their stats with our app.\nWant to see your name here? Log in to our platform. We might feature you next!",
-    "card": {
-      "followers": "followers"
-    }
-  },
-  "footer": {
-    "left": {
-      "description": "Track Your Game, Own the Stream"
-    },
-    "right": {
-      "sections": {
-        "first": {
-          "title": "Product",
-          "items": {
-            "about": "About us",
-            "contact": "Contact us",
-            "privacy": "Privacy Policy",
-            "terms": "Terms of Service"
+    "components": {
+      "instruction": {
+        "description": "A little instruction on how to get an API key.",
+        "step1": {
+          "description": "Click here to join the Discord server.",
+          "title": "Go Discord server."
+        },
+        "step2": {
+          "description": "Complete the captcha on the #Verify channel to verify your user.",
+          "title": "Verify Your User."
+        },
+        "step3": {
+          "description": "Locate the #Get-a-key channel in the Discord server and go to it.",
+          "title": "Go to Channel."
+        },
+        "step4": {
+          "description": "Click on the \"Generate\" button to fill out the key generation form.",
+          "title": "Click Generate."
+        },
+        "step5": {
+          "description": "Select \"Valorant\" in the list of games.",
+          "title": "Select Valorant."
+        },
+        "step6": {
+          "description": "Select \"Base key\" in the list.",
+          "title": "Select Basic Key."
+        },
+        "step7": {
+          "description": "Fill out the form. In the product name, enter \"Valorant overlay\", in the product description, enter \"Overlay to show rank on stream\", then click \"Send\".",
+          "title": "Fill the form."
+        },
+        "step8": {
+          "description": "You will receive your API key on your Discord DMs.",
+          "title": "Open the DM."
+        },
+        "step9": {
+          "description": "Use the generated key on the overlay page.",
+          "title": "Copy the API key and use it."
+        },
+        "title": "Hendrik's API"
+      },
+      "languageSwitcher": "Language",
+      "login": {
+        "agree": {
+          "and": "and",
+          "privacy": "Privacy Policy",
+          "terms": "Terms of Service",
+          "text": "By signing in, you agree to our"
+        },
+        "description": "Select a provider to sign in with",
+        "trouble": "Trouble signing in?"
+      },
+      "selectFont": "Select font",
+      "selectLayout": {
+        "minimal": "Minimal",
+        "new": "Modern",
+        "new_v2": "Modern v2",
+        "old": "Old",
+        "title": "Select styles"
+      },
+      "settings": {
+        "tabs": {
+          "preview": {
+            "description": "Preview your overlay before generating the URL.",
+            "title": "Preview"
+          },
+          "profile": {
+            "description": "Enter your Riot ID and Henrik's API KEY to search for your profile",
+            "instructions": "How do I get an API key?",
+            "title": "Profile"
           }
         },
-        "second": {
-          "title": "Possibilities",
-          "items": {
-            "how": "How it work?",
-            "better": "Be a better streamer!"
-          }
-        }
+        "title": "Settings"
+      },
+      "shortcuts": {
+        "items": {
+          "fullscreen": "Fullscreen",
+          "reset": "Reset"
+        },
+        "title": "Shortcuts"
+      },
+      "switchToggle": {
+        "off": "Off",
+        "on": "On"
+      },
+      "tooltips": {
+        "apiKey": "How to get API key?",
+        "fullscreen": "Fullscreen",
+        "randomRiotId": "Random Riot ID",
+        "reset": "Reset",
+        "shortcuts": "Shortcuts"
       }
-    },
-    "copyright": "All rights reserved.",
-    "love": "Made with ❤\uFE0F on \uD83C\uDF0E Earth"
-  },
-  "nav": {
-    "features": "Features",
-    "streamers": "Streamers",
-    "source": "Open Source",
-    "language": "Language",
-    "login": "Try for free"
-  },
-  "source": {
-    "title": "Open Source",
-    "category": "Community-Driven Development",
-    "subtitle": "Our application's source code is fully accessible on GitHub.\nWe welcome everyone to view, utilize, and contribute to its development.",
-    "contribute": "Contribute on Github",
-    "star": "Star the Project"
-  },
-  "sidebar": {
-    "header": {
-      "badge": "STREAM OVERLAY",
-      "description": "Catch your audience's attention \nwith real-time Valorant stats! "
     },
     "features": {
-      "first": "Customize your overlay according\nto your stream. ",
-      "second": "It's absolutely free!\nThere is support for many popular\nstreaming programs like OBS and others.",
-      "third": " Configure once, enjoy seamless\noperation forever! "
-    },
-    "configuration": {
-      "title": "Configuration",
-      "description": "Adjust available options of the chosen variant to reflect your brand.",
-      "settings": {
-        "font": "Font",
-        "styles": "Overlay Style",
-        "backgroundColor": "Color",
-        "disableBackground": "Background",
-        "disableBackgroundGradient": "Gradient",
-        "disableBorder": "Border",
-        "glowEffect": "Glow effect",
-        "leaderboardPlace": "Leaderboard place",
-        "peakRankIcon": "Peak rank icon",
-        "peakRR": "Peak RR",
-        "text": "Text",
-        "disableLastMatchPoints": "Last match points",
-        "winColor": "Win",
-        "loseColor": "Lose",
-        "disableWinLose": "Win/lose",
-        "primary": "Primary text",
-        "progress": "Progress color",
-        "progressBackground": "Progress background",
-        "disableProgress": "Progress bar",
-        "label": {
-          "background": "Background",
-          "text": "Text",
-          "rank": "Rank",
-          "winLose": "Win/Lose",
-          "progressbar": "Progress bar"
-        }
-      }
-    },
-    "generate": {
-      "title": "Overlay URL",
-      "description": "Copy the URL below and paste it into your streaming app (in OBS Studio: Sources → Browser).",
-      "tooltip": "Copy URL",
-      "dimensions": "Dimensions:"
-    },
-    "buttons": {
-      "auth": "Let's start create!",
-      "unauth": "Add to Stream",
-      "learn": "Learn more",
-      "search": "Search",
-      "generate": "Generate",
-      "back": "Back to configurator",
-      "reset": "Reset",
-      "show": "Show"
+      "category": "Features",
+      "subtitle": " Packed with powerful tools, our app makes it effortless to display and\ncustomize your Valorant stats. From seamless setup to full\npersonalization, we've got everything to make your stream shine.",
+      "title": "Everything You Need to Elevate Your Stream"
     },
     "footer": {
-      "powered": "Powered by",
-      "made": "Valory © 2023-2025 · All rights reserved"
-    }
-  },
-  "preview": {
-    "main": "Your preview will be located here.\nPlease enter your profile to see it.",
-    "imageBy": "Image by",
-    "drag": {
-      "title": "Position the overlay as you like\n for the perfect broadcast layout.",
-      "description": "Click and drag with your mouse\n to adjust the position.",
-      "continue": "Continue"
-    }
-  },
-  "toasts": {
-    "dataVerifying": {
-      "loading": "Data verification...",
-      "success": "Success!",
-      "error": "Error checking the values!",
-      "validateRiotId": {
-        "value": "Please enter your Riot ID.",
-        "pattern": "Please enter a valid Riot ID.",
-        "valid": "Riot ID is valid."
+      "copyright": "All rights reserved.",
+      "left": {
+        "description": "Track Your Game, Own the Stream"
       },
-      "validateApiKey": {
-        "value": "Please enter your Henrik's API key.",
-        "pattern": "Please enter a valid Henrik's API key.",
-        "valid": "API key is valid."
-      },
-      "validationSuccess": "Data verification was successful!",
-      "invalidApiKey": "Invalid Henrik's API key.",
-      "userNotFound": "User not found.",
-      "rateLimit": "Too many requests. Please wait.",
-      "networkError": "Network error. Please check your internet connection."
-    }
-  },
-  "components": {
-    "settings": {
-      "title": "Settings",
-      "tabs": {
-        "profile": {
-          "title": "Profile",
-          "description": "Enter your Riot ID and Henrik's API KEY to search for your profile",
-          "instructions": "How do I get an API key?"
-        },
-        "preview": {
-          "title": "Preview",
-          "description": "Preview your overlay before generating the URL."
+      "love": "Made with ❤️ on 🌎 Earth",
+      "right": {
+        "sections": {
+          "first": {
+            "items": {
+              "about": "About us",
+              "contact": "Contact us",
+              "privacy": "Privacy Policy",
+              "terms": "Terms of Service"
+            },
+            "title": "Product"
+          },
+          "second": {
+            "items": {
+              "better": "Be a better streamer!",
+              "how": "How it work?"
+            },
+            "title": "Possibilities"
+          }
         }
       }
     },
-    "login": {
-      "description": "Select a provider to sign in with",
-      "trouble": "Trouble signing in?",
-      "agree": {
-        "text": "By signing in, you agree to our",
-        "and": "and",
-        "terms": "Terms of Service",
-        "privacy": "Privacy Policy"
+    "nav": {
+      "features": "Features",
+      "language": "Language",
+      "login": "Try for free",
+      "source": "Open Source",
+      "streamers": "Streamers"
+    },
+    "preview": {
+      "drag": {
+        "continue": "Continue",
+        "description": "Click and drag with your mouse\n to adjust the position.",
+        "title": "Position the overlay as you like\n for the perfect broadcast layout."
+      },
+      "imageBy": "Image by",
+      "main": "Your preview will be located here.\nPlease enter your profile to see it."
+    },
+    "profile_menu": {
+      "error": "Error",
+      "logout": "Logout",
+      "privacy": "Privacy Policy",
+      "settings": "Settings",
+      "support": "Support",
+      "terms": "Terms of Service"
+    },
+    "sidebar": {
+      "buttons": {
+        "auth": "Let's start create!",
+        "back": "Back to configurator",
+        "generate": "Generate",
+        "learn": "Learn more",
+        "reset": "Reset",
+        "search": "Search",
+        "show": "Show",
+        "unauth": "Add to Stream"
+      },
+      "configuration": {
+        "description": "Adjust available options of the chosen variant to reflect your brand.",
+        "settings": {
+          "backgroundColor": "Color",
+          "disableBackground": "Background",
+          "disableBackgroundGradient": "Gradient",
+          "disableBorder": "Border",
+          "disableLastMatchPoints": "Last match points",
+          "disableProgress": "Progress bar",
+          "disableWinLose": "Win/lose",
+          "font": "Font",
+          "glowEffect": "Glow effect",
+          "label": {
+            "background": "Background",
+            "progressbar": "Progress bar",
+            "rank": "Rank",
+            "text": "Text",
+            "winLose": "Win/Lose"
+          },
+          "leaderboardPlace": "Leaderboard place",
+          "loseColor": "Lose",
+          "peakRR": "Peak RR",
+          "peakRankIcon": "Peak rank icon",
+          "primary": "Primary text",
+          "progress": "Progress color",
+          "progressBackground": "Progress background",
+          "styles": "Overlay Style",
+          "text": "Text",
+          "winColor": "Win"
+        },
+        "title": "Configuration"
+      },
+      "features": {
+        "first": "Customize your overlay according\nto your stream. ",
+        "second": "It's absolutely free!\nThere is support for many popular\nstreaming programs like OBS and others.",
+        "third": " Configure once, enjoy seamless\noperation forever! "
+      },
+      "footer": {
+        "made": "Valory © 2023-2025 · All rights reserved",
+        "powered": "Powered by"
+      },
+      "generate": {
+        "description": "Copy the URL below and paste it into your streaming app (in OBS Studio: Sources → Browser).",
+        "dimensions": "Dimensions:",
+        "title": "Overlay URL",
+        "tooltip": "Copy URL"
+      },
+      "header": {
+        "badge": "STREAM OVERLAY",
+        "description": "Catch your audience's attention \nwith real-time Valorant stats! "
       }
     },
-    "languageSwitcher": "Language",
-    "selectFont": "Select font",
-    "switchToggle": {
-      "on": "On",
-      "off": "Off"
+    "source": {
+      "category": "Community-Driven Development",
+      "contribute": "Contribute on Github",
+      "star": "Star the Project",
+      "subtitle": "Our application's source code is fully accessible on GitHub.\nWe welcome everyone to view, utilize, and contribute to its development.",
+      "title": "Open Source"
     },
-    "selectLayout": {
-      "title": "Select styles",
-      "old": "Old",
-      "new": "Modern",
-      "new_v2": "Modern v2",
-      "minimal": "Minimal"
+    "streamers": {
+      "card": {
+        "followers": "followers"
+      },
+      "category": "LEGENDS",
+      "subtitle": "Top Valorant streamers already showcase their stats with our app.\nWant to see your name here? Log in to our platform. We might feature you next!",
+      "title": "Streamers Spotlight"
     },
-    "instruction": {
-      "title": "Hendrik's API",
-      "description": "A little instruction on how to get an API key.",
-      "step1": {
-        "title": "Go Discord server.",
-        "description": "Click here to join the Discord server."
-      },
-      "step2": {
-        "title": "Verify Your User.",
-        "description": "Complete the captcha on the #Verify channel to verify your user."
-      },
-      "step3": {
-        "title": "Go to Channel.",
-        "description": "Locate the #Get-a-key channel in the Discord server and go to it."
-      },
-      "step4": {
-        "title": "Click Generate.",
-        "description": "Click on the \"Generate\" button to fill out the key generation form."
-      },
-      "step5": {
-        "title": "Select Valorant.",
-        "description": "Select \"Valorant\" in the list of games."
-      },
-      "step6": {
-        "title": "Select Basic Key.",
-        "description": "Select \"Base key\" in the list."
-      },
-      "step7": {
-        "title": "Fill the form.",
-        "description": "Fill out the form. In the product name, enter \"Valorant overlay\", in the product description, enter \"Overlay to show rank on stream\", then click \"Send\"."
-      },
-      "step8": {
-        "title": "Open the DM.",
-        "description": "You will receive your API key on your Discord DMs."
-      },
-      "step9": {
-        "title": "Copy the API key and use it.",
-        "description": "Use the generated key on the overlay page."
-      }
-    },
-    "tooltips": {
-      "fullscreen": "Fullscreen",
-      "reset": "Reset",
-      "shortcuts": "Shortcuts",
-      "apiKey": "How to get API key?",
-      "randomRiotId": "Random Riot ID"
-    },
-    "shortcuts": {
-      "title": "Shortcuts",
-      "items": {
-        "fullscreen": "Fullscreen",
-        "reset": "Reset"
+    "toasts": {
+      "dataVerifying": {
+        "error": "Error checking the values!",
+        "invalidApiKey": "Invalid Henrik's API key.",
+        "loading": "Data verification...",
+        "networkError": "Network error. Please check your internet connection.",
+        "rateLimit": "Too many requests. Please wait.",
+        "success": "Success!",
+        "userNotFound": "User not found.",
+        "validateApiKey": {
+          "pattern": "Please enter a valid Henrik's API key.",
+          "valid": "API key is valid.",
+          "value": "Please enter your Henrik's API key."
+        },
+        "validateRiotId": {
+          "pattern": "Please enter a valid Riot ID.",
+          "valid": "Riot ID is valid.",
+          "value": "Please enter your Riot ID."
+        },
+        "validationSuccess": "Data verification was successful!"
       }
     }
   }
-}
