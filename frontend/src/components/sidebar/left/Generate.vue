@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { Button } from '@/components/ui/button'
-import { useOverlayStore } from '@/stores/overlay.ts'
 import { computed } from 'vue'
 import { Copy } from 'lucide-vue-next'
 import { useClipboard } from '@vueuse/core'
@@ -10,13 +9,12 @@ import { Input } from '@/components/ui/input'
 import { storeToRefs } from 'pinia'
 import { useUserStore } from '@/stores/user.ts'
 
-const overlayStore = useOverlayStore()
-
 const userStore = useUserStore()
 const { overlayDimensions } = storeToRefs(userStore)
 
-const queryString = overlayStore.getSettingsAsQuery()
-const url = computed(() => `${window.location.origin}/overlay?${queryString}`)
+const { user } = storeToRefs(userStore)
+
+const url = computed(() => `${window.location.origin}/overlay/${user.overlay_id}`)
 const { copy } = useClipboard({ url })
 
 const copyUrl = () => {

@@ -11,6 +11,7 @@ import logging
 
 from app.config import settings
 from app.dao.users import UsersDAO
+from app.dao.overlays import OverlaysDAO
 from app.database import get_session
 from app.models.users import User
 from app.utils.auth import authenticate_user, create_access_token
@@ -169,12 +170,14 @@ async def callback(request: Request, session: AsyncSession = Depends(get_session
     return response
 
 @router.get("/me", summary="Получить информацию о текущем пользователе")
-async def read_users_me(current_user: User = Depends(get_current_user)):
+async def read_users_me(current_user: User = Depends(get_current_user), session: AsyncSession = Depends(get_session)):
+    overlay = await OverlaysDAO.find_by_user_id(session, int(current_user.id))
+
     return {
         "id": current_user.id,
         "twitch_id": current_user.twitch_id,
         "twitch_display_name": current_user.twitch_display_name,
         "username": current_user.username,
         "avatar_url": current_user.avatar_url,
+        "overlay_id": overlay.id
     }
-

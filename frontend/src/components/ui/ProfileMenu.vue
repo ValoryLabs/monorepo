@@ -15,8 +15,6 @@ import { SocialLinksData } from '@/data/SocialLinks.data'
 import { openLink } from '@/lib/utils'
 import { LifeBuoy, Lock, LogOut, NotebookText, Settings as SettingsIcon } from 'lucide-vue-next'
 
-import { Settings } from '@/components/settings'
-
 import { onMounted } from 'vue'
 import { useUserStore } from '@/stores/user.ts'
 import { storeToRefs } from 'pinia'
@@ -42,7 +40,7 @@ onMounted(() => {
       </Button>
       <Button v-else-if="user" variant="ghost">
         <img class="size-6 rounded-full bg-neutral-500" :src="user.avatar_url" alt="user avatar" />
-        <span class="font-bold">{{ user.username }}</span>
+        <span class="font-bold">{{ user.twitch_display_name }}</span>
       </Button>
     </DropdownMenuTrigger>
     <DropdownMenuContent class="w-56">
