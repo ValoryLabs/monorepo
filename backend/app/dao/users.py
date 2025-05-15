@@ -12,3 +12,9 @@ class UsersDAO(BaseDAO):
         query = select(cls.model).filter_by(twitch_id=twitch_id)
         result = await session.execute(query)
         return result.scalars().one_or_none()
+
+    @classmethod
+    async def find_by_id(cls, session, id):
+        query = select(cls.model).filter_by(id=id)
+        result = await session.execute(query)
+        return result.scalars().one_or_none()

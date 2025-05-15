@@ -15,15 +15,32 @@ import { SocialLinksData } from '@/data/SocialLinks.data'
 import { openLink } from '@/lib/utils'
 import { LifeBuoy, Lock, LogOut, NotebookText, Settings, User } from 'lucide-vue-next'
 
+import { onMounted } from "vue";
+import {useUserStore} from "@/stores/user.ts";
+import {storeToRefs} from "pinia";
+
 const authStore = useAuthStore()
+
+const userStore = useUserStore()
+const { user, loading, error } = storeToRefs(userStore)
+
+onMounted(() => {
+  userStore.fetchUser()
+})
 </script>
 
 <template>
   <DropdownMenu>
     <DropdownMenuTrigger as-child>
-      <Button variant="ghost">
-        <span class="size-6 rounded-full bg-neutral-500" />
-        <span class="font-bold">username</span>
+      <Button v-if="loading" variant="ghost">
+        <span class="font-bold">loading...</span>
+      </Button>
+      <Button v-if="error" variant="ghost">
+        <span class="font-bold text-red-500">error</span>
+      </Button>
+      <Button v-else-if="user" variant="ghost">
+        <img class="size-6 rounded-full bg-neutral-500" :src="user.avatar_url" alt="user avatar" />
+        <span class="font-bold">{{ user.username }}</span>
       </Button>
     </DropdownMenuTrigger>
     <DropdownMenuContent class="w-56">

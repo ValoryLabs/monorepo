@@ -14,7 +14,7 @@ import { openLink } from '@/lib/utils'
 import Valory from '../icons/Valory.vue'
 
 const redirectToAuth = () => {
-  window.location.href = `${import.meta.env.APP_BACKEND_URL}/api/auth/login`
+  window.location.href = `${import.meta.env.APP_BACKEND_URL}/api/auth/login/twitch`
 }
 </script>
 

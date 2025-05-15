@@ -1,9 +1,13 @@
 import { defineStore } from 'pinia'
 import { ref, type Ref } from 'vue'
+import axios from 'axios'
 
 export const useUserStore = defineStore(
   'userStore',
   () => {
+    const user: Ref<string | null> = ref(null)
+    const loading: Ref<boolean> = ref(false)
+    const error: Ref<string | null> = ref(null)
     const profileActive: Ref<boolean> = ref(true)
     const configuratorActive: Ref<boolean> = ref(false)
     const previewActive: Ref<boolean> = ref(false)
@@ -15,6 +19,23 @@ export const useUserStore = defineStore(
     const showLeftSidebar: Ref<boolean> = ref(true)
     const showHeader: Ref<boolean> = ref(true)
     const fullscreen: Ref<boolean> = ref(false)
+
+    const fetchUser = async () => {
+      loading.value = true
+      error.value = null
+      try {
+        const response = await axios.get(`${import.meta.env.APP_BACKEND_URL}/api/auth/me`, {
+          withCredentials: true,
+        })
+        user.value = await response.data
+      } catch (err) {
+        error.value = err.response?.data?.detail || err.message
+        user.value = null
+        console.log(error.value)
+      } finally {
+        loading.value = false
+      }
+    }
 
     const toggleConfigurator = () => {
       configuratorActive.value = !configuratorActive.value
@@ -35,6 +56,9 @@ export const useUserStore = defineStore(
     }
 
     return {
+      user,
+      loading,
+      error,
       profileActive,
       configuratorActive,
       previewActive,
@@ -44,6 +68,7 @@ export const useUserStore = defineStore(
       showLeftSidebar,
       showHeader,
       fullscreen,
+      fetchUser,
       toggleConfigurator,
       togglePreview,
       toggleLeftSidebar,

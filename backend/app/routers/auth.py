@@ -3,15 +3,67 @@ import string
 from urllib.parse import urlencode
 
 import aiohttp
-from fastapi import APIRouter, Depends, HTTPException, Request, status
+from fastapi import Cookie, APIRouter, Depends, HTTPException, Request, status
 from fastapi.responses import RedirectResponse
 from sqlalchemy.ext.asyncio import AsyncSession
+from jose import JWTError, ExpiredSignatureError, jwt
+import logging
 
 from app.config import settings
+from app.dao.users import UsersDAO
 from app.database import get_session
+from app.models.users import User
 from app.utils.auth import authenticate_user, create_access_token
 
 router = APIRouter()
+
+logger = logging.getLogger(__name__)
+
+async def get_current_user(
+        token: str | None = Cookie(default=None, alias="Authorization"),
+        session: AsyncSession = Depends(get_session)
+) -> User:
+    if not token:
+        logger.warning("Token is missing in cookies")
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Токен отсутствует в cookies"
+        )
+    else:
+        token = str(token)
+
+    try:
+        payload = jwt.decode(token, settings.SECRET_KEY, algorithms=[settings.ALGORITHM])
+    except ExpiredSignatureError:
+        logger.warning("JWT token has expired")
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Срок действия токена истёк"
+        )
+    except JWTError as e:
+        logger.warning(f"JWT decode error: {e}")
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Ошибка декодирования токена"
+        )
+
+    user_id: str | None = payload.get("sub")
+    if user_id is None:
+        logger.warning("Token payload does not contain 'sub' field")
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="В токене отсутствует идентификатор пользователя ('sub')"
+        )
+
+    user_db = await UsersDAO.find_by_id(session, int(user_id))
+    if user_db is None:
+        logger.warning(f"User with id {user_id} not found in database")
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Пользователь не найден"
+        )
+
+    return user_db
 
 
 async def generate_random_string(length: int) -> str:
@@ -65,7 +117,7 @@ async def fetch_twitch_token(code: str) -> dict:
     return await make_request("POST", "https://id.twitch.tv/oauth2/token", data=token_data)
 
 
-@router.get("/login", summary="Initiate Twitch OAuth login")
+@router.get("/login/twitch", summary="Initiate Twitch OAuth login")
 async def twitch_login() -> RedirectResponse:
     """
     Redirects the user to the Twitch authorization page with a generated state parameter.
@@ -102,12 +154,12 @@ async def callback(request: Request, session: AsyncSession = Depends(get_session
     if not user:
         return HTTPException(status_code=status.HTTP_401_UNAUTHORIZED)
 
-    access_token = await create_access_token({"sub": user.id})
+    access_token = await create_access_token({"sub": str(user.id)})
 
     response = RedirectResponse(url=settings.APP_FRONTEND_URL + "/callback")
     response.set_cookie(
         "Authorization",
-        value=f"Bearer {access_token}",
+        value=access_token,
         max_age=1800,
         expires=1800,
         samesite="lax",
@@ -115,3 +167,14 @@ async def callback(request: Request, session: AsyncSession = Depends(get_session
     )
     response.delete_cookie("twitch_state")
     return response
+
+@router.get("/me", summary="Получить информацию о текущем пользователе")
+async def read_users_me(current_user: User = Depends(get_current_user)):
+    return {
+        "id": current_user.id,
+        "twitch_id": current_user.twitch_id,
+        "twitch_display_name": current_user.twitch_display_name,
+        "username": current_user.username,
+        "avatar_url": current_user.avatar_url,
+    }
+
