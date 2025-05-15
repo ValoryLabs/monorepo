@@ -10,7 +10,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 
-import { Languages } from 'lucide-vue-next'
+import { Globe } from 'lucide-vue-next'
 
 import { AVAILABLE_LOCALES } from '@/i18n.ts'
 import { useLocalStorage } from '@vueuse/core'
@@ -24,8 +24,8 @@ const currentLocale = useLocalStorage<string>('lang', 'en')
   <DropdownMenu>
     <DropdownMenuTrigger as-child>
       <slot>
-        <Button variant="ghost" size="icon" aria-label="Language Switcher">
-          <Languages class="size-4" />
+        <Button variant="ghost" size="icon" aria-label="Language Switcher" class="mr-1">
+          <Globe class="size-4" />
         </Button>
       </slot>
     </DropdownMenuTrigger>
