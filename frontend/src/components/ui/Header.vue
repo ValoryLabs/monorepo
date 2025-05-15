@@ -15,12 +15,8 @@ import ProfileMenu from './ProfileMenu.vue'
         >VALORY</span
       >
     </div>
-    <div class="inline-flex items-center gap-3">
-      <LanguageSwitcher>
-        <Button variant="ghost" class="size-7" aria-label="Language Switcher">
-          <Languages class="size-4" />
-        </Button>
-      </LanguageSwitcher>
+    <div class="inline-flex items-center gap-1">
+      <LanguageSwitcher />
       <ProfileMenu />
     </div>
   </header>
