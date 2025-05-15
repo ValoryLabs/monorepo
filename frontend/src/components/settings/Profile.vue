@@ -60,7 +60,7 @@ const getRandomPlayer = async () => {
 </script>
 
 <template>
-  <div class="flex w-full flex-col gap-4 rounded-lg">
+  <div class="flex w-1/2 flex-col gap-4 rounded-lg">
     <div class="flex flex-col gap-2">
       <span class="title">{{ t('sidebar.profile.title') }}</span>
       <span class="text-second text-sm whitespace-pre-line">
@@ -92,9 +92,9 @@ const getRandomPlayer = async () => {
         <InstructionModal />
       </div>
     </div>
-    <div class="flex w-full flex-row justify-center gap-2">
+    <div class="justify-left flex w-full flex-row gap-2">
       <Button
-        class="w-full transition"
+        class="transition"
         @click="search()"
         :icon="Search"
         :loading="loading"

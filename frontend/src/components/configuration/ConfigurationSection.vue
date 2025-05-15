@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import SettingsLabel from '@/components/settings/SettingsLabel.vue'
+import ConfigurationLabel from '@/components/configuration/ConfigurationLabel.vue'
 
 const props = defineProps<{
   label?: string
@@ -8,7 +8,7 @@ const props = defineProps<{
 
 <template>
   <div>
-    <SettingsLabel v-if="props.label">{{ props.label }}</SettingsLabel>
+    <ConfigurationLabel v-if="props.label">{{ props.label }}</ConfigurationLabel>
     <section class="flex flex-col gap-2">
       <slot />
     </section>

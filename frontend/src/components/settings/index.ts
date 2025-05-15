@@ -1,4 +1,3 @@
-export { default as SettingsContent } from './SettingsContent.vue'
-export { default as SettingsSection } from './SettingsSection.vue'
-export { default as SettingsRoot } from './SettingsRoot.vue'
-export { default as SettingsLabel } from './SettingsLabel.vue'
+export { default as Settings } from './Settings.vue'
+export { default as Profile } from './Profile.vue'
+export { default as Preview } from './Preview.vue'

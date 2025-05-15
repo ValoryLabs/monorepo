@@ -13,11 +13,13 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { SocialLinksData } from '@/data/SocialLinks.data'
 import { openLink } from '@/lib/utils'
-import { LifeBuoy, Lock, LogOut, NotebookText, Settings, User } from 'lucide-vue-next'
+import { LifeBuoy, Lock, LogOut, NotebookText, Settings as SettingsIcon } from 'lucide-vue-next'
 
-import { onMounted } from "vue";
-import {useUserStore} from "@/stores/user.ts";
-import {storeToRefs} from "pinia";
+import { Settings } from '@/components/settings'
+
+import { onMounted } from 'vue'
+import { useUserStore } from '@/stores/user.ts'
+import { storeToRefs } from 'pinia'
 
 const authStore = useAuthStore()
 
@@ -45,12 +47,8 @@ onMounted(() => {
     </DropdownMenuTrigger>
     <DropdownMenuContent class="w-56">
       <DropdownMenuGroup>
-        <DropdownMenuItem>
-          <User class="mr-2 h-4 w-4" />
-          <span>Profile</span>
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          <Settings class="mr-2 h-4 w-4" />
+        <DropdownMenuItem @click="userStore.toggleShowSettings">
+          <SettingsIcon class="mr-2 h-4 w-4" />
           <span>Settings</span>
         </DropdownMenuItem>
       </DropdownMenuGroup>

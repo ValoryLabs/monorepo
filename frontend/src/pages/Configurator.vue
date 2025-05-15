@@ -8,6 +8,7 @@ import { storeToRefs } from 'pinia'
 import { useMagicKeys } from '@vueuse/core'
 import { watch } from 'vue'
 import { useHead } from '@unhead/vue'
+import { Settings } from '@/components/settings'
 
 useHead({
   title: 'Configurator',
@@ -38,5 +39,6 @@ watch(R, (v) => {
       <LeftSidebar />
     </aside>
     <Content />
+    <Settings />
   </div>
 </template>

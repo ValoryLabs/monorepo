@@ -1,5 +1,3 @@
-<script setup lang="ts"></script>
-
 <template>
   <span class="text-second text-[0.65rem] font-bold uppercase">
     <slot />

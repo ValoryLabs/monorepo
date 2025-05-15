@@ -19,6 +19,11 @@ export const useUserStore = defineStore(
     const showLeftSidebar: Ref<boolean> = ref(true)
     const showHeader: Ref<boolean> = ref(true)
     const fullscreen: Ref<boolean> = ref(false)
+    const showSettings: Ref<boolean> = ref(false)
+
+    const toggleShowSettings = () => {
+      showSettings.value = !showSettings.value
+    }
 
     const fetchUser = async () => {
       loading.value = true
@@ -65,11 +70,13 @@ export const useUserStore = defineStore(
       previewImage,
       previewDraggable,
       overlayDimensions,
+      showSettings,
       showLeftSidebar,
       showHeader,
       fullscreen,
       fetchUser,
       toggleConfigurator,
+      toggleShowSettings,
       togglePreview,
       toggleLeftSidebar,
       toggleSidebar,

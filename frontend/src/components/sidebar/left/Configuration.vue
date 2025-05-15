@@ -6,7 +6,11 @@ import { useOverlayStore } from '@/stores/overlay.ts'
 import { storeToRefs } from 'pinia'
 import SelectLayout from '@/components/ui/SelectLayout.vue'
 import SelectFont from '@/components/ui/SelectFont.vue'
-import { SettingsSection, SettingsContent, SettingsRoot } from '@/components/settings'
+import {
+  ConfigurationSection,
+  ConfigurationContent,
+  ConfigurationRoot,
+} from '@/components/configuration'
 import { SwitchToggle } from '@/components/ui/switchtoggle'
 import { RotateCcw } from 'lucide-vue-next'
 
@@ -55,21 +59,21 @@ const {
         {{ $t('sidebar.configuration.description') }}
       </span>
     </div>
-    <SettingsRoot>
+    <ConfigurationRoot>
       <!-- Style section -->
-      <SettingsSection>
+      <ConfigurationSection>
         <SelectLayout v-model="overlayStyle" />
-      </SettingsSection>
+      </ConfigurationSection>
 
       <!-- Background section -->
-      <SettingsSection :label="$t('sidebar.configuration.settings.label.background')">
-        <SettingsContent>
+      <ConfigurationSection :label="$t('sidebar.configuration.settings.label.background')">
+        <ConfigurationContent>
           <Label for="background-color">
             {{ $t('sidebar.configuration.settings.backgroundColor') }}
           </Label>
           <ColorPicker v-model="backgroundColor" id="background-color" />
-        </SettingsContent>
-        <SettingsContent class="flex items-center space-x-2">
+        </ConfigurationContent>
+        <ConfigurationContent class="flex items-center space-x-2">
           <Label for="background">
             {{ $t('sidebar.configuration.settings.disableBackground') }}
           </Label>
@@ -78,8 +82,8 @@ const {
             :checked="!disabledBackground"
             @update:checked="overlaySettingsStore.toggleBackground"
           />
-        </SettingsContent>
-        <SettingsContent v-if="overlayStyle === 'old'" class="flex items-center space-x-2">
+        </ConfigurationContent>
+        <ConfigurationContent v-if="overlayStyle === 'old'" class="flex items-center space-x-2">
           <Label for="backgroundGradient">
             {{ $t('sidebar.configuration.settings.disableBackgroundGradient') }}
           </Label>
@@ -88,8 +92,8 @@ const {
             :checked="!disabledBackgroundGradient"
             @update:checked="overlaySettingsStore.toggleBackgroundGradient"
           />
-        </SettingsContent>
-        <SettingsContent v-if="overlayStyle !== 'old'" class="flex items-center space-x-2">
+        </ConfigurationContent>
+        <ConfigurationContent v-if="overlayStyle !== 'old'" class="flex items-center space-x-2">
           <Label for="disableBorder">
             {{ $t('sidebar.configuration.settings.disableBorder') }}
           </Label>
@@ -99,10 +103,10 @@ const {
             :checked="!disabledBorder"
             @update:checked="overlaySettingsStore.toggleBorder"
           />
-        </SettingsContent>
+        </ConfigurationContent>
 
         <!-- Glow effect section -->
-        <SettingsContent class="flex items-center space-x-2" v-if="overlayStyle !== 'old'">
+        <ConfigurationContent class="flex items-center space-x-2" v-if="overlayStyle !== 'old'">
           <Label for="glowEffect">
             {{ $t('sidebar.configuration.settings.glowEffect') }}
           </Label>
@@ -111,15 +115,15 @@ const {
             :checked="!disabledGlowEffect"
             @update:checked="overlaySettingsStore.toggleGlowEffect"
           />
-        </SettingsContent>
-      </SettingsSection>
+        </ConfigurationContent>
+      </ConfigurationSection>
 
       <!-- Rank section -->
-      <SettingsSection
+      <ConfigurationSection
         :label="$t('sidebar.configuration.settings.label.rank')"
         v-if="overlayStyle === 'minimal'"
       >
-        <SettingsContent class="flex items-center space-x-2">
+        <ConfigurationContent class="flex items-center space-x-2">
           <Label for="peakRR">
             {{ $t('sidebar.configuration.settings.peakRR') }}
           </Label>
@@ -128,8 +132,8 @@ const {
             :checked="!disabledPeakRR"
             @update:checked="overlaySettingsStore.togglePeakRR"
           />
-        </SettingsContent>
-        <SettingsContent class="flex items-center space-x-2">
+        </ConfigurationContent>
+        <ConfigurationContent class="flex items-center space-x-2">
           <Label for="peakRankIcon">
             {{ $t('sidebar.configuration.settings.peakRankIcon') }}
           </Label>
@@ -138,8 +142,8 @@ const {
             :checked="!disabledPeakRankIcon"
             @update:checked="overlaySettingsStore.togglePeakRankIcon"
           />
-        </SettingsContent>
-        <SettingsContent class="flex items-center space-x-2">
+        </ConfigurationContent>
+        <ConfigurationContent class="flex items-center space-x-2">
           <Label for="leaderboardPlace">
             {{ $t('sidebar.configuration.settings.leaderboardPlace') }}
           </Label>
@@ -148,44 +152,44 @@ const {
             :checked="!disabledLeaderboardPlace"
             @update:checked="overlaySettingsStore.toggleLeaderboardPlace"
           />
-        </SettingsContent>
-      </SettingsSection>
+        </ConfigurationContent>
+      </ConfigurationSection>
 
       <!-- Text section -->
-      <SettingsSection :label="$t('sidebar.configuration.settings.label.text')">
-        <SettingsContent>
+      <ConfigurationSection :label="$t('sidebar.configuration.settings.label.text')">
+        <ConfigurationContent>
           <Label> {{ $t('sidebar.configuration.settings.font') }}</Label>
           <SelectFont v-model="overlayFont" />
-        </SettingsContent>
-        <SettingsContent v-if="overlayStyle !== 'minimal'">
+        </ConfigurationContent>
+        <ConfigurationContent v-if="overlayStyle !== 'minimal'">
           <Label for="background-color">
             {{ $t('sidebar.configuration.settings.text') }}
           </Label>
           <ColorPicker v-model="textColor" id="background-color" />
-        </SettingsContent>
-        <SettingsContent>
+        </ConfigurationContent>
+        <ConfigurationContent>
           <Label for="background-color">
             {{ $t('sidebar.configuration.settings.primary') }}
           </Label>
           <ColorPicker v-model="primaryTextColor" id="background-color" />
-        </SettingsContent>
-      </SettingsSection>
+        </ConfigurationContent>
+      </ConfigurationSection>
 
       <!-- Win/lose section -->
-      <SettingsSection :label="$t('sidebar.configuration.settings.label.winLose')">
-        <SettingsContent>
+      <ConfigurationSection :label="$t('sidebar.configuration.settings.label.winLose')">
+        <ConfigurationContent>
           <Label for="win-color">
             {{ $t('sidebar.configuration.settings.winColor') }}
           </Label>
           <ColorPicker v-model="winColor" id="win-color" />
-        </SettingsContent>
-        <SettingsContent>
+        </ConfigurationContent>
+        <ConfigurationContent>
           <Label for="lose-color">
             {{ $t('sidebar.configuration.settings.loseColor') }}
           </Label>
           <ColorPicker v-model="loseColor" id="lose-color" />
-        </SettingsContent>
-        <SettingsContent class="flex items-center space-x-2">
+        </ConfigurationContent>
+        <ConfigurationContent class="flex items-center space-x-2">
           <Label for="winLose">
             {{ $t('sidebar.configuration.settings.disableWinLose') }}
           </Label>
@@ -194,8 +198,8 @@ const {
             :checked="!disabledWinLose"
             @update:checked="overlaySettingsStore.toggleWinLose"
           />
-        </SettingsContent>
-        <SettingsContent class="flex items-center space-x-2" v-if="overlayStyle === 'old'">
+        </ConfigurationContent>
+        <ConfigurationContent class="flex items-center space-x-2" v-if="overlayStyle === 'old'">
           <Label for="lastPoints">
             {{ $t('sidebar.configuration.settings.disableLastMatchPoints') }}
           </Label>
@@ -204,27 +208,27 @@ const {
             :checked="!disabledLastMatchPoints"
             @update:checked="overlaySettingsStore.toggleLastMatchPoints"
           />
-        </SettingsContent>
-      </SettingsSection>
+        </ConfigurationContent>
+      </ConfigurationSection>
 
       <!-- Progress section -->
-      <SettingsSection
+      <ConfigurationSection
         v-if="overlayStyle === 'old'"
         :label="$t('sidebar.configuration.settings.label.progressbar')"
       >
-        <SettingsContent>
+        <ConfigurationContent>
           <Label for="background-color">
             {{ $t('sidebar.configuration.settings.progress') }}
           </Label>
           <ColorPicker v-model="progressColor" id="background-color" />
-        </SettingsContent>
-        <SettingsContent>
+        </ConfigurationContent>
+        <ConfigurationContent>
           <Label for="background-color">
             {{ $t('sidebar.configuration.settings.progressBackground') }}
           </Label>
           <ColorPicker v-model="progressBgColor" id="background-color" />
-        </SettingsContent>
-        <SettingsContent class="flex items-center space-x-2">
+        </ConfigurationContent>
+        <ConfigurationContent class="flex items-center space-x-2">
           <Label for="progress">
             {{ $t('sidebar.configuration.settings.disableProgress') }}
           </Label>
@@ -233,8 +237,8 @@ const {
             :checked="!disabledProgress"
             @update:checked="overlaySettingsStore.toggleProgress"
           />
-        </SettingsContent>
-      </SettingsSection>
-    </SettingsRoot>
+        </ConfigurationContent>
+      </ConfigurationSection>
+    </ConfigurationRoot>
   </div>
 </template>
