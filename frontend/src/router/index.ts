@@ -44,7 +44,7 @@ router.beforeEach((to, from, next) => {
   const authStore = useAuthStore()
 
   if (to.name === 'configurator' && !authStore.isAuthenticated) {
-    next({ name: '404' })
+    next({ name: 'home' })
   } else {
     next()
   }

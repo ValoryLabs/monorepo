@@ -1,5 +1,10 @@
 {
     "components": {
+      "404": {
+        "notfound": "Page not found!",
+        "description": "You may have gone to a non-existent page!\n Check that the link is correct.",
+        "home": "Back to Home"
+      },
       "languageSwitcher": "Language",
       "login": {
         "agree": {
@@ -9,7 +14,8 @@
           "text": "By signing in, you agree to our"
         },
         "description": "Select a provider to sign in with",
-        "trouble": "Trouble signing in?"
+        "trouble": "Trouble signing in?",
+        "logging": "Logging into Twitch"
       },
       "selectFont": "Select font",
       "selectLayout": {

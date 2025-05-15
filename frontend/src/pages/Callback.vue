@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { useAuthStore } from '@/stores/auth'
 import { useRouter } from 'vue-router'
-import { LoaderPinwheel } from 'lucide-vue-next'
+import { LoaderCircle } from 'lucide-vue-next'
+import { Valory } from '@/components/icons'
 
 const authStore = useAuthStore()
 const router = useRouter()
@@ -25,14 +26,25 @@ if (token) {
 <template>
   <div class="inline-flex h-screen w-screen items-center">
     <div class="m-auto flex items-center justify-center">
-      <div class="container flex flex-col content-center items-center justify-center gap-3">
-        <span class="text-2xl font-normal">Authorization...</span>
-        <span
-          class="flex items-center gap-1 rounded-[6px] bg-[#c0ddff0a] px-3 py-2 text-sm text-[#0083fc]"
-        >
-          Waiting for response
-          <LoaderPinwheel class="animate-spin text-[#0083fc]" :size="16" />
-        </span>
+      <div
+        class="flex w-sm flex-col content-center items-center justify-center gap-3 rounded-lg border border-white/10 py-5"
+      >
+        <div class="relative flex flex-row items-center gap-2">
+          <Valory :size="26" />
+          <Valory :size="96" class="absolute left-0 blur-[120px]" />
+          <span
+            class="font-valory inline-block bg-linear-to-b from-[#f2f2f2] to-[#dddddd] bg-clip-text text-lg leading-none text-transparent"
+          >
+            VALORY
+          </span>
+        </div>
+        <div class="line h-px w-full bg-white/10" />
+        <div class="flex flex-col items-center justify-center gap-2 py-3">
+          <LoaderCircle class="size-8 animate-spin" />
+          <span class="text-muted-foreground text-base font-normal">{{
+            $t('components.login.logging')
+          }}</span>
+        </div>
       </div>
     </div>
   </div>

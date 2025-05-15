@@ -52,7 +52,7 @@ const redirectToAuth = () => {
           ><Kick color="white" class="size-5" />Kick</Button
         >
       </div>
-      <a class="cursor-pointer text-xs text-neutral-400 hover:underline" @click="openLink('')">{{
+      <a class="cursor-pointer text-xs text-neutral-400 hover:underline" @click="openLink('https://discord.gg/pYV4PBV5YW')">{{
         $t('components.login.trouble')
       }}</a>
       <Separator class="h-px w-full bg-white/10" />
