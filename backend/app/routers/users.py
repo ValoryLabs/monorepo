@@ -46,7 +46,7 @@ async def get_current_user(
         logger.warning("Token payload does not contain 'sub' field")
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Token payload does not contain 'sub' field""
+            detail="Token payload does not contain 'sub' field"
         )
 
     user_db = await UsersDAO.find_by_id(session, int(user_id))
