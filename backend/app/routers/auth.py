@@ -6,6 +6,7 @@ import aiohttp
 from fastapi import APIRouter, Depends, HTTPException, Request, status
 from fastapi.responses import RedirectResponse
 from sqlalchemy.ext.asyncio import AsyncSession
+from datetime import datetime, timedelta, timezone
 import logging
 
 from app.config import settings
@@ -108,12 +109,15 @@ async def callback(request: Request, session: AsyncSession = Depends(get_session
     access_token = await create_access_token({"sub": str(user.id)})
 
     response = RedirectResponse(url=settings.APP_FRONTEND_URL + "/callback")
-    expires_time = 31*24*60*60*30
+
+    one_month_seconds = 60 * 60 * 24 * 30
+    expires_time = datetime.now(timezone.utc) + timedelta(seconds=one_month_seconds)
+
     response.set_cookie(
         "Authorization",
         value=access_token,
-        max_age=expires_time,
-        expires=expires_time,
+        max_age=one_month_seconds,
+        expires=expires_time.strftime("%a, %d %b %Y %H:%M:%S GMT"),
         samesite="lax",
         secure=not settings.DEBUG,
     )

@@ -21,7 +21,7 @@ async def get_current_user(
         logger.warning("Token is missing in cookies")
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Токен отсутствует в cookies"
+            detail="Token is missing in cookies"
         )
     else:
         token = str(token)
@@ -32,13 +32,13 @@ async def get_current_user(
         logger.warning("JWT token has expired")
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Срок действия токена истёк"
+            detail="JWT token has expired"
         )
     except JWTError as e:
         logger.warning(f"JWT decode error: {e}")
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Ошибка декодирования токена"
+            detail="JWT decode error"
         )
 
     user_id: str | None = payload.get("sub")
@@ -46,7 +46,7 @@ async def get_current_user(
         logger.warning("Token payload does not contain 'sub' field")
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="В токене отсутствует идентификатор пользователя ('sub')"
+            detail="Token payload does not contain 'sub' field""
         )
 
     user_db = await UsersDAO.find_by_id(session, int(user_id))
@@ -54,7 +54,7 @@ async def get_current_user(
         logger.warning(f"User with id {user_id} not found in database")
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Пользователь не найден"
+            detail="User not found"
         )
 
     return user_db

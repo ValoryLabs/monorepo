@@ -18,11 +18,6 @@ const router = createRouter({
       component: () => import('@/pages/Callback.vue'),
     },
     {
-      path: '/test',
-      name: 'test',
-      component: () => import('@/pages/Test.vue'),
-    },
-    {
       path: '/configurator',
       name: 'configurator',
       component: () => import('@/pages/Configurator.vue'),

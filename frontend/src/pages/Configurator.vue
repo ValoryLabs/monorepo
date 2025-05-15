@@ -9,9 +9,12 @@ import { useMagicKeys } from '@vueuse/core'
 import { watch } from 'vue'
 import { useHead } from '@unhead/vue'
 import { Settings } from '@/components/settings'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 useHead({
-  title: 'Configurator',
+  title: t('pages.configurator'),
 })
 
 const userStore = useUserStore()

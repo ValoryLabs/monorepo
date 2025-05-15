@@ -3,9 +3,17 @@ import { useAuthStore } from '@/stores/auth'
 import { useRouter } from 'vue-router'
 import { LoaderCircle } from 'lucide-vue-next'
 import { Valory } from '@/components/icons'
+import { useHead } from '@unhead/vue'
+import { useI18n } from 'vue-i18n'
 
 const authStore = useAuthStore()
 const router = useRouter()
+
+const { t } = useI18n()
+
+useHead({
+  title: t('pages.callback'),
+})
 
 const getCookie = (name: string): string | null => {
   const value = `; ${document.cookie}`

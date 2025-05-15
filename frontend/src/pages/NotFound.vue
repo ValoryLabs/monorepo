@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
-import { LoaderCircle } from 'lucide-vue-next'
 import { Valory } from '@/components/icons'
 import { Button } from '@/components/ui/button'
 import router from '@/router'
