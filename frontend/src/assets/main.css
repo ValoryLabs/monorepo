@@ -213,5 +213,5 @@ body {
 }
 
 .title {
-  @apply inline-block bg-linear-to-b from-[#f2f2f2] to-[#a4a4a4] bg-clip-text text-lg font-semibold text-transparent;
+  @apply inline-block bg-linear-to-b from-[#f2f2f2] to-[#a4a4a4] bg-clip-text font-semibold text-transparent;
 }

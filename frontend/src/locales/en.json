@@ -1,4 +1,12 @@
 {
+  "profile_menu": {
+    "error": "Error",
+    "settings": "Settings",
+    "support": "Support",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "logout": "Logout"
+  },
   "features": {
     "category": "Features",
     "title": "Everything You Need to Elevate Your Stream",

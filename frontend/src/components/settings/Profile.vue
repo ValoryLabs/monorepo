@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
-import Riot from '@/components/icons/Riot.vue'
+import { Riot } from '@/components/icons'
 import InputWithIcon from '@/components/ui/InputWithIcon.vue'
 import Button from '@/components/ui/button/Button.vue'
 import { useUserSettingsStore } from '@/stores/userSettings.ts'
@@ -63,7 +63,7 @@ const getRandomPlayer = async () => {
 <template>
   <div class="flex w-full flex-col gap-4 rounded-lg">
     <div class="flex flex-col gap-2">
-      <span class="title">{{ t('components.settings.tabs.profile.title') }}</span>
+      <span class="title text-xl">{{ t('components.settings.tabs.profile.title') }}</span>
       <span class="text-second text-sm whitespace-pre-line">
         {{ t('components.settings.tabs.profile.description') }}
       </span>

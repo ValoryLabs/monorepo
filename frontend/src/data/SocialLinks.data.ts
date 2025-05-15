@@ -1,7 +1,4 @@
-import Github from '@/components/icons/socials/Github.vue'
-import Twitch from '@/components/icons/socials/Twitch.vue'
-import Telegram from '@/components/icons/socials/Telegram.vue'
-import Hearts from '@/components/icons/Hearts.vue'
+import { Github, Twitch, Telegram, Hearts, Discord } from '@/components/icons'
 
 interface SocialLinks {
   name: string
@@ -10,6 +7,11 @@ interface SocialLinks {
 }
 
 export const SocialLinksData: SocialLinks = [
+  {
+    name: 'Discord',
+    url: 'https://discord.gg/pYV4PBV5YW',
+    icon: Discord,
+  },
   {
     name: 'Twitch',
     url: 'https://www.twitch.tv/magicxcmd',

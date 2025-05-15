@@ -26,7 +26,7 @@ const { showSettings } = storeToRefs(userStore)
           <button class="absolute top-4 right-4" @click="userStore.toggleShowSettings">
             <X class="size-4" />
           </button>
-          <div class="text-xl">{{ $t('components.settings.title') }}</div>
+          <div class="title text-xl">{{ $t('components.settings.title') }}</div>
           <div>
             <Tabs default-value="profile" class="flex w-full flex-row" orientation="vertical">
               <TabsList class="grid w-full max-w-[208px] border-transparent hover:border-transparent grid-cols-1 gap-1">
