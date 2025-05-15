@@ -161,7 +161,7 @@
       "tabs": {
         "profile": {
           "title": "Профиль",
-          "description": "Введите ваш Riot ID и API-ключ Henrik,\n чтобы найти профиль",
+          "description": "Введите ваш Riot ID и API-ключ Henrik, чтобы найти профиль",
           "instructions": "Как получить API-ключ?"
         },
         "preview": {

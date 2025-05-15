@@ -161,7 +161,7 @@
       "tabs": {
         "profile": {
           "title": "Profile",
-          "description": "Enter your Riot ID and Henrik's API KEY\nto search for your profile",
+          "description": "Enter your Riot ID and Henrik's API KEY to search for your profile",
           "instructions": "How do I get an API key?"
         },
         "preview": {
