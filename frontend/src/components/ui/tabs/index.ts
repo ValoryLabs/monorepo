@@ -10,7 +10,7 @@ export const tabsTriggerVariants = cva(
   {
     variants: {
       variant: {
-        default: 'data-[state=active]:bg-switch-checked text-switch-foreground data-[state=active]:text-switch-checked-foreground justify-center drop-shadow-[0_0_10px_#ffffff4f]',
+        default: 'data-[state=active]:bg-switch-checked py-1 text-switch-foreground data-[state=active]:text-switch-checked-foreground justify-center drop-shadow-[0_0_10px_#ffffff4f]',
         vertical: 'data-[state=active]:bg-switch-checked text-switch-foreground py-[6px] px-[10px] data-[state=active]:text-switch-checked-foreground justify-start drop-shadow-[0_0_10px_#ffffff4f]',
       },
     },
