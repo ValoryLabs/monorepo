@@ -23,7 +23,7 @@ const { showSettings } = storeToRefs(userStore)
         <div
           class="bg-background relative flex min-h-3/4 w-full max-w-[880px] flex-col gap-3 rounded-xl p-8"
         >
-          <button class="absolute top-4 right-4" @click="userStore.toggleShowSettings">
+          <button class="absolute top-4 right-4 cursor-pointer" @click="userStore.toggleShowSettings">
             <X class="size-4" />
           </button>
           <div class="title text-xl">{{ $t('components.settings.title') }}</div>
