@@ -1,52 +1,72 @@
 import messages from '@intlify/unplugin-vue-i18n/messages'
 import { useLocalStorage } from '@vueuse/core'
-import { nextTick, watch } from 'vue'
-import type { I18n, Locale } from "vue-i18n";
+import { watch } from 'vue'
+import type { I18n } from 'vue-i18n'
 import { createI18n, registerMessageResolver } from 'vue-i18n'
 import { resolveValue } from '@intlify/core-base'
 
 registerMessageResolver(resolveValue)
 
-const getResourceMessages = (resource: {
-  default: Record<string, string>
-}): Record<string, string> => resource.default || resource
+// Конфигурация доступных языков
+export const AVAILABLE_LOCALES = [
+  { code: 'en', name: 'English' },
+  { code: 'ru', name: 'Русский' },
+] as const
 
-async function loadLocaleMessages(i18n: I18n, locale: Locale) {
-  const messages = await import(`@/locales/${locale}.json`).then(getResourceMessages)
-  i18n.global.setLocaleMessage(locale, messages)
-  await nextTick()
+type ValidLocale = (typeof AVAILABLE_LOCALES)[number]['code']
+
+function getDefaultLocale(): ValidLocale {
+  const saved = localStorage.getItem('lang')
+  if (saved && AVAILABLE_LOCALES.some((l) => l.code === saved)) {
+    return saved as ValidLocale
+  }
+
+  const browserLang = (navigator.language || navigator.userLanguage || 'en')
+    .toLowerCase()
+    .split('-')[0]
+
+  return AVAILABLE_LOCALES.some((l) => l.code === browserLang) ? (browserLang as ValidLocale) : 'en'
 }
 
-const locale = useLocalStorage<Locale>('lang', 'en')
+const locale = useLocalStorage<ValidLocale>('lang', getDefaultLocale())
 
-watch(locale, (newLocale) => {
-  loadLocaleMessages(i18n, newLocale)
-  setLocale(i18n, newLocale)
+async function loadLocaleMessages(i18n: I18n, locale: ValidLocale) {
+  try {
+    const messages = await import(`./locales/${locale}.json`)
+    i18n.global.setLocaleMessage(locale, messages.default)
+  } catch (e) {
+    console.error(`Failed to load ${locale} locale:`, e)
+  }
+}
+
+export const i18n = createI18n({
+  legacy: false,
+  locale: locale.value,
+  fallbackLocale: 'en',
+  messages,
 })
 
-export const AVAILABLE_LOCALES = [
-  { code: 'en', name: 'English', flag: 'us' },
-  { code: 'ru', name: 'Русский', flag: 'ru' },
-]
+async function setupI18n() {
+  if (!i18n.global.availableLocales.includes('en')) {
+    await loadLocaleMessages(i18n, 'en')
+  }
 
-export function setLocale(i18n: I18n, locale: Locale) {
-  i18n.global.locale = locale
-}
-
-function setupI18n() {
-  const i18n = createI18n({
-    legacy: false,
-    locale: locale.value,
-    fallbackLocale: 'en',
-    messages,
-  })
-
-  loadLocaleMessages(i18n, 'en')
   if (locale.value !== 'en') {
-    loadLocaleMessages(i18n, locale.value)
+    await loadLocaleMessages(i18n, locale.value)
   }
 
   return i18n
 }
 
-export const i18n = setupI18n()
+watch(locale, async (newLocale) => {
+  if (!i18n.global.availableLocales.includes(newLocale)) {
+    await loadLocaleMessages(i18n, newLocale)
+  }
+  i18n.global.locale = newLocale
+})
+
+setupI18n()
+
+export function setLocale(newLocale: ValidLocale) {
+  locale.value = newLocale
+}
