@@ -14,7 +14,7 @@ const { overlayDimensions } = storeToRefs(userStore)
 
 const { user } = storeToRefs(userStore)
 
-const url = computed(() => `${window.location.origin}/overlay/${user.overlay_id}`)
+const url = computed(() => `${window.location.origin}/overlay/${user.value.overlay_id}`)
 const { copy } = useClipboard({ url })
 
 const copyUrl = () => {

@@ -21,7 +21,7 @@ const { showSettings } = storeToRefs(userStore)
         @click.self="userStore.toggleShowSettings"
       >
         <div
-          class="bg-background relative flex min-h-3/4 w-full max-w-3/5 flex-col gap-3 rounded-xl p-8"
+          class="bg-background relative flex min-h-3/4 w-full max-w-[880px] flex-col gap-3 rounded-xl p-8"
         >
           <button class="absolute top-4 right-4" @click="userStore.toggleShowSettings">
             <X class="size-4" />
@@ -29,7 +29,7 @@ const { showSettings } = storeToRefs(userStore)
           <div class="text-xl">Settings</div>
           <div>
             <Tabs default-value="profile" class="flex w-full flex-row" orientation="vertical">
-              <TabsList class="grid w-3xs grid-cols-1 gap-1">
+              <TabsList class="grid w-full max-w-[208px] grid-cols-1 gap-1">
                 <TabsTrigger value="profile"> {{ $t('sidebar.profile.title') }} </TabsTrigger>
                 <TabsTrigger value="preview"> {{ $t('sidebar.preview.title') }} </TabsTrigger>
               </TabsList>

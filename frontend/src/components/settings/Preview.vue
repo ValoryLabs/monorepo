@@ -51,7 +51,7 @@ const images = [
 </script>
 
 <template>
-  <div class="flex w-full flex-wrap justify-center gap-6">
+  <div class="flex w-full flex-wrap justify-start gap-6">
     <button
       class="group flex cursor-pointer flex-col items-start gap-3 text-sm"
       v-for="image in images"

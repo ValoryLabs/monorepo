@@ -14,6 +14,7 @@ import { Search, KeyRound, Dices } from 'lucide-vue-next'
 import { UserValidator } from '@/api/auth/user.validator'
 import { getRandomPlayerName } from '@/api/leaderboard'
 import { getAccountInformation, getMMRInformation } from '@/api/playerInformation'
+import { Label } from '../ui/label'
 
 const { t } = useI18n()
 
@@ -60,7 +61,7 @@ const getRandomPlayer = async () => {
 </script>
 
 <template>
-  <div class="flex w-1/2 flex-col gap-4 rounded-lg">
+  <div class="flex w-full flex-col gap-4 rounded-lg">
     <div class="flex flex-col gap-2">
       <span class="title">{{ t('sidebar.profile.title') }}</span>
       <span class="text-second text-sm whitespace-pre-line">
@@ -68,8 +69,9 @@ const getRandomPlayer = async () => {
       </span>
     </div>
     <div class="flex w-full flex-col gap-4">
+      <Label for="riotID" class="text-sm">RiotID</Label>
       <div class="inline-flex items-center gap-2">
-        <InputWithIcon v-model="riotID" placeholder="nickname#tag">
+        <InputWithIcon id="riotID" v-model="riotID" placeholder="nickname#tag">
           <Riot :size="16" />
         </InputWithIcon>
         <TooltipProvider>
@@ -85,14 +87,20 @@ const getRandomPlayer = async () => {
           </Tooltip>
         </TooltipProvider>
       </div>
+      <Label for="apiKey" class="text-sm">Henrik's API</Label>
       <div class="inline-flex items-center gap-2">
-        <InputWithIcon v-model="apiKey" type="password" placeholder="Henrik's DEV API Key">
+        <InputWithIcon
+          id="apiKey"
+          v-model="apiKey"
+          type="password"
+          placeholder="Henrik's DEV API Key"
+        >
           <KeyRound class="size-4" />
         </InputWithIcon>
         <InstructionModal />
       </div>
     </div>
-    <div class="justify-left flex w-full flex-row gap-2">
+    <div class="flex w-full flex-row justify-end gap-2">
       <Button
         class="transition"
         @click="search()"
