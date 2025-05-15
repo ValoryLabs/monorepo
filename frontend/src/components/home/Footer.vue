@@ -1,12 +1,9 @@
 <script setup lang="ts">
-import Discord from '@/components/icons/socials/Discord.vue'
-import Github from '@/components/icons/socials/Github.vue'
-import Telegram from '@/components/icons/socials/Telegram.vue'
-import Twitch from '@/components/icons/socials/Twitch.vue'
-import Valory from '@/components/icons/Valory.vue'
+import { Valory } from '@/components/icons'
 import { Button } from '@/components/ui/button'
 import { FOOTER_NAV_PRODUCT_DATA } from '@/data/FooterNav.data'
 import { hidden, moveTo, openLink } from '@/lib/utils'
+import { SocialLinksData } from "@/data/SocialLinks.data.ts";
 </script>
 <template>
   <footer class="container m-auto mt-10 flex flex-col gap-10 py-16">
@@ -26,44 +23,15 @@ import { hidden, moveTo, openLink } from '@/lib/utils'
         </span>
         <div class="flex flex-wrap gap-2">
           <Button
-            aria-label="Github"
-            @click="openLink('https://github.com/ValoryApp/Valory')"
+            v-for="social in SocialLinksData"
+            :key="social"
+            :aria-label="social.name"
+            @click="openLink(social.url)"
             variant="ghost"
+            size="icon"
             class="h-fit w-fit cursor-pointer p-2"
           >
-            <Github :size="20" />
-          </Button>
-          <Button
-            aria-label="Twitch"
-            @click="openLink('https://twitch.tv/MAGICXcmd')"
-            variant="ghost"
-            class="h-fit w-fit cursor-pointer p-2"
-          >
-            <Twitch :size="20" />
-          </Button>
-          <Button
-            aria-label="Discord"
-            @click="openLink('https://discord.gg/valory')"
-            variant="ghost"
-            class="h-fit w-fit cursor-pointer p-2"
-          >
-            <Discord :size="20" />
-          </Button>
-          <Button
-            aria-label="Telegram"
-            @click="openLink('https://t.me/magicxcmd')"
-            variant="ghost"
-            class="h-fit w-fit cursor-pointer p-2"
-          >
-            <Telegram :size="20" />
-          </Button>
-          <Button
-            aria-label="Donate"
-            @click="openLink('https://www.donationalerts.com/r/haxgun')"
-            variant="ghost"
-            class="h-fit w-fit cursor-pointer p-2"
-          >
-            <Hearts color="#FA4454" :size="20" />
+            <component :is="social.icon" :size="20" />
           </Button>
         </div>
         <iframe

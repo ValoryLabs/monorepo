@@ -1,10 +1,6 @@
 <script setup lang="ts">
 import { useHead, useSeoMeta } from '@unhead/vue'
 import { Toaster } from 'vue-sonner'
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
-
-import Valory from '@/components/icons/Valory.vue'
 
 const titleMain = 'VALORY'
 const metaImg = 'meta.webp'
@@ -40,10 +36,6 @@ useSeoMeta({
   author: 'MAGICX, misha@valory.su',
   keywords: metaKeywords,
 })
-
-const isRouterReady = ref(false)
-const router = useRouter()
-router.isReady().finally(() => (isRouterReady.value = true))
 </script>
 
 <template>
@@ -55,22 +47,5 @@ router.isReady().finally(() => (isRouterReady.value = true))
         'bg-black/70 p-4 text-foreground rounded-md flex w-[356px] items-center text-sm gap-3 backdrop-blur-md border border-white/10',
     }"
   />
-  <Transition>
-    <div v-if="!isRouterReady" class="z-9999 flex h-[100dvh] items-center justify-center">
-      <Valory :size="32" />
-    </div>
-    <RouterView v-else />
-  </Transition>
+  <RouterView />
 </template>
-
-<style scoped>
-.v-enter-active,
-.v-leave-active {
-  transition: opacity 0.2s linear;
-}
-
-.v-enter-from,
-.v-leave-to {
-  opacity: 0;
-}
-</style>
