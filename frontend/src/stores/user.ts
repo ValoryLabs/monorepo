@@ -7,7 +7,7 @@ export const useUserStore = defineStore(
   () => {
     const user: Ref<string | null> = ref(null)
     const loading: Ref<boolean> = ref(false)
-    const error: Ref<string | null> = ref(null)
+    const error: Ref<boolean> = ref(false)
     const profileActive: Ref<boolean> = ref(true)
     const configuratorActive: Ref<boolean> = ref(false)
     const previewActive: Ref<boolean> = ref(false)
@@ -27,16 +27,16 @@ export const useUserStore = defineStore(
 
     const fetchUser = async () => {
       loading.value = true
-      error.value = null
+      error.value = false
       try {
         const response = await axios.get(`${import.meta.env.APP_BACKEND_URL}/api/users/me`, {
           withCredentials: true,
         })
         user.value = await response.data
       } catch (err) {
-        error.value = err.response?.data?.detail || err.message
+        error.value = true
         user.value = null
-        console.log(error.value)
+        console.log(err.response?.data?.detail || err.message)
       } finally {
         loading.value = false
       }

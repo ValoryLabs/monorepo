@@ -13,9 +13,16 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { SocialLinksData } from '@/data/SocialLinks.data'
 import { openLink } from '@/lib/utils'
-import { LifeBuoy, Lock, LogOut, NotebookText, Settings as SettingsIcon, LoaderCircle } from 'lucide-vue-next'
+import {
+  LifeBuoy,
+  Lock,
+  LogOut,
+  NotebookText,
+  Settings as SettingsIcon,
+  LoaderCircle,
+} from 'lucide-vue-next'
 
-import { onMounted } from 'vue'
+import { onMounted, watch } from 'vue'
 import { useUserStore } from '@/stores/user.ts'
 import { storeToRefs } from 'pinia'
 
@@ -23,6 +30,12 @@ const authStore = useAuthStore()
 
 const userStore = useUserStore()
 const { user, loading, error } = storeToRefs(userStore)
+
+watch(error, (newError) => {
+  if (newError === true) {
+    authStore.logout()
+  }
+})
 
 onMounted(() => {
   userStore.fetchUser()
@@ -33,7 +46,7 @@ onMounted(() => {
   <DropdownMenu>
     <DropdownMenuTrigger as-child>
       <Button v-if="loading" variant="ghost">
-        <span class="font-bold animate-spin">
+        <span class="animate-spin font-bold">
           <LoaderCircle />
         </span>
       </Button>
