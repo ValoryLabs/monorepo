@@ -63,11 +63,6 @@
       "second": "It's absolutely free!\nThere is support for many popular\nstreaming programs like OBS and others.",
       "third": " Configure once, enjoy seamless\noperation forever! "
     },
-    "profile": {
-      "title": "Profile",
-      "description": "Enter your Riot ID and Henrik's API KEY\nto search for your profile",
-      "instructions": "How do I get an API key?"
-    },
     "configuration": {
       "title": "Configuration",
       "description": "Adjust available options of the chosen variant to reflect your brand.",
@@ -99,10 +94,6 @@
           "progressbar": "Progress bar"
         }
       }
-    },
-    "preview": {
-      "title": "Preview",
-      "description": "Preview your overlay before generating the URL."
     },
     "generate": {
       "title": "Overlay URL",
@@ -157,6 +148,20 @@
     }
   },
   "components": {
+    "settings": {
+      "title": "Settings",
+      "tabs": {
+        "profile": {
+          "title": "Profile",
+          "description": "Enter your Riot ID and Henrik's API KEY\nto search for your profile",
+          "instructions": "How do I get an API key?"
+        },
+        "preview": {
+          "title": "Preview",
+          "description": "Preview your overlay before generating the URL."
+        }
+      }
+    },
     "login": {
       "description": "Select a provider to sign in with",
       "trouble": "Trouble signing in?",

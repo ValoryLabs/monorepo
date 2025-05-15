@@ -63,9 +63,9 @@ const getRandomPlayer = async () => {
 <template>
   <div class="flex w-full flex-col gap-4 rounded-lg">
     <div class="flex flex-col gap-2">
-      <span class="title">{{ t('sidebar.profile.title') }}</span>
+      <span class="title">{{ t('components.settings.tabs.profile.title') }}</span>
       <span class="text-second text-sm whitespace-pre-line">
-        {{ t('sidebar.profile.description') }}
+        {{ t('components.settings.tabs.profile.description') }}
       </span>
     </div>
     <div class="flex w-full flex-col gap-4">

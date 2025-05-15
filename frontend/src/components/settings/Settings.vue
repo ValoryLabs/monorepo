@@ -26,12 +26,12 @@ const { showSettings } = storeToRefs(userStore)
           <button class="absolute top-4 right-4" @click="userStore.toggleShowSettings">
             <X class="size-4" />
           </button>
-          <div class="text-xl">Settings</div>
+          <div class="text-xl">{{ $t('components.settings.title') }}</div>
           <div>
             <Tabs default-value="profile" class="flex w-full flex-row" orientation="vertical">
-              <TabsList class="grid w-full max-w-[208px] grid-cols-1 gap-1">
-                <TabsTrigger value="profile"> {{ $t('sidebar.profile.title') }} </TabsTrigger>
-                <TabsTrigger value="preview"> {{ $t('sidebar.preview.title') }} </TabsTrigger>
+              <TabsList class="grid w-full max-w-[208px] border-transparent hover:border-transparent grid-cols-1 gap-1">
+                <TabsTrigger variant="vertical" value="profile"> {{ $t('components.settings.tabs.profile.title') }} </TabsTrigger>
+                <TabsTrigger variant="vertical" value="preview"> {{ $t('components.settings.tabs.preview.title') }} </TabsTrigger>
               </TabsList>
               <TabsContent value="profile"> <Profile /></TabsContent>
               <TabsContent value="preview"> <Preview /> </TabsContent>

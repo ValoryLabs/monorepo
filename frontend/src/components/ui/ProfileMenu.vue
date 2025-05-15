@@ -43,7 +43,7 @@ onMounted(() => {
         <span class="font-bold">{{ user.twitch_display_name }}</span>
       </Button>
     </DropdownMenuTrigger>
-    <DropdownMenuContent class="w-56">
+    <DropdownMenuContent align="end" class="w-56">
       <DropdownMenuGroup>
         <DropdownMenuItem @click="userStore.toggleShowSettings">
           <SettingsIcon class="mr-2 h-4 w-4" />
