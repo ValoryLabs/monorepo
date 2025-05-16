@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import Content from '@/components/Content.vue'
-import Header from '@/components/ui/Header.vue'
 import { LeftSidebar } from '@/components/sidebar/left/'
 import { useUserStore } from '@/stores/user'
 import { useOverlayStore } from '@/stores/overlay'
@@ -33,7 +32,6 @@ watch(R, (v) => {
 </script>
 
 <template>
-  <Header v-if="showHeader" />
   <div class="relative flex w-dvw flex-row" :class="showHeader ? 'h-[calc(100dvh-3rem)]' : 'h-dvh'">
     <aside
       v-if="showLeftSidebar"

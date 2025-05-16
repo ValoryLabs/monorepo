@@ -11,26 +11,31 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: Home,
+      meta: { layout: 'DefaultLayout' },
     },
     {
       path: '/callback',
       name: 'callback',
       component: () => import('@/pages/Callback.vue'),
+      meta: { layout: 'NoLayout' },
     },
     {
       path: '/configurator',
       name: 'configurator',
       component: () => import('@/pages/Configurator.vue'),
+      meta: { layout: 'ConfiguratorLayout' },
     },
     {
       path: '/overlay',
       name: 'overlay',
       component: Overlay,
+      meta: { layout: 'NoLayout' },
     },
     {
       path: '/:pathMatch(.*)*',
       name: '404',
       component: NotFound,
+      meta: { layout: 'NoLayout' },
     },
   ],
 })

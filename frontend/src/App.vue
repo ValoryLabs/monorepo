@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { useHead, useSeoMeta } from '@unhead/vue'
+import { useRoute } from 'vue-router'
 import { Toaster } from 'vue-sonner'
+import { computed, defineAsyncComponent } from 'vue'
 
 const titleMain = 'VALORY'
 const metaImg = 'meta.webp'
@@ -36,6 +38,21 @@ useSeoMeta({
   author: 'MAGICX, misha@valory.su',
   keywords: metaKeywords,
 })
+
+const route = useRoute()
+
+const layout = computed(() => {
+  const layoutName = route.meta.layout || 'DefaultLayout'
+
+  if (layoutName === 'NoLayout') return null
+
+  return defineAsyncComponent({
+    loader: () =>
+      import(`@/layouts/${layoutName}.vue`).catch(() => import('@/layouts/DefaultLayout.vue')),
+    delay: 200,
+    timeout: 3000,
+  })
+})
 </script>
 
 <template>
@@ -47,5 +64,8 @@ useSeoMeta({
         'bg-black/70 p-4 text-foreground rounded-md flex w-[356px] items-center text-sm gap-3 backdrop-blur-md border border-white/10',
     }"
   />
-  <RouterView />
+  <component v-if="layout" :is="layout">
+    <router-view />
+  </component>
+  <router-view v-else />
 </template>
