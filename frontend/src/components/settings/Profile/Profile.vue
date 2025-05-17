@@ -71,7 +71,7 @@ const getRandomPlayer = async () => {
         <Label for="riotID" class="text-sm">Riot ID</Label>
         <div class="inline-flex items-center gap-2">
           <InputWithIcon
-            :disabled="apiKey.length === 0"
+            :disabled="apiKey.length === 10"
             id="riotID"
             v-model="riotID"
             placeholder="nickname#tag"
