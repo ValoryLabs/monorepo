@@ -18,3 +18,21 @@ class UsersDAO(BaseDAO):
         query = select(cls.model).filter_by(id=id)
         result = await session.execute(query)
         return result.scalars().one_or_none()
+
+    @classmethod
+    async def set_riot_id(cls, session, user_id, riot_id):
+        user = await cls.find_by_id(session, user_id)
+        if user:
+            user.riot_id = riot_id
+            await session.commit()
+            return True
+        return False
+
+    @classmethod
+    async def set_hdev_api_key(cls, session, user_id, hdev_api_key):
+        user = await cls.find_by_id(session, user_id)
+        if user:
+            user.hdev_api_key = hdev_api_key
+            await session.commit()
+            return True
+        return False

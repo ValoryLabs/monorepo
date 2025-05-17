@@ -71,3 +71,50 @@ async def read_users_me(current_user: User = Depends(get_current_user), session:
         "avatar_url": current_user.avatar_url,
         "overlay_id": overlay.id
     }
+
+@router.post("/me/riotid", summary="Установить Riot ID")
+async def set_riot_id(
+        riot_id: str,
+        current_user: User = Depends(get_current_user),
+        session: AsyncSession = Depends(get_session)
+):
+    if not riot_id:
+        logger.warning("Riot ID is empty")
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Riot ID is empty"
+        )
+
+    set_riot_id = await UsersDAO.set_riot_id(session, current_user.id, riot_id)
+    if set_riot_id:
+        return {"message": "Riot ID set successfully"}
+    else:
+        logger.warning("Failed to set Riot ID")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Failed to set Riot ID. User not  found"
+        )
+
+@router.post("/me/hdev_api_key", summary="Установить Riot ID")
+async def set_hdev_api_key(
+        hdev_api_key: str,
+        current_user: User = Depends(get_current_user),
+        session: AsyncSession = Depends(get_session)
+):
+    if not hdev_api_key:
+        logger.warning("HDEV API key is empty")
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="HDEV API key is empty"
+        )
+
+    set_hdev_api_key= await UsersDAO.set_riot_id(session, current_user.id, hdev_api_key)
+    if set_hdev_api_key:
+        return {"message": "HDEV API key set successfully"}
+    else:
+        logger.warning("Failed to set HDEV API key")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Failed to set HDEV API key. User not  found"
+        )
+
