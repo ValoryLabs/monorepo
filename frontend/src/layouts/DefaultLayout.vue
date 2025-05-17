@@ -1,6 +1,8 @@
 <script setup lang="ts">
+import { defineAsyncComponent } from 'vue'
 import Header from '@/components/home/Header.vue'
-import Footer from '@/components/home/Footer.vue'
+
+const Footer = defineAsyncComponent(() => import('@/components/home/Footer.vue'))
 </script>
 
 <template>
