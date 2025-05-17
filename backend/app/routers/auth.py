@@ -106,12 +106,12 @@ async def callback(request: Request, session: AsyncSession = Depends(get_session
     if not user:
         return HTTPException(status_code=status.HTTP_401_UNAUTHORIZED)
 
-    access_token = await create_access_token({"sub": str(user.id)})
-
     response = RedirectResponse(url=settings.APP_FRONTEND_URL + "/callback")
 
     one_month_seconds = 60 * 60 * 24 * 30
     expires_time = datetime.now(timezone.utc) + timedelta(seconds=one_month_seconds)
+
+    access_token = await create_access_token({"sub": str(user.id)}, expires_time)
 
     response.set_cookie(
         "Authorization",
