@@ -9,15 +9,15 @@ import { toast } from 'vue-sonner'
 import { useUserStore } from '@/stores/user.ts'
 import { useI18n } from 'vue-i18n'
 import { ref } from 'vue'
-import {Search, KeyRound, Dices, CircleHelp} from 'lucide-vue-next'
+import { Search, KeyRound, Dices, CircleHelp } from 'lucide-vue-next'
 import { UserValidator } from '@/api/auth/user.validator.ts'
 import { getRandomPlayerName } from '@/api/leaderboard.ts'
 import { getAccountInformation, getMMRInformation } from '@/api/playerInformation.ts'
 import { Label } from '../../ui/label'
-import ProfileHeader from "@/components/settings/Profile/ProfileHeader.vue";
-import ProfileRoot from "@/components/settings/Profile/ProfileRoot.vue";
-import ProfileSection from "@/components/settings/Profile/ProfileSection.vue";
-import {openLink} from "@/lib/utils.ts";
+import ProfileHeader from '@/components/settings/Profile/ProfileHeader.vue'
+import ProfileRoot from '@/components/settings/Profile/ProfileRoot.vue'
+import ProfileSection from '@/components/settings/Profile/ProfileSection.vue'
+import { openLink } from '@/lib/utils.ts'
 
 const { t } = useI18n()
 
@@ -65,12 +65,17 @@ const getRandomPlayer = async () => {
 
 <template>
   <ProfileRoot>
-    <ProfileHeader/>
+    <ProfileHeader />
     <div class="flex w-full flex-col gap-4">
       <ProfileSection>
         <Label for="riotID" class="text-sm">Riot ID</Label>
         <div class="inline-flex items-center gap-2">
-          <InputWithIcon id="riotID" v-model="riotID" placeholder="nickname#tag">
+          <InputWithIcon
+            :disabled="apiKey.length === 0"
+            id="riotID"
+            v-model="riotID"
+            placeholder="nickname#tag"
+          >
             <Riot :size="16" />
           </InputWithIcon>
           <TooltipProvider>
