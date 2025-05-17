@@ -8,9 +8,9 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog'
 import Button from '@/components/ui/button/Button.vue'
-import { Twitch, YouTube, Kick } from '@/components/icons'
-import { Separator } from '@/components/ui/separator'
-import { openLink } from '@/lib/utils'
+import {Kick, Twitch, YouTube} from '@/components/icons'
+import {Separator} from '@/components/ui/separator'
+import {openLink} from '@/lib/utils'
 import Valory from '../icons/Valory.vue'
 
 const redirectToAuth = () => {

@@ -1,6 +1,6 @@
-import { defineStore } from 'pinia'
-import { type Ref, ref } from 'vue'
-import { toast } from 'vue-sonner'
+import {defineStore} from 'pinia'
+import {type Ref, ref} from 'vue'
+import {toast} from 'vue-sonner'
 
 export const useOverlayStore = defineStore(
   'overlayStore',

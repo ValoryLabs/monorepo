@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
 import { useUserStore } from '@/stores/user'
-const userStore = useUserStore()
-const { previewImage } = storeToRefs(userStore)
 import { Check } from 'lucide-vue-next'
 import TiltCard from '@/components/ui/TiltCard.vue'
+
+const userStore = useUserStore()
+const { previewImage } = storeToRefs(userStore)
 
 const images = [
   {

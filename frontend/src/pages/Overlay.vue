@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import OldOverlay from '@/components/overlays/OldOverlay.vue'
 import NewOverlay from '@/components/overlays/NewOverlay.vue'
-import { useOverlayStore } from '@/stores/overlay.ts'
-import { storeToRefs } from 'pinia'
-import { useRoute } from 'vue-router'
-import { onMounted, onUnmounted, ref, watch, computed } from 'vue'
+import {useOverlayStore} from '@/stores/overlay.ts'
+import {storeToRefs} from 'pinia'
+import {useRoute} from 'vue-router'
+import {computed, onMounted, onUnmounted, ref, watch} from 'vue'
 import MiniOverlay from '@/components/overlays/MiniOverlay.vue'
 import NewV2Overlay from '@/components/overlays/NewV2Overlay.vue'
 
-import { useHead } from '@unhead/vue'
+import {useHead} from '@unhead/vue'
 
 useHead({
   title: 'Overlay',

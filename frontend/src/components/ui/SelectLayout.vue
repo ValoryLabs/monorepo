@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import { storeToRefs } from 'pinia'
-import { useOverlayStore } from '@/stores/overlay'
+import {storeToRefs} from 'pinia'
+import {useOverlayStore} from '@/stores/overlay'
+import {Check} from 'lucide-vue-next'
+import TiltCard from '@/components/ui/TiltCard.vue'
+
 const overlayStore = useOverlayStore()
 const { overlayStyle } = storeToRefs(overlayStore)
-import { Check } from 'lucide-vue-next'
-import TiltCard from '@/components/ui/TiltCard.vue'
 
 const images = [
   {

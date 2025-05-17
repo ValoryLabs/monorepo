@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
+import {Tooltip, TooltipContent, TooltipProvider, TooltipTrigger} from '@/components/ui/tooltip'
 import Shortcuts from '@/components/ui/Shortcuts.vue'
-import { Button } from '@/components/ui/button'
-import { Expand, RotateCcw, Command } from 'lucide-vue-next'
+import {Button} from '@/components/ui/button'
+import {Command, Expand, RotateCcw} from 'lucide-vue-next'
 
-import { useUserStore } from '@/stores/user'
-import { useOverlayStore } from '@/stores/overlay'
+import {useUserStore} from '@/stores/user'
+import {useOverlayStore} from '@/stores/overlay'
 
 const userStore = useUserStore()
 const overlayStore = useOverlayStore()

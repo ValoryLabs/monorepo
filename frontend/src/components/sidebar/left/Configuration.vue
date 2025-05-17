@@ -7,9 +7,9 @@ import { storeToRefs } from 'pinia'
 import SelectLayout from '@/components/ui/SelectLayout.vue'
 import SelectFont from '@/components/ui/SelectFont.vue'
 import {
-  ConfigurationSection,
   ConfigurationContent,
   ConfigurationRoot,
+  ConfigurationSection,
 } from '@/components/configuration'
 import { SwitchToggle } from '@/components/ui/switchtoggle'
 import { RotateCcw } from 'lucide-vue-next'

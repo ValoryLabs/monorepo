@@ -8,7 +8,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { useVModel } from '@vueuse/core'
+import {useVModel} from '@vueuse/core'
 import SelectSeparator from './select/SelectSeparator.vue'
 
 const props = defineProps<{

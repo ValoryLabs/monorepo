@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { useHead, useSeoMeta } from '@unhead/vue'
-import { useRoute } from 'vue-router'
-import { Toaster } from 'vue-sonner'
-import { computed, defineAsyncComponent } from 'vue'
+import {useHead, useSeoMeta} from '@unhead/vue'
+import {useRoute} from 'vue-router'
+import {Toaster} from 'vue-sonner'
+import {computed, defineAsyncComponent} from 'vue'
 
 const titleMain = 'VALORY'
 const metaImg = 'meta.webp'

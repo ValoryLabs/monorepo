@@ -1,4 +1,4 @@
-import { cva, type VariantProps } from 'class-variance-authority'
+import {cva, type VariantProps} from 'class-variance-authority'
 
 export { default as Tabs } from './Tabs.vue'
 export { default as TabsContent } from './TabsContent.vue'

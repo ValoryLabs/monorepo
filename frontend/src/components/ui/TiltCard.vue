@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { HTMLAttributes } from 'vue'
-import { ref, reactive, onMounted, onUnmounted, computed } from 'vue'
-import { cn } from '@/lib/utils'
+import type {HTMLAttributes} from 'vue'
+import {computed, onMounted, onUnmounted, reactive, ref} from 'vue'
+import {cn} from '@/lib/utils'
 
 const props = defineProps<{
   class?: HTMLAttributes['class']

@@ -6,9 +6,9 @@
  * @module apiClient
  */
 
-import { useUserSettingsStore } from '@/stores/userSettings'
+import {useUserSettingsStore} from '@/stores/userSettings'
 import axios from 'axios'
-import { storeToRefs } from 'pinia'
+import {storeToRefs} from 'pinia'
 
 /**
  * Instance of user settings store

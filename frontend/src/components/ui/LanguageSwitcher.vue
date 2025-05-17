@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Button } from '@/components/ui/button'
+import {Button} from '@/components/ui/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,11 +10,11 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 
-import { Globe } from 'lucide-vue-next'
+import {Globe} from 'lucide-vue-next'
 
-import { AVAILABLE_LOCALES } from '@/i18n.ts'
-import { useLocalStorage } from '@vueuse/core'
-import { useI18n } from 'vue-i18n'
+import {AVAILABLE_LOCALES} from '@/i18n.ts'
+import {useLocalStorage} from '@vueuse/core'
+import {useI18n} from 'vue-i18n'
 
 const { locale } = useI18n<{ locale: string; availableLocales: string[] }>()
 const currentLocale = useLocalStorage<string>('lang', 'en')

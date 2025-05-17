@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, onMounted, onUnmounted, type Component } from 'vue'
+import {type Component, onMounted, onUnmounted, ref} from 'vue'
 
 interface CarouselProps {
   slides: Component[]

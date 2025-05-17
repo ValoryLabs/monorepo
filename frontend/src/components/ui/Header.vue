@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Valory } from '@/components/icons'
+import {Valory} from '@/components/icons'
 import LanguageSwitcher from '@/components/ui/LanguageSwitcher.vue'
 import ProfileMenu from './ProfileMenu.vue'
 </script>

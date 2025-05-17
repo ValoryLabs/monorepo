@@ -1,5 +1,5 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import { useAuthStore } from '@/stores/auth'
+import {createRouter, createWebHistory} from 'vue-router'
+import {useAuthStore} from '@/stores/auth'
 import Home from '@/pages/Home.vue'
 import Overlay from '@/pages/Overlay.vue'
 import NotFound from '@/pages/NotFound.vue'

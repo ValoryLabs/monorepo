@@ -11,9 +11,10 @@ import Login from '@/components/ui/Login.vue'
 import { Button } from '@/components/ui/button'
 import { NAV_DATA } from '@/data/HeaderNav.data'
 import router from '@/router'
-import { hidden, openLink, moveTo } from '@/lib/utils'
+import { hidden, moveTo, openLink } from '@/lib/utils'
 
 import { useAuthStore } from '@/stores/auth'
+
 const authStore = useAuthStore()
 const repoUrl = ref('https://api.github.com/repos/ValoryApp/Valory')
 

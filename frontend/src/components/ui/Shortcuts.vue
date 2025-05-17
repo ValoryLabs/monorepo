@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
+import {Popover, PopoverContent, PopoverTrigger} from '@/components/ui/popover'
 
-import { Kbd } from '@/components/ui/kbd'
+import {Kbd} from '@/components/ui/kbd'
 
 const shortcuts = [
   {

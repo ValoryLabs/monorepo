@@ -1,9 +1,9 @@
 import messages from '@intlify/unplugin-vue-i18n/messages'
-import { useLocalStorage } from '@vueuse/core'
-import { watch } from 'vue'
-import type { I18n } from 'vue-i18n'
-import { createI18n, registerMessageResolver } from 'vue-i18n'
-import { resolveValue } from '@intlify/core-base'
+import {useLocalStorage} from '@vueuse/core'
+import {watch} from 'vue'
+import type {I18n} from 'vue-i18n'
+import {createI18n, registerMessageResolver} from 'vue-i18n'
+import {resolveValue} from '@intlify/core-base'
 
 registerMessageResolver(resolveValue)
 

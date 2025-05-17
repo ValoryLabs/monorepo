@@ -1,7 +1,7 @@
-import { useUserSettingsStore } from '@/stores/userSettings'
-import { storeToRefs } from 'pinia'
-import { apiClient } from '..'
-import type { AxiosError } from 'axios'
+import {useUserSettingsStore} from '@/stores/userSettings'
+import {storeToRefs} from 'pinia'
+import {apiClient} from '..'
+import type {AxiosError} from 'axios'
 
 // Data types
 interface ValidationResult {

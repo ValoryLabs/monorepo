@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button'
 
 import { Hand } from 'lucide-vue-next'
 
-import { onBeforeUnmount, onMounted, ref, reactive, onUnmounted, nextTick } from 'vue'
+import { nextTick, onBeforeUnmount, onMounted, onUnmounted, reactive, ref } from 'vue'
 import { openLink } from '@/lib/utils'
 
 import Panel from '@/components/ui/Panel.vue'

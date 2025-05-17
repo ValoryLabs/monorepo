@@ -5,6 +5,7 @@ import MiniOverlay from '@/components/overlays/MiniOverlay.vue'
 import NewOverlay from '@/components/overlays/NewOverlay.vue'
 import NewV2Overlay from '@/components/overlays/NewV2Overlay.vue'
 import OldOverlay from '@/components/overlays/OldOverlay.vue'
+
 const slides = [MiniOverlay, NewOverlay, NewV2Overlay, OldOverlay]
 </script>
 

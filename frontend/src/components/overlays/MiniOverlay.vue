@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ArrowUp, ArrowDown, TrendingUp, TrendingDown, Minus, Globe } from 'lucide-vue-next'
+import { ArrowDown, ArrowUp, Globe, Minus, TrendingDown, TrendingUp } from 'lucide-vue-next'
 
 interface Props {
   backgroundColor?: string

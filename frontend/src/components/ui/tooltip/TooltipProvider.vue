@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { TooltipProvider, type TooltipProviderProps } from 'reka-ui'
+import {TooltipProvider, type TooltipProviderProps} from 'reka-ui'
 
 const props = withDefaults(defineProps<TooltipProviderProps>(), {
   delayDuration: 0,

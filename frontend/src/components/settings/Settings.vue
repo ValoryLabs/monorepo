@@ -2,7 +2,7 @@
 import { useUserStore } from '@/stores/user.ts'
 import { storeToRefs } from 'pinia'
 
-import { Profile, Preview } from '.'
+import { Preview, Profile } from '.'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 
 import { X } from 'lucide-vue-next'
@@ -23,15 +23,24 @@ const { showSettings } = storeToRefs(userStore)
         <div
           class="bg-background relative flex min-h-3/4 w-full max-w-[880px] flex-col gap-3 rounded-xl p-8"
         >
-          <button class="absolute top-4 right-4 cursor-pointer" @click="userStore.toggleShowSettings">
+          <button
+            class="absolute top-4 right-4 cursor-pointer"
+            @click="userStore.toggleShowSettings"
+          >
             <X class="size-4" />
           </button>
           <div class="title text-xl">{{ $t('components.settings.title') }}</div>
           <div>
             <Tabs default-value="profile" class="flex w-full flex-row" orientation="vertical">
-              <TabsList class="grid w-full max-w-[208px] border-transparent hover:border-transparent grid-cols-1 gap-1">
-                <TabsTrigger variant="vertical" value="profile"> {{ $t('components.settings.tabs.profile.title') }} </TabsTrigger>
-                <TabsTrigger variant="vertical" value="preview"> {{ $t('components.settings.tabs.preview.title') }} </TabsTrigger>
+              <TabsList
+                class="grid w-full max-w-[208px] grid-cols-1 gap-1 border-transparent hover:border-transparent"
+              >
+                <TabsTrigger variant="vertical" value="profile">
+                  {{ $t('components.settings.tabs.profile.title') }}
+                </TabsTrigger>
+                <TabsTrigger variant="vertical" value="preview">
+                  {{ $t('components.settings.tabs.preview.title') }}
+                </TabsTrigger>
               </TabsList>
               <TabsContent value="profile"> <Profile /></TabsContent>
               <TabsContent value="preview"> <Preview /> </TabsContent>
