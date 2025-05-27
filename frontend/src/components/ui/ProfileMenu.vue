@@ -16,7 +16,6 @@ import { openLink } from '@/lib/utils'
 import {
   LifeBuoy,
   LoaderCircle,
-  Lock,
   LogOut,
   NotebookText,
   Settings as SettingsIcon,
