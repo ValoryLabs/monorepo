@@ -1,5 +1,5 @@
-import {createRouter, createWebHistory} from 'vue-router'
-import {useAuthStore} from '@/stores/auth'
+import { createRouter, createWebHistory } from 'vue-router'
+import { useAuthStore } from '@/stores/auth'
 import Home from '@/pages/Home.vue'
 import Overlay from '@/pages/Overlay.vue'
 import NotFound from '@/pages/NotFound.vue'
@@ -30,6 +30,12 @@ const router = createRouter({
       name: 'overlay',
       component: Overlay,
       meta: { layout: 'NoLayout' },
+    },
+    {
+      path: '/terms',
+      name: 'terms',
+      component: () => import('@/pages/TermsOfService.vue'),
+      meta: { layout: 'DefaultLayout' },
     },
     {
       path: '/:pathMatch(.*)*',

@@ -14,6 +14,9 @@ import router from '@/router'
 import { hidden, moveTo, openLink } from '@/lib/utils'
 
 import { useAuthStore } from '@/stores/auth'
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
 
 const authStore = useAuthStore()
 const repoUrl = ref('https://api.github.com/repos/ValoryApp/Valory')
@@ -47,7 +50,7 @@ onUnmounted(() => {
 <template>
   <header
     :class="[
-      'fixed right-0 left-0 z-10 flex h-16 w-full justify-center transition-all duration-700',
+      'sticky right-0 left-0 z-10 flex h-16 w-full justify-center transition-all duration-700',
       showHeader ? 'top-6' : 'top-[-600px]',
     ]"
   >
@@ -55,10 +58,10 @@ onUnmounted(() => {
       class="container flex items-center justify-between gap-48 rounded-full bg-black/30 py-1 text-sm backdrop-blur-sm"
     >
       <div class="left flex flex-row gap-8">
-        <div class="logo">
+        <div class="logo cursor-pointer" @click="router.push({ name: 'home' })">
           <Valory :size="30" />
         </div>
-        <ul v-if="!hidden" class="flex items-center justify-between gap-6">
+        <ul v-if="!hidden && route.name === 'home'" class="flex items-center justify-between gap-6">
           <li
             v-for="nav in NAV_DATA"
             :key="nav.name"
