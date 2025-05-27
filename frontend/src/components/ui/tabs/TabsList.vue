@@ -18,7 +18,7 @@ const delegatedProps = computed(() => {
     v-bind="delegatedProps"
     :class="
       cn(
-        'bg-background text-switch-foreground inline-flex h-fit w-full cursor-pointer items-center justify-center rounded-md border border-white/10 p-1 font-mono text-sm transition-all duration-200 hover:border-white/15 hover:bg-white/5',
+        'bg-background text-switch-foreground inline-flex h-fit w-full cursor-pointer items-center justify-center rounded-md border border-white/10 p-1 font-mono text-sm transition-all duration-200 hover:border-white/15',
         props.class,
       )
     "
