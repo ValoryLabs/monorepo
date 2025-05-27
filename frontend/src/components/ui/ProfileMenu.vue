@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import {Button} from '@/components/ui/button'
+import { Button } from '@/components/ui/button'
 
-import {useAuthStore} from '@/stores/auth'
+import { useAuthStore } from '@/stores/auth'
 
 import {
   DropdownMenu,
@@ -11,13 +11,21 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-import {SocialLinksData} from '@/data/SocialLinks.data'
-import {openLink} from '@/lib/utils'
-import {LifeBuoy, LoaderCircle, Lock, LogOut, NotebookText, Settings as SettingsIcon,} from 'lucide-vue-next'
+import { SocialLinksData } from '@/data/SocialLinks.data'
+import { openLink } from '@/lib/utils'
+import {
+  LifeBuoy,
+  LoaderCircle,
+  Lock,
+  LogOut,
+  NotebookText,
+  Settings as SettingsIcon,
+} from 'lucide-vue-next'
 
-import {onMounted, watch} from 'vue'
-import {useUserStore} from '@/stores/user.ts'
-import {storeToRefs} from 'pinia'
+import { onMounted, watch } from 'vue'
+import { useUserStore } from '@/stores/user.ts'
+import { storeToRefs } from 'pinia'
+import router from '@/router'
 
 const authStore = useAuthStore()
 
@@ -63,11 +71,7 @@ onMounted(() => {
         <LifeBuoy class="mr-2 h-4 w-4" />
         <span>{{ $t('profile_menu.support') }}</span>
       </DropdownMenuItem>
-      <DropdownMenuItem>
-        <Lock class="mr-2 h-4 w-4" />
-        <span>{{ $t('profile_menu.privacy') }}</span>
-      </DropdownMenuItem>
-      <DropdownMenuItem>
+      <DropdownMenuItem @click="router.push({ name: 'terms' })">
         <NotebookText class="text-muted-foreground mr-2 h-4 w-4" />
         <span>{{ $t('profile_menu.terms') }}</span>
       </DropdownMenuItem>

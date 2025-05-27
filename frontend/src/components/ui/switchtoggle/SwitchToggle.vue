@@ -26,7 +26,7 @@ const updateChecked = () => {
     type="button"
     :id="id"
     :aria-checked="checked"
-    class="bg-background inline-flex h-9 cursor-pointer items-center justify-between rounded-md border border-white/10 p-1 font-mono text-sm transition-all duration-200 hover:border-white/15"
+    class="bg-background inline-flex h-9 cursor-pointer items-center justify-between rounded-md border border-white/10 p-1 font-mono text-sm transition-all duration-200 hover:border-white/15 hover:bg-white/5"
     @click="updateChecked()"
     :style="props.disabled ? 'opacity: 0.5' : ''"
   >
