@@ -8,10 +8,11 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog'
 import Button from '@/components/ui/button/Button.vue'
-import {Kick, Twitch, YouTube} from '@/components/icons'
-import {Separator} from '@/components/ui/separator'
-import {openLink} from '@/lib/utils'
+import { Kick, Twitch, YouTube } from '@/components/icons'
+import { Separator } from '@/components/ui/separator'
+import { openLink } from '@/lib/utils'
 import Valory from '../icons/Valory.vue'
+import router from '@/router'
 
 const redirectToAuth = () => {
   window.location.href = `${import.meta.env.APP_BACKEND_URL}/api/auth/login/twitch`
@@ -52,20 +53,20 @@ const redirectToAuth = () => {
           ><Kick color="white" class="size-5" />Kick</Button
         >
       </div>
-      <a class="cursor-pointer text-xs text-neutral-400 hover:underline" @click="openLink('https://discord.gg/pYV4PBV5YW')">{{
-        $t('components.login.trouble')
-      }}</a>
+      <a
+        class="cursor-pointer text-xs text-neutral-400 hover:underline"
+        @click="openLink('https://discord.gg/pYV4PBV5YW')"
+        >{{ $t('components.login.trouble') }}</a
+      >
       <Separator class="h-px w-full bg-white/10" />
       <DialogFooter class="text-center text-xs">
         <span class="text-neutral-500">
           {{ $t('components.login.agree.text') }}
-          <a href="#" class="text-white hover:underline">{{
-            $t('components.login.agree.terms')
-          }}</a>
-          {{ $t('components.login.agree.and') }}
-          <a href="#" class="text-white hover:underline">{{
-            $t('components.login.agree.privacy')
-          }}</a></span
+          <a
+            @click="router.push({ name: 'terms' })"
+            class="cursor-pointer text-white hover:underline"
+            >{{ $t('components.login.agree.terms') }}</a
+          ></span
         >
       </DialogFooter>
     </DialogContent>
