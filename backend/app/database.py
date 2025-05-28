@@ -1,3 +1,4 @@
+from collections.abc import AsyncGenerator
 from datetime import datetime
 
 from sqlalchemy import TIMESTAMP, Integer, func
@@ -20,7 +21,7 @@ async_session_factory = async_sessionmaker(
 )
 
 
-async def get_session() -> AsyncSession:
+async def get_session() -> AsyncGenerator:
     async with async_session_factory() as session:
         try:
             yield session
