@@ -106,7 +106,6 @@ export const useOverlayStore = defineStore(
         })
 
         hasPendingChanges.value = false
-        console.log('Overlay settings saved successfully')
       } catch (error) {
         console.error('Failed to save overlay settings:', error)
       }
