@@ -1,14 +1,14 @@
+import logging
 from typing import Optional
 
-from fastapi import Cookie, APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Cookie, Depends, HTTPException, status
+from jose import ExpiredSignatureError, JWTError, jwt
 from pydantic import BaseModel
 from sqlalchemy.ext.asyncio import AsyncSession
-from jose import JWTError, ExpiredSignatureError, jwt
-import logging
 
 from app.config import settings
-from app.dao.users import UsersDAO
 from app.dao.overlays import OverlaysDAO
+from app.dao.users import UsersDAO
 from app.database import get_session
 from app.models.users import User
 

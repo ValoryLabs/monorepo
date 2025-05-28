@@ -1,4 +1,4 @@
-from sqlalchemy import select, update, insert
+from sqlalchemy import insert, select, update
 from sqlalchemy.exc import IntegrityError
 
 from app.dao.base import BaseDAO

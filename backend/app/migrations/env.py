@@ -6,10 +6,9 @@ from alembic import context
 from sqlalchemy import engine_from_config, pool
 
 from app.config import database_url
-
 from app.database import Base
-from app.models.users import User
 from app.models.overlays import Overlay
+from app.models.users import User
 
 sys.path.insert(0, dirname(dirname(dirname(abspath(__file__)))))
 

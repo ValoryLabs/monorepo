@@ -1,3 +1,5 @@
+from datetime import datetime, timedelta, timezone
+import logging
 import random
 import string
 from urllib.parse import urlencode
@@ -6,8 +8,6 @@ import aiohttp
 from fastapi import APIRouter, Depends, HTTPException, Request, status
 from fastapi.responses import RedirectResponse
 from sqlalchemy.ext.asyncio import AsyncSession
-from datetime import datetime, timedelta, timezone
-import logging
 
 from app.config import settings
 from app.database import get_session
