@@ -1,3 +1,5 @@
+from typing import Optional
+
 from fastapi import Cookie, APIRouter, Depends, HTTPException, status
 from pydantic import BaseModel
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -19,6 +21,27 @@ class HdevApiKeyRequest(BaseModel):
 
 class RiotIDRequest(BaseModel):
     riot_id: str
+
+class OverlaySettingsRequest(BaseModel):
+    overlayStyle: Optional[str] = None
+    backgroundColor: Optional[str] = None
+    disabledBackground: Optional[bool] = None
+    disabledBorder: Optional[bool] = None
+    disabledBackgroundGradient: Optional[bool] = None
+    disabledGlowEffect: Optional[bool] = None
+    disabledPeakRankIcon: Optional[bool] = None
+    disabledLeaderboardPlace: Optional[bool] = None
+    disabledPeakRR: Optional[bool] = None
+    textColor: Optional[str] = None
+    primaryTextColor: Optional[str] = None
+    overlayFont: Optional[str] = None
+    winColor: Optional[str] = None
+    loseColor: Optional[str] = None
+    disabledWinLose: Optional[bool] = None
+    disabledLastMatchPoints: Optional[bool] = None
+    disabledProgress: Optional[bool] = None
+    progressColor: Optional[str] = None
+    progressBgColor: Optional[str] = None
 
 async def get_current_user(
         token: str | None = Cookie(default=None, alias="Authorization"),
@@ -123,4 +146,46 @@ async def set_hdev_api_key(
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail="Failed to set HDEV API key. User not found"
+        )
+
+@router.post("/me/overlay", summary="Сохранить настройки оверлея")
+async def save_overlay_settings(
+        request: OverlaySettingsRequest,
+        current_user: User = Depends(get_current_user),
+        session: AsyncSession = Depends(get_session)
+):
+    try:
+        settings_data = request.dict(exclude_none=True)
+
+        if not settings_data:
+            logger.warning("No overlay settings provided")
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="No overlay settings provided"
+            )
+
+        saved_settings = await OverlaysDAO.save_overlay_settings(
+            session,
+            current_user.id,
+            settings_data
+        )
+
+        if saved_settings:
+            logger.info(f"Overlay settings saved for user {current_user.id}")
+            return {
+                "message": "Overlay settings saved successfully",
+                "settings": saved_settings
+            }
+        else:
+            logger.warning(f"Failed to save overlay settings for user {current_user.id}")
+            raise HTTPException(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                detail="Failed to save overlay settings. User not found"
+            )
+
+    except Exception as e:
+        logger.error(f"Error saving overlay settings: {str(e)}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Internal server error while saving overlay settings"
         )
