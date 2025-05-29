@@ -40,7 +40,7 @@ const {
 
 <template>
   <div class="flex flex-col gap-3">
-    <div class="bg-background z-20 flex flex-col gap-2 pb-5">
+    <div class="z-20 flex flex-col gap-2 pb-5">
       <div class="inline-flex items-center justify-between">
         <span class="title">{{ $t('sidebar.configuration.title') }}</span>
 

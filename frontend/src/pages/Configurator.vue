@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import Content from '@/components/Content.vue'
-import {LeftSidebar} from '@/components/sidebar/left/'
-import {useUserStore} from '@/stores/user'
-import {useOverlayStore} from '@/stores/overlay'
-import {storeToRefs} from 'pinia'
-import {useMagicKeys} from '@vueuse/core'
-import {watch} from 'vue'
-import {useHead} from '@unhead/vue'
-import {Settings} from '@/components/settings'
-import {useI18n} from 'vue-i18n'
+import { LeftSidebar } from '@/components/sidebar/'
+import { useUserStore } from '@/stores/user'
+import { useOverlayStore } from '@/stores/overlay'
+import { storeToRefs } from 'pinia'
+import { useMagicKeys } from '@vueuse/core'
+import { watch } from 'vue'
+import { useHead } from '@unhead/vue'
+import { Settings } from '@/components/settings'
+import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
 

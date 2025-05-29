@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { Configuration, Generate } from '.'
+import { Configuration, Generate } from './index.ts'
 
-import { useUserStore } from '@/stores/user'
+import { useUserStore } from '@/stores/user.ts'
 import { storeToRefs } from 'pinia'
 
 const userStore = useUserStore()
