@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import tinycolor from 'tinycolor2'
-import {onMounted, reactive, ref, watch} from 'vue'
+import { onMounted, reactive, ref, watch } from 'vue'
 import InputWithIcon from '@/components/ui/InputWithIcon.vue'
-import {Popover, PopoverContent, PopoverTrigger} from '@/components/ui/popover'
-import {Input} from '@/components/ui/input'
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
+import { Input } from '@/components/ui/input'
 
 interface RGB {
   r: number
@@ -164,7 +164,7 @@ onMounted(() => {
         :style="{
           backgroundColor: hex,
         }"
-        class="z-10 h-5 w-5 cursor-pointer rounded-md"
+        class="z-10 size-5 cursor-pointer rounded-sm"
       />
     </InputWithIcon>
     <PopoverContent align="start">
@@ -299,7 +299,7 @@ onMounted(() => {
       height: 22px;
       box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
       transition: 0.2s box-shadow;
-      border-radius: calc(var(--radius) - 2px);
+      border-radius: calc(var(--radius) - 4px);
       cursor: pointer;
 
       &.active,
