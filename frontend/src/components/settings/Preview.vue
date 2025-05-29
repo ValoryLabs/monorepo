@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
 import { useUserStore } from '@/stores/user'
-import { Check } from 'lucide-vue-next'
+import { Check, Ban } from 'lucide-vue-next'
 import TiltCard from '@/components/ui/TiltCard.vue'
 
 const userStore = useUserStore()
@@ -48,6 +48,10 @@ const images = [
     name: 'Sunset',
     src: '/thumbnails/sunset.webp',
   },
+  {
+    name: 'None',
+    src: '',
+  },
 ]
 </script>
 
@@ -62,10 +66,22 @@ const images = [
       <TiltCard
         class="outline-second rounded outline-2 outline-offset-3 transition-all group-hover:scale-102 group-hover:outline-white"
         :class="[previewImage === image.name.toLowerCase() ? 'outline-white' : '']"
-        ><img class="pointer-events-none w-30" :src="image.src" :alt="image.name"
-      /></TiltCard>
+      >
+        <img
+          v-if="image.name !== 'None'"
+          class="pointer-events-none h-18 w-30"
+          :src="image.src"
+          :alt="image.name"
+        />
+        <span
+          v-else
+          class="bg-background pointer-events-none flex h-18 w-30 items-center justify-center rounded"
+        >
+          <Ban class="text-second size-8 group-hover:text-white" />
+        </span>
+      </TiltCard>
 
-      <div
+      <span
         class="text-second inline-flex items-center gap-2 font-medium transition-colors group-hover:text-white"
         :class="[previewImage === image.name.toLowerCase() ? 'text-white' : '']"
       >
@@ -76,7 +92,7 @@ const images = [
           absoluteStrokeWidth
         />
         <span>{{ image.name }}</span>
-      </div>
+      </span>
     </button>
   </div>
 </template>

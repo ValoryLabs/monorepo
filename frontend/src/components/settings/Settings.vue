@@ -17,11 +17,11 @@ const { showSettings } = storeToRefs(userStore)
     <Transition name="modal-fade">
       <div
         v-if="showSettings"
-        class="fixed inset-0 z-50 flex items-center justify-center bg-black/80"
+        class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm"
         @click.self="userStore.toggleShowSettings"
       >
         <div
-          class="bg-background relative flex min-h-3/4 w-full max-w-[880px] flex-col gap-3 rounded-xl p-8"
+          class="bg-background relative flex min-h-3/4 w-full max-w-[880px] flex-col gap-3 rounded-xl border-[0.5px] p-8"
         >
           <button
             class="absolute top-4 right-4 cursor-pointer"

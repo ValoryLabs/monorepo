@@ -130,11 +130,12 @@ onBeforeUnmount(() => {
 
 <template>
   <main
-    class="bg-background relative flex flex-1 items-center justify-center"
-    :class="{ 'pr-2 pb-2': !fullscreen }"
+    class="relative flex flex-1 items-center justify-center border-[0.5px] bg-white/1"
+    :class="{ 'mr-2 mb-2 rounded-2xl': !fullscreen }"
   >
     <div
-      class="flex h-full w-full rounded-xl bg-cover bg-center"
+      class="flex h-full w-full bg-cover bg-center"
+      :class="{ 'rounded-2xl': !fullscreen }"
       :style="{ backgroundImage: `url(/previews/${previewImage}.webp)` }"
       ref="containerRef"
     >
