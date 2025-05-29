@@ -6,24 +6,26 @@ import { useUserStore } from '@/stores/user.ts'
 import { storeToRefs } from 'pinia'
 
 const userStore = useUserStore()
-const { configuratorActive } = storeToRefs(userStore)
+const { showLeftSidebar, configuratorActive } = storeToRefs(userStore)
 </script>
 
 <template>
-  <Tabs default-value="configuration">
-    <TabsList>
-      <TabsTrigger :disabled="!configuratorActive" value="configuration">
-        {{ $t('sidebar.configuration.title') }}
-      </TabsTrigger>
-      <TabsTrigger :disabled="!configuratorActive" value="generate">
-        {{ $t('sidebar.buttons.generate') }}
-      </TabsTrigger>
-    </TabsList>
-    <TabsContent value="configuration">
-      <Configuration />
-    </TabsContent>
-    <TabsContent value="generate">
-      <Generate />
-    </TabsContent>
-  </Tabs>
+  <aside v-if="showLeftSidebar" class="mr-2 flex h-full w-80 flex-col pb-2 transition-all">
+    <Tabs default-value="configuration" class="h-full">
+      <TabsList>
+        <TabsTrigger :disabled="!configuratorActive" value="configuration">
+          {{ $t('sidebar.configuration.title') }}
+        </TabsTrigger>
+        <TabsTrigger :disabled="!configuratorActive" value="generate">
+          {{ $t('sidebar.buttons.generate') }}
+        </TabsTrigger>
+      </TabsList>
+      <TabsContent value="configuration" class="h-full overflow-scroll pr-5">
+        <Configuration />
+      </TabsContent>
+      <TabsContent value="generate">
+        <Generate />
+      </TabsContent>
+    </Tabs>
+  </aside>
 </template>
