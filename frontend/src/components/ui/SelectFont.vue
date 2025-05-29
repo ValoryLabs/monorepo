@@ -8,7 +8,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import {useVModel} from '@vueuse/core'
+import { useVModel } from '@vueuse/core'
 import SelectSeparator from './select/SelectSeparator.vue'
 
 const props = defineProps<{
@@ -26,25 +26,30 @@ const modelValue = useVModel(props, 'modelValue', emits, {
 })
 
 const fonts: string[] = [
-  'Lato',
-  'Lora',
-  'Inter',
-  'Geist',
-  'Onest',
   'Roboto',
-  'Oxanium',
-  'Manrope',
-  'Poppins',
-  'Gabarito',
-  'Rajdhani',
-  'Russo one',
   'Open Sans',
-  'Geist Mono',
-  'Space Mono',
   'Montserrat',
+  'Lato',
+  'Poppins',
+  'Inter',
+  'DM Sans',
+  'Public Sans',
+  'Manrope',
+  'Sora',
+  'Outfit',
+  'Urbanist',
   'Space Grotesk',
+  'Geist',
   'JetBrains Mono',
+  'Space Mono',
+  'Geist Mono',
+  'Lora',
+  'Rajdhani',
+  'Gabarito',
+  'Oxanium',
+  'Russo one',
   'Bricolage Grotesque',
+  'Onest',
 ]
 </script>
 
