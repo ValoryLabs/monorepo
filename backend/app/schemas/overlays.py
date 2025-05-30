@@ -8,7 +8,7 @@ import re
 class SOverlay(BaseModel):
     """Enhanced Pydantic v2 schema with custom validators"""
 
-    overlay_style: Literal["old", "modern", "minimal"] = Field(
+    overlay_style: Literal["old", "new", "minimal", "new_v2"] = Field(
         default="old",
         description="Overlay style variant"
     )
