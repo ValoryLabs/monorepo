@@ -258,7 +258,7 @@ export async function getOverlayData(id: string): Promise<OverlayData | null> {
 
     const response: AxiosResponse<OverlayData> = await retryWithBackoff(fetchOverlay)
 
-    console.info('Overlay data fetched successfully', { overlayId: id })
+    console.info('Overlay data fetched successfully')
     return response.data
   } catch (error) {
     const axiosError = error as AxiosError<ApiErrorResponse>

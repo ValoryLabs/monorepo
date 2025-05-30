@@ -7,6 +7,7 @@ import OldOverlay from '@/components/overlays/OldOverlay.vue'
 import NewOverlay from '@/components/overlays/NewOverlay.vue'
 import MiniOverlay from '@/components/overlays/MiniOverlay.vue'
 import NewV2Overlay from '@/components/overlays/NewV2Overlay.vue'
+import { LoaderCircle } from 'lucide-vue-next'
 
 useHead({
   title: 'Overlay',
@@ -118,7 +119,11 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div v-if="loading">Loading</div>
+  <div v-if="loading" class="flex h-10 w-dvw items-center justify-center">
+    <span class="animate-spin font-bold">
+      <LoaderCircle />
+    </span>
+  </div>
   <div v-else-if="overlayData" class="flex flex-col items-center">
     <component
       :is="overlay"
