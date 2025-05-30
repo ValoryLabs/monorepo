@@ -26,10 +26,11 @@ const router = createRouter({
       meta: { layout: 'ConfiguratorLayout' },
     },
     {
-      path: '/overlay',
+      path: '/overlay/:id',
       name: 'overlay',
       component: Overlay,
       meta: { layout: 'NoLayout' },
+      props: true,
     },
     {
       path: '/terms',
