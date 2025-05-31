@@ -41,7 +41,6 @@ function createSecureAxiosConfig(includeCredentials = false): AxiosRequestConfig
     withCredentials: includeCredentials,
     headers: {
       'Content-Type': 'application/json',
-      'X-Requested-With': 'XMLHttpRequest', // CSRF protection
     },
     validateStatus: (status) => status >= 200 && status < 300,
   }
