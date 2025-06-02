@@ -9,7 +9,7 @@ LOG_FILE_PATH = BASE_DIR / "log.txt"
 
 
 class Settings(BaseSettings):
-    PROJECT_NAME: str = "My Project"
+    PROJECT_NAME: str = "VALORY.SU"
     PROJECT_DESCRIPTION: str = "API"
     VERSION: str = "1.0.0"
     DEBUG: bool = False

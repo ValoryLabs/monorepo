@@ -60,15 +60,20 @@ All dependencies are installed automatically via `uv install` command using the 
    PROJECT_DESCRIPTION=""
    VERSION=""
    DEBUG=True
-
+   
    TWITCH_CLIENT_ID=""
    TWITCH_CLIENT_SECRET=""
-
+   
    DATABASE_LOGIN=""
    DATABASE_PASSWORD=""
    DATABASE_IP=""
    DATABASE_PORT=5432
    DATABASE_NAME=""
+   
+   SECRET_KEY=""
+   ALGORITHM=""
+   APP_FRONTEND_URL=""
+   APP_BACKEND_URL=""
     ```
 
 5. Initialize database:

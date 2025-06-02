@@ -75,7 +75,7 @@ Pipfile.lock
 /backend/app/migrations/versions/
 /backend/.idea/
 /backend/.python-version
-/backend/.env
+/.env
 /backend/uv.lock
 /backend/valory_backend.egg-info/
 __pycache__
