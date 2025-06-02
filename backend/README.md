@@ -45,12 +45,16 @@ All dependencies are installed automatically via `uv install` command using the 
    git clone https://github.com/haxgun/Valory.git
    cd backend
    ```
-2. Install dependencies:
+2. Create virtual environment (optional but recommended):
+   ```bash
+   uv venv
+   ```
+3. Install dependencies:
     ```bash
-    uv init
+    uv pip install -e .
     ```
 
-3. Create .env configuration file:
+4. Create .env configuration file:
     ```env
    PROJECT_NAME=""
    PROJECT_DESCRIPTION=""
@@ -67,7 +71,7 @@ All dependencies are installed automatically via `uv install` command using the 
    DATABASE_NAME=""
     ```
 
-4. Initialize database:
+5. Initialize database:
 ```bash
 alembic revision --autogenerate -m "Initial revision"
 alembic upgrade head```
