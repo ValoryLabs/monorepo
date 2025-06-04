@@ -134,9 +134,16 @@ onBeforeUnmount(() => {
     :class="{ 'rounded-2xl': !fullscreen }"
   >
     <div
-      class="flex h-full w-full bg-cover bg-center"
-      :class="{ 'rounded-2xl': !fullscreen }"
-      :style="{ backgroundImage: `url(/previews/${previewImage}.webp)` }"
+      class="flex h-full w-full bg-center"
+      :class="{
+        'rounded-2xl': !fullscreen,
+        'bg-black bg-[radial-gradient(#1a1a1a_2px,transparent_1px)] bg-[size:25px_25px]':
+          previewImage === 'none',
+        'bg-cover': previewImage !== 'none',
+      }"
+      :style="
+        previewImage !== 'none' ? { backgroundImage: `url(/previews/${previewImage}.webp)` } : {}
+      "
       ref="containerRef"
     >
       <div id="preview" class="relative z-20 h-full w-full">
@@ -196,6 +203,7 @@ onBeforeUnmount(() => {
 
           <div
             @click="openLink('https://www.twitch.tv/ssseikatsu')"
+            v-if="previewImage !== 'none'"
             class="bg-background/40 absolute right-2 bottom-2 inline-flex cursor-pointer items-center gap-1 rounded-full border border-white/10 px-3 py-1 text-sm font-medium"
           >
             <span>{{ $t('preview.imageBy') }} </span>
