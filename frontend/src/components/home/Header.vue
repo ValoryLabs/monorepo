@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { useFetch } from '@vueuse/core'
 import { computed, onMounted, onUnmounted, ref } from 'vue'
-import { PencilRuler } from 'lucide-vue-next'
 import NumberFlow from '@number-flow/vue'
 
 import Github from '@/components/icons/socials/Github.vue'
@@ -12,12 +11,10 @@ import { NAV_DATA } from '@/data/HeaderNav.data'
 import router from '@/router'
 import { hidden, moveTo, openLink } from '@/lib/utils'
 
-import { useAuthStore } from '@/stores/auth'
 import { useRoute } from 'vue-router'
+import LoginOrConfigurator from '@/components/home/LoginOrConfigurator.vue'
 
 const route = useRoute()
-
-const authStore = useAuthStore()
 const repoUrl = ref('https://api.github.com/repos/ValoryApp/Valory')
 
 const { data: repoData } = useFetch(repoUrl).get().json()
@@ -76,13 +73,7 @@ onUnmounted(() => {
           <NumberFlow :value="starsCount" />
         </Button>
         <LanguageSwitcher variant="rounded" />
-        <Button v-if="authStore.isAuthenticated" @click="router.push({ name: 'configurator' })">
-          {{ $t('sidebar.buttons.auth') }}
-          <PencilRuler class="size-4" />
-        </Button>
-        <Button v-else @click="router.push({ name: 'signin' })">
-          {{ $t('sidebar.buttons.unauth') }}
-        </Button>
+        <LoginOrConfigurator />
       </div>
     </div>
   </header>

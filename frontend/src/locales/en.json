@@ -18,6 +18,7 @@
       "logging": "Logging into Twitch"
     },
     "selectFont": "Select font",
+    "selectShowShortcuts": "Show shortcuts",
     "selectLayout": {
       "minimal": "Minimal",
       "new": "Modern",
@@ -55,7 +56,9 @@
       "fullscreen": "Fullscreen",
       "randomRiotId": "Random Riot ID",
       "reset": "Reset",
-      "shortcuts": "Shortcuts"
+      "shortcuts": "Shortcuts",
+      "goToLogin": "Login to VALORY",
+      "goToConfigurator": "Go to configurator"
     }
   },
   "features": {

@@ -18,6 +18,7 @@
       "logging": "Авторизация в Twitch"
     },
     "selectFont": "Выбор шрифта",
+    "selectShowShortcuts": "Показать комбинации клавиш",
     "selectLayout": {
       "minimal": "Минимал",
       "new": "Новый",
@@ -55,7 +56,9 @@
       "fullscreen": "Полноэкранный режим",
       "randomRiotId": "Случайный Riot ID",
       "reset": "Сброс",
-      "shortcuts": "Комбинации клавиш"
+      "shortcuts": "Комбинации клавиш",
+      "goToLogin": "Войти в VALORY",
+      "goToConfigurator": "Перейти к конфигуратору"
     }
   },
   "features": {

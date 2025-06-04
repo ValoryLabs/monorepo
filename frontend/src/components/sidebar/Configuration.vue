@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { Label } from '@/components/ui/label'
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 import ColorPicker from '@/components/ui/ColorPicker.vue'
 import { useOverlayStore } from '@/stores/overlay.ts'
 import { storeToRefs } from 'pinia'
@@ -12,7 +11,12 @@ import {
   ConfigurationSection,
 } from '@/components/configuration'
 import { SwitchToggle } from '@/components/ui/switchtoggle'
-import { RotateCcw } from 'lucide-vue-next'
+import { Button } from '@/components/ui/button'
+import { Kbd } from '@/components/ui/kbd'
+
+import { useUserStore } from '@/stores/user'
+
+const userStore = useUserStore()
 
 const overlaySettingsStore = useOverlayStore()
 const {
@@ -43,17 +47,10 @@ const {
     <div class="z-20 flex flex-col gap-2 pb-5">
       <div class="inline-flex items-center justify-between">
         <span class="title">{{ $t('sidebar.configuration.title') }}</span>
-
-        <TooltipProvider>
-          <Tooltip>
-            <TooltipTrigger>
-              <RotateCcw @click="overlaySettingsStore.reset" class="size-4 cursor-pointer" />
-            </TooltipTrigger>
-            <TooltipContent>
-              <p>{{ $t('components.tooltips.reset') }}</p>
-            </TooltipContent>
-          </Tooltip>
-        </TooltipProvider>
+        <Button @click="overlaySettingsStore.reset" variant="ghost" size="sm">
+          {{ $t('components.shortcuts.items.reset') }}
+          <Kbd v-if="userStore.showShortcuts === 'Show'" class="size-4 text-[10px]" keys="R"
+        /></Button>
       </div>
       <span class="text-second text-sm whitespace-pre-line">
         {{ $t('sidebar.configuration.description') }}

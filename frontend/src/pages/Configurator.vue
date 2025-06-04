@@ -20,14 +20,23 @@ const userStore = useUserStore()
 const overlayStore = useOverlayStore()
 const { showHeader, configuratorActive } = storeToRefs(userStore)
 
-const { F, R } = useMagicKeys()
+const resetKeyString = userStore.resetShortcut
+const fullKeyString = userStore.fullShortcut
 
-watch(F, (v) => {
-  if (v && configuratorActive) userStore.toggleSidebar()
+const { [resetKeyString]: resetKeyPressed, [fullKeyString]: fullKeyPressed } = useMagicKeys()
+
+watch(resetKeyPressed, (v) => {
+  if (v && configuratorActive) {
+    overlayStore.reset()
+    console.log(`Reset triggered by ${resetKeyString}`)
+  }
 })
 
-watch(R, (v) => {
-  if (v && configuratorActive) overlayStore.reset()
+watch(fullKeyPressed, (v) => {
+  if (v && configuratorActive) {
+    userStore.toggleSidebar()
+    console.log(`Fullscreen triggered by ${fullKeyString}`)
+  }
 })
 </script>
 

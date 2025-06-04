@@ -2,7 +2,7 @@
 import { useUserStore } from '@/stores/user.ts'
 import { storeToRefs } from 'pinia'
 
-import { Preview, Profile } from '.'
+import { Preview, Profile, Shortcuts } from '.'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 
 import { X } from 'lucide-vue-next'
@@ -41,9 +41,11 @@ const { showSettings } = storeToRefs(userStore)
                 <TabsTrigger variant="vertical" value="preview">
                   {{ $t('components.settings.tabs.preview.title') }}
                 </TabsTrigger>
+                <TabsTrigger variant="vertical" value="shortcuts"> Shortcuts </TabsTrigger>
               </TabsList>
               <TabsContent value="profile"> <Profile /></TabsContent>
               <TabsContent value="preview"> <Preview /> </TabsContent>
+              <TabsContent value="shortcuts"> <Shortcuts /> </TabsContent>
             </Tabs>
           </div>
         </div>

@@ -1,5 +1,5 @@
-import {defineStore} from 'pinia'
-import {ref, type Ref} from 'vue'
+import { defineStore } from 'pinia'
+import { ref, type Ref, computed, watch } from 'vue'
 import axios from 'axios'
 
 export const useUserStore = defineStore(
@@ -20,6 +20,94 @@ export const useUserStore = defineStore(
     const showHeader: Ref<boolean> = ref(true)
     const fullscreen: Ref<boolean> = ref(false)
     const showSettings: Ref<boolean> = ref(false)
+    const showShortcuts: Ref<'Show' | 'Hide'> = ref('Show')
+
+    const allowedKeys = [
+      'q',
+      'w',
+      'e',
+      'r',
+      't',
+      'y',
+      'u',
+      'i',
+      'o',
+      'p',
+      'a',
+      's',
+      'd',
+      'f',
+      'g',
+      'h',
+      'j',
+      'k',
+      'l',
+      'z',
+      'x',
+      'c',
+      'v',
+      'b',
+      'n',
+      'm',
+    ]
+
+    const validateKey = (key: string): string => {
+      const normalizedKey = key.toLowerCase()
+      return allowedKeys.includes(normalizedKey) ? normalizedKey : 'r'
+    }
+
+    const resetShortcut: Ref<string> = ref('r')
+    const fullShortcut: Ref<string> = ref('f')
+
+    const validatedResetShortcut = computed({
+      get: () => validateKey(resetShortcut.value),
+      set: (value: string) => {
+        resetShortcut.value = validateKey(value)
+      },
+    })
+
+    const validatedFullShortcut = computed({
+      get: () => validateKey(fullShortcut.value),
+      set: (value: string) => {
+        fullShortcut.value = validateKey(value)
+      },
+    })
+
+    watch(resetShortcut, (newValue) => {
+      const validated = validateKey(newValue)
+      if (validated !== newValue.toLowerCase()) {
+        console.warn(`Invalid reset shortcut "${newValue}". Using "${validated}" instead.`)
+        resetShortcut.value = validated
+      }
+    })
+
+    watch(fullShortcut, (newValue) => {
+      const validated = validateKey(newValue)
+      if (validated !== newValue.toLowerCase()) {
+        console.warn(`Invalid full shortcut "${newValue}". Using "${validated}" instead.`)
+        fullShortcut.value = validated
+      }
+    })
+
+    const updateResetShortcut = (newKey: string) => {
+      const validatedKey = validateKey(newKey)
+      if (validatedKey !== newKey.toLowerCase()) {
+        console.warn(`Invalid key "${newKey}". Using "${validatedKey}" instead.`)
+      }
+      resetShortcut.value = validatedKey
+    }
+
+    const updateFullShortcut = (newKey: string) => {
+      const validatedKey = validateKey(newKey)
+      if (validatedKey !== newKey.toLowerCase()) {
+        console.warn(`Invalid key "${newKey}". Using "${validatedKey}" instead.`)
+      }
+      fullShortcut.value = validatedKey
+    }
+
+    const isValidKey = (key: string): boolean => {
+      return allowedKeys.includes(key.toLowerCase())
+    }
 
     const toggleShowSettings = () => {
       showSettings.value = !showSettings.value
@@ -74,12 +162,21 @@ export const useUserStore = defineStore(
       showLeftSidebar,
       showHeader,
       fullscreen,
+      showShortcuts,
+      resetShortcut,
+      fullShortcut,
+      validatedResetShortcut,
+      validatedFullShortcut,
+      allowedKeys,
       fetchUser,
       toggleConfigurator,
       toggleShowSettings,
       togglePreview,
       toggleLeftSidebar,
       toggleSidebar,
+      updateResetShortcut,
+      updateFullShortcut,
+      isValidKey,
     }
   },
   {

@@ -10,6 +10,9 @@ import MiniOverlay from '@/components/overlays/MiniOverlay.vue'
 import NewOverlay from '@/components/overlays/NewOverlay.vue'
 import NewV2Overlay from '@/components/overlays/NewV2Overlay.vue'
 import OldOverlay from '@/components/overlays/OldOverlay.vue'
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
+import { Kbd } from '@/components/ui/kbd'
+import LoginOrConfigurator from '@/components/home/LoginOrConfigurator.vue'
 
 const authStore = useAuthStore()
 
@@ -54,14 +57,8 @@ const slides = [MiniOverlay, NewOverlay, NewV2Overlay, OldOverlay]
             </span>
           </li>
         </ul>
-        <div class="inline-flex items-center justify-center gap-3">
-          <Button v-if="authStore.isAuthenticated" @click="router.push({ name: 'configurator' })">
-            {{ $t('sidebar.buttons.auth') }}
-            <PencilRuler class="size-4" />
-          </Button>
-          <Button v-else @click="router.push({ name: 'signin' })">
-            {{ $t('sidebar.buttons.unauth') }}
-          </Button>
+        <div class="inline-flex items-center justify-center gap-1">
+          <LoginOrConfigurator />
           <Button variant="ghost">
             {{ $t('sidebar.buttons.learn') }}
           </Button>

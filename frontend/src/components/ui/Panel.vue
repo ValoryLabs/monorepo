@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import {Tooltip, TooltipContent, TooltipProvider, TooltipTrigger} from '@/components/ui/tooltip'
-import Shortcuts from '@/components/ui/Shortcuts.vue'
-import {Button} from '@/components/ui/button'
-import {Command, Expand, RotateCcw} from 'lucide-vue-next'
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
+import { Button } from '@/components/ui/button'
+import { Expand, RotateCcw } from 'lucide-vue-next'
 
-import {useUserStore} from '@/stores/user'
-import {useOverlayStore} from '@/stores/overlay'
+import { useUserStore } from '@/stores/user'
+import { useOverlayStore } from '@/stores/overlay'
+import { Kbd } from '@/components/ui/kbd'
 
 const userStore = useUserStore()
 const overlayStore = useOverlayStore()
@@ -21,7 +21,10 @@ const overlayStore = useOverlayStore()
           </Button>
         </TooltipTrigger>
         <TooltipContent>
-          <p>{{ $t('components.tooltips.fullscreen') }}</p>
+          <span class="flex gap-1"
+            >{{ $t('components.tooltips.fullscreen') }}
+            <Kbd v-if="userStore.showShortcuts === 'Show'" class="size-4 text-[10px]" keys="F"
+          /></span>
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>
@@ -33,21 +36,10 @@ const overlayStore = useOverlayStore()
           </Button>
         </TooltipTrigger>
         <TooltipContent>
-          <p>{{ $t('components.tooltips.reset') }}</p>
-        </TooltipContent>
-      </Tooltip>
-    </TooltipProvider>
-    <TooltipProvider>
-      <Tooltip>
-        <TooltipTrigger>
-          <Shortcuts>
-            <Button variant="secondary" size="icon">
-              <Command class="size-6" />
-            </Button>
-          </Shortcuts>
-        </TooltipTrigger>
-        <TooltipContent>
-          <p>{{ $t('components.tooltips.shortcuts') }}</p>
+          <span class="flex gap-1"
+            >{{ $t('components.tooltips.reset') }}
+            <Kbd v-if="userStore.showShortcuts === 'Show'" class="size-4 text-[10px]" keys="R"
+          /></span>
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>
