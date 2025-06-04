@@ -28,7 +28,7 @@ const updateOverlayDimensions = () => {
 
   const rect = previewRef.value.getBoundingClientRect()
 
-  overlayDimensions.value = `${Math.round(rect.width)} x ${Math.round(rect.height)}`
+  overlayDimensions.value = `${Math.round(rect.width)} x ${Math.round(rect.height + 20)}`
 }
 
 const centerPreview = () => {
