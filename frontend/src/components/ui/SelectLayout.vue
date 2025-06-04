@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import {storeToRefs} from 'pinia'
-import {useOverlayStore} from '@/stores/overlay'
-import {Check} from 'lucide-vue-next'
+import { storeToRefs } from 'pinia'
+import { useOverlayStore } from '@/stores/overlay'
+import { Check } from 'lucide-vue-next'
 import TiltCard from '@/components/ui/TiltCard.vue'
 
 const overlayStore = useOverlayStore()
@@ -28,7 +28,7 @@ const images = [
 </script>
 
 <template>
-  <div class="flex w-full flex-wrap justify-center gap-6">
+  <div class="flex w-full flex-wrap justify-between gap-4 px-2">
     <button
       class="group flex cursor-pointer flex-col items-start gap-3 text-sm"
       v-for="image in images"
