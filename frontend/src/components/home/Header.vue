@@ -50,7 +50,7 @@ onUnmounted(() => {
 <template>
   <header
     :class="[
-      'sticky right-0 left-0 z-10 flex h-16 w-full justify-center transition-all duration-700',
+      'fixed right-0 left-0 z-10 flex h-16 w-full justify-center transition-all duration-700',
       showHeader ? 'top-6' : 'top-[-600px]',
     ]"
   >
