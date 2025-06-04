@@ -96,6 +96,7 @@ async def read_users_me(current_user: User = Depends(get_current_user), session:
     return {
         "id": current_user.id,
         "twitch_id": current_user.twitch_id,
+        "broadcaster_type": current_user.broadcaster_type,
         "twitch_display_name": current_user.twitch_display_name,
         "username": current_user.username,
         "avatar_url": current_user.avatar_url,

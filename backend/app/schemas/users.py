@@ -20,6 +20,11 @@ class SUser(BaseModel):
         max_length=50,
         description="Unique username for the user account"
     )
+    broadcaster_type: Optional[str] = Field(
+        default=None,
+        max_length=500,
+        description="Type of broadcaster (e.g., affiliate, partner, etc.)"
+    )
     avatar_url: Optional[str] = Field(
         default=None,
         max_length=500,

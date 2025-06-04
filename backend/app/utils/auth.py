@@ -33,6 +33,7 @@ async def authenticate_user(session, user_info: dict):
                 username=user_info["login"],
                 avatar_url=user_info["profile_image_url"],
                 twitch_id=user_info["id"],
+                broadcaster_type=user_info["broadcaster_type"],
                 twitch_display_name=user_info["display_name"],
             )
 

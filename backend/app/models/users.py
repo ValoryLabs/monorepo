@@ -60,6 +60,12 @@ class User(Base):
         comment="Unique username for application login"
     )
 
+    broadcaster_type: Mapped[str | None] = mapped_column(
+        String(50),
+        nullable=True,
+        comment="Type of broadcaster (e.g., affiliate, partner, etc.)"
+    )
+
     avatar_url: Mapped[str | None] = mapped_column(
         String(500),
         nullable=True,

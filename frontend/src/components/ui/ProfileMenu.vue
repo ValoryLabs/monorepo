@@ -8,6 +8,7 @@ import {
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
+  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
@@ -25,6 +26,7 @@ import { onMounted, watch } from 'vue'
 import { useUserStore } from '@/stores/user.ts'
 import { storeToRefs } from 'pinia'
 import router from '@/router'
+import { TwitchVerify } from '@/components/icons'
 
 const authStore = useAuthStore()
 
@@ -53,12 +55,19 @@ onMounted(() => {
       <Button v-if="error" variant="ghost">
         <span class="font-bold">{{ $t('profile_menu.error') }}</span>
       </Button>
-      <Button v-else-if="user" variant="ghost">
+      <Button v-else-if="user" variant="ghost" size="icon">
         <img class="size-6 rounded-full bg-neutral-500" :src="user.avatar_url" alt="user avatar" />
-        <span class="font-bold">{{ user.twitch_display_name }}</span>
       </Button>
     </DropdownMenuTrigger>
     <DropdownMenuContent align="end" class="w-56">
+      <DropdownMenuLabel class="flex items-center justify-start gap-2" v-if="user">
+        <img class="size-8 rounded-full bg-neutral-500" :src="user.avatar_url" alt="user avatar" />
+        <span class="flex items-center gap-1 font-bold">
+          {{ user.twitch_display_name }}
+          <TwitchVerify v-if="user.broadcaster_type === 'partner'" class="size-4" />
+        </span>
+      </DropdownMenuLabel>
+      <DropdownMenuSeparator />
       <DropdownMenuGroup>
         <DropdownMenuItem @click="userStore.toggleShowSettings">
           <SettingsIcon class="mr-2 h-4 w-4" />
