@@ -75,7 +75,7 @@ onUnmounted(() => {
           <Github :size="16" />
           <NumberFlow :value="starsCount" />
         </Button>
-        <LanguageSwitcher />
+        <LanguageSwitcher variant="rounded" />
         <Button v-if="authStore.isAuthenticated" @click="router.push({ name: 'configurator' })">
           {{ $t('sidebar.buttons.auth') }}
           <PencilRuler class="size-4" />
