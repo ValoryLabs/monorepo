@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { useAuthStore } from '@/stores/auth'
 import Home from '@/pages/Home.vue'
+import SignIn from '@/pages/SignIn.vue'
 import Overlay from '@/pages/Overlay.vue'
 import NotFound from '@/pages/NotFound.vue'
 
@@ -12,6 +13,12 @@ const router = createRouter({
       name: 'home',
       component: Home,
       meta: { layout: 'DefaultLayout' },
+    },
+    {
+      path: '/sign-in',
+      name: 'signin',
+      component: SignIn,
+      meta: { layout: 'NoLayout' },
     },
     {
       path: '/callback',

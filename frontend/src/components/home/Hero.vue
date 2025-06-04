@@ -1,12 +1,11 @@
 <script setup lang="ts">
-import {PackageOpen, Paintbrush, PencilRuler} from 'lucide-vue-next'
+import { PackageOpen, Paintbrush, PencilRuler } from 'lucide-vue-next'
 import Button from '@/components/ui/button/Button.vue'
-import Login from '@/components/ui/Login.vue'
 import Valory from '@/components/icons/Valory.vue'
 import router from '@/router'
 import CarouselOverlay from '@/components/ui/CarouselOverlay.vue'
 
-import {useAuthStore} from '@/stores/auth'
+import { useAuthStore } from '@/stores/auth'
 import MiniOverlay from '@/components/overlays/MiniOverlay.vue'
 import NewOverlay from '@/components/overlays/NewOverlay.vue'
 import NewV2Overlay from '@/components/overlays/NewV2Overlay.vue'
@@ -60,7 +59,9 @@ const slides = [MiniOverlay, NewOverlay, NewV2Overlay, OldOverlay]
             {{ $t('sidebar.buttons.auth') }}
             <PencilRuler class="size-4" />
           </Button>
-          <Login v-else />
+          <Button v-else @click="router.push({ name: 'signin' })">
+            {{ $t('sidebar.buttons.unauth') }}
+          </Button>
           <Button variant="ghost">
             {{ $t('sidebar.buttons.learn') }}
           </Button>

@@ -7,7 +7,6 @@ import NumberFlow from '@number-flow/vue'
 import Github from '@/components/icons/socials/Github.vue'
 import Valory from '@/components/icons/Valory.vue'
 import LanguageSwitcher from '@/components/ui/LanguageSwitcher.vue'
-import Login from '@/components/ui/Login.vue'
 import { Button } from '@/components/ui/button'
 import { NAV_DATA } from '@/data/HeaderNav.data'
 import router from '@/router'
@@ -30,11 +29,7 @@ let lastScrollPosition = 0
 
 const handleScroll = () => {
   const currentScrollPosition = window.scrollY
-  if (currentScrollPosition > lastScrollPosition) {
-    showHeader.value = false
-  } else {
-    showHeader.value = true
-  }
+  showHeader.value = currentScrollPosition <= lastScrollPosition
   lastScrollPosition = currentScrollPosition
 }
 
@@ -85,7 +80,9 @@ onUnmounted(() => {
           {{ $t('sidebar.buttons.auth') }}
           <PencilRuler class="size-4" />
         </Button>
-        <Login v-else />
+        <Button v-else @click="router.push({ name: 'signin' })">
+          {{ $t('sidebar.buttons.unauth') }}
+        </Button>
       </div>
     </div>
   </header>
