@@ -27,6 +27,9 @@ dev = [
 ]
 
 [tool.ruff]
+target-version = "py312"
+exclude = ["venv", ".venv", "alembic"]
+indent-width = 4
 line-length = 120
 select = [
     "E",    # pycodestyle errors
@@ -70,3 +73,6 @@ ignore-variadic-names = true
 
 [tool.ruff.flake8-bugbear]
 extend-immutable-calls = ["fastapi.Depends"]
+
+[tool.pyright]
+ignore = ["alembic"]
