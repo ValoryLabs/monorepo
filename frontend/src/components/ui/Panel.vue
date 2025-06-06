@@ -21,9 +21,9 @@ const overlayStore = useOverlayStore()
           </Button>
         </TooltipTrigger>
         <TooltipContent>
-          <span class="flex gap-1"
+          <span class="flex items-center gap-2"
             >{{ $t('components.tooltips.fullscreen') }}
-            <Kbd v-if="userStore.showShortcuts === 'Show'" class="size-4 text-[10px]" keys="F"
+            <Kbd v-if="userStore.showShortcuts === 'Show'" keys="F"
           /></span>
         </TooltipContent>
       </Tooltip>
@@ -36,9 +36,9 @@ const overlayStore = useOverlayStore()
           </Button>
         </TooltipTrigger>
         <TooltipContent>
-          <span class="flex gap-1"
+          <span class="flex items-center gap-2"
             >{{ $t('components.tooltips.reset') }}
-            <Kbd v-if="userStore.showShortcuts === 'Show'" class="size-4 text-[10px]" keys="R"
+            <Kbd v-if="userStore.showShortcuts === 'Show'" keys="R"
           /></span>
         </TooltipContent>
       </Tooltip>

@@ -49,7 +49,7 @@ const {
         <span class="title">{{ $t('sidebar.configuration.title') }}</span>
         <Button @click="overlaySettingsStore.reset" variant="ghost" size="sm">
           {{ $t('components.shortcuts.items.reset') }}
-          <Kbd v-if="userStore.showShortcuts === 'Show'" class="size-4 text-[10px]" keys="R"
+          <Kbd v-if="userStore.showShortcuts === 'Show'" keys="R"
         /></Button>
       </div>
       <span class="text-second text-sm whitespace-pre-line">
