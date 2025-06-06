@@ -13,6 +13,7 @@ import { hidden, moveTo, openLink } from '@/lib/utils'
 
 import { useRoute } from 'vue-router'
 import LoginOrConfigurator from '@/components/home/LoginOrConfigurator.vue'
+import LinkPreview from '@/components/ui/LinkPreview.vue'
 
 const route = useRoute()
 const repoUrl = ref('https://api.github.com/repos/ValoryApp/Valory')
@@ -65,13 +66,14 @@ onUnmounted(() => {
         </ul>
       </div>
       <div class="right flex flex-row items-center gap-1">
-        <Button
-          class="rounded-full border border-transparent bg-transparent text-white opacity-50 transition hover:border-white/10 hover:bg-white/10 hover:opacity-100"
-          @click="openLink('https://github.com/ValoryApp/Valory')"
-        >
-          <Github :size="16" />
-          <NumberFlow :value="starsCount" />
-        </Button>
+        <LinkPreview url="https://github.com/ValoryLabs/Valory" text="Valory">
+          <Button
+            class="rounded-full border border-transparent bg-transparent text-white opacity-50 transition hover:border-white/10 hover:bg-white/10 hover:opacity-100"
+          >
+            <Github :size="16" />
+            <NumberFlow :value="starsCount" />
+          </Button>
+        </LinkPreview>
         <LanguageSwitcher variant="rounded" />
         <LoginOrConfigurator />
       </div>
