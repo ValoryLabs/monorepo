@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { useFetch } from '@vueuse/core'
-import { computed, onMounted, onUnmounted, ref } from 'vue'
+import { onMounted, onUnmounted, ref } from 'vue'
 import NumberFlow from '@number-flow/vue'
 
 import Github from '@/components/icons/socials/Github.vue'
@@ -9,18 +8,16 @@ import LanguageSwitcher from '@/components/ui/LanguageSwitcher.vue'
 import { Button } from '@/components/ui/button'
 import { NAV_DATA } from '@/data/HeaderNav.data'
 import router from '@/router'
-import { hidden, moveTo, openLink } from '@/lib/utils'
+import { hidden, moveTo } from '@/lib/utils'
 
 import { useRoute } from 'vue-router'
 import LoginOrConfigurator from '@/components/home/LoginOrConfigurator.vue'
 import LinkPreview from '@/components/ui/LinkPreview.vue'
+import { useGitHubStars } from '@/composables/useGitHubExtractor.ts'
 
 const route = useRoute()
-const repoUrl = ref('https://api.github.com/repos/ValoryApp/Valory')
 
-const { data: repoData } = useFetch(repoUrl).get().json()
-
-const starsCount = computed(() => repoData.value?.stargazers_count ?? 0)
+const { starsCount, loading, error } = useGitHubStars()
 
 const showHeader = ref(true)
 let lastScrollPosition = 0
@@ -71,7 +68,7 @@ onUnmounted(() => {
             class="rounded-full border border-transparent bg-transparent text-white opacity-50 transition hover:border-white/10 hover:bg-white/10 hover:opacity-100"
           >
             <Github :size="16" />
-            <NumberFlow :value="starsCount" />
+            <NumberFlow :value="loading ? 0 : starsCount" />
           </Button>
         </LinkPreview>
         <LanguageSwitcher variant="rounded" />
