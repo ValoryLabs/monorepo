@@ -1,6 +1,18 @@
-version: '3.8'
-
 services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        - APP_BACKEND_URL=${APP_BACKEND_URL}
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    env_file:
+      - .env
+    restart: unless-stopped
+
   backend:
     build:
       context: ./backend
@@ -10,5 +22,3 @@ services:
     network_mode: host
     env_file:
       - .env
-    environment:
-      - PYTHONPATH=/app
