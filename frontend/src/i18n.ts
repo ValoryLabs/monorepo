@@ -1,9 +1,9 @@
 import messages from '@intlify/unplugin-vue-i18n/messages'
-import {useLocalStorage} from '@vueuse/core'
-import {watch} from 'vue'
-import type {I18n} from 'vue-i18n'
-import {createI18n, registerMessageResolver} from 'vue-i18n'
-import {resolveValue} from '@intlify/core-base'
+import { useLocalStorage } from '@vueuse/core'
+import { watch } from 'vue'
+import type { I18n } from 'vue-i18n'
+import { createI18n, registerMessageResolver } from 'vue-i18n'
+import { resolveValue } from '@intlify/core-base'
 
 registerMessageResolver(resolveValue)
 
@@ -11,6 +11,11 @@ registerMessageResolver(resolveValue)
 export const AVAILABLE_LOCALES = [
   { code: 'en', name: 'English' },
   { code: 'ru', name: 'Русский' },
+  { code: 'uk', name: 'Українська' },
+  { code: 'kk', name: 'Қазақша' },
+  { code: 'de', name: 'Deutsch' },
+  { code: 'ja', name: '日本語' },
+  { code: 'cn', name: '中文' },
 ] as const
 
 type ValidLocale = (typeof AVAILABLE_LOCALES)[number]['code']

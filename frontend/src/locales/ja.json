@@ -1,0 +1,227 @@
+{
+  "components": {
+    "404": {
+      "notfound": "ページが見つかりません！",
+      "description": "存在しないページにアクセスした可能性があります！\nリンクが正しいかご確認ください。",
+      "home": "ホームに戻る"
+    },
+    "languageSwitcher": "言語",
+    "login": {
+      "agree": {
+        "and": "および",
+        "privacy": "プライバシーポリシー",
+        "terms": "利用規約",
+        "text": "サインインすることで、以下に同意したものとみなされます"
+      },
+      "description": "サインインするプロバイダーを選択してください",
+      "trouble": "サインインでお困りですか？",
+      "logging": "Twitchにログイン中"
+    },
+    "selectFont": "フォントを選択",
+    "selectShowShortcuts": "ショートカットを表示",
+    "selectLayout": {
+      "minimal": "ミニマル",
+      "new": "モダン",
+      "new_v2": "モダン v2",
+      "old": "クラシック",
+      "title": "スタイルを選択"
+    },
+    "settings": {
+      "tabs": {
+        "preview": {
+          "description": "URL生成前にオーバーレイをプレビューします。",
+          "title": "プレビュー"
+        },
+        "profile": {
+          "description": "プロフィールを検索するためにRiot IDとHenrikのAPIキーを入力してください",
+          "instructions": "APIキーの取得方法は？",
+          "title": "プロフィール"
+        }
+      },
+      "title": "設定"
+    },
+    "shortcuts": {
+      "items": {
+        "fullscreen": "フルスクリーン",
+        "reset": "リセット"
+      },
+      "title": "ショートカット"
+    },
+    "switchToggle": {
+      "off": "オフ",
+      "on": "オン"
+    },
+    "tooltips": {
+      "apiKey": "APIキーの取得方法は？",
+      "fullscreen": "フルスクリーン",
+      "randomRiotId": "ランダムRiot ID",
+      "reset": "リセット",
+      "shortcuts": "ショートカット",
+      "goToLogin": "VALORYにログイン",
+      "goToConfigurator": "コンフィギュレーターへ移動"
+    }
+  },
+  "features": {
+    "category": "機能",
+    "subtitle": "強力なツールが満載の当アプリは、Valorantの統計情報を簡単に表示・\nカスタマイズできます。シームレスなセットアップから完全な\nパーソナライゼーションまで、ストリームを輝かせるすべてを提供します。",
+    "title": "ストリームを向上させるために必要なすべて"
+  },
+  "footer": {
+    "copyright": "すべての権利を保有しています。",
+    "left": {
+      "description": "ゲームを追跡し、ストリームを支配する"
+    },
+    "love": "🌎地球で❤️を込めて作られました",
+    "right": {
+      "sections": {
+        "first": {
+          "items": {
+            "about": "私たちについて",
+            "contact": "お問い合わせ",
+            "privacy": "プライバシーポリシー",
+            "terms": "利用規約"
+          },
+          "title": "プロダクト"
+        },
+        "second": {
+          "items": {
+            "better": "より良いストリーマーになろう！",
+            "how": "どのように動作しますか？"
+          },
+          "title": "可能性"
+        }
+      }
+    }
+  },
+  "nav": {
+    "features": "機能",
+    "language": "言語",
+    "login": "無料で試す",
+    "source": "オープンソース",
+    "streamers": "ストリーマー"
+  },
+  "pages": {
+    "configurator": "コンフィギュレーター",
+    "home": "Valorant用ストリームオーバーレイ",
+    "callback": "ログイン中",
+    "terms": "利用規約",
+    "privacy": "プライバシーポリシー"
+  },
+  "preview": {
+    "drag": {
+      "continue": "続行",
+      "description": "マウスでクリック＆ドラッグして\n位置を調整してください。",
+      "title": "完璧な配信レイアウトのために\nお好みの位置にオーバーレイを配置してください。"
+    },
+    "imageBy": "画像提供",
+    "main": "プレビューはここに表示されます。\n表示するにはプロフィールを入力してください。"
+  },
+  "profile_menu": {
+    "error": "エラー",
+    "logout": "ログアウト",
+    "privacy": "プライバシーポリシー",
+    "settings": "設定",
+    "support": "サポート",
+    "terms": "利用規約"
+  },
+  "sidebar": {
+    "buttons": {
+      "auth": "作成を始めましょう！",
+      "back": "コンフィギュレーターに戻る",
+      "generate": "生成",
+      "learn": "詳細を見る",
+      "reset": "リセット",
+      "search": "検索",
+      "show": "表示",
+      "unauth": "ストリームに追加"
+    },
+    "configuration": {
+      "description": "ブランドを反映するために、選択したバリエーションの利用可能なオプションを調整してください。",
+      "settings": {
+        "backgroundColor": "色",
+        "disableBackground": "背景",
+        "disableBackgroundGradient": "グラデーション",
+        "disableBorder": "ボーダー",
+        "disableLastMatchPoints": "最後のマッチポイント",
+        "disableProgress": "プログレスバー",
+        "disableWinLose": "勝敗",
+        "font": "フォント",
+        "glowEffect": "グロー効果",
+        "label": {
+          "background": "背景",
+          "progressbar": "プログレスバー",
+          "rank": "ランク",
+          "text": "テキスト",
+          "winLose": "勝敗"
+        },
+        "leaderboardPlace": "リーダーボード順位",
+        "loseColor": "敗北",
+        "peakRR": "最高RR",
+        "peakRankIcon": "最高ランクアイコン",
+        "primary": "プライマリテキスト",
+        "progress": "プログレス色",
+        "progressBackground": "プログレス背景",
+        "styles": "オーバーレイスタイル",
+        "text": "テキスト",
+        "winColor": "勝利"
+      },
+      "title": "設定"
+    },
+    "features": {
+      "first": "ストリームに合わせて\nオーバーレイをカスタマイズ。",
+      "second": "完全無料です！\nOBSなど多くの人気ストリーミング\nプログラムをサポートしています。",
+      "third": "一度設定すれば、永続的に\nシームレスな動作を楽しめます！"
+    },
+    "footer": {
+      "made": "Valory © 2023-2025 · すべての権利を保有",
+      "powered": "提供"
+    },
+    "generate": {
+      "description": "以下のURLをコピーして、ストリーミングアプリに貼り付けてください（OBS Studio: ソース → ブラウザ）。",
+      "dimensions": "サイズ：",
+      "title": "オーバーレイURL",
+      "tooltip": "URLをコピー"
+    },
+    "header": {
+      "badge": "ストリームオーバーレイ",
+      "description": "リアルタイムValorant統計で\n視聴者の注目を集めよう！"
+    }
+  },
+  "source": {
+    "category": "コミュニティ主導の開発",
+    "contribute": "Githubで貢献",
+    "star": "プロジェクトにスター",
+    "subtitle": "当アプリケーションのソースコードはGitHubで完全にアクセス可能です。\n誰でも閲覧、利用、開発への貢献を歓迎しています。",
+    "title": "オープンソース"
+  },
+  "streamers": {
+    "card": {
+      "followers": "フォロワー"
+    },
+    "category": "レジェンド",
+    "subtitle": "トップValorantストリーマーは既に当アプリで統計を表示しています。\nここに名前を載せたいですか？プラットフォームにログインしてください。次はあなたを紹介するかもしれません！",
+    "title": "ストリーマースポットライト"
+  },
+  "toasts": {
+    "dataVerifying": {
+      "error": "値の確認中にエラーが発生しました！",
+      "invalidApiKey": "無効なHenrikのAPIキーです。",
+      "loading": "データ検証中...",
+      "networkError": "ネットワークエラー。インターネット接続を確認してください。",
+      "rateLimit": "リクエストが多すぎます。しばらくお待ちください。",
+      "success": "成功！",
+      "userNotFound": "ユーザーが見つかりません。",
+      "validateApiKey": {
+        "pattern": "有効なHenrikのAPIキーを入力してください。",
+        "valid": "APIキーは有効です。",
+        "value": "HenrikのAPIキーを入力してください。"
+      },
+      "validateRiotId": {
+        "pattern": "有効なRiot IDを入力してください。",
+        "valid": "Riot IDは有効です。",
+        "value": "Riot IDを入力してください。"
+      },
+      "validationSuccess": "データ検証が正常に完了しました！"
+    }
+  }
+}
