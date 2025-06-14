@@ -11,10 +11,6 @@ services:
     environment:
       - VITE_HMR_HOST=localhost
       - VITE_HMR_PORT=3001
-    volumes:
-      - ./frontend/src:/app/src
-      - ./frontend/public:/app/public
-      - /app/node_modules
     depends_on:
       - backend
     env_file:
