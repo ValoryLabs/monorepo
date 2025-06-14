@@ -35,13 +35,13 @@ export default defineConfig({
   },
   base: '/',
   preview: {
-    port: 3000,
+    port: 3005,
     host: true,
     allowedHosts: ['beta.valory.su'],
   },
   server: {
     host: true,
-    port: 3000,
+    port: 3005,
     allowedHosts: ['beta.valory.su'],
   },
 })

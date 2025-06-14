@@ -11,6 +11,6 @@ COPY --from=installer /app/node_modules node_modules
 COPY tsconfig.json tsconfig.app.json tsconfig.node.json ./
 COPY . .
 
-EXPOSE 3000
+EXPOSE 3005
 
 CMD ["bun", "run", "dev", "--host", "0.0.0.0"]
