@@ -7,6 +7,14 @@ services:
         - APP_BACKEND_URL=${APP_BACKEND_URL}
     ports:
       - "3005:3000"
+      - "3001:3001"
+    environment:
+      - VITE_HMR_HOST=localhost
+      - VITE_HMR_PORT=3001
+    volumes:
+      - ./frontend/src:/app/src
+      - ./frontend/public:/app/public
+      - /app/node_modules
     depends_on:
       - backend
     env_file:
