@@ -13,7 +13,17 @@ export default defineConfig({
   plugins: [
     tailwindcss(),
     ViteMinifyPlugin({}),
-    vue(),
+    vue({
+      script: {
+        defineModel: true,
+        propsDestructure: true,
+      },
+      template: {
+        compilerOptions: {
+          comments: false,
+        },
+      },
+    }),
     VueI18nPlugin({
       module: 'petite-vue-i18n',
       include: [path.resolve(__dirname, './src/locales/**')],
@@ -23,8 +33,13 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
+    extensions: ['.js', '.ts', '.vue', '.json'],
   },
   build: {
+    target: 'esnext',
+    minify: 'esbuild',
+    sourcemap: false,
+    cssCodeSplit: true,
     rollupOptions: {
       output: {
         manualChunks: {
@@ -42,5 +57,6 @@ export default defineConfig({
   server: {
     host: true,
     port: 3000,
+    allowedHosts: ['beta.valory.su'],
   },
 })
