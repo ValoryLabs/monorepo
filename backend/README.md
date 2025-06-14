@@ -56,35 +56,67 @@ All dependencies are installed automatically via `uv install` command using the 
 
 4. Create .env configuration file:
     ```env
-   PROJECT_NAME=""
-   PROJECT_DESCRIPTION=""
-   VERSION=""
+   PROJECT_NAME="Valory Backend"
+   PROJECT_DESCRIPTION="FastAPI backend for Valory application"
+   VERSION="1.0.0"
    DEBUG=True
    
-   TWITCH_CLIENT_ID=""
-   TWITCH_CLIENT_SECRET=""
+   TWITCH_CLIENT_ID=your_twitch_client_id
+   TWITCH_CLIENT_SECRET=your_twitch_client_secret
    
-   DATABASE_LOGIN=""
-   DATABASE_PASSWORD=""
-   DATABASE_IP=""
+   DATABASE_LOGIN=valory_user
+   DATABASE_PASSWORD=secure_password
+   DATABASE_IP=postgres
    DATABASE_PORT=5432
-   DATABASE_NAME=""
+   DATABASE_NAME=valory_db
    
-   SECRET_KEY=""
-   ALGORITHM=""
-   APP_FRONTEND_URL=""
-   APP_BACKEND_URL=""
+   SECRET_KEY=your_secret_key_here
+   ALGORITHM="HS256"
+   APP_FRONTEND_URL=http://localhost:3000
+   APP_BACKEND_URL=http://localhost:8000
     ```
 
 5. Initialize database:
 ```bash
 alembic revision --autogenerate -m "Initial revision"
-alembic upgrade head```
+alembic upgrade head
+```
 
 5. Launch the application:
-    ```bash
-   uv run main.py
-   ```
+```bash
+uv run main.py
+```
+
+---
+
+## 🐳 Docker Compose
+
+Run commands
+```bash
+# Build and start all services
+docker compose up --build
+
+# Build with force recreate and start all services
+docker compose up --build --force-recreate
+
+# Run in background
+docker compose up -d --build
+
+# View logs
+docker compose logs -f
+
+# Stop services
+docker compose down
+```
+
+Database migrations
+```bash
+# Create migration
+docker compose exec backend alembic revision --autogenerate -m "Initial revision"
+
+# Apply migrations
+docker compose exec backend alembic upgrade head
+```
 
 ---
 
