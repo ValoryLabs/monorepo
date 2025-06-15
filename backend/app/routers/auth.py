@@ -120,11 +120,14 @@ async def callback(request: Request, session: AsyncSession = Depends(get_session
         expires=expires_time.strftime("%a, %d %b %Y %H:%M:%S GMT"),
         domain=".valory.su" if not settings.DEBUG else None,
         path="/",
-        samesite="none",
+        samesite="lax",
         secure=not settings.DEBUG,
     )
-    if settings.DEBUG:
+
+    if not settings.DEBUG:
         response.delete_cookie("twitch_state")
-    else:
-        response.delete_cookie("twitch_state", domain=".valory.su", path="/")
+        return response
+
+    response.delete_cookie("twitch_state", domain=".valory.su", path="/")
     return response
+
