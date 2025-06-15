@@ -112,7 +112,7 @@ async def callback(request: Request, session: AsyncSession = Depends(get_session
     expires_time = datetime.now(timezone.utc) + timedelta(seconds=one_month_seconds)
 
     access_token = await create_access_token({"sub": str(user.id)}, expires_time)
-
+    print(settings.DEBUG)
     response.set_cookie(
         "Authorization",
         value=access_token,
@@ -123,5 +123,8 @@ async def callback(request: Request, session: AsyncSession = Depends(get_session
         samesite="lax",
         secure=not settings.DEBUG,
     )
-    response.delete_cookie("twitch_state")
+    if settings.DEBUG:
+        response.delete_cookie("twitch_state")
+    else:
+        response.delete_cookie("twitch_state", domain=".valory.su", path="/")
     return response
