@@ -14,15 +14,21 @@ app = FastAPI(
     redoc_url="/redoc" if settings.DEBUG else None,
 )
 
-app.add_middleware(PerformanceMiddleware)
-
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[f'{settings.APP_FRONTEND_URL}/'],
+    allow_origins=[settings.APP_FRONTEND_URL],
     allow_credentials=True,
     allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allow_headers=["Authorization", "Content-Type"],
+    allow_headers=[
+        "Authorization",
+        "Content-Type",
+        "Accept",
+        "Origin",
+        "X-Requested-With"
+    ],
 )
+
+app.add_middleware(PerformanceMiddleware)
 
 app.include_router(api_router, prefix="/api")
 
