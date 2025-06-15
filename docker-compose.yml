@@ -11,6 +11,14 @@ services:
       - backend
     env_file:
       - .env
+    deploy:
+      resources:
+        limits:
+          cpus: '0.8'
+          memory: 1.5G
+        reservations:
+          cpus: '0.3'
+          memory: 512M
     restart: unless-stopped
 
   backend:
@@ -22,3 +30,8 @@ services:
     env_file:
       - .env
     restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: '0.2'
+          memory: 512M

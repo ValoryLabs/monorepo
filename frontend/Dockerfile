@@ -15,7 +15,7 @@ ARG APP_BACKEND_URL
 ENV APP_BACKEND_URL=$APP_BACKEND_URL
 ENV NODE_ENV=production
 
-ENV NODE_OPTIONS="--max-old-space-size=4096"
+ENV NODE_OPTIONS="--max-old-space-size=1536 --max-semi-space-size=64"
 ENV BUN_RUNTIME_TRANSPILER_CACHE_PATH=0
 
 RUN bunx --bun vite build --mode production
