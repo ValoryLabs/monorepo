@@ -155,18 +155,6 @@ class User(Base):
             name='ck_users_avatar_url_format'
         ),
 
-        # Check constraint for Riot ID format
-        CheckConstraint(
-            "riot_id IS NULL OR riot_id ~ '^[\p{L}\p{N}]+(?: [\p{L}\p{N}]+)*#[\p{L}\p{N}]{3,5}$'",
-            name='ck_users_riot_id_format'
-        ),
-
-        # Check constraint for HDEV API key format
-        CheckConstraint(
-            "hdev_api_key IS NULL OR hdev_api_key ~ '^HDEV-[\da-f]{8}-([\da-f]{4}-){3}[\da-f]{12}$'",
-            name='ck_users_hdev_key_format'
-        ),
-
         # Composite index for efficient queries
         Index('ix_users_active_created', 'is_active', 'created_at'),
         Index('ix_users_twitch_lookup', 'twitch_id', 'twitch_display_name'),
