@@ -196,4 +196,18 @@ export const STREAMERS_DATA: StreamersData[] = [
     live: false,
     verified: false,
   },
+  {
+    username: 'yoh7zzz',
+    followers: '88',
+    img: 'https://static-cdn.jtvnw.net/jtv_user_pictures/bd134aca-6965-48ba-a22a-08bae8e77132-profile_image-70x70.png',
+    live: false,
+    verified: false,
+  },
+  {
+    username: 'pholmys',
+    followers: '59',
+    img: 'https://static-cdn.jtvnw.net/jtv_user_pictures/db41fe2c-4dea-4b05-b3f6-c72a4fa5e205-profile_image-70x70.png',
+    live: false,
+    verified: false,
+  },
 ]

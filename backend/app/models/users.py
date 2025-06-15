@@ -157,13 +157,13 @@ class User(Base):
 
         # Check constraint for Riot ID format
         CheckConstraint(
-            "riot_id IS NULL OR riot_id ~ '^[a-zA-Z0-9\\s]{3,16}#[a-zA-Z0-9]{3,5}$'",
+            "riot_id IS NULL OR riot_id ~ '^[\p{L}\p{N}]+(?: [\p{L}\p{N}]+)*#[\p{L}\p{N}]{3,5}$'",
             name='ck_users_riot_id_format'
         ),
 
         # Check constraint for HDEV API key format
         CheckConstraint(
-            "hdev_api_key IS NULL OR hdev_api_key ~ '^HDEV-[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}$'",
+            "hdev_api_key IS NULL OR hdev_api_key ~ '^HDEV-[\da-f]{8}-([\da-f]{4}-){3}[\da-f]{12}$'",
             name='ck_users_hdev_key_format'
         ),
 
