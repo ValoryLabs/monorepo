@@ -15,6 +15,7 @@ ARG APP_BACKEND_URL
 ENV APP_BACKEND_URL=$APP_BACKEND_URL
 ENV NODE_ENV=production
 
-EXPOSE 3005
+RUN bunx --bun vite build
 
-CMD ["bun", "run", "dev", "--host", "0.0.0.0"]
+FROM devforth/spa-to-http:latest
+COPY --from=builder /app/dist/ .

@@ -6,7 +6,7 @@ services:
       args:
         - APP_BACKEND_URL=${APP_BACKEND_URL}
     ports:
-      - "3005:3005"
+      - "8080:8080"
     depends_on:
       - backend
     env_file:
@@ -20,7 +20,7 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     ports:
-      - "8080:8080"
+      - "8000:8000"
     env_file:
       - .env
     restart: unless-stopped
