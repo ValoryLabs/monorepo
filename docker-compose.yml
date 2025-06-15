@@ -12,8 +12,6 @@ services:
     env_file:
       - .env
     restart: unless-stopped
-    networks:
-      - app-network
 
   backend:
     build:
@@ -24,9 +22,3 @@ services:
     env_file:
       - .env
     restart: unless-stopped
-    networks:
-      - app-network
-
-networks:
-  app-network:
-    driver: bridge
