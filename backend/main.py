@@ -37,9 +37,9 @@ if __name__ == "__main__":
         app="main:app",
         port=8000,
         reload=settings.DEBUG,
-        workers=4,
-        limit_concurrency=1000,
-        limit_max_requests=10000,
+        workers=1,
+        limit_concurrency=100,
+        limit_max_requests=1000,
         timeout_keep_alive=5,
         access_log=settings.DEBUG,
     )
