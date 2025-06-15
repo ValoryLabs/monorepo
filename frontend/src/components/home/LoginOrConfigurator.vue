@@ -58,5 +58,3 @@ watch(c, (v) => {
     </Tooltip>
   </TooltipProvider>
 </template>
-
-<style scoped></style>
