@@ -3,6 +3,7 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
+      target: production
       args:
         - APP_BACKEND_URL=${APP_BACKEND_URL}
     ports:
@@ -12,6 +13,8 @@ services:
     env_file:
       - .env
     restart: unless-stopped
+    networks:
+      - app-network
 
   backend:
     build:
@@ -22,3 +25,9 @@ services:
     env_file:
       - .env
     restart: unless-stopped
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

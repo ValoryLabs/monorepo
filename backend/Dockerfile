@@ -6,7 +6,6 @@ ENV PYTHONDONTWRITEBYTECODE=1
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 
 ENV UV_COMPILE_BYTE=1
-
 ENV UV_LINK_MODE=copy
 
 # Change the working directory to the `app` directory
@@ -32,10 +31,10 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 EXPOSE 8080
 
 CMD ["/app/.venv/bin/uvicorn", "main:app", \
-     "--host", "0.0.0.0", \
-     "--port", "8080", \
-     "--workers", "4", \
-     "--limit-concurrency", "1000", \
-     "--limit-max-requests", "10000", \
-     "--timeout-keep-alive", "5", \
-     "--access-log"]
+    "--host", "0.0.0.0", \
+    "--port", "8080", \
+    "--workers", "4", \
+    "--limit-concurrency", "1000", \
+    "--limit-max-requests", "10000", \
+    "--timeout-keep-alive", "5", \
+    "--access-log"]
