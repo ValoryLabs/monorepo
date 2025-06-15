@@ -28,11 +28,11 @@ COPY . .
 RUN --mount=type=cache,target=/root/.cache/uv \
     uv sync --frozen --no-dev
 
-EXPOSE 8080
+EXPOSE 8000
 
 CMD ["/app/.venv/bin/uvicorn", "main:app", \
     "--host", "0.0.0.0", \
-    "--port", "8005", \
+    "--port", "8000", \
     "--workers", "4", \
     "--limit-concurrency", "1000", \
     "--limit-max-requests", "10000", \
