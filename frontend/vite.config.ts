@@ -1,5 +1,4 @@
 import { fileURLToPath, URL } from 'node:url'
-
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import tailwindcss from '@tailwindcss/vite'
@@ -7,7 +6,7 @@ import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite'
 import path from 'path'
 import { ViteMinifyPlugin } from 'vite-plugin-minify'
 
-export default defineConfig(({ command, mode }) => {
+export default defineConfig(({ mode }) => {
   const isProduction = mode === 'production'
 
   return {
@@ -28,7 +27,7 @@ export default defineConfig(({ command, mode }) => {
       },
     },
     build: {
-      minify: 'terser',
+      minify: isProduction ? 'esbuild' : false,
       sourcemap: false,
       rollupOptions: {
         output: {
@@ -37,24 +36,21 @@ export default defineConfig(({ command, mode }) => {
             i18n: ['vue-i18n'],
           },
         },
-        terserOptions: {
-          compress: {
-            drop_console: isProduction,
-            drop_debugger: isProduction,
-          },
-        },
       },
+      ...(isProduction && {
+        esbuild: {
+          drop: ['console', 'debugger'],
+          legalComments: 'none',
+        },
+      }),
     },
     base: '/',
-    preview: {
-      port: 3005,
-      host: true,
-      allowedHosts: ['beta.valory.su'],
-    },
-    server: {
-      host: true,
-      port: 3005,
-      allowedHosts: ['beta.valory.su'],
-    },
+    ...(isProduction ? {} : {
+      server: {
+        host: true,
+        port: 3005,
+        allowedHosts: ['beta.valory.su'],
+      },
+    }),
   }
 })

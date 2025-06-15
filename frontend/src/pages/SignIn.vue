@@ -80,6 +80,6 @@ const redirectToAuth = () => {
 
 <style lang="scss" scoped>
 .bg-art {
-  background-image: url('signin.jpg');
+  background-image: url('/signin.jpg');
 }
 </style>
