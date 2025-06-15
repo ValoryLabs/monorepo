@@ -15,7 +15,10 @@ ARG APP_BACKEND_URL
 ENV APP_BACKEND_URL=$APP_BACKEND_URL
 ENV NODE_ENV=production
 
-RUN bunx --bun vite build
+ENV NODE_OPTIONS="--max-old-space-size=4096"
+ENV BUN_RUNTIME_TRANSPILER_CACHE_PATH=0
+
+RUN bunx --bun vite build --mode production
 
 FROM devforth/spa-to-http:latest
 COPY --from=builder /app/dist/ .

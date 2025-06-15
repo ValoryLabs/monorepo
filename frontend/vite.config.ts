@@ -28,21 +28,27 @@ export default defineConfig(({ mode }) => {
     },
     build: {
       minify: isProduction ? 'esbuild' : false,
+      chunkSizeWarningLimit: 1000,
       sourcemap: false,
       rollupOptions: {
         output: {
           manualChunks: {
-            vendor: ['vue', 'vue-router'],
-            i18n: ['vue-i18n'],
+            'vue-vendor': ['vue'],
+            'vue-router': ['vue-router'],
+            'vue-i18n': ['vue-i18n'],
+            'pinia': ['pinia'],
           },
+          maxParallelFileOps: 2,
         },
+        maxParallelFileOps: 2,
       },
-      ...(isProduction && {
-        esbuild: {
-          drop: ['console', 'debugger'],
-          legalComments: 'none',
-        },
-      }),
+      esbuild: isProduction ? {
+        drop: ['console', 'debugger'],
+        legalComments: 'none',
+        minifyIdentifiers: true,
+        minifySyntax: true,
+        minifyWhitespace: true,
+      } : false,
     },
     base: '/',
     ...(isProduction ? {} : {
