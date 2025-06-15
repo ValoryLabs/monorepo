@@ -28,8 +28,8 @@ export default defineConfig(({ mode }) => {
     },
     build: {
       minify: isProduction ? 'esbuild' : false,
-      chunkSizeWarningLimit: 1000,
       sourcemap: false,
+      chunkSizeWarningLimit: 1000,
       rollupOptions: {
         output: {
           manualChunks: {
@@ -38,9 +38,7 @@ export default defineConfig(({ mode }) => {
             'vue-i18n': ['vue-i18n'],
             'pinia': ['pinia'],
           },
-          maxParallelFileOps: 2,
         },
-        maxParallelFileOps: 2,
       },
       esbuild: isProduction ? {
         drop: ['console', 'debugger'],
