@@ -14,7 +14,7 @@ const redirectToAuth = () => {
 <template>
   <div class="flex min-h-screen">
     <!-- Left side - Background image -->
-    <div class="flex w-1/6 items-center justify-center bg-black p-8 lg:w-1/2">
+    <div class="flex min-w-96 max-w-2xl w-full items-center justify-center bg-black p-8">
       <div class="w-full max-w-sm space-y-8">
         <!-- Header -->
         <div class="flex flex-col items-center gap-3">
@@ -68,7 +68,7 @@ const redirectToAuth = () => {
 
     <!-- Right side - Sign in form -->
     <div class="relative hidden lg:flex lg:w-5/6">
-      <div class="bg-art absolute inset-0 bg-cover bg-center bg-no-repeat"></div>
+      <div class="bg-[url('/signin.webp')] absolute inset-0 bg-cover bg-center bg-no-repeat"></div>
       <span
         class="bg-background/40 absolute right-2 bottom-2 inline-flex cursor-pointer items-center gap-1 rounded-full border border-white/10 px-3 py-1 text-sm font-medium"
         @click="openLink('https://www.artstation.com/artwork/d0eg0W')"
@@ -77,9 +77,3 @@ const redirectToAuth = () => {
     </div>
   </div>
 </template>
-
-<style lang="scss" scoped>
-.bg-art {
-  background-image: url('/signin.jpg');
-}
-</style>

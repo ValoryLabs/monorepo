@@ -132,7 +132,9 @@ const props = withDefaults(defineProps<Props>(), {
                     ? `${props.winColor}80`
                     : result === 'Lose'
                       ? `${props.loseColor}80`
-                      : `${props.primaryTextColor}80`,
+                      : result === 'Draw' ?
+                        `${props.primaryTextColor}80`
+                        : `${props.primaryTextColor}80`
               }"
             >
               <span v-if="result === 'Win'">W</span>

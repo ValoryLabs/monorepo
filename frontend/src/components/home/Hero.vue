@@ -2,21 +2,8 @@
 import { PackageOpen, Paintbrush, PencilRuler } from 'lucide-vue-next'
 import Button from '@/components/ui/button/Button.vue'
 import Valory from '@/components/icons/Valory.vue'
-import router from '@/router'
 import CarouselOverlay from '@/components/ui/CarouselOverlay.vue'
-
-import { useAuthStore } from '@/stores/auth'
-import MiniOverlay from '@/components/overlays/MiniOverlay.vue'
-import NewOverlay from '@/components/overlays/NewOverlay.vue'
-import NewV2Overlay from '@/components/overlays/NewV2Overlay.vue'
-import OldOverlay from '@/components/overlays/OldOverlay.vue'
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
-import { Kbd } from '@/components/ui/kbd'
 import LoginOrConfigurator from '@/components/home/LoginOrConfigurator.vue'
-
-const authStore = useAuthStore()
-
-const slides = [MiniOverlay, NewOverlay, NewV2Overlay, OldOverlay]
 </script>
 
 <template>
@@ -65,9 +52,9 @@ const slides = [MiniOverlay, NewOverlay, NewV2Overlay, OldOverlay]
         </div>
       </div>
       <div
-        class="relative flex size-1/2 flex-col items-center justify-center gap-3 overflow-hidden rounded-2xl bg-[url('/previews/breeze.webp')] bg-center"
+        class="relative flex size-1/2 flex-col items-center justify-center gap-3 overflow-hidden rounded-2xl bg-[url('/rank_preview.webp')] bg-cover bg-center"
       >
-        <CarouselOverlay :slides="slides" />
+        <CarouselOverlay />
       </div>
     </div>
   </main>
