@@ -120,7 +120,7 @@ async def callback(request: Request, session: AsyncSession = Depends(get_session
         expires=expires_time.strftime("%a, %d %b %Y %H:%M:%S GMT"),
         domain=".valory.su" if not settings.DEBUG else None,
         path="/",
-        samesite="lax",
+        samesite="none",
         secure=not settings.DEBUG,
     )
     if settings.DEBUG:
