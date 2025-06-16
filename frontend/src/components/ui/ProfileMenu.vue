@@ -49,7 +49,7 @@ onMounted(() => {
           <LoaderCircle />
         </span>
       </Button>
-      <Button v-if="error" variant="ghost">
+      <Button v-else-if="error" variant="ghost">
         <span class="font-bold">{{ $t('profile_menu.error') }}</span>
       </Button>
       <Button v-else-if="user" variant="ghost" size="icon">
