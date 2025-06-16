@@ -19,6 +19,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@aptabase/web": "^0.4.3",
     "@unhead/vue": "^2.0.0-alpha.16",
     "@vueuse/core": "^13.3.0",
     "@vueuse/router": "^13.0.0",

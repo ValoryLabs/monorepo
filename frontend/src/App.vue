@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useHead, useSeoMeta } from '@unhead/vue'
 import { Toaster } from 'vue-sonner'
+import { init } from "@aptabase/web";
 
 const titleMain = 'VALORY'
 const metaImg = 'meta.webp'
@@ -62,6 +63,8 @@ useSeoMeta({
   author: 'MAGICX, misha@valory.su',
   keywords: metaKeywords,
 })
+
+init('A-SH-7775896749');
 </script>
 
 <template>
