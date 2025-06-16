@@ -35,6 +35,7 @@ import {hidden, moveTo, openLink} from '@/lib/utils'
         </div>
         <iframe
           src="https://status.valory.su/badge?theme=dark"
+          title="Valory Status Badge"
           width="250"
           height="30"
           frameborder="0"

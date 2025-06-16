@@ -51,9 +51,14 @@ import LoginOrConfigurator from '@/components/home/LoginOrConfigurator.vue'
           </Button>
         </div>
       </div>
-      <div
-        class="relative flex size-1/2 flex-col items-center justify-center gap-3 overflow-hidden rounded-2xl bg-[url('/rank_preview.webp')] bg-cover bg-center"
-      >
+      <div class="relative flex size-1/2 flex-col items-center justify-center gap-3 overflow-hidden rounded-2xl">
+        <img
+          src="/rank_preview.webp"
+          alt="Rank Preview Background"
+          class="absolute inset-0 size-full object-cover object-center -z-10"
+          fetchpriority="high"
+          loading="eager"
+        />
         <CarouselOverlay />
       </div>
     </div>
