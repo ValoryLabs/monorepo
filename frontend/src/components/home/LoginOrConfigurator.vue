@@ -26,10 +26,10 @@ watch(c, (v) => {
 </script>
 
 <template>
-  <TooltipProvider>
+  <TooltipProvider v-if="authStore.isAuthenticated">
     <Tooltip>
       <TooltipTrigger>
-        <Button v-if="authStore.isAuthenticated" @click="router.push({ name: 'configurator' })">
+        <Button @click="router.push({ name: 'configurator' })">
           {{ $t('sidebar.buttons.auth') }}
           <PencilRuler class="size-4" />
         </Button>
@@ -42,10 +42,10 @@ watch(c, (v) => {
       </TooltipContent>
     </Tooltip>
   </TooltipProvider>
-  <TooltipProvider>
+  <TooltipProvider v-else>
     <Tooltip>
       <TooltipTrigger>
-        <Button v-if="!authStore.isAuthenticated" @click="router.push({ name: 'signin' })">
+        <Button @click="router.push({ name: 'signin' })">
           {{ $t('sidebar.buttons.unauth') }}
         </Button>
       </TooltipTrigger>
