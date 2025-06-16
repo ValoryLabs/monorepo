@@ -2,25 +2,9 @@
  * @fileoverview API client configuration for Valorant API requests
  */
 
-/**
- * @module apiClient
- */
-
 import {useUserSettingsStore} from '@/stores/userSettings'
 import axios from 'axios'
 import {storeToRefs} from 'pinia'
-
-/**
- * Instance of user settings store
- * @constant
- */
-const userSettingsStore = useUserSettingsStore()
-
-/**
- * API key extracted from user settings
- * @constant
- */
-const { apiKey } = storeToRefs(userSettingsStore)
 
 /**
  * Configured axios instance for API requests
@@ -41,6 +25,10 @@ export const apiClient = axios.create({
  */
 apiClient.interceptors.request.use(
   (config) => {
+    // ✅ Получаем store внутри интерцептора
+    const userSettingsStore = useUserSettingsStore()
+    const { apiKey } = storeToRefs(userSettingsStore)
+
     if (apiKey.value) {
       config.params = {
         ...config.params,
@@ -58,9 +46,6 @@ apiClient.interceptors.request.use(
 
 /**
  * Response interceptor to handle API errors
- * @param {Object} response - Axios response object
- * @param {Object} error - Error object if request fails
- * @returns {Object} Response data or rejected promise
  */
 apiClient.interceptors.response.use(
   (response) => response,

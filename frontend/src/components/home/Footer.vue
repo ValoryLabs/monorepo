@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import {Valory} from '@/components/icons'
 import {Button} from '@/components/ui/button'
-import {FOOTER_NAV_PRODUCT_DATA} from '@/data/FooterNav.data'
+import { FOOTER_NAV_PRODUCT_DATA, SocialLinksData } from '@/data'
 import {hidden, moveTo, openLink} from '@/lib/utils'
-import {SocialLinksData} from "@/data/SocialLinks.data.ts";
 </script>
 <template>
   <footer class="container m-auto mt-10 flex flex-col gap-10 py-16">

@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card'
-import { useMetaExtractor } from '@/composables/useMetaExtractor'
+import { useMetaExtractor } from '@/composables'
 import { openLink } from '@/lib/utils.ts'
-import { ExternalLink } from 'lucide-vue-next'
 import { Skeleton } from '@/components/ui/skeleton'
 
 interface Props {

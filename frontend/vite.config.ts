@@ -5,6 +5,8 @@ import tailwindcss from '@tailwindcss/vite'
 import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite'
 import path from 'path'
 import { ViteMinifyPlugin } from 'vite-plugin-minify'
+import eslint from 'vite-plugin-eslint'
+import { visualizer } from 'rollup-plugin-visualizer'
 
 export default defineConfig(({ mode }) => {
   const isProduction = mode === 'production'
@@ -20,6 +22,11 @@ export default defineConfig(({ mode }) => {
         module: 'petite-vue-i18n',
         include: [path.resolve(__dirname, './src/locales/**')],
       }),
+      eslint(),
+      mode === 'analyze' && visualizer({
+        filename: 'dist/stats.html',
+        open: true
+      })
     ],
     resolve: {
       alias: {
@@ -36,25 +43,29 @@ export default defineConfig(({ mode }) => {
             'vue-vendor': ['vue'],
             'vue-router': ['vue-router'],
             'vue-i18n': ['vue-i18n'],
-            'pinia': ['pinia'],
+            pinia: ['pinia'],
           },
         },
       },
-      esbuild: isProduction ? {
-        drop: ['console', 'debugger'],
-        legalComments: 'none',
-        minifyIdentifiers: true,
-        minifySyntax: true,
-        minifyWhitespace: true,
-      } : false,
+      esbuild: isProduction
+        ? {
+            drop: ['console', 'debugger'],
+            legalComments: 'none',
+            minifyIdentifiers: true,
+            minifySyntax: true,
+            minifyWhitespace: true,
+          }
+        : false,
     },
     base: '/',
-    ...(isProduction ? {} : {
-      server: {
-        host: true,
-        port: 3005,
-        allowedHosts: ['beta.valory.su'],
-      },
-    }),
+    ...(isProduction
+      ? {}
+      : {
+          server: {
+            host: true,
+            port: 3005,
+            allowedHosts: ['beta.valory.su'],
+          },
+        }),
   }
 })

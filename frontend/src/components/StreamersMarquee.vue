@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Marquee from '@/components/ui/Marquee.vue'
 import StreamersCard from '@/components/ui/StreamersCard.vue'
-import { STREAMERS_DATA } from '@/data/Streamers.data'
+import { STREAMERS_DATA } from '@/data'
 
 function shuffleArray(array: any[]) {
   for (let i = array.length - 1; i > 0; i--) {

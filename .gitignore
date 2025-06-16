@@ -79,3 +79,6 @@ Pipfile.lock
 /backend/uv.lock
 /backend/valory_backend.egg-info/
 __pycache__
+/frontend/.eslintcache
+/frontend/node_modules/.cache/
+/frontend/dist/stats.html

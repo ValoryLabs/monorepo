@@ -2,7 +2,6 @@ import { useUserSettingsStore } from '@/stores/userSettings'
 import { storeToRefs } from 'pinia'
 import { apiClient } from '..'
 import type { AxiosError } from 'axios'
-import axios from 'axios'
 import { updateUserData } from '@/api/backend.ts'
 
 // Data types

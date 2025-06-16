@@ -10,8 +10,16 @@ interface ApiErrorResponse {
 
 interface UpdateUserDataResponse {
   success: boolean
-  apiKeyResponse?: any
-  riotIdResponse?: any
+  apiKeyResponse?: {
+    status: string
+    message?: string
+    data?: Record<string, unknown>
+  }
+  riotIdResponse?: {
+    status: string
+    message?: string
+    data?: Record<string, unknown>
+  }
   error?: string
   statusCode?: number
 }
@@ -22,7 +30,6 @@ interface OverlayData {
   overlay_style: string
   background_color: string
   text_color: string
-  // Add other overlay properties as needed
 }
 
 // Constants

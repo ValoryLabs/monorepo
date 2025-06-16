@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { Button } from '@/components/ui/button'
 
-import { useAuthStore } from '@/stores/auth'
-
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,7 +10,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-import { SocialLinksData } from '@/data/SocialLinks.data'
 import { openLink } from '@/lib/utils'
 import {
   LifeBuoy,
@@ -23,7 +20,7 @@ import {
 } from 'lucide-vue-next'
 
 import { onMounted, watch } from 'vue'
-import { useUserStore } from '@/stores/user.ts'
+import { useAuthStore, useUserStore } from '@/stores'
 import { storeToRefs } from 'pinia'
 import router from '@/router'
 import { TwitchVerify } from '@/components/icons'
@@ -74,7 +71,6 @@ onMounted(() => {
           <span>{{ $t('profile_menu.settings') }}</span>
         </DropdownMenuItem>
       </DropdownMenuGroup>
-      <DropdownMenuSeparator />
       <DropdownMenuItem @click="openLink('https://discord.gg/pYV4PBV5YW')">
         <LifeBuoy class="mr-2 h-4 w-4" />
         <span>{{ $t('profile_menu.support') }}</span>
@@ -82,11 +78,6 @@ onMounted(() => {
       <DropdownMenuItem @click="router.push({ name: 'terms' })">
         <NotebookText class="text-muted-foreground mr-2 h-4 w-4" />
         <span>{{ $t('profile_menu.terms') }}</span>
-      </DropdownMenuItem>
-      <DropdownMenuSeparator />
-      <DropdownMenuItem @click="openLink(link.url)" v-for="link in SocialLinksData" :key="link">
-        <component :is="link.icon" class="mr-2 h-4 w-4" />
-        <span>{{ link.name }}</span>
       </DropdownMenuItem>
       <DropdownMenuSeparator />
       <DropdownMenuItem @click="authStore.logout()">

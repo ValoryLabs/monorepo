@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Marquee from '@/components/ui/Marquee.vue'
 import StreamersCard from '@/components/ui/StreamersCard.vue'
-import { STREAMERS_DATA } from '@/data/Streamers.data'
+import { STREAMERS_DATA } from '@/data'
 
 const middleIndex = Math.floor(STREAMERS_DATA.length / 3)
 

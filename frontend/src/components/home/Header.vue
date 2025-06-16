@@ -1,19 +1,17 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from 'vue'
 import NumberFlow from '@number-flow/vue'
-
-import Github from '@/components/icons/socials/Github.vue'
-import Valory from '@/components/icons/Valory.vue'
+import { Github, Valory } from '@/components/icons'
 import LanguageSwitcher from '@/components/ui/LanguageSwitcher.vue'
 import { Button } from '@/components/ui/button'
-import { NAV_DATA } from '@/data/HeaderNav.data'
+import { NAV_DATA } from '@/data'
 import router from '@/router'
 import { hidden, moveTo } from '@/lib/utils'
 
 import { useRoute } from 'vue-router'
 import LoginOrConfigurator from '@/components/home/LoginOrConfigurator.vue'
 import LinkPreview from '@/components/ui/LinkPreview.vue'
-import { useGitHubStars } from '@/composables/useGitHubExtractor.ts'
+import { useGitHubStars } from '@/composables'
 
 const route = useRoute()
 

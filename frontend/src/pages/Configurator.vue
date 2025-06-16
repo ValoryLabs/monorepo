@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import Content from '@/components/Content.vue'
 import { LeftSidebar } from '@/components/sidebar/'
-import { useUserStore } from '@/stores/user'
-import { useOverlayStore } from '@/stores/overlay'
+import { useOverlayStore, useUserStore } from '@/stores'
 import { storeToRefs } from 'pinia'
 import { useMagicKeys } from '@vueuse/core'
 import { watch } from 'vue'
