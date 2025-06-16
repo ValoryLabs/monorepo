@@ -44,16 +44,14 @@ onMounted(() => {
 <template>
   <DropdownMenu>
     <DropdownMenuTrigger as-child>
-      <Button v-if="loading" variant="ghost">
-        <span class="animate-spin font-bold">
+      <Button  variant="ghost" size="icon">
+        <span v-if="loading" class="animate-spin font-bold">
           <LoaderCircle />
         </span>
-      </Button>
-      <Button v-else-if="error" variant="ghost">
-        <span class="font-bold">{{ $t('profile_menu.error') }}</span>
-      </Button>
-      <Button v-if="user && !loading && !error" variant="ghost" size="icon">
-        <img class="size-6 rounded-full bg-neutral-500" :src="user.avatar_url" alt="user avatar" />
+        <span class="font-bold" v-else-if="error">{{ $t('profile_menu.error') }}</span>
+        <span class="user-avatar" v-else-if="user && !loading && !error">
+          <img class="size-6 rounded-full bg-neutral-500" :src="user.avatar_url" alt="user avatar" />
+        </span>
       </Button>
     </DropdownMenuTrigger>
     <DropdownMenuContent align="end" class="w-56">
