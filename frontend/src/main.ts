@@ -8,14 +8,10 @@ import App from '@/App.vue'
 import { createHead } from '@unhead/vue/client'
 
 import { i18n } from '@/i18n.ts'
-import aptabase from '@/plugins/aptabase'
 
 const pinia = createPinia()
 pinia.use(piniaPluginPersistedstate)
 
 const head = createHead()
 
-createApp(App).use(pinia).use(router).use(head).use(i18n).use(aptabase, {
-  appKey: 'A-SH-5080525344',
-  host: 'https://beta.valory.su'
-}).mount('#app')
+createApp(App).use(pinia).use(router).use(head).use(i18n).mount('#app')
