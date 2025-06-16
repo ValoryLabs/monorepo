@@ -52,7 +52,7 @@ onMounted(() => {
       <Button v-else-if="error" variant="ghost">
         <span class="font-bold">{{ $t('profile_menu.error') }}</span>
       </Button>
-      <Button v-else-if="user" variant="ghost" size="icon">
+      <Button v-if="user && !loading && !error" variant="ghost" size="icon">
         <img class="size-6 rounded-full bg-neutral-500" :src="user.avatar_url" alt="user avatar" />
       </Button>
     </DropdownMenuTrigger>
