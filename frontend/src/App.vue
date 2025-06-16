@@ -3,6 +3,9 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useHead, useSeoMeta } from '@unhead/vue'
 import { Toaster } from 'vue-sonner'
+import {useUserStore} from "@/stores";
+import { storeToRefs } from "pinia";
+import { identifyUmamiSession } from '@jaseeey/vue-umami-plugin'
 
 const titleMain = 'VALORY'
 const metaImg = 'meta.webp'
@@ -18,12 +21,10 @@ const metaKeywords =
   'valorant stream tools, valorant stream customization, valorant stream widgets, ' +
   'valorant stream plugins, valorant stream resources, valorant stream overlays, valory'
 
-// Loading состояние
 const isLoading = ref(false)
 const isPageReady = ref(true)
 const router = useRouter()
 
-// Отслеживание навигации
 router.beforeEach((to, from, next) => {
   if (to.path !== from.path) {
     isLoading.value = true
@@ -33,7 +34,6 @@ router.beforeEach((to, from, next) => {
 })
 
 router.afterEach(() => {
-  // Небольшая задержка для плавности
   setTimeout(() => {
     isLoading.value = false
     setTimeout(() => {
@@ -62,6 +62,19 @@ useSeoMeta({
   author: 'MAGICX, misha@valory.su',
   keywords: metaKeywords,
 })
+
+const userStore = useUserStore()
+const { user } = storeToRefs(userStore)
+
+const identifyUser = () => {
+  if (user) {
+    identifyUmamiSession({
+      userId: user.id,
+      twitch_id: user.twitch_id,
+      username: user.username
+    })
+  }
+}
 </script>
 
 <template>

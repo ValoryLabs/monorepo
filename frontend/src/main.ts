@@ -1,5 +1,6 @@
 import '@/assets/main.css'
 import { createPinia } from 'pinia'
+import { VueUmamiPlugin } from '@jaseeey/vue-umami-plugin'
 import router from '@/router'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 
@@ -14,4 +15,13 @@ pinia.use(piniaPluginPersistedstate)
 
 const head = createHead()
 
-createApp(App).use(pinia).use(router).use(head).use(i18n).mount('#app')
+const app = createApp(App)
+
+app.use(VueUmamiPlugin, {
+  websiteID: '63823b34-44f1-41b8-b78e-ea19f31c594d',
+  scriptSrc: 'https://umami.valory.su/script.js',
+  router,
+  allowLocalhost: false,
+})
+
+app.use(pinia).use(router).use(head).use(i18n).mount('#app')
