@@ -8,6 +8,7 @@ import { watch } from 'vue'
 import { useHead } from '@unhead/vue'
 import { Settings } from '@/components/settings'
 import { useI18n } from 'vue-i18n'
+import ConfiguratorLayout from "@/layouts/ConfiguratorLayout.vue";
 
 const { t } = useI18n()
 
@@ -40,12 +41,14 @@ watch(fullKeyPressed, (v) => {
 </script>
 
 <template>
-  <div
-    class="relative flex w-dvw flex-row gap-1 p-1 px-5 pb-2"
-    :class="showHeader ? 'h-[calc(100dvh-3rem)]' : 'h-dvh'"
-  >
-    <LeftSidebar />
-    <Content />
-    <Settings />
-  </div>
+  <ConfiguratorLayout>
+    <div
+      class="relative flex w-dvw flex-row gap-1 p-1 px-5 pb-2"
+      :class="showHeader ? 'h-[calc(100dvh-3rem)]' : 'h-dvh'"
+    >
+      <LeftSidebar />
+      <Content />
+      <Settings />
+    </div>
+  </ConfiguratorLayout>
 </template>

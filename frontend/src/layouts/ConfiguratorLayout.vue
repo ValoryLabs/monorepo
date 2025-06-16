@@ -8,8 +8,10 @@ const { showHeader } = storeToRefs(userStore)
 </script>
 
 <template>
-  <Header v-if="showHeader" />
-  <main>
-    <slot />
-  </main>
+  <div class="configurator-layout">
+    <Header v-if="showHeader" />
+    <main>
+      <slot />
+    </main>
+  </div>
 </template>

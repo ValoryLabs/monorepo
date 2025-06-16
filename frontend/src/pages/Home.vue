@@ -5,6 +5,7 @@ import Hero from '@/components/home/Hero.vue'
 import {useHead} from '@unhead/vue'
 
 import {useI18n} from 'vue-i18n'
+import DefaultLayout from "@/layouts/DefaultLayout.vue";
 
 const Streamers = defineAsyncComponent(() => import('@/components/home/Streamers.vue'))
 const OpenSource = defineAsyncComponent(() => import('@/components/home/OpenSource.vue'))
@@ -17,8 +18,10 @@ useHead({
 </script>
 
 <template>
-  <Hero />
-  <!-- <Features /> -->
-  <Streamers />
-  <OpenSource />
+  <DefaultLayout>
+    <Hero />
+    <!-- <Features /> -->
+    <Streamers />
+    <OpenSource />
+  </DefaultLayout>
 </template>

@@ -6,9 +6,11 @@ const Footer = defineAsyncComponent(() => import('@/components/home/Footer.vue')
 </script>
 
 <template>
-  <Header />
-  <main>
-    <slot />
-  </main>
-  <Footer />
+  <div class="default-layout">
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </div>
 </template>
