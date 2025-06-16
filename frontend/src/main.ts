@@ -17,11 +17,11 @@ const head = createHead()
 
 const app = createApp(App)
 
-app.use(VueUmamiPlugin, {
+app.use(VueUmamiPlugin({
   websiteID: '63823b34-44f1-41b8-b78e-ea19f31c594d',
   scriptSrc: 'https://umami.valory.su/script.js',
   router,
   allowLocalhost: false,
-})
+}))
 
 app.use(pinia).use(router).use(head).use(i18n).mount('#app')
