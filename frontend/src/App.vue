@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import {onMounted, ref} from 'vue'
 import { useRouter } from 'vue-router'
 import { useHead, useSeoMeta } from '@unhead/vue'
 import { Toaster } from 'vue-sonner'
@@ -75,6 +75,8 @@ const identifyUser = () => {
     })
   }
 }
+
+onMounted(identifyUser)
 </script>
 
 <template>
