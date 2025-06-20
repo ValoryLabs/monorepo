@@ -1,394 +1,120 @@
 <script setup lang="ts">
+import { computed, ref, onMounted, onUnmounted, nextTick } from 'vue'
 import Marquee from '@/components/ui/Marquee.vue'
 import StreamersCard from '@/components/ui/StreamersCard.vue'
 import { STREAMERS_DATA } from '@/data'
 
-const middleIndex = Math.floor(STREAMERS_DATA.length / 3)
+const ROWS_COUNT = 3
+const CARDS_PER_ROW = Math.ceil(STREAMERS_DATA.length / ROWS_COUNT)
 
-function shuffleArray(array: any[]) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1))
-    ;[array[i], array[j]] = [array[j], array[i]]
-  }
-  return array
+const initializeRows = () => {
+  return Array.from({ length: ROWS_COUNT }, (_, i) =>
+    STREAMERS_DATA.slice(i * CARDS_PER_ROW, (i + 1) * CARDS_PER_ROW)
+  )
 }
 
-const shuffledStreamers = shuffleArray([...STREAMERS_DATA])
-const rowSize = Math.ceil(shuffledStreamers.length / 3)
-const rows = Array.from({ length: 3 }, (_, i) =>
-  shuffledStreamers.slice(i * rowSize, (i + 1) * rowSize),
-)
+const rows = ref(initializeRows())
+const isVisible = ref(true)
+const isReady = ref(false)
+
+let observer: IntersectionObserver | null = null
+const containerRef = ref<HTMLElement>()
+
+onMounted(async () => {
+  await nextTick()
+  isReady.value = true
+
+  if (containerRef.value) {
+    observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          isVisible.value = entry.isIntersecting
+        })
+      },
+      { threshold: 0.1 }
+    )
+    observer.observe(containerRef.value)
+  }
+})
+
+onUnmounted(() => {
+  if (observer) {
+    observer.disconnect()
+  }
+})
+
+const safeRows = computed(() => {
+  return rows.value.length >= ROWS_COUNT ? rows.value : Array(ROWS_COUNT).fill([])
+})
 </script>
 
 <template>
   <div
+    ref="containerRef"
     class="bg-background relative flex w-full flex-col items-center justify-center overflow-hidden rounded-lg md:shadow-xl"
+    :class="{ 'animation-paused': !isVisible }"
   >
-    <Marquee pause-on-hover class="[--duration:180s]">
-      <StreamersCard
-        v-memo="[streamer]"
-        v-for="streamer in rows[0]"
-        :key="streamer.username"
-        :img="streamer.img"
-        :username="streamer.username"
-        :followers="streamer.followers"
-        :live="streamer.live"
-        :verified="streamer.verified"
-      />
-    </Marquee>
-    <Marquee reverse pause-on-hover class="[--duration:180s]">
-      <StreamersCard
-        v-memo="[streamer]"
-        v-for="streamer in rows[1]"
-        :key="streamer.username"
-        :img="streamer.img"
-        :username="streamer.username"
-        :followers="streamer.followers"
-        :live="streamer.live"
-        :verified="streamer.verified"
-      />
-    </Marquee>
-    <Marquee pause-on-hover class="[--duration:180s]">
-      <StreamersCard
-        v-memo="[streamer]"
-        v-for="streamer in rows[2]"
-        :key="streamer.username"
-        :img="streamer.img"
-        :username="streamer.username"
-        :followers="streamer.followers"
-        :live="streamer.live"
-        :verified="streamer.verified"
-      />
-    </Marquee>
-    <div class="pointer-events-none absolute top-0 left-0 h-full w-1/6">
-      <div
-        class="pointer-events-none absolute inset-0 rounded-[inherit]"
-        style="
-          mask-image: linear-gradient(
-            270deg,
-            rgba(255, 255, 255, 0) 0%,
-            rgba(255, 255, 255, 1) 11.11111111111111%,
-            rgba(255, 255, 255, 1) 22.22222222222222%,
-            rgba(255, 255, 255, 0) 33.33333333333333%
-          );
-          -webkit-mask-image: linear-gradient(
-            270deg,
-            rgba(255, 255, 255, 0) 0%,
-            rgba(255, 255, 255, 1) 11.11111111111111%,
-            rgba(255, 255, 255, 1) 22.22222222222222%,
-            rgba(255, 255, 255, 0) 33.33333333333333%
-          );
-          backdrop-filter: blur(0px);
-        "
-      ></div>
-      <div
-        class="pointer-events-none absolute inset-0 rounded-[inherit]"
-        style="
-          mask-image: linear-gradient(
-            270deg,
-            rgba(255, 255, 255, 0) 11.11111111111111%,
-            rgba(255, 255, 255, 1) 22.22222222222222%,
-            rgba(255, 255, 255, 1) 33.33333333333333%,
-            rgba(255, 255, 255, 0) 44.44444444444444%
-          );
-          -webkit-mask-image: linear-gradient(
-            270deg,
-            rgba(255, 255, 255, 0) 11.11111111111111%,
-            rgba(255, 255, 255, 1) 22.22222222222222%,
-            rgba(255, 255, 255, 1) 33.33333333333333%,
-            rgba(255, 255, 255, 0) 44.44444444444444%
-          );
-          backdrop-filter: blur(1px);
-        "
-      ></div>
-      <div
-        class="pointer-events-none absolute inset-0 rounded-[inherit]"
-        style="
-          mask-image: linear-gradient(
-            270deg,
-            rgba(255, 255, 255, 0) 22.22222222222222%,
-            rgba(255, 255, 255, 1) 33.33333333333333%,
-            rgba(255, 255, 255, 1) 44.44444444444444%,
-            rgba(255, 255, 255, 0) 55.55555555555556%
-          );
-          -webkit-mask-image: linear-gradient(
-            270deg,
-            rgba(255, 255, 255, 0) 22.22222222222222%,
-            rgba(255, 255, 255, 1) 33.33333333333333%,
-            rgba(255, 255, 255, 1) 44.44444444444444%,
-            rgba(255, 255, 255, 0) 55.55555555555556%
-          );
-          backdrop-filter: blur(2px);
-        "
-      ></div>
-      <div
-        class="pointer-events-none absolute inset-0 rounded-[inherit]"
-        style="
-          mask-image: linear-gradient(
-            270deg,
-            rgba(255, 255, 255, 0) 33.33333333333333%,
-            rgba(255, 255, 255, 1) 44.44444444444444%,
-            rgba(255, 255, 255, 1) 55.55555555555556%,
-            rgba(255, 255, 255, 0) 66.66666666666666%
-          );
-          -webkit-mask-image: linear-gradient(
-            270deg,
-            rgba(255, 255, 255, 0) 33.33333333333333%,
-            rgba(255, 255, 255, 1) 44.44444444444444%,
-            rgba(255, 255, 255, 1) 55.55555555555556%,
-            rgba(255, 255, 255, 0) 66.66666666666666%
-          );
-          backdrop-filter: blur(3px);
-        "
-      ></div>
-      <div
-        class="pointer-events-none absolute inset-0 rounded-[inherit]"
-        style="
-          mask-image: linear-gradient(
-            270deg,
-            rgba(255, 255, 255, 0) 44.44444444444444%,
-            rgba(255, 255, 255, 1) 55.55555555555556%,
-            rgba(255, 255, 255, 1) 66.66666666666666%,
-            rgba(255, 255, 255, 0) 77.77777777777777%
-          );
-          -webkit-mask-image: linear-gradient(
-            270deg,
-            rgba(255, 255, 255, 0) 44.44444444444444%,
-            rgba(255, 255, 255, 1) 55.55555555555556%,
-            rgba(255, 255, 255, 1) 66.66666666666666%,
-            rgba(255, 255, 255, 0) 77.77777777777777%
-          );
-          backdrop-filter: blur(4px);
-        "
-      ></div>
-      <div
-        class="pointer-events-none absolute inset-0 rounded-[inherit]"
-        style="
-          mask-image: linear-gradient(
-            270deg,
-            rgba(255, 255, 255, 0) 55.55555555555556%,
-            rgba(255, 255, 255, 1) 66.66666666666666%,
-            rgba(255, 255, 255, 1) 77.77777777777777%,
-            rgba(255, 255, 255, 0) 88.88888888888889%
-          );
-          -webkit-mask-image: linear-gradient(
-            270deg,
-            rgba(255, 255, 255, 0) 55.55555555555556%,
-            rgba(255, 255, 255, 1) 66.66666666666666%,
-            rgba(255, 255, 255, 1) 77.77777777777777%,
-            rgba(255, 255, 255, 0) 88.88888888888889%
-          );
-          backdrop-filter: blur(5px);
-        "
-      ></div>
-      <div
-        class="pointer-events-none absolute inset-0 rounded-[inherit]"
-        style="
-          mask-image: linear-gradient(
-            270deg,
-            rgba(255, 255, 255, 0) 66.66666666666666%,
-            rgba(255, 255, 255, 1) 77.77777777777777%,
-            rgba(255, 255, 255, 1) 88.88888888888889%,
-            rgba(255, 255, 255, 0) 100%
-          );
-          -webkit-mask-image: linear-gradient(
-            270deg,
-            rgba(255, 255, 255, 0) 66.66666666666666%,
-            rgba(255, 255, 255, 1) 77.77777777777777%,
-            rgba(255, 255, 255, 1) 88.88888888888889%,
-            rgba(255, 255, 255, 0) 100%
-          );
-          backdrop-filter: blur(6px);
-        "
-      ></div>
-      <div
-        class="pointer-events-none absolute inset-0 rounded-[inherit]"
-        style="
-          mask-image: linear-gradient(
-            270deg,
-            rgba(255, 255, 255, 0) 77.77777777777777%,
-            rgba(255, 255, 255, 1) 88.88888888888889%,
-            rgba(255, 255, 255, 1) 100%,
-            rgba(255, 255, 255, 0) 111.11111111111111%
-          );
-          -webkit-mask-image: linear-gradient(
-            270deg,
-            rgba(255, 255, 255, 0) 77.77777777777777%,
-            rgba(255, 255, 255, 1) 88.88888888888889%,
-            rgba(255, 255, 255, 1) 100%,
-            rgba(255, 255, 255, 0) 111.11111111111111%
-          );
-          backdrop-filter: blur(7px);
-        "
-      ></div>
-    </div>
-    <div class="pointer-events-none absolute top-0 right-0 h-full w-1/6">
-      <div
-        class="pointer-events-none absolute inset-0 rounded-[inherit]"
-        style="
-          mask-image: linear-gradient(
-            90deg,
-            rgba(255, 255, 255, 0) 0%,
-            rgba(255, 255, 255, 1) 11.11111111111111%,
-            rgba(255, 255, 255, 1) 22.22222222222222%,
-            rgba(255, 255, 255, 0) 33.33333333333333%
-          );
-          -webkit-mask-image: linear-gradient(
-            90deg,
-            rgba(255, 255, 255, 0) 0%,
-            rgba(255, 255, 255, 1) 11.11111111111111%,
-            rgba(255, 255, 255, 1) 22.22222222222222%,
-            rgba(255, 255, 255, 0) 33.33333333333333%
-          );
-          backdrop-filter: blur(0px);
-        "
-      ></div>
-      <div
-        class="pointer-events-none absolute inset-0 rounded-[inherit]"
-        style="
-          mask-image: linear-gradient(
-            90deg,
-            rgba(255, 255, 255, 0) 11.11111111111111%,
-            rgba(255, 255, 255, 1) 22.22222222222222%,
-            rgba(255, 255, 255, 1) 33.33333333333333%,
-            rgba(255, 255, 255, 0) 44.44444444444444%
-          );
-          -webkit-mask-image: linear-gradient(
-            90deg,
-            rgba(255, 255, 255, 0) 11.11111111111111%,
-            rgba(255, 255, 255, 1) 22.22222222222222%,
-            rgba(255, 255, 255, 1) 33.33333333333333%,
-            rgba(255, 255, 255, 0) 44.44444444444444%
-          );
-          backdrop-filter: blur(1px);
-        "
-      ></div>
-      <div
-        class="pointer-events-none absolute inset-0 rounded-[inherit]"
-        style="
-          mask-image: linear-gradient(
-            90deg,
-            rgba(255, 255, 255, 0) 22.22222222222222%,
-            rgba(255, 255, 255, 1) 33.33333333333333%,
-            rgba(255, 255, 255, 1) 44.44444444444444%,
-            rgba(255, 255, 255, 0) 55.55555555555556%
-          );
-          -webkit-mask-image: linear-gradient(
-            90deg,
-            rgba(255, 255, 255, 0) 22.22222222222222%,
-            rgba(255, 255, 255, 1) 33.33333333333333%,
-            rgba(255, 255, 255, 1) 44.44444444444444%,
-            rgba(255, 255, 255, 0) 55.55555555555556%
-          );
-          backdrop-filter: blur(2px);
-        "
-      ></div>
-      <div
-        class="pointer-events-none absolute inset-0 rounded-[inherit]"
-        style="
-          mask-image: linear-gradient(
-            90deg,
-            rgba(255, 255, 255, 0) 33.33333333333333%,
-            rgba(255, 255, 255, 1) 44.44444444444444%,
-            rgba(255, 255, 255, 1) 55.55555555555556%,
-            rgba(255, 255, 255, 0) 66.66666666666666%
-          );
-          -webkit-mask-image: linear-gradient(
-            90deg,
-            rgba(255, 255, 255, 0) 33.33333333333333%,
-            rgba(255, 255, 255, 1) 44.44444444444444%,
-            rgba(255, 255, 255, 1) 55.55555555555556%,
-            rgba(255, 255, 255, 0) 66.66666666666666%
-          );
-          backdrop-filter: blur(3px);
-        "
-      ></div>
-      <div
-        class="pointer-events-none absolute inset-0 rounded-[inherit]"
-        style="
-          mask-image: linear-gradient(
-            90deg,
-            rgba(255, 255, 255, 0) 44.44444444444444%,
-            rgba(255, 255, 255, 1) 55.55555555555556%,
-            rgba(255, 255, 255, 1) 66.66666666666666%,
-            rgba(255, 255, 255, 0) 77.77777777777777%
-          );
-          -webkit-mask-image: linear-gradient(
-            90deg,
-            rgba(255, 255, 255, 0) 44.44444444444444%,
-            rgba(255, 255, 255, 1) 55.55555555555556%,
-            rgba(255, 255, 255, 1) 66.66666666666666%,
-            rgba(255, 255, 255, 0) 77.77777777777777%
-          );
-          backdrop-filter: blur(4px);
-        "
-      ></div>
-      <div
-        class="pointer-events-none absolute inset-0 rounded-[inherit]"
-        style="
-          mask-image: linear-gradient(
-            90deg,
-            rgba(255, 255, 255, 0) 55.55555555555556%,
-            rgba(255, 255, 255, 1) 66.66666666666666%,
-            rgba(255, 255, 255, 1) 77.77777777777777%,
-            rgba(255, 255, 255, 0) 88.88888888888889%
-          );
-          -webkit-mask-image: linear-gradient(
-            90deg,
-            rgba(255, 255, 255, 0) 55.55555555555556%,
-            rgba(255, 255, 255, 1) 66.66666666666666%,
-            rgba(255, 255, 255, 1) 77.77777777777777%,
-            rgba(255, 255, 255, 0) 88.88888888888889%
-          );
-          backdrop-filter: blur(5px);
-        "
-      ></div>
-      <div
-        class="pointer-events-none absolute inset-0 rounded-[inherit]"
-        style="
-          mask-image: linear-gradient(
-            90deg,
-            rgba(255, 255, 255, 0) 66.66666666666666%,
-            rgba(255, 255, 255, 1) 77.77777777777777%,
-            rgba(255, 255, 255, 1) 88.88888888888889%,
-            rgba(255, 255, 255, 0) 100%
-          );
-          -webkit-mask-image: linear-gradient(
-            90deg,
-            rgba(255, 255, 255, 0) 66.66666666666666%,
-            rgba(255, 255, 255, 1) 77.77777777777777%,
-            rgba(255, 255, 255, 1) 88.88888888888889%,
-            rgba(255, 255, 255, 0) 100%
-          );
-          backdrop-filter: blur(6px);
-        "
-      ></div>
-      <div
-        class="pointer-events-none absolute inset-0 rounded-[inherit]"
-        style="
-          mask-image: linear-gradient(
-            90deg,
-            rgba(255, 255, 255, 0) 77.77777777777777%,
-            rgba(255, 255, 255, 1) 88.88888888888889%,
-            rgba(255, 255, 255, 1) 100%,
-            rgba(255, 255, 255, 0) 111.11111111111111%
-          );
-          -webkit-mask-image: linear-gradient(
-            90deg,
-            rgba(255, 255, 255, 0) 77.77777777777777%,
-            rgba(255, 255, 255, 1) 88.88888888888889%,
-            rgba(255, 255, 255, 1) 100%,
-            rgba(255, 255, 255, 0) 111.11111111111111%
-          );
-          backdrop-filter: blur(7px);
-        "
-      ></div>
-    </div>
-    <div
-      class="from-background pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-linear-to-r"
-    ></div>
-    <div
-      class="from-background pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-linear-to-l"
-    ></div>
+    <template v-if="isReady">
+      <Marquee
+        v-if="safeRows[0]?.length > 0"
+        pause-on-hover
+        class="[--duration:120s]"
+        :repeat="3"
+      >
+        <StreamersCard
+          v-for="streamer in safeRows[0]"
+          :key="`row1-${streamer.username}`"
+          :img="streamer.img"
+          :username="streamer.username"
+          :followers="streamer.followers"
+          :live="streamer.live"
+          :verified="streamer.verified"
+        />
+      </Marquee>
+
+      <Marquee
+        v-if="safeRows[1]?.length > 0"
+        reverse
+        pause-on-hover
+        class="[--duration:120s]"
+        :repeat="3"
+      >
+        <StreamersCard
+          v-for="streamer in safeRows[1]"
+          :key="`row2-${streamer.username}`"
+          :img="streamer.img"
+          :username="streamer.username"
+          :followers="streamer.followers"
+          :live="streamer.live"
+          :verified="streamer.verified"
+        />
+      </Marquee>
+
+      <Marquee
+        v-if="safeRows[2]?.length > 0"
+        pause-on-hover
+        class="[--duration:120s]"
+        :repeat="3"
+      >
+        <StreamersCard
+          v-for="streamer in safeRows[2]"
+          :key="`row3-${streamer.username}`"
+          :img="streamer.img"
+          :username="streamer.username"
+          :followers="streamer.followers"
+          :live="streamer.live"
+          :verified="streamer.verified"
+        />
+      </Marquee>
+    </template>
+
+    <div class="pointer-events-none absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-background to-transparent"></div>
+    <div class="pointer-events-none absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-background to-transparent"></div>
   </div>
 </template>
+
+<style scoped>
+.animation-paused * {
+  animation-play-state: paused !important;
+}
+</style>

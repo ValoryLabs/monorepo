@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import {cn} from '@/lib/utils'
+import { cn } from '@/lib/utils'
 
 const props = withDefaults(
   defineProps<{
@@ -12,7 +12,7 @@ const props = withDefaults(
   {
     pauseOnHover: false,
     vertical: false,
-    repeat: 4,
+    repeat: 2,
   },
 )
 </script>
@@ -21,14 +21,13 @@ const props = withDefaults(
   <div
     :class="
       cn(
-        'group flex overflow-hidden p-2 [--duration:40s] [--gap:3rem] [gap:var(--gap)]',
+        'group flex overflow-hidden p-2 [--duration:40s] [--gap:2rem] [gap:var(--gap)]',
         vertical ? 'flex-col' : 'flex-row',
         props.class,
       )
     "
   >
     <div
-      v-memo="[index]"
       v-for="index in repeat"
       :key="index"
       :class="
@@ -36,11 +35,9 @@ const props = withDefaults(
           'flex shrink-0 justify-around [gap:var(--gap)]',
           vertical ? 'animate-marquee-vertical flex-col' : 'animate-marquee flex-row',
           pauseOnHover ? 'group-hover:[animation-play-state:paused]' : '',
+          reverse ? 'animate-reverse' : '',
         )
       "
-      :style="{
-        animationDirection: reverse ? 'reverse' : 'normal',
-      }"
     >
       <slot />
     </div>
@@ -50,28 +47,46 @@ const props = withDefaults(
 <style scoped>
 .animate-marquee {
   animation: marquee var(--duration) linear infinite;
-  animation-direction: reverse;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
 }
 
 .animate-marquee-vertical {
   animation: marquee-vertical var(--duration) linear infinite;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+}
+
+.animate-reverse.animate-marquee {
+  animation-direction: reverse;
+}
+
+.animate-reverse.animate-marquee-vertical {
+  animation-direction: reverse;
 }
 
 @keyframes marquee {
   from {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
   to {
-    transform: translateX(calc(-100% - var(--gap)));
+    transform: translate3d(calc(-100% - var(--gap)), 0, 0);
   }
 }
 
 @keyframes marquee-vertical {
   from {
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0);
   }
   to {
-    transform: translateY(calc(-100% - var(--gap)));
+    transform: translate3d(0, calc(-100% - var(--gap)), 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-marquee-vertical {
+    animation-duration: 200s;
   }
 }
 </style>

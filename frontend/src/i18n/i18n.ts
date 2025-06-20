@@ -25,7 +25,7 @@ function getDefaultLocale(): ValidLocale {
     return saved as ValidLocale
   }
 
-  const browserLang = (navigator.language || navigator.userLanguage || 'en')
+  const browserLang = (navigator.language || 'en')
     .toLowerCase()
     .split('-')[0]
 
