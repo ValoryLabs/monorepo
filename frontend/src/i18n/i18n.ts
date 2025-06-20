@@ -7,7 +7,6 @@ import { resolveValue } from '@intlify/core-base'
 
 registerMessageResolver(resolveValue)
 
-// Конфигурация доступных языков
 export const AVAILABLE_LOCALES = [
   { code: 'en', name: 'English' },
   { code: 'ru', name: 'Русский' },

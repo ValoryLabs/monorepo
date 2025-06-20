@@ -20,7 +20,7 @@ export default defineConfig(({ mode }) => {
       vue(),
       VueI18nPlugin({
         module: 'petite-vue-i18n',
-        include: [path.resolve(__dirname, './src/locales/**')],
+        include: [path.resolve(__dirname, './src/i18n/locales/**')],
       }),
       eslint(),
       mode === 'analyze' && visualizer({
