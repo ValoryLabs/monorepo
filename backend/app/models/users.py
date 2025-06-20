@@ -12,7 +12,7 @@ from sqlalchemy import (
 from sqlalchemy.orm import relationship, Mapped, mapped_column
 from sqlalchemy.sql import func
 
-from app.database.database import Base
+from app.db.database import Base
 
 if TYPE_CHECKING:
     from app.models.overlays import Overlay

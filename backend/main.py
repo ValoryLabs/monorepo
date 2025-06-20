@@ -5,7 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 
 from app.config import settings
-from app.database.redis import redis_manager
+from app.db.redis import redis_manager
 from app.middlewares.permormance import PerformanceMiddleware
 from app.routers import api_router
 

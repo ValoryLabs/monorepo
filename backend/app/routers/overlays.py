@@ -4,7 +4,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 
-from app.database.database import get_session
+from app.db.database import get_session
 from app.models.overlays import Overlay
 from app.schemas.overlays import SOverlayResponse
 

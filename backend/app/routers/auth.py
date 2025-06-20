@@ -10,7 +10,7 @@ from fastapi.responses import RedirectResponse
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.config import settings
-from app.database.database import get_session
+from app.db.database import get_session
 from app.utils.auth import authenticate_user, create_access_token
 
 router = APIRouter()
