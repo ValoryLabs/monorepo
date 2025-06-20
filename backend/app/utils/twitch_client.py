@@ -130,7 +130,7 @@ class TwitchAPIClient:
                                     "display_name": user["display_name"],
                                     "profile_image_url": user["profile_image_url"],
                                     "broadcaster_type": user.get("broadcaster_type", ""),
-                                    "verified": user.get("broadcaster_type") in ["partner", "affiliate"]
+                                    "verified": user.get("broadcaster_type") in ["partner"]
                                 }
                         else:
                             error_text = await response.text()

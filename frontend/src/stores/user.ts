@@ -121,7 +121,7 @@ export const useUserStore = defineStore(
           withCredentials: true,
         })
         user.value = await response.data
-      } catch (err) {
+      } catch (err: any) {
         error.value = true
         user.value = null
         console.log(err.response?.data?.detail || err.message)

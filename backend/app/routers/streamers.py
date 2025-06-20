@@ -1,3 +1,4 @@
+import json
 from typing import List, Optional, Any, Dict
 from fastapi import APIRouter, Depends, Query, HTTPException
 
@@ -5,7 +6,7 @@ from redis.asyncio import Redis
 
 from app.config import logger
 from app.db.redis import get_redis
-from app.schemas.streamers import StreamerResponse
+from app.schemas.streamers import StreamerResponse, SortBy, SortOrder
 from app.utils.twitch_client import twitch_client
 
 router = APIRouter()
@@ -243,3 +244,207 @@ async def get_streamers_stats(
     except Exception as e:
         logger.error(f"Error getting streamers stats: {str(e)}")
         raise HTTPException(status_code=500, detail="Failed to get streamers statistics")
+
+
+def parse_follower_count(followers_str: str) -> int:
+    """Parse follower count string to integer for sorting."""
+    if not followers_str:
+        return 0
+
+    try:
+        if followers_str.endswith('M'):
+            return int(float(followers_str[:-1]) * 1000000)
+        elif followers_str.endswith('k'):
+            return int(float(followers_str[:-1]) * 1000)
+        else:
+            return int(followers_str) if followers_str.isdigit() else 0
+    except (ValueError, TypeError):
+        return 0
+
+
+def sort_streamers(streamers_data: List[Dict[str, Any]], sort_by: SortBy, sort_order: SortOrder) -> List[
+    Dict[str, Any]]:
+    """Sort streamers data by specified criteria."""
+
+    def get_sort_key(streamer):
+        if sort_by == SortBy.followers:
+            return parse_follower_count(streamer.get("followers", "0"))
+        elif sort_by == SortBy.viewers:
+            return streamer.get("viewers", 0) or 0
+        elif sort_by == SortBy.username:
+            return streamer.get("username", "").lower()
+        elif sort_by == SortBy.live_status:
+            # Live streamers first (1), then offline (0)
+            return int(streamer.get("live", False))
+        else:
+            return 0
+
+    reverse = sort_order == SortOrder.desc
+    return sorted(streamers_data, key=get_sort_key, reverse=reverse)
+
+
+@router.get("/sorted", response_model=List[StreamerResponse], summary="Get sorted streamers")
+async def get_sorted_streamers(
+        sort_by: SortBy = Query(SortBy.followers, description="Sort streamers by field"),
+        sort_order: SortOrder = Query(SortOrder.desc, description="Sort direction"),
+        live_only: bool = Query(False, description="Return only live streamers"),
+        verified_only: bool = Query(False, description="Return only verified streamers"),
+        limit: Optional[int] = Query(None, ge=1, le=100, description="Limit number of streamers returned"),
+        refresh_cache: bool = Query(False, description="Force refresh cache from Twitch API"),
+        cache: Redis = Depends(get_redis)
+) -> List[StreamerResponse]:
+    """
+    Get list of streamers sorted by specified criteria.
+
+    Args:
+        sort_by: Field to sort by (followers, viewers, username, live_status)
+        sort_order: Sort direction (asc, desc)
+        live_only: Return only live streamers
+        verified_only: Return only verified streamers
+        limit: Maximum number of streamers to return
+        refresh_cache: Force refresh cache from Twitch API
+        cache: Redis cache instance
+    """
+    try:
+        # Get fresh data from cache or API
+        streamers_data = await get_cached_streamers_data(cache, refresh_cache)
+
+        # Apply filters
+        filtered_streamers = streamers_data
+
+        if live_only:
+            filtered_streamers = [s for s in filtered_streamers if s.get("live", False)]
+
+        if verified_only:
+            filtered_streamers = [s for s in filtered_streamers if s.get("verified", False)]
+
+        # Sort streamers
+        sorted_streamers = sort_streamers(filtered_streamers, sort_by, sort_order)
+
+        # Apply limit if specified
+        if limit:
+            sorted_streamers = sorted_streamers[:limit]
+
+        return [StreamerResponse(**streamer) for streamer in sorted_streamers]
+
+    except Exception as e:
+        logger.error(f"Error getting sorted streamers: {str(e)}")
+        raise HTTPException(status_code=500, detail="Failed to get sorted streamers")
+
+
+@router.get("/top", response_model=List[StreamerResponse], summary="Get top streamers")
+async def get_top_streamers(
+        by: SortBy = Query(SortBy.followers, description="Criteria for top streamers"),
+        limit: int = Query(10, ge=1, le=50, description="Number of top streamers to return"),
+        live_only: bool = Query(False, description="Consider only live streamers"),
+        verified_only: bool = Query(False, description="Consider only verified streamers"),
+        refresh_cache: bool = Query(False, description="Force refresh cache from Twitch API"),
+        cache: Redis = Depends(get_redis)
+) -> List[StreamerResponse]:
+    """
+    Get top streamers by specified criteria.
+
+    Args:
+        by: Criteria for ranking (followers, viewers, etc.)
+        limit: Number of top streamers to return
+        live_only: Consider only live streamers
+        verified_only: Consider only verified streamers
+        refresh_cache: Force refresh cache from Twitch API
+        cache: Redis cache instance
+    """
+    try:
+        # Get fresh data from cache or API
+        streamers_data = await get_cached_streamers_data(cache, refresh_cache)
+
+        # Apply filters
+        filtered_streamers = streamers_data
+
+        if live_only:
+            filtered_streamers = [s for s in filtered_streamers if s.get("live", False)]
+
+        if verified_only:
+            filtered_streamers = [s for s in filtered_streamers if s.get("verified", False)]
+
+        # Sort by specified criteria (always descending for "top")
+        sorted_streamers = sort_streamers(filtered_streamers, by, SortOrder.desc)
+
+        # Return top N streamers
+        top_streamers = sorted_streamers[:limit]
+
+        return [StreamerResponse(**streamer) for streamer in top_streamers]
+
+    except Exception as e:
+        logger.error(f"Error getting top streamers: {str(e)}")
+        raise HTTPException(status_code=500, detail="Failed to get top streamers")
+
+
+@router.get("/mixed-sort", response_model=List[StreamerResponse], summary="Get streamers with mixed sorting")
+async def get_mixed_sorted_streamers(
+        primary_sort: SortBy = Query(SortBy.live_status, description="Primary sort criteria"),
+        secondary_sort: SortBy = Query(SortBy.followers, description="Secondary sort criteria"),
+        sort_order: SortOrder = Query(SortOrder.desc, description="Sort direction"),
+        verified_only: bool = Query(False, description="Return only verified streamers"),
+        limit: Optional[int] = Query(None, ge=1, le=100, description="Limit number of streamers returned"),
+        refresh_cache: bool = Query(False, description="Force refresh cache from Twitch API"),
+        cache: Redis = Depends(get_redis)
+) -> List[StreamerResponse]:
+    """
+    Get streamers with mixed sorting (e.g., live status first, then by followers).
+
+    Args:
+        primary_sort: Primary sort criteria
+        secondary_sort: Secondary sort criteria
+        sort_order: Sort direction
+        verified_only: Return only verified streamers
+        limit: Maximum number of streamers to return
+        refresh_cache: Force refresh cache from Twitch API
+        cache: Redis cache instance
+    """
+    try:
+        # Get fresh data from cache or API
+        streamers_data = await get_cached_streamers_data(cache, refresh_cache)
+
+        # Filter by verified status if requested
+        if verified_only:
+            streamers_data = [s for s in streamers_data if s.get("verified", False)]
+
+        # Mixed sorting function
+        def mixed_sort_key(streamer):
+            primary_val = 0
+            secondary_val = 0
+
+            # Primary sort value
+            if primary_sort == SortBy.live_status:
+                primary_val = int(streamer.get("live", False))
+            elif primary_sort == SortBy.followers:
+                primary_val = parse_follower_count(streamer.get("followers", "0"))
+            elif primary_sort == SortBy.viewers:
+                primary_val = streamer.get("viewers", 0) or 0
+            elif primary_sort == SortBy.username:
+                primary_val = streamer.get("username", "").lower()
+
+            # Secondary sort value
+            if secondary_sort == SortBy.live_status:
+                secondary_val = int(streamer.get("live", False))
+            elif secondary_sort == SortBy.followers:
+                secondary_val = parse_follower_count(streamer.get("followers", "0"))
+            elif secondary_sort == SortBy.viewers:
+                secondary_val = streamer.get("viewers", 0) or 0
+            elif secondary_sort == SortBy.username:
+                secondary_val = streamer.get("username", "").lower()
+
+            return (primary_val, secondary_val)
+
+        reverse = sort_order == SortOrder.desc
+        sorted_streamers = sorted(streamers_data, key=mixed_sort_key, reverse=reverse)
+
+        # Apply limit if specified
+        if limit:
+            sorted_streamers = sorted_streamers[:limit]
+
+        return [StreamerResponse(**streamer) for streamer in sorted_streamers]
+
+    except Exception as e:
+        logger.error(f"Error getting mixed sorted streamers: {str(e)}")
+        raise HTTPException(status_code=500, detail="Failed to get mixed sorted streamers")
+
