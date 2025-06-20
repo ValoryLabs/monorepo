@@ -1,20 +1,20 @@
-import logging
 from typing import Optional
 
 from fastapi import APIRouter, Cookie, Depends, HTTPException, status
 from jose import ExpiredSignatureError, JWTError, jwt
 from pydantic import BaseModel
+from redis.asyncio.client import Redis
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.config import settings
+from app.config import settings, logger
 from app.dao.overlays import OverlaysDAO
 from app.dao.users import UsersDAO
 from app.db.database import get_session
+from app.db.redis import get_redis
 from app.models.users import User
 
 router = APIRouter()
 
-logger = logging.getLogger(__name__)
 
 class HdevApiKeyRequest(BaseModel):
     hdev_api_key: str
@@ -45,7 +45,8 @@ class OverlaySettingsRequest(BaseModel):
 
 async def get_current_user(
         token: str | None = Cookie(default=None, alias="Authorization"),
-        session: AsyncSession = Depends(get_session)
+        session: AsyncSession = Depends(get_session),
+        cache: Redis = Depends(get_redis)
 ) -> User:
     if not token:
         logger.warning("Token is missing in cookies")
@@ -79,7 +80,7 @@ async def get_current_user(
             detail="Token payload does not contain 'sub' field"
         )
 
-    user_db = await UsersDAO.find_by_id(session, int(user_id))
+    user_db = await UsersDAO.find_by_id(session, cache, int(user_id))
     if user_db is None:
         logger.warning(f"User with id {user_id} not found in database")
         raise HTTPException(
@@ -90,8 +91,12 @@ async def get_current_user(
     return user_db
 
 @router.get("/me", summary="Получить информацию о текущем пользователе")
-async def read_users_me(current_user: User = Depends(get_current_user), session: AsyncSession = Depends(get_session)):
-    overlay = await OverlaysDAO.find_by_user_id(session, int(current_user.id))
+async def read_users_me(
+        current_user: User = Depends(get_current_user),
+        session: AsyncSession = Depends(get_session),
+        cache: Redis = Depends(get_redis)
+) -> dict:
+    overlay = await OverlaysDAO.find_by_user_id(session, cache, int(current_user.id))
 
     return {
         "id": current_user.id,
@@ -107,7 +112,8 @@ async def read_users_me(current_user: User = Depends(get_current_user), session:
 async def set_riot_id(
         request: RiotIDRequest,
         current_user: User = Depends(get_current_user),
-        session: AsyncSession = Depends(get_session)
+        session: AsyncSession = Depends(get_session),
+        cache: Redis = Depends(get_redis)
 ):
     if not request.riot_id:
         logger.warning("Riot ID is empty")
@@ -116,7 +122,7 @@ async def set_riot_id(
             detail="Riot ID is empty"
         )
 
-    set_riot_id = await UsersDAO.set_riot_id(session, current_user.id, request.riot_id)
+    set_riot_id = await UsersDAO.set_riot_id(session, cache, current_user.id, request.riot_id)
     if set_riot_id:
         return {"message": "Riot ID set successfully"}
     else:
@@ -130,7 +136,8 @@ async def set_riot_id(
 async def set_hdev_api_key(
         request: HdevApiKeyRequest,
         current_user: User = Depends(get_current_user),
-        session: AsyncSession = Depends(get_session)
+        session: AsyncSession = Depends(get_session),
+        cache: Redis = Depends(get_redis)
 ):
     if not request.hdev_api_key:
         logger.warning("HDEV API key is empty")
@@ -139,7 +146,7 @@ async def set_hdev_api_key(
             detail="HDEV API key is empty"
         )
 
-    set_hdev_api_key = await UsersDAO.set_hdev_api_key(session, current_user.id, request.hdev_api_key)
+    set_hdev_api_key = await UsersDAO.set_hdev_api_key(session, cache, current_user.id, request.hdev_api_key)
     if set_hdev_api_key:
         return {"message": "HDEV API key set successfully"}
     else:
@@ -153,7 +160,8 @@ async def set_hdev_api_key(
 async def save_overlay_settings(
         request: OverlaySettingsRequest,
         current_user: User = Depends(get_current_user),
-        session: AsyncSession = Depends(get_session)
+        session: AsyncSession = Depends(get_session),
+        cache: Redis = Depends(get_redis)
 ):
     try:
         settings_data = request.dict(exclude_none=True)
@@ -167,6 +175,7 @@ async def save_overlay_settings(
 
         saved_settings = await OverlaysDAO.save_overlay_settings(
             session,
+            cache,
             current_user.id,
             settings_data
         )

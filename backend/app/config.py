@@ -1,3 +1,4 @@
+import logging
 from pathlib import Path
 
 from pydantic import computed_field
@@ -34,6 +35,8 @@ class Settings(BaseSettings):
     REDIS_IP: str = "localhost"
     REDIS_PORT: int = 6379
 
+    CACHE_TTL: int = 60 * 60 * 24 * 31
+
     model_config = SettingsConfigDict(env_file=ENV_FILE, extra="ignore")
 
     @computed_field
@@ -51,6 +54,7 @@ class Settings(BaseSettings):
     def REDIS_URL(self) -> str:
         return f"redis://{self.REDIS_LOGIN}:{self.REDIS_PASSWORD}@{self.REDIS_IP}:{self.REDIS_PORT}/0"
 
+logger = logging.getLogger(__name__)
 settings = Settings()
 database_url = settings.DB_URL
 redis_url = settings.REDIS_URL

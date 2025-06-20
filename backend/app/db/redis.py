@@ -7,12 +7,10 @@ from app.config import redis_url
 class RedisManager:
     def __init__(self):
         self.redis: Optional[Redis] = None
-        self.redis_pool: Optional[ConnectionPool] = None
 
     async def connect(self):
         """Connect to Redis"""
-        self.redis_pool = ConnectionPool.from_url(redis_url, encoding="utf-8", decode_responses=True, max_connections=20)
-        self.redis = Redis.from_url(redis_url, encoding="utf-8", decode_responses=True, connection_pool=self.redis_pool)
+        self.redis = Redis.from_url(redis_url, encoding="utf-8", decode_responses=True)
 
     async def disconnect(self):
         """Disconnect from Redis"""
