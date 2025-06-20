@@ -29,6 +29,11 @@ class Settings(BaseSettings):
     DATABASE_IP: str = "localhost"
     DATABASE_PORT: int = 5432
 
+    REDIS_LOGIN: str = "user"
+    REDIS_PASSWORD: str = "password"
+    REDIS_IP: str = "localhost"
+    REDIS_PORT: int = 6379
+
     model_config = SettingsConfigDict(env_file=ENV_FILE, extra="ignore")
 
     @computed_field
@@ -41,6 +46,11 @@ class Settings(BaseSettings):
     def DB_URL(self) -> str:
         return f"postgresql+asyncpg://{self.DATABASE_LOGIN}:{self.DATABASE_PASSWORD}@{self.DATABASE_IP}:{self.DATABASE_PORT}/{self.DATABASE_NAME}"
 
+    @computed_field
+    @property
+    def REDIS_URL(self) -> str:
+        return f"redis://{self.REDIS_LOGIN}:{self.REDIS_PASSWORD}@{self.REDIS_IP}:{self.REDIS_PORT}/0"
 
 settings = Settings()
 database_url = settings.DB_URL
+redis_url = settings.REDIS_URL

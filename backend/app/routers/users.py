@@ -9,7 +9,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.config import settings
 from app.dao.overlays import OverlaysDAO
 from app.dao.users import UsersDAO
-from app.database import get_session
+from app.database.database import get_session
 from app.models.users import User
 
 router = APIRouter()

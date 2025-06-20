@@ -1,10 +1,20 @@
+from contextlib import asynccontextmanager
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 
 from app.config import settings
+from app.database.redis import redis_manager
 from app.middlewares.permormance import PerformanceMiddleware
 from app.routers import api_router
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    await redis_manager.connect()
+    yield
+    await redis_manager.disconnect()
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
@@ -12,6 +22,7 @@ app = FastAPI(
     version=settings.VERSION,
     docs_url="/docs" if settings.DEBUG else None,
     redoc_url="/redoc" if settings.DEBUG else None,
+    lifespan=lifespan
 )
 
 app.add_middleware(
