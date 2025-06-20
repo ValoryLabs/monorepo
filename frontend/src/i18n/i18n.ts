@@ -66,7 +66,7 @@ watch(locale, async (newLocale) => {
   if (!i18n.global.availableLocales.includes(newLocale)) {
     await loadLocaleMessages(i18n, newLocale)
   }
-  i18n.global.locale = newLocale
+  i18n.global.locale.value = newLocale
 })
 
 setupI18n()

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
 import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
-import { getOverlayData } from '@/api/backend.ts'
+import { getOverlayData } from '@/services/backend.ts'
 
 import OldOverlay from '@/components/overlays/OldOverlay.vue'
 import NewOverlay from '@/components/overlays/NewOverlay.vue'

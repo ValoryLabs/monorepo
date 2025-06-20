@@ -1,5 +1,4 @@
 <script setup lang="ts">
-// import Features from '@/components/home/Features.vue'
 import {defineAsyncComponent} from 'vue'
 import Hero from '@/components/home/Hero.vue'
 import {useHead} from '@unhead/vue'
@@ -20,7 +19,6 @@ useHead({
 <template>
   <DefaultLayout>
     <Hero />
-    <!-- <Features /> -->
     <Streamers />
     <OpenSource />
   </DefaultLayout>
