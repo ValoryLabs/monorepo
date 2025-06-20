@@ -4,17 +4,43 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 
-from app.config import settings
+from app.config import settings, logger
 from app.db.redis import redis_manager
 from app.middlewares.permormance import PerformanceMiddleware
 from app.routers import api_router
+from app.schedule import streamer_scheduler
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    await redis_manager.connect()
+    """Manage application lifespan events."""
+    # Startup
+    try:
+        # Connect to Redis
+        await redis_manager.connect()
+        logger.info("Redis connection established")
+
+        # Start the streamer update scheduler
+        streamer_scheduler.start()
+        logger.info("Streamer scheduler started")
+
+    except Exception as e:
+        logger.error(f"Error during startup: {str(e)}")
+
     yield
-    await redis_manager.disconnect()
+
+    # Shutdown
+    try:
+        # Stop the scheduler first
+        streamer_scheduler.stop()
+        logger.info("Streamer scheduler stopped")
+
+        # Disconnect from Redis
+        await redis_manager.disconnect()
+        logger.info("Redis connection closed")
+
+    except Exception as e:
+        logger.error(f"Error during shutdown: {str(e)}")
 
 app = FastAPI(
     title=settings.PROJECT_NAME,

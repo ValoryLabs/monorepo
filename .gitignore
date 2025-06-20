@@ -82,3 +82,4 @@ __pycache__
 /frontend/.eslintcache
 /frontend/node_modules/.cache/
 /frontend/dist/stats.html
+/log.txt

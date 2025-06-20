@@ -39,6 +39,9 @@ class Settings(BaseSettings):
 
     CACHE_TTL: int = 60 * 60 * 24 * 31
 
+    SCHEDULER_UPDATE_INTERVAL: int = 30
+    SCHEDULER_ENABLED: bool = True
+
     model_config = SettingsConfigDict(env_file=ENV_FILE, extra="ignore")
 
     @computed_field
@@ -54,8 +57,31 @@ class Settings(BaseSettings):
     @computed_field
     @property
     def REDIS_URL(self) -> str:
-        return f"redis://{self.REDIS_LOGIN}:{self.REDIS_PASSWORD}@{self.REDIS_IP}:{self.REDIS_PORT}/0"
+        if self.REDIS_PASSWORD:
+            if self.REDIS_LOGIN and self.REDIS_LOGIN != "user":
+                return f"redis://{self.REDIS_LOGIN}:{self.REDIS_PASSWORD}@{self.REDIS_IP}:{self.REDIS_PORT}/0"
+            else:
+                return f"redis://:{self.REDIS_PASSWORD}@{self.REDIS_IP}:{self.REDIS_PORT}/0"
+        else:
+            return f"redis://{self.REDIS_IP}:{self.REDIS_PORT}/0"
 
+
+def setup_logging():
+    """Setup logging configuration."""
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+        handlers=[
+            logging.FileHandler(LOG_FILE_PATH),  # Используем определенную переменную
+            logging.StreamHandler()
+        ]
+    )
+
+    # Set specific log levels
+    logging.getLogger('apscheduler').setLevel(logging.WARNING)
+    logging.getLogger('aiohttp').setLevel(logging.WARNING)
+
+setup_logging()
 logger = logging.getLogger(__name__)
 settings = Settings()
 database_url = settings.DB_URL
