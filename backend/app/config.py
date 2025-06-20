@@ -23,6 +23,8 @@ class Settings(BaseSettings):
 
     TWITCH_CLIENT_ID: str
     TWITCH_CLIENT_SECRET: str
+    TWITCH_CLIENT_ID_FOR_CLIENT: str
+    TWITCH_ACCESS_TOKEN: str
 
     DATABASE_LOGIN: str = "user"
     DATABASE_PASSWORD: str = "password"
