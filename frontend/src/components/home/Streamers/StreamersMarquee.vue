@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import { onMounted, computed } from 'vue'
-import { StreamersCard } from '@/components/home/Streamers'
-import { useAuthStore, useStreamersStore } from '@/stores'
+import { StreamersCard, StreamersCardMock} from '@/components/home/Streamers'
+import { useStreamersStore } from '@/stores'
 import { storeToRefs } from 'pinia'
 import { Skeleton } from '@/components/ui/skeleton'
 
-const authStore = useAuthStore()
 const streamersStore = useStreamersStore()
 const { streamers, loading, error } = storeToRefs(streamersStore)
 
@@ -20,14 +19,6 @@ const safeStreamers = computed(() => {
     streamer.username &&
     typeof streamer.username === 'string'
   )
-})
-
-const loginLink = computed(() => {
-  if (!authStore.isAuthenticated) {
-    return 'signin'
-  } else {
-    return 'configurator'
-  }
 })
 
 onMounted(async () => {
@@ -47,18 +38,13 @@ onMounted(async () => {
           <div class="h-fit">
             <Skeleton class="rounded-full size-[32px] border" />
           </div>
-          <div class="flex flex-col gap-2">
-            <Skeleton class="line-clamp-1 h-3 w-20 rounded-md border" />
-            <Skeleton class="line-clamp-1 h-3 w-24 rounded-md border" />
+          <div class="flex flex-col gap-1">
+            <Skeleton class="line-clamp-1 h-[17px] w-20 rounded-md border" />
+            <Skeleton class="line-clamp-1 h-[15px] w-24 rounded-md border" />
           </div>
         </div>
       </figure>
-      <StreamersCard
-        img="/twitch_avatar.webp"
-        username="You?"
-        text="1 million"
-        :link="loginLink"
-      />
+      <StreamersCardMock/>
     </div>
 
     <div
@@ -75,12 +61,7 @@ onMounted(async () => {
         :live="streamer.live"
         :verified="streamer.verified"
       />
-      <StreamersCard
-        img="/twitch_avatar.webp"
-        username="You?"
-        text="Click on me to start!"
-        link="/configurator"
-      />
+      <StreamersCardMock/>
     </div>
   </Transition>
 </template>
