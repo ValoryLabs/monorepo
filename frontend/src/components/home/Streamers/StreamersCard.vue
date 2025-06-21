@@ -154,12 +154,4 @@ figure:focus-visible {
   outline: 2px solid #3b82f6;
   outline-offset: 2px;
 }
-
-figure {
-  transition: all 0.2s ease-in-out;
-}
-
-figure:hover {
-  transform: translateY(-1px);
-}
 </style>
