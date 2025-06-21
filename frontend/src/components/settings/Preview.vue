@@ -9,6 +9,14 @@ const { previewImage } = storeToRefs(userStore)
 
 const images = [
   {
+    name: 'None',
+    src: '',
+  },
+  {
+    name: 'Abyss',
+    src: '/thumbnails/abyss.webp',
+  },
+  {
     name: 'Ascent',
     src: '/thumbnails/ascent.webp',
   },
@@ -47,11 +55,7 @@ const images = [
   {
     name: 'Sunset',
     src: '/thumbnails/sunset.webp',
-  },
-  {
-    name: 'None',
-    src: '',
-  },
+  }
 ]
 </script>
 

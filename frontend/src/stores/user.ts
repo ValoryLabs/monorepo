@@ -11,7 +11,7 @@ export const useUserStore = defineStore(
     const profileActive: Ref<boolean> = ref(true)
     const configuratorActive: Ref<boolean> = ref(false)
     const previewActive: Ref<boolean> = ref(false)
-    const previewImage: Ref<string | null> = ref('bind')
+    const previewImage: Ref<string | null> = ref('abyss')
     const previewDraggable: Ref<boolean> = ref(true)
 
     const overlayDimensions: Ref<string | null> = ref('0 x 0')

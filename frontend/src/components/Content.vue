@@ -7,7 +7,6 @@ import { Button } from '@/components/ui/button'
 import { Hand } from 'lucide-vue-next'
 
 import { nextTick, onBeforeUnmount, onMounted, onUnmounted, reactive, ref } from 'vue'
-import { openLink } from '@/lib/utils'
 
 import Panel from '@/components/ui/Panel.vue'
 
@@ -200,15 +199,6 @@ onBeforeUnmount(() => {
           </Transition>
 
           <Panel />
-
-          <div
-            @click="openLink('https://www.twitch.tv/ssseikatsu')"
-            v-if="previewImage !== 'none'"
-            class="bg-background/40 absolute right-2 bottom-2 inline-flex cursor-pointer items-center gap-1 rounded-full border border-white/10 px-3 py-1 text-sm font-medium"
-          >
-            <span>{{ $t('preview.imageBy') }} </span>
-            <span class="font-bold">ssseikatsu</span>
-          </div>
         </div>
       </div>
     </div>
@@ -223,10 +213,6 @@ onBeforeUnmount(() => {
   to {
     transform: rotate(360deg);
   }
-}
-
-.animate-spin-slow {
-  animation: spin-slow 20s linear infinite;
 }
 
 .draggable-preview {
