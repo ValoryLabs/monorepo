@@ -14,18 +14,18 @@ import {
 import { openLink } from '@/lib/utils.ts'
 import {
   LifeBuoy,
-  LoaderCircle,
   LogOut,
   NotebookText,
   Settings as SettingsIcon,
 } from 'lucide-vue-next'
 
-import { onMounted, watch } from 'vue'
+import {onMounted, watch} from 'vue'
 import { useAuthStore, useUserStore } from '@/stores'
 import { storeToRefs } from 'pinia'
 import router from '@/router'
 import { TwitchVerify } from '@/components/icons'
 import { LanguageSelector } from '@/components/configuration-page/sidebar/profile-menu'
+import { Loading as LoadingIcon } from '@/components/icons/motion-grid'
 
 const authStore = useAuthStore()
 
@@ -46,12 +46,14 @@ onMounted(() => {
 <template>
   <DropdownMenu>
     <DropdownMenuTrigger as-child>
-      <Button variant="profile" size="none" class="inline-flex justify-between">
-        <span v-if="loading" class="animate-spin font-bold">
-          <LoaderCircle />
-        </span>
-        <span class="font-bold" v-else-if="error">{{ $t('profile_menu.error') }}</span>
-        <span class="inline-flex items-center gap-2" v-else-if="user && !loading && !error">
+      <span v-if="loading" class="w-full flex items-center justify-center h-5 mb-2">
+        <LoadingIcon />
+      </span>
+      <span  v-else-if="error" class="font-bold w-full flex items-center justify-center h-5 mb-2">
+        {{ $t('profile_menu.error') }}
+      </span>
+      <Button v-else-if="user && !loading && !error" variant="profile" size="none" class="inline-flex justify-between">
+        <span class="inline-flex items-center gap-2">
           <img class="size-8 rounded-lg bg-neutral-500" :src="user.avatar_url" alt="user avatar" />
           <span class="font-bold">{{ user.twitch_display_name }}</span>
         </span>
