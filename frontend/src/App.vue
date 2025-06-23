@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import {onMounted, ref} from 'vue'
+import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useHead, useSeoMeta } from '@unhead/vue'
 import { Toaster } from 'vue-sonner'
-import {useUserStore} from "@/stores";
+import { useUserStore } from "@/stores";
 import { storeToRefs } from "pinia";
 import { identifyUmamiSession } from '@jaseeey/vue-umami-plugin'
+import { Loading } from "@/components/icons/motion-grid";
 
 const titleMain = 'VALORY'
 const metaImg = 'meta.webp'
@@ -81,10 +82,9 @@ onMounted(identifyUser)
 
 <template>
   <Transition name="loading">
-    <div
-      v-if="isLoading"
-      class="fixed top-0 left-0 right-0 z-50 h-px bg-gradient-to-r from-black to-[#FA4454] loading-bar"
-    />
+    <div v-if="isLoading" class="h-dvh w-dvw flex items-center justify-center">
+      <Loading />
+    </div>
   </Transition>
 
   <Toaster

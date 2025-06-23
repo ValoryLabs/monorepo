@@ -60,7 +60,7 @@ onMounted(() => {
         </Button>
       </Button>
     </DropdownMenuTrigger>
-    <DropdownMenuContent align="start" class="w-56">
+    <DropdownMenuContent align="start" class="w-56 mb-1">
       <DropdownMenuLabel class="flex items-center justify-start gap-2" v-if="user">
         <img class="size-8 rounded-lg bg-neutral-500" :src="user.avatar_url" alt="user avatar" />
         <span class="flex items-center gap-1 font-bold">
