@@ -31,14 +31,14 @@ const redirectToAuth = () => {
 
         <!-- Social login buttons -->
         <div class="flex w-full flex-col items-center gap-3">
-          <Button variant="login" size="lg" class="w-full" @click="redirectToAuth"
+          <Button variant="login" size="lg" class="w-full justify-center" @click="redirectToAuth"
             ><Twitch color="white" class="size-5" /> Twitch</Button
           >
           <Separator class="my-2 h-px w-full bg-white/10" label="OR" />
-          <Button variant="login" size="lg" class="w-full" disabled="true"
+          <Button variant="login" size="lg" class="w-full  justify-center" disabled="true"
             ><YouTube color="white" class="size-5" />Youtube</Button
           >
-          <Button variant="login" size="lg" class="w-full" disabled="true"
+          <Button variant="login" size="lg" class="w-full  justify-center" disabled="true"
             ><Kick color="white" class="size-5" />Kick</Button
           >
         </div>

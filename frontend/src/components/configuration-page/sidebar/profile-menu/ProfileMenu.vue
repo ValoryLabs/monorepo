@@ -46,14 +46,14 @@ onMounted(() => {
 <template>
   <DropdownMenu>
     <DropdownMenuTrigger as-child>
-      <Button variant="ghost" class="px-2.5">
+      <Button variant="profile" size="none">
         <span v-if="loading" class="animate-spin font-bold">
           <LoaderCircle />
         </span>
         <span class="font-bold" v-else-if="error">{{ $t('profile_menu.error') }}</span>
-        <span class="inline-flex gap-2" v-else-if="user && !loading && !error">
-          <img class="size-6 rounded-lg bg-neutral-500" :src="user.avatar_url" alt="user avatar" />
-          <span>{{ user.twitch_display_name }}</span>
+        <span class="inline-flex items-center gap-2" v-else-if="user && !loading && !error">
+          <img class="size-8 rounded-lg bg-neutral-500" :src="user.avatar_url" alt="user avatar" />
+          <span class="font-bold">{{ user.twitch_display_name }}</span>
         </span>
       </Button>
     </DropdownMenuTrigger>

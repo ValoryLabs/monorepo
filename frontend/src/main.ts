@@ -9,6 +9,7 @@ import App from '@/App.vue'
 import { createHead } from '@unhead/vue/client'
 
 import { i18n } from '@/i18n/i18n.ts'
+import { MotionPlugin } from '@vueuse/motion'
 
 const pinia = createPinia()
 pinia.use(piniaPluginPersistedstate)
@@ -24,4 +25,4 @@ app.use(VueUmamiPlugin({
   allowLocalhost: false,
 }))
 
-app.use(pinia).use(router).use(head).use(i18n).mount('#app')
+app.use(pinia).use(router).use(head).use(i18n).use(MotionPlugin).mount('#app')

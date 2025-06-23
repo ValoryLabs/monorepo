@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { Valory } from '@/components/icons'
-import ProfileMenu from './profile-menu/ProfileMenu.vue'
+import { ProfileMenu } from './profile-menu'
 </script>
 
 <template>
-  <aside class="mr-4 mt-2 flex justify-between h-full w-56 flex-col pb-2 transition-all">
+  <aside class="mt-2 flex justify-between h-full w-56 flex-col pb-2 transition-all">
     <div @click="$router.push('/')" class="relative flex cursor-pointer items-center gap-2">
       <Valory class="size-6" />
       <span
