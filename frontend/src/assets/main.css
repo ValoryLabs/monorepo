@@ -171,6 +171,28 @@
     background-color: #ffffff0d;
   }
 
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: #ffffff0d transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 1px;
+    background-color: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    width: 1px;
+    border-radius: 1px;
+    background: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: #ffffff0d;
+    width: 1px;
+    border-radius: 1px;
+  }
+
   html {
     scrollbar-width: thin;
     scrollbar-color: #ffffff0d transparent;
