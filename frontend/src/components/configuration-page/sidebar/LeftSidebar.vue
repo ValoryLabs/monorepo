@@ -1,10 +1,15 @@
 <script setup lang="ts">
 import { Valory } from '@/components/icons'
 import { ProfileMenu } from './profile-menu'
+import { useUserStore } from "@/stores";
+import { storeToRefs } from "pinia";
+
+const userStore = useUserStore()
+const { fullscreen } = storeToRefs(userStore)
 </script>
 
 <template>
-  <aside class="border-[0.5px] rounded-2xl flex justify-between h-full w-60 flex-col p-2 transition-all">
+  <aside  v-if="!fullscreen"  class="border-[0.5px] rounded-2xl flex justify-between h-full w-60 flex-col p-2 transition-all">
     <div @click="$router.push('/')" class="relative flex m-2 cursor-pointer items-center gap-2">
       <Valory class="size-6" />
       <span

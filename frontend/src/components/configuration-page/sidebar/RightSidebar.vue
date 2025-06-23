@@ -7,11 +7,11 @@ import { useUserStore } from '@/stores/user.ts'
 import { storeToRefs } from 'pinia'
 
 const userStore = useUserStore()
-const { showLeftSidebar, configuratorActive } = storeToRefs(userStore)
+const { fullscreen, configuratorActive } = storeToRefs(userStore)
 </script>
 
 <template>
-  <aside v-if="showLeftSidebar" class="flex border-[0.5px] rounded-2xl  h-full w-80 flex-col p-2 transition-all">
+  <aside v-if="!fullscreen" class="flex border-[0.5px] rounded-2xl  h-full w-80 flex-col p-2 transition-all">
     <Tabs default-value="configuration" class="h-full">
       <TabsList>
         <TabsTrigger :disabled="!configuratorActive" value="configuration">

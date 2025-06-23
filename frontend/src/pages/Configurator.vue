@@ -18,7 +18,7 @@ useHead({
 
 const userStore = useUserStore()
 const overlayStore = useOverlayStore()
-const { showHeader, configuratorActive } = storeToRefs(userStore)
+const { fullscreen, configuratorActive } = storeToRefs(userStore)
 
 const resetKeyString = userStore.resetShortcut
 const fullKeyString = userStore.fullShortcut
@@ -43,8 +43,8 @@ watch(fullKeyPressed, (v) => {
 <template>
   <ConfiguratorLayout>
     <div
-      class="relative flex w-dvw flex-row gap-3 p-3"
-      :class="showHeader ? 'h-[calc(100dvh-3rem)]' : 'h-dvh'"
+      class="relative flex w-dvw flex-row gap-3 h-dvh"
+      :class="fullscreen ? 'p-0' : 'p-3'"
     >
       <LeftSidebar/>
       <Content />

@@ -16,7 +16,6 @@ export const useUserStore = defineStore(
 
     const overlayDimensions: Ref<string | null> = ref('0 x 0')
 
-    const showLeftSidebar: Ref<boolean> = ref(true)
     const fullscreen: Ref<boolean> = ref(false)
     const showSettings: Ref<boolean> = ref(false)
     const showShortcuts: Ref<'Show' | 'Hide'> = ref('Show')
@@ -137,15 +136,6 @@ export const useUserStore = defineStore(
       previewActive.value = !previewActive.value
     }
 
-    const toggleLeftSidebar = () => {
-      showLeftSidebar.value = !showLeftSidebar.value
-    }
-
-    const toggleSidebar = () => {
-      showLeftSidebar.value = !showLeftSidebar.value
-      fullscreen.value = !fullscreen.value
-    }
-
     return {
       user,
       loading,
@@ -157,7 +147,6 @@ export const useUserStore = defineStore(
       previewDraggable,
       overlayDimensions,
       showSettings,
-      showLeftSidebar,
       fullscreen,
       showShortcuts,
       resetShortcut,
@@ -169,8 +158,6 @@ export const useUserStore = defineStore(
       toggleConfigurator,
       toggleShowSettings,
       togglePreview,
-      toggleLeftSidebar,
-      toggleSidebar,
       updateResetShortcut,
       updateFullShortcut,
       isValidKey,
