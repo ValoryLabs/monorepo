@@ -43,7 +43,7 @@ watch(fullKeyPressed, (v) => {
 <template>
   <ConfiguratorLayout>
     <div
-      class="relative flex w-dvw flex-row gap-5 p-3"
+      class="relative flex w-dvw flex-row gap-3 p-3"
       :class="showHeader ? 'h-[calc(100dvh-3rem)]' : 'h-dvh'"
     >
       <LeftSidebar/>

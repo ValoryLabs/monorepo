@@ -46,7 +46,7 @@ onMounted(() => {
 <template>
   <DropdownMenu>
     <DropdownMenuTrigger as-child>
-      <Button variant="profile" size="none">
+      <Button variant="profile" size="none" class="inline-flex justify-between">
         <span v-if="loading" class="animate-spin font-bold">
           <LoaderCircle />
         </span>
@@ -55,6 +55,9 @@ onMounted(() => {
           <img class="size-8 rounded-lg bg-neutral-500" :src="user.avatar_url" alt="user avatar" />
           <span class="font-bold">{{ user.twitch_display_name }}</span>
         </span>
+        <Button size="icon" variant="ghost" class="bg-white/5" @click.prevent="authStore.logout()">
+          <LogOut/>
+        </Button>
       </Button>
     </DropdownMenuTrigger>
     <DropdownMenuContent align="start" class="w-56">
@@ -73,6 +76,7 @@ onMounted(() => {
         </DropdownMenuItem>
         <LanguageSelector />
       </DropdownMenuGroup>
+      <DropdownMenuSeparator />
       <DropdownMenuItem @click="openLink('https://discord.gg/pYV4PBV5YW')">
         <LifeBuoy class="mr-2 h-4 w-4" />
         <span>{{ $t('profile_menu.support') }}</span>
@@ -80,11 +84,6 @@ onMounted(() => {
       <DropdownMenuItem @click="router.push({ name: 'terms' })">
         <NotebookText class="text-muted-foreground mr-2 h-4 w-4" />
         <span>{{ $t('profile_menu.terms') }}</span>
-      </DropdownMenuItem>
-      <DropdownMenuSeparator />
-      <DropdownMenuItem @click="authStore.logout()">
-        <LogOut class="mr-2 h-4 w-4" />
-        <span>{{ $t('profile_menu.logout') }}</span>
       </DropdownMenuItem>
     </DropdownMenuContent>
   </DropdownMenu>
