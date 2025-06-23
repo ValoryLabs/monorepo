@@ -16,7 +16,7 @@ const overlayStore = useOverlayStore()
     <TooltipProvider>
       <Tooltip>
         <TooltipTrigger>
-          <Button variant="secondary" size="icon" @click="userStore.toggleSidebar()">
+          <Button variant="secondary" size="icon" @click="userStore.toggleFullscreen()">
             <Expand class="size-6" />
           </Button>
         </TooltipTrigger>

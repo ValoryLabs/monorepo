@@ -20,33 +20,13 @@ export const useUserStore = defineStore(
     const showSettings: Ref<boolean> = ref(false)
     const showShortcuts: Ref<'Show' | 'Hide'> = ref('Show')
 
+    const lastFetchTime: Ref<number | null> = ref(null)
+    const CACHE_DURATION = 30 * 60 * 1000
+
     const allowedKeys = [
-      'q',
-      'w',
-      'e',
-      'r',
-      't',
-      'y',
-      'u',
-      'i',
-      'o',
-      'p',
-      'a',
-      's',
-      'd',
-      'f',
-      'g',
-      'h',
-      'j',
-      'k',
-      'l',
-      'z',
-      'x',
-      'c',
-      'v',
-      'b',
-      'n',
-      'm',
+      'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p',
+      'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l',
+      'z', 'x', 'c', 'v', 'b', 'n', 'm',
     ]
 
     const validateKey = (key: string): string => {
@@ -111,14 +91,27 @@ export const useUserStore = defineStore(
       showSettings.value = !showSettings.value
     }
 
-    const fetchUser = async () => {
+    const isCacheValid = (): boolean => {
+      if (!lastFetchTime.value) return false
+      const now = Date.now()
+      return (now - lastFetchTime.value) < CACHE_DURATION
+    }
+
+    const fetchUser = async (force: boolean = false) => {
+      if (!force && isCacheValid() && user.value) {
+        return
+      }
+
       loading.value = true
       error.value = false
+
       try {
         const response = await axios.get(`${import.meta.env.APP_BACKEND_URL}/api/users/me`, {
           withCredentials: true,
         })
         user.value = await response.data
+        lastFetchTime.value = Date.now()
+        console.log('User data fetched from server')
       } catch (err: any) {
         error.value = true
         user.value = null
@@ -128,12 +121,25 @@ export const useUserStore = defineStore(
       }
     }
 
+    const refreshUser = async () => {
+      await fetchUser(true)
+    }
+
+    const clearUserCache = () => {
+      lastFetchTime.value = null
+      user.value = null
+    }
+
     const toggleConfigurator = () => {
       configuratorActive.value = !configuratorActive.value
     }
 
     const togglePreview = () => {
       previewActive.value = !previewActive.value
+    }
+
+    const toggleFullscreen = () => {
+        fullscreen.value = !fullscreen.value
     }
 
     return {
@@ -154,9 +160,14 @@ export const useUserStore = defineStore(
       validatedResetShortcut,
       validatedFullShortcut,
       allowedKeys,
+      lastFetchTime,
       fetchUser,
+      refreshUser,
+      clearUserCache,
+      isCacheValid,
       toggleConfigurator,
       toggleShowSettings,
+      toggleFullscreen,
       togglePreview,
       updateResetShortcut,
       updateFullShortcut,
@@ -164,6 +175,22 @@ export const useUserStore = defineStore(
     }
   },
   {
-    persist: true,
+    persist: {
+      paths: [
+        'user',
+        'profileActive',
+        'configuratorActive',
+        'previewActive',
+        'previewImage',
+        'previewDraggable',
+        'overlayDimensions',
+        'showSettings',
+        'fullscreen',
+        'showShortcuts',
+        'resetShortcut',
+        'fullShortcut',
+        'lastFetchTime'
+      ]
+    },
   },
 )

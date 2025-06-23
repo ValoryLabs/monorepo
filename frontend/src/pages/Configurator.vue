@@ -28,14 +28,12 @@ const { [resetKeyString]: resetKeyPressed, [fullKeyString]: fullKeyPressed } = u
 watch(resetKeyPressed, (v) => {
   if (v && configuratorActive) {
     overlayStore.reset()
-    console.log(`Reset triggered by ${resetKeyString}`)
   }
 })
 
 watch(fullKeyPressed, (v) => {
   if (v && configuratorActive) {
-    userStore.toggleSidebar()
-    console.log(`Fullscreen triggered by ${fullKeyString}`)
+    userStore.toggleFullscreen()
   }
 })
 </script>
