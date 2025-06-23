@@ -17,7 +17,6 @@ export const useUserStore = defineStore(
     const overlayDimensions: Ref<string | null> = ref('0 x 0')
 
     const showLeftSidebar: Ref<boolean> = ref(true)
-    const showHeader: Ref<boolean> = ref(true)
     const fullscreen: Ref<boolean> = ref(false)
     const showSettings: Ref<boolean> = ref(false)
     const showShortcuts: Ref<'Show' | 'Hide'> = ref('Show')
@@ -143,7 +142,6 @@ export const useUserStore = defineStore(
     }
 
     const toggleSidebar = () => {
-      showHeader.value = !showHeader.value
       showLeftSidebar.value = !showLeftSidebar.value
       fullscreen.value = !fullscreen.value
     }
@@ -160,7 +158,6 @@ export const useUserStore = defineStore(
       overlayDimensions,
       showSettings,
       showLeftSidebar,
-      showHeader,
       fullscreen,
       showShortcuts,
       resetShortcut,

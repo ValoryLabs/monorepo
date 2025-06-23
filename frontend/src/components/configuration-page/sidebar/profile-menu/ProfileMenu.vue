@@ -10,6 +10,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
+
 import { openLink } from '@/lib/utils.ts'
 import {
   LifeBuoy,
@@ -24,6 +25,7 @@ import { useAuthStore, useUserStore } from '@/stores'
 import { storeToRefs } from 'pinia'
 import router from '@/router'
 import { TwitchVerify } from '@/components/icons'
+import { LanguageSelector } from '@/components/configuration-page/sidebar/profile-menu'
 
 const authStore = useAuthStore()
 
@@ -44,19 +46,20 @@ onMounted(() => {
 <template>
   <DropdownMenu>
     <DropdownMenuTrigger as-child>
-      <Button  variant="ghost" size="icon">
+      <Button variant="ghost" class="px-2.5">
         <span v-if="loading" class="animate-spin font-bold">
           <LoaderCircle />
         </span>
         <span class="font-bold" v-else-if="error">{{ $t('profile_menu.error') }}</span>
-        <span class="user-avatar" v-else-if="user && !loading && !error">
-          <img class="size-6 rounded-full bg-neutral-500" :src="user.avatar_url" alt="user avatar" />
+        <span class="inline-flex gap-2" v-else-if="user && !loading && !error">
+          <img class="size-6 rounded-lg bg-neutral-500" :src="user.avatar_url" alt="user avatar" />
+          <span>{{ user.twitch_display_name }}</span>
         </span>
       </Button>
     </DropdownMenuTrigger>
-    <DropdownMenuContent align="end" class="w-56">
+    <DropdownMenuContent align="start" class="w-56">
       <DropdownMenuLabel class="flex items-center justify-start gap-2" v-if="user">
-        <img class="size-8 rounded-full bg-neutral-500" :src="user.avatar_url" alt="user avatar" />
+        <img class="size-8 rounded-lg bg-neutral-500" :src="user.avatar_url" alt="user avatar" />
         <span class="flex items-center gap-1 font-bold">
           {{ user.twitch_display_name }}
           <TwitchVerify v-if="user.broadcaster_type === 'partner'" class="size-4" />
@@ -68,6 +71,7 @@ onMounted(() => {
           <SettingsIcon class="mr-2 h-4 w-4" />
           <span>{{ $t('profile_menu.settings') }}</span>
         </DropdownMenuItem>
+        <LanguageSelector />
       </DropdownMenuGroup>
       <DropdownMenuItem @click="openLink('https://discord.gg/pYV4PBV5YW')">
         <LifeBuoy class="mr-2 h-4 w-4" />
