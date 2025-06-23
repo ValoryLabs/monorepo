@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { Configuration, Generate } from './index.ts'
+import { Generate } from './index.ts'
+import { Configuration } from '@/components/configuration-page/configuration'
 
 import { useUserStore } from '@/stores/user.ts'
 import { storeToRefs } from 'pinia'
@@ -10,7 +11,7 @@ const { showLeftSidebar, configuratorActive } = storeToRefs(userStore)
 </script>
 
 <template>
-  <aside v-if="showLeftSidebar" class="mr-2 flex h-full w-80 flex-col pb-2 transition-all">
+  <aside v-if="showLeftSidebar" class="ml-4 flex h-full w-80 flex-col pb-2 transition-all">
     <Tabs default-value="configuration" class="h-full">
       <TabsList>
         <TabsTrigger :disabled="!configuratorActive" value="configuration">

@@ -2,7 +2,7 @@
 import { useUserStore } from '@/stores/user.ts'
 import { storeToRefs } from 'pinia'
 
-import { Preview, Profile, Shortcuts } from '.'
+import { Preview, Profile, Shortcuts } from './index.ts'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 
 import { X } from 'lucide-vue-next'

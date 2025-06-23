@@ -8,7 +8,7 @@ import { Hand } from 'lucide-vue-next'
 
 import { nextTick, onBeforeUnmount, onMounted, onUnmounted, reactive, ref } from 'vue'
 
-import Panel from '@/components/ui/Panel.vue'
+import Panel from '@/components/configuration-page/Panel.vue'
 
 const userStore = useUserStore()
 const { configuratorActive, previewDraggable, previewImage, overlayDimensions, fullscreen } =

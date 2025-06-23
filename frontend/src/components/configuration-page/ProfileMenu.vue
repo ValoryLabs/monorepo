@@ -10,7 +10,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-import { openLink } from '@/lib/utils'
+import { openLink } from '@/lib/utils.ts'
 import {
   LifeBuoy,
   LoaderCircle,

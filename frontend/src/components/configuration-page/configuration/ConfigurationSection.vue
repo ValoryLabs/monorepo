@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ConfigurationLabel from '@/components/configuration/ConfigurationLabel.vue'
+import ConfigurationLabel from '@/components/configuration-page/configuration/ConfigurationLabel.vue'
 
 const props = defineProps<{
   label?: string

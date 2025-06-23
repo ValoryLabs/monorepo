@@ -1,13 +1,8 @@
 <script setup lang="ts">
-import OldOverlay from '@/components/overlays/OldOverlay.vue'
-import { useOverlayStore } from '@/stores/overlay.ts'
-import { usePlayerStore } from '@/stores/player.ts'
+import { useOverlayStore, usePlayerStore, useUserStore } from '@/stores'
 import { storeToRefs } from 'pinia'
-import NewOverlay from '@/components/overlays/NewOverlay.vue'
-import MiniOverlay from './overlays/MiniOverlay.vue'
-import NewV2Overlay from '@/components/overlays/NewV2Overlay.vue'
+import { MiniOverlay, NewOverlay, NewV2Overlay, OldOverlay } from '@/components/overlays'
 import { computed, onMounted } from 'vue'
-import { useUserStore } from '@/stores/user.ts'
 import { getAccountInformation, getMMRInformation } from '@/services/playerInformation'
 
 const userStore = useUserStore()

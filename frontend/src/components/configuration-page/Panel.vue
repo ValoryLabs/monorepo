@@ -3,8 +3,8 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/comp
 import { Button } from '@/components/ui/button'
 import { Expand, RotateCcw } from 'lucide-vue-next'
 
-import { useUserStore } from '@/stores/user'
-import { useOverlayStore } from '@/stores/overlay'
+import { useUserStore } from '@/stores/user.ts'
+import { useOverlayStore } from '@/stores/overlay.ts'
 import { Kbd } from '@/components/ui/kbd'
 
 const userStore = useUserStore()

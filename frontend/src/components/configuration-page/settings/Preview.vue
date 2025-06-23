@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
-import { useUserStore } from '@/stores/user'
+import { useUserStore } from '@/stores/user.ts'
 import { Check, Ban } from 'lucide-vue-next'
 import TiltCard from '@/components/ui/TiltCard.vue'
 

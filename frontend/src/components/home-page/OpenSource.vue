@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import Github from '@/components/icons/socials/Github.vue'
+import { Github } from '@/components/icons'
 import { Button } from '@/components/ui/button'
 import { openLink } from '@/lib/utils'
 import { Star } from 'lucide-vue-next'

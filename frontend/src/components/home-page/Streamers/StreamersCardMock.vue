@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { StreamersCard } from "@/components/home/Streamers";
+import { StreamersCard } from "@/components/home-page/Streamers";
 import { computed } from "vue";
 import { useAuthStore } from "@/stores";
 

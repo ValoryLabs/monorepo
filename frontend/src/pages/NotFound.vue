@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import {useHead} from '@unhead/vue'
-import {Valory} from '@/components/icons'
-import {Button} from '@/components/ui/button'
+import { useHead } from '@unhead/vue'
+import { Valory } from '@/components/icons'
+import { Button } from '@/components/ui/button'
 import router from '@/router'
 
 useHead({

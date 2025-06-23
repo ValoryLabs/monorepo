@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import { openLink } from '@/lib/utils.ts'
-import Valory from '@/components/icons/Valory.vue'
-import { Kick, Twitch, YouTube } from '@/components/icons'
+import { Valory, Kick, Twitch, YouTube } from '@/components/icons'
 import { Separator } from '@/components/ui/separator'
-import Button from '@/components/ui/button/Button.vue'
+import { Button } from '@/components/ui/button'
 import router from '@/router'
 
 const redirectToAuth = () => {

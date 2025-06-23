@@ -9,7 +9,7 @@ import router from '@/router'
 import { hidden, moveTo } from '@/lib/utils'
 
 import { useRoute } from 'vue-router'
-import LoginOrConfigurator from '@/components/home/LoginOrConfigurator.vue'
+import LoginOrConfigurator from '@/components/home-page/LoginOrConfigurator.vue'
 import LinkPreview from '@/components/ui/LinkPreview.vue'
 import { useGitHubStars } from '@/composables'
 

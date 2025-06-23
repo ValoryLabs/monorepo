@@ -1,3 +1,4 @@
+export { default as Configuration} from './Configuration.vue'
 export { default as ConfigurationContent } from './ConfigurationContent.vue'
 export { default as ConfigurationSection } from './ConfigurationSection.vue'
 export { default as ConfigurationRoot } from './ConfigurationRoot.vue'

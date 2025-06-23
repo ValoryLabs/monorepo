@@ -3,7 +3,7 @@ import { PackageOpen, Paintbrush, PencilRuler } from 'lucide-vue-next'
 import Button from '@/components/ui/button/Button.vue'
 import Valory from '@/components/icons/Valory.vue'
 import CarouselOverlay from '@/components/ui/CarouselOverlay.vue'
-import LoginOrConfigurator from '@/components/home/LoginOrConfigurator.vue'
+import LoginOrConfigurator from '@/components/home-page/LoginOrConfigurator.vue'
 </script>
 
 <template>

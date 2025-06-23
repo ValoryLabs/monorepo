@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted, computed } from 'vue'
-import { StreamersCard, StreamersCardMock} from '@/components/home/Streamers'
+import { StreamersCard, StreamersCardMock} from '@/components/home-page/Streamers'
 import { useStreamersStore } from '@/stores'
 import { storeToRefs } from 'pinia'
 import { Skeleton } from '@/components/ui/skeleton'

@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import ShortcutsRoot from '@/components/settings/Shortcuts/ShortcutsRoot.vue'
-import ShortcutsHeader from '@/components/settings/Shortcuts/ShortcutsHeader.vue'
-import ShortcutsSection from '@/components/settings/Shortcuts/ShortcutsSection.vue'
+import ShortcutsRoot from '@/components/configuration-page/settings/Shortcuts/ShortcutsRoot.vue'
+import ShortcutsHeader from '@/components/configuration-page/settings/Shortcuts/ShortcutsHeader.vue'
+import ShortcutsSection from '@/components/configuration-page/settings/Shortcuts/ShortcutsSection.vue'
 import ShowShortcuts from '@/components/ui/ShowShortcuts.vue'
 
-import { useUserStore } from '@/stores/user'
+import { useUserStore } from '@/stores/user.ts'
 
 const userStore = useUserStore()
 </script>

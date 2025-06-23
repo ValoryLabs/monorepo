@@ -4,14 +4,15 @@ import { useHead } from '@unhead/vue'
 import { useI18n } from 'vue-i18n'
 import {
   Content,
+  ContentHeader,
+  ContentContainer,
   ContentPageLastMod,
   ContentPageTitle,
   ContentParagraph,
   ContentParagraphTitle,
 } from '@/components/ui/content'
-import ContentHeader from '@/components/ui/content/ContentHeader.vue'
-import ContentContainer from '@/components/ui/content/ContentContainer.vue'
-import DefaultLayout from "@/layouts/DefaultLayout.vue";
+
+import { DefaultLayout } from '@/layouts';
 
 const { t } = useI18n()
 
