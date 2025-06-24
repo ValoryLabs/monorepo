@@ -18,7 +18,7 @@ useHead({
 
 const userStore = useUserStore()
 const overlayStore = useOverlayStore()
-const { fullscreen, configuratorActive } = storeToRefs(userStore)
+const { configuratorActive } = storeToRefs(userStore)
 
 const resetKeyString = userStore.resetShortcut
 const fullKeyString = userStore.fullShortcut
