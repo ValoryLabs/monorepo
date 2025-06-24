@@ -13,7 +13,7 @@ const { fullscreen, configuratorActive } = storeToRefs(userStore)
 <template>
   <aside
     v-if="!fullscreen"
-    class="fixed z-50 top-2 right-2 border flex rounded-lg h-[calc(100dvh-1rem)] w-86 flex-col p-2 transition-all bg-background"
+    class="fixed z-50 top-2 right-2 border flex rounded-lg h-[calc(100%-1rem)] w-86 flex-col p-2 transition-all bg-background"
   >
     <Tabs default-value="configuration" class="h-full">
       <TabsList>

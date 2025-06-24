@@ -11,7 +11,7 @@ const { fullscreen } = storeToRefs(userStore)
 <template>
   <aside
     v-if="!fullscreen"
-    class="fixed z-50 top-2 h-[calc(100dvh-1rem)] rounded-lg left-2 bg-background border flex justify-between w-60 flex-col p-2 transition-all"
+    class="fixed z-50 top-2 left-2 border flex justify-between rounded-lg h-[calc(100%-1rem)] w-61 flex-col p-2 transition-all bg-background"
   >
     <div @click="$router.push('/')" class="relative flex m-2 cursor-pointer items-center gap-2">
       <Valory class="size-6" />
