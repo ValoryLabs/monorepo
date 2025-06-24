@@ -45,14 +45,14 @@ onMounted(() => {
 
 <template>
   <DropdownMenu>
-    <DropdownMenuTrigger as-child>
-      <span v-if="loading" class="w-full flex items-center justify-center h-5 mb-2">
-        <LoadingIcon />
-      </span>
-      <span  v-else-if="error" class="font-bold w-full flex items-center justify-center h-5 mb-2">
-        {{ $t('profile_menu.error') }}
-      </span>
-      <Button v-else-if="user && !loading && !error" variant="profile" size="none" class="inline-flex justify-between">
+    <span v-if="loading" class="w-full flex items-center justify-center h-5 mb-2">
+      <LoadingIcon />
+    </span>
+    <span  v-else-if="error" class="font-bold w-full flex items-center justify-center h-5 mb-2">
+      {{ $t('profile_menu.error') }}
+    </span>
+    <DropdownMenuTrigger v-else-if="user && !loading && !error" as-child>
+      <Button variant="profile" size="none" class="inline-flex justify-between">
         <span class="inline-flex items-center gap-2">
           <img class="size-8 rounded-lg bg-neutral-500" :src="user.avatar_url" alt="user avatar" />
           <span class="font-bold">{{ user.twitch_display_name }}</span>
