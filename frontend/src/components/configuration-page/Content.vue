@@ -128,7 +128,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <main class="relative flex flex-1 items-center justify-center bg-white/1">
+  <main class="relative h-full flex flex-1 items-center justify-center bg-white/1">
     <div
       class="flex h-full w-full bg-center overflow-hidden"
       :class="{
@@ -141,7 +141,7 @@ onBeforeUnmount(() => {
       "
       ref="containerRef"
     >
-      <div id="preview" class="relative z-20 h-full w-full">
+      <div id="preview" class="relative h-full w-full">
         <div class="relative z-10 size-full">
           <div
             class="draggable-preview"

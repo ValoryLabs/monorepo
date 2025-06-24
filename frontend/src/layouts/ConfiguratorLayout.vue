@@ -1,7 +1,5 @@
 <template>
   <div class="configurator-layout">
-    <main>
-      <slot />
-    </main>
+    <slot />
   </div>
 </template>
