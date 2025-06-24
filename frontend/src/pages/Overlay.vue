@@ -4,7 +4,7 @@ import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
 import { getOverlayData } from '@/services/backend.ts'
 
 import { MiniOverlay, NewOverlay, NewV2Overlay, OldOverlay } from '@/components/overlays'
-import { LoaderCircle } from 'lucide-vue-next'
+import { Loading } from '@/components/icons/motion-grid'
 
 useHead({
   title: 'Overlay',
@@ -117,9 +117,7 @@ onUnmounted(() => {
 
 <template>
   <div v-if="loading" class="flex h-10 w-dvw items-center justify-center">
-    <span class="animate-spin font-bold">
-      <LoaderCircle />
-    </span>
+    <Loading/>
   </div>
   <div v-else-if="overlayData" class="flex flex-col items-center">
     <component
