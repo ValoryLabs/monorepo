@@ -40,11 +40,9 @@ watch(fullKeyPressed, (v) => {
 
 <template>
   <ConfiguratorLayout>
-    <div class="relative inline-flex w-dvw h-dvh">
-      <LeftSidebar />
-      <Content />
-      <Settings />
-      <RightSidebar />
-    </div>
+    <LeftSidebar />
+    <Content />
+    <Settings />
+    <RightSidebar />
   </ConfiguratorLayout>
 </template>

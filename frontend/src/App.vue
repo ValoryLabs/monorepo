@@ -114,22 +114,6 @@ onMounted(identifyUser)
   opacity: 0;
 }
 
-.loading-bar {
-  animation: loading-progress 0.8s ease-in-out infinite;
-}
-
-@keyframes loading-progress {
-  0% {
-    transform: translateX(-100%);
-  }
-  50% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(100%);
-  }
-}
-
 .loading-enter-active {
   transition: opacity 0.2s ease;
 }

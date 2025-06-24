@@ -1,6 +1,7 @@
-@import 'tailwindcss';
-
-@custom-variant dark (&:is(.dark *));
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/preflight.css" layer(base);
+@import "tailwindcss/utilities.css" layer(utilities);
 
 @plugin 'tailwindcss-animate';
 
@@ -103,16 +104,6 @@
 }
 
 @layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentcolor);
-  }
-}
-
-@layer base {
   :root {
     --header: oklch(0 0 0);
     --background: oklch(0 0 0);
@@ -158,19 +149,6 @@
 }
 
 @layer utilities {
-  ::-webkit-scrollbar {
-    width: 1px;
-    background-color: transparent;
-  }
-  ::-webkit-scrollbar-track {
-    border-radius: 1px;
-    background-color: transparent;
-  }
-  ::-webkit-scrollbar-thumb {
-    border-radius: 1px;
-    background-color: #ffffff0d;
-  }
-
   .scrollbar-thin {
     scrollbar-width: thin;
     scrollbar-color: #ffffff0d transparent;
@@ -191,11 +169,6 @@
     background: #ffffff0d;
     width: 1px;
     border-radius: 1px;
-  }
-
-  html {
-    scrollbar-width: thin;
-    scrollbar-color: #ffffff0d transparent;
   }
 }
 
@@ -234,12 +207,6 @@ body {
 
 .font-valory {
   font-family: 'Russo One', sans-serif;
-}
-
-.font-pixel {
-  font-family: 'Jersey 15', sans-serif;
-  font-weight: 400;
-  font-style: normal;
 }
 
 .title {

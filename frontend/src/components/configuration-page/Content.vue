@@ -128,79 +128,69 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <main class="relative h-full flex flex-1 items-center justify-center bg-white/1 overflow-hidden">
+  <main
+    class="relative size-full"
+    :class="{
+      'bg-black bg-[radial-gradient(#1a1a1a_2px,transparent_1px)] bg-[size:25px_25px]':
+        previewImage === 'none',
+      'bg-cover': previewImage !== 'none',
+    }"
+    :style="
+      previewImage !== 'none' ? { backgroundImage: `url(/previews/${previewImage}.webp)` } : {}
+    "
+    ref="containerRef"
+  >
     <div
-      class="flex h-full w-full bg-center overflow-hidden"
-      :class="{
-        'bg-black bg-[radial-gradient(#1a1a1a_2px,transparent_1px)] bg-[size:25px_25px]':
-          previewImage === 'none',
-        'bg-cover': previewImage !== 'none',
+      class="absolute"
+      ref="previewRef"
+      :style="{
+        left: `${position.x}px`,
+        top: `${position.y}px`,
+        cursor: isDragging ? 'grabbing' : 'grab',
       }"
-      :style="
-        previewImage !== 'none' ? { backgroundImage: `url(/previews/${previewImage}.webp)` } : {}
-      "
-      ref="containerRef"
+      @mousedown="startDrag"
+    >
+      <Overlay v-if="configuratorActive" />
+    </div>
+
+    <Transition
+      enter-from-class="opacity-0"
+      leave-to-class="opacity-0"
+      enter-active-class="transition duration-300"
+      leave-active-class="transition duration-300"
     >
       <div
-        class="draggable-preview z-10"
-        ref="previewRef"
-        :style="{
-          left: `${position.x}px`,
-          top: `${position.y}px`,
-          cursor: isDragging ? 'grabbing' : 'grab',
-        }"
-        @mousedown="startDrag"
+        v-if="!configuratorActive"
+        class="absolute top-0 left-0 z-50 flex h-full w-full items-center justify-center bg-black/50 text-center font-medium whitespace-pre-line backdrop-blur-md"
       >
-        <Overlay v-if="configuratorActive" />
+        {{ $t('preview.main') }}
       </div>
-
-      <Transition
-        enter-from-class="opacity-0"
-        leave-to-class="opacity-0"
-        enter-active-class="transition duration-300"
-        leave-active-class="transition duration-300"
+    </Transition>
+    <Transition
+      enter-from-class="opacity-0"
+      leave-to-class="opacity-0"
+      enter-active-class="transition duration-300"
+      leave-active-class="transition duration-300"
+    >
+      <div
+        v-if="previewDraggable && configuratorActive"
+        class="absolute top-0 left-0 z-50 flex h-full w-full items-center justify-center bg-black/50 backdrop-blur-md"
       >
-        <div
-          v-if="!configuratorActive"
-          class="absolute top-0 left-0 z-50 flex h-full w-full items-center justify-center bg-black/50 text-center font-medium whitespace-pre-line backdrop-blur-md"
-        >
-          {{ $t('preview.main') }}
+        <div class="flex flex-col items-center gap-4">
+          <Hand class="size-10" />
+          <span class="text-center font-bold whitespace-pre-line">{{
+            $t('preview.drag.title')
+          }}</span>
+          <span class="text-center text-sm whitespace-pre-line">{{
+            $t('preview.drag.description')
+          }}</span>
+          <Button @click="previewDraggable = false">
+            {{ $t('preview.drag.continue') }}
+          </Button>
         </div>
-      </Transition>
-      <Transition
-        enter-from-class="opacity-0"
-        leave-to-class="opacity-0"
-        enter-active-class="transition duration-300"
-        leave-active-class="transition duration-300"
-      >
-        <div
-          v-if="previewDraggable && configuratorActive"
-          class="absolute top-0 left-0 z-50 flex h-full w-full items-center justify-center bg-black/50 backdrop-blur-md"
-        >
-          <div class="flex flex-col items-center gap-4">
-            <Hand class="size-10" />
-            <span class="text-center font-bold whitespace-pre-line">{{
-              $t('preview.drag.title')
-            }}</span>
-            <span class="text-center text-sm whitespace-pre-line">{{
-              $t('preview.drag.description')
-            }}</span>
-            <Button @click="previewDraggable = false">
-              {{ $t('preview.drag.continue') }}
-            </Button>
-          </div>
-        </div>
-      </Transition>
+      </div>
+    </Transition>
 
-      <Panel />
-    </div>
+    <Panel />
   </main>
 </template>
-
-<style scoped>
-.draggable-preview {
-  position: absolute;
-  user-select: none;
-  touch-action: none;
-}
-</style>
