@@ -1,8 +1,8 @@
 /**
  * Import necessary dependencies for API interactions
  */
-import {type AxiosResponse} from 'axios'
-import {apiClient} from '.'
+import { type AxiosResponse } from 'axios'
+import { apiClient } from '.'
 
 /**
  * Interface defining the structure of a player object returned from the API

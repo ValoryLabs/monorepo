@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { HTMLAttributes } from 'vue'
+import { cn } from '@/lib/utils'
 import { reactiveOmit } from '@vueuse/core'
 import { AccordionContent, type AccordionContentProps } from 'reka-ui'
-import { cn } from '@/lib/utils'
+import type { HTMLAttributes } from 'vue'
 
 const props = defineProps<AccordionContentProps & { class?: HTMLAttributes['class'] }>()
 

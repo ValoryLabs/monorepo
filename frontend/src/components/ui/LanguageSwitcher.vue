@@ -14,8 +14,8 @@ import { Globe } from 'lucide-vue-next'
 
 import { AVAILABLE_LOCALES } from '@/i18n'
 import { useLocalStorage } from '@vueuse/core'
-import { useI18n } from 'vue-i18n'
 import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 interface Props {
   variant?: 'default' | 'rounded'

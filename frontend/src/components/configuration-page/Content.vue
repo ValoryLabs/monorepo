@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { useUserStore } from '@/stores/user.ts'
-import { storeToRefs } from 'pinia'
 import Overlay from '@/components/Overlay.vue'
 import { Button } from '@/components/ui/button'
+import { useUserStore } from '@/stores/user.ts'
+import { storeToRefs } from 'pinia'
 
 import { Hand } from 'lucide-vue-next'
 
@@ -128,9 +128,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <main
-    class="relative flex flex-1 items-center justify-center bg-white/1"
-  >
+  <main class="relative flex flex-1 items-center justify-center bg-white/1">
     <div
       class="flex h-full w-full bg-center overflow-hidden"
       :class="{

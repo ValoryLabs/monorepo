@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { openLink } from '@/lib/utils.ts'
-import { Valory, Kick, Twitch, YouTube } from '@/components/icons'
-import { Separator } from '@/components/ui/separator'
+import { Kick, Twitch, Valory, YouTube } from '@/components/icons'
 import { Button } from '@/components/ui/button'
+import { Separator } from '@/components/ui/separator'
+import { openLink } from '@/lib/utils.ts'
 import router from '@/router'
 
 const redirectToAuth = () => {
@@ -35,10 +35,10 @@ const redirectToAuth = () => {
             ><Twitch color="white" class="size-5" /> Twitch</Button
           >
           <Separator class="my-2 h-px w-full bg-white/10" label="OR" />
-          <Button variant="login" size="lg" class="w-full  justify-center" disabled="true"
+          <Button variant="login" size="lg" class="w-full justify-center" disabled="true"
             ><YouTube color="white" class="size-5" />Youtube</Button
           >
-          <Button variant="login" size="lg" class="w-full  justify-center" disabled="true"
+          <Button variant="login" size="lg" class="w-full justify-center" disabled="true"
             ><Kick color="white" class="size-5" />Kick</Button
           >
         </div>

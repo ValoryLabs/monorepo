@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import ShortcutsRoot from '@/components/configuration-page/settings/Shortcuts/ShortcutsRoot.vue'
 import ShortcutsHeader from '@/components/configuration-page/settings/Shortcuts/ShortcutsHeader.vue'
+import ShortcutsRoot from '@/components/configuration-page/settings/Shortcuts/ShortcutsRoot.vue'
 import ShortcutsSection from '@/components/configuration-page/settings/Shortcuts/ShortcutsSection.vue'
 import ShowShortcuts from '@/components/ui/ShowShortcuts.vue'
 

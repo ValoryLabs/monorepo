@@ -1,9 +1,9 @@
 <script setup lang="ts">
+import { MiniOverlay, NewOverlay, NewV2Overlay, OldOverlay } from '@/components/overlays'
+import { getAccountInformation, getMMRInformation } from '@/services/playerInformation'
 import { useOverlayStore, usePlayerStore, useUserStore } from '@/stores'
 import { storeToRefs } from 'pinia'
-import { MiniOverlay, NewOverlay, NewV2Overlay, OldOverlay } from '@/components/overlays'
 import { computed, onMounted } from 'vue'
-import { getAccountInformation, getMMRInformation } from '@/services/playerInformation'
 
 const userStore = useUserStore()
 const { configuratorActive } = storeToRefs(userStore)

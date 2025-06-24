@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {computed, onUnmounted, ref, watch} from 'vue'
+import { computed, onUnmounted, ref, watch } from 'vue'
 
 interface Props {
   gridSize: [number, number]
@@ -14,7 +14,7 @@ const props = withDefaults(defineProps<Props>(), {
   cellClass: 'w-1 h-1',
   cellActiveClass: 'bg-primary',
   cellInactiveClass: 'bg-muted',
-  animationDuration: 150
+  animationDuration: 150,
 })
 
 const currentFrameIndex = ref(0)
@@ -62,10 +62,14 @@ const stopAnimation = () => {
   }
 }
 
-watch(() => props.frames, () => {
-  currentFrameIndex.value = 0
-  startAnimation()
-}, { immediate: true })
+watch(
+  () => props.frames,
+  () => {
+    currentFrameIndex.value = 0
+    startAnimation()
+  },
+  { immediate: true },
+)
 
 onUnmounted(() => {
   stopAnimation()
@@ -77,16 +81,13 @@ onUnmounted(() => {
     class="grid gap-[1px]"
     :style="{
       gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`,
-      gridTemplateRows: `repeat(${rows}, minmax(0, 1fr))`
+      gridTemplateRows: `repeat(${rows}, minmax(0, 1fr))`,
     }"
   >
     <div
       v-for="cell in cells"
       :key="cell.id"
-      :class="[
-        cellClass,
-        activeCells.has(cell.id) ? cellActiveClass : cellInactiveClass
-      ]"
+      :class="[cellClass, activeCells.has(cell.id) ? cellActiveClass : cellInactiveClass]"
       class="transition-colors duration-75"
     />
   </div>

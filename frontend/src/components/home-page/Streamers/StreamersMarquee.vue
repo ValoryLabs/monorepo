@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { onMounted, computed } from 'vue'
-import { StreamersCard, StreamersCardMock} from '@/components/home-page/Streamers'
+import { StreamersCard, StreamersCardMock } from '@/components/home-page/Streamers'
+import { Skeleton } from '@/components/ui/skeleton'
 import { useStreamersStore } from '@/stores'
 import { storeToRefs } from 'pinia'
-import { Skeleton } from '@/components/ui/skeleton'
+import { computed, onMounted } from 'vue'
 
 const streamersStore = useStreamersStore()
 const { streamers, loading, error } = storeToRefs(streamersStore)
@@ -13,11 +13,12 @@ const hasError = computed(() => Boolean(error.value))
 const showSkeleton = computed(() => isLoading.value || hasError.value)
 
 const safeStreamers = computed(() => {
-  return streamers.value.filter(streamer =>
-    streamer &&
-    typeof streamer === 'object' &&
-    streamer.username &&
-    typeof streamer.username === 'string'
+  return streamers.value.filter(
+    (streamer) =>
+      streamer &&
+      typeof streamer === 'object' &&
+      streamer.username &&
+      typeof streamer.username === 'string',
   )
 })
 
@@ -44,7 +45,7 @@ onMounted(async () => {
           </div>
         </div>
       </figure>
-      <StreamersCardMock/>
+      <StreamersCardMock />
     </div>
 
     <div
@@ -61,7 +62,7 @@ onMounted(async () => {
         :live="streamer.live"
         :verified="streamer.verified"
       />
-      <StreamersCardMock/>
+      <StreamersCardMock />
     </div>
   </Transition>
 </template>

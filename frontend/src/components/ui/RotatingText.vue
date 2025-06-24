@@ -11,33 +11,30 @@ const props = defineProps<Props>()
 const displayText = ref(props.text)
 const isAnimating = ref(false)
 
-watch(() => props.text, async (newText) => {
-  if (newText === displayText.value) return
+watch(
+  () => props.text,
+  async (newText) => {
+    if (newText === displayText.value) return
 
-  isAnimating.value = true
+    isAnimating.value = true
 
-  // Анимация исчезновения
-  await new Promise(resolve => setTimeout(resolve, 150))
+    // Анимация исчезновения
+    await new Promise((resolve) => setTimeout(resolve, 150))
 
-  displayText.value = newText
+    displayText.value = newText
 
-  // Анимация появления
-  await new Promise(resolve => setTimeout(resolve, 50))
+    // Анимация появления
+    await new Promise((resolve) => setTimeout(resolve, 50))
 
-  isAnimating.value = false
-})
+    isAnimating.value = false
+  },
+)
 </script>
 
 <template>
   <div :class="props.class">
-    <Transition
-      name="text-rotate"
-      mode="out-in"
-    >
-      <span
-        :key="displayText"
-        class="block text-sm font-medium"
-      >
+    <Transition name="text-rotate" mode="out-in">
+      <span :key="displayText" class="block text-sm font-medium">
         {{ displayText }}
       </span>
     </Transition>

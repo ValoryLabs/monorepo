@@ -1,16 +1,20 @@
 <script setup lang="ts">
-import {Label} from '@/components/ui/label'
+import {
+  ConfigurationContent,
+  ConfigurationRoot,
+  ConfigurationSection,
+} from '@/components/configuration-page/configuration/index.ts'
+import { Button } from '@/components/ui/button'
 import ColorPicker from '@/components/ui/ColorPicker.vue'
-import {useOverlayStore} from '@/stores/overlay.ts'
-import {storeToRefs} from 'pinia'
-import SelectLayout from '@/components/ui/SelectLayout.vue'
+import { Kbd } from '@/components/ui/kbd'
+import { Label } from '@/components/ui/label'
 import SelectFont from '@/components/ui/SelectFont.vue'
-import {ConfigurationContent, ConfigurationRoot, ConfigurationSection,} from '@/components/configuration-page/configuration/index.ts'
-import {SwitchToggle} from '@/components/ui/switchtoggle'
-import {Button} from '@/components/ui/button'
-import {Kbd} from '@/components/ui/kbd'
+import SelectLayout from '@/components/ui/SelectLayout.vue'
+import { SwitchToggle } from '@/components/ui/switchtoggle'
+import { useOverlayStore } from '@/stores/overlay.ts'
+import { storeToRefs } from 'pinia'
 
-import {useUserStore} from '@/stores/user.ts'
+import { useUserStore } from '@/stores/user.ts'
 
 const userStore = useUserStore()
 
@@ -60,10 +64,10 @@ const {
 
       <!-- Background section -->
       <ConfigurationSection
-          :accordion="true"
-          accordion-value="Background"
-          :label="$t('sidebar.configuration.settings.label.background')"
-          :open="true"
+        :accordion="true"
+        accordion-value="Background"
+        :label="$t('sidebar.configuration.settings.label.background')"
+        :open="true"
       >
         <ConfigurationContent>
           <Label for="background-color">
@@ -157,9 +161,9 @@ const {
 
       <!-- Text section -->
       <ConfigurationSection
-          :label="$t('sidebar.configuration.settings.label.text')"
-          :accordion="true"
-          accordion-value="Text"
+        :label="$t('sidebar.configuration.settings.label.text')"
+        :accordion="true"
+        accordion-value="Text"
       >
         <ConfigurationContent>
           <Label> {{ $t('sidebar.configuration.settings.font') }}</Label>
@@ -181,9 +185,9 @@ const {
 
       <!-- Win/lose section -->
       <ConfigurationSection
-          :label="$t('sidebar.configuration.settings.label.winLose')"
-          :accordion="true"
-          accordion-value="Win-Lose"
+        :label="$t('sidebar.configuration.settings.label.winLose')"
+        :accordion="true"
+        accordion-value="Win-Lose"
       >
         <ConfigurationContent>
           <Label for="win-color">

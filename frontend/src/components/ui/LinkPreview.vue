@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card'
+import { Skeleton } from '@/components/ui/skeleton'
 import { useMetaExtractor } from '@/composables'
 import { openLink } from '@/lib/utils.ts'
-import { Skeleton } from '@/components/ui/skeleton'
+import { computed, ref } from 'vue'
 
 interface Props {
   url: string

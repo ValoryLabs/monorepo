@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import router from '@/router'
-import { PencilRuler } from 'lucide-vue-next'
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 import { Button } from '@/components/ui/button'
 import { Kbd } from '@/components/ui/kbd'
-import { useMagicKeys } from '@vueuse/core'
-import { watch } from 'vue'
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
+import router from '@/router'
 import { useAuthStore } from '@/stores/auth.ts'
+import { useMagicKeys } from '@vueuse/core'
+import { PencilRuler } from 'lucide-vue-next'
+import { watch } from 'vue'
 
 const { l, c } = useMagicKeys()
 

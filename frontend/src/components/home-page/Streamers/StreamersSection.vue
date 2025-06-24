@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { StreamersRoot, StreamersMarquee } from '@/components/home-page/Streamers'
+import { StreamersMarquee, StreamersRoot } from '@/components/home-page/Streamers'
 </script>
 
 <template>

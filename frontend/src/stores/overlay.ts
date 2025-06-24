@@ -1,7 +1,7 @@
+import axios from 'axios'
 import { defineStore } from 'pinia'
 import { type Ref, ref, watch } from 'vue'
 import { toast } from 'vue-sonner'
-import axios from 'axios'
 
 /**
  * Overlay settings store for managing streaming overlay configuration

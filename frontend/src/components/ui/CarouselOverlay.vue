@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import {onMounted, onUnmounted, ref} from 'vue'
+import { onMounted, onUnmounted, ref } from 'vue'
 
 import MiniOverlay from '@/components/overlays/MiniOverlay.vue'
 import NewOverlay from '@/components/overlays/NewOverlay.vue'
@@ -25,8 +25,8 @@ const slides = [
       win: 2,
       lose: 0,
       lastMatches: ['Win', 'Lose', 'Win', 'Win', 'Lose'],
-      leaderboardPlace: 0
-    }
+      leaderboardPlace: 0,
+    },
   },
   {
     component: NewOverlay,
@@ -45,8 +45,8 @@ const slides = [
       peakName: 'Diamond',
       peakRR: 1180,
       lastMatches: ['Lose', 'Win', 'Draw', 'Lose', 'Win'],
-      leaderboardPlace: 28
-    }
+      leaderboardPlace: 28,
+    },
   },
   {
     component: NewV2Overlay,
@@ -64,8 +64,8 @@ const slides = [
       peakName: 'Immortal',
       peakRR: 1950,
       lastMatches: ['Win', 'Win', 'Draw', 'Win', 'Win'],
-      leaderboardPlace: 12
-    }
+      leaderboardPlace: 12,
+    },
   },
   {
     component: OldOverlay,
@@ -85,9 +85,9 @@ const slides = [
       peakName: 'Radiant',
       peakRR: 3200,
       lastMatches: ['Win', 'Win', 'Win', 'Win', 'Draw'],
-      leaderboardPlace: 3
-    }
-  }
+      leaderboardPlace: 3,
+    },
+  },
 ]
 
 const currentIndex = ref(0)

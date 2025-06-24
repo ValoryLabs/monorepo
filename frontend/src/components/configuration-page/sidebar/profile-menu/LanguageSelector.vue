@@ -1,22 +1,22 @@
 <script lang="ts" setup>
 import {
+  DropdownMenuItem,
+  DropdownMenuPortal,
   DropdownMenuSub,
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
-  DropdownMenuItem,
-  DropdownMenuPortal,
 } from '@/components/ui/dropdown-menu'
-import { Globe, Check } from 'lucide-vue-next'
 import { AVAILABLE_LOCALES } from '@/i18n'
 import { useLocalStorage } from '@vueuse/core'
-import { useI18n } from 'vue-i18n'
+import { Check, Globe } from 'lucide-vue-next'
 import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 const { locale } = useI18n()
 const currentLocale = useLocalStorage('lang', 'en')
 
 const currentLanguage = computed(() => {
-  return AVAILABLE_LOCALES.find(lang => lang.code === currentLocale.value)
+  return AVAILABLE_LOCALES.find((lang) => lang.code === currentLocale.value)
 })
 
 const currentLanguageName = computed(() => {
@@ -44,10 +44,7 @@ const handleLanguageChange = (langCode: string) => {
           @click="handleLanguageChange(lang.code)"
           class="cursor-pointer"
         >
-          <Check
-            v-if="currentLocale === lang.code"
-            class="mr-2 h-4 w-4"
-          />
+          <Check v-if="currentLocale === lang.code" class="mr-2 h-4 w-4" />
           <span :class="currentLocale !== lang.code ? 'ml-8' : ''">
             {{ lang.name }}
           </span>

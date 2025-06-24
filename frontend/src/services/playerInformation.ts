@@ -1,7 +1,7 @@
-import {type AxiosResponse} from 'axios'
-import {apiClient} from '.'
-import {useUserSettingsStore} from '@/stores/userSettings'
-import {usePlayerStore} from '@/stores/player'
+import { usePlayerStore } from '@/stores/player'
+import { useUserSettingsStore } from '@/stores/userSettings'
+import { type AxiosResponse } from 'axios'
+import { apiClient } from '.'
 
 /**
  * Fetches account information for the current user

@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { PackageOpen, Paintbrush, PencilRuler } from 'lucide-vue-next'
-import Button from '@/components/ui/button/Button.vue'
-import Valory from '@/components/icons/Valory.vue'
-import CarouselOverlay from '@/components/ui/CarouselOverlay.vue'
 import LoginOrConfigurator from '@/components/home-page/LoginOrConfigurator.vue'
+import Valory from '@/components/icons/Valory.vue'
+import Button from '@/components/ui/button/Button.vue'
+import CarouselOverlay from '@/components/ui/CarouselOverlay.vue'
+import { PackageOpen, Paintbrush, PencilRuler } from 'lucide-vue-next'
 </script>
 
 <template>
@@ -51,7 +51,9 @@ import LoginOrConfigurator from '@/components/home-page/LoginOrConfigurator.vue'
           </Button>
         </div>
       </div>
-      <div class="relative flex size-1/2 flex-col items-center justify-center gap-3 overflow-hidden rounded-2xl">
+      <div
+        class="relative flex size-1/2 flex-col items-center justify-center gap-3 overflow-hidden rounded-2xl"
+      >
         <img
           src="/rank_preview.webp"
           alt="Rank Preview Background"

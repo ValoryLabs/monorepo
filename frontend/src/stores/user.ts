@@ -1,6 +1,6 @@
-import { defineStore } from 'pinia'
-import { ref, type Ref, computed, watch } from 'vue'
 import axios from 'axios'
+import { defineStore } from 'pinia'
+import { computed, ref, watch, type Ref } from 'vue'
 
 export const useUserStore = defineStore(
   'userStore',
@@ -24,9 +24,32 @@ export const useUserStore = defineStore(
     const CACHE_DURATION = 30 * 60 * 1000
 
     const allowedKeys = [
-      'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p',
-      'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l',
-      'z', 'x', 'c', 'v', 'b', 'n', 'm',
+      'q',
+      'w',
+      'e',
+      'r',
+      't',
+      'y',
+      'u',
+      'i',
+      'o',
+      'p',
+      'a',
+      's',
+      'd',
+      'f',
+      'g',
+      'h',
+      'j',
+      'k',
+      'l',
+      'z',
+      'x',
+      'c',
+      'v',
+      'b',
+      'n',
+      'm',
     ]
 
     const validateKey = (key: string): string => {
@@ -94,7 +117,7 @@ export const useUserStore = defineStore(
     const isCacheValid = (): boolean => {
       if (!lastFetchTime.value) return false
       const now = Date.now()
-      return (now - lastFetchTime.value) < CACHE_DURATION
+      return now - lastFetchTime.value < CACHE_DURATION
     }
 
     const fetchUser = async (force: boolean = false) => {
@@ -139,7 +162,7 @@ export const useUserStore = defineStore(
     }
 
     const toggleFullscreen = () => {
-        fullscreen.value = !fullscreen.value
+      fullscreen.value = !fullscreen.value
     }
 
     return {
@@ -189,8 +212,8 @@ export const useUserStore = defineStore(
         'showShortcuts',
         'resetShortcut',
         'fullShortcut',
-        'lastFetchTime'
-      ]
+        'lastFetchTime',
+      ],
     },
   },
 )

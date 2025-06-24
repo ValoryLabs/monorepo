@@ -1,5 +1,5 @@
-import {defineStore} from 'pinia'
-import {ref, type Ref} from 'vue'
+import { defineStore } from 'pinia'
+import { ref, type Ref } from 'vue'
 
 export const useUserSettingsStore = defineStore(
   'userSettingsStore',

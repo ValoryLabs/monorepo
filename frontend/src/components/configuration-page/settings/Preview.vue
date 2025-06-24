@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { storeToRefs } from 'pinia'
-import { useUserStore } from '@/stores/user.ts'
-import { Check, Ban } from 'lucide-vue-next'
 import TiltCard from '@/components/ui/TiltCard.vue'
+import { useUserStore } from '@/stores/user.ts'
+import { Ban, Check } from 'lucide-vue-next'
+import { storeToRefs } from 'pinia'
 
 const userStore = useUserStore()
 const { previewImage } = storeToRefs(userStore)
@@ -55,7 +55,7 @@ const images = [
   {
     name: 'Sunset',
     src: '/thumbnails/sunset.webp',
-  }
+  },
 ]
 </script>
 

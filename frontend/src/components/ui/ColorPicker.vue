@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import tinycolor from 'tinycolor2'
-import { onMounted, reactive, ref, watch } from 'vue'
+import { Input } from '@/components/ui/input'
 import InputWithIcon from '@/components/ui/InputWithIcon.vue'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
-import { Input } from '@/components/ui/input'
+import tinycolor from 'tinycolor2'
+import { onMounted, reactive, ref, watch } from 'vue'
 
 interface RGB {
   r: number

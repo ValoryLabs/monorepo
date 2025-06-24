@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { Button } from '@/components/ui/button'
-import { computed } from 'vue'
-import { Copy } from 'lucide-vue-next'
-import { useClipboard } from '@vueuse/core'
-import { toast } from 'vue-sonner'
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 import { Input } from '@/components/ui/input'
-import { storeToRefs } from 'pinia'
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 import { useUserStore } from '@/stores/user.ts'
+import { useClipboard } from '@vueuse/core'
+import { Copy } from 'lucide-vue-next'
+import { storeToRefs } from 'pinia'
+import { computed } from 'vue'
+import { toast } from 'vue-sonner'
 
 const userStore = useUserStore()
 const { overlayDimensions } = storeToRefs(userStore)

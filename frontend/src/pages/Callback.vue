@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { useAuthStore } from '@/stores'
-import { useRouter } from 'vue-router'
 import { Valory } from '@/components/icons'
+import { Loading } from '@/components/icons/motion-grid'
+import { useAuthStore } from '@/stores'
 import { useHead } from '@unhead/vue'
 import { useI18n } from 'vue-i18n'
-import { Loading } from "@/components/icons/motion-grid";
+import { useRouter } from 'vue-router'
 
 const authStore = useAuthStore()
 const router = useRouter()
@@ -34,14 +34,10 @@ if (token) {
 <template>
   <div class="inline-flex h-screen w-screen items-center">
     <div class="m-auto flex items-center justify-center">
-      <div
-        class="flex w-sm flex-col content-center items-center justify-center gap-3"
-      >
+      <div class="flex w-sm flex-col content-center items-center justify-center gap-3">
         <div class="relative flex flex-col items-center justify-center gap-4">
-          <Loading/>
-          <span class="text-base font-bold">{{
-            $t('components.login.logging')
-          }}</span>
+          <Loading />
+          <span class="text-base font-bold">{{ $t('components.login.logging') }}</span>
           <Valory :size="96" class="absolute inset-0 m-auto blur-[120px] -z-10" />
         </div>
       </div>

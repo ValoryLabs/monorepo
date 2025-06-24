@@ -4,8 +4,8 @@ import {
   Accordion,
   AccordionContent,
   AccordionItem,
-  AccordionTrigger
-} from "@/components/ui/accordion";
+  AccordionTrigger,
+} from '@/components/ui/accordion'
 
 const props = defineProps<{
   label?: string
@@ -17,7 +17,11 @@ const props = defineProps<{
 
 <template>
   <div v-if="props.accordion">
-    <Accordion type="single" collapsible :default-value="open ? props.accordionValue || 'item-1' : undefined">
+    <Accordion
+      type="single"
+      collapsible
+      :default-value="open ? props.accordionValue || 'item-1' : undefined"
+    >
       <AccordionItem :value="props.accordionValue || 'item-1'">
         <AccordionTrigger>
           {{ props.label }}
@@ -29,10 +33,7 @@ const props = defineProps<{
     </Accordion>
   </div>
   <div v-else>
-    <ConfigurationLabel
-        v-if="props.label"
-        class="text-second text-[0.65rem] font-bold uppercase"
-    >
+    <ConfigurationLabel v-if="props.label" class="text-second text-[0.65rem] font-bold uppercase">
       {{ props.label }}
     </ConfigurationLabel>
     <section class="flex flex-col gap-2">

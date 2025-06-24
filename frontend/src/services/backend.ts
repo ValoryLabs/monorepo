@@ -1,5 +1,5 @@
-import axios, { type AxiosResponse, AxiosError, type AxiosRequestConfig } from 'axios'
 import { useUserSettingsStore } from '@/stores/userSettings'
+import axios, { AxiosError, type AxiosRequestConfig, type AxiosResponse } from 'axios'
 
 // Type definitions
 interface ApiErrorResponse {

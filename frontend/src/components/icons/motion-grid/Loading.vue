@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
 import MotionGrid from '@/components/ui/MotionGrid.vue'
+import { onMounted, onUnmounted, ref } from 'vue'
 
 type Frames = number[][][]
 
-const importingFrames: Frames  = [
+const importingFrames: Frames = [
   [[2, 2]],
   [
     [1, 2],
@@ -99,7 +99,7 @@ const importingFrames: Frames  = [
   [],
 ]
 
-const arrowDownFrames: Frames  = [
+const arrowDownFrames: Frames = [
   [[2, 0]],
   [
     [1, 0],
@@ -145,7 +145,7 @@ const arrowDownFrames: Frames  = [
   [],
 ]
 
-const arrowUpFrames: Frames  = [
+const arrowUpFrames: Frames = [
   [[2, 4]],
   [
     [1, 4],
@@ -193,7 +193,7 @@ const arrowUpFrames: Frames  = [
 
 const syncingFrames: Frames = [...arrowDownFrames, ...arrowUpFrames]
 
-const searchingFrames: Frames  = [
+const searchingFrames: Frames = [
   [
     [1, 0],
     [0, 1],
@@ -249,7 +249,7 @@ const searchingFrames: Frames  = [
   [],
 ]
 
-const busyFrames: Frames  = [
+const busyFrames: Frames = [
   [
     [0, 1],
     [0, 2],
@@ -324,7 +324,7 @@ const busyFrames: Frames  = [
   ],
 ]
 
-const savingFrames: Frames  = [
+const savingFrames: Frames = [
   [
     [0, 0],
     [0, 1],
@@ -620,7 +620,7 @@ type StateKey = keyof typeof states
 const currentState = ref<StateKey>('importing')
 const intervalId: number | null = null
 
-const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 
 const runStates = async () => {
   const stateKeys = Object.keys(states) as StateKey[]
@@ -652,12 +652,7 @@ onUnmounted(() => {
     :whileTap="{ scale: 0.95 }"
     class="relative flex items-center gap-3"
   >
-    <div
-      v-motion
-      :initial="{ opacity: 1 }"
-      :animate="{ opacity: 1 }"
-      class="flex-shrink-0"
-    >
+    <div v-motion :initial="{ opacity: 1 }" :animate="{ opacity: 1 }" class="flex-shrink-0">
       <MotionGrid
         :grid-size="[5, 5]"
         :frames="states[currentState].frames"

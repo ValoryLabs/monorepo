@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { Content } from '@/components/configuration-page'
-import { LeftSidebar, RightSidebar} from '@/components/configuration-page/sidebar/'
-import { useOverlayStore, useUserStore } from '@/stores'
-import { storeToRefs } from 'pinia'
-import { useMagicKeys } from '@vueuse/core'
-import { watch } from 'vue'
-import { useHead } from '@unhead/vue'
 import { Settings } from '@/components/configuration-page/settings'
+import { LeftSidebar, RightSidebar } from '@/components/configuration-page/sidebar/'
+import { ConfiguratorLayout } from '@/layouts'
+import { useOverlayStore, useUserStore } from '@/stores'
+import { useHead } from '@unhead/vue'
+import { useMagicKeys } from '@vueuse/core'
+import { storeToRefs } from 'pinia'
+import { watch } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { ConfiguratorLayout } from "@/layouts";
 
 const { t } = useI18n()
 
@@ -40,10 +40,8 @@ watch(fullKeyPressed, (v) => {
 
 <template>
   <ConfiguratorLayout>
-    <div
-      class="relative inline-flex w-dvw h-dvh "
-    >
-      <LeftSidebar/>
+    <div class="relative inline-flex w-dvw h-dvh">
+      <LeftSidebar />
       <Content />
       <Settings />
       <RightSidebar />

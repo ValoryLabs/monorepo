@@ -1,8 +1,8 @@
+import { updateUserData } from '@/services/backend.ts'
 import { useUserSettingsStore } from '@/stores/userSettings'
+import type { AxiosError } from 'axios'
 import { storeToRefs } from 'pinia'
 import { apiClient } from '..'
-import type { AxiosError } from 'axios'
-import { updateUserData } from '@/services/backend.ts'
 
 // Data types
 interface ValidationResult {

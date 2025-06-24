@@ -1,6 +1,6 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { Callback, Configurator, Home, NotFound, Overlay, SignIn, TermsOfService } from '@/pages'
 import { useAuthStore } from '@/stores/auth'
-import { Home, SignIn, Overlay, NotFound, Callback, Configurator, TermsOfService } from '@/pages'
+import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),

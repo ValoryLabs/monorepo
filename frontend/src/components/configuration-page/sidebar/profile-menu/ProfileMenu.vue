@@ -12,20 +12,15 @@ import {
 } from '@/components/ui/dropdown-menu'
 
 import { openLink } from '@/lib/utils.ts'
-import {
-  LifeBuoy,
-  LogOut,
-  NotebookText,
-  Settings as SettingsIcon,
-} from 'lucide-vue-next'
+import { LifeBuoy, LogOut, NotebookText, Settings as SettingsIcon } from 'lucide-vue-next'
 
-import { onMounted, watch } from 'vue'
+import { LanguageSelector } from '@/components/configuration-page/sidebar/profile-menu'
+import { TwitchVerify } from '@/components/icons'
+import { Loading as LoadingIcon } from '@/components/icons/motion-grid'
+import router from '@/router'
 import { useAuthStore, useUserStore } from '@/stores'
 import { storeToRefs } from 'pinia'
-import router from '@/router'
-import { TwitchVerify } from '@/components/icons'
-import { LanguageSelector } from '@/components/configuration-page/sidebar/profile-menu'
-import { Loading as LoadingIcon } from '@/components/icons/motion-grid'
+import { onMounted, watch } from 'vue'
 
 const authStore = useAuthStore()
 
@@ -48,7 +43,7 @@ onMounted(() => {
     <span v-if="loading" class="w-full flex items-center justify-center h-5 mb-2">
       <LoadingIcon />
     </span>
-    <span  v-else-if="error" class="font-bold w-full flex items-center justify-center h-5 mb-2">
+    <span v-else-if="error" class="font-bold w-full flex items-center justify-center h-5 mb-2">
       {{ $t('profile_menu.error') }}
     </span>
     <DropdownMenuTrigger v-else-if="user && !loading && !error" as-child>
@@ -58,7 +53,7 @@ onMounted(() => {
           <span class="font-bold">{{ user.twitch_display_name }}</span>
         </span>
         <Button size="icon" variant="ghost" class="bg-white/5" @click.prevent="authStore.logout()">
-          <LogOut/>
+          <LogOut />
         </Button>
       </Button>
     </DropdownMenuTrigger>

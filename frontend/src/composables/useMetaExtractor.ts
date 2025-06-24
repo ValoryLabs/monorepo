@@ -1,6 +1,6 @@
-import { ref } from 'vue'
-import { ofetch } from 'ofetch'
 import * as cheerio from 'cheerio'
+import { ofetch } from 'ofetch'
+import { ref } from 'vue'
 
 interface MetaData {
   url: string

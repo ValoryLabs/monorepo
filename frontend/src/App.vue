@@ -1,12 +1,12 @@
 <script setup lang="ts">
+import { Loading } from '@/components/icons/motion-grid'
+import { useUserStore } from '@/stores'
+import { identifyUmamiSession } from '@jaseeey/vue-umami-plugin'
+import { useHead, useSeoMeta } from '@unhead/vue'
+import { storeToRefs } from 'pinia'
 import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { useHead, useSeoMeta } from '@unhead/vue'
 import { Toaster } from 'vue-sonner'
-import { useUserStore } from "@/stores";
-import { storeToRefs } from "pinia";
-import { identifyUmamiSession } from '@jaseeey/vue-umami-plugin'
-import { Loading } from "@/components/icons/motion-grid";
 
 const titleMain = 'VALORY'
 const metaImg = 'meta.webp'
@@ -72,7 +72,7 @@ const identifyUser = () => {
     identifyUmamiSession({
       userId: user.id,
       twitch_id: user.twitch_id,
-      username: user.username
+      username: user.username,
     })
   }
 }
@@ -98,11 +98,7 @@ onMounted(identifyUser)
 
   <router-view v-slot="{ Component, route }">
     <Transition name="fade" mode="out-in">
-      <component
-        v-if="isPageReady"
-        :is="Component"
-        :key="route.path"
-      />
+      <component v-if="isPageReady" :is="Component" :key="route.path" />
     </Transition>
   </router-view>
 </template>

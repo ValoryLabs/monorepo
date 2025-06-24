@@ -1,10 +1,10 @@
 <script setup lang="ts">
+import { getOverlayData } from '@/services/backend.ts'
 import { useHead } from '@unhead/vue'
 import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
-import { getOverlayData } from '@/services/backend.ts'
 
-import { MiniOverlay, NewOverlay, NewV2Overlay, OldOverlay } from '@/components/overlays'
 import { Loading } from '@/components/icons/motion-grid'
+import { MiniOverlay, NewOverlay, NewV2Overlay, OldOverlay } from '@/components/overlays'
 
 useHead({
   title: 'Overlay',
@@ -117,7 +117,7 @@ onUnmounted(() => {
 
 <template>
   <div v-if="loading" class="flex h-10 w-dvw items-center justify-center">
-    <Loading/>
+    <Loading />
   </div>
   <div v-else-if="overlayData" class="flex flex-col items-center">
     <component

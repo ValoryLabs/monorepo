@@ -1,6 +1,6 @@
-import { ref, computed } from 'vue'
-import { ofetch } from 'ofetch'
 import * as cheerio from 'cheerio'
+import { ofetch } from 'ofetch'
+import { computed, ref } from 'vue'
 
 const starsCache = ref<{ count: number; timestamp: number } | null>(null)
 const CACHE_DURATION = 10 * 60 * 1000

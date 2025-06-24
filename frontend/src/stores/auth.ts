@@ -1,6 +1,6 @@
-import {defineStore} from 'pinia'
 import router from '@/router'
-import {ref, type Ref} from 'vue'
+import { defineStore } from 'pinia'
+import { ref, type Ref } from 'vue'
 
 interface AuthState {
   isAuthenticated: Ref<boolean>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {cn} from '@/lib/utils'
+import { cn } from '@/lib/utils'
 import {
   PopoverContent,
   type PopoverContentEmits,
@@ -7,7 +7,7 @@ import {
   PopoverPortal,
   useForwardPropsEmits,
 } from 'reka-ui'
-import {computed, type HTMLAttributes} from 'vue'
+import { computed, type HTMLAttributes } from 'vue'
 
 defineOptions({
   inheritAttrs: false,

@@ -1,6 +1,6 @@
-import { defineStore } from 'pinia'
-import { ref, computed, type Ref } from 'vue'
 import axios from 'axios'
+import { defineStore } from 'pinia'
+import { computed, ref, type Ref } from 'vue'
 
 interface Streamer {
   username: string
@@ -39,8 +39,8 @@ export const useStreamersStore = defineStore('streamersStore', () => {
     }
 
     return parsedData
-      .filter(item => item && typeof item === 'object')
-      .map(item => ({
+      .filter((item) => item && typeof item === 'object')
+      .map((item) => ({
         username: item.username || 'Unknown',
         followers: item.followers || '0',
         img: item.img || '',
@@ -48,25 +48,27 @@ export const useStreamersStore = defineStore('streamersStore', () => {
         verified: Boolean(item.verified),
         viewers: item.viewers || undefined,
         game: item.game || undefined,
-        title: item.title || undefined
+        title: item.title || undefined,
       }))
   }
 
-  const fetchStreamers = async (options: {
-    primary_sort?: string
-    secondary_sort?: string
-    sort_order?: 'asc' | 'desc'
-    limit?: number
-    verified_only?: boolean
-    refresh_cache?: boolean
-  } = {}) => {
+  const fetchStreamers = async (
+    options: {
+      primary_sort?: string
+      secondary_sort?: string
+      sort_order?: 'asc' | 'desc'
+      limit?: number
+      verified_only?: boolean
+      refresh_cache?: boolean
+    } = {},
+  ) => {
     const {
-        primary_sort = 'live_status',
-        secondary_sort = 'followers',
-        sort_order = 'desc',
-        limit = 5,
-        verified_only = false,
-        refresh_cache = false
+      primary_sort = 'live_status',
+      secondary_sort = 'followers',
+      sort_order = 'desc',
+      limit = 5,
+      verified_only = false,
+      refresh_cache = false,
     } = options
 
     loading.value = true
@@ -76,7 +78,7 @@ export const useStreamersStore = defineStore('streamersStore', () => {
       const params = new URLSearchParams({
         limit: limit.toString(),
         verified_only: verified_only.toString(),
-        refresh_cache: refresh_cache.toString()
+        refresh_cache: refresh_cache.toString(),
       })
 
       const response = await axios.get(
@@ -84,7 +86,6 @@ export const useStreamersStore = defineStore('streamersStore', () => {
       )
 
       streamers.value = parseResponseData(response.data)
-
     } catch (err: any) {
       error.value = err.response?.data?.detail || err.message || 'Failed to fetch streamers'
       streamers.value = []
@@ -109,6 +110,6 @@ export const useStreamersStore = defineStore('streamersStore', () => {
     hasStreamers,
     fetchStreamers,
     refreshStreamers,
-    clearError
+    clearError,
   }
 })

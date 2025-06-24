@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type {SwitchRootEmits, SwitchRootProps} from 'radix-vue'
-import {SwitchRoot, SwitchThumb, useForwardPropsEmits} from 'radix-vue'
-import type {HTMLAttributes} from 'vue'
-import {computed} from 'vue'
-import {cn} from '@/lib/utils'
+import { cn } from '@/lib/utils'
+import type { SwitchRootEmits, SwitchRootProps } from 'radix-vue'
+import { SwitchRoot, SwitchThumb, useForwardPropsEmits } from 'radix-vue'
+import type { HTMLAttributes } from 'vue'
+import { computed } from 'vue'
 
 const props = defineProps<SwitchRootProps & { class?: HTMLAttributes['class'] }>()
 

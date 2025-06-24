@@ -1,5 +1,5 @@
-export { default as StreamersCard } from './StreamersCard.vue';
-export { default as StreamersCardMock } from './StreamersCardMock.vue';
-export { default as StreamersMarquee } from './StreamersMarquee.vue';
-export { default as StreamersRoot } from './StreamersRoot.vue';
-export { default as StreamersSection } from './StreamersSection.vue';
+export { default as StreamersCard } from './StreamersCard.vue'
+export { default as StreamersCardMock } from './StreamersCardMock.vue'
+export { default as StreamersMarquee } from './StreamersMarquee.vue'
+export { default as StreamersRoot } from './StreamersRoot.vue'
+export { default as StreamersSection } from './StreamersSection.vue'

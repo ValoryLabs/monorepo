@@ -1,9 +1,9 @@
 <script lang="ts" setup>
+import { openLink } from '@/lib/utils.ts'
 import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import TwitchVerify from '../../icons/TwitchVerify.vue'
-import { openLink } from '@/lib/utils.ts'
-import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
 
@@ -26,7 +26,7 @@ const props = withDefaults(defineProps<Props>(), {
   verified: false,
   clickable: true,
   link: undefined,
-  text: undefined
+  text: undefined,
 })
 
 const router = useRouter()
@@ -58,10 +58,11 @@ const liveIndicatorClass = computed(() => {
 })
 
 const cardClass = computed(() => {
-  const baseClass = "relative w-60 overflow-hidden rounded-xl border border-transparent bg-[#0F0F0F] p-4 transition-colors duration-200"
+  const baseClass =
+    'relative w-60 overflow-hidden rounded-xl border border-transparent bg-[#0F0F0F] p-4 transition-colors duration-200'
   const interactiveClass = props.clickable
-    ? "cursor-pointer hover:border-white/10 hover:bg-white/10"
-    : ""
+    ? 'cursor-pointer hover:border-white/10 hover:bg-white/10'
+    : ''
   return `${baseClass} ${interactiveClass}`.trim()
 })
 

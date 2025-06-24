@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import { Configuration } from '@/components/configuration-page/configuration'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Generate } from './index.ts'
-import { Configuration } from '@/components/configuration-page/configuration'
 
 import { useUserStore } from '@/stores/user.ts'
 import { storeToRefs } from 'pinia'
@@ -21,7 +21,10 @@ const { fullscreen, configuratorActive } = storeToRefs(userStore)
           {{ $t('sidebar.buttons.generate') }}
         </TabsTrigger>
       </TabsList>
-      <TabsContent value="configuration" class="scrollbar-thin h-full overflow-scroll overflow-x-hidden ml-2 pr-3">
+      <TabsContent
+        value="configuration"
+        class="scrollbar-thin h-full overflow-scroll overflow-x-hidden ml-2 pr-3"
+      >
         <Configuration />
       </TabsContent>
       <TabsContent value="generate" class="ml-2">
