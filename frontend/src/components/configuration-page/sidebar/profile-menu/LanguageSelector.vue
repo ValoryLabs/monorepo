@@ -32,7 +32,7 @@ const handleLanguageChange = (langCode: string) => {
 <template>
   <DropdownMenuSub>
     <DropdownMenuSubTrigger>
-      <Globe class="size-4 mr-2" />
+      <Globe class="size-4 mr-1" />
       <span>{{ $t('components.languageSwitcher') }}</span>
       <span class="ml-auto text-xs text-muted-foreground">{{ currentLanguageName }}</span>
     </DropdownMenuSubTrigger>

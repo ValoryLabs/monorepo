@@ -14,8 +14,7 @@ import {
 import { openLink } from '@/lib/utils.ts'
 import { LifeBuoy, LogOut, NotebookText, Settings as SettingsIcon } from 'lucide-vue-next'
 
-import { LanguageSelector } from '@/components/configuration-page/sidebar/profile-menu'
-import { TwitchVerify } from '@/components/icons'
+import { LanguageSelector, UserBio } from '@/components/configuration-page/sidebar/profile-menu'
 import { Loading as LoadingIcon } from '@/components/icons/motion-grid'
 import router from '@/router'
 import { useAuthStore, useUserStore } from '@/stores'
@@ -48,10 +47,12 @@ onMounted(() => {
     </span>
     <DropdownMenuTrigger v-else-if="user && !loading && !error" as-child>
       <Button variant="profile" size="none" class="inline-flex justify-between">
-        <span class="inline-flex items-center gap-2">
-          <img class="size-8 rounded-lg bg-neutral-500" :src="user.avatar_url" alt="user avatar" />
-          <span class="font-bold">{{ user.twitch_display_name }}</span>
-        </span>
+        <UserBio
+          :avatar_url="user.avatar_url"
+          :username="user.username"
+          :twitch_display_name="user.twitch_display_name"
+          :partner="user.broadcaster_type === 'partner'"
+        />
         <Button size="icon" variant="ghost" class="bg-white/5" @click.prevent="authStore.logout()">
           <LogOut />
         </Button>
@@ -59,27 +60,28 @@ onMounted(() => {
     </DropdownMenuTrigger>
     <DropdownMenuContent align="start" class="w-56 mb-1">
       <DropdownMenuLabel class="flex items-center justify-start gap-2" v-if="user">
-        <img class="size-8 rounded-lg bg-neutral-500" :src="user.avatar_url" alt="user avatar" />
-        <span class="flex items-center gap-1 font-bold">
-          {{ user.twitch_display_name }}
-          <TwitchVerify v-if="user.broadcaster_type === 'partner'" class="size-4" />
-        </span>
+        <UserBio
+          :avatar_url="user.avatar_url"
+          :username="user.username"
+          :twitch_display_name="user.twitch_display_name"
+          :partner="user.broadcaster_type === 'partner'"
+        />
       </DropdownMenuLabel>
       <DropdownMenuSeparator />
       <DropdownMenuGroup>
         <DropdownMenuItem @click="userStore.toggleShowSettings">
-          <SettingsIcon class="mr-2 h-4 w-4" />
+          <SettingsIcon class="mr-1 size-4" />
           <span>{{ $t('profile_menu.settings') }}</span>
         </DropdownMenuItem>
         <LanguageSelector />
       </DropdownMenuGroup>
       <DropdownMenuSeparator />
       <DropdownMenuItem @click="openLink('https://discord.gg/pYV4PBV5YW')">
-        <LifeBuoy class="mr-2 h-4 w-4" />
+        <LifeBuoy class="mr-1 size-4" />
         <span>{{ $t('profile_menu.support') }}</span>
       </DropdownMenuItem>
       <DropdownMenuItem @click="router.push({ name: 'terms' })">
-        <NotebookText class="text-muted-foreground mr-2 h-4 w-4" />
+        <NotebookText class="text-muted-foreground mr-1 size-4" />
         <span>{{ $t('profile_menu.terms') }}</span>
       </DropdownMenuItem>
     </DropdownMenuContent>
