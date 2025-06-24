@@ -54,12 +54,17 @@ const {
     </div>
     <ConfigurationRoot>
       <!-- Style section -->
-      <ConfigurationSection>
+      <ConfigurationSection :accordion="false">
         <SelectLayout v-model="overlayStyle" />
       </ConfigurationSection>
 
       <!-- Background section -->
-      <ConfigurationSection :label="$t('sidebar.configuration.settings.label.background')">
+      <ConfigurationSection
+          :accordion="true"
+          accordion-value="Background"
+          :label="$t('sidebar.configuration.settings.label.background')"
+          :open="true"
+      >
         <ConfigurationContent>
           <Label for="background-color">
             {{ $t('sidebar.configuration.settings.backgroundColor') }}
@@ -113,6 +118,8 @@ const {
 
       <!-- Rank section -->
       <ConfigurationSection
+        :accordion="true"
+        accordion-value="Rank"
         :label="$t('sidebar.configuration.settings.label.rank')"
         v-if="overlayStyle === 'minimal'"
       >
@@ -149,7 +156,11 @@ const {
       </ConfigurationSection>
 
       <!-- Text section -->
-      <ConfigurationSection :label="$t('sidebar.configuration.settings.label.text')">
+      <ConfigurationSection
+          :label="$t('sidebar.configuration.settings.label.text')"
+          :accordion="true"
+          accordion-value="Text"
+      >
         <ConfigurationContent>
           <Label> {{ $t('sidebar.configuration.settings.font') }}</Label>
           <SelectFont v-model="overlayFont" />
@@ -169,7 +180,11 @@ const {
       </ConfigurationSection>
 
       <!-- Win/lose section -->
-      <ConfigurationSection :label="$t('sidebar.configuration.settings.label.winLose')">
+      <ConfigurationSection
+          :label="$t('sidebar.configuration.settings.label.winLose')"
+          :accordion="true"
+          accordion-value="Win-Lose"
+      >
         <ConfigurationContent>
           <Label for="win-color">
             {{ $t('sidebar.configuration.settings.winColor') }}
@@ -207,6 +222,8 @@ const {
       <!-- Progress section -->
       <ConfigurationSection
         v-if="overlayStyle === 'old'"
+        :accordion="true"
+        accordion-value="Progress"
         :label="$t('sidebar.configuration.settings.label.progressbar')"
       >
         <ConfigurationContent>
