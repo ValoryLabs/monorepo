@@ -19,7 +19,7 @@ import {
   Settings as SettingsIcon,
 } from 'lucide-vue-next'
 
-import {onMounted, watch} from 'vue'
+import { onMounted, watch } from 'vue'
 import { useAuthStore, useUserStore } from '@/stores'
 import { storeToRefs } from 'pinia'
 import router from '@/router'

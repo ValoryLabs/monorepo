@@ -41,8 +41,7 @@ watch(fullKeyPressed, (v) => {
 <template>
   <ConfiguratorLayout>
     <div
-      class="relative flex w-dvw flex-row gap-3 h-dvh"
-      :class="fullscreen ? 'p-0' : 'p-3'"
+      class="relative inline-flex w-dvw h-dvh "
     >
       <LeftSidebar/>
       <Content />

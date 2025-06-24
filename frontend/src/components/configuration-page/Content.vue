@@ -129,13 +129,11 @@ onBeforeUnmount(() => {
 
 <template>
   <main
-    class="relative flex flex-1 items-center justify-center border-[0.5px] bg-white/1"
-    :class="{ 'rounded-2xl': !fullscreen }"
+    class="relative flex flex-1 items-center justify-center bg-white/1"
   >
     <div
       class="flex h-full w-full bg-center overflow-hidden"
       :class="{
-        'rounded-2xl': !fullscreen,
         'bg-black bg-[radial-gradient(#1a1a1a_2px,transparent_1px)] bg-[size:25px_25px]':
           previewImage === 'none',
         'bg-cover': previewImage !== 'none',

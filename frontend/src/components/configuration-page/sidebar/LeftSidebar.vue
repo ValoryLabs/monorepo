@@ -9,7 +9,7 @@ const { fullscreen } = storeToRefs(userStore)
 </script>
 
 <template>
-  <aside  v-if="!fullscreen"  class="border-[0.5px] rounded-2xl flex justify-between h-full w-60 flex-col p-2 transition-all">
+  <aside  v-if="!fullscreen"  class="border flex justify-between h-full w-60 flex-col p-2 transition-all">
     <div @click="$router.push('/')" class="relative flex m-2 cursor-pointer items-center gap-2">
       <Valory class="size-6" />
       <span

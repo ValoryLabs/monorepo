@@ -11,7 +11,7 @@ const { fullscreen, configuratorActive } = storeToRefs(userStore)
 </script>
 
 <template>
-  <aside v-if="!fullscreen" class="flex border-[0.5px] rounded-2xl h-full w-86 flex-col p-2 transition-all">
+  <aside v-if="!fullscreen" class="border flex h-full w-86 flex-col p-2 transition-all">
     <Tabs default-value="configuration" class="h-full">
       <TabsList>
         <TabsTrigger :disabled="!configuratorActive" value="configuration">
@@ -21,7 +21,7 @@ const { fullscreen, configuratorActive } = storeToRefs(userStore)
           {{ $t('sidebar.buttons.generate') }}
         </TabsTrigger>
       </TabsList>
-      <TabsContent value="configuration" class="scrollbar-thin h-full overflow-scroll overflow-x-hidden ml-2 pr-5">
+      <TabsContent value="configuration" class="scrollbar-thin h-full overflow-scroll overflow-x-hidden ml-2 pr-3">
         <Configuration />
       </TabsContent>
       <TabsContent value="generate" class="ml-2">
