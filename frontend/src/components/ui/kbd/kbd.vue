@@ -30,7 +30,7 @@ const hasLongKeys = computed(() => {
   <span
     :class="
       cn(
-        'inline-flex items-center gap-1 rounded border bg-white align-middle font-mono text-[10px] leading-loose font-medium text-black select-none',
+        'inline-flex items-center justify-center gap-1 rounded border bg-white align-middle font-mono text-[10px] leading-loose font-medium text-black select-none',
         [hasLongKeys ? 'size-5' : 'h-5 px-1.5'],
         props.class,
       )
