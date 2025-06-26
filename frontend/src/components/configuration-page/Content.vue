@@ -130,7 +130,7 @@ onBeforeUnmount(() => {
 <template>
   <main class="flex-1 p-6 bg-neutral-950">
     <div
-      class="relative size-full bg-center rounded-xl border border-white/10 shadow-2xl"
+      class="relative size-full bg-center rounded-xl overflow-hidden border border-white/10 shadow-2xl"
       :class="{
         'bg-[#0D0D0D] bg-[radial-gradient(#1a1a1a_2px,transparent_1px)] bg-[size:25px_25px]':
           previewImage === 'none',

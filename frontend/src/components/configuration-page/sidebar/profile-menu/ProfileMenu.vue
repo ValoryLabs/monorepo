@@ -15,7 +15,7 @@ import { openLink } from '@/lib/utils.ts'
 import { LifeBuoy, LogOut, NotebookText, Settings as SettingsIcon } from 'lucide-vue-next'
 
 import { LanguageSelector, UserBio } from '@/components/configuration-page/sidebar/profile-menu'
-import { Loading as LoadingIcon } from '@/components/icons/motion-grid'
+import { Skeleton } from '@/components/ui/skeleton'
 import router from '@/router'
 import { useAuthStore, useUserStore } from '@/stores'
 import { storeToRefs } from 'pinia'
@@ -39,12 +39,17 @@ onMounted(() => {
 
 <template>
   <DropdownMenu>
-    <span v-if="loading" class="w-full flex items-center justify-center h-5 mb-2">
-      <LoadingIcon />
-    </span>
-    <span v-else-if="error" class="font-bold w-full flex items-center justify-center h-5 mb-2">
+    <div v-if="loading" class="inline-flex items-center gap-2">
+      <Skeleton class="size-8 flex flex-shrink-0 rounded-sm" />
+      <div class="flex flex-col gap-1 items-start w-full">
+        <Skeleton class="line-clamp-1 h-3 w-24 rounded-md" />
+        <Skeleton class="line-clamp-3 h-2 w-16 rounded-md" />
+      </div>
+      <Skeleton class="size-8 flex flex-shrink-0 rounded-sm" />
+    </div>
+    <div v-else-if="error" class="font-bold w-full flex items-center justify-center h-5 mb-2">
       {{ $t('profile_menu.error') }}
-    </span>
+    </div>
     <DropdownMenuTrigger v-else-if="user && !loading && !error" as-child>
       <Button variant="profile" size="none" class="inline-flex justify-between">
         <UserBio
@@ -87,3 +92,19 @@ onMounted(() => {
     </DropdownMenuContent>
   </DropdownMenu>
 </template>
+
+<style scoped>
+.line-clamp-1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+</style>
