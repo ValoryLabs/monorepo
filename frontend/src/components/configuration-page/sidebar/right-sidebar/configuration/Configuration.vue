@@ -86,7 +86,6 @@ const {
         :accordion="true"
         accordion-value="Background"
         :label="$t('sidebar.configuration.settings.label.background')"
-        :open="true"
       >
         <ConfigurationContent>
           <Label for="background-color">

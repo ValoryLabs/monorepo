@@ -3,7 +3,7 @@ import { LeftSidebar } from '@/components/configuration-page/sidebar/left-sideba
 </script>
 
 <template>
-  <div class="inline-flex w-dvw h-dvh">
+  <div class="inline-flex w-dvw h-dvh overflow-x-hidden">
     <LeftSidebar />
     <main class="inline-flex w-dvw h-dvh bg-background">
       <router-view />
