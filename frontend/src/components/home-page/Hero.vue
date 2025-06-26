@@ -15,7 +15,7 @@ import { PackageOpen, Paintbrush, PencilRuler } from 'lucide-vue-next'
             <Valory :size="26" />
             <Valory :size="96" class="absolute left-0 blur-[120px]" />
             <span
-              class="font-valory inline-block bg-linear-to-b from-[#f2f2f2] to-[#dddddd] bg-clip-text text-lg leading-none text-transparent"
+              class="font-valory inline-block bg-linear-to-b from-[#f2f2f2] to-[#dddddd] bg-clip-text text-lg leading-4 text-transparent"
             >
               VALORY
             </span>

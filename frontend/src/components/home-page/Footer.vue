@@ -10,9 +10,11 @@ import { hidden, moveTo, openLink } from '@/lib/utils'
       <div class="flex flex-col gap-4" :class="[hidden ? 'max-w-52' : '']">
         <div @click="moveTo('main')" class="flex flex-row items-center gap-3">
           <Valory :size="25" />
-          <span class="font-valory cursor-pointer text-lg transition-colors hover:text-gray-300"
-            >VALORY</span
+          <span
+            class="font-valory leading-4 cursor-pointer text-lg transition-colors hover:text-gray-300"
           >
+            VALORY
+          </span>
         </div>
         <span class="text-sm font-normal whitespace-pre-line">
           {{ $t('footer.left.description') }}
