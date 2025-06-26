@@ -14,7 +14,10 @@ import {
 import { openLink } from '@/lib/utils.ts'
 import { LifeBuoy, LogOut, NotebookText, Settings as SettingsIcon } from 'lucide-vue-next'
 
-import { LanguageSelector, UserBio } from '@/components/configuration-page/sidebar/profile-menu'
+import {
+  LanguageSelector,
+  UserBio,
+} from '@/components/configuration-page/sidebar/left-sidebar/profile-menu/index.ts'
 import { Skeleton } from '@/components/ui/skeleton'
 import router from '@/router'
 import { useAuthStore, useUserStore } from '@/stores'

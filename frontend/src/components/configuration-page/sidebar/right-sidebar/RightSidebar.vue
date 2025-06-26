@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { Configuration } from '@/components/configuration-page/configuration'
+import { Configuration } from '@/components/configuration-page/sidebar/right-sidebar/configuration'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { onMounted, ref } from 'vue'
-import { Generate } from './index.ts'
+import { Generate } from '../index.ts'
 
 import { useUserStore } from '@/stores/user.ts'
 import { storeToRefs } from 'pinia'

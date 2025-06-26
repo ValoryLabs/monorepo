@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { UserAvatar } from '@/components/configuration-page/sidebar/profile-menu'
+import { UserAvatar } from '@/components/configuration-page/sidebar/left-sidebar/profile-menu/index.ts'
 import { TwitchVerify } from '@/components/icons'
 
 const props = defineProps<{

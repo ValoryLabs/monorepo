@@ -3,7 +3,7 @@ import {
   ConfigurationContent,
   ConfigurationRoot,
   ConfigurationSection,
-} from '@/components/configuration-page/configuration/index.ts'
+} from '@/components/configuration-page/sidebar/right-sidebar/configuration/index.ts'
 import { Button } from '@/components/ui/button'
 import ColorPicker from '@/components/ui/ColorPicker.vue'
 import { Kbd } from '@/components/ui/kbd'

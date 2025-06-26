@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ConfigurationLabel from '@/components/configuration-page/configuration/ConfigurationLabel.vue'
+import ConfigurationLabel from '@/components/configuration-page/sidebar/right-sidebar/configuration/ConfigurationLabel.vue'
 import {
   Accordion,
   AccordionContent,

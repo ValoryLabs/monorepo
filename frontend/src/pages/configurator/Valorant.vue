@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Content } from '@/components/configuration-page'
-import { RightSidebar } from '@/components/configuration-page/sidebar'
+import { RightSidebar } from '@/components/configuration-page/sidebar/right-sidebar'
 import { useOverlayStore, useUserStore } from '@/stores'
 import { useHead } from '@unhead/vue'
 import { useMagicKeys } from '@vueuse/core'
