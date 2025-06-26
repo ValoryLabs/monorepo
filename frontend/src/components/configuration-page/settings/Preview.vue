@@ -29,6 +29,10 @@ const images = [
     src: '/thumbnails/breeze.webp',
   },
   {
+    name: 'Corrode',
+    src: '/thumbnails/corrode.webp',
+  },
+  {
     name: 'Fracture',
     src: '/thumbnails/fracture.webp',
   },
