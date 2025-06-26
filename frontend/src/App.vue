@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { Loading } from '@/components/icons/motion-grid'
 import { useHead, useSeoMeta } from '@unhead/vue'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
@@ -64,11 +63,8 @@ useSeoMeta({
 
 <template>
   <Transition name="loading">
-    <div
-      v-if="isLoading"
-      class="fixed z-100 bg-background/80 backdrop-blur-md h-dvh w-dvw flex items-center justify-center"
-    >
-      <Loading />
+    <div v-if="isLoading" class="fixed top-0 left-0 right-0 h-[2px] bg-black/20 z-[100]">
+      <div class="loading-bar h-full bg-gradient-to-r from-black to-red-500"></div>
     </div>
   </Transition>
 
@@ -82,23 +78,11 @@ useSeoMeta({
   />
 
   <router-view v-slot="{ Component, route }">
-    <Transition name="fade" mode="out-in">
-      <component :is="Component" :key="route.path" />
-    </Transition>
+    <component :is="Component" :key="route.path" />
   </router-view>
 </template>
 
 <style>
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.3s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-
 .loading-enter-active {
   transition: opacity 0.2s ease;
 }
@@ -110,5 +94,22 @@ useSeoMeta({
 .loading-enter-from,
 .loading-leave-to {
   opacity: 0;
+}
+
+.loading-bar {
+  width: 0%;
+  animation: loading-progress 0.5s ease-out forwards;
+}
+
+@keyframes loading-progress {
+  0% {
+    width: 0%;
+  }
+  50% {
+    width: 70%;
+  }
+  100% {
+    width: 100%;
+  }
 }
 </style>
