@@ -8,10 +8,10 @@ import { Hand } from 'lucide-vue-next'
 
 import { nextTick, onBeforeUnmount, onMounted, onUnmounted, reactive, ref } from 'vue'
 
-import Panel from '@/components/configuration-page/Panel.vue'
+import { Panel, Preview } from '@/components/configuration-page/content'
 
 const userStore = useUserStore()
-const { configuratorActive, previewDraggable, previewImage, overlayDimensions, fullscreen } =
+const { configuratorActive, previewDraggable, previewImage, overlayDimensions } =
   storeToRefs(userStore)
 
 const position = reactive({ x: 0, y: 0 })
@@ -128,11 +128,11 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <main class="flex-1 p-6 bg-neutral-950">
+  <div class="flex-1 p-6">
     <div
       class="relative size-full bg-center rounded-xl overflow-hidden border border-white/10 shadow-2xl"
       :class="{
-        'bg-[#0D0D0D] bg-[radial-gradient(#1a1a1a_2px,transparent_1px)] bg-[size:25px_25px]':
+        'bg-[#040404] bg-[radial-gradient(#1a1a1a_2px,transparent_1px)] bg-[size:25px_25px]':
           previewImage === 'none',
         'bg-cover': previewImage !== 'none',
       }"
@@ -141,11 +141,7 @@ onBeforeUnmount(() => {
       "
       ref="containerRef"
     >
-      <div
-        class="absolute top-6 right-6 px-3 py-1 bg-black/50 backdrop-blur-sm shadow-xl rounded-full border border-white/10 z-50"
-      >
-        <span class="text-sm text-white font-medium">Preview</span>
-      </div>
+      <Preview />
       <div
         class="absolute"
         ref="previewRef"
@@ -199,5 +195,5 @@ onBeforeUnmount(() => {
 
       <Panel />
     </div>
-  </main>
+  </div>
 </template>

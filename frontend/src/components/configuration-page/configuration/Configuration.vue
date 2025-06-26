@@ -14,9 +14,11 @@ import { SwitchToggle } from '@/components/ui/switchtoggle'
 import { useOverlayStore } from '@/stores/overlay.ts'
 import { storeToRefs } from 'pinia'
 
+import router from '@/router'
 import { useUserStore } from '@/stores/user.ts'
 
 const userStore = useUserStore()
+const { configuratorActive } = storeToRefs(userStore)
 
 const overlaySettingsStore = useOverlayStore()
 const {
@@ -47,7 +49,12 @@ const {
     <div class="z-20 flex flex-col gap-2 pb-5">
       <div class="inline-flex items-center justify-between">
         <span class="title">{{ $t('sidebar.configuration.title') }}</span>
-        <Button @click="overlaySettingsStore.reset" variant="ghost" size="sm">
+        <Button
+          v-if="configuratorActive"
+          @click="overlaySettingsStore.reset"
+          variant="ghost"
+          size="sm"
+        >
           {{ $t('components.shortcuts.items.reset') }}
           <Kbd v-if="userStore.showShortcuts === 'Show'" keys="R"
         /></Button>
@@ -55,8 +62,20 @@ const {
       <span class="text-second text-sm whitespace-pre-line">
         {{ $t('sidebar.configuration.description') }}
       </span>
+      <div v-if="!configuratorActive" class="flex flex-col gap-2 mt-5">
+        <span class="title">{{ $t('sidebar.configuration.profile.title') }}</span>
+        <span class="text-second text-sm whitespace-pre-line">
+          {{ $t('sidebar.configuration.profile.description') }}
+        </span>
+        <Button
+          class="w-full justify-center mt-3"
+          @click="router.push({ name: 'configurator-settings' })"
+        >
+          {{ $t('sidebar.configuration.profile.button') }}
+        </Button>
+      </div>
     </div>
-    <ConfigurationRoot>
+    <ConfigurationRoot v-if="configuratorActive">
       <!-- Style section -->
       <ConfigurationSection :accordion="false">
         <SelectLayout v-model="overlayStyle" />

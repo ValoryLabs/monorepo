@@ -20,7 +20,7 @@ watch(l, (v) => {
 
 watch(c, (v) => {
   if (v && authStore.isAuthenticated) {
-    router.push({ name: 'configurator' })
+    router.push({ name: 'configurator-home' })
   }
 })
 </script>
@@ -29,7 +29,7 @@ watch(c, (v) => {
   <TooltipProvider v-if="authStore.isAuthenticated">
     <Tooltip>
       <TooltipTrigger>
-        <Button @click="router.push({ name: 'configurator' })">
+        <Button @click="router.push({ name: 'configurator-home' })">
           {{ $t('sidebar.buttons.auth') }}
           <PencilRuler class="size-4" />
         </Button>

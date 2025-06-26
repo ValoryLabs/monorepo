@@ -1,4 +1,6 @@
-import { Callback, Configurator, Home, NotFound, Overlay, SignIn, TermsOfService } from '@/pages'
+import { ConfiguratorLayout } from '@/layouts'
+import { Callback, Home, NotFound, Overlay, SignIn, TermsOfService } from '@/pages'
+import { Home as ConfiguratorHome, Settings, Valorant } from '@/pages/configurator'
 import { useAuthStore } from '@/stores/auth'
 import { createRouter, createWebHistory } from 'vue-router'
 
@@ -23,7 +25,28 @@ const router = createRouter({
     {
       path: '/configurator',
       name: 'configurator',
-      component: Configurator,
+      component: ConfiguratorLayout,
+      meta: { requiresAuth: true },
+      children: [
+        {
+          path: '',
+          name: 'configurator-home',
+          component: ConfiguratorHome,
+          meta: { requiresAuth: true },
+        },
+        {
+          path: 'valorant',
+          name: 'configurator-valorant',
+          component: Valorant,
+          meta: { requiresAuth: true },
+        },
+        {
+          path: 'settings',
+          name: 'configurator-settings',
+          component: Settings,
+          meta: { requiresAuth: true },
+        },
+      ],
     },
     {
       path: '/overlay/:id',
@@ -44,13 +67,14 @@ const router = createRouter({
   ],
 })
 
-router.beforeEach(async (to, from, next) => {
+router.beforeEach(async (to, from) => {
   const authStore = useAuthStore()
 
-  if (to.name === 'configurator' && !authStore.isAuthenticated) {
-    next({ name: 'home' })
-  } else {
-    next()
+  if (to.meta.requiresAuth && !authStore.isAuthenticated) {
+    return {
+      path: '/sign-in',
+      query: { redirect: to.fullPath },
+    }
   }
 })
 

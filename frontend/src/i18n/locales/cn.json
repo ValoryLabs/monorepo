@@ -1,5 +1,6 @@
 {
   "components": {
+    "preview": "预览",
     "404": {
       "notfound": "页面未找到！",
       "description": "您可能访问了不存在的页面！\n请检查链接是否正确。",
@@ -136,6 +137,11 @@
       "unauth": "添加到直播"
     },
     "configuration": {
+      "profile": {
+        "title": "个人资料",
+        "description": "开始之前请设置您的个人资料。这是应用程序正常工作所必需的。",
+        "button": "设置个人资料"
+      },
       "description": "调整所选变体的可用选项以反映您的品牌。",
       "settings": {
         "backgroundColor": "颜色",
@@ -185,6 +191,20 @@
     "header": {
       "badge": "直播覆盖层",
       "description": "用实时Valorant统计数据\n吸引观众的注意力！"
+    },
+    "navigation": {
+      "title": {
+        "start": "开始",
+        "overlays": "叠加层",
+        "bots": "机器人"
+      },
+      "links": {
+        "home": "主页",
+        "valorant": "无畏契约",
+        "spotify": "Spotify",
+        "chat": "聊天",
+        "notification": "通知"
+      }
     }
   },
   "source": {

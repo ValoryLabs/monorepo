@@ -1,8 +1,9 @@
 <script setup lang="ts">
+import { Navigation } from '@/components/configuration-page/sidebar/left-sidebar'
 import { Valory } from '@/components/icons'
 import { useUserStore } from '@/stores'
 import { storeToRefs } from 'pinia'
-import { ProfileMenu } from './profile-menu'
+import { ProfileMenu } from '../profile-menu'
 
 const userStore = useUserStore()
 const { fullscreen } = storeToRefs(userStore)
@@ -25,7 +26,7 @@ const { fullscreen } = storeToRefs(userStore)
         >
       </div>
     </div>
-
+    <Navigation />
     <div class="p-2 border-t border-white/10">
       <div class="flex flex-col gap-1">
         <ProfileMenu />

@@ -18,7 +18,7 @@ const delegatedProps = computed(() => {
     v-bind="delegatedProps"
     :class="
       cn(
-        'text-switch-foreground inline-flex h-fit w-full cursor-pointer items-center justify-center rounded-md border border-white/10 p-1 text-sm transition-all duration-200 hover:border-white/15',
+        'text-switch-foreground gap-2 inline-flex h-fit w-full cursor-pointer items-center justify-center rounded-md border border-white/10 p-1 text-sm transition-all duration-200 hover:border-white/15',
         props.class,
       )
     "

@@ -1,5 +1,6 @@
 {
   "components": {
+    "preview": "Vorschau",
     "404": {
       "notfound": "Seite nicht gefunden!",
       "description": "Sie sind möglicherweise zu einer nicht existierenden Seite gegangen!\nÜberprüfen Sie, ob der Link korrekt ist.",
@@ -136,6 +137,11 @@
       "unauth": "Zum Stream hinzufügen"
     },
     "configuration": {
+       "profile": {
+         "title": "Profil",
+         "description": "Richten Sie Ihr Profil ein, bevor Sie beginnen. Dies ist für das ordnungsgemäße Funktionieren der Anwendung erforderlich.",
+         "button": "Profil einrichten"
+      },
       "description": "Passen Sie die verfügbaren Optionen der gewählten Variante an, um Ihre Marke widerzuspiegeln.",
       "settings": {
         "backgroundColor": "Farbe",
@@ -185,6 +191,20 @@
     "header": {
       "badge": "STREAM-OVERLAY",
       "description": "Fesseln Sie die Aufmerksamkeit Ihres Publikums\nmit Echtzeit-Valorant-Statistiken!"
+    },
+    "navigation": {
+      "title": {
+        "start": "Start",
+        "overlays": "Overlays",
+        "bots": "Bots"
+      },
+      "links": {
+        "home": "Startseite",
+        "valorant": "Valorant",
+        "spotify": "Spotify",
+        "chat": "Chat",
+        "notification": "Benachrichtigung"
+      }
     }
   },
   "source": {

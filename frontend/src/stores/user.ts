@@ -17,7 +17,6 @@ export const useUserStore = defineStore(
     const overlayDimensions: Ref<string | null> = ref('0 x 0')
 
     const fullscreen: Ref<boolean> = ref(false)
-    const showSettings: Ref<boolean> = ref(false)
     const showShortcuts: Ref<'Show' | 'Hide'> = ref('Show')
 
     const lastFetchTime: Ref<number | null> = ref(null)
@@ -110,10 +109,6 @@ export const useUserStore = defineStore(
       return allowedKeys.includes(key.toLowerCase())
     }
 
-    const toggleShowSettings = () => {
-      showSettings.value = !showSettings.value
-    }
-
     const isCacheValid = (): boolean => {
       if (!lastFetchTime.value) return false
       const now = Date.now()
@@ -175,7 +170,6 @@ export const useUserStore = defineStore(
       previewImage,
       previewDraggable,
       overlayDimensions,
-      showSettings,
       fullscreen,
       showShortcuts,
       resetShortcut,
@@ -189,7 +183,6 @@ export const useUserStore = defineStore(
       clearUserCache,
       isCacheValid,
       toggleConfigurator,
-      toggleShowSettings,
       toggleFullscreen,
       togglePreview,
       updateResetShortcut,
@@ -207,7 +200,6 @@ export const useUserStore = defineStore(
         'previewImage',
         'previewDraggable',
         'overlayDimensions',
-        'showSettings',
         'fullscreen',
         'showShortcuts',
         'resetShortcut',

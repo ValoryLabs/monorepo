@@ -74,7 +74,7 @@ onMounted(() => {
       </DropdownMenuLabel>
       <DropdownMenuSeparator />
       <DropdownMenuGroup>
-        <DropdownMenuItem @click="userStore.toggleShowSettings">
+        <DropdownMenuItem @click="router.push({ name: 'configurator-settings' })">
           <SettingsIcon class="mr-1 size-4" />
           <span>{{ $t('profile_menu.settings') }}</span>
         </DropdownMenuItem>

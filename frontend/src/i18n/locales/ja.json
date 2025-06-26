@@ -1,5 +1,6 @@
 {
   "components": {
+    "preview": "プレビュー",
     "404": {
       "notfound": "ページが見つかりません！",
       "description": "存在しないページにアクセスした可能性があります！\nリンクが正しいかご確認ください。",
@@ -136,6 +137,11 @@
       "unauth": "ストリームに追加"
     },
     "configuration": {
+      "profile": {
+        "title": "プロフィール",
+        "description": "開始する前にプロフィールを設定してください。これはアプリケーションが正常に動作するために必要です。",
+        "button": "プロフィールを設定"
+      },
       "description": "ブランドを反映するために、選択したバリエーションの利用可能なオプションを調整してください。",
       "settings": {
         "backgroundColor": "色",
@@ -185,6 +191,20 @@
     "header": {
       "badge": "ストリームオーバーレイ",
       "description": "リアルタイムValorant統計で\n視聴者の注目を集めよう！"
+    },
+    "navigation": {
+      "title": {
+        "start": "スタート",
+        "overlays": "オーバーレイ",
+        "bots": "ボット"
+      },
+      "links": {
+        "home": "ホーム",
+        "valorant": "ヴァロラント",
+        "spotify": "Spotify",
+        "chat": "チャット",
+        "notification": "通知"
+      }
     }
   },
   "source": {

@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { Content } from '@/components/configuration-page'
-import { Settings } from '@/components/configuration-page/settings'
-import { LeftSidebar, RightSidebar } from '@/components/configuration-page/sidebar/'
-import { ConfiguratorLayout } from '@/layouts'
+import { RightSidebar } from '@/components/configuration-page/sidebar'
 import { useOverlayStore, useUserStore } from '@/stores'
 import { useHead } from '@unhead/vue'
 import { useMagicKeys } from '@vueuse/core'
@@ -39,10 +37,6 @@ watch(fullKeyPressed, (v) => {
 </script>
 
 <template>
-  <ConfiguratorLayout>
-    <LeftSidebar />
-    <Content />
-    <Settings />
-    <RightSidebar />
-  </ConfiguratorLayout>
+  <Content />
+  <RightSidebar />
 </template>

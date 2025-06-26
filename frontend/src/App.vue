@@ -1,10 +1,7 @@
 <script setup lang="ts">
 import { Loading } from '@/components/icons/motion-grid'
-import { useUserStore } from '@/stores'
-import { identifyUmamiSession } from '@jaseeey/vue-umami-plugin'
 import { useHead, useSeoMeta } from '@unhead/vue'
-import { storeToRefs } from 'pinia'
-import { onMounted, ref } from 'vue'
+import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { Toaster } from 'vue-sonner'
 
@@ -40,7 +37,7 @@ router.afterEach(() => {
     setTimeout(() => {
       isPageReady.value = true
     }, 100)
-  }, 300)
+  }, 500)
 })
 
 useHead({
@@ -63,26 +60,14 @@ useSeoMeta({
   author: 'MAGICX, misha@valory.su',
   keywords: metaKeywords,
 })
-
-const userStore = useUserStore()
-const { user } = storeToRefs(userStore)
-
-const identifyUser = () => {
-  if (user) {
-    identifyUmamiSession({
-      userId: user.id,
-      twitch_id: user.twitch_id,
-      username: user.username,
-    })
-  }
-}
-
-onMounted(identifyUser)
 </script>
 
 <template>
   <Transition name="loading">
-    <div v-if="isLoading" class="h-dvh w-dvw flex items-center justify-center">
+    <div
+      v-if="isLoading"
+      class="fixed z-100 bg-background/80 backdrop-blur-md h-dvh w-dvw flex items-center justify-center"
+    >
       <Loading />
     </div>
   </Transition>
@@ -98,7 +83,7 @@ onMounted(identifyUser)
 
   <router-view v-slot="{ Component, route }">
     <Transition name="fade" mode="out-in">
-      <component v-if="isPageReady" :is="Component" :key="route.path" />
+      <component :is="Component" :key="route.path" />
     </Transition>
   </router-view>
 </template>

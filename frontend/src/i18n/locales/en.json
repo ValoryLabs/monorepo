@@ -1,5 +1,6 @@
 {
   "components": {
+    "preview": "Preview",
     "404": {
       "notfound": "Page not found!",
       "description": "You may have gone to a non-existent page!\n Check that the link is correct.",
@@ -102,6 +103,7 @@
   },
   "pages": {
     "configurator": "Configurator",
+    "settings": "Settings",
     "home": "Stream Overlay for Valorant",
     "callback": "Logging",
     "terms": "Terms of Service",
@@ -136,6 +138,11 @@
       "unauth": "Add to Stream"
     },
     "configuration": {
+      "profile": {
+        "title": "Profile",
+        "description": "Set up your profile before you start. This is necessary for the application to work.",
+        "button": "Set up profile"
+      },
       "description": "Adjust available options of the chosen variant to reflect your brand.",
       "settings": {
         "backgroundColor": "Color",
@@ -185,6 +192,20 @@
     "header": {
       "badge": "STREAM OVERLAY",
       "description": "Catch your audience's attention \nwith real-time Valorant stats! "
+    },
+    "navigation": {
+      "title": {
+        "start": "Start",
+        "overlays": "Overlays",
+        "bots": "Bots"
+      },
+      "links": {
+        "home": "Home",
+        "valorant": "Valorant",
+        "spotify": "Spotify",
+        "chat": "Chat",
+        "notification": "Notification"
+      }
     }
   },
   "source": {

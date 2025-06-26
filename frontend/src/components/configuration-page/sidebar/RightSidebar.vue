@@ -48,7 +48,7 @@ onMounted(() => {
   >
     <Tabs default-value="configuration" class="h-full">
       <TabsList>
-        <TabsTrigger :disabled="!configuratorActive" value="configuration">
+        <TabsTrigger value="configuration">
           {{ $t('sidebar.configuration.title') }}
         </TabsTrigger>
         <TabsTrigger :disabled="!configuratorActive" value="generate">
