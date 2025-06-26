@@ -76,6 +76,16 @@ router.beforeEach(async (to, from) => {
       query: { redirect: to.fullPath },
     }
   }
+  if (to.name === 'callback' && authStore.isAuthenticated) {
+    return { name: 'configurator-home' }
+  }
+
+  if (
+    (to.name === 'signin' && authStore.isAuthenticated) ||
+    (to.name === 'configurator' && authStore.isAuthenticated)
+  ) {
+    return { name: 'configurator-home' }
+  }
 })
 
 export default router
