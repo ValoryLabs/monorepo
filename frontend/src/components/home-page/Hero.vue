@@ -7,7 +7,7 @@ import Valory from '../icons/other/Valory.vue'
 </script>
 
 <template>
-  <main class="container flex h-screen flex-col items-center justify-center">
+  <main id="hero" class="container flex h-screen flex-col items-center justify-center">
     <div class="inline-flex h-[calc(100dvh-3rem)] w-full items-center">
       <div class="flex h-fit w-1/2 flex-col items-start justify-center gap-8">
         <div class="flex flex-col items-start justify-center gap-3">
