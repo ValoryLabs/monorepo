@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import LoginOrConfigurator from '@/components/home-page/LoginOrConfigurator.vue'
-import Valory from '@/components/icons/Valory.vue'
 import Button from '@/components/ui/button/Button.vue'
 import CarouselOverlay from '@/components/ui/CarouselOverlay.vue'
 import { PackageOpen, Paintbrush, PencilRuler } from 'lucide-vue-next'
+import Valory from '../icons/other/Valory.vue'
 </script>
 
 <template>

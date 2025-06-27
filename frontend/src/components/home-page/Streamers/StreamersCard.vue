@@ -3,7 +3,7 @@ import { openLink } from '@/lib/utils.ts'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
-import TwitchVerify from '../../icons/TwitchVerify.vue'
+import TwitchVerify from '../../icons/other/TwitchVerify.vue'
 
 const { t } = useI18n()
 

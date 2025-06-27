@@ -21,6 +21,7 @@ import { CONFIGURATOR_NAV_DATA } from '@/data'
           :icon="link.icon"
           :label="link.label"
           :router-link="link.link"
+          :color="link.color"
           :disabled="link.disabled"
         />
       </div>

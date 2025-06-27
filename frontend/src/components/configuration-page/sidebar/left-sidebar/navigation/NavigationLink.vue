@@ -10,6 +10,7 @@ const props = defineProps<{
   label: string
   icon: any
   routerLink?: string
+  color?: string
   disabled?: boolean
 }>()
 
@@ -31,10 +32,14 @@ const isActive = computed(() => {
     <span
       :class="
         cn(
-          'w-5 h-5 bg-white/10 rounded flex items-center justify-center',
+          'w-5 h-5 rounded flex items-center justify-center transition-colors',
           disabled ? 'opacity-50' : '',
+          isActive && props.color ? `` : 'bg-white/10',
         )
       "
+      :style="{
+        backgroundColor: isActive ? props.color || '' : '',
+      }"
     >
       <component :is="props.icon" class="size-3" />
     </span>
