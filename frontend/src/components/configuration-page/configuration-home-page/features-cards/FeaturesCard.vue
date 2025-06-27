@@ -19,7 +19,7 @@ const { t } = useI18n()
 <template>
   <div
     @click="props.disabled ? None : router.push({ name: props.link })"
-    class="border transition-all bg-white/1 border-white/10 rounded-lg shadow-sm w-full max-w-3xs h-xs"
+    class="border cursor-pointer transition-all bg-white/1 border-white/10 rounded-lg shadow-sm w-full max-w-3xs h-xs"
     :class="
       cn(
         props.disabled
