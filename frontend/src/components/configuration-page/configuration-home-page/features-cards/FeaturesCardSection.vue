@@ -6,7 +6,7 @@ const features_data = [...CONFIGURATOR_NAV_DATA[1].links, ...CONFIGURATOR_NAV_DA
 </script>
 
 <template>
-  <div class="inline-flex gap-5 flex-wrap w-full justify-center">
+  <div class="inline-flex mt-3 gap-5 flex-wrap w-full justify-center">
     <FeaturesCard
       v-for="feature in features_data"
       :key="feature.label"
