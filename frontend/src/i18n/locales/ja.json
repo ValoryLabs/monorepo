@@ -203,6 +203,12 @@
         "overlays": "オーバーレイ",
         "bots": "ボット"
       },
+      "description": {
+        "valorant": "ランク、統計、進行状況を表示するカスタマイズ可能なValorantオーバーレイ",
+        "spotify": "ストリームで現在のSpotifyトラックを表示するオーバーレイ",
+        "chat": "視聴者との交流のためのスマートチャットボット",
+        "notification": "ストリーム開始と重要なイベントの自動通知"
+      },
       "links": {
         "home": "ホーム",
         "valorant": "ヴァロラント",

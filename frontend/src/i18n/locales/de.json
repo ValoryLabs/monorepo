@@ -203,6 +203,12 @@
         "overlays": "Overlays",
         "bots": "Bots"
       },
+      "description": {
+        "valorant": "Anpassbares Valorant-Overlay mit Rang-, Statistik- und Fortschrittsanzeige",
+        "spotify": "Overlay zur Anzeige des aktuellen Spotify-Tracks im Stream",
+        "chat": "Intelligenter Chat-Bot für die Interaktion mit dem Publikum",
+        "notification": "Automatische Benachrichtigungen über Stream-Start und wichtige Ereignisse"
+      },
       "links": {
         "home": "Startseite",
         "valorant": "Valorant",

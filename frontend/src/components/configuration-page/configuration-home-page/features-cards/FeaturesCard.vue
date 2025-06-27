@@ -19,7 +19,7 @@ const { t } = useI18n()
 <template>
   <div
     @click="props.disabled ? None : router.push({ name: props.link })"
-    class="border transition-all border-white/10 rounded-lg shadow-sm w-full max-w-3xs h-xs"
+    class="border transition-all bg-white/1 border-white/10 rounded-lg shadow-sm w-full max-w-3xs h-xs"
     :class="
       cn(
         props.disabled
@@ -54,7 +54,7 @@ const { t } = useI18n()
         :style="{ color: props.color }"
       />
       <span class="font-bold mt-2">{{ t(props.label) }}</span>
-      <span class="text-sm">{{ props.description }}</span>
+      <span class="text-sm">{{ t(props.description) }}</span>
     </div>
   </div>
 </template>

@@ -203,6 +203,12 @@
         "overlays": "叠加层",
         "bots": "机器人"
       },
+      "description": {
+        "valorant": "可自定义的Valorant叠加层，显示等级、统计数据和进度",
+        "spotify": "在直播中显示当前Spotify曲目的叠加层",
+        "chat": "用于与观众互动的智能聊天机器人",
+        "notification": "关于直播开始和重要事件的自动通知"
+      },
       "links": {
         "home": "主页",
         "valorant": "无畏契约",

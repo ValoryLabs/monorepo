@@ -22,7 +22,7 @@ export const CONFIGURATOR_NAV_DATA: ConfiguratorSection[] = [
     links: [
       {
         label: 'sidebar.navigation.links.home',
-        description: 'Home configuration page',
+        description: 'sidebar.navigation.description.home',
         link: 'configurator-home',
         icon: House,
         color: '#4A90E2',
@@ -34,7 +34,7 @@ export const CONFIGURATOR_NAV_DATA: ConfiguratorSection[] = [
     links: [
       {
         label: 'sidebar.navigation.links.valorant',
-        description: 'Valorant overlay',
+        description: 'sidebar.navigation.description.valorant',
         link: 'configurator-valorant',
         icon: Valorant,
         color: '#F53A2D',
@@ -42,7 +42,7 @@ export const CONFIGURATOR_NAV_DATA: ConfiguratorSection[] = [
       },
       {
         label: 'sidebar.navigation.links.spotify',
-        description: 'Spotify overlay',
+        description: 'sidebar.navigation.description.spotify',
         icon: Spotify,
         color: '#1DB954',
         disabled: true,
@@ -55,7 +55,7 @@ export const CONFIGURATOR_NAV_DATA: ConfiguratorSection[] = [
     links: [
       {
         label: 'sidebar.navigation.links.chat',
-        description: 'Twitch Chat bot',
+        description: 'sidebar.navigation.description.chat',
         icon: MessageSquare,
         color: '#FF6F61',
         disabled: true,
@@ -63,7 +63,7 @@ export const CONFIGURATOR_NAV_DATA: ConfiguratorSection[] = [
       },
       {
         label: 'sidebar.navigation.links.notification',
-        description: 'Twitch Stream Notification',
+        description: 'sidebar.navigation.description.notification',
         icon: Bell,
         color: '#FF9F00',
         disabled: true,
