@@ -106,7 +106,12 @@
     "home": "Valorant үшін стрім оверлей",
     "callback": "Кіру",
     "terms": "Қызмет шарттары",
-    "privacy": "Құпиялық саясаты"
+    "privacy": "Құпиялық саясаты",
+    "content": {
+      "configurator-home": {
+        "title": "Стрим үшін құралдарды таңда"
+      }
+    }
   },
   "preview": {
     "drag": {

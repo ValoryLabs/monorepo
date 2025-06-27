@@ -106,7 +106,12 @@
     "home": "Valorant用ストリームオーバーレイ",
     "callback": "ログイン中",
     "terms": "利用規約",
-    "privacy": "プライバシーポリシー"
+    "privacy": "プライバシーポリシー",
+    "content": {
+      "configurator-home": {
+        "title": "ストリーム用のツールを選択"
+      }
+    }
   },
   "preview": {
     "drag": {

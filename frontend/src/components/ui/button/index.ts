@@ -18,7 +18,8 @@ export const buttonVariants = cva(
         link: 'text-primary underline-offset-4 hover:underline',
         profile: 'hover:bg-white/5 active:scale-100 p-2',
         nav_link: 'text-neutral-400 hover:text-white hover:bg-white/5',
-        nav_link_disabled: 'text-neutral-600 hover:text-neutral-600 hover:bg-transparent',
+        nav_link_disabled:
+          'active:scale-100 text-neutral-600 hover:text-neutral-600 hover:bg-transparent',
         nav_link_active: 'bg-white/10 text-white',
       },
       size: {

@@ -106,7 +106,12 @@
     "home": "Valorant直播覆盖层",
     "callback": "登录中",
     "terms": "服务条款",
-    "privacy": "隐私政策"
+    "privacy": "隐私政策",
+    "content": {
+      "configurator-home": {
+        "title": "为您的直播选择工具"
+      }
+    }
   },
   "preview": {
     "drag": {

@@ -106,7 +106,12 @@
     "home": "Stream-Overlay für Valorant",
     "callback": "Anmeldung",
     "terms": "Nutzungsbedingungen",
-    "privacy": "Datenschutzrichtlinie"
+    "privacy": "Datenschutzrichtlinie",
+    "content": {
+      "configurator-home": {
+        "title": "Wähle Tools für deinen Stream"
+      }
+    }
   },
   "preview": {
     "drag": {
