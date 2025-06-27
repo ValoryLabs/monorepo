@@ -13,7 +13,7 @@ const props = defineProps<{
 <template>
   <div
     @click="props.disabled ? None : router.push({ name: props.link })"
-    class="flex size-12 cursor-pointer items-center justify-center rounded-full hover:scale-105 hover:-translate-y-0.5 transition-all"
+    class="flex size-12 cursor-pointer items-center justify-center rounded-full hover:z-10 hover:scale-105 hover:-translate-y-0.5 transition-all"
     style="opacity: 1; margin-right: -17px; will-change: transform, opacity; transform: none"
   >
     <div class="bg-background flex size-full items-center justify-center rounded-full p-0.5">
