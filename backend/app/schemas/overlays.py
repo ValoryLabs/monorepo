@@ -107,7 +107,10 @@ class SOverlayResponse(SOverlay):
     """Schema for API responses"""
 
     id: uuid.UUID = Field(description="Overlay UUID")
-    user_id: int = Field(description="User ID")
+    riot_id: str | None = Field(description="User Riot ID", default=None)
+    hdev_api_key: str | None = Field(
+        description="Henrik Dev API key", default=None
+    )
 
     class Config:
         from_attributes = True

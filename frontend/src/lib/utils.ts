@@ -1,7 +1,9 @@
 import { type ClassValue, clsx } from 'clsx'
 import { twMerge } from 'tailwind-merge'
 
+import { MiniOverlay, NewOverlay, NewV2Overlay, OldOverlay } from '@/components/overlays'
 import { useWindowSize } from '@vueuse/core'
+import type { Component } from 'vue'
 import { computed } from 'vue'
 
 const { width } = useWindowSize()
@@ -25,6 +27,21 @@ export const moveTo = (containerId: string) => {
       left: 0,
       behavior: 'smooth',
     })
+  }
+}
+
+export function getOverlayComponent(style?: string): Component | null {
+  switch (style) {
+    case 'old':
+      return OldOverlay
+    case 'minimal':
+      return MiniOverlay
+    case 'new_v2':
+      return NewV2Overlay
+    case 'new':
+      return NewOverlay
+    default:
+      return NewOverlay
   }
 }
 
