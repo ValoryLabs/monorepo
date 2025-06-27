@@ -19,19 +19,12 @@ const overlayStore = useOverlayStore()
 const { configuratorActive } = storeToRefs(userStore)
 
 const resetKeyString = userStore.resetShortcut
-const fullKeyString = userStore.fullShortcut
 
-const { [resetKeyString]: resetKeyPressed, [fullKeyString]: fullKeyPressed } = useMagicKeys()
+const { [resetKeyString]: resetKeyPressed } = useMagicKeys()
 
 watch(resetKeyPressed, (v) => {
   if (v && configuratorActive) {
     overlayStore.reset()
-  }
-})
-
-watch(fullKeyPressed, (v) => {
-  if (v && configuratorActive) {
-    userStore.toggleFullscreen()
   }
 })
 </script>
