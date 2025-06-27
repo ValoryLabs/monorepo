@@ -4,7 +4,7 @@ import { Preview, Profile, Shortcuts } from './index.ts'
 </script>
 
 <template>
-  <div class="container mt-6 relative flex max-w-1/2 flex-col gap-3">
+  <div class="container mt-6 relative flex flex-col gap-3">
     <div class="title text-xl">{{ $t('components.settings.title') }}</div>
     <div>
       <Tabs default-value="profile" class="flex w-full flex-row" orientation="vertical">
