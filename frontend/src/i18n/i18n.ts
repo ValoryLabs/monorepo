@@ -10,11 +10,6 @@ registerMessageResolver(resolveValue)
 export const AVAILABLE_LOCALES = [
   { code: 'en', name: 'English' },
   { code: 'ru', name: 'Русский' },
-  { code: 'uk', name: 'Українська' },
-  { code: 'kk', name: 'Қазақша' },
-  { code: 'de', name: 'Deutsch' },
-  { code: 'ja', name: '日本語' },
-  { code: 'cn', name: '中文' },
 ] as const
 
 type ValidLocale = (typeof AVAILABLE_LOCALES)[number]['code']
