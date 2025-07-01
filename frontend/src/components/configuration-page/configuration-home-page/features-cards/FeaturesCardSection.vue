@@ -2,7 +2,11 @@
 import { FeaturesCard } from '@/components/configuration-page/configuration-home-page/features-cards'
 import { CONFIGURATOR_NAV_DATA } from '@/data'
 
-const features_data = [...CONFIGURATOR_NAV_DATA[1].links, ...CONFIGURATOR_NAV_DATA[2].links]
+const features_data = [
+  ...CONFIGURATOR_NAV_DATA[1].links,
+  ...CONFIGURATOR_NAV_DATA[2].links,
+  ...CONFIGURATOR_NAV_DATA[3].links,
+]
 </script>
 
 <template>

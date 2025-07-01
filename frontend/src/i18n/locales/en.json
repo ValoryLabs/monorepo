@@ -202,13 +202,16 @@
       "title": {
         "start": "Start",
         "overlays": "Overlays",
-        "bots": "Bots"
+        "bots": "Bots",
+        "others": "Others"
       },
       "description": {
         "valorant": "Customizable Valorant overlay with rank, stats and progress display",
         "spotify": "Overlay for displaying current Spotify track on stream",
         "counter_strike": "Dynamic Counter-Strike overlay showing ranks, live stats, and match performance",
         "fortnite": "Customizable Fortnite overlay with real-time stats, match history, and victory tracking",
+        "crosshairs": "Showcase user crosshairs for games and create your own custom crosshair to use in-game",
+        "settings": "Manage your personal settings, PC configurations, and in-game peripherals",
         "chat": "Smart chat bot for audience interaction",
         "notification": "Automatic notifications about stream start and important events"
       },
@@ -218,6 +221,8 @@
         "spotify": "Spotify",
         "counter_strike": "Counter strike",
         "fortnite": "Fortnite",
+        "crosshairs": "Crosshairs",
+        "settings": "Settings",
         "chat": "Chat",
         "notification": "Notification"
       }

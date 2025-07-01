@@ -1,3 +1,5 @@
+export { default as CS2 } from './games/CS2.vue'
+export { default as Fortnite } from './games/Fortnite.vue'
 export { default as Valorant } from './games/Valorant.vue'
 export { default as Hearts } from './other/Hearts.vue'
 export { default as TwitchVerify } from './other/TwitchVerify.vue'
