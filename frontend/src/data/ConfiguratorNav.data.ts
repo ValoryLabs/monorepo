@@ -1,4 +1,6 @@
 import { Spotify, Valorant } from '@/components/icons'
+import CS2 from '@/components/icons/games/CS2.vue'
+import Fortnite from '@/components/icons/games/Fortnite.vue'
 import { Bell, House, MessageSquare } from 'lucide-vue-next'
 
 interface ConfiguratorLink {
@@ -45,6 +47,22 @@ export const CONFIGURATOR_NAV_DATA: ConfiguratorSection[] = [
         description: 'sidebar.navigation.description.spotify',
         icon: Spotify,
         color: '#1DB954',
+        disabled: true,
+        status: 'process',
+      },
+      {
+        label: 'sidebar.navigation.links.counter_strike',
+        description: 'sidebar.navigation.description.counter_strike',
+        icon: CS2,
+        color: '#FB9A0E',
+        disabled: true,
+        status: 'process',
+      },
+      {
+        label: 'sidebar.navigation.links.fortnite',
+        description: 'sidebar.navigation.description.fortnite',
+        icon: Fortnite,
+        color: '#9D4DBB',
         disabled: true,
         status: 'process',
       },

@@ -207,6 +207,8 @@
       "description": {
         "valorant": "Customizable Valorant overlay with rank, stats and progress display",
         "spotify": "Overlay for displaying current Spotify track on stream",
+        "counter_strike": "Dynamic Counter-Strike overlay showing ranks, live stats, and match performance",
+        "fortnite": "Customizable Fortnite overlay with real-time stats, match history, and victory tracking",
         "chat": "Smart chat bot for audience interaction",
         "notification": "Automatic notifications about stream start and important events"
       },
@@ -214,6 +216,8 @@
         "home": "Home",
         "valorant": "Valorant",
         "spotify": "Spotify",
+        "counter_strike": "Counter strike",
+        "fortnite": "Fortnite",
         "chat": "Chat",
         "notification": "Notification"
       }
