@@ -1,8 +1,12 @@
 <script lang="ts" setup>
 import { Github } from '@/components/icons'
 import { Button } from '@/components/ui/button'
-import { openLink } from '@/lib/utils'
+import LinkPreview from '@/components/ui/LinkPreview.vue'
+import { useGitHubStars } from '@/composables'
+import NumberFlow from '@number-flow/vue'
 import { Star } from 'lucide-vue-next'
+
+const { starsCount, loading } = useGitHubStars()
 </script>
 
 <template>
@@ -15,14 +19,18 @@ import { Star } from 'lucide-vue-next'
       {{ $t('source.subtitle') }}
     </span>
     <div class="flex gap-2">
-      <Button @click="openLink('https://github.com/ValoryApp/Valory')" class="px-6">
-        <Github :size="16" color="#000" />
-        {{ $t('source.contribute') }}
-      </Button>
-      <Button variant="ghost" @click="openLink('https://github.com/ValoryApp/Valory/stargazers')">
-        <Star class="size-4 text-[#E3B341]" />
-        {{ $t('source.star') }}
-      </Button>
+      <LinkPreview url="https://github.com/ValoryLabs/Valory" text="Valory">
+        <Button class="gap-3">
+          <span class="inline-flex items-center gap-2">
+            <Github :size="16" color="#000" />
+            {{ $t('source.contribute') }}
+          </span>
+          <span class="inline-flex items-center gap-1">
+            <Star fill="#E3B341" class="size-4 text-[#E3B341]" />
+            <NumberFlow :value="loading ? 0 : starsCount" />
+          </span>
+        </Button>
+      </LinkPreview>
     </div>
   </section>
 </template>

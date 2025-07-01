@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { CarouselOverlay, LoginOrConfigurator } from '@/components/home-page'
+import { Valory } from '@/components/icons'
 import Button from '@/components/ui/button/Button.vue'
-import { PackageOpen, Paintbrush, PencilRuler } from 'lucide-vue-next'
-import Valory from '../icons/other/Valory.vue'
+import { Shield, TrendingUp, Zap } from 'lucide-vue-next'
 </script>
 
 <template>
@@ -25,19 +25,19 @@ import Valory from '../icons/other/Valory.vue'
         </div>
         <ul class="flex flex-col items-start gap-4 text-base">
           <li class="flex flex-row justify-center gap-3 leading-5">
-            <Paintbrush class="size-5 mt-[2px]" />
+            <Zap class="size-5 mt-[2px]" />
             <span class="whitespace-pre-line">
               {{ $t('sidebar.features.first') }}
             </span>
           </li>
           <li class="flex flex-row justify-center gap-3 leading-5">
-            <PackageOpen class="size-5 mt-[2px]" />
+            <Shield class="size-5 mt-[2px]" />
             <span class="whitespace-pre-line">
               {{ $t('sidebar.features.second') }}
             </span>
           </li>
           <li class="flex flex-row justify-center gap-3 leading-5">
-            <PencilRuler class="size-5 mt-[2px]" />
+            <TrendingUp class="size-5 mt-[2px]" />
             <span class="whitespace-pre-line">
               {{ $t('sidebar.features.third') }}
             </span>

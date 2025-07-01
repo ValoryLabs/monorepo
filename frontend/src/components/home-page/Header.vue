@@ -5,17 +5,14 @@ import { Button } from '@/components/ui/button'
 import { NAV_DATA } from '@/data'
 import { hidden, moveTo } from '@/lib/utils'
 import router from '@/router'
-import NumberFlow from '@number-flow/vue'
 import { onMounted, onUnmounted, ref } from 'vue'
 
 import LoginOrConfigurator from '@/components/home-page/LoginOrConfigurator.vue'
 import LinkPreview from '@/components/ui/LinkPreview.vue'
-import { useGitHubStars } from '@/composables'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
 
-const { starsCount, loading } = useGitHubStars()
 const isBeta = import.meta.env.APP_BETA === 'true'
 
 const showHeader = ref(true)
@@ -76,7 +73,6 @@ onUnmounted(() => {
             class="rounded-full border border-transparent bg-transparent text-white opacity-50 transition hover:border-white/10 hover:bg-white/10 hover:opacity-100"
           >
             <Github :size="16" />
-            <NumberFlow :value="loading ? 0 : starsCount" />
           </Button>
         </LinkPreview>
         <LanguageSwitcher variant="rounded" />
