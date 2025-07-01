@@ -16,7 +16,7 @@ STREAMER_USERNAMES = [
     "sharrny", "Sindics", "asyouwisxh", "hytaim", "d3nzvlr", "keilaqt",
     "poluvme", "kkkayten", "ssshapa", "pyrolll", "batujnax", "q1ngvl",
     "4min21sec", "ka1davl", "kospa1n", "callmeakumu", "yoh7zzz", "pholmys",
-    "dukynho"
+    "dukynho", "digisaka"
 ]
 
 
