@@ -133,7 +133,7 @@
   },
   "sidebar": {
     "buttons": {
-      "auth": "Let's start create!",
+      "auth": "Let's start create",
       "back": "Back to configurator",
       "generate": "Generate",
       "learn": "Learn more",

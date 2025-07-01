@@ -1,10 +1,10 @@
 <script lang="ts" setup>
 import { onMounted, onUnmounted, ref } from 'vue'
 
-import MiniOverlay from '@/components/overlays/MiniOverlay.vue'
-import NewOverlay from '@/components/overlays/NewOverlay.vue'
-import NewV2Overlay from '@/components/overlays/NewV2Overlay.vue'
-import OldOverlay from '@/components/overlays/OldOverlay.vue'
+import MiniOverlay from '../overlays/MiniOverlay.vue'
+import NewOverlay from '../overlays/NewOverlay.vue'
+import NewV2Overlay from '../overlays/NewV2Overlay.vue'
+import OldOverlay from '../overlays/OldOverlay.vue'
 
 const slides = [
   {

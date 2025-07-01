@@ -15,7 +15,8 @@ import { useRoute } from 'vue-router'
 
 const route = useRoute()
 
-const { starsCount, loading, error } = useGitHubStars()
+const { starsCount, loading } = useGitHubStars()
+const isBeta = import.meta.env.APP_BETA === 'true'
 
 const showHeader = ref(true)
 let lastScrollPosition = 0
@@ -46,8 +47,17 @@ onUnmounted(() => {
       class="container flex items-center justify-between gap-48 rounded-full bg-black/30 py-1 text-sm backdrop-blur-sm"
     >
       <div class="left flex flex-row gap-8">
-        <div class="logo cursor-pointer" @click="router.push({ name: 'home' })">
+        <div
+          class="relative inline-flex gap-2 logo cursor-pointer"
+          @click="router.push({ name: 'home' })"
+        >
           <Valory :size="30" />
+          <div
+            v-if="isBeta"
+            class="inline-flex text-xs px-1.5 py-0.5 h-fit font-semibold items-center justify-center rounded-full border text-white transition border-white/10 bg-white/10"
+          >
+            BETA
+          </div>
         </div>
         <ul v-if="!hidden && route.name === 'home'" class="flex items-center justify-between gap-6">
           <li

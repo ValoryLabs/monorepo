@@ -132,7 +132,7 @@
   },
   "sidebar": {
     "buttons": {
-      "auth": "让我们开始创建！",
+      "auth": "让我们开始创建",
       "back": "返回配置器",
       "generate": "生成",
       "learn": "了解更多",

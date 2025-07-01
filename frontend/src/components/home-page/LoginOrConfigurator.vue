@@ -5,7 +5,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/comp
 import router from '@/router'
 import { useAuthStore } from '@/stores/auth.ts'
 import { useMagicKeys } from '@vueuse/core'
-import { PencilRuler } from 'lucide-vue-next'
+import { ArrowRight } from 'lucide-vue-next'
 import { watch } from 'vue'
 
 const { l, c } = useMagicKeys()
@@ -31,7 +31,7 @@ watch(c, (v) => {
       <TooltipTrigger>
         <Button @click="router.push({ name: 'configurator-home' })">
           {{ $t('sidebar.buttons.auth') }}
-          <PencilRuler class="size-4" />
+          <ArrowRight class="size-4" />
         </Button>
       </TooltipTrigger>
       <TooltipContent>
