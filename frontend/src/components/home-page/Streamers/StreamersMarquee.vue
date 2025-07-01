@@ -1,6 +1,9 @@
 <script setup lang="ts">
-import { StreamersCard, StreamersCardMock } from '@/components/home-page/Streamers'
-import { Skeleton } from '@/components/ui/skeleton'
+import {
+  StreamersCard,
+  StreamersCardMock,
+  StreamersCardSkeleton,
+} from '@/components/home-page/Streamers'
 import { useStreamersStore } from '@/stores'
 import { storeToRefs } from 'pinia'
 import { computed, onMounted } from 'vue'
@@ -28,43 +31,27 @@ onMounted(async () => {
 </script>
 
 <template>
-  <Transition name="fade" mode="out-in">
-    <div v-if="showSkeleton" key="skeleton" class="flex flex-wrap gap-4 w-fit max-w-[500px]">
-      <figure
-        v-for="index in 5"
-        :key="index"
-        class="relative w-60 overflow-hidden rounded-xl border border-transparent bg-[#0F0F0F] p-4 transition-colors duration-200 cursor-pointer hover:border-white/10 hover:bg-white/10"
-      >
-        <div class="flex flex-row items-center gap-3">
-          <div class="h-fit">
-            <Skeleton class="rounded-full size-[32px]" />
-          </div>
-          <div class="flex flex-col gap-1">
-            <Skeleton class="line-clamp-1 h-[17px] w-20 rounded-md" />
-            <Skeleton class="line-clamp-1 h-[15px] w-24 rounded-md" />
-          </div>
-        </div>
-      </figure>
-      <StreamersCardMock />
-    </div>
+  <div v-if="showSkeleton" key="skeleton" class="flex flex-wrap gap-4 w-fit max-w-[500px]">
+    <StreamersCardSkeleton v-for="index in 5" :key="index" />
+    <StreamersCardMock />
+  </div>
 
-    <div
-      v-else-if="safeStreamers.length > 0"
-      key="content"
-      class="flex flex-wrap gap-4 w-fit max-w-[500px]"
-    >
-      <StreamersCard
-        v-for="streamer in safeStreamers"
-        :key="`streamer-${streamer.username}`"
-        :img="streamer.img"
-        :username="streamer.username"
-        :followers="streamer.followers"
-        :live="streamer.live"
-        :verified="streamer.verified"
-      />
-      <StreamersCardMock />
-    </div>
-  </Transition>
+  <div
+    v-else-if="safeStreamers.length > 0"
+    key="content"
+    class="flex flex-wrap gap-4 w-fit max-w-[500px]"
+  >
+    <StreamersCard
+      v-for="streamer in safeStreamers"
+      :key="`streamer-${streamer.username}`"
+      :img="streamer.img"
+      :username="streamer.username"
+      :followers="streamer.followers"
+      :live="streamer.live"
+      :verified="streamer.verified"
+    />
+    <StreamersCardMock />
+  </div>
 </template>
 
 <style scoped>
