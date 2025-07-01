@@ -23,21 +23,21 @@ import Valory from '../icons/other/Valory.vue'
             {{ $t('sidebar.header.description') }}
           </span>
         </div>
-        <ul class="flex flex-col items-start gap-4 text-base font-medium">
-          <li class="flex flex-row items-center justify-center gap-3 leading-5">
-            <Paintbrush class="size-6" />
+        <ul class="flex flex-col items-start gap-4 text-base">
+          <li class="flex flex-row justify-center gap-3 leading-5">
+            <Paintbrush class="size-5 mt-[2px]" />
             <span class="whitespace-pre-line">
               {{ $t('sidebar.features.first') }}
             </span>
           </li>
-          <li class="flex flex-row items-center justify-center gap-3 leading-5">
-            <PackageOpen class="size-6" />
+          <li class="flex flex-row justify-center gap-3 leading-5">
+            <PackageOpen class="size-5 mt-[2px]" />
             <span class="whitespace-pre-line">
               {{ $t('sidebar.features.second') }}
             </span>
           </li>
-          <li class="flex flex-row items-center justify-center gap-3 leading-5">
-            <PencilRuler class="size-6" />
+          <li class="flex flex-row justify-center gap-3 leading-5">
+            <PencilRuler class="size-5 mt-[2px]" />
             <span class="whitespace-pre-line">
               {{ $t('sidebar.features.third') }}
             </span>
