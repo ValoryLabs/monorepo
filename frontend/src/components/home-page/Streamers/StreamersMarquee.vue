@@ -37,11 +37,11 @@ onMounted(async () => {
       >
         <div class="flex flex-row items-center gap-3">
           <div class="h-fit">
-            <Skeleton class="rounded-full size-[32px] border" />
+            <Skeleton class="rounded-full size-[32px]" />
           </div>
           <div class="flex flex-col gap-1">
-            <Skeleton class="line-clamp-1 h-[17px] w-20 rounded-md border" />
-            <Skeleton class="line-clamp-1 h-[15px] w-24 rounded-md border" />
+            <Skeleton class="line-clamp-1 h-[17px] w-20 rounded-md" />
+            <Skeleton class="line-clamp-1 h-[15px] w-24 rounded-md" />
           </div>
         </div>
       </figure>
