@@ -15,7 +15,7 @@ useHead({
 <template>
   <div class="container h-full pt-10 flex flex-col justify-center items-center gap-6">
     <FeaturesAvatarGroup />
-    <HeroText>Выбери лучший инструмент для себя.</HeroText>
+    <HeroText>{{ t('pages.content.configurator-home.title') }}</HeroText>
     <FeaturesCardSection />
   </div>
 </template>
