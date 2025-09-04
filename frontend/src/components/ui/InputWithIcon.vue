@@ -30,10 +30,8 @@ const modelValue = useVModel(props, 'modelValue', emits, {
   passive: true,
 })
 
-// Создаем локальное состояние для типа ввода
 const inputType = ref(props.type)
 
-// Функция для переключения типа ввода
 const toggleInputType = () => {
   inputType.value = inputType.value === 'password' ? 'text' : 'password'
 }
@@ -43,10 +41,7 @@ const toggleInputType = () => {
   <div
     class="group relative w-full items-center overflow-hidden rounded-md border border-white/10 hover:border-white/15"
   >
-    <span class="absolute inset-y-0 start-0 flex items-center justify-center pl-3">
-      <slot />
-    </span>
-    <span class="absolute inset-y-0 start-0 flex items-center justify-center pl-3 blur-md">
+    <span class="group absolute inset-y-0 start-0 flex items-center justify-center pl-2">
       <slot />
     </span>
     <Input
@@ -57,7 +52,7 @@ const toggleInputType = () => {
       :disabled="props.disabled"
       :class="
         cn(
-          'border-transparent bg-transparent pl-10 font-medium transition-colors hover:bg-white/5 focus-visible:bg-white/5',
+          'border-transparent bg-transparent pl-9 font-medium transition-colors group-hover:bg-white/5 focus-visible:bg-white/5',
           props.class,
         )
       "

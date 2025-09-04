@@ -5,12 +5,13 @@ import {
   ConfigurationSection,
 } from '@/components/configuration-page/sidebar/right-sidebar/configuration/index.ts'
 import { Button } from '@/components/ui/button'
-import ColorPicker from '@/components/ui/ColorPicker.vue'
+import { ColorPicker } from '@/components/ui/color-picker'
+import InputWithIcon from '@/components/ui/InputWithIcon.vue'
 import { Kbd } from '@/components/ui/kbd'
 import { Label } from '@/components/ui/label'
 import SelectFont from '@/components/ui/SelectFont.vue'
 import SelectLayout from '@/components/ui/SelectLayout.vue'
-import { SwitchToggle } from '@/components/ui/switchtoggle'
+import { SwitchToggle } from '@/components/ui/switch-toggle'
 import { useOverlayStore } from '@/stores/overlay.ts'
 import { storeToRefs } from 'pinia'
 
@@ -91,7 +92,9 @@ const {
           <Label for="background-color">
             {{ $t('sidebar.configuration.settings.backgroundColor') }}
           </Label>
-          <ColorPicker v-model="backgroundColor" id="background-color" />
+          <InputWithIcon v-model="backgroundColor">
+            <ColorPicker v-model="backgroundColor" id="background-color" />
+          </InputWithIcon>
         </ConfigurationContent>
         <ConfigurationContent class="flex items-center space-x-2">
           <Label for="background">
@@ -191,13 +194,17 @@ const {
           <Label for="background-color">
             {{ $t('sidebar.configuration.settings.text') }}
           </Label>
-          <ColorPicker v-model="textColor" id="background-color" />
+          <InputWithIcon v-model="textColor">
+            <ColorPicker v-model="textColor" id="background-color" />
+          </InputWithIcon>
         </ConfigurationContent>
         <ConfigurationContent>
           <Label for="background-color">
             {{ $t('sidebar.configuration.settings.primary') }}
           </Label>
-          <ColorPicker v-model="primaryTextColor" id="background-color" />
+          <InputWithIcon v-model="primaryTextColor">
+            <ColorPicker v-model="primaryTextColor" id="background-color" />
+          </InputWithIcon>
         </ConfigurationContent>
       </ConfigurationSection>
 
@@ -211,13 +218,17 @@ const {
           <Label for="win-color">
             {{ $t('sidebar.configuration.settings.winColor') }}
           </Label>
-          <ColorPicker v-model="winColor" id="win-color" />
+          <InputWithIcon v-model="winColor">
+            <ColorPicker v-model="winColor" id="win-color" />
+          </InputWithIcon>
         </ConfigurationContent>
         <ConfigurationContent>
           <Label for="lose-color">
             {{ $t('sidebar.configuration.settings.loseColor') }}
           </Label>
-          <ColorPicker v-model="loseColor" id="lose-color" />
+          <InputWithIcon v-model="loseColor">
+            <ColorPicker v-model="loseColor" id="lose-color" />
+          </InputWithIcon>
         </ConfigurationContent>
         <ConfigurationContent class="flex items-center space-x-2">
           <Label for="winLose">
@@ -252,13 +263,17 @@ const {
           <Label for="background-color">
             {{ $t('sidebar.configuration.settings.progress') }}
           </Label>
-          <ColorPicker v-model="progressColor" id="background-color" />
+          <InputWithIcon v-model="progressColor">
+            <ColorPicker v-model="progressColor" id="background-color" />
+          </InputWithIcon>
         </ConfigurationContent>
         <ConfigurationContent>
           <Label for="background-color">
             {{ $t('sidebar.configuration.settings.progressBackground') }}
           </Label>
-          <ColorPicker v-model="progressBgColor" id="background-color" />
+          <InputWithIcon v-model="progressBgColor">
+            <ColorPicker v-model="progressBgColor" id="background-color" />
+          </InputWithIcon>
         </ConfigurationContent>
         <ConfigurationContent class="flex items-center space-x-2">
           <Label for="progress">
