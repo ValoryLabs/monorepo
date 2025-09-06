@@ -9,7 +9,7 @@ import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
 
 useHead({
-  title: '404',
+  title: t('pages.not-supported'),
 })
 </script>
 
@@ -27,10 +27,12 @@ useHead({
           </span>
         </div>
         <div class="flex flex-col items-center justify-center gap-4 py-3">
-          <span class="text-valory text-lg font-bold uppercase">{{
-            t('components.404.notfound')
-          }}</span>
-          <span class="text-center whitespace-pre-wrap">{{ t('components.404.description') }}</span>
+          <span class="text-valory text-lg font-bold uppercase">
+            {{ t('components.not-supported.title') }}
+          </span>
+          <span class="text-center whitespace-pre-wrap">
+            {{ t('components.not-supported.description') }}
+          </span>
           <Button @click="router.push({ name: 'home' })" class="mt-2">{{
             t('components.404.home')
           }}</Button>

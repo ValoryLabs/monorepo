@@ -37,7 +37,7 @@ const { t } = useI18n()
             >
               <img
                 :src="tab.content"
-                class="mx-auto h-full object-cover object-left-top"
+                class="mx-auto pointer-events-none h-full object-cover object-left-top"
                 alt="hero"
                 height="3104"
                 width="5480"

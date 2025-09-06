@@ -1,7 +1,8 @@
 import { ConfiguratorLayout } from '@/layouts'
-import { Callback, Home, NotFound, Overlay, SignIn, TermsOfService } from '@/pages'
+import { Callback, Home, NotFound, NotSupported, Overlay, SignIn, TermsOfService } from '@/pages'
 import { Home as ConfiguratorHome, Settings, Valorant } from '@/pages/configurator'
 import { useAuthStore } from '@/stores/auth'
+import { isMobile } from '@basitcodeenv/vue3-device-detect'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
@@ -60,6 +61,11 @@ const router = createRouter({
       component: TermsOfService,
     },
     {
+      path: '/not-supported',
+      name: 'not-supported',
+      component: NotSupported,
+    },
+    {
       path: '/:pathMatch(.*)*',
       name: '404',
       component: NotFound,
@@ -69,6 +75,10 @@ const router = createRouter({
 
 router.beforeEach(async (to, from) => {
   const authStore = useAuthStore()
+
+  if (isMobile && (to.path === '/configurator' || to.path.startsWith('/configurator/'))) {
+    return { name: 'not-supported' }
+  }
 
   if (to.meta.requiresAuth && !authStore.isAuthenticated) {
     return {

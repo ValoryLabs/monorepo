@@ -15,7 +15,7 @@ const router = useRouter()
 
 <template>
   <section id="main" class="relative flex h-dvh items-center justify-center">
-    <div class="relative flex flex-col items-center justify-center gap-9">
+    <div class="select-none relative flex flex-col items-center justify-center gap-9">
       <Sparkles
         :colors="{ first: '#ffffff', second: '#ffffff' }"
         :sparkles-count="5"

@@ -6,6 +6,10 @@
       "description": "You may have gone to a non-existent page!\n Check that the link is correct.",
       "home": "Back to Home"
     },
+    "not-supported": {
+      "title": "Not Supported",
+      "description": "Unfortunately, our application only works from a computer. \nWe will add support for mobile devices later. \nSorry for the inconvenience."
+    },
     "languageSwitcher": "Language",
     "login": {
       "agree": {
@@ -108,6 +112,7 @@
     "callback": "Logging",
     "terms": "Terms of Service",
     "privacy": "Privacy Policy",
+    "not-supported": "Not supported",
     "content": {
       "configurator-home": {
         "title": "Choose best tools for your stream."
