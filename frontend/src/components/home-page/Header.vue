@@ -15,7 +15,7 @@ import { useRoute } from 'vue-router'
 const { t } = useI18n()
 const route = useRoute()
 
-const isBeta = import.meta.env.APP_BETA === 'true'
+const isDev = import.meta.env.APP_DEV === 'true'
 
 const showHeader = ref(true)
 let lastScrollPosition = 0
@@ -52,10 +52,10 @@ onUnmounted(() => {
         >
           <Valory :size="30" />
           <span
-            v-if="isBeta"
+            v-if="isDev"
             class="absolute -top-2 left-3 inline-flex text-xs px-1.5 py-0.5 h-fit font-semibold items-center justify-center rounded-full border text-white transition border-white/10 bg-neutral-900"
           >
-            BETA
+            DEV
           </span>
         </div>
         <ul v-if="!hidden && route.name === 'home'" class="flex items-center justify-between gap-6">
