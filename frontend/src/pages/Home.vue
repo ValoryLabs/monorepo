@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Hero } from '@/components/home-page'
+import { Hero, Preview } from '@/components/home-page'
 import { useHead } from '@unhead/vue'
 import { defineAsyncComponent } from 'vue'
 
@@ -21,6 +21,7 @@ useHead({
 <template>
   <DefaultLayout>
     <Hero />
+    <Preview />
     <Streamers />
     <OpenSource />
   </DefaultLayout>

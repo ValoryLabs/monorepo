@@ -7,10 +7,12 @@ import { hidden, moveTo } from '@/lib/utils'
 import router from '@/router'
 import { onMounted, onUnmounted, ref } from 'vue'
 
-import LoginOrConfigurator from '@/components/home-page/LoginOrConfigurator.vue'
+import { LoginOrConfigurator } from '@/components/home-page'
 import LinkPreview from '@/components/ui/LinkPreview.vue'
+import { useI18n } from 'vue-i18n'
 import { useRoute } from 'vue-router'
 
+const { t } = useI18n()
 const route = useRoute()
 
 const isBeta = import.meta.env.APP_BETA === 'true'
@@ -49,12 +51,12 @@ onUnmounted(() => {
           @click="router.push({ name: 'home' })"
         >
           <Valory :size="30" />
-          <div
+          <span
             v-if="isBeta"
-            class="inline-flex text-xs px-1.5 py-0.5 h-fit font-semibold items-center justify-center rounded-full border text-white transition border-white/10 bg-white/10"
+            class="absolute -top-2 left-3 inline-flex text-xs px-1.5 py-0.5 h-fit font-semibold items-center justify-center rounded-full border text-white transition border-white/10 bg-neutral-900"
           >
             BETA
-          </div>
+          </span>
         </div>
         <ul v-if="!hidden && route.name === 'home'" class="flex items-center justify-between gap-6">
           <li
@@ -63,7 +65,7 @@ onUnmounted(() => {
             @click="moveTo(`${nav.point}`)"
             class="cursor-pointer font-medium text-[#F2F2F2]/80 transition duration-150 hover:text-[#F2F2F2]"
           >
-            {{ $t(`nav.${nav.point}`) }}
+            {{ t(`nav.${nav.point}`) }}
           </li>
         </ul>
       </div>

@@ -1,67 +1,103 @@
 <script setup lang="ts">
-import { CarouselOverlay, LoginOrConfigurator } from '@/components/home-page'
-import { Valory } from '@/components/icons'
-import Button from '@/components/ui/button/Button.vue'
-import { Shield, TrendingUp, Zap } from 'lucide-vue-next'
+import { LoginOrConfigurator } from '@/components/home-page'
+import { Discord } from '@/components/icons'
+import Noise from '@/components/ui/Noise.vue'
+import ParticlesBg from '@/components/ui/ParticlesBg.vue'
+import Sparkles from '@/components/ui/Sparkles.vue'
+import { Button } from '@/components/ui/button'
+import { triggerConfetti } from '@/composables/useConfetti'
+import { useI18n } from 'vue-i18n'
+import { useRouter } from 'vue-router'
+
+const { t } = useI18n()
+const router = useRouter()
 </script>
 
 <template>
-  <main id="hero" class="container flex h-screen flex-col items-center justify-center">
-    <div class="inline-flex h-[calc(100dvh-3rem)] w-full items-center">
-      <div class="flex h-fit w-1/2 flex-col items-start justify-center gap-8">
-        <div class="flex flex-col items-start justify-center gap-3">
-          <div class="relative flex flex-row items-center gap-2">
-            <Valory :size="26" />
-            <Valory :size="96" class="absolute left-0 blur-[120px]" />
-            <span
-              class="font-valory inline-block bg-linear-to-b from-[#f2f2f2] to-[#dddddd] bg-clip-text text-lg leading-4 text-transparent"
-            >
-              VALORY
-            </span>
-          </div>
-          <span class="text-4xl leading-tight font-bold whitespace-pre-line text-white">
-            {{ $t('sidebar.header.description') }}
-          </span>
-        </div>
-        <ul class="flex flex-col items-start gap-4 text-base">
-          <li class="flex flex-row justify-center gap-3 leading-5">
-            <Zap class="size-5 mt-[2px]" />
-            <span class="whitespace-pre-line">
-              {{ $t('sidebar.features.first') }}
-            </span>
-          </li>
-          <li class="flex flex-row justify-center gap-3 leading-5">
-            <Shield class="size-5 mt-[2px]" />
-            <span class="whitespace-pre-line">
-              {{ $t('sidebar.features.second') }}
-            </span>
-          </li>
-          <li class="flex flex-row justify-center gap-3 leading-5">
-            <TrendingUp class="size-5 mt-[2px]" />
-            <span class="whitespace-pre-line">
-              {{ $t('sidebar.features.third') }}
-            </span>
-          </li>
-        </ul>
-        <div class="inline-flex items-center justify-center gap-1">
-          <LoginOrConfigurator />
-          <Button variant="ghost">
-            {{ $t('sidebar.buttons.learn') }}
-          </Button>
-        </div>
-      </div>
-      <div
-        class="relative flex size-1/2 flex-col items-center justify-center gap-3 overflow-hidden rounded-2xl"
+  <section id="main" class="relative flex h-dvh items-center justify-center">
+    <div class="relative flex flex-col items-center justify-center gap-9">
+      <Sparkles
+        :colors="{ first: '#ffffff', second: '#ffffff' }"
+        :sparkles-count="5"
+        class="relative m-auto"
       >
-        <img
-          src="/rank_preview.webp"
-          alt="Rank Preview Background"
-          class="absolute inset-0 size-full object-cover object-center -z-10"
-          fetchpriority="high"
-          loading="eager"
-        />
-        <CarouselOverlay />
-      </div>
+        <span
+          @click="triggerConfetti()"
+          class="flex cursor-pointer items-center gap-2 rounded-full border border-white/10 bg-[#7289DA]/25 py-1 pl-3 pr-4 text-sm font-semibold drop-shadow-[0_0_20px_rgba(0,59,255,1)] transition duration-150 hover:bg-[#7289DA]/40"
+        >
+          <Discord :size="20" />
+          {{ t('main.discord') }}
+        </span>
+      </Sparkles>
+      <span
+        class="whitespace-pre-line text-center leading-none text-4xl xl:text-[90px] sm:text-6xl font-black uppercase"
+      >
+        {{ t('main.title') }}
+      </span>
+      <span class="whitespace-pre-line text-center text-xl font-light">
+        {{ t('main.subtitle') }}
+      </span>
+      <span class="flex w-full flex-col items-center justify-center gap-3 lg:flex-row">
+        <LoginOrConfigurator :hero="true" />
+        <Button variant="alternative" class="justify-center h-14 min-w-[240px] rounded-xl text-lg">
+          {{ t('main.buttons.second') }}
+        </Button>
+      </span>
     </div>
-  </main>
+    <div
+      class="animate-fade absolute -bottom-96 -z-10 h-[90dvh] w-[80dvw] rounded-full bg-[#0046ff] opacity-50 blur-[160px]"
+    />
+    <div
+      class="animate-fade-2 absolute -bottom-96 -z-10 h-[500px] w-full rounded-full bg-[#2e3e75] opacity-50 blur-[160px]"
+    />
+    <div
+      class="animate-fade-2 absolute -bottom-96 -z-10 h-[300px] w-[70dvw] rounded-full bg-[#f2f2f2]/20 blur-[160px]"
+    />
+    <ParticlesBg
+      class="absolute inset-0 -z-10"
+      :quantity="100"
+      :ease="100"
+      color="#FFF"
+      :staticity="10"
+      refresh
+    />
+    <Noise />
+  </section>
 </template>
+
+<style scoped>
+.animate-fade {
+  animation: fade 10s infinite;
+}
+
+.animate-fade-2 {
+  animation: fade-2 5s infinite;
+}
+
+@keyframes fade {
+  0% {
+    --tw-blur: blur(160px);
+    opacity: 0.6;
+  }
+  50% {
+    --tw-blur: blur(100px);
+    opacity: 0.4;
+  }
+  100% {
+    --tw-blur: blur(160px);
+    opacity: 0.6;
+  }
+}
+
+@keyframes fade-2 {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+</style>

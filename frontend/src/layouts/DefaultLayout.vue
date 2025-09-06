@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Header from '@/components/home-page/Header.vue'
+import { Header } from '@/components/home-page'
 import { moveTo } from '@/lib/utils'
 import { ChevronUp } from 'lucide-vue-next'
 import { defineAsyncComponent, onMounted, onUnmounted, ref } from 'vue'

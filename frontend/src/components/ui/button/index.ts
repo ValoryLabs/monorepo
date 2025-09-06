@@ -9,6 +9,7 @@ export const buttonVariants = cva(
       variant: {
         default: 'bg-primary text-black drop-shadow-[0_0_10px_#ffffff4f] hover:bg-primary/90',
         login: 'bg-[#141414] text-bold text-white hover:bg-[#252525]',
+        alternative: 'bg-black text-[#f2f2f2] shadow hover:bg-[#131313] h-10',
         destructive:
           'bg-destructive text-destructive-foreground hover:bg-destructive/60 focus-visible:ring-destructive/40',
         outline:

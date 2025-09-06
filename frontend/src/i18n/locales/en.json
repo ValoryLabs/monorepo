@@ -264,5 +264,21 @@
       },
       "validationSuccess": "Data verification was successful!"
     }
+  },
+  "main": {
+    "discord": "Be part of our Discord family!",
+    "title": "The ultimate tool\nfor STREAM.",
+    "subtitle": "Show your Valorant stats effortlessly.\nEngage your audience and keep the focus on the game",
+    "buttons": {
+      "first": "Get started",
+      "second": "How does it work?"
+    }
+  },
+  "previews": {
+    "home": "Home",
+    "valorant": "Valorant",
+    "faceit": "Faceit",
+    "music": "Music",
+    "bot": "Twitch bot"
   }
 }
