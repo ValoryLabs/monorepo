@@ -5,23 +5,15 @@ export interface PreviewTabsData {
 
 export const PREVIEW_TABS_DATA: PreviewTabsData[] = [
   {
-    value: 'home',
-    content: '/images/screen.webp',
+    value: 'dashboard',
+    content: '/home/previews/dashboard.webp',
   },
   {
     value: 'valorant',
-    content: '/images/screen.webp',
+    content: '/home/previews/valorant.webp',
   },
   {
-    value: 'faceit',
-    content: '/images/screen.webp',
-  },
-  {
-    value: 'music',
-    content: '/images/screen.webp',
-  },
-  {
-    value: 'bot',
-    content: '/images/screen.webp',
+    value: 'spotify',
+    content: '/home/previews/spotify.webp',
   },
 ]

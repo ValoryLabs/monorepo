@@ -10,7 +10,7 @@ const { t } = useI18n()
 
 <template>
   <section class="relative mb-32">
-    <Tabs default-value="home">
+    <Tabs default-value="dashboard">
       <div class="mb-16 mt-16 flex flex-col">
         <ContainerScroll>
           <template #title>

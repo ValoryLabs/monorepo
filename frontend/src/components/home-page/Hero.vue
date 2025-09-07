@@ -7,10 +7,8 @@ import Sparkles from '@/components/ui/Sparkles.vue'
 import { Button } from '@/components/ui/button'
 import { triggerConfetti } from '@/composables/useConfetti'
 import { useI18n } from 'vue-i18n'
-import { useRouter } from 'vue-router'
 
 const { t } = useI18n()
-const router = useRouter()
 </script>
 
 <template>

@@ -284,10 +284,8 @@
     }
   },
   "previews": {
-    "home": "Домашняя",
+    "dashboard": "Панель управления",
     "valorant": "Valorant",
-    "faceit": "Faceit",
-    "music": "Музыка",
-    "bot": "Twitch бот"
+    "spotify": "Spotify"
   }
 }

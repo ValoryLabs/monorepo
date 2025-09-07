@@ -284,10 +284,8 @@
     }
   },
   "previews": {
-    "home": "Home",
+    "dashboard": "Dashboard",
     "valorant": "Valorant",
-    "faceit": "Faceit",
-    "music": "Music",
-    "bot": "Twitch bot"
+    "spotify": "Spotify"
   }
 }
