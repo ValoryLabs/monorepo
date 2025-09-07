@@ -43,9 +43,10 @@ export const CONFIGURATOR_NAV_DATA: ConfiguratorSection[] = [
       {
         label: 'sidebar.navigation.links.spotify',
         description: 'sidebar.navigation.description.spotify',
+        link: 'configurator-spotify',
         icon: Spotify,
         color: '#1DB954',
-        disabled: true,
+        disabled: false,
         status: 'process',
       },
       {

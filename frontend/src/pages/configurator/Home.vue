@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import { HeroText } from '@/components/configuration-page/configuration-home-page'
-import { FeaturesAvatarGroup } from '@/components/configuration-page/configuration-home-page/features-avatar'
-import { FeaturesCardSection } from '@/components/configuration-page/configuration-home-page/features-cards'
+import { HeroText } from '@/components/configuration-pages/home-page'
+import { FeaturesAvatarGroup } from '@/components/configuration-pages/home-page/features-avatar'
+import { FeaturesCardSection } from '@/components/configuration-pages/home-page/features-cards'
 import { useHead } from '@unhead/vue'
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
 
 useHead({
-  title: t('pages.configurator'),
+  title: t('pages.configurator.home'),
 })
 </script>
 

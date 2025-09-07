@@ -1,6 +1,6 @@
 import { ConfiguratorLayout } from '@/layouts'
 import { Callback, Home, NotFound, NotSupported, Overlay, SignIn, TermsOfService } from '@/pages'
-import { Home as ConfiguratorHome, Settings, Valorant } from '@/pages/configurator'
+import { Home as ConfiguratorHome, Settings, Spotify, Valorant } from '@/pages/configurator'
 import { useAuthStore } from '@/stores/auth'
 import { isMobile } from '@basitcodeenv/vue3-device-detect'
 import { createRouter, createWebHistory } from 'vue-router'
@@ -39,6 +39,12 @@ const router = createRouter({
           path: 'valorant',
           name: 'configurator-valorant',
           component: Valorant,
+          meta: { requiresAuth: true },
+        },
+        {
+          path: 'spotify',
+          name: 'configurator-spotify',
+          component: Spotify,
           meta: { requiresAuth: true },
         },
         {

@@ -1,4 +1,3 @@
-export { default as CarouselOverlay } from './CarouselOverlay.vue'
 export { default as Footer } from './Footer.vue'
 export { default as Header } from './Header.vue'
 export { default as Hero } from './Hero.vue'

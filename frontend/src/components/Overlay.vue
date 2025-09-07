@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { MiniOverlay, NewOverlay, NewV2Overlay, OldOverlay } from '@/components/overlays'
+import { MiniOverlay, NewOverlay, NewV2Overlay, OldOverlay } from '@/components/overlays/valorant'
 import { getAccountInformation, getMMRInformation } from '@/services/playerInformation'
 import { useOverlayStore, usePlayerStore, useUserStore } from '@/stores'
 import { storeToRefs } from 'pinia'

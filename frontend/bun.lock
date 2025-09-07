@@ -5,7 +5,6 @@
       "name": "VALORY v2",
       "dependencies": {
         "@basitcodeenv/vue3-device-detect": "^1.0.3",
-        "@jaseeey/vue-umami-plugin": "^1.3.0",
         "@unhead/vue": "^2.0.0-alpha.16",
         "@vueuse/core": "^13.3.0",
         "@vueuse/motion": "^3.0.3",
@@ -181,8 +180,6 @@
     "@intlify/vue-i18n-extensions": ["@intlify/vue-i18n-extensions@8.0.0", "", { "dependencies": { "@babel/parser": "^7.24.6", "@intlify/shared": "^10.0.0", "@vue/compiler-dom": "^3.2.45", "vue-i18n": "^10.0.0" }, "peerDependencies": { "vue": "^3.0.0" }, "optionalPeers": ["vue"] }, "sha512-w0+70CvTmuqbskWfzeYhn0IXxllr6mU+IeM2MU0M+j9OW64jkrvqY+pYFWrUnIIC9bEdij3NICruicwd5EgUuQ=="],
 
     "@isaacs/fs-minipass": ["@isaacs/fs-minipass@4.0.1", "", { "dependencies": { "minipass": "^7.0.4" } }, "sha512-wgm9Ehl2jpeqP3zw/7mo3kRHFp5MEDhqAdwy1fTGkHAwnkGOVsgpvQhL8B5n1qlb01jV3n/bI0ZfZp5lWA1k4w=="],
-
-    "@jaseeey/vue-umami-plugin": ["@jaseeey/vue-umami-plugin@1.3.0", "", {}, "sha512-mqmXPt2I4veDrSDuNFSYVJaOC/QiK2F1J7/zja+10dO0yTzqp2W0cYjIiI9zqto9/GPQ/mOwRx9FU7pEzACXKg=="],
 
     "@jridgewell/gen-mapping": ["@jridgewell/gen-mapping@0.3.8", "", { "dependencies": { "@jridgewell/set-array": "^1.2.1", "@jridgewell/sourcemap-codec": "^1.4.10", "@jridgewell/trace-mapping": "^0.3.24" } }, "sha512-imAbBGkb+ebQyxKgzv5Hu2nmROxoDOXHh80evxdoXNOrvAnVx7zimzc1Oo5h9RlfV4vPXaE2iM5pOFbvOCClWA=="],
 
