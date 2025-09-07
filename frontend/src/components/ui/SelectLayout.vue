@@ -10,19 +10,19 @@ const { overlayStyle } = storeToRefs(overlayStore)
 const images = [
   {
     codeName: 'old',
-    src: '/overlays/old.webp',
+    src: '/valorant/overlay_previews/old.webp',
   },
   {
     codeName: 'new',
-    src: '/overlays/new.webp',
+    src: '/valorant/overlay_previews/new.webp',
   },
   {
     codeName: 'new_v2',
-    src: '/overlays/new_v2.webp',
+    src: '/valorant/overlay_previews/new_v2.webp',
   },
   {
     codeName: 'minimal',
-    src: '/overlays/minimal.webp',
+    src: '/valorant/overlay_previews/minimal.webp',
   },
 ]
 </script>

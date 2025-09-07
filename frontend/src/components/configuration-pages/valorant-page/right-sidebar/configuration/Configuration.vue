@@ -56,8 +56,8 @@ const {
           size="sm"
         >
           {{ t('components.shortcuts.items.reset') }}
-          <Kbd v-if="userStore.showShortcuts === 'Show'" keys="R"
-        /></Button>
+          <Kbd v-if="userStore.showShortcuts === 'Show'" keys="R" />
+        </Button>
       </div>
       <span class="text-second text-sm whitespace-pre-line">
         {{ t('sidebar.configuration.description') }}

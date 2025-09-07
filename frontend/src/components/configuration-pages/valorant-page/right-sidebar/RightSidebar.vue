@@ -7,6 +7,9 @@ import { Configuration } from './configuration'
 
 import { useUserStore } from '@/stores/user.ts'
 import { storeToRefs } from 'pinia'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const userStore = useUserStore()
 const { fullscreen, configuratorActive } = storeToRefs(userStore)
@@ -56,10 +59,10 @@ onMounted(() => {
       <Tabs v-if="!fullscreen" default-value="configuration" class="h-full">
         <TabsList>
           <TabsTrigger value="configuration">
-            {{ $t('sidebar.configuration.title') }}
+            {{ t('sidebar.configuration.title') }}
           </TabsTrigger>
           <TabsTrigger :disabled="!configuratorActive" value="generate">
-            {{ $t('sidebar.buttons.generate') }}
+            {{ t('sidebar.buttons.generate') }}
           </TabsTrigger>
         </TabsList>
 
@@ -104,7 +107,6 @@ onMounted(() => {
     </button>
   </aside>
 
-  <!-- Кнопка для открытия скрытого правого sidebar -->
   <button
     v-if="fullscreen"
     @click="userStore.toggleFullscreen"
