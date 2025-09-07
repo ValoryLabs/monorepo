@@ -22,6 +22,8 @@ const isLoading = ref(false)
 const isPageReady = ref(true)
 const router = useRouter()
 
+const isDev = import.meta.env.APP_DEV === 'true'
+
 router.beforeEach((to, from, next) => {
   if (to.path !== from.path) {
     isLoading.value = true
@@ -43,14 +45,16 @@ useHead({
   title: metaTitle,
   titleTemplate: (title) => (title === metaTitle ? title : `${title} - ${titleMain}`),
   meta: [{ name: 'viewport', content: 'width=device-width, initial-scale=1' }],
-  script: [
-    {
-      src: 'https://umami.valory.su/script.js',
-      defer: true,
-      async: false,
-      'data-website-id': '63823b34-44f1-41b8-b78e-ea19f31c594d',
-    },
-  ],
+  script: !isDev
+    ? [
+        {
+          src: 'https://umami.valory.su/script.js',
+          defer: true,
+          async: false,
+          'data-website-id': '63823b34-44f1-41b8-b78e-ea19f31c594d',
+        },
+      ]
+    : [],
 })
 
 useSeoMeta({
