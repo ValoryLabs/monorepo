@@ -34,8 +34,8 @@ function updateValue() {
     <span
       class="flex h-full w-1/2 flex-col items-center justify-center rounded transition-colors"
       :class="{
-        'bg-[#eeeeee] text-[#000000]': modelValue,
-        'text-[#eeeeee4d]': !modelValue,
+        'bg-[#eeeeee] text-[#000000]': !modelValue,
+        'text-[#eeeeee4d]': modelValue,
       }"
     >
       ON
@@ -43,8 +43,8 @@ function updateValue() {
     <span
       class="flex h-full w-1/2 flex-col items-center justify-center rounded transition-colors"
       :class="{
-        'bg-[#eeeeee] text-[#000000]': !modelValue,
-        'text-[#eeeeee4d]': modelValue,
+        'bg-[#eeeeee] text-[#000000]': modelValue,
+        'text-[#eeeeee4d]': !modelValue,
       }"
     >
       OFF
