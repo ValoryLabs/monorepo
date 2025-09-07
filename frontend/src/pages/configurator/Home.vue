@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { HeroText } from '@/components/configuration-pages/home-page'
-import { FeaturesAvatarGroup } from '@/components/configuration-pages/home-page/features-avatar'
-import { FeaturesCardSection } from '@/components/configuration-pages/home-page/features-cards'
+import { HeroText } from '@/components/features/configuration-page/home'
+import { FeaturesAvatarGroup } from '@/components/features/configuration-page/home/features-avatar'
+import { FeaturesCardSection } from '@/components/features/configuration-page/home/features-cards'
 import { useHead } from '@unhead/vue'
 import { useI18n } from 'vue-i18n'
 

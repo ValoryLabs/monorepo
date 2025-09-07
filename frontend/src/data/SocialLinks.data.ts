@@ -1,4 +1,4 @@
-import { Discord, Github, Hearts, Telegram, Twitch } from '@/components/icons'
+import { Discord, Github, Hearts, Telegram, Twitch } from '@/components/shared/icons'
 
 interface SocialLinks {
   name: string

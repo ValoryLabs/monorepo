@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Content, RightSidebar } from '@/components/configuration-pages/valorant-page'
+import { Content, RightSidebar } from '@/components/features/configuration-page/valorant'
 import { useOverlayStore, useUserStore } from '@/stores'
 import { useHead } from '@unhead/vue'
 import { useMagicKeys } from '@vueuse/core'

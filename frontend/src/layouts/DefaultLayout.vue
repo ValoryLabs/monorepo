@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { Header } from '@/components/home-page'
+import { Header } from '@/components/features/home-page'
 import { moveTo } from '@/lib/utils'
 import { ChevronUp } from 'lucide-vue-next'
 import { defineAsyncComponent, onMounted, onUnmounted, ref } from 'vue'
 
-const Footer = defineAsyncComponent(() => import('@/components/home-page/Footer.vue'))
+const Footer = defineAsyncComponent(() => import('@/components/features/home-page/Footer.vue'))
 
 const showScrollButton = ref(false)
 

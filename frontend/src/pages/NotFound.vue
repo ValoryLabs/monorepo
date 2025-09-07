@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Valory } from '@/components/icons'
+import { Valory } from '@/components/shared/icons'
 import { Button } from '@/components/ui/button'
 import router from '@/router'
 import { useHead } from '@unhead/vue'
@@ -27,17 +27,15 @@ useHead({
           </span>
         </div>
         <div class="flex flex-col items-center justify-center gap-4 py-3">
-          <span class="text-valory text-lg font-bold uppercase">{{
-            t('components.404.notfound')
-          }}</span>
+          <span class="text-valory text-lg font-bold uppercase">
+            {{ t('components.404.notfound') }}
+          </span>
           <span class="text-center whitespace-pre-wrap">{{ t('components.404.description') }}</span>
-          <Button @click="router.push({ name: 'home' })" class="mt-2">{{
-            t('components.404.home')
-          }}</Button>
+          <Button @click="router.push({ name: 'home' })" class="mt-2">
+            {{ t('components.404.home') }}
+          </Button>
         </div>
       </div>
     </div>
   </div>
 </template>
-
-<style scoped></style>

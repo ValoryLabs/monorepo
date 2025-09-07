@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Valory } from '@/components/icons'
-import { Loading } from '@/components/icons/motion-grid'
+import { Valory } from '@/components/shared/icons'
+import { Loading } from '@/components/shared/icons/motion-grid'
 import { useAuthStore } from '@/stores'
 import { useHead } from '@unhead/vue'
 import { useI18n } from 'vue-i18n'

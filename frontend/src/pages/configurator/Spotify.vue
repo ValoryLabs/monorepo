@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Content } from '@/components/configuration-pages/spotify-page/content'
+import { Content } from '@/components/features/configuration-page/spotify/content'
 import { useHead } from '@unhead/vue'
 import { useI18n } from 'vue-i18n'
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Kick, Twitch, Valory, YouTube } from '@/components/icons'
+import { Kick, Twitch, Valory, YouTube } from '@/components/shared/icons'
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
 import { openLink } from '@/lib/utils.ts'

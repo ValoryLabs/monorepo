@@ -1,7 +1,12 @@
 import { type ClassValue, clsx } from 'clsx'
 import { twMerge } from 'tailwind-merge'
 
-import { MiniOverlay, NewOverlay, NewV2Overlay, OldOverlay } from '@/components/overlays/valorant'
+import {
+  MiniOverlay,
+  NewOverlay,
+  NewV2Overlay,
+  OldOverlay,
+} from '@/components/features/overlays/valorant'
 import { useWindowSize } from '@vueuse/core'
 import type { Component } from 'vue'
 import { computed } from 'vue'

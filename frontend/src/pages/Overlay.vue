@@ -3,7 +3,7 @@ import { useHead } from '@unhead/vue'
 import { storeToRefs } from 'pinia'
 import { computed, onMounted, onUnmounted, watch } from 'vue'
 
-import { Loading } from '@/components/icons/motion-grid'
+import { Loading } from '@/components/shared/icons/motion-grid'
 import { useMMRUpdater } from '@/composables/useMMRUpdater'
 import { useOverlayData } from '@/composables/useOverlayData'
 import { useOverlayScheduler } from '@/composables/useOverlayScheduler'

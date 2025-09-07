@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Settings } from '@/components/configuration-pages/settings'
+import { Settings } from '@/components/features/configuration-page/settings'
 import { useHead } from '@unhead/vue'
 import { useI18n } from 'vue-i18n'
 

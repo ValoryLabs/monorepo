@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { LeftSidebar } from '@/components/configuration-pages/left-sidebar'
+import { LeftSidebar } from '@/components/features/configuration-page/left-sidebar'
 import { useUserStore } from '@/stores'
 import { useMagicKeys } from '@vueuse/core'
 import { storeToRefs } from 'pinia'
