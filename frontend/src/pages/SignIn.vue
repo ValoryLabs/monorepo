@@ -28,7 +28,7 @@ const redirectToAuth = () => {
               VALORY
             </span>
           </div>
-          <p class="text-sm text-gray-400">{{ t('components.login.description') }}</p>
+          <p class="text-sm text-neutral-400">{{ t('components.login.description') }}</p>
         </div>
 
         <div class="flex w-full flex-col items-center gap-3">
