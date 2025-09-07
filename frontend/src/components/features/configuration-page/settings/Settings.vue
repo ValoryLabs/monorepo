@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { Preview, Profile, Shortcuts } from './index.ts'
+import { Preview, Profile } from '.'
 </script>
 
 <template>
@@ -17,11 +17,11 @@ import { Preview, Profile, Shortcuts } from './index.ts'
           <TabsTrigger variant="vertical" value="preview">
             {{ $t('components.settings.tabs.preview.title') }}
           </TabsTrigger>
-          <TabsTrigger variant="vertical" value="shortcuts"> Shortcuts </TabsTrigger>
+          <!--          <TabsTrigger variant="vertical" value="shortcuts"> Shortcuts </TabsTrigger>-->
         </TabsList>
         <TabsContent value="profile"> <Profile /></TabsContent>
         <TabsContent value="preview"> <Preview /> </TabsContent>
-        <TabsContent value="shortcuts"> <Shortcuts /> </TabsContent>
+        <!--        <TabsContent value="shortcuts"> <Shortcuts /> </TabsContent>-->
       </Tabs>
     </div>
   </div>
