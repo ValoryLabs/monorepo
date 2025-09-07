@@ -14,51 +14,51 @@ const images = [
   },
   {
     name: 'Abyss',
-    src: '/thumbnails/abyss.webp',
+    src: '/valorant/settings/preview_thumbnails/abyss.webp',
   },
   {
     name: 'Ascent',
-    src: '/thumbnails/ascent.webp',
+    src: '/valorant/settings/preview_thumbnails/ascent.webp',
   },
   {
     name: 'Bind',
-    src: '/thumbnails/bind.webp',
+    src: '/valorant/settings/preview_thumbnails/bind.webp',
   },
   {
     name: 'Breeze',
-    src: '/thumbnails/breeze.webp',
+    src: '/valorant/settings/preview_thumbnails/breeze.webp',
   },
   {
     name: 'Corrode',
-    src: '/thumbnails/corrode.webp',
+    src: '/valorant/settings/preview_thumbnails/corrode.webp',
   },
   {
     name: 'Fracture',
-    src: '/thumbnails/fracture.webp',
+    src: '/valorant/settings/preview_thumbnails/fracture.webp',
   },
   {
     name: 'Haven',
-    src: '/thumbnails/haven.webp',
+    src: '/valorant/settings/preview_thumbnails/haven.webp',
   },
   {
     name: 'Icebox',
-    src: '/thumbnails/icebox.webp',
+    src: '/valorant/settings/preview_thumbnails/icebox.webp',
   },
   {
     name: 'Lotus',
-    src: '/thumbnails/lotus.webp',
+    src: '/valorant/settings/preview_thumbnails/lotus.webp',
   },
   {
     name: 'Pearl',
-    src: '/thumbnails/pearl.webp',
+    src: '/valorant/settings/preview_thumbnails/pearl.webp',
   },
   {
     name: 'Split',
-    src: '/thumbnails/split.webp',
+    src: '/valorant/settings/preview_thumbnails/split.webp',
   },
   {
     name: 'Sunset',
-    src: '/thumbnails/sunset.webp',
+    src: '/valorant/settings/preview_thumbnails/sunset.webp',
   },
 ]
 </script>
