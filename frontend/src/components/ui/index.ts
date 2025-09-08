@@ -1,6 +1,7 @@
 export { default as InputWithIcon } from './InputWithIcon.vue'
 export { default as LanguageSwitcher } from './LanguageSwitcher.vue'
 export { default as LinkPreview } from './LinkPreview.vue'
+export { default as Marquee } from './Marquee.vue'
 export { default as MotionGrid } from './MotionGrid.vue'
 export { default as Noise } from './Noise.vue'
 export { default as ParticlesBg } from './ParticlesBg.vue'

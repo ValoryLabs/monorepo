@@ -66,7 +66,7 @@ export const useStreamersStore = defineStore('streamersStore', () => {
       primary_sort = 'live_status',
       secondary_sort = 'followers',
       sort_order = 'desc',
-      limit = 5,
+      limit = 20,
       verified_only = false,
       refresh_cache = false,
     } = options

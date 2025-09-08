@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { Noise } from '@/components/ui'
 import ContainerScroll from '@/components/ui/ContainerScroll/ContainerScroll.vue'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { PREVIEW_TABS_DATA } from '@/data/PreviewTabs.data.ts'
@@ -9,7 +8,7 @@ const { t } = useI18n()
 </script>
 
 <template>
-  <section class="relative mb-32">
+  <section class="relative">
     <Tabs default-value="dashboard">
       <div class="mb-16 mt-16 flex flex-col">
         <ContainerScroll>
@@ -47,6 +46,5 @@ const { t } = useI18n()
         </ContainerScroll>
       </div>
     </Tabs>
-    <Noise />
   </section>
 </template>

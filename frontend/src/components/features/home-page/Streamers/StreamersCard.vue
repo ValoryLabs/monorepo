@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { TwitchVerify } from '@/components/shared/icons'
-import { openLink } from '@/lib/utils.ts'
+import { cn, openLink } from '@/lib/utils.ts'
+import type { HTMLAttributes } from 'vue'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
@@ -16,17 +17,15 @@ interface Props {
   clickable?: boolean
   link?: string
   text?: string
+  class?: HTMLAttributes['class']
 }
 
 const props = withDefaults(defineProps<Props>(), {
   username: 'Unknown',
   followers: '0',
-  img: '',
   live: false,
   verified: false,
   clickable: true,
-  link: undefined,
-  text: undefined,
 })
 
 const router = useRouter()
@@ -49,21 +48,6 @@ const followersLabel = computed(() => {
     return ''
   }
   return t('streamers.card.followers')
-})
-
-const liveIndicatorClass = computed(() => {
-  return props.live
-    ? 'absolute -top-0.5 -right-0.5 h-3 w-3 rounded-full bg-green-500 border-2 border-[#0F0F0F]'
-    : ''
-})
-
-const cardClass = computed(() => {
-  const baseClass =
-    'relative w-60 overflow-hidden rounded-xl border border-transparent bg-[#0F0F0F] p-4 transition-colors duration-200'
-  const interactiveClass = props.clickable
-    ? 'cursor-pointer hover:border-white/10 hover:bg-white/10'
-    : ''
-  return `${baseClass} ${interactiveClass}`.trim()
 })
 
 const handleCardClick = () => {
@@ -100,7 +84,13 @@ const handleAvatarClick = (event: Event) => {
 
 <template>
   <figure
-    :class="cardClass"
+    class="relative w-72 overflow-hidden rounded-2xl border-2 border-transparent bg-neutral-950 p-4 transition-colors duration-200 xl:scale-100 sm:scale-75"
+    :class="
+      cn(
+        props.clickable ? 'cursor-pointer hover:border-white/10 hover:bg-neutral-900' : '',
+        props.class,
+      )
+    "
     @click="handleClick"
     role="button"
     :tabindex="clickable ? 0 : -1"
@@ -112,9 +102,7 @@ const handleAvatarClick = (event: Event) => {
       <div class="relative h-fit">
         <img
           :src="avatarSrc"
-          class="rounded-full object-cover"
-          width="32"
-          height="32"
+          class="rounded-full object-cover size-14"
           :alt="`${username} avatar`"
           fetchpriority="low"
           loading="lazy"
@@ -123,15 +111,15 @@ const handleAvatarClick = (event: Event) => {
           @error="$event.target.src = '/twitch_avatar.webp'"
         />
         <span
-          v-if="live"
-          :class="liveIndicatorClass"
+          v-if="props.live"
+          class="absolute -top-0.5 -right-0.5 size-4 rounded-full bg-green-500 border-2 border-[#0F0F0F]"
           aria-label="Live streaming"
           title="Live"
-        ></span>
+        />
       </div>
 
       <div class="flex flex-col flex-1 min-w-0">
-        <span class="flex flex-row items-center gap-1 text-sm font-medium dark:text-white truncate">
+        <span class="flex flex-row items-center gap-1 text-xl font-medium dark:text-white truncate">
           {{ username }}
           <TwitchVerify
             v-if="verified"
@@ -141,7 +129,7 @@ const handleAvatarClick = (event: Event) => {
           />
         </span>
 
-        <p class="text-xs font-medium dark:text-white/50 truncate">
+        <p class="text-md font-medium dark:text-white/50 truncate">
           {{ displayFollowers }}
           <span v-if="followersLabel"> {{ followersLabel }}</span>
         </p>

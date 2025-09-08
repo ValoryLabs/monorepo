@@ -1,9 +1,6 @@
 <script setup lang="ts">
-import {
-  StreamersCard,
-  StreamersCardMock,
-  StreamersCardSkeleton,
-} from '@/components/features/home-page/Streamers'
+import { StreamersCard, StreamersCardSkeleton } from '@/components/features/home-page/Streamers'
+import Marquee from '@/components/ui/Marquee.vue'
 import { useStreamersStore } from '@/stores'
 import { storeToRefs } from 'pinia'
 import { computed, onMounted } from 'vue'
@@ -11,9 +8,14 @@ import { computed, onMounted } from 'vue'
 const streamersStore = useStreamersStore()
 const { streamers, loading, error } = storeToRefs(streamersStore)
 
-const isLoading = computed(() => loading.value)
-const hasError = computed(() => Boolean(error.value))
-const showSkeleton = computed(() => isLoading.value || hasError.value)
+const shuffleArray = <T,>(array: T[]): T[] => {
+  const arr = [...array]
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[arr[i], arr[j]] = [arr[j], arr[i]]
+  }
+  return arr
+}
 
 const safeStreamers = computed(() => {
   return streamers.value.filter(
@@ -21,57 +23,60 @@ const safeStreamers = computed(() => {
   )
 })
 
+const shuffledStreamers = computed(() => shuffleArray(safeStreamers.value))
+
+const middleIndex = computed(() => Math.floor(shuffledStreamers.value.length / 2))
+const firstRow = computed(() => shuffledStreamers.value.slice(0, middleIndex.value))
+const secondRow = computed(() => shuffledStreamers.value.slice(middleIndex.value))
+
+const isLoading = computed(() => loading.value)
+const hasError = computed(() => Boolean(error.value))
+const showSkeleton = computed(() => isLoading.value || hasError.value)
+
 onMounted(async () => {
   await streamersStore.fetchStreamers()
 })
 </script>
 
 <template>
-  <div v-if="showSkeleton" key="skeleton" class="flex flex-wrap gap-4 w-fit max-w-[500px]">
-    <StreamersCardSkeleton v-for="index in 5" :key="index" />
-    <StreamersCardMock />
+  <div v-if="showSkeleton" key="skeleton" class="flex gap-4 w-fit">
+    <Marquee pause-on-hover class="[--duration:180s]" :vertical="true">
+      <StreamersCardSkeleton v-for="i in 5" :key="i" />
+    </Marquee>
+    <Marquee reverse pause-on-hover class="[--duration:180s]" :vertical="true">
+      <StreamersCardSkeleton v-for="i in 5" :key="i" />
+    </Marquee>
   </div>
-
-  <div
-    v-else-if="safeStreamers.length > 0"
-    key="content"
-    class="flex flex-wrap gap-4 w-fit max-w-[500px]"
-  >
-    <StreamersCard
-      v-for="streamer in safeStreamers"
-      :key="`streamer-${streamer.username}`"
-      :img="streamer.img"
-      :username="streamer.username"
-      :followers="streamer.followers"
-      :live="streamer.live"
-      :verified="streamer.verified"
+  <div v-else class="relative flex w-full items-center gap-8 overflow-hidden">
+    <Marquee pause-on-hover class="[--duration:180s]" :vertical="true">
+      <StreamersCard
+        v-memo="[streamer]"
+        v-for="streamer in firstRow"
+        :key="streamer.username"
+        :img="streamer.img"
+        :username="streamer.username"
+        :followers="streamer.followers"
+        :live="streamer.live"
+        :verified="streamer.verified"
+      />
+    </Marquee>
+    <Marquee reverse pause-on-hover class="[--duration:180s]" :vertical="true">
+      <StreamersCard
+        v-memo="[streamer]"
+        v-for="streamer in secondRow"
+        :key="streamer.username"
+        :img="streamer.img"
+        :username="streamer.username"
+        :followers="streamer.followers"
+        :live="streamer.live"
+        :verified="streamer.verified"
+      />
+    </Marquee>
+    <div
+      class="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-background via-background/50 to-transparent pointer-events-none z-10"
     />
-    <StreamersCardMock />
+    <div
+      class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background via-background/50 to-transparent pointer-events-none z-10"
+    />
   </div>
 </template>
-
-<style scoped>
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.3s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-
-.line-clamp-1 {
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.line-clamp-3 {
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-</style>

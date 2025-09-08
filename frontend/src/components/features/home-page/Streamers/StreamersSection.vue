@@ -1,25 +1,38 @@
 <script setup lang="ts">
-import { StreamersMarquee, StreamersRoot } from '@/components/features/home-page/Streamers/index.ts'
+import {
+  StreamersMarquee,
+  StreamersMarquee5lim,
+} from '@/components/features/home-page/Streamers/index.ts'
+import { useWindowSize } from '@vueuse/core'
+import { useI18n } from 'vue-i18n'
+const { t } = useI18n()
+
+const { width } = useWindowSize()
 </script>
 
 <template>
-  <div id="streamers" class="container m-auto flex flex-col items-center gap-10">
-    <div class="inline-flex items-start justify-between gap-6 w-full">
-      <div class="flex flex-col justify-between gap-4 w-1/2">
-        <span class="inline-block text-sm font-bold text-[#FF930F] uppercase">
-          {{ $t('streamers.category') }}
-        </span>
-        <span class="text-2xl font-bold uppercase">
-          {{ $t('streamers.title') }}
-        </span>
-        <span class="text-base font-normal whitespace-pre-line text-[#CECECE]">
-          {{ $t('streamers.subtitle') }}
-        </span>
-      </div>
-      <StreamersRoot>
-        <StreamersMarquee />
-      </StreamersRoot>
+  <div
+    id="streamers"
+    class="pt-24 container bg-background mx-auto xl:h-dvh flex xl:flex-row flex-col xl:items-end items-center justify-center gap-12"
+  >
+    <div class="flex flex-col xl:items-start sm:items-center gap-4 xl:pb-14 xl:w-1/2">
+      <span
+        class="inline-block xl:text-left text-center text-md font-bold bg-linear-to-b from-[#F2C94C] to-[#F2994A] bg-clip-text text-transparent uppercase"
+      >
+        {{ t('streamers.category') }}
+      </span>
+      <span class="text-4xl font-bold xl:text-left text-center uppercase">
+        {{ t('streamers.title') }}
+      </span>
+      <span class="text-lg font-normal xl:text-left text-center text-neutral-400">
+        {{ t('streamers.subtitle') }}
+      </span>
     </div>
-    <div></div>
+    <div
+      class="relative flex size-full xl:max-w-1/2 flex-col overflow-hidden items-center justify-center"
+    >
+      <StreamersMarquee v-if="width > 1280" />
+      <StreamersMarquee5lim v-else />
+    </div>
   </div>
 </template>

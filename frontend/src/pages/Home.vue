@@ -4,6 +4,7 @@ import { useHead } from '@unhead/vue'
 import { defineAsyncComponent } from 'vue'
 
 import { DefaultLayout } from '@/layouts'
+import { hidden } from '@/lib/utils.ts'
 import { useI18n } from 'vue-i18n'
 
 const Streamers = defineAsyncComponent(
@@ -23,7 +24,7 @@ useHead({
 <template>
   <DefaultLayout>
     <Hero />
-    <Preview />
+    <Preview v-if="!hidden" />
     <Streamers />
     <OpenSource />
   </DefaultLayout>

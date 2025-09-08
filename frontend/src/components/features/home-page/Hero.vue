@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { LoginOrConfigurator } from '@/components/features/home-page'
 import { Discord } from '@/components/shared/icons'
-import { Noise, ParticlesBg, Sparkles } from '@/components/ui'
+import { ParticlesBg, Sparkles } from '@/components/ui'
 import { Button } from '@/components/ui/button'
 import { triggerConfetti } from '@/composables/useConfetti.ts'
 import { useI18n } from 'vue-i18n'
@@ -57,7 +57,6 @@ const { t } = useI18n()
       :staticity="10"
       refresh
     />
-    <Noise />
   </section>
 </template>
 
