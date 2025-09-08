@@ -32,13 +32,14 @@ const isActive = computed(() => {
   <Button
     size="none"
     @click="props.disabled ? undefined : router.push({ name: props.routerLink })"
+    class="relative overflow-hidden"
     :variant="props.disabled ? 'nav_link_disabled' : isActive ? 'nav_link_active' : 'nav_link'"
     :class="cn(showLeftSidebar ? 'px-3 py-2' : 'p-0 hover:bg-transparent', 'rounded-lg')"
   >
     <span
       :class="
         cn(
-          'icon rounded flex items-center justify-center transition-colors',
+          'rounded flex items-center justify-center transition-colors',
           props.disabled ? 'opacity-30' : '',
           isActive && props.color ? `` : 'bg-white/10',
           showLeftSidebar ? 'size-5 ' : 'size-7 bg-transparent',
@@ -49,7 +50,16 @@ const isActive = computed(() => {
         backgroundColor: isActive ? props.color || '' : '',
       }"
     >
-      <component :is="props.icon" :class="cn(showLeftSidebar ? 'size-3' : 'size-4')" />
+      <component :is="props.icon" :class="cn(showLeftSidebar ? 'size-3' : 'size-3.5')" />
+    </span>
+    <span
+      v-if="showLeftSidebar"
+      class="absolute left-1 top-1/2 -translate-y-1/2 size-8 blur-3xl rounded flex items-center justify-center transition-colors"
+      :style="{
+        backgroundColor: isActive ? props.color || '' : '',
+      }"
+    >
+      <component :is="props.icon" class="size-3" />
     </span>
     <span v-if="showLeftSidebar" class="text-sm">{{ t(props.label) }}</span>
   </Button>
