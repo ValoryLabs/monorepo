@@ -12,7 +12,7 @@ import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
 
 const userStore = useUserStore()
-const { fullscreen, configuratorActive } = storeToRefs(userStore)
+const { showRightSidebar, configuratorActive } = storeToRefs(userStore)
 
 const scrollState = ref({
   canScrollUp: false,
@@ -49,14 +49,14 @@ onMounted(() => {
   <aside
     :class="[
       'relative border flex-shrink-0 flex flex-col transition-all duration-300 ease-in-out bg-background h-full',
-      fullscreen ? 'w-0 translate-x-full opacity-100' : 'w-86 translate-x-0 opacity-100',
+      !showRightSidebar ? 'w-0 translate-x-full opacity-100' : 'w-86 translate-x-0 opacity-100',
     ]"
   >
     <div
       class="flex flex-col h-full p-2 gap-1 transition-opacity duration-300"
-      :class="[fullscreen ? 'opacity-0 pointer-events-none' : 'opacity-100']"
+      :class="[!showRightSidebar ? 'opacity-0 pointer-events-none' : 'opacity-100']"
     >
-      <Tabs v-if="!fullscreen" default-value="configuration" class="h-full">
+      <Tabs v-if="showRightSidebar" default-value="configuration" class="h-full">
         <TabsList>
           <TabsTrigger value="configuration">
             {{ t('sidebar.configuration.title') }}
@@ -96,11 +96,11 @@ onMounted(() => {
     </div>
 
     <button
-      @click="userStore.toggleFullscreen"
+      @click="() => (showRightSidebar = !showRightSidebar)"
       aria-label="toggle sidebar"
       :class="[
         'absolute inset-y-0 z-30 w-[4px] transition-all duration-200 hover:bg-neutral-800 sm:flex hidden',
-        fullscreen ? 'left-[-4px] cursor-w-resize' : 'left-[-4px] cursor-e-resize',
+        !showRightSidebar ? 'left-[-4px] cursor-w-resize' : 'left-[-4px] cursor-e-resize',
       ]"
     >
       <span class="absolute inset-x-1.5 inset-y-0 opacity-20"></span>
@@ -108,8 +108,8 @@ onMounted(() => {
   </aside>
 
   <button
-    v-if="fullscreen"
-    @click="userStore.toggleFullscreen"
+    v-if="!showRightSidebar"
+    @click="() => (showRightSidebar = !showRightSidebar)"
     aria-label="open sidebar"
     class="cursor-pointer fixed right-2 top-4 z-50 p-2 bg-background border rounded-md hover:bg-neutral-900 transition-colors duration-200"
   >

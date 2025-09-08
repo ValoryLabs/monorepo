@@ -19,12 +19,15 @@ import router from '@/router'
 import { useAuthStore, useUserStore } from '@/stores'
 import { storeToRefs } from 'pinia'
 import { onMounted, watch } from 'vue'
-import { LanguageSelector, UserBio } from '.'
+import { useI18n } from 'vue-i18n'
+import { LanguageSelector, UserAvatar, UserBio } from '.'
+
+const { t } = useI18n()
 
 const authStore = useAuthStore()
 
 const userStore = useUserStore()
-const { user, loading, error } = storeToRefs(userStore)
+const { user, loading, error, showLeftSidebar } = storeToRefs(userStore)
 
 watch(error, (newError) => {
   if (newError) {
@@ -48,19 +51,27 @@ onMounted(() => {
       <Skeleton class="size-8 flex flex-shrink-0 rounded-sm" />
     </div>
     <div v-else-if="error" class="font-bold w-full flex items-center justify-center h-5 mb-2">
-      {{ $t('profile_menu.error') }}
+      {{ t('profile_menu.error') }}
     </div>
     <DropdownMenuTrigger v-else-if="user && !loading && !error" as-child>
       <Button variant="profile" size="none" class="inline-flex justify-between">
-        <UserBio
-          :avatar_url="user.avatar_url"
-          :username="user.username"
-          :twitch_display_name="user.twitch_display_name"
-          :partner="user.broadcaster_type === 'partner'"
-        />
-        <Button size="icon" variant="ghost" class="bg-white/5" @click.prevent="authStore.logout()">
-          <LogOut />
-        </Button>
+        <template v-if="showLeftSidebar">
+          <UserBio
+            :avatar_url="user.avatar_url"
+            :username="user.username"
+            :twitch_display_name="user.twitch_display_name"
+            :partner="user.broadcaster_type === 'partner'"
+          />
+          <Button
+            size="icon"
+            variant="ghost"
+            class="bg-white/5"
+            @click.prevent="authStore.logout()"
+          >
+            <LogOut />
+          </Button>
+        </template>
+        <UserAvatar :avatar_url="user.avatar_url" :size="30" v-else />
       </Button>
     </DropdownMenuTrigger>
     <DropdownMenuContent align="start" class="w-56 mb-1">
@@ -76,18 +87,18 @@ onMounted(() => {
       <DropdownMenuGroup>
         <DropdownMenuItem @click="router.push({ name: 'configurator-settings' })">
           <SettingsIcon class="mr-1 size-4" />
-          <span>{{ $t('profile_menu.settings') }}</span>
+          <span>{{ t('profile_menu.settings') }}</span>
         </DropdownMenuItem>
         <LanguageSelector />
       </DropdownMenuGroup>
       <DropdownMenuSeparator />
       <DropdownMenuItem @click="openLink('https://discord.gg/pYV4PBV5YW')">
         <LifeBuoy class="mr-1 size-4" />
-        <span>{{ $t('profile_menu.support') }}</span>
+        <span>{{ t('profile_menu.support') }}</span>
       </DropdownMenuItem>
       <DropdownMenuItem @click="router.push({ name: 'terms' })">
         <NotebookText class="text-muted-foreground mr-1 size-4" />
-        <span>{{ $t('profile_menu.terms') }}</span>
+        <span>{{ t('profile_menu.terms') }}</span>
       </DropdownMenuItem>
     </DropdownMenuContent>
   </DropdownMenu>

@@ -2,9 +2,14 @@
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils.ts'
 import router from '@/router'
+import { useUserStore } from '@/stores'
+import { storeToRefs } from 'pinia'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRoute } from 'vue-router'
+
+const userStore = useUserStore()
+const { showLeftSidebar } = storeToRefs(userStore)
 
 const props = defineProps<{
   label: string
@@ -25,24 +30,27 @@ const isActive = computed(() => {
 
 <template>
   <Button
-    size="nav_link"
-    @click="disabled ? None : router.push({ name: props.routerLink })"
-    :variant="disabled ? 'nav_link_disabled' : isActive ? 'nav_link_active' : 'nav_link'"
+    size="none"
+    @click="props.disabled ? undefined : router.push({ name: props.routerLink })"
+    :variant="props.disabled ? 'nav_link_disabled' : isActive ? 'nav_link_active' : 'nav_link'"
+    :class="cn(showLeftSidebar ? 'px-3 py-2' : 'p-0 hover:bg-transparent', 'rounded-lg')"
   >
     <span
       :class="
         cn(
-          'w-5 h-5 rounded flex items-center justify-center transition-colors',
-          disabled ? 'opacity-50' : '',
+          'icon rounded flex items-center justify-center transition-colors',
+          props.disabled ? 'opacity-30' : '',
           isActive && props.color ? `` : 'bg-white/10',
+          showLeftSidebar ? 'size-5 ' : 'size-7 bg-transparent',
+          !showLeftSidebar && props.disabled ? 'cursor-default' : 'hover:bg-white/10',
         )
       "
       :style="{
         backgroundColor: isActive ? props.color || '' : '',
       }"
     >
-      <component :is="props.icon" class="size-3" />
+      <component :is="props.icon" :class="cn(showLeftSidebar ? 'size-3' : 'size-4')" />
     </span>
-    <span class="text-sm">{{ t(props.label) }}</span>
+    <span v-if="showLeftSidebar" class="text-sm">{{ t(props.label) }}</span>
   </Button>
 </template>

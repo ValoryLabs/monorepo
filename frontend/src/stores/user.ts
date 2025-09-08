@@ -16,7 +16,8 @@ export const useUserStore = defineStore(
 
     const overlayDimensions: Ref<string | null> = ref('0 x 0')
 
-    const fullscreen: Ref<boolean> = ref(false)
+    const showLeftSidebar: Ref<boolean> = ref(true)
+    const showRightSidebar: Ref<boolean> = ref(true)
     const showShortcuts: Ref<'Show' | 'Hide'> = ref('Show')
 
     const lastFetchTime: Ref<number | null> = ref(null)
@@ -139,25 +140,31 @@ export const useUserStore = defineStore(
       }
     }
 
-    const refreshUser = async () => {
+    const refreshUser = async (): Promise<void> => {
       await fetchUser(true)
     }
 
-    const clearUserCache = () => {
+    const clearUserCache = (): void => {
       lastFetchTime.value = null
       user.value = null
     }
 
-    const toggleConfigurator = () => {
+    const toggleConfigurator = (): void => {
       configuratorActive.value = !configuratorActive.value
     }
 
-    const togglePreview = () => {
+    const togglePreview = (): void => {
       previewActive.value = !previewActive.value
     }
 
-    const toggleFullscreen = () => {
-      fullscreen.value = !fullscreen.value
+    const toggleFullscreen = (): void => {
+      if (!showRightSidebar.value && !showLeftSidebar.value) {
+        showRightSidebar.value = true
+        showLeftSidebar.value = true
+      } else {
+        showRightSidebar.value = false
+        showLeftSidebar.value = false
+      }
     }
 
     return {
@@ -170,7 +177,8 @@ export const useUserStore = defineStore(
       previewImage,
       previewDraggable,
       overlayDimensions,
-      fullscreen,
+      showLeftSidebar,
+      showRightSidebar,
       showShortcuts,
       resetShortcut,
       fullShortcut,
@@ -200,7 +208,8 @@ export const useUserStore = defineStore(
         'previewImage',
         'previewDraggable',
         'overlayDimensions',
-        'fullscreen',
+        'showLeftSidebar',
+        'showRightSidebar',
         'showShortcuts',
         'resetShortcut',
         'fullShortcut',
