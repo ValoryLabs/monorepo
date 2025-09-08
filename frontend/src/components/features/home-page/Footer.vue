@@ -2,7 +2,11 @@
 import { Valory } from '@/components/shared/icons'
 import { Button } from '@/components/ui/button'
 import { FOOTER_NAV_PRODUCT_DATA, SocialLinksData } from '@/data'
-import { hidden, moveTo, openLink } from '@/lib/utils.ts'
+import { hidden, moveTo } from '@/lib/utils.ts'
+
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 </script>
 <template>
   <footer class="container m-auto mt-10 flex flex-col gap-10 py-16">
@@ -17,17 +21,19 @@ import { hidden, moveTo, openLink } from '@/lib/utils.ts'
           </span>
         </div>
         <span class="text-sm font-normal whitespace-pre-line">
-          {{ $t('footer.left.description') }}
+          {{ t('footer.left.description') }}
         </span>
         <span class="text-xs text-[#7D7D7D]">
-          © 2023-2025 Valory. {{ $t('footer.copyright') }}
+          © 2023-2025 Valory. {{ t('footer.copyright') }}
         </span>
         <div class="flex flex-wrap gap-2">
           <Button
+            as="a"
             v-for="social in SocialLinksData"
-            :key="social"
+            :key="social.name"
             :aria-label="social.name"
-            @click="openLink(social.url)"
+            :href="social.url"
+            target="_blank"
             variant="ghost"
             size="icon"
             class="h-fit w-fit cursor-pointer p-2"
@@ -51,7 +57,7 @@ import { hidden, moveTo, openLink } from '@/lib/utils.ts'
       >
         <div v-for="nav in FOOTER_NAV_PRODUCT_DATA" :key="nav.title" class="flex flex-col gap-2">
           <span class="text-base font-bold">
-            {{ $t(`footer.right.sections.${nav.id === 1 ? 'first' : 'second'}.title`) }}
+            {{ t(`footer.right.sections.${nav.id === 1 ? 'first' : 'second'}.title`) }}
           </span>
           <div class="flex flex-col gap-2">
             <RouterLink
@@ -61,7 +67,7 @@ import { hidden, moveTo, openLink } from '@/lib/utils.ts'
               class="text-base font-normal text-[#A9A9A9] transition duration-150 hover:text-[#F2F2F2]"
             >
               {{
-                $t(`footer.right.sections.${nav.id === 1 ? 'first' : 'second'}.items.${item.name}`)
+                t(`footer.right.sections.${nav.id === 1 ? 'first' : 'second'}.items.${item.name}`)
               }}
             </RouterLink>
           </div>
