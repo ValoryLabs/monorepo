@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Kick, Twitch, Valory, YouTube } from '@/components/shared/icons'
+import { KickFull, TwitchFull, Valory, YouTubeFull } from '@/components/shared/icons'
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
 import { openLink } from '@/lib/utils.ts'
@@ -16,8 +16,10 @@ const redirectToAuth = () => {
 
 <template>
   <div class="flex min-h-screen">
-    <div class="flex min-w-96 max-w-2xl w-full items-center justify-center bg-black p-8">
-      <div class="w-full max-w-sm space-y-8">
+    <div
+      class="flex min-w-96 max-w-2xl w-full items-center overflow-hidden justify-center bg-black p-8"
+    >
+      <div class="w-full max-w-80 space-y-8">
         <div class="flex flex-col items-center gap-3">
           <div class="relative flex flex-row items-center gap-2">
             <Valory :size="26" />
@@ -33,14 +35,14 @@ const redirectToAuth = () => {
 
         <div class="flex w-full flex-col items-center gap-3">
           <Button variant="login" size="lg" class="w-full justify-center" @click="redirectToAuth">
-            <Twitch color="white" class="size-5" /> Twitch
+            <TwitchFull color="white" class="size-14" />
           </Button>
           <Separator class="my-2 h-px w-full bg-white/10" label="OR" />
           <Button variant="login" size="lg" class="w-full justify-center" disabled="true">
-            <YouTube color="white" class="size-5" />Youtube
+            <YouTubeFull color="white" class="size-14" />
           </Button>
           <Button variant="login" size="lg" class="w-full justify-center" disabled="true">
-            <Kick color="white" class="size-5" />Kick
+            <KickFull color="white" class="size-14" />
           </Button>
         </div>
 
