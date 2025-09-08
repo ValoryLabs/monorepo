@@ -8,31 +8,35 @@ const { t } = useI18n()
 </script>
 
 <template>
-  <section class="select-none container relative my-20 flex flex-col items-center">
-    <div
-      class="bg-white/2 container relative z-10 flex flex-col items-center gap-8 overflow-hidden rounded-2xl border border-white/20 px-12 py-24 backdrop-blur-[8px]"
-    >
-      <span class="text-center text-4xl font-bold">{{ t('getStarted.title') }}</span>
-      <span class="whitespace-pre-line max-w-3xl w-full text-center text-xl font-normal">
-        {{ t('getStarted.subtitle') }}
-      </span>
-      <InteractiveHoverButton
-        as="a"
-        :href="router.resolve({ name: 'configurator-home' }).href"
-        class="w-[11rem] text-base"
+  <section class="select-none container my-20 w-full flex flex-col items-center">
+    <div class="relative flex flex-col items-center justify-center w-[80%]">
+      <div
+        class="bg-white/2 container relative z-10 flex flex-col items-center gap-8 overflow-hidden rounded-2xl border border-white/20 px-12 py-24 backdrop-blur-[8px]"
       >
-        {{ t('getStarted.button') }}
-      </InteractiveHoverButton>
-      <div class="bg-gradient absolute -top-96 left-0 right-0 -z-10 rounded-full p-52 blur-[100px]">
-        <Noise />
+        <span class="text-center text-4xl font-bold">{{ t('getStarted.title') }}</span>
+        <span class="whitespace-pre-line max-w-3xl w-full text-center text-xl font-normal">
+          {{ t('getStarted.subtitle') }}
+        </span>
+        <InteractiveHoverButton
+          as="a"
+          :href="router.resolve({ name: 'configurator-home' }).href"
+          class="w-[11rem] text-base"
+        >
+          {{ t('getStarted.button') }}
+        </InteractiveHoverButton>
+        <div
+          class="bg-gradient absolute -top-96 left-0 right-0 -z-10 rounded-full p-52 blur-[100px]"
+        >
+          <Noise />
+        </div>
       </div>
+      <div
+        class="bg-white/2 absolute -bottom-6 w-[80%] rounded-2xl border border-white/10 px-12 py-5 backdrop-blur-[8px]"
+      />
+      <div
+        class="bg-white/2 absolute -bottom-3 w-[90%] rounded-2xl border border-white/15 px-12 py-5 backdrop-blur-[8px]"
+      />
     </div>
-    <div
-      class="bg-white/2 absolute -bottom-6 w-[80%] rounded-2xl border border-white/10 px-12 py-5 backdrop-blur-[8px]"
-    />
-    <div
-      class="bg-white/2 absolute -bottom-3 w-[90%] rounded-2xl border border-white/15 px-12 py-5 backdrop-blur-[8px]"
-    />
   </section>
 </template>
 
