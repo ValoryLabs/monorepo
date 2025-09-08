@@ -119,6 +119,7 @@
     "not-supported": "Not supported",
     "content": {
       "configurator-home": {
+        "welcome": "Hi",
         "title": "Choose best tools for your stream."
       }
     }

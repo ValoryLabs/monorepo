@@ -119,6 +119,7 @@
     "not-supported": "Не поддерживается",
     "content": {
       "configurator-home": {
+        "welcome": "Привет",
         "title": "Выбери лучший инструмент для себя."
       }
     }

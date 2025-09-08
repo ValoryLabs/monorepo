@@ -2,6 +2,7 @@
 import { cn } from '@/lib/utils.ts'
 import router from '@/router'
 import { useI18n } from 'vue-i18n'
+import { FeaturesCardBadge } from '.'
 
 const props = defineProps<{
   icon: any
@@ -28,31 +29,23 @@ const { t } = useI18n()
       )
     "
   >
-    <div class="relative flex flex-col gap-1 w-full h-full p-5 overflow-hidden">
-      <span
-        v-if="props.status === 'disabled'"
-        class="rounded-sm absolute top-2 right-2 bg-white/15 border border-white/10 text-red-500 px-1 text-[10px] font-bold"
-      >
-        DISABLED
-      </span>
-      <span
-        v-if="props.status === 'process'"
-        class="rounded-sm absolute top-2 right-2 bg-white/15 border border-white/10 text-blue-300 px-1 text-[10px] font-bold"
-      >
-        WORK ON
-      </span>
-      <component
-        :is="props.icon"
-        class="size-5"
-        :color="props.color"
-        :style="{ color: props.color }"
-      />
-      <component
-        :is="props.icon"
-        class="size-10 absolute blur-lg left-0 top-0 opacity-40"
-        :color="props.color"
-        :style="{ color: props.color }"
-      />
+    <div class="relative flex flex-col gap-1.5 w-full h-full p-5 overflow-hidden">
+      <FeaturesCardBadge :status="props.status" />
+      <div class="relative">
+        <component
+          :is="props.icon"
+          class="size-5"
+          :color="props.color"
+          :style="{ color: props.color }"
+        />
+        <component
+          :is="props.icon"
+          class="size-10 absolute blur-lg -left-2.5 -top-2.5 opacity-40"
+          :color="props.color"
+          :style="{ color: props.color }"
+        />
+      </div>
+
       <span class="font-bold mt-2">{{ t(props.label) }}</span>
       <span class="text-sm">{{ t(props.description) }}</span>
     </div>
