@@ -71,6 +71,11 @@
     "subtitle": " Packed with powerful tools, our app makes it effortless to display and\ncustomize your Valorant stats. From seamless setup to full\npersonalization, we've got everything to make your stream shine.",
     "title": "Everything You Need to Elevate Your Stream"
   },
+  "getStarted": {
+    "title": "Are your ready?",
+    "subtitle": "Join thousands of content creators who have improved the quality of their broadcasts with using our tools.",
+    "button": "Let's start"
+  },
   "footer": {
     "copyright": "All rights reserved.",
     "left": {

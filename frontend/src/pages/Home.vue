@@ -14,6 +14,10 @@ const OpenSource = defineAsyncComponent(
   () => import('@/components/features/home-page/OpenSource.vue'),
 )
 
+const GetStarted = defineAsyncComponent(
+  () => import('@/components/features/home-page/GetStarted.vue'),
+)
+
 const { t } = useI18n()
 
 useHead({
@@ -27,5 +31,6 @@ useHead({
     <Preview v-if="!hidden" />
     <Streamers />
     <OpenSource />
+    <GetStarted />
   </DefaultLayout>
 </template>
