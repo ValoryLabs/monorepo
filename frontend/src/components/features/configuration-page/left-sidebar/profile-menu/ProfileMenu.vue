@@ -100,6 +100,11 @@ onMounted(() => {
         <NotebookText class="text-muted-foreground mr-1 size-4" />
         <span>{{ t('profile_menu.terms') }}</span>
       </DropdownMenuItem>
+      <DropdownMenuSeparator />
+      <DropdownMenuItem @click="authStore.logout()">
+        <LogOut class="text-muted-foreground mr-1 size-4" />
+        <span>{{ t('profile_menu.logout') }}</span>
+      </DropdownMenuItem>
     </DropdownMenuContent>
   </DropdownMenu>
 </template>
