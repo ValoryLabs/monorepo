@@ -12,7 +12,7 @@ import {
 } from '@/components/ui/dropdown-menu'
 
 import { openLink } from '@/lib/utils.ts'
-import { LifeBuoy, LogOut, NotebookText, Settings as SettingsIcon } from 'lucide-vue-next'
+import { ChevronsUpDown, LifeBuoy, LogOut, NotebookText, SettingsIcon } from 'lucide-vue-next'
 
 import { Skeleton } from '@/components/ui/skeleton'
 import router from '@/router'
@@ -62,14 +62,7 @@ onMounted(() => {
             :twitch_display_name="user.twitch_display_name"
             :partner="user.broadcaster_type === 'partner'"
           />
-          <Button
-            size="icon"
-            variant="ghost"
-            class="bg-white/5"
-            @click.prevent="authStore.logout()"
-          >
-            <LogOut />
-          </Button>
+          <ChevronsUpDown />
         </template>
         <UserAvatar :avatar_url="user.avatar_url" :size="30" v-else />
       </Button>
