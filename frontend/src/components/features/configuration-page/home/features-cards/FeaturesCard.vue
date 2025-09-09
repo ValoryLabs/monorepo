@@ -20,7 +20,7 @@ const { t } = useI18n()
 <template>
   <div
     @click="props.disabled ? undefined : router.push({ name: props.link })"
-    class="border cursor-pointer transition-all bg-white/1 border-white/10 rounded-lg shadow-sm w-full max-w-3xs h-xs"
+    class="border cursor-pointer transition-all bg-white/1 border-white/10 rounded-xl shadow-sm w-full max-w-3xs h-xs"
     :class="
       cn(
         props.disabled
@@ -29,7 +29,7 @@ const { t } = useI18n()
       )
     "
   >
-    <div class="relative flex flex-col gap-1.5 w-full h-full p-5 overflow-hidden">
+    <div class="relative flex flex-col gap-2 w-full h-full p-5 overflow-hidden">
       <FeaturesCardBadge :status="props.status" />
       <div class="relative">
         <component
@@ -47,7 +47,7 @@ const { t } = useI18n()
       </div>
 
       <span class="font-bold mt-2">{{ t(props.label) }}</span>
-      <span class="text-sm">{{ t(props.description) }}</span>
+      <span class="text-sm text-neutral-400">{{ t(props.description) }}</span>
     </div>
   </div>
 </template>

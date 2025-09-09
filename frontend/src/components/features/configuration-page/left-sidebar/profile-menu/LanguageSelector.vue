@@ -12,7 +12,7 @@ import { Check, Globe } from 'lucide-vue-next'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-const { locale } = useI18n()
+const { t, locale } = useI18n()
 const currentLocale = useLocalStorage('lang', 'en')
 
 const currentLanguage = computed(() => {
@@ -33,7 +33,7 @@ const handleLanguageChange = (langCode: string) => {
   <DropdownMenuSub>
     <DropdownMenuSubTrigger>
       <Globe class="size-4 mr-1" />
-      <span>{{ $t('components.languageSwitcher') }}</span>
+      <span>{{ t('components.languageSwitcher') }}</span>
       <span class="ml-auto bg-white/10 rounded-sm py-1 px-2 text-xs text-muted-foreground">{{
         currentLanguageName
       }}</span>
