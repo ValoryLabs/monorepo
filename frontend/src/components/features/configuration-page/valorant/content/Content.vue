@@ -1,14 +1,11 @@
 <script setup lang="ts">
+import { Hand } from 'lucide-vue-next'
+import { storeToRefs } from 'pinia'
+import { nextTick, onBeforeUnmount, onMounted, onUnmounted, reactive, ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { Button } from '@/components/ui/button'
 import { useUserStore } from '@/stores/user.ts'
-import { storeToRefs } from 'pinia'
 import { Overlay } from '../'
-
-import { Hand } from 'lucide-vue-next'
-
-import { nextTick, onBeforeUnmount, onMounted, onUnmounted, reactive, ref } from 'vue'
-
-import { useI18n } from 'vue-i18n'
 import { Panel, Preview } from '.'
 
 const { t } = useI18n()

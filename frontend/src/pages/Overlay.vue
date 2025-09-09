@@ -38,7 +38,7 @@ const overlayComponent = computed(() => getOverlayComponent(overlayData.value?.o
 const overlayStyle = computed(() => overlayData.value?.overlay_style || 'old')
 const disabledBackground = computed(() => overlayData.value?.disabled_background || false)
 const disabledBackgroundGradient = computed(
-  () => overlayData.value?.disabled_background_gradient || false,
+  () => overlayData.value?.disabled_background_gradient || false
 )
 const backgroundColor = computed(() => overlayData.value?.background_color || '#07090E')
 const primaryTextColor = computed(() => overlayData.value?.primary_color || '#f2f2f2')
@@ -96,7 +96,7 @@ watch(
   () => props.id,
   (newId: string) => {
     loadOverlayData(newId)
-  },
+  }
 )
 
 watch(successFetchInfo, (isSuccess) => {

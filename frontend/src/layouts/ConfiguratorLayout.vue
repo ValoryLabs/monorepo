@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { LeftSidebar } from '@/components/features/configuration-page/left-sidebar'
-import { useUserStore } from '@/stores'
 import { useMagicKeys } from '@vueuse/core'
 import { storeToRefs } from 'pinia'
 import { watch } from 'vue'
+import { LeftSidebar } from '@/components/features/configuration-page/left-sidebar'
+import { useUserStore } from '@/stores'
 
 const userStore = useUserStore()
 const { configuratorActive } = storeToRefs(userStore)
@@ -22,7 +22,7 @@ watch(fullKeyPressed, (v) => {
 <template>
   <div class="inline-flex w-dvw h-dvh overflow-x-hidden">
     <LeftSidebar />
-    <main class="inline-flex w-dvw h-dvh bg-background">
+    <main class="inline-flex w-dvw h-dvh bg-background overflow-scroll">
       <router-view />
     </main>
   </div>

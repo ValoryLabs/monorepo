@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import { Button } from '@/components/ui/button'
 import { useEyeDropper } from '@vueuse/core'
 import { BanIcon, PipetteIcon } from 'lucide-vue-next'
 import tinycolor from 'tinycolor2'
-import { type HTMLAttributes } from 'vue'
+import type { HTMLAttributes } from 'vue'
+import { Button } from '@/components/ui/button'
 
 const props = defineProps<{
   class?: HTMLAttributes['class']

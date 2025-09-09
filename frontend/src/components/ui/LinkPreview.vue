@@ -1,9 +1,9 @@
 <script setup lang="ts">
+import { computed, ref } from 'vue'
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card'
 import { Skeleton } from '@/components/ui/skeleton'
 import { useMetaExtractor } from '@/composables'
 import { openLink } from '@/lib/utils.ts'
-import { computed, ref } from 'vue'
 
 interface Props {
   url: string
@@ -29,7 +29,7 @@ const repoName = computed(() => {
       return urlObj.pathname.split('/').filter(Boolean).join('/')
     } else {
       // Fallback для SSR
-      const match = props.url.match(/github\.com\/([^\/]+\/[^\/]+)/)
+      const match = props.url.match(/github\.com\/([^/]+\/[^/]+)/)
       return match ? match[1] : props.url
     }
   } catch {

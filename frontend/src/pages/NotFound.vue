@@ -1,10 +1,9 @@
 <script setup lang="ts">
+import { useHead } from '@unhead/vue'
+import { useI18n } from 'vue-i18n'
 import { Valory } from '@/components/shared/icons'
 import { Button } from '@/components/ui/button'
 import router from '@/router'
-import { useHead } from '@unhead/vue'
-
-import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
 

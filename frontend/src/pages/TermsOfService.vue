@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useHead } from '@unhead/vue'
-
+import { useI18n } from 'vue-i18n'
 import {
   Content,
   ContentContainer,
@@ -10,7 +10,6 @@ import {
   ContentParagraph,
   ContentParagraphTitle,
 } from '@/components/ui/content'
-import { useI18n } from 'vue-i18n'
 
 import { DefaultLayout } from '@/layouts'
 

@@ -1,12 +1,11 @@
+import path from 'node:path'
 import { fileURLToPath, URL } from 'node:url'
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import tailwindcss from '@tailwindcss/vite'
 import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite'
-import path from 'path'
-import { ViteMinifyPlugin } from 'vite-plugin-minify'
-import eslint from 'vite-plugin-eslint'
+import tailwindcss from '@tailwindcss/vite'
+import vue from '@vitejs/plugin-vue'
 import { visualizer } from 'rollup-plugin-visualizer'
+import { defineConfig } from 'vite'
+import { ViteMinifyPlugin } from 'vite-plugin-minify'
 
 export default defineConfig(({ mode }) => {
   const isProduction = mode === 'production'
@@ -22,11 +21,11 @@ export default defineConfig(({ mode }) => {
         module: 'petite-vue-i18n',
         include: [path.resolve(__dirname, './src/i18n/locales/**')],
       }),
-      eslint(),
-      mode === 'analyze' && visualizer({
-        filename: 'dist/stats.html',
-        open: true
-      })
+      mode === 'analyze' &&
+        visualizer({
+          filename: 'dist/stats.html',
+          open: true,
+        }),
     ],
     resolve: {
       alias: {

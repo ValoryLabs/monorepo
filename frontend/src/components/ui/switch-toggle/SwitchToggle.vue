@@ -7,7 +7,7 @@ const props = withDefaults(
   {
     disabled: false,
     id: () => `ui-switch-${Math.random().toString(36).slice(2, 9)}`,
-  },
+  }
 )
 
 const modelValue = defineModel<boolean>({

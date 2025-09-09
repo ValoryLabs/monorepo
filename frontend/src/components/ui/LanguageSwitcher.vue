@@ -1,4 +1,8 @@
 <script lang="ts" setup>
+import { useLocalStorage } from '@vueuse/core'
+import { Globe } from 'lucide-vue-next'
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { Button } from '@/components/ui/button'
 import {
   DropdownMenu,
@@ -9,13 +13,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-
-import { Globe } from 'lucide-vue-next'
-
 import { AVAILABLE_LOCALES } from '@/i18n'
-import { useLocalStorage } from '@vueuse/core'
-import { computed } from 'vue'
-import { useI18n } from 'vue-i18n'
 
 interface Props {
   variant?: 'default' | 'rounded'

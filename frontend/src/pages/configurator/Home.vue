@@ -1,11 +1,11 @@
 <script setup lang="ts">
+import { useHead } from '@unhead/vue'
+import { storeToRefs } from 'pinia'
+import { useI18n } from 'vue-i18n'
 import { HeroText } from '@/components/features/configuration-page/home'
 import { FeaturesAvatarGroup } from '@/components/features/configuration-page/home/features-avatar'
 import { FeaturesCardSection } from '@/components/features/configuration-page/home/features-cards'
 import { useUserStore } from '@/stores/user'
-import { useHead } from '@unhead/vue'
-import { storeToRefs } from 'pinia'
-import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
 

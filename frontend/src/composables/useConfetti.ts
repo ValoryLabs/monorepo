@@ -8,7 +8,7 @@ export const triggerConfetti = () => {
   const duration = 5 * 1000
   const animationEnd = Date.now() + duration
   const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 }
-  const interval: NodeJS.Timeout = setInterval(function () {
+  const interval: NodeJS.Timeout = setInterval(() => {
     const timeLeft = animationEnd - Date.now()
 
     if (timeLeft <= 0) {

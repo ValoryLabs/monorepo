@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { useI18n } from 'vue-i18n'
-import { Preview, Profile } from '.'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { ProfileTab, ValorantTab } from '.'
 
 const { t } = useI18n()
 
@@ -15,12 +15,12 @@ const tabs: ITabs[] = [
   {
     value: 'profile',
     title: t('components.settings.tabs.profile.title'),
-    component: Profile,
+    component: ProfileTab,
   },
   {
-    value: 'preview',
-    title: t('components.settings.tabs.preview.title'),
-    component: Preview,
+    value: 'valorant',
+    title: t('components.settings.tabs.valorant.title'),
+    component: ValorantTab,
   },
 ]
 </script>
@@ -28,7 +28,7 @@ const tabs: ITabs[] = [
 <template>
   <div class="container mt-6 relative flex flex-col gap-3">
     <div class="title text-xl">{{ t('components.settings.title') }}</div>
-    <div>
+    <div class="flex flex-col items-start max-w-4xl">
       <Tabs default-value="profile" class="flex w-full flex-row" orientation="vertical">
         <TabsList
           class="grid w-full gap-1 max-w-[208px] grid-cols-1 p-0 pr-1 border-transparent hover:border-transparent"

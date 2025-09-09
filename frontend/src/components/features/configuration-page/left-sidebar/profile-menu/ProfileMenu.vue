@@ -1,6 +1,9 @@
 <script setup lang="ts">
+import { ChevronsUpDown, LifeBuoy, LogOut, NotebookText, SettingsIcon } from 'lucide-vue-next'
+import { storeToRefs } from 'pinia'
+import { onMounted, watch } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { Button } from '@/components/ui/button'
-
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,16 +13,10 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-
-import { openLink } from '@/lib/utils.ts'
-import { ChevronsUpDown, LifeBuoy, LogOut, NotebookText, SettingsIcon } from 'lucide-vue-next'
-
 import { Skeleton } from '@/components/ui/skeleton'
+import { openLink } from '@/lib/utils.ts'
 import router from '@/router'
 import { useAuthStore, useUserStore } from '@/stores'
-import { storeToRefs } from 'pinia'
-import { onMounted, watch } from 'vue'
-import { useI18n } from 'vue-i18n'
 import { LanguageSelector, UserAvatar, UserBio } from '.'
 
 const { t } = useI18n()

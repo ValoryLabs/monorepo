@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { Content, RightSidebar } from '@/components/features/configuration-page/valorant'
-import { useOverlayStore, useUserStore } from '@/stores'
 import { useHead } from '@unhead/vue'
 import { useMagicKeys } from '@vueuse/core'
 import { storeToRefs } from 'pinia'
 import { watch } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { Content, RightSidebar } from '@/components/features/configuration-page/valorant'
+import { useOverlayStore, useUserStore } from '@/stores'
 
 const { t } = useI18n()
 

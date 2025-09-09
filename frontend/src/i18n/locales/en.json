@@ -33,13 +33,21 @@
     },
     "settings": {
       "tabs": {
-        "preview": {
+        "valorant": {
+          "title": "Valorant",
           "description": "Preview your overlay before generating the URL.",
-          "title": "Preview"
+          "sections": {
+            "profile": {
+              "title": "Profile",
+              "description": "Enter your Riot ID and Henrik's API KEY to search for your profile"
+            },
+            "preview": {
+              "title": "Preview",
+              "description": "Change the preview image for any maps from Valorant"
+            }
+          }
         },
         "profile": {
-          "description": "Enter your Riot ID and Henrik's API KEY to search for your profile",
-          "instructions": "How do I get an API key?",
           "title": "Profile"
         }
       },

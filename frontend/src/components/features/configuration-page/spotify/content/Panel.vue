@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { Button } from '@/components/ui/button'
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 import { Expand, RotateCcw } from 'lucide-vue-next'
-
+import { Button } from '@/components/ui/button'
 import { Kbd } from '@/components/ui/kbd'
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 import { useOverlayStore } from '@/stores/overlay.ts'
 import { useUserStore } from '@/stores/user.ts'
 

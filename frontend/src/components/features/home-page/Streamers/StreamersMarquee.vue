@@ -1,14 +1,14 @@
 <script setup lang="ts">
+import { storeToRefs } from 'pinia'
+import { computed, onMounted } from 'vue'
 import { StreamersCard, StreamersCardSkeleton } from '@/components/features/home-page/Streamers'
 import Marquee from '@/components/ui/Marquee.vue'
 import { useStreamersStore } from '@/stores'
-import { storeToRefs } from 'pinia'
-import { computed, onMounted } from 'vue'
 
 const streamersStore = useStreamersStore()
 const { streamers, loading, error } = storeToRefs(streamersStore)
 
-const shuffleArray = <T,>(array: T[]): T[] => {
+const shuffleArray = <T>(array: T[]): T[] => {
   const arr = [...array]
   for (let i = arr.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1))
@@ -19,7 +19,7 @@ const shuffleArray = <T,>(array: T[]): T[] => {
 
 const safeStreamers = computed(() => {
   return streamers.value.filter(
-    (streamer) => streamer && typeof streamer === 'object' && streamer.username && true,
+    (streamer) => streamer && typeof streamer === 'object' && streamer.username && true
   )
 })
 

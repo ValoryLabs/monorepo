@@ -1,7 +1,7 @@
-import { updateUserData } from '@/services/backend.ts'
-import { useUserSettingsStore } from '@/stores/userSettings'
 import type { AxiosError } from 'axios'
 import { storeToRefs } from 'pinia'
+import { updateUserData } from '@/services/backend.ts'
+import { useUserSettingsStore } from '@/stores/userSettings'
 import { apiClient } from '..'
 
 // Data types
@@ -137,7 +137,7 @@ export const UserValidator = {
     }
 
     const response = await apiClient.get<RiotAccountResponse>(
-      `/v2/account/${encodeURIComponent(name)}/${encodeURIComponent(tag)}?force=true`,
+      `/v2/account/${encodeURIComponent(name)}/${encodeURIComponent(tag)}?force=true`
     )
 
     if (response.data.status !== 200 || !response.data.data) {

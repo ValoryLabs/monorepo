@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { cn } from '@/lib/utils'
 import { reactiveOmit } from '@vueuse/core'
 import { DropdownMenuItem, type DropdownMenuItemProps, useForwardProps } from 'reka-ui'
 import type { HTMLAttributes } from 'vue'
+import { cn } from '@/lib/utils'
 
 const props = withDefaults(
   defineProps<
@@ -14,7 +14,7 @@ const props = withDefaults(
   >(),
   {
     variant: 'default',
-  },
+  }
 )
 
 const delegatedProps = reactiveOmit(props, 'inset', 'variant')

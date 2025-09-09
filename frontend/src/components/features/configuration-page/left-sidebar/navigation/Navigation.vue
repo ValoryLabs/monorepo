@@ -1,8 +1,8 @@
 <script setup lang="ts">
+import { storeToRefs } from 'pinia'
 import { CONFIGURATOR_NAV_DATA } from '@/data'
 import { cn } from '@/lib/utils'
 import { useUserStore } from '@/stores'
-import { storeToRefs } from 'pinia'
 import { NavigationLink, NavigationTitle } from '.'
 
 const userStore = useUserStore()

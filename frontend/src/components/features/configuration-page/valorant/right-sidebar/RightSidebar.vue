@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { ChevronLeft } from 'lucide-vue-next'
+import { storeToRefs } from 'pinia'
 import { onMounted, ref } from 'vue'
-import { Generate } from '.'
-import { Configuration } from './configuration'
+import { useI18n } from 'vue-i18n'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 
 import { useUserStore } from '@/stores/user.ts'
-import { storeToRefs } from 'pinia'
-import { useI18n } from 'vue-i18n'
+import { Generate } from '.'
+import { Configuration } from './configuration'
 
 const { t } = useI18n()
 

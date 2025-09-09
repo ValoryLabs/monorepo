@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { cn } from '@/lib/utils'
 import type { HTMLAttributes } from 'vue'
 import { computed, onMounted, onUnmounted, reactive, ref } from 'vue'
+import { cn } from '@/lib/utils'
 
 const props = defineProps<{
   class?: HTMLAttributes['class']
@@ -63,7 +63,7 @@ onUnmounted(() => {
 
 // Calculate rotation angle based on mouse position
 const rotationAngle = computed(() => {
-  return Math.sqrt(Math.pow(rotation.x, 2) + Math.pow(rotation.y, 2)) * 10
+  return Math.sqrt(rotation.x ** 2 + rotation.y ** 2) * 10
 })
 
 // Computed properties for CSS variables

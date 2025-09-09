@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
 import { cn } from '@/lib/utils.ts'
 import router from '@/router'
-import { useI18n } from 'vue-i18n'
 import { FeaturesCardBadge } from '.'
 
 const props = defineProps<{

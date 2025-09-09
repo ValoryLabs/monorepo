@@ -1,7 +1,7 @@
 /**
  * Import necessary dependencies for API interactions
  */
-import { type AxiosResponse } from 'axios'
+import type { AxiosResponse } from 'axios'
 import { apiClient } from '.'
 
 /**

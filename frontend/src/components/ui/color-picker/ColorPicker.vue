@@ -1,8 +1,8 @@
 <script lang="ts" setup>
+import tinycolor from 'tinycolor2'
+import { type HTMLAttributes, onMounted, reactive, ref, watch } from 'vue'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { cn } from '@/lib/utils'
-import tinycolor from 'tinycolor2'
-import { onMounted, reactive, ref, watch, type HTMLAttributes } from 'vue'
 import {
   ColorPickerAlpha,
   ColorPickerEyeDropper,
@@ -174,7 +174,7 @@ watch(
       hex.value = color.toHexString()
     }
   },
-  { immediate: true },
+  { immediate: true }
 )
 
 onMounted(() => {

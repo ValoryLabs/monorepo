@@ -1,17 +1,16 @@
 <script setup lang="ts">
+import { storeToRefs } from 'pinia'
+import { useI18n } from 'vue-i18n'
 import { InputWithIcon, SelectFont, SelectLayout } from '@/components/ui'
 import { Button } from '@/components/ui/button'
 import { ColorPicker } from '@/components/ui/color-picker'
 import { Kbd } from '@/components/ui/kbd'
 import { Label } from '@/components/ui/label'
 import { SwitchToggle } from '@/components/ui/switch-toggle'
-import { useOverlayStore } from '@/stores/overlay.ts'
-import { storeToRefs } from 'pinia'
-import { useI18n } from 'vue-i18n'
-import { ConfigurationContent, ConfigurationRoot, ConfigurationSection } from '.'
-
 import router from '@/router'
+import { useOverlayStore } from '@/stores/overlay.ts'
 import { useUserStore } from '@/stores/user.ts'
+import { ConfigurationContent, ConfigurationRoot, ConfigurationSection } from '.'
 
 const userStore = useUserStore()
 const { configuratorActive } = storeToRefs(userStore)

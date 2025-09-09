@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { defineStore } from 'pinia'
-import { computed, ref, watch, type Ref } from 'vue'
+import { computed, type Ref, ref, watch } from 'vue'
 
 export const useUserStore = defineStore(
   'userStore',
@@ -216,5 +216,5 @@ export const useUserStore = defineStore(
         'lastFetchTime',
       ],
     },
-  },
+  }
 )

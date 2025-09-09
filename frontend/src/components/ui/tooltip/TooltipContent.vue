@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { cn } from '@/lib/utils'
 import { reactiveOmit } from '@vueuse/core'
 import {
   TooltipArrow,
@@ -10,6 +9,7 @@ import {
   useForwardPropsEmits,
 } from 'reka-ui'
 import type { HTMLAttributes } from 'vue'
+import { cn } from '@/lib/utils'
 
 defineOptions({
   inheritAttrs: false,
@@ -19,7 +19,7 @@ const props = withDefaults(
   defineProps<TooltipContentProps & { class?: HTMLAttributes['class'] }>(),
   {
     sideOffset: 4,
-  },
+  }
 )
 
 const emits = defineEmits<TooltipContentEmits>()

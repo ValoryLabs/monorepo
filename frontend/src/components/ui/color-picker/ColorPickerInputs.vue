@@ -1,4 +1,7 @@
 <script lang="ts" setup>
+import { CheckIcon, CopyIcon } from 'lucide-vue-next'
+import tinycolor from 'tinycolor2'
+import { computed, ref, watch } from 'vue'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import {
@@ -8,9 +11,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { CheckIcon, CopyIcon } from 'lucide-vue-next'
-import tinycolor from 'tinycolor2'
-import { computed, ref, watch } from 'vue'
 
 const props = defineProps<{
   hex: string
@@ -60,7 +60,7 @@ const colorString = computed(() => {
 
 watch(
   () => props.hex,
-  (v) => (localHex.value = v),
+  (v) => (localHex.value = v)
 )
 watch(
   () => props.rgb,
@@ -68,11 +68,11 @@ watch(
     localRgb.value = { ...v }
     editableHsl.value = { ...localHsl.value }
   },
-  { deep: true },
+  { deep: true }
 )
 watch(
   () => props.alpha,
-  (v) => (localAlpha.value = v),
+  (v) => (localAlpha.value = v)
 )
 watch(colorModel, (newModel) => {
   if (newModel === 'hsl') {

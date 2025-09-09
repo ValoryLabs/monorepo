@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { Valory } from '@/components/shared/icons'
-import { Loading } from '@/components/shared/icons/motion-grid'
-import { useAuthStore } from '@/stores'
 import { useHead } from '@unhead/vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
+import { Valory } from '@/components/shared/icons'
+import { Loading } from '@/components/shared/icons/motion-grid'
+import { useAuthStore } from '@/stores'
 
 const authStore = useAuthStore()
 const router = useRouter()

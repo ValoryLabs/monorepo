@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { ShowShortcuts } from '@/components/ui'
-import { ShortcutsHeader, ShortcutsRoot, ShortcutsSection } from '.'
-
 import { useUserStore } from '@/stores/user.ts'
+import { ShortcutsHeader, ShortcutsRoot, ShortcutsSection } from '.'
 
 const userStore = useUserStore()
 </script>

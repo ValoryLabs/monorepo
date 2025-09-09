@@ -1,10 +1,10 @@
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
 import { LoginOrConfigurator } from '@/components/features/home-page'
 import { Discord } from '@/components/shared/icons'
 import { ParticlesBg, Sparkles } from '@/components/ui'
 import { Button } from '@/components/ui/button'
 import { triggerConfetti } from '@/composables/useConfetti.ts'
-import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
 </script>

@@ -1,6 +1,6 @@
-import pluginVue from 'eslint-plugin-vue';
-import { defineConfigWithVueTs, vueTsConfigs } from '@vue/eslint-config-typescript';
-import skipFormatting from '@vue/eslint-config-prettier/skip-formatting';
+import skipFormatting from '@vue/eslint-config-prettier/skip-formatting'
+import { defineConfigWithVueTs, vueTsConfigs } from '@vue/eslint-config-typescript'
+import pluginVue from 'eslint-plugin-vue'
 
 export default defineConfigWithVueTs(
   {
@@ -22,4 +22,4 @@ export default defineConfigWithVueTs(
       '@typescript-eslint/no-explicit-any': 'off',
     },
   }
-);
+)

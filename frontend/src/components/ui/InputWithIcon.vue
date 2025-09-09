@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import Button from '@/components/ui/button/Button.vue'
-import { Input } from '@/components/ui/input'
-import { cn } from '@/lib/utils'
 import { useVModel } from '@vueuse/core'
 import { Eye, EyeClosed } from 'lucide-vue-next'
 import type { HTMLAttributes, InputHTMLAttributes } from 'vue'
 import { ref } from 'vue'
+import Button from '@/components/ui/button/Button.vue'
+import { Input } from '@/components/ui/input'
+import { cn } from '@/lib/utils'
 
 interface Props {
   modelValue?: string | number
@@ -22,9 +22,7 @@ const props = withDefaults(defineProps<Props>(), {
   id: '',
 })
 
-const emits = defineEmits<{
-  (e: 'update:modelValue', payload: string | number): void
-}>()
+const emits = defineEmits<(e: 'update:modelValue', payload: string | number) => void>()
 
 const modelValue = useVModel(props, 'modelValue', emits, {
   passive: true,

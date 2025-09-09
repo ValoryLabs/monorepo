@@ -33,13 +33,21 @@
     },
     "settings": {
       "tabs": {
-        "preview": {
-          "description": "Предпросмотр вашего оверлея перед генерацией URL.",
-          "title": "Предпросмотр"
+        "valorant": {
+          "title": "Valorant",
+          "description": "Предварительно просмотрите ваш оверлей перед генерацией URL-адреса.",
+          "sections": {
+            "profile": {
+              "title": "Профиль",
+              "description": "Введите ваш Riot ID и API-ключ Henrik для поиска вашего профиля"
+            },
+            "preview": {
+              "title": "Предварительный просмотр",
+              "description": "Измените изображение предварительного просмотра для любую карту из Valorant"
+            }
+          }
         },
         "profile": {
-          "description": "Введите ваш Riot ID и API-ключ Henrik, чтобы найти профиль",
-          "instructions": "Как получить API-ключ?",
           "title": "Профиль"
         }
       },

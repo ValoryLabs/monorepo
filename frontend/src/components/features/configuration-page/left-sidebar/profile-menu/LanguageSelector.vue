@@ -1,4 +1,8 @@
 <script lang="ts" setup>
+import { useLocalStorage } from '@vueuse/core'
+import { Check, Globe } from 'lucide-vue-next'
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 import {
   DropdownMenuItem,
   DropdownMenuPortal,
@@ -7,10 +11,6 @@ import {
   DropdownMenuSubTrigger,
 } from '@/components/ui/dropdown-menu'
 import { AVAILABLE_LOCALES } from '@/i18n'
-import { useLocalStorage } from '@vueuse/core'
-import { Check, Globe } from 'lucide-vue-next'
-import { computed } from 'vue'
-import { useI18n } from 'vue-i18n'
 
 const { t, locale } = useI18n()
 const currentLocale = useLocalStorage('lang', 'en')

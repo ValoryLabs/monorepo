@@ -1,15 +1,14 @@
 <script setup lang="ts">
+import { onMounted, onUnmounted, ref } from 'vue'
+import { useI18n } from 'vue-i18n'
+import { useRoute } from 'vue-router'
+import { LoginOrConfigurator } from '@/components/features/home-page/index.ts'
 import { Github, Valory } from '@/components/shared/icons'
+import { LanguageSwitcher, LinkPreview } from '@/components/ui'
 import { Button } from '@/components/ui/button'
 import { NAV_DATA } from '@/data'
 import { hidden, moveTo } from '@/lib/utils.ts'
 import router from '@/router'
-import { onMounted, onUnmounted, ref } from 'vue'
-
-import { LoginOrConfigurator } from '@/components/features/home-page/index.ts'
-import { LanguageSwitcher, LinkPreview } from '@/components/ui'
-import { useI18n } from 'vue-i18n'
-import { useRoute } from 'vue-router'
 
 const { t } = useI18n()
 const route = useRoute()

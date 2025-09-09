@@ -1,5 +1,5 @@
-import { getMMRInformation } from '@/services/playerInformation'
 import { onUnmounted } from 'vue'
+import { getMMRInformation } from '@/services/playerInformation'
 
 const MMR_UPDATE_INTERVAL = 30_000
 

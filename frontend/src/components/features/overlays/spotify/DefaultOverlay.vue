@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { cn } from '@/lib/utils.ts'
-import { type DefaultOverlay } from './types.ts'
+import type { DefaultOverlay } from './types.ts'
 
 const props = withDefaults(defineProps<DefaultOverlay>(), {
   title: 'Title',

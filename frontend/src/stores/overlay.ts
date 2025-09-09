@@ -473,5 +473,5 @@ export const useOverlayStore = defineStore(
   },
   {
     persist: true,
-  },
+  }
 )

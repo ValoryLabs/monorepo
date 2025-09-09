@@ -1,24 +1,21 @@
 <script setup lang="ts">
+import { CircleHelp, Dices, KeyRound, Search } from 'lucide-vue-next'
 import { storeToRefs } from 'pinia'
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { toast } from 'vue-sonner'
-
 import { Riot } from '@/components/shared/icons'
-import { CircleHelp, Dices, KeyRound, Search } from 'lucide-vue-next'
-
 import { InputWithIcon } from '@/components/ui'
 import { Button } from '@/components/ui/button'
 import { Label } from '@/components/ui/label'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
-import { ProfileHeader, ProfileRoot, ProfileSection } from '.'
-
 import { openLink } from '@/lib/utils.ts'
 import { UserValidator } from '@/services/auth/user.validator.ts'
 import { getRandomPlayerName } from '@/services/leaderboard.ts'
 import { getAccountInformation, getMMRInformation } from '@/services/playerInformation.ts'
 import { useUserStore } from '@/stores/user.ts'
 import { useUserSettingsStore } from '@/stores/userSettings.ts'
+import { ProfileHeader, ProfileRoot, ProfileSection } from '.'
 
 const { t } = useI18n()
 
@@ -87,7 +84,7 @@ const getRandomPlayer = async () => {
                 </Button>
               </TooltipTrigger>
               <TooltipContent>
-                <p>{{ $t('components.tooltips.randomRiotId') }}</p>
+                <p>{{ t('components.tooltips.randomRiotId') }}</p>
               </TooltipContent>
             </Tooltip>
           </TooltipProvider>
@@ -112,7 +109,7 @@ const getRandomPlayer = async () => {
                 </Button>
               </TooltipTrigger>
               <TooltipContent>
-                <p>{{ $t('components.tooltips.apiKey') }}</p>
+                <p>{{ t('components.tooltips.apiKey') }}</p>
               </TooltipContent>
             </Tooltip>
           </TooltipProvider>

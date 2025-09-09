@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { cn } from '@/lib/utils'
 import {
   PopoverContent,
   type PopoverContentEmits,
@@ -8,6 +7,7 @@ import {
   useForwardPropsEmits,
 } from 'reka-ui'
 import { computed, type HTMLAttributes } from 'vue'
+import { cn } from '@/lib/utils'
 
 defineOptions({
   inheritAttrs: false,
@@ -18,7 +18,7 @@ const props = withDefaults(
   {
     align: 'center',
     sideOffset: 4,
-  },
+  }
 )
 const emits = defineEmits<PopoverContentEmits>()
 

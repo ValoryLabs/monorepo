@@ -1,7 +1,7 @@
+import { type Ref, ref } from 'vue'
 import { UserValidator } from '@/services/auth/user.validator'
 import { getOverlayData } from '@/services/backend'
 import { getAccountInformation, getMMRInformation } from '@/services/playerInformation'
-import { ref, type Ref } from 'vue'
 
 export interface OverlayData {
   background_color: string

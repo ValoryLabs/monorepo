@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { ref, type Ref } from 'vue'
+import { type Ref, ref } from 'vue'
 
 export const useUserSettingsStore = defineStore(
   'userSettingsStore',
@@ -18,5 +18,5 @@ export const useUserSettingsStore = defineStore(
   },
   {
     persist: true,
-  },
+  }
 )

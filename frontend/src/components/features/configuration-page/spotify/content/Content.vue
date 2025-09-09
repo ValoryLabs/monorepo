@@ -1,10 +1,8 @@
 <script setup lang="ts">
+import { nextTick, onBeforeUnmount, onMounted, onUnmounted, reactive, ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { DefaultOverlay } from '@/components/features/overlays/spotify'
 import { useUserStore } from '@/stores/user.ts'
-
-import { nextTick, onBeforeUnmount, onMounted, onUnmounted, reactive, ref } from 'vue'
-
-import { useI18n } from 'vue-i18n'
 import { Preview } from '.'
 
 const { t } = useI18n()

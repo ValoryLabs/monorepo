@@ -1,11 +1,11 @@
 <script lang="ts" setup>
+import NumberFlow from '@number-flow/vue'
+import { Star } from 'lucide-vue-next'
+import { useI18n } from 'vue-i18n'
 import { Github } from '@/components/shared/icons'
 import { LinkPreview } from '@/components/ui'
 import { Button } from '@/components/ui/button'
 import { useGitHubStars } from '@/composables'
-import NumberFlow from '@number-flow/vue'
-import { Star } from 'lucide-vue-next'
-import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
 

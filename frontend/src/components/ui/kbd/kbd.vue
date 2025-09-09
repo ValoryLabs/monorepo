@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { cn } from '@/lib/utils'
 import type { HTMLAttributes } from 'vue'
 import { computed } from 'vue'
+import { cn } from '@/lib/utils'
 
 interface KbdProps {
   keys?: string[] | string

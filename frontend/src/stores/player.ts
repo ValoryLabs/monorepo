@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { ref, type Ref } from 'vue'
+import { type Ref, ref } from 'vue'
 
 export interface AccountInformation {
   account_level: number

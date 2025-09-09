@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { Header } from '@/components/features/home-page'
-import { moveTo } from '@/lib/utils'
 import { ChevronUp } from 'lucide-vue-next'
 import { defineAsyncComponent, onMounted, onUnmounted, ref } from 'vue'
+import { Header } from '@/components/features/home-page'
+import { moveTo } from '@/lib/utils'
 
 const Footer = defineAsyncComponent(() => import('@/components/features/home-page/Footer.vue'))
 

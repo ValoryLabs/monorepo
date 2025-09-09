@@ -1,12 +1,12 @@
 <script setup lang="ts">
+import { storeToRefs } from 'pinia'
+import { computed, onMounted } from 'vue'
 import {
   StreamersCard,
   StreamersCardMock,
   StreamersCardSkeleton,
 } from '@/components/features/home-page/Streamers'
 import { useStreamersStore } from '@/stores'
-import { storeToRefs } from 'pinia'
-import { computed, onMounted } from 'vue'
 
 const streamersStore = useStreamersStore()
 const { streamers, loading, error } = storeToRefs(streamersStore)
@@ -17,7 +17,7 @@ const showSkeleton = computed(() => isLoading.value || hasError.value)
 
 const safeStreamers = computed(() => {
   return streamers.value.filter(
-    (streamer) => streamer && typeof streamer === 'object' && streamer.username && true,
+    (streamer) => streamer && typeof streamer === 'object' && streamer.username && true
   )
 })
 
