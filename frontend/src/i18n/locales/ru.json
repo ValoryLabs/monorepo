@@ -64,6 +64,11 @@
       "shortcuts": "Комбинации клавиш",
       "goToLogin": "Войти в VALORY",
       "goToConfigurator": "Перейти к конфигуратору"
+    },
+    "featuresCardBadge": {
+      "disabled": "Отключено",
+      "process": "В процессе",
+      "planned": "Запланировано"
     }
   },
   "features": {

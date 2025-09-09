@@ -64,6 +64,11 @@
       "shortcuts": "Shortcuts",
       "goToLogin": "Login to VALORY",
       "goToConfigurator": "Go to configurator"
+    },
+    "featuresCardBadge": {
+      "disabled": "Disabled",
+      "process": "In Progress",
+      "planned": "Planned"
     }
   },
   "features": {

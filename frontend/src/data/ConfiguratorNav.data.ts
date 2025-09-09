@@ -6,7 +6,7 @@ interface ConfiguratorLink {
   link?: string
   color?: string
   description: string
-  status?: 'process' | 'disabled' | 'release'
+  status?: 'process' | 'disabled' | 'release' | 'planned'
   icon: any
   disabled?: boolean
 }
@@ -55,7 +55,7 @@ export const CONFIGURATOR_NAV_DATA: ConfiguratorSection[] = [
         icon: CS2,
         color: '#FB9A0E',
         disabled: true,
-        status: 'process',
+        status: 'planned',
       },
       {
         label: 'sidebar.navigation.links.fortnite',
@@ -63,7 +63,7 @@ export const CONFIGURATOR_NAV_DATA: ConfiguratorSection[] = [
         icon: Fortnite,
         color: '#9D4DBB',
         disabled: true,
-        status: 'process',
+        status: 'planned',
       },
     ],
   },
@@ -76,7 +76,7 @@ export const CONFIGURATOR_NAV_DATA: ConfiguratorSection[] = [
         icon: MessageSquare,
         color: '#FF6F61',
         disabled: true,
-        status: 'process',
+        status: 'planned',
       },
       {
         label: 'sidebar.navigation.links.notification',
@@ -84,7 +84,7 @@ export const CONFIGURATOR_NAV_DATA: ConfiguratorSection[] = [
         icon: Bell,
         color: '#FF9F00',
         disabled: true,
-        status: 'process',
+        status: 'planned',
       },
     ],
   },
@@ -97,7 +97,7 @@ export const CONFIGURATOR_NAV_DATA: ConfiguratorSection[] = [
         icon: Crosshair,
         color: '#8B0000',
         disabled: true,
-        status: 'process',
+        status: 'planned',
       },
       {
         label: 'sidebar.navigation.links.settings',
@@ -105,7 +105,7 @@ export const CONFIGURATOR_NAV_DATA: ConfiguratorSection[] = [
         icon: Settings,
         color: '#778899',
         disabled: true,
-        status: 'process',
+        status: 'planned',
       },
     ],
   },
