@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { useI18n } from 'vue-i18n'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { MiscTab, PersonalTab, ValorantTab } from '.'
 
 const { t } = useI18n()
