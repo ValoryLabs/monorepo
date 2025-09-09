@@ -1,7 +1,29 @@
+<script lang="ts" setup>
+import { cn } from '@/lib/utils'
+import type { HTMLAttributes } from 'vue'
+
+const props = withDefaults(
+  defineProps<{
+    class?: HTMLAttributes['class']
+    textSize?: 'xl' | '2xl' | '3xl' | '4xl'
+  }>(),
+  {
+    textSize: 'xl',
+  },
+)
+</script>
+
 <template>
   <div
-    data-testid="community-tagline"
-    class="font-heading max-w-[700px] text-pretty text-center text-[29px] font-semibold leading-tight tracking-tighter text-white sm:text-[32px] md:text-[40px]"
+    class="max-w-[700px] text-center font-semibold leading-tight tracking-tighter text-white"
+    :class="
+      cn(props.class, {
+        'text-xl': props.textSize === 'xl',
+        'text-2xl': props.textSize === '2xl',
+        'text-3xl': props.textSize === '3xl',
+        'text-4xl': props.textSize === '4xl',
+      })
+    "
   >
     <slot />
   </div>

@@ -47,8 +47,11 @@
             }
           }
         },
-        "profile": {
-          "title": "Profile"
+        "personal": {
+          "title": "Personal"
+        },
+        "misc": {
+          "title": "Misc"
         }
       },
       "title": "Settings"

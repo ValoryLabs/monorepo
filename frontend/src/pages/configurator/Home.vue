@@ -1,11 +1,11 @@
 <script setup lang="ts">
+import { HeroText } from '@/components/features/configuration-page/home'
+import { FeaturesCardSection } from '@/components/features/configuration-page/home/features-cards'
+import { ValoryOutline } from '@/components/shared/icons'
+import { useUserStore } from '@/stores/user'
 import { useHead } from '@unhead/vue'
 import { storeToRefs } from 'pinia'
 import { useI18n } from 'vue-i18n'
-import { HeroText } from '@/components/features/configuration-page/home'
-import { FeaturesAvatarGroup } from '@/components/features/configuration-page/home/features-avatar'
-import { FeaturesCardSection } from '@/components/features/configuration-page/home/features-cards'
-import { useUserStore } from '@/stores/user'
 
 const { t } = useI18n()
 
@@ -19,13 +19,17 @@ useHead({
 
 <template>
   <div class="container h-full pt-10 flex flex-col justify-center items-center gap-6">
-    <FeaturesAvatarGroup />
-    <div class="flex flex-col">
-      <HeroText>
+    <!--    <FeaturesAvatarGroup />-->
+    <div class="relative flex flex-col">
+      <ValoryOutline
+        :size="256"
+        class="absolute -top-20 left-1/2 -translate-x-1/2 mask-[linear-gradient(to_bottom,_white,_transparent)] opacity-40"
+      />
+      <HeroText text-size="3xl">
         {{ t('pages.content.configurator-home.welcome') }},
         {{ user?.twitch_display_name || 'Guest' }}!
       </HeroText>
-      <HeroText>{{ t('pages.content.configurator-home.title') }}</HeroText>
+      <HeroText text-size="4xl">{{ t('pages.content.configurator-home.title') }}</HeroText>
     </div>
 
     <FeaturesCardSection />

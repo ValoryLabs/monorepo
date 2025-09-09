@@ -1,4 +1,5 @@
-export { default as ProfileTab } from './ProfileTab.vue'
+export { MiscTab } from './MiscTab'
+export { PersonalTab } from './PersonalTab'
 export { default as Settings } from './Settings.vue'
 export { default as Shortcuts } from './ShortcutsTab/Shortcuts.vue'
-export { default as ValorantTab } from './ValorantTab/ValorantTab.vue'
+export { ValorantTab } from './ValorantTab'
