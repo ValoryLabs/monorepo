@@ -11,7 +11,7 @@ const props = defineProps<{
   label: string
   description: string
   disabled?: boolean
-  status?: 'process' | 'disabled' | 'release'
+  status?: 'process' | 'disabled' | 'release' | 'planned'
 }>()
 
 const { t } = useI18n()
