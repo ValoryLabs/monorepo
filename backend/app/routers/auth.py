@@ -194,7 +194,8 @@ async def twitch_login(cache: Redis = Depends(get_redis)) -> RedirectResponse:
             value=state,
             max_age=600,  # 10 minutes
             secure=not settings.DEBUG,
-            samesite="lax"
+            samesite="lax",
+            domain="valory.localhost" if settings.DEBUG else ".valory.su",
         )
 
         logger.info(f"Initiated Twitch OAuth login with state: {state}")
@@ -374,7 +375,7 @@ async def callback(
             value=session_data["access_token"],
             max_age=session_data["expires_in"],
             expires=expires_time.strftime("%a, %d %b %Y %H:%M:%S GMT"),
-            domain=".valory.su" if not settings.DEBUG else None,
+            domain="valory.localhost" if settings.DEBUG else ".valory.su",
             path="/",
             samesite="lax",
             secure=not settings.DEBUG,

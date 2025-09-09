@@ -9,7 +9,10 @@
     "bun": ">=1.2.0"
   },
   "scripts": {
-    "dev": "vite",
+    "dev:frontend": "vite",
+    "dev:backend": "bash -c 'cd ../backend && source .venv/bin/activate && uvicorn main:app --reload'",
+    "dev:caddy": "caddy run --config ../Caddyfile.dev",
+    "dev": "concurrently -k -n \"🎨 Frontend,🚀 Backend,🌐 Caddy\" -c \"cyan,green,yellow\" \"npm run dev:frontend\" \"npm run dev:backend\" \"npm run dev:caddy\"",
     "preview": "vite preview",
     "start": "vite preview",
     "build": "vite build",
@@ -28,6 +31,7 @@
     "canvas-confetti": "^1.9.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "concurrently": "^9.2.1",
     "lucide-vue-next": "^0.487.0",
     "motion-v": "^1.7.1",
     "ofetch": "^1.4.1",

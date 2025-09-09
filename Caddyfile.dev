@@ -1,0 +1,14 @@
+{
+    local_certs
+    auto_https disable_redirects
+}
+
+valory.localhost {
+    tls internal
+    reverse_proxy 127.0.0.1:3005
+}
+
+api.valory.localhost {
+    tls internal
+    reverse_proxy 127.0.0.1:8000
+}
