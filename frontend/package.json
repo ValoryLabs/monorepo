@@ -14,7 +14,7 @@
     "dev:backend": "bash -c 'cd ../backend && source .venv/bin/activate && uvicorn main:app --reload'",
     "dev:caddy": "caddy run --config ../Caddyfile.dev",
     "dev:full": "bun run codegen:watch & bun run dev",
-    "build": "bun run codegen && vite build",
+    "build": "vite build",
     "build:analyze": "vite build --mode analyze",
     "preview": "vite preview",
     "start": "vite preview",
