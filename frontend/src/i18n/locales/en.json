@@ -33,6 +33,9 @@
     },
     "settings": {
       "tabs": {
+        "personal": {
+          "title": "Personal"
+        },
         "valorant": {
           "title": "Valorant",
           "description": "Preview your overlay before generating the URL.",
@@ -47,8 +50,8 @@
             }
           }
         },
-        "personal": {
-          "title": "Personal"
+        "spotify": {
+          "title": "Spotify"
         },
         "misc": {
           "title": "Misc"

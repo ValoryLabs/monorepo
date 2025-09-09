@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { useI18n } from 'vue-i18n'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { MiscTab, PersonalTab, ValorantTab } from '.'
+import { useI18n } from 'vue-i18n'
+import { MiscTab, PersonalTab, SpotifyTab, ValorantTab } from '.'
 
 const { t } = useI18n()
 
@@ -21,6 +21,11 @@ const tabs: ITabs[] = [
     value: 'valorant',
     title: t('components.settings.tabs.valorant.title'),
     component: ValorantTab,
+  },
+  {
+    value: 'spotify',
+    title: t('components.settings.tabs.spotify.title'),
+    component: SpotifyTab,
   },
   {
     value: 'misc',

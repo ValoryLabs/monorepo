@@ -33,6 +33,9 @@
     },
     "settings": {
       "tabs": {
+        "personal": {
+          "title": "Личные"
+        },
         "valorant": {
           "title": "Valorant",
           "description": "Предварительно просмотрите ваш оверлей перед генерацией URL-адреса.",
@@ -47,8 +50,8 @@
             }
           }
         },
-        "personal": {
-          "title": "Личные"
+        "spotify": {
+          "title": "Spotify"
         },
         "misc": {
           "title": "Разное"
