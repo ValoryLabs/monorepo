@@ -1,14 +1,19 @@
 <script setup lang="ts">
-import { Ban, Check } from 'lucide-vue-next'
-import { storeToRefs } from 'pinia'
 import { TiltCard } from '@/components/ui'
 import { useUserStore } from '@/stores'
+import { Ban, Check } from 'lucide-vue-next'
+import { storeToRefs } from 'pinia'
 import { PreviewHeader, PreviewRoot } from '.'
 
 const userStore = useUserStore()
 const { previewImage } = storeToRefs(userStore)
 
-const images = [
+interface IImage {
+  name: string
+  src: string
+}
+
+const images: IImage[] = [
   {
     name: 'None',
     src: '',
