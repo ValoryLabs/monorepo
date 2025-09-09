@@ -45,9 +45,3 @@ const props = withDefaults(defineProps<DefaultOverlay>(), {
     </div>
   </div>
 </template>
-
-<style scoped>
-/*.default-overlay {
-  background-color: v-bind('props.backgroundColor');
-}*/
-</style>
