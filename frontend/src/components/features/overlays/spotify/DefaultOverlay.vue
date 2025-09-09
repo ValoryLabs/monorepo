@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { cn } from '@/lib/utils.ts'
+import { Disc3 } from 'lucide-vue-next'
 import type { DefaultOverlay } from './types.ts'
 
 const props = withDefaults(defineProps<DefaultOverlay>(), {
   title: 'Title',
   artist: 'Artist',
-  coverUrl: 'https://www.indieground.net/images/blog/2024/indieblog-best-album-covers-2010s-07.jpg',
   textColor: '#ffffff',
   backgroundColor: '#000000',
   avgCoverColor: false,
@@ -32,10 +32,13 @@ const props = withDefaults(defineProps<DefaultOverlay>(), {
       borderColor: props.borderColor,
     }"
   >
+    <img v-if="props.coverUrl" :src="props.coverUrl" class="size-10 smooth-corners-lg rounded-lg" />
     <div
-      :style="{ backgroundImage: `url(${props.coverUrl})` }"
-      class="size-10 smooth-corners-lg bg-cover rounded-lg"
-    ></div>
+      v-else
+      class="flex flex-col size-10 smooth-corners-lg rounded-lg bg-neutral-800 items-center justify-center"
+    >
+      <Disc3 class="size-5 animate-spin [animation-duration:3000ms]" />
+    </div>
     <div class="flex flex-col gap-2">
       <span class="leading-none text-lg font-bold">{{ props.title }}</span>
       <span class="leading-none text-sm font-medium">{{ props.artist }}</span>
