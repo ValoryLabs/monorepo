@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n'
 import { cn } from '@/lib/utils.ts'
 import router from '@/router'
+import { useI18n } from 'vue-i18n'
 import { FeaturesCardBadge } from '.'
 
 const props = defineProps<{
@@ -20,16 +20,16 @@ const { t } = useI18n()
 <template>
   <div
     @click="props.disabled ? undefined : router.push({ name: props.link })"
-    class="border cursor-pointer transition-all bg-white/1 border-white/10 rounded-xl shadow-sm w-full max-w-3xs h-xs"
+    class="border cursor-pointer transition-all bg-background border-white/10 shadow-sm w-full max-w-3xs h-xs"
     :class="
       cn(
         props.disabled
           ? 'opacity-50'
-          : 'active:scale-102 hover:border-white/20 has-[:focus-visible]:outline-none has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-blue-600 has-[:focus-visible]:ring-offset-1',
+          : 'active:border-white/30 transition-all hover:border-white/20 hover:z-20 has-[:focus-visible]:outline-none has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-blue-600 has-[:focus-visible]:ring-offset-1',
       )
     "
   >
-    <div class="relative flex flex-col gap-2 w-full h-full p-5 overflow-hidden">
+    <div class="relative flex flex-col gap-2 w-full h-full py-7 px-5 overflow-hidden">
       <FeaturesCardBadge :status="props.status" />
       <div class="relative">
         <component

@@ -10,7 +10,7 @@ const features_data = [
 </script>
 
 <template>
-  <div class="inline-flex mt-3 gap-5 flex-wrap w-full justify-center z-10">
+  <div class="inline-flex mt-3 flex-wrap max-w-[90%] justify-center z-10">
     <FeaturesCard
       v-for="feature in features_data"
       :key="feature.label"
