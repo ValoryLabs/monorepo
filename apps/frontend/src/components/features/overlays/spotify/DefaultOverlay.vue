@@ -9,9 +9,9 @@ const props = withDefaults(defineProps<DefaultOverlay>(), {
   textColor: '#ffffff',
   backgroundColor: '#000000',
   avgCoverColor: false,
-  showBorder: true,
+  hideBorder: true,
   borderColor: '#000000',
-  borderRadius: 0,
+  borderRadius: [0],
   textFont: 'Geist',
   trimArtist: true,
 })
@@ -22,7 +22,7 @@ const props = withDefaults(defineProps<DefaultOverlay>(), {
     :class="
       cn(
         'default-overlay smooth-corners-lg bg-cover rounded-lg p-3 w-36 inline-flex gap-2 items-center',
-        showBorder ? 'border-2' : '',
+        hideBorder ? 'border-2' : '',
       )
     "
     :style="{

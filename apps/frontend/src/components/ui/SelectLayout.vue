@@ -2,10 +2,10 @@
 import { Check } from 'lucide-vue-next'
 import { storeToRefs } from 'pinia'
 import TiltCard from '@/components/ui/TiltCard.vue'
-import { useOverlayStore } from '@/stores/overlay'
+import { useValorantOverlayStore } from '@/stores/valorantOverlay'
 
-const overlayStore = useOverlayStore()
-const { overlayStyle } = storeToRefs(overlayStore)
+const valorantOverlayStore = useValorantOverlayStore()
+const { overlayStyle } = storeToRefs(valorantOverlayStore)
 
 const images = [
   {

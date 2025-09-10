@@ -8,7 +8,7 @@ import { Kbd } from '@/components/ui/kbd'
 import { Label } from '@/components/ui/label'
 import { SwitchToggle } from '@/components/ui/switch-toggle'
 import router from '@/router'
-import { useOverlayStore } from '@/stores/overlay.ts'
+import { useValorantOverlayStore } from '@/stores/valorantOverlay.ts'
 import { useUserStore } from '@/stores/user.ts'
 import { ConfigurationContent, ConfigurationRoot, ConfigurationSection } from '.'
 
@@ -17,7 +17,7 @@ const { configuratorActive } = storeToRefs(userStore)
 
 const { t } = useI18n()
 
-const overlaySettingsStore = useOverlayStore()
+const overlaySettingsStore = useValorantOverlayStore()
 const {
   backgroundColor,
   textColor,

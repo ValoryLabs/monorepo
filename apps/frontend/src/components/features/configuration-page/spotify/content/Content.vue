@@ -1,13 +1,9 @@
 <script setup lang="ts">
 import { nextTick, onBeforeUnmount, onMounted, onUnmounted, reactive, ref } from 'vue'
-import { useI18n } from 'vue-i18n'
-import { DefaultOverlay } from '@/components/features/overlays/spotify'
-import { useUserStore } from '@/stores/user.ts'
+import { Overlay } from '@/components/features/configuration-page/spotify'
 import { Preview } from '.'
 
-const { t } = useI18n()
 
-const userStore = useUserStore()
 
 const position = reactive({ x: 0, y: 0 })
 const startPos = reactive({ x: 0, y: 0 })
@@ -137,7 +133,7 @@ onBeforeUnmount(() => {
         }"
         @mousedown="startDrag"
       >
-        <DefaultOverlay />
+        <Overlay />
       </div>
     </div>
   </div>

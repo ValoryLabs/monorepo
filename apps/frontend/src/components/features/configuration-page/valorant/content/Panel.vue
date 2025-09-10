@@ -3,11 +3,11 @@ import { Expand, RotateCcw } from 'lucide-vue-next'
 import { Button } from '@/components/ui/button'
 import { Kbd } from '@/components/ui/kbd'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
-import { useOverlayStore } from '@/stores/overlay.ts'
+import { useValorantOverlayStore } from '@/stores'
 import { useUserStore } from '@/stores/user.ts'
 
 const userStore = useUserStore()
-const overlayStore = useOverlayStore()
+const valorantOverlayStore = useValorantOverlayStore()
 </script>
 
 <template>
@@ -30,7 +30,7 @@ const overlayStore = useOverlayStore()
     <TooltipProvider>
       <Tooltip>
         <TooltipTrigger>
-          <Button variant="secondary" size="icon" @click="overlayStore.reset">
+          <Button variant="secondary" size="icon" @click="valorantOverlayStore.reset">
             <RotateCcw class="size-6" />
           </Button>
         </TooltipTrigger>

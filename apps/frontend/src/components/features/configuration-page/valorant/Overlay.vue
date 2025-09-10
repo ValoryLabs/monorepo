@@ -8,12 +8,12 @@ import {
   OldOverlay,
 } from '@/components/features/overlays/valorant'
 import { getAccountInformation, getMMRInformation } from '@/services/playerInformation.ts'
-import { useOverlayStore, usePlayerStore, useUserStore } from '@/stores'
+import { useValorantOverlayStore, usePlayerStore, useUserStore } from '@/stores'
 
 const userStore = useUserStore()
 const { configuratorActive } = storeToRefs(userStore)
 
-const overlaySettingsStore = useOverlayStore()
+const valorantOverlayStore = useValorantOverlayStore()
 const playerStore = usePlayerStore()
 const {
   backgroundColor,
@@ -35,7 +35,7 @@ const {
   disabledLastMatchPoints,
   disabledWinLose,
   disabledProgress,
-} = storeToRefs(overlaySettingsStore)
+} = storeToRefs(valorantOverlayStore)
 
 const { AccountInformation, MMRInformation, lastMatches, winCount, loseCount, seasonWinrate } =
   storeToRefs(playerStore)
