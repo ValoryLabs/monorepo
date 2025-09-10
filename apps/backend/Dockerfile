@@ -1,19 +1,40 @@
-FROM python:3.13-slim
+FROM python:3.12-slim
 
-# Set the working directory inside the container
+ENV PYTHONUNBUFFERED=1
+ENV PYTHONDONTWRITEBYTECODE=1
+
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+
+ENV UV_COMPILE_BYTE=1
+ENV UV_LINK_MODE=copy
+
+# Change the working directory to the `app` directory
 WORKDIR /app
 
-# Copy the requirements file to the working directory
-COPY requirements.txt .
+ENV PATH="/app/.venv/bin:$PATH"
 
-# Install the Python dependencies
-RUN pip install -r requirements.txt
+COPY ./pyproject.toml ./uv.lock ./.python-version ./
 
-# Copy the application code to the working directory
+# Install dependencies
+RUN --mount=type=cache,target=/root/.cache/uv \
+    --mount=type=bind,source=uv.lock,target=uv.lock \
+    --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
+    uv sync --frozen --no-install-project --no-dev
+
+# Copy the project into the image
 COPY . .
 
-# Expose the port on which the application will run
+# Sync the project
+RUN --mount=type=cache,target=/root/.cache/uv \
+    uv sync --frozen --no-dev
+
 EXPOSE 8000
 
-# Run the FastAPI application using uvicorn server
-CMD ["uvicorn", "fastapi:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["/app/.venv/bin/uvicorn", "main:app", \
+    "--host", "0.0.0.0", \
+    "--port", "8000", \
+    "--workers", "1", \
+    "--limit-concurrency", "100", \
+    "--limit-max-requests", "1000", \
+    "--timeout-keep-alive", "5", \
+    "--access-log"]
