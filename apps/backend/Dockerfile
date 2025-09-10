@@ -8,6 +8,7 @@ COPY . .
 
 RUN uv sync --no-dev
 
+ENV DOCKER_ENV=true
 ENV PATH="/app/.venv/bin:$PATH"
 
 EXPOSE 8000
