@@ -63,7 +63,7 @@
 </div>
 
 ## 📈 Статистика
-![Alt](https://repobeats.axiom.co/api/embed/e71816a7a6515ea08c255c65b6cc812da80d4796.svg "Repobeats analytics image")
+![Alt](https://repobeats.axiom.co/api/embed/e91b995613edb98be8e46506a0d92d380ab3505b.svg "Repobeats analytics image")
 
 ## 📜 Лицензия
 Лицензировано под **[MIT License](https://github.com/ValoryLabs/Valory/blob/main/LICENSE)**
