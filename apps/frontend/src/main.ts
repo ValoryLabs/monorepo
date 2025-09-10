@@ -1,12 +1,12 @@
 import '@/assets/main.css'
 
+import { i18n } from '@/i18n/i18n.ts'
+import router from '@/router'
 import { createHead } from '@unhead/vue/client'
 import { MotionPlugin } from '@vueuse/motion'
 import { createPinia } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import { createApp } from 'vue'
-import { i18n } from '@/i18n/i18n.ts'
-import router from '@/router'
 import App from './App.vue'
 
 const pinia = createPinia()

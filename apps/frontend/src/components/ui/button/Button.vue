@@ -1,8 +1,8 @@
 <script setup lang="ts">
+import { cn } from '@/lib/utils'
 import { LoaderCircle, type LucideIcon } from 'lucide-vue-next'
 import { Primitive, type PrimitiveProps } from 'reka-ui'
 import type { HTMLAttributes } from 'vue'
-import { cn } from '@/lib/utils'
 import { type ButtonVariants, buttonVariants } from '.'
 
 interface Props extends PrimitiveProps {

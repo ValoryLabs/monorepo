@@ -1,10 +1,10 @@
 <script lang="ts" setup>
+import { TwitchVerify } from '@/components/shared/icons'
+import { cn, openLink } from '@/lib/utils.ts'
 import type { HTMLAttributes } from 'vue'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
-import { TwitchVerify } from '@/components/shared/icons'
-import { cn, openLink } from '@/lib/utils.ts'
 
 const { t } = useI18n()
 

@@ -1,14 +1,14 @@
-import { useWindowSize } from '@vueuse/core'
-import { type ClassValue, clsx } from 'clsx'
-import { twMerge } from 'tailwind-merge'
-import type { Component } from 'vue'
-import { computed } from 'vue'
 import {
   MiniOverlay,
   NewOverlay,
   NewV2Overlay,
   OldOverlay,
 } from '@/components/features/overlays/valorant'
+import { useWindowSize } from '@vueuse/core'
+import { type ClassValue, clsx } from 'clsx'
+import { twMerge } from 'tailwind-merge'
+import type { Component } from 'vue'
+import { computed } from 'vue'
 
 const { width } = useWindowSize()
 

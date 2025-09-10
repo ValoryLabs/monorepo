@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { useVModel } from '@vueuse/core'
 import {
   Select,
   SelectContent,
@@ -9,6 +8,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
+import { useVModel } from '@vueuse/core'
 import SelectSeparator from './select/SelectSeparator.vue'
 
 const props = defineProps<{

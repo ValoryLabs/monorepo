@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { computed } from 'vue'
 import { StreamersCard } from '@/components/features/home-page/Streamers/index.ts'
 import { useAuthStore } from '@/stores'
+import { computed } from 'vue'
 
 const authStore = useAuthStore()
 

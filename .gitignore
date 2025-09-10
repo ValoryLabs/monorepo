@@ -79,3 +79,4 @@ __pycache__
 log.txt
 .ropeproject
 apps/backend/app/migrations/version/*
+.turbo

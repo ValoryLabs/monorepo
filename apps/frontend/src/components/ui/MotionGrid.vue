@@ -68,7 +68,7 @@ watch(
     currentFrameIndex.value = 0
     startAnimation()
   },
-  { immediate: true }
+  { immediate: true },
 )
 
 onUnmounted(() => {

@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { useI18n } from 'vue-i18n'
 import { Noise } from '@/components/ui'
 import { InteractiveHoverButton } from '@/components/ui/button'
 import router from '@/router'
+import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
 </script>

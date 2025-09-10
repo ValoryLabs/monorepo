@@ -19,11 +19,11 @@ We expect all participants in the Valory community to:
 
 The following behaviors are considered unacceptable within the Valory community:
 
-*   Any form of discrimination, harassment, or abuse.
-*   Spreading false or misleading information.
-*   Willful disregard for community rules or ignoring requests from moderators.
-*   Posting content that is obscene, pornographic, or otherwise offensive.
-*   Any actions intended to disrupt the project or community.
+- Any form of discrimination, harassment, or abuse.
+- Spreading false or misleading information.
+- Willful disregard for community rules or ignoring requests from moderators.
+- Posting content that is obscene, pornographic, or otherwise offensive.
+- Any actions intended to disrupt the project or community.
 
 ### Consequences of Unacceptable Behavior
 

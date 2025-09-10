@@ -21,5 +21,5 @@ export default defineConfigWithVueTs(
       '@typescript-eslint/no-require-imports': 'off',
       '@typescript-eslint/no-explicit-any': 'off',
     },
-  }
+  },
 )

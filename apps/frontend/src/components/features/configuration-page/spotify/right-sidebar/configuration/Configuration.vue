@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import { storeToRefs } from 'pinia'
-import { useI18n } from 'vue-i18n'
-import { InputWithIcon, SelectFont, SelectLayout } from '@/components/ui'
-import { Slider } from '@/components/ui/slider'
+import { InputWithIcon, SelectFont } from '@/components/ui'
 import { Button } from '@/components/ui/button'
 import { ColorPicker } from '@/components/ui/color-picker'
 import { Kbd } from '@/components/ui/kbd'
 import { Label } from '@/components/ui/label'
+import { Slider } from '@/components/ui/slider'
 import { SwitchToggle } from '@/components/ui/switch-toggle'
 import router from '@/router'
 import { useSpotifyOverlayStore } from '@/stores/spotifyOverlay.ts'
 import { useUserStore } from '@/stores/user.ts'
+import { storeToRefs } from 'pinia'
+import { useI18n } from 'vue-i18n'
 import { ConfigurationContent, ConfigurationRoot, ConfigurationSection } from '.'
 
 const userStore = useUserStore()
@@ -73,7 +73,7 @@ const {
           <Label for="background-color">
             {{ t('sidebar.configuration.settings.backgroundColor') }}
           </Label>
-           <InputWithIcon v-model="backgroundColor">
+          <InputWithIcon v-model="backgroundColor">
             <ColorPicker v-model="backgroundColor" id="background-color" />
           </InputWithIcon>
         </ConfigurationContent>
@@ -81,13 +81,13 @@ const {
           <Label for="background-color">
             {{ t('sidebar.configuration.settings.avgCoverColor') }}
           </Label>
-           <SwitchToggle v-model="avgCoverColor"/>
+          <SwitchToggle v-model="avgCoverColor" />
         </ConfigurationContent>
         <ConfigurationContent>
           <Label for="width-limit">
             {{ t('sidebar.configuration.settings.widthLimit') }}
           </Label>
-           <SwitchToggle v-model="widthLimitation"/>
+          <SwitchToggle v-model="widthLimitation" />
         </ConfigurationContent>
       </ConfigurationSection>
 
@@ -100,7 +100,7 @@ const {
           <Label for="text-color">
             {{ t('sidebar.configuration.settings.backgroundColor') }}
           </Label>
-           <InputWithIcon v-model="borderColor">
+          <InputWithIcon v-model="borderColor">
             <ColorPicker v-model="borderColor" id="border" />
           </InputWithIcon>
         </ConfigurationContent>
@@ -108,13 +108,13 @@ const {
           <Label for="hide-border">
             {{ t('sidebar.configuration.settings.hide') }}
           </Label>
-           <SwitchToggle v-model="hideBorder"/>
+          <SwitchToggle v-model="hideBorder" />
         </ConfigurationContent>
         <ConfigurationContent>
           <Label for="rounded">
             {{ t('sidebar.configuration.settings.rounded') }}
           </Label>
-           <Slider :default-value="borderRadius" :max="3" :step="1"/>
+          <Slider :default-value="borderRadius" :max="3" :step="1" />
         </ConfigurationContent>
       </ConfigurationSection>
 
@@ -127,7 +127,7 @@ const {
           <Label for="text-color">
             {{ t('sidebar.configuration.settings.text') }}
           </Label>
-           <InputWithIcon v-model="textColor">
+          <InputWithIcon v-model="textColor">
             <ColorPicker v-model="textColor" id="text-color" />
           </InputWithIcon>
         </ConfigurationContent>
@@ -135,10 +135,9 @@ const {
           <Label for="text-font">
             {{ t('sidebar.configuration.settings.font') }}
           </Label>
-           <SelectFont v-model="textFont"/>
+          <SelectFont v-model="textFont" />
         </ConfigurationContent>
       </ConfigurationSection>
-
 
       <ConfigurationSection
         :accordion="false"
@@ -149,7 +148,7 @@ const {
           <Label for="trim-artist">
             {{ t('sidebar.configuration.settings.trimArtist') }}
           </Label>
-           <SwitchToggle v-model="trimArtist"/>
+          <SwitchToggle v-model="trimArtist" />
         </ConfigurationContent>
       </ConfigurationSection>
     </ConfigurationRoot>

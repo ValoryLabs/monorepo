@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { storeToRefs } from 'pinia'
-import { useRouter } from 'vue-router'
 import { Valory } from '@/components/shared/icons'
 import { useUserStore } from '@/stores'
+import { storeToRefs } from 'pinia'
+import { useRouter } from 'vue-router'
 import { Navigation } from './navigation'
 import { ProfileMenu } from './profile-menu'
 

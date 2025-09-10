@@ -1,10 +1,7 @@
 <script setup lang="ts">
+import { DefaultOverlay } from '@/components/features/overlays/spotify'
+import { useSpotifyOverlayStore } from '@/stores'
 import { storeToRefs } from 'pinia'
-import {
-  DefaultOverlay,
-} from '@/components/features/overlays/spotify'
-import { useSpotifyOverlayStore, } from '@/stores'
-
 
 const spotifyOverlayStore = useSpotifyOverlayStore()
 const {

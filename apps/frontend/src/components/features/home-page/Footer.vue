@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n'
 import { Valory } from '@/components/shared/icons'
 import { Button } from '@/components/ui/button'
 import { FOOTER_NAV_PRODUCT_DATA, SocialLinksData } from '@/data'
 import { hidden, moveTo } from '@/lib/utils.ts'
+import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
 </script>

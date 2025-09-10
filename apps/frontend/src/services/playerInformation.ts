@@ -1,6 +1,6 @@
-import type { AxiosResponse } from 'axios'
 import { usePlayerStore } from '@/stores/player'
 import { useUserSettingsStore } from '@/stores/userSettings'
+import type { AxiosResponse } from 'axios'
 import { apiClient } from '.'
 
 /**
@@ -18,7 +18,7 @@ export const getAccountInformation = async (): Promise<boolean> => {
     }
 
     const response: AxiosResponse = await apiClient.get(
-      `/v2/by-puuid/account/${userSettingsStore.puuid}`
+      `/v2/by-puuid/account/${userSettingsStore.puuid}`,
     )
 
     const accountInfo = {
@@ -62,7 +62,7 @@ export const getMMRInformation = async (): Promise<boolean> => {
     }
 
     const response: AxiosResponse = await apiClient.get(
-      `/v3/by-puuid/mmr/${userSettingsStore.region}/pc/${userSettingsStore.puuid}`
+      `/v3/by-puuid/mmr/${userSettingsStore.region}/pc/${userSettingsStore.puuid}`,
     )
 
     const mmrInformation = {

@@ -1,5 +1,5 @@
-import { Bell, Crosshair, House, MessageSquare, Settings } from 'lucide-vue-next'
 import { CS2, Fortnite, Spotify, Valorant } from '@/components/shared/icons'
+import { Bell, Crosshair, House, MessageSquare, Settings } from 'lucide-vue-next'
 
 interface ConfiguratorLink {
   label: string

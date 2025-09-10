@@ -1,5 +1,5 @@
-import axios, { type AxiosError, type AxiosRequestConfig, type AxiosResponse } from 'axios'
 import { useUserSettingsStore } from '@/stores/userSettings'
+import axios, { type AxiosError, type AxiosRequestConfig, type AxiosResponse } from 'axios'
 
 // Type definitions
 interface ApiErrorResponse {
@@ -98,7 +98,7 @@ function isValidUUID(id: string): boolean {
 async function retryWithBackoff<T>(
   fn: () => Promise<T>,
   retries = MAX_RETRIES,
-  delay = RETRY_DELAY
+  delay = RETRY_DELAY,
 ): Promise<T> {
   try {
     return await fn()

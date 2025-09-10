@@ -1,9 +1,9 @@
-import { isMobile } from '@basitcodeenv/vue3-device-detect'
-import { createRouter, createWebHistory } from 'vue-router'
 import { ConfiguratorLayout } from '@/layouts'
 import { Callback, Home, NotFound, NotSupported, Overlay, SignIn, TermsOfService } from '@/pages'
 import { Home as ConfiguratorHome, Settings, Spotify, Valorant } from '@/pages/configurator'
 import { useAuthStore } from '@/stores/auth'
+import { isMobile } from '@basitcodeenv/vue3-device-detect'
+import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),

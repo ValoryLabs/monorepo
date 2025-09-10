@@ -1,9 +1,9 @@
 <script setup lang="ts">
+import { cn } from '@/lib/utils'
 import { Mesh, Program, Renderer, Triangle, Vec2 } from 'ogl'
 import type { PrimitiveProps } from 'reka-ui'
 import { Primitive } from 'reka-ui'
 import { type HTMLAttributes, onMounted, onUnmounted, useTemplateRef, watch } from 'vue'
-import { cn } from '@/lib/utils'
 
 interface Props extends PrimitiveProps {
   hueShift?: number
@@ -199,7 +199,7 @@ watch(
       program.uniforms.uScanFreq.value = props.scanlineFrequency
       program.uniforms.uWarp.value = props.warpAmount
     }
-  }
+  },
 )
 </script>
 
