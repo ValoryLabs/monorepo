@@ -3,8 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "workspaces": [
-    "apps/*",
-    "packages/*"
+    "apps/*"
   ],
   "scripts": {
     "build": "turbo run build",
@@ -17,5 +16,5 @@
     "prettier": "latest",
     "turbo": "2.4.5-canary.6"
   },
-  "packageManager": "bun@1.2.0"
+  "packageManager": "bun@1.2.21"
 }

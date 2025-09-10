@@ -7,7 +7,7 @@ WORKDIR /app
 RUN bun add --global turbo@2.4.5-canary.6
 COPY . .
 
-RUN turbo prune web --docker
+RUN turbo prune frontend --docker
 
 FROM base AS installer
 RUN apk update
