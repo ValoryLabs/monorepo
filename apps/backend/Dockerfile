@@ -1,44 +1,19 @@
-# Use a Python image with uv pre-installed
-FROM ghcr.io/astral-sh/uv:python3.12-bookworm-slim
+FROM python:3.13-slim
 
-# Install the project into `/app`
+# Set the working directory inside the container
 WORKDIR /app
 
-# Enable bytecode compilation
-ENV UV_COMPILE_BYTECODE=1
+# Copy the requirements file to the working directory
+COPY requirements.txt .
 
-# Copy from the cache instead of linking since it's a mounted volume
-ENV UV_LINK_MODE=copy
+# Install the Python dependencies
+RUN pip install -r requirements.txt
 
-# Ensure installed tools can be executed out of the box
-ENV UV_TOOL_BIN_DIR=/usr/local/bin
+# Copy the application code to the working directory
+COPY . .
 
-# Install the project's dependencies using the lockfile and settings
-RUN --mount=type=cache,target=/root/.cache/uv \
-    --mount=type=bind,source=uv.lock,target=uv.lock \
-    --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
-    uv sync --locked --no-install-project --no-dev
+# Expose the port on which the application will run
+EXPOSE 8000
 
-# Then, add the rest of the project source code and install it
-# Installing separately from its dependencies allows optimal layer caching
-COPY . /app
-RUN --mount=type=cache,target=/root/.cache/uv \
-    uv sync --locked --no-dev
-
-# Place executables in the environment at the front of the path
-ENV PATH="/app/.venv/bin:$PATH"
-
-# Reset the entrypoint, don't invoke `uv`
-ENTRYPOINT []
-
-# Run the FastAPI application by default
-# Uses `fastapi dev` to enable hot-reloading when the `watch` sync occurs
-# Uses `--host 0.0.0.0` to allow access from outside the container
-CMD ["uvicorn", "main:app", \
-    "--host", "0.0.0.0", \
-    "--port", "8000", \
-    "--workers", "1", \
-    "--limit-concurrency", "100", \
-    "--limit-max-requests", "1000", \
-    "--timeout-keep-alive", "5", \
-    "--access-log"]
+# Run the FastAPI application using uvicorn server
+CMD ["uvicorn", "fastapi:app", "--host", "0.0.0.0", "--port", "8000"]
