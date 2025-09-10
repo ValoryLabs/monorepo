@@ -1,13 +1,18 @@
 import logging
 from pathlib import Path
+import os
 
 from pydantic import computed_field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
-BASE_DIR = Path(__file__).resolve().parents[2]
+
+if os.getenv('DOCKER_ENV'):
+    BASE_DIR = Path('/app')
+else:
+    BASE_DIR = Path(__file__).resolve().parents[3]
+
 ENV_FILE = BASE_DIR / ".env"
 LOG_FILE_PATH = BASE_DIR / "log.txt"
-
 
 class Settings(BaseSettings):
     PROJECT_NAME: str = "VALORY.SU"
