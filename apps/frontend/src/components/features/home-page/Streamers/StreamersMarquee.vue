@@ -46,6 +46,12 @@ onMounted(async () => {
     <Marquee reverse pause-on-hover class="[--duration:180s]" :vertical="true">
       <StreamersCardSkeleton v-for="i in 5" :key="i" />
     </Marquee>
+    <div
+      class="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-background via-background/50 to-transparent pointer-events-none z-10"
+    />
+    <div
+      class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background via-background/50 to-transparent pointer-events-none z-10"
+    />
   </div>
   <div v-else class="relative flex w-full items-center gap-8 overflow-hidden">
     <Marquee pause-on-hover class="[--duration:180s]" :vertical="true">
