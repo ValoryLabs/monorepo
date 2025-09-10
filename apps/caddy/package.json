@@ -1,5 +1,5 @@
 {
-  "name": "valory-caddy",
+  "name": "caddy",
   "version": "0.0.0",
   "private": true,
   "scripts": {

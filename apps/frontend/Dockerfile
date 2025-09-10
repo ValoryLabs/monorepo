@@ -1,15 +1,22 @@
 FROM oven/bun:1-alpine AS base
 
+FROM base AS builder
+RUN apk update
+RUN apk add --no-cache libc6-compat
 WORKDIR /app
+RUN bun add --global turbo@2.4.5-canary.6
+COPY . .
+
+RUN turbo prune web --docker
 
 FROM base AS installer
-COPY package.json bun.lock tsconfig.json tsconfig.app.json tsconfig.node.json ./
-RUN bun install --frozen-lockfile
+RUN apk update
+RUN apk add --no-cache libc6-compat
+WORKDIR /app
 
-FROM base AS builder
-COPY --from=installer /app/node_modules node_modules
-COPY tsconfig.json tsconfig.app.json tsconfig.node.json ./
-COPY . .
+COPY --from=builder /app/out/json/ .
+RUN bun install --frozen-lockfile
+COPY --from=builder /app/out/full/ .
 
 ARG APP_BACKEND_URL
 ENV APP_BACKEND_URL=$APP_BACKEND_URL

@@ -1,5 +1,5 @@
 {
-  "name": "valory-frontend",
+  "name": "frontend",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -10,6 +10,7 @@
   },
   "scripts": {
     "dev": "bun run codegen && vite",
+    "dev:web": "vite",
     "build": "vite build",
     "build:analyze": "vite build --mode analyze",
     "preview": "vite preview",
