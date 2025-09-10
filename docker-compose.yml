@@ -1,7 +1,7 @@
 services:
   frontend:
     build:
-      context: ./frontend
+      context: ./apps/frontend
       dockerfile: Dockerfile
       args:
         - APP_BACKEND_URL=${APP_BACKEND_URL}
@@ -14,16 +14,16 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '0.8'
+          cpus: "0.8"
           memory: 1.5G
         reservations:
-          cpus: '0.3'
+          cpus: "0.3"
           memory: 512M
     restart: unless-stopped
 
   backend:
     build:
-      context: ./backend
+      context: ./apps/backend
       dockerfile: Dockerfile
     ports:
       - "8000:8000"
@@ -33,5 +33,5 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '0.2'
+          cpus: "0.2"
           memory: 512M

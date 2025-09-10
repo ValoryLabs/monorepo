@@ -1,0 +1,26 @@
+{
+  "name": "valory",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently -k -n \"🎨Frontend,🚀Backend,🌐Caddy\" -c \"cyan,green,yellow\" \"bun run dev:frontend\" \"bun run dev:backend\" \"bun run dev:caddy\"",
+    "dev:frontend": "bash -c 'cd ./apps/frontend && bun run codegen && vite'",
+    "dev:backend": "bash -c 'cd ./apps/backend && source .venv/bin/activate && uvicorn main:app --reload'",
+    "dev:caddy": "caddy run --config Caddyfile.dev",
+    "dev:full": "bun run codegen:watch & bun run dev",
+    "codegen": "bun run apps/frontend/src/api/codegen-api.ts",
+    "codegen:watch": "nodemon --watch 'apps/backend' --ext 'py' --exec 'bun run codegen'"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "nodemon": "^3.1.10",
+    "vite": "^7.1.5"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
