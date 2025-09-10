@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import { nextTick, onBeforeUnmount, onMounted, onUnmounted, reactive, ref } from 'vue'
 import { Overlay } from '@/components/features/configuration-page/spotify'
+import { nextTick, onBeforeUnmount, onMounted, onUnmounted, reactive, ref } from 'vue'
 import { Preview } from '.'
-
-
 
 const position = reactive({ x: 0, y: 0 })
 const startPos = reactive({ x: 0, y: 0 })

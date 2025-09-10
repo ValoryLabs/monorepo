@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import type { HTMLAttributes } from 'vue'
 import { cn } from '@/lib/utils'
+import type { HTMLAttributes } from 'vue'
 
 const props = withDefaults(
   defineProps<{
@@ -9,7 +9,7 @@ const props = withDefaults(
   }>(),
   {
     textSize: 'xl',
-  }
+  },
 )
 </script>
 

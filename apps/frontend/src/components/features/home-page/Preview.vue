@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n'
 import ContainerScroll from '@/components/ui/ContainerScroll/ContainerScroll.vue'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { PREVIEW_TABS_DATA } from '@/data/PreviewTabs.data.ts'
+import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
 </script>

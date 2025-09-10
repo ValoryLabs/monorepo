@@ -2,9 +2,9 @@
  * @fileoverview API client configuration for Valorant API requests
  */
 
+import { useUserSettingsStore } from '@/stores/userSettings'
 import axios from 'axios'
 import { storeToRefs } from 'pinia'
-import { useUserSettingsStore } from '@/stores/userSettings'
 
 /**
  * Configured axios instance for API requests
@@ -41,7 +41,7 @@ apiClient.interceptors.request.use(
   },
   (error) => {
     return Promise.reject(error)
-  }
+  },
 )
 
 /**
@@ -52,7 +52,7 @@ apiClient.interceptors.response.use(
   (error) => {
     console.error('API error:', error)
     return Promise.reject(error)
-  }
+  },
 )
 
 export default apiClient

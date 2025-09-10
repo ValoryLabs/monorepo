@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { storeToRefs } from 'pinia'
-import { useI18n } from 'vue-i18n'
 import { InputWithIcon, SelectFont, SelectLayout } from '@/components/ui'
 import { Button } from '@/components/ui/button'
 import { ColorPicker } from '@/components/ui/color-picker'
@@ -8,8 +6,10 @@ import { Kbd } from '@/components/ui/kbd'
 import { Label } from '@/components/ui/label'
 import { SwitchToggle } from '@/components/ui/switch-toggle'
 import router from '@/router'
-import { useValorantOverlayStore } from '@/stores/valorantOverlay.ts'
 import { useUserStore } from '@/stores/user.ts'
+import { useValorantOverlayStore } from '@/stores/valorantOverlay.ts'
+import { storeToRefs } from 'pinia'
+import { useI18n } from 'vue-i18n'
 import { ConfigurationContent, ConfigurationRoot, ConfigurationSection } from '.'
 
 const userStore = useUserStore()

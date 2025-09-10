@@ -21,7 +21,7 @@ export const tabsTriggerVariants = cva(
     defaultVariants: {
       variant: 'default',
     },
-  }
+  },
 )
 
 export type TabsTriggerVariants = VariantProps<typeof tabsTriggerVariants>

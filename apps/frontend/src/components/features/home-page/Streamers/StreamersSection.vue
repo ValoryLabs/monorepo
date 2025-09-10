@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { useWindowSize } from '@vueuse/core'
-import { useI18n } from 'vue-i18n'
 import {
   StreamersMarquee,
   StreamersMarquee5lim,
 } from '@/components/features/home-page/Streamers/index.ts'
+import { useWindowSize } from '@vueuse/core'
+import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
 

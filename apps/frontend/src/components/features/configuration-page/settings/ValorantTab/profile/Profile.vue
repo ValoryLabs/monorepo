@@ -1,9 +1,4 @@
 <script setup lang="ts">
-import { CircleHelp, Dices, KeyRound, Search } from 'lucide-vue-next'
-import { storeToRefs } from 'pinia'
-import { ref } from 'vue'
-import { useI18n } from 'vue-i18n'
-import { toast } from 'vue-sonner'
 import { Riot } from '@/components/shared/icons'
 import { InputWithIcon } from '@/components/ui'
 import { Button } from '@/components/ui/button'
@@ -15,6 +10,11 @@ import { getRandomPlayerName } from '@/services/leaderboard.ts'
 import { getAccountInformation, getMMRInformation } from '@/services/playerInformation.ts'
 import { useUserStore } from '@/stores/user.ts'
 import { useUserSettingsStore } from '@/stores/userSettings.ts'
+import { CircleHelp, Dices, KeyRound, Search } from 'lucide-vue-next'
+import { storeToRefs } from 'pinia'
+import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
+import { toast } from 'vue-sonner'
 import { ProfileHeader, ProfileRoot, ProfileSection } from '.'
 
 const { t } = useI18n()

@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { storeToRefs } from 'pinia'
-import { computed, onMounted } from 'vue'
 import {
   MiniOverlay,
   NewOverlay,
@@ -8,7 +6,9 @@ import {
   OldOverlay,
 } from '@/components/features/overlays/valorant'
 import { getAccountInformation, getMMRInformation } from '@/services/playerInformation.ts'
-import { useValorantOverlayStore, usePlayerStore, useUserStore } from '@/stores'
+import { usePlayerStore, useUserStore, useValorantOverlayStore } from '@/stores'
+import { storeToRefs } from 'pinia'
+import { computed, onMounted } from 'vue'
 
 const userStore = useUserStore()
 const { configuratorActive } = storeToRefs(userStore)

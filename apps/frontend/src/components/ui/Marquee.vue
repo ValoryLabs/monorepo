@@ -13,7 +13,7 @@ const props = withDefaults(
     pauseOnHover: false,
     vertical: false,
     repeat: 4,
-  }
+  },
 )
 </script>
 

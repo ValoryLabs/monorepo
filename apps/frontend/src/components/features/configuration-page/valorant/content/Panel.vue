@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { Expand, RotateCcw } from 'lucide-vue-next'
 import { Button } from '@/components/ui/button'
 import { Kbd } from '@/components/ui/kbd'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 import { useValorantOverlayStore } from '@/stores'
 import { useUserStore } from '@/stores/user.ts'
+import { Expand, RotateCcw } from 'lucide-vue-next'
 
 const userStore = useUserStore()
 const valorantOverlayStore = useValorantOverlayStore()

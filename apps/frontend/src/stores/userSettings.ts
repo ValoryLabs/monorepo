@@ -18,5 +18,5 @@ export const useUserSettingsStore = defineStore(
   },
   {
     persist: true,
-  }
+  },
 )

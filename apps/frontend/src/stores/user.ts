@@ -216,5 +216,5 @@ export const useUserStore = defineStore(
         'lastFetchTime',
       ],
     },
-  }
+  },
 )

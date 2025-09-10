@@ -1,8 +1,8 @@
 <script lang="ts" setup>
+import { cn } from '@/lib/utils'
 import { ArrowRight } from 'lucide-vue-next'
 import { Primitive, type PrimitiveProps } from 'reka-ui'
 import type { HTMLAttributes } from 'vue'
-import { cn } from '@/lib/utils'
 
 interface Props extends PrimitiveProps {
   class?: HTMLAttributes['class']

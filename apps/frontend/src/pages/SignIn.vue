@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n'
 import { KickFull, TwitchFull, Valory, YouTubeFull } from '@/components/shared/icons'
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
 import { openLink } from '@/lib/utils.ts'
 import router from '@/router'
+import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
 

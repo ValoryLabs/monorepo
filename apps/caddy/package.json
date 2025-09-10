@@ -1,0 +1,8 @@
+{
+  "name": "valory-caddy",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "caddy run --config Caddyfile.dev"
+  }
+}

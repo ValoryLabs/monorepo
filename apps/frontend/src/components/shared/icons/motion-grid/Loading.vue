@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from 'vue'
 import { MotionGrid } from '@/components/ui'
+import { onMounted, onUnmounted, ref } from 'vue'
 
 type Frames = number[][][]
 

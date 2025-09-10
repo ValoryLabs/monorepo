@@ -1,13 +1,13 @@
 <script setup lang="ts">
+import { Button } from '@/components/ui/button'
+import { Kbd } from '@/components/ui/kbd'
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
+import { useAuthStore } from '@/stores/auth.ts'
 import { useMagicKeys } from '@vueuse/core'
 import { ArrowRight } from 'lucide-vue-next'
 import { watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
-import { Button } from '@/components/ui/button'
-import { Kbd } from '@/components/ui/kbd'
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
-import { useAuthStore } from '@/stores/auth.ts'
 
 const { t } = useI18n()
 
@@ -23,7 +23,7 @@ const props = withDefaults(
   }>(),
   {
     hero: false,
-  }
+  },
 )
 
 watch(l, (v) => {

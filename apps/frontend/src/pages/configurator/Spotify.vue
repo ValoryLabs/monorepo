@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import { Content, RightSidebar } from '@/components/features/configuration-page/spotify'
 import { useHead } from '@unhead/vue'
 import { useI18n } from 'vue-i18n'
-import { Content, RightSidebar } from '@/components/features/configuration-page/spotify'
 
 const { t } = useI18n()
 

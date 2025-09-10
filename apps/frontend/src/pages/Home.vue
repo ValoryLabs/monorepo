@@ -1,20 +1,20 @@
 <script setup lang="ts">
-import { useHead } from '@unhead/vue'
-import { defineAsyncComponent } from 'vue'
-import { useI18n } from 'vue-i18n'
 import { Hero, Preview } from '@/components/features/home-page'
 import { DefaultLayout } from '@/layouts'
 import { hidden } from '@/lib/utils.ts'
+import { useHead } from '@unhead/vue'
+import { defineAsyncComponent } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 const Streamers = defineAsyncComponent(
-  () => import('@/components/features/home-page/Streamers/StreamersSection.vue')
+  () => import('@/components/features/home-page/Streamers/StreamersSection.vue'),
 )
 const OpenSource = defineAsyncComponent(
-  () => import('@/components/features/home-page/OpenSource.vue')
+  () => import('@/components/features/home-page/OpenSource.vue'),
 )
 
 const GetStarted = defineAsyncComponent(
-  () => import('@/components/features/home-page/GetStarted.vue')
+  () => import('@/components/features/home-page/GetStarted.vue'),
 )
 
 const { t } = useI18n()
