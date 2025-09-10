@@ -1,8 +1,8 @@
 services:
   frontend:
     build:
-      context: ./apps/frontend
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: apps/frontend/Dockerfile
       args:
         - APP_BACKEND_URL=${APP_BACKEND_URL}
     ports:
