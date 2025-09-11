@@ -14,7 +14,8 @@
   "devDependencies": {
     "eslint-config-turbo": "^2.5.6",
     "prettier": "latest",
-    "turbo": "2.4.5-canary.6"
+    "turbo": "2.4.5-canary.6",
+    "vitepress": "^2.0.0-alpha.12"
   },
   "packageManager": "bun@1.2.21"
 }

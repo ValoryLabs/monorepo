@@ -12,3 +12,8 @@ api.valory.localhost {
     tls internal
     reverse_proxy 127.0.0.1:8000
 }
+
+docs.valory.localhost {
+    tls internal
+    reverse_proxy localhost:5173
+}
