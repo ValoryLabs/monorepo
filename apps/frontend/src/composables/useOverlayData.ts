@@ -51,7 +51,6 @@ export function useOverlayData(riotID: Ref<string>, apiKey: Ref<string>) {
 
       await validateAndFetchPlayerData()
 
-      // Небольшая задержка для плавности
       await new Promise((resolve) => setTimeout(resolve, 1000))
     } catch (error) {
       console.error('Error loading overlay data:', error)

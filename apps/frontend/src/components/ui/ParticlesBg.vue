@@ -47,10 +47,8 @@ const { x: mouseX, y: mouseY } = useMouse()
 const { pixelRatio } = useDevicePixelRatio()
 
 const color = computed(() => {
-  // Remove the leading '#' if it's present
   let hex = props.color.replace(/^#/, '')
 
-  // If the hex code is 3 characters, expand it to 6 characters
   if (hex.length === 3) {
     hex = hex
       .split('')
@@ -58,13 +56,11 @@ const color = computed(() => {
       .join('')
   }
 
-  // Parse the r, g, b values from the hex string
   const bigint = parseInt(hex, 16)
-  const r = (bigint >> 16) & 255 // Extract the red component
-  const g = (bigint >> 8) & 255 // Extract the green component
-  const b = bigint & 255 // Extract the blue component
+  const r = (bigint >> 16) & 255
+  const g = (bigint >> 8) & 255
+  const b = bigint & 255
 
-  // Return the RGB values as a string separated by spaces
   return `${r} ${g} ${b}`
 })
 
@@ -189,12 +185,11 @@ function remapValue(
 function animate() {
   clearContext()
   circles.value.forEach((circle, i) => {
-    // Handle the alpha value
     const edge = [
-      circle.x + circle.translateX - circle.size, // distance from left edge
-      canvasSize.w - circle.x - circle.translateX - circle.size, // distance from right edge
-      circle.y + circle.translateY - circle.size, // distance from top edge
-      canvasSize.h - circle.y - circle.translateY - circle.size, // distance from bottom edge
+      circle.x + circle.translateX - circle.size,
+      canvasSize.w - circle.x - circle.translateX - circle.size,
+      circle.y + circle.translateY - circle.size,
+      canvasSize.h - circle.y - circle.translateY - circle.size,
     ]
 
     const closestEdge = edge.reduce((a, b) => Math.min(a, b))
@@ -214,19 +209,15 @@ function animate() {
     circle.translateY +=
       (mouse.y / (props.staticity / circle.magnetism) - circle.translateY) / props.ease
 
-    // circle gets out of the canvas
     if (
       circle.x < -circle.size ||
       circle.x > canvasSize.w + circle.size ||
       circle.y < -circle.size ||
       circle.y > canvasSize.h + circle.size
     ) {
-      // remove the circle from the array
       circles.value.splice(i, 1)
-      // create a new circle
       const newCircle = circleParams()
       drawCircle(newCircle)
-      // update the circle position
     } else {
       drawCircle(
         {

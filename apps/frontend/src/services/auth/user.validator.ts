@@ -4,7 +4,6 @@ import type { AxiosError } from 'axios'
 import { storeToRefs } from 'pinia'
 import { apiClient } from '..'
 
-// Data types
 interface ValidationResult {
   success: boolean
   message: string
@@ -34,13 +33,11 @@ interface RiotAccountResponse {
   errors?: ApiErrorDetail[]
 }
 
-// Regular expressions for validation
 const PATTERNS = {
   riotId: /^[\p{L}\p{N}]+(?: [\p{L}\p{N}]+)*#[\p{L}\p{N}]{3,5}$/u,
   apiKey: /^HDEV-[\da-f]{8}-([\da-f]{4}-){3}[\da-f]{12}$/i,
 }
 
-// Error codes and corresponding messages
 const ERROR_MESSAGES = {
   401: 'toasts.dataVerifying.invalidApiKey',
   404: 'toasts.dataVerifying.userNotFound',
@@ -48,20 +45,12 @@ const ERROR_MESSAGES = {
   default: 'toasts.dataVerifying.networkError',
 }
 
-/**
- * User and API key validator
- */
 export const UserValidator = {
-  /**
-   * Validates API key and user data
-   * @returns Validation result with success flag and message
-   */
   async validate(): Promise<ValidationResult> {
     const userSettingsStore = useUserSettingsStore()
     const { riotID, apiKey, puuid, region } = storeToRefs(userSettingsStore)
 
     try {
-      // Check API key format
       if (!PATTERNS.apiKey.test(apiKey.value)) {
         return {
           success: false,
@@ -69,10 +58,8 @@ export const UserValidator = {
         }
       }
 
-      // Verify API key functionality
       await this.checkApiKey()
 
-      // Check Riot ID format
       if (!PATTERNS.riotId.test(riotID.value)) {
         puuid.value = ''
         region.value = ''
@@ -82,10 +69,8 @@ export const UserValidator = {
         }
       }
 
-      // Fetch account data
       const accountData = await this.fetchAccountData(riotID.value)
 
-      // Save PUUID to store
       if (accountData?.puuid) {
         puuid.value = accountData.puuid
       } else {
@@ -113,9 +98,6 @@ export const UserValidator = {
     }
   },
 
-  /**
-   * Checks if the API key is valid and working
-   */
   async checkApiKey(): Promise<void> {
     const response = await apiClient.get('/v1/version/eu')
 
@@ -124,11 +106,6 @@ export const UserValidator = {
     }
   },
 
-  /**
-   * Fetches account data using Riot ID
-   * @param riotId - Riot identifier (name#tag)
-   * @returns Account data or null if not found
-   */
   async fetchAccountData(riotId: string): Promise<RiotAccountData | null> {
     const [name, tag] = riotId.split('#')
 
@@ -147,11 +124,6 @@ export const UserValidator = {
     return response.data.data
   },
 
-  /**
-   * Handles API request errors
-   * @param error - Axios error object
-   * @returns Validation result with error message
-   */
   handleError(error: AxiosError): ValidationResult {
     const statusCode = error.response?.status
 

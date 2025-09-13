@@ -5,6 +5,9 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/comp
 import { useValorantOverlayStore } from '@/stores'
 import { useUserStore } from '@/stores/user.ts'
 import { Expand, RotateCcw } from 'lucide-vue-next'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const userStore = useUserStore()
 const valorantOverlayStore = useValorantOverlayStore()
@@ -21,7 +24,7 @@ const valorantOverlayStore = useValorantOverlayStore()
         </TooltipTrigger>
         <TooltipContent>
           <span class="flex items-center gap-2"
-            >{{ $t('components.tooltips.fullscreen') }}
+            >{{ t('components.tooltips.fullscreen') }}
             <Kbd v-if="userStore.showShortcuts === 'Show'" keys="F"
           /></span>
         </TooltipContent>
@@ -36,7 +39,7 @@ const valorantOverlayStore = useValorantOverlayStore()
         </TooltipTrigger>
         <TooltipContent>
           <span class="flex items-center gap-2"
-            >{{ $t('components.tooltips.reset') }}
+            >{{ t('components.tooltips.reset') }}
             <Kbd v-if="userStore.showShortcuts === 'Show'" keys="R"
           /></span>
         </TooltipContent>

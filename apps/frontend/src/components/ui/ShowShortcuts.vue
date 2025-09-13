@@ -8,6 +8,9 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { useVModel } from '@vueuse/core'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const props = defineProps<{
   defaultValue?: string
@@ -26,7 +29,7 @@ const states: string[] = ['Show', 'Hide']
 <template>
   <Select v-model="modelValue">
     <SelectTrigger class="cursor-pointer bg-transparent">
-      <SelectValue :placeholder="$t('components.selectShowShortcuts')" />
+      <SelectValue :placeholder="t('components.selectShowShortcuts')" />
     </SelectTrigger>
     <SelectContent>
       <SelectGroup>

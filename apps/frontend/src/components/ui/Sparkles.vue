@@ -28,7 +28,6 @@ const props = withDefaults(defineProps<Props>(), {
 
 const sparkles = ref<Sparkle[]>([])
 
-// Generate a new sparkle with randomized properties
 function generateStar(): Sparkle {
   const starX = `${Math.random() * 100}%`
   const starY = `${Math.random() * 100}%`
@@ -40,12 +39,10 @@ function generateStar(): Sparkle {
   return { id, x: starX, y: starY, color, delay, scale, lifespan }
 }
 
-// Initialize sparkles array with random stars
 function initializeStars() {
   sparkles.value = Array.from({ length: props.sparklesCount }, generateStar)
 }
 
-// Update sparkles - regenerate dead ones and update lifespans
 function updateStars() {
   sparkles.value = sparkles.value.map((star) => {
     if (star.lifespan <= 0) {
@@ -58,13 +55,11 @@ function updateStars() {
 
 let interval: number
 
-// Start animation loop
 onMounted(() => {
   initializeStars()
   interval = window.setInterval(updateStars, 100)
 })
 
-// Cleanup on unmount
 onUnmounted(() => {
   if (interval) {
     clearInterval(interval)

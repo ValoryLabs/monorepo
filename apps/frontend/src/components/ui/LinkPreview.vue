@@ -20,15 +20,12 @@ const { extractMetaFromUrl, loading, error } = useMetaExtractor()
 const metaData = ref<any>(null)
 const hasLoaded = ref(false)
 
-// Исправленное извлечение имени репозитория
 const repoName = computed(() => {
   try {
-    // Используем window.URL для безопасности
     if (typeof window !== 'undefined' && window.URL) {
       const urlObj = new window.URL(props.url)
       return urlObj.pathname.split('/').filter(Boolean).join('/')
     } else {
-      // Fallback для SSR
       const match = props.url.match(/github\.com\/([^/]+\/[^/]+)/)
       return match ? match[1] : props.url
     }

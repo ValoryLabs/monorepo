@@ -3,11 +3,6 @@ import { useUserSettingsStore } from '@/stores/userSettings'
 import type { AxiosResponse } from 'axios'
 import { apiClient } from '.'
 
-/**
- * Fetches account information for the current user
- * @returns {Promise<boolean>} Returns true if account info was successfully fetched and stored, false otherwise
- * @throws {Error} When API request fails or response format is invalid
- */
 export const getAccountInformation = async (): Promise<boolean> => {
   try {
     const userSettingsStore = useUserSettingsStore()
@@ -47,11 +42,6 @@ export const getAccountInformation = async (): Promise<boolean> => {
   }
 }
 
-/**
- * Fetches MMR (Matchmaking Rating) information for the current user
- * @returns {Promise<boolean>} Returns true if MMR info was successfully fetched and stored, false otherwise
- * @throws {Error} When API request fails or response format is invalid
- */
 export const getMMRInformation = async (): Promise<boolean> => {
   try {
     const userSettingsStore = useUserSettingsStore()

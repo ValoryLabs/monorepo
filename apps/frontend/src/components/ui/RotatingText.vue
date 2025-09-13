@@ -18,12 +18,10 @@ watch(
 
     isAnimating.value = true
 
-    // Анимация исчезновения
     await new Promise((resolve) => setTimeout(resolve, 150))
 
     displayText.value = newText
 
-    // Анимация появления
     await new Promise((resolve) => setTimeout(resolve, 50))
 
     isAnimating.value = false

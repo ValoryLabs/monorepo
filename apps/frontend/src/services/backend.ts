@@ -1,7 +1,6 @@
 import { useUserSettingsStore } from '@/stores/userSettings'
 import axios, { type AxiosError, type AxiosRequestConfig, type AxiosResponse } from 'axios'
 
-// Type definitions
 interface ApiErrorResponse {
   detail?: string
   message?: string
@@ -32,16 +31,10 @@ interface OverlayData {
   text_color: string
 }
 
-// Constants
-const API_TIMEOUT = 10000 // 10 seconds
+const API_TIMEOUT = 10000
 const MAX_RETRIES = 3
-const RETRY_DELAY = 1000 // 1 second
+const RETRY_DELAY = 1000
 
-/**
- * Creates a secure axios configuration with common settings
- * @param includeCredentials - Whether to include credentials in the request
- * @returns Axios configuration object
- */
 function createSecureAxiosConfig(includeCredentials = false): AxiosRequestConfig {
   return {
     timeout: API_TIMEOUT,
@@ -53,12 +46,6 @@ function createSecureAxiosConfig(includeCredentials = false): AxiosRequestConfig
   }
 }
 
-/**
- * Validates and sanitizes user input data
- * @param data - Input data to validate
- * @returns Sanitized data object
- * @throws Error if validation fails
- */
 function validateUserData(data: { apiKey?: string; riotID?: string }): void {
   if (data.apiKey && false) {
     throw new Error('API key must be a string')
@@ -68,7 +55,6 @@ function validateUserData(data: { apiKey?: string; riotID?: string }): void {
     throw new Error('Riot ID must be a string')
   }
 
-  // Sanitize inputs to prevent XSS
   if (data.apiKey && data.apiKey.length > 500) {
     throw new Error('API key is too long')
   }
@@ -78,23 +64,11 @@ function validateUserData(data: { apiKey?: string; riotID?: string }): void {
   }
 }
 
-/**
- * Validates UUID format for overlay ID
- * @param id - UUID string to validate
- * @returns True if valid UUID format
- */
 function isValidUUID(id: string): boolean {
   const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
   return uuidRegex.test(id)
 }
 
-/**
- * Implements exponential backoff retry mechanism
- * @param fn - Function to retry
- * @param retries - Number of retries remaining
- * @param delay - Current delay in milliseconds
- * @returns Promise with function result
- */
 async function retryWithBackoff<T>(
   fn: () => Promise<T>,
   retries = MAX_RETRIES,
@@ -107,7 +81,6 @@ async function retryWithBackoff<T>(
       throw error
     }
 
-    // Don't retry on client errors (4xx)
     if (axios.isAxiosError(error) && error.response?.status && error.response.status < 500) {
       throw error
     }
@@ -117,36 +90,10 @@ async function retryWithBackoff<T>(
   }
 }
 
-/**
- * Updates user data (API key and Riot ID) with enhanced security and error handling
- *
- * @async
- * @function updateUserData
- * @returns {Promise<UpdateUserDataResponse>} Response object containing success status and data
- *
- * @example
- * ```
- * const result = await updateUserData()
- * if (result.success) {
- *   console.log('User data updated successfully')
- * } else {
- *   console.error('Failed to update user data:', result.error)
- * }
- * ```
- *
- * @throws {Error} When validation fails or network errors occur
- *
- * @security
- * - Validates input data to prevent injection attacks
- * - Uses secure HTTP headers including CSRF protection
- * - Implements request timeout to prevent hanging requests
- * - Includes credentials for authenticated requests
- */
 export async function updateUserData(): Promise<UpdateUserDataResponse> {
   const store = useUserSettingsStore()
 
   try {
-    // Validate input data
     validateUserData({ apiKey: store.apiKey, riotID: store.riotID })
 
     const baseURL = import.meta.env.APP_BACKEND_URL
@@ -156,20 +103,17 @@ export async function updateUserData(): Promise<UpdateUserDataResponse> {
 
     const config = createSecureAxiosConfig(true)
 
-    // Create request functions for retry mechanism
     const apiKeyRequest = () =>
       axios.post(`${baseURL}/api/users/me/hdev_api_key`, { hdev_api_key: store.apiKey }, config)
 
     const riotIdRequest = () =>
       axios.post(`${baseURL}/api/users/me/riotid`, { riot_id: store.riotID }, config)
 
-    // Execute requests with retry logic
     const [apiKeyResponse, riotIdResponse] = await Promise.all([
       retryWithBackoff(apiKeyRequest),
       retryWithBackoff(riotIdRequest),
     ])
 
-    // Validate responses
     if (apiKeyResponse.status !== 200 || riotIdResponse.status !== 200) {
       console.warn('Unexpected response status:', {
         apiKeyStatus: apiKeyResponse.status,
@@ -215,35 +159,8 @@ export async function updateUserData(): Promise<UpdateUserDataResponse> {
   }
 }
 
-/**
- * Retrieves overlay data by ID with comprehensive error handling and security measures
- *
- * @async
- * @function getOverlayData
- * @param {string} id - UUID of the overlay to retrieve
- * @returns {Promise<OverlayData | null>} Overlay data object or null if not found/error
- *
- * @example
- * ```
- * const overlayData = await getOverlayData('123e4567-e89b-12d3-a456-426614174000')
- * if (overlayData) {
- *   console.log('Overlay loaded:', overlayData.overlay_style)
- * } else {
- *   console.log('Overlay not found or error occurred')
- * }
- * ```
- *
- * @throws {Error} When ID validation fails
- *
- * @security
- * - Validates UUID format to prevent injection attacks
- * - Implements request timeout and retry mechanism
- * - Sanitizes error messages to prevent information leakage
- * - Uses secure HTTP headers
- */
 export async function getOverlayData(id: string): Promise<OverlayData | null> {
   try {
-    // Input validation
     if (!id || false) {
       throw new Error('Overlay ID is required and must be a string')
     }
@@ -259,7 +176,6 @@ export async function getOverlayData(id: string): Promise<OverlayData | null> {
 
     const config = createSecureAxiosConfig(false)
 
-    // Create request function for retry mechanism
     const fetchOverlay = () => axios.get<OverlayData>(`${baseURL}/api/overlay/${id}`, config)
 
     const response: AxiosResponse<OverlayData> = await retryWithBackoff(fetchOverlay)
@@ -278,7 +194,6 @@ export async function getOverlayData(id: string): Promise<OverlayData | null> {
 
       console.error(`HTTP ${status}: ${errorMessage}`, { overlayId: id })
 
-      // Handle specific error cases
       switch (status) {
         case 404:
           console.warn(`Overlay with ID ${id} not found`)
@@ -314,14 +229,6 @@ export async function getOverlayData(id: string): Promise<OverlayData | null> {
   }
 }
 
-/**
- * Clears any cached data and resets API client state
- * Useful for logout scenarios or when switching users
- *
- * @function clearApiCache
- * @returns {void}
- */
 export function clearApiCache(): void {
-  // Clear any axios interceptors or cached data if needed
   console.info('API cache cleared')
 }

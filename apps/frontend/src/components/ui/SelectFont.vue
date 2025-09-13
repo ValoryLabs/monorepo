@@ -9,7 +9,10 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { useVModel } from '@vueuse/core'
+import { useI18n } from 'vue-i18n'
 import SelectSeparator from './select/SelectSeparator.vue'
+
+const { t } = useI18n()
 
 const props = defineProps<{
   defaultValue?: string
@@ -54,12 +57,12 @@ const fonts: string[] = [
 <template>
   <Select v-model="modelValue">
     <SelectTrigger class="w-full cursor-pointer bg-transparent">
-      <SelectValue :style="{ fontFamily: modelValue }" :placeholder="$t('components.selectFont')" />
+      <SelectValue :style="{ fontFamily: modelValue }" :placeholder="t('components.selectFont')" />
     </SelectTrigger>
     <SelectContent>
       <SelectGroup>
         <SelectLabel>
-          {{ $t('components.selectFont') }}
+          {{ t('components.selectFont') }}
         </SelectLabel>
         <SelectSeparator />
         <SelectItem
