@@ -13,6 +13,7 @@ type ValidLocale = (typeof AVAILABLE_LOCALES)[number]['code']
 type Lang = typeof en
 
 declare module 'vue-i18n' {
+  // eslint-disable-next-line @typescript-eslint/no-empty-object-type
   export interface DefineLocaleMessage extends Lang {}
 }
 
