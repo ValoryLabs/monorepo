@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { CONFIGURATOR_NAV_DATA } from '@/data'
 import { cn } from '@/lib/utils'
-import { useUserStore } from '@/stores'
+import { useSettingsStore } from '@/stores'
 import { storeToRefs } from 'pinia'
 import { NavigationLink, NavigationTitle } from '.'
 
-const userStore = useUserStore()
-const { showLeftSidebar } = storeToRefs(userStore)
+const settingsStore = useSettingsStore()
+const { showLeftSidebar } = storeToRefs(settingsStore)
 </script>
 
 <template>

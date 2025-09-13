@@ -12,7 +12,7 @@ import {
 import { Skeleton } from '@/components/ui/skeleton'
 import { openLink } from '@/lib/utils.ts'
 import router from '@/router'
-import { useAuthStore, useUserStore } from '@/stores'
+import { useAuthStore, useSettingsStore, useUserStore } from '@/stores'
 import { ChevronsUpDown, LifeBuoy, LogOut, NotebookText, SettingsIcon } from 'lucide-vue-next'
 import { storeToRefs } from 'pinia'
 import { onMounted, watch } from 'vue'
@@ -22,9 +22,10 @@ import { LanguageSelector, UserAvatar, UserBio } from '.'
 const { t } = useI18n()
 
 const authStore = useAuthStore()
-
+const settingsStore = useSettingsStore()
 const userStore = useUserStore()
-const { user, loading, error, showLeftSidebar } = storeToRefs(userStore)
+const { user, loading, error } = storeToRefs(userStore)
+const { showLeftSidebar } = storeToRefs(settingsStore)
 
 watch(error, (newError) => {
   if (newError) {

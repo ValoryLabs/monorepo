@@ -6,14 +6,13 @@ import { Kbd } from '@/components/ui/kbd'
 import { Label } from '@/components/ui/label'
 import { SwitchToggle } from '@/components/ui/switch-toggle'
 import router from '@/router'
-import { useUserStore } from '@/stores/user.ts'
-import { useValorantOverlayStore } from '@/stores/valorantOverlay.ts'
+import { useSettingsStore, useValorantOverlayStore } from '@/stores'
 import { storeToRefs } from 'pinia'
 import { useI18n } from 'vue-i18n'
 import { ConfigurationContent, ConfigurationRoot, ConfigurationSection } from '.'
 
-const userStore = useUserStore()
-const { configuratorActive } = storeToRefs(userStore)
+const settingsStore = useSettingsStore()
+const { configuratorActive } = storeToRefs(settingsStore)
 
 const { t } = useI18n()
 
@@ -53,7 +52,7 @@ const {
           size="sm"
         >
           {{ t('components.shortcuts.items.reset') }}
-          <Kbd v-if="userStore.showShortcuts === 'Show'" keys="R" />
+          <Kbd v-if="settingsStore.showShortcuts" keys="R" />
         </Button>
       </div>
       <span class="text-second text-sm whitespace-pre-line">

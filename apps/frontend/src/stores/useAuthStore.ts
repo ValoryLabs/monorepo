@@ -9,7 +9,7 @@ interface AuthState {
   logout: () => void
 }
 
-export const useAuthStore = defineStore('user', (): AuthState => {
+export const useAuthStore = defineStore('authStore', (): AuthState => {
   const token: string | null =
     document.cookie
       .split('; ')

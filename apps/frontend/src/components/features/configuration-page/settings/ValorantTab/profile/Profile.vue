@@ -8,8 +8,7 @@ import { openLink } from '@/lib/utils.ts'
 import { UserValidator } from '@/services/auth/user.validator.ts'
 import { getRandomPlayerName } from '@/services/leaderboard.ts'
 import { getAccountInformation, getMMRInformation } from '@/services/playerInformation.ts'
-import { useUserStore } from '@/stores/user.ts'
-import { useUserSettingsStore } from '@/stores/userSettings.ts'
+import { useSettingsStore, useValorantStore } from '@/stores'
 import { CircleHelp, Dices, KeyRound, Search } from 'lucide-vue-next'
 import { storeToRefs } from 'pinia'
 import { ref } from 'vue'
@@ -21,10 +20,10 @@ const { t } = useI18n()
 
 const loading = ref(false)
 
-const userSettingsStore = useUserSettingsStore()
-const userStore = useUserStore()
-const { riotID, apiKey } = storeToRefs(userSettingsStore)
-const { configuratorActive } = storeToRefs(userStore)
+const valorantStore = useValorantStore()
+const settingsStore = useSettingsStore()
+const { riotID, apiKey } = storeToRefs(valorantStore)
+const { configuratorActive } = storeToRefs(settingsStore)
 
 async function validateData() {
   return new Promise((resolve, reject) => {

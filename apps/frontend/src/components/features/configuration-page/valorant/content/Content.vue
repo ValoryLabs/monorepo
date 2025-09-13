@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Button } from '@/components/ui/button'
-import { useUserStore } from '@/stores/user.ts'
+import { useSettingsStore } from '@/stores'
 import { Hand } from 'lucide-vue-next'
 import { storeToRefs } from 'pinia'
 import { nextTick, onBeforeUnmount, onMounted, onUnmounted, reactive, ref } from 'vue'
@@ -10,9 +10,9 @@ import { Overlay } from '../'
 
 const { t } = useI18n()
 
-const userStore = useUserStore()
+const settingsStore = useSettingsStore()
 const { configuratorActive, previewDraggable, previewImage, overlayDimensions } =
-  storeToRefs(userStore)
+  storeToRefs(settingsStore)
 
 const position = reactive({ x: 0, y: 0 })
 const startPos = reactive({ x: 0, y: 0 })

@@ -2,7 +2,7 @@
 import { Button } from '@/components/ui/button'
 import { Kbd } from '@/components/ui/kbd'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
-import { useAuthStore } from '@/stores/auth.ts'
+import { useAuthStore } from '@/stores'
 import { useMagicKeys } from '@vueuse/core'
 import { ArrowRight } from 'lucide-vue-next'
 import { watch } from 'vue'

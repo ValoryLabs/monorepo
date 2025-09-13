@@ -1,7 +1,11 @@
-export { useAuthStore } from './auth'
-export { usePlayerStore, type AccountInformation, type MMRInformation } from './player'
-export { useSpotifyOverlayStore } from './spotifyOverlay'
-export { useStreamersStore } from './streamers'
-export { useUserStore } from './user'
-export { useUserSettingsStore } from './userSettings'
-export { useValorantOverlayStore } from './valorantOverlay'
+export { useSpotifyOverlayStore } from './overlays/useSpotifyOverlayStore.ts'
+export { useValorantOverlayStore } from './overlays/useValorantOverlayStore.ts'
+export { useAuthStore } from './useAuthStore.ts'
+export { useSettingsStore } from './useSettingsStore.ts'
+export { useStreamersStore } from './useStreamersStore.ts'
+export { useUserStore } from './useUserStore.ts'
+export {
+  useValorantStore,
+  type AccountInformation,
+  type MMRInformation,
+} from './useValorantStore.ts'

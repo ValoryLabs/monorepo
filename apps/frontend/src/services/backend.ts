@@ -1,4 +1,4 @@
-import { useUserSettingsStore } from '@/stores/userSettings'
+import { useValorantStore } from '@/stores'
 import axios, { type AxiosError, type AxiosRequestConfig, type AxiosResponse } from 'axios'
 
 interface ApiErrorResponse {
@@ -91,7 +91,7 @@ async function retryWithBackoff<T>(
 }
 
 export async function updateUserData(): Promise<UpdateUserDataResponse> {
-  const store = useUserSettingsStore()
+  const store = useValorantStore()
 
   try {
     validateUserData({ apiKey: store.apiKey, riotID: store.riotID })

@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { defineStore } from 'pinia'
-import { computed, type Ref, ref } from 'vue'
+import { computed, type ComputedRef, type Ref, ref } from 'vue'
 
 interface Streamer {
   username: string
@@ -18,10 +18,10 @@ export const useStreamersStore = defineStore('streamersStore', () => {
   const loading: Ref<boolean> = ref(false)
   const error: Ref<string | null> = ref(null)
 
-  const hasStreamers = computed(() => streamers.value.length > 0)
+  const hasStreamers: ComputedRef<boolean> = computed((): boolean => streamers.value.length > 0)
 
-  const parseResponseData = (data: any): Streamer[] => {
-    let parsedData = data
+  const parseResponseData: (data: any) => Streamer[] = (data: any): Streamer[] => {
+    let parsedData: any = data
 
     if (typeof data === 'string') {
       try {
@@ -39,17 +39,19 @@ export const useStreamersStore = defineStore('streamersStore', () => {
     }
 
     return parsedData
-      .filter((item) => item && typeof item === 'object')
-      .map((item) => ({
-        username: item.username || 'Unknown',
-        followers: item.followers || '0',
-        img: item.img || '',
-        live: Boolean(item.live),
-        verified: Boolean(item.verified),
-        viewers: item.viewers || undefined,
-        game: item.game || undefined,
-        title: item.title || undefined,
-      }))
+      .filter((item: any): any => item && typeof item === 'object')
+      .map(
+        (item: any): Streamer => ({
+          username: item.username || 'Unknown',
+          followers: item.followers || '0',
+          img: item.img || '',
+          live: Boolean(item.live),
+          verified: Boolean(item.verified),
+          viewers: item.viewers || '',
+          game: item.game || '',
+          title: item.title || '',
+        }),
+      )
   }
 
   const fetchStreamers = async (

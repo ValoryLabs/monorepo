@@ -1,19 +1,17 @@
-import { usePlayerStore } from '@/stores/player'
-import { useUserSettingsStore } from '@/stores/userSettings'
+import { useValorantStore } from '@/stores'
 import type { AxiosResponse } from 'axios'
 import { apiClient } from '.'
 
 export const getAccountInformation = async (): Promise<boolean> => {
-  try {
-    const userSettingsStore = useUserSettingsStore()
-    const playerStore = usePlayerStore()
+  const valorantStore = useValorantStore()
 
-    if (!userSettingsStore.puuid) {
+  try {
+    if (!valorantStore.puuid) {
       throw new Error('PUUID is not set')
     }
 
     const response: AxiosResponse = await apiClient.get(
-      `/v2/by-puuid/account/${userSettingsStore.puuid}`,
+      `/v2/by-puuid/account/${valorantStore.puuid}`,
     )
 
     const accountInfo = {
@@ -31,7 +29,7 @@ export const getAccountInformation = async (): Promise<boolean> => {
       accountInfo.name = response.data.data.name
       accountInfo.tag = response.data.data.tag
 
-      playerStore.AccountInformation = accountInfo
+      valorantStore.AccountInformation = accountInfo
       return true
     } else {
       throw new Error('Invalid response status')
@@ -43,16 +41,15 @@ export const getAccountInformation = async (): Promise<boolean> => {
 }
 
 export const getMMRInformation = async (): Promise<boolean> => {
-  try {
-    const userSettingsStore = useUserSettingsStore()
-    const playerStore = usePlayerStore()
+  const valorantStore = useValorantStore()
 
-    if (!userSettingsStore.puuid || !userSettingsStore.region) {
+  try {
+    if (!valorantStore.puuid || !valorantStore.region) {
       throw new Error('PUUID or region is not set')
     }
 
     const response: AxiosResponse = await apiClient.get(
-      `/v3/by-puuid/mmr/${userSettingsStore.region}/pc/${userSettingsStore.puuid}`,
+      `/v3/by-puuid/mmr/${valorantStore.region}/pc/${valorantStore.puuid}`,
     )
 
     const mmrInformation = {
@@ -90,7 +87,7 @@ export const getMMRInformation = async (): Promise<boolean> => {
       mmrInformation.current.elo = response.data.data.current.elo
       mmrInformation.leaderboard_placement = response.data.data.current.leaderboard_placement?.rank
 
-      playerStore.MMRInformation = mmrInformation
+      valorantStore.MMRInformation = mmrInformation
       return true
     } else {
       throw new Error('Invalid response status')

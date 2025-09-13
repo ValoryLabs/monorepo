@@ -7,14 +7,13 @@ import { Label } from '@/components/ui/label'
 import { Slider } from '@/components/ui/slider'
 import { SwitchToggle } from '@/components/ui/switch-toggle'
 import router from '@/router'
-import { useSpotifyOverlayStore } from '@/stores/spotifyOverlay.ts'
-import { useUserStore } from '@/stores/user.ts'
+import { useSettingsStore, useSpotifyOverlayStore } from '@/stores/'
 import { storeToRefs } from 'pinia'
 import { useI18n } from 'vue-i18n'
 import { ConfigurationContent, ConfigurationRoot, ConfigurationSection } from '.'
 
-const userStore = useUserStore()
-const { configuratorActive } = storeToRefs(userStore)
+const settingsStore = useSettingsStore()
+const { configuratorActive, showShortcuts } = storeToRefs(settingsStore)
 
 const { t } = useI18n()
 
@@ -44,7 +43,7 @@ const {
           size="sm"
         >
           {{ t('components.shortcuts.items.reset') }}
-          <Kbd v-if="userStore.showShortcuts === 'Show'" keys="R" />
+          <Kbd v-if="showShortcuts" keys="R" />
         </Button>
       </div>
       <span class="text-second text-sm whitespace-pre-line">

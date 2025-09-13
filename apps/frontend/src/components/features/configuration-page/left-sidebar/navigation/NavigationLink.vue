@@ -2,14 +2,14 @@
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils.ts'
 import router from '@/router'
-import { useUserStore } from '@/stores'
+import { useSettingsStore } from '@/stores'
 import { storeToRefs } from 'pinia'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRoute } from 'vue-router'
 
-const userStore = useUserStore()
-const { showLeftSidebar } = storeToRefs(userStore)
+const settingsStore = useSettingsStore()
+const { showLeftSidebar } = storeToRefs(settingsStore)
 
 const props = defineProps<{
   label: string

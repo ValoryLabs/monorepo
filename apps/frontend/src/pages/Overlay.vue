@@ -8,7 +8,7 @@ import { useMMRUpdater } from '@/composables/useMMRUpdater'
 import { useOverlayData } from '@/composables/useOverlayData'
 import { useOverlayScheduler } from '@/composables/useOverlayScheduler'
 import { getOverlayComponent } from '@/lib/utils'
-import { usePlayerStore, useUserSettingsStore } from '@/stores'
+import { useValorantStore } from '@/stores'
 
 interface Props {
   id: string
@@ -21,11 +21,17 @@ useHead({
 })
 
 // Stores
-const userSettingsStore = useUserSettingsStore()
-const playerStore = usePlayerStore()
-const { riotID, apiKey } = storeToRefs(userSettingsStore)
-const { AccountInformation, MMRInformation, lastMatches, winCount, loseCount, seasonWinrate } =
-  storeToRefs(playerStore)
+const valorantStore = useValorantStore()
+const {
+  riotID,
+  apiKey,
+  AccountInformation,
+  MMRInformation,
+  lastMatches,
+  winCount,
+  loseCount,
+  seasonWinrate,
+} = storeToRefs(valorantStore)
 
 // Composables
 const { overlayData, loading, successFetchInfo, loadOverlayData } = useOverlayData(riotID, apiKey)

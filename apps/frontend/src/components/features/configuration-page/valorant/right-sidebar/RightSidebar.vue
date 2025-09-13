@@ -5,14 +5,14 @@ import { storeToRefs } from 'pinia'
 import { onMounted, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import { useUserStore } from '@/stores/user.ts'
+import { useSettingsStore } from '@/stores'
 import { Generate } from '.'
 import { Configuration } from './configuration'
 
 const { t } = useI18n()
 
-const userStore = useUserStore()
-const { showRightSidebar, configuratorActive } = storeToRefs(userStore)
+const settingsStore = useSettingsStore()
+const { showRightSidebar, configuratorActive } = storeToRefs(settingsStore)
 
 const scrollState = ref({
   canScrollUp: false,

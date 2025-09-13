@@ -6,15 +6,15 @@ import {
   OldOverlay,
 } from '@/components/features/overlays/valorant'
 import { getAccountInformation, getMMRInformation } from '@/services/playerInformation.ts'
-import { usePlayerStore, useUserStore, useValorantOverlayStore } from '@/stores'
+import { useSettingsStore, useValorantOverlayStore, useValorantStore } from '@/stores'
 import { storeToRefs } from 'pinia'
 import { computed, onMounted } from 'vue'
 
-const userStore = useUserStore()
-const { configuratorActive } = storeToRefs(userStore)
+const settingsStore = useSettingsStore()
+const { configuratorActive } = storeToRefs(settingsStore)
 
 const valorantOverlayStore = useValorantOverlayStore()
-const playerStore = usePlayerStore()
+const valorantStore = useValorantStore()
 const {
   backgroundColor,
   textColor,
@@ -38,7 +38,7 @@ const {
 } = storeToRefs(valorantOverlayStore)
 
 const { AccountInformation, MMRInformation, lastMatches, winCount, loseCount, seasonWinrate } =
-  storeToRefs(playerStore)
+  storeToRefs(valorantStore)
 
 const overlay = computed(() => {
   switch (overlayStyle.value) {

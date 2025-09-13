@@ -1,4 +1,4 @@
-import { useUserSettingsStore } from '@/stores/userSettings'
+import { useValorantStore } from '@/stores'
 import axios from 'axios'
 import { storeToRefs } from 'pinia'
 
@@ -12,8 +12,8 @@ export const apiClient = axios.create({
 
 apiClient.interceptors.request.use(
   (config) => {
-    const userSettingsStore = useUserSettingsStore()
-    const { apiKey } = storeToRefs(userSettingsStore)
+    const valorantStore = useValorantStore()
+    const { apiKey } = storeToRefs(valorantStore)
 
     if (apiKey.value) {
       config.params = {

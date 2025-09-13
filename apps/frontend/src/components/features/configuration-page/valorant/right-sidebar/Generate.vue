@@ -2,7 +2,7 @@
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
-import { useUserStore } from '@/stores/user.ts'
+import { useSettingsStore, useUserStore } from '@/stores'
 import { useClipboard } from '@vueuse/core'
 import { Copy } from 'lucide-vue-next'
 import { storeToRefs } from 'pinia'
@@ -12,12 +12,13 @@ import { toast } from 'vue-sonner'
 
 const { t } = useI18n()
 
-const userStore = useUserStore()
-const { overlayDimensions } = storeToRefs(userStore)
+const settingsStore = useSettingsStore()
+const { overlayDimensions } = storeToRefs(settingsStore)
 
+const userStore = useUserStore()
 const { user } = storeToRefs(userStore)
 
-const url = computed(() => `${window.location.origin}/overlay/${user?.value?.overlay_id}`)
+const url = computed(() => `${window.location.origin}/overlay/${user?.value?.overlay_id}` || '')
 const { copy } = useClipboard({ url })
 
 const copyUrl = () => {

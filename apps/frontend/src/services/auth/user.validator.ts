@@ -1,5 +1,5 @@
 import { updateUserData } from '@/services/backend.ts'
-import { useUserSettingsStore } from '@/stores/userSettings'
+import { useValorantStore } from '@/stores'
 import type { AxiosError } from 'axios'
 import { storeToRefs } from 'pinia'
 import { apiClient } from '..'
@@ -47,8 +47,8 @@ const ERROR_MESSAGES = {
 
 export const UserValidator = {
   async validate(): Promise<ValidationResult> {
-    const userSettingsStore = useUserSettingsStore()
-    const { riotID, apiKey, puuid, region } = storeToRefs(userSettingsStore)
+    const valorantStore = useValorantStore()
+    const { riotID, apiKey, puuid, region } = storeToRefs(valorantStore)
 
     try {
       if (!PATTERNS.apiKey.test(apiKey.value)) {

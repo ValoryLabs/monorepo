@@ -2,14 +2,13 @@
 import { Button } from '@/components/ui/button'
 import { Kbd } from '@/components/ui/kbd'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
-import { useValorantOverlayStore } from '@/stores'
-import { useUserStore } from '@/stores/user.ts'
+import { useSettingsStore, useValorantOverlayStore } from '@/stores'
 import { Expand, RotateCcw } from 'lucide-vue-next'
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
 
-const userStore = useUserStore()
+const settingsStore = useSettingsStore()
 const valorantOverlayStore = useValorantOverlayStore()
 </script>
 
@@ -18,15 +17,15 @@ const valorantOverlayStore = useValorantOverlayStore()
     <TooltipProvider>
       <Tooltip>
         <TooltipTrigger>
-          <Button variant="secondary" size="icon" @click="userStore.toggleFullscreen()">
+          <Button variant="secondary" size="icon" @click="settingsStore.toggleFullscreen()">
             <Expand class="size-6" />
           </Button>
         </TooltipTrigger>
         <TooltipContent>
-          <span class="flex items-center gap-2"
-            >{{ t('components.tooltips.fullscreen') }}
-            <Kbd v-if="userStore.showShortcuts === 'Show'" keys="F"
-          /></span>
+          <span class="flex items-center gap-2">
+            {{ t('components.tooltips.fullscreen') }}
+            <Kbd v-if="settingsStore.showShortcuts" keys="F" />
+          </span>
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>
@@ -38,10 +37,9 @@ const valorantOverlayStore = useValorantOverlayStore()
           </Button>
         </TooltipTrigger>
         <TooltipContent>
-          <span class="flex items-center gap-2"
-            >{{ t('components.tooltips.reset') }}
-            <Kbd v-if="userStore.showShortcuts === 'Show'" keys="R"
-          /></span>
+          <span class="flex items-center gap-2">
+            {{ t('components.tooltips.reset') }} <Kbd v-if="settingsStore.showShortcuts" keys="R" />
+          </span>
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import TiltCard from '@/components/ui/TiltCard.vue'
-import { useValorantOverlayStore } from '@/stores/valorantOverlay'
+import { useValorantOverlayStore } from '@/stores'
 import { Check } from 'lucide-vue-next'
 import { storeToRefs } from 'pinia'
 import { useI18n } from 'vue-i18n'
