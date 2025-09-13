@@ -15,8 +15,8 @@
  * Enum for sort direction.
  */
 export enum SortOrder {
-  Asc = 'asc',
-  Desc = 'desc',
+  Asc = "asc",
+  Desc = "desc",
 }
 
 /**
@@ -24,70 +24,70 @@ export enum SortOrder {
  * Enum for sorting options.
  */
 export enum SortBy {
-  Followers = 'followers',
-  Viewers = 'viewers',
-  Username = 'username',
-  LiveStatus = 'live_status',
+  Followers = "followers",
+  Viewers = "viewers",
+  Username = "username",
+  LiveStatus = "live_status",
 }
 
 /** HTTPValidationError */
 export interface HTTPValidationError {
   /** Detail */
-  detail?: ValidationError[]
+  detail?: ValidationError[];
 }
 
 /** HdevApiKeyRequest */
 export interface HdevApiKeyRequest {
   /** Hdev Api Key */
-  hdev_api_key: string
+  hdev_api_key: string;
 }
 
 /** OverlaySettingsRequest */
 export interface OverlaySettingsRequest {
   /** Overlaystyle */
-  overlayStyle?: string | null
+  overlayStyle?: string | null;
   /** Backgroundcolor */
-  backgroundColor?: string | null
+  backgroundColor?: string | null;
   /** Disabledbackground */
-  disabledBackground?: boolean | null
+  disabledBackground?: boolean | null;
   /** Disabledborder */
-  disabledBorder?: boolean | null
+  disabledBorder?: boolean | null;
   /** Disabledbackgroundgradient */
-  disabledBackgroundGradient?: boolean | null
+  disabledBackgroundGradient?: boolean | null;
   /** Disabledgloweffect */
-  disabledGlowEffect?: boolean | null
+  disabledGlowEffect?: boolean | null;
   /** Disabledpeakrankicon */
-  disabledPeakRankIcon?: boolean | null
+  disabledPeakRankIcon?: boolean | null;
   /** Disabledleaderboardplace */
-  disabledLeaderboardPlace?: boolean | null
+  disabledLeaderboardPlace?: boolean | null;
   /** Disabledpeakrr */
-  disabledPeakRR?: boolean | null
+  disabledPeakRR?: boolean | null;
   /** Textcolor */
-  textColor?: string | null
+  textColor?: string | null;
   /** Primarytextcolor */
-  primaryTextColor?: string | null
+  primaryTextColor?: string | null;
   /** Overlayfont */
-  overlayFont?: string | null
+  overlayFont?: string | null;
   /** Wincolor */
-  winColor?: string | null
+  winColor?: string | null;
   /** Losecolor */
-  loseColor?: string | null
+  loseColor?: string | null;
   /** Disabledwinlose */
-  disabledWinLose?: boolean | null
+  disabledWinLose?: boolean | null;
   /** Disabledlastmatchpoints */
-  disabledLastMatchPoints?: boolean | null
+  disabledLastMatchPoints?: boolean | null;
   /** Disabledprogress */
-  disabledProgress?: boolean | null
+  disabledProgress?: boolean | null;
   /** Progresscolor */
-  progressColor?: string | null
+  progressColor?: string | null;
   /** Progressbgcolor */
-  progressBgColor?: string | null
+  progressBgColor?: string | null;
 }
 
 /** RiotIDRequest */
 export interface RiotIDRequest {
   /** Riot Id */
-  riot_id: string
+  riot_id: string;
 }
 
 /**
@@ -101,139 +101,139 @@ export interface SOverlayResponse {
    * Overlay style variant
    * @default "old"
    */
-  overlay_style?: SOverlayResponseOverlayStyleEnum
+  overlay_style?: SOverlayResponseOverlayStyleEnum;
   /**
    * Background Color
    * @default "#07090E"
    */
-  background_color?: string
+  background_color?: string;
   /**
    * Disabled Background
    * @default false
    */
-  disabled_background?: boolean
+  disabled_background?: boolean;
   /**
    * Disabled Border
    * @default false
    */
-  disabled_border?: boolean
+  disabled_border?: boolean;
   /**
    * Disabled Background Gradient
    * @default false
    */
-  disabled_background_gradient?: boolean
+  disabled_background_gradient?: boolean;
   /**
    * Disabled Glow Effect
    * @default false
    */
-  disabled_glow_effect?: boolean
+  disabled_glow_effect?: boolean;
   /**
    * Disabled Peak Rank Icon
    * @default false
    */
-  disabled_peak_rank_icon?: boolean
+  disabled_peak_rank_icon?: boolean;
   /**
    * Disabled Leaderboard Place
    * @default false
    */
-  disabled_leaderboard_place?: boolean
+  disabled_leaderboard_place?: boolean;
   /**
    * Disabled Peak Rr
    * @default false
    */
-  disabled_peak_rr?: boolean
+  disabled_peak_rr?: boolean;
   /**
    * Text Color
    * @default "#f2f2f2"
    */
-  text_color?: string
+  text_color?: string;
   /**
    * Primary Color
    * @default "#f2f2f2"
    */
-  primary_color?: string
+  primary_color?: string;
   /**
    * Overlay Font
    * @default "Inter"
    */
-  overlay_font?: string
+  overlay_font?: string;
   /**
    * Win Color
    * @default "#00FFE3"
    */
-  win_color?: string
+  win_color?: string;
   /**
    * Lose Color
    * @default "#FF7986"
    */
-  lose_color?: string
+  lose_color?: string;
   /**
    * Disabled Win Lose
    * @default false
    */
-  disabled_win_lose?: boolean
+  disabled_win_lose?: boolean;
   /**
    * Disabled Last Match Points
    * @default false
    */
-  disabled_last_match_points?: boolean
+  disabled_last_match_points?: boolean;
   /**
    * Disabled Progress
    * @default false
    */
-  disabled_progress?: boolean
+  disabled_progress?: boolean;
   /**
    * Progress Color
    * @default "#00FFE3"
    */
-  progress_color?: string
+  progress_color?: string;
   /**
    * Progress Bg Color
    * @default "#f2f2f2"
    */
-  progress_bg_color?: string
+  progress_bg_color?: string;
   /**
    * Id
    * Overlay UUID
    * @format uuid
    */
-  id: string
+  id: string;
   /**
    * Riot Id
    * User Riot ID
    */
-  riot_id?: string | null
+  riot_id?: string | null;
   /**
    * Hdev Api Key
    * Henrik Dev API key
    */
-  hdev_api_key?: string | null
+  hdev_api_key?: string | null;
 }
 
 /** StreamerResponse */
 export interface StreamerResponse {
   /** Username */
-  username: string
+  username: string;
   /** Followers */
-  followers: string
+  followers: string;
   /** Img */
-  img: string
+  img: string;
   /** Live */
-  live: boolean
+  live: boolean;
   /** Verified */
-  verified: boolean
+  verified: boolean;
   /** Viewers */
-  viewers?: number | null
+  viewers?: number | null;
 }
 
 /** ValidationError */
 export interface ValidationError {
   /** Location */
-  loc: (string | number)[]
+  loc: (string | number)[];
   /** Message */
-  msg: string
+  msg: string;
   /** Error Type */
-  type: string
+  type: string;
 }
 
 /**
@@ -242,146 +242,158 @@ export interface ValidationError {
  * @default "old"
  */
 export enum SOverlayResponseOverlayStyleEnum {
-  Old = 'old',
-  New = 'new',
-  Minimal = 'minimal',
-  NewV2 = 'new_v2',
+  Old = "old",
+  New = "new",
+  Minimal = "minimal",
+  NewV2 = "new_v2",
 }
 
-export type QueryParamsType = Record<string | number, any>
-export type ResponseFormat = keyof Omit<Body, 'body' | 'bodyUsed'>
+export type QueryParamsType = Record<string | number, any>;
+export type ResponseFormat = keyof Omit<Body, "body" | "bodyUsed">;
 
-export interface FullRequestParams extends Omit<RequestInit, 'body'> {
+export interface FullRequestParams extends Omit<RequestInit, "body"> {
   /** set parameter to `true` for call `securityWorker` for this request */
-  secure?: boolean
+  secure?: boolean;
   /** request path */
-  path: string
+  path: string;
   /** content type of request body */
-  type?: ContentType
+  type?: ContentType;
   /** query params */
-  query?: QueryParamsType
+  query?: QueryParamsType;
   /** format of response (i.e. response.json() -> format: "json") */
-  format?: ResponseFormat
+  format?: ResponseFormat;
   /** request body */
-  body?: unknown
+  body?: unknown;
   /** base url */
-  baseUrl?: string
+  baseUrl?: string;
   /** request cancellation token */
-  cancelToken?: CancelToken
+  cancelToken?: CancelToken;
 }
 
-export type RequestParams = Omit<FullRequestParams, 'body' | 'method' | 'query' | 'path'>
+export type RequestParams = Omit<
+  FullRequestParams,
+  "body" | "method" | "query" | "path"
+>;
 
 export interface ApiConfig<SecurityDataType = unknown> {
-  baseUrl?: string
-  baseApiParams?: Omit<RequestParams, 'baseUrl' | 'cancelToken' | 'signal'>
+  baseUrl?: string;
+  baseApiParams?: Omit<RequestParams, "baseUrl" | "cancelToken" | "signal">;
   securityWorker?: (
     securityData: SecurityDataType | null,
-  ) => Promise<RequestParams | void> | RequestParams | void
-  customFetch?: typeof fetch
+  ) => Promise<RequestParams | void> | RequestParams | void;
+  customFetch?: typeof fetch;
 }
 
-export interface HttpResponse<D extends unknown, E extends unknown = unknown> extends Response {
-  data: D
-  error: E
+export interface HttpResponse<D extends unknown, E extends unknown = unknown>
+  extends Response {
+  data: D;
+  error: E;
 }
 
-type CancelToken = Symbol | string | number
+type CancelToken = Symbol | string | number;
 
 export enum ContentType {
-  Json = 'application/json',
-  JsonApi = 'application/vnd.api+json',
-  FormData = 'multipart/form-data',
-  UrlEncoded = 'application/x-www-form-urlencoded',
-  Text = 'text/plain',
+  Json = "application/json",
+  JsonApi = "application/vnd.api+json",
+  FormData = "multipart/form-data",
+  UrlEncoded = "application/x-www-form-urlencoded",
+  Text = "text/plain",
 }
 
 export class HttpClient<SecurityDataType = unknown> {
-  public baseUrl: string = ''
-  private securityData: SecurityDataType | null = null
-  private securityWorker?: ApiConfig<SecurityDataType>['securityWorker']
-  private abortControllers = new Map<CancelToken, AbortController>()
-  private customFetch = (...fetchParams: Parameters<typeof fetch>) => fetch(...fetchParams)
+  public baseUrl: string = "";
+  private securityData: SecurityDataType | null = null;
+  private securityWorker?: ApiConfig<SecurityDataType>["securityWorker"];
+  private abortControllers = new Map<CancelToken, AbortController>();
+  private customFetch = (...fetchParams: Parameters<typeof fetch>) =>
+    fetch(...fetchParams);
 
   private baseApiParams: RequestParams = {
-    credentials: 'same-origin',
+    credentials: "same-origin",
     headers: {},
-    redirect: 'follow',
-    referrerPolicy: 'no-referrer',
-  }
+    redirect: "follow",
+    referrerPolicy: "no-referrer",
+  };
 
   constructor(apiConfig: ApiConfig<SecurityDataType> = {}) {
-    Object.assign(this, apiConfig)
+    Object.assign(this, apiConfig);
   }
 
   public setSecurityData = (data: SecurityDataType | null) => {
-    this.securityData = data
-  }
+    this.securityData = data;
+  };
 
   protected encodeQueryParam(key: string, value: any) {
-    const encodedKey = encodeURIComponent(key)
-    return `${encodedKey}=${encodeURIComponent(typeof value === 'number' ? value : `${value}`)}`
+    const encodedKey = encodeURIComponent(key);
+    return `${encodedKey}=${encodeURIComponent(typeof value === "number" ? value : `${value}`)}`;
   }
 
   protected addQueryParam(query: QueryParamsType, key: string) {
-    return this.encodeQueryParam(key, query[key])
+    return this.encodeQueryParam(key, query[key]);
   }
 
   protected addArrayQueryParam(query: QueryParamsType, key: string) {
-    const value = query[key]
-    return value.map((v: any) => this.encodeQueryParam(key, v)).join('&')
+    const value = query[key];
+    return value.map((v: any) => this.encodeQueryParam(key, v)).join("&");
   }
 
   protected toQueryString(rawQuery?: QueryParamsType): string {
-    const query = rawQuery || {}
-    const keys = Object.keys(query).filter((key) => 'undefined' !== typeof query[key])
+    const query = rawQuery || {};
+    const keys = Object.keys(query).filter(
+      (key) => "undefined" !== typeof query[key],
+    );
     return keys
       .map((key) =>
         Array.isArray(query[key])
           ? this.addArrayQueryParam(query, key)
           : this.addQueryParam(query, key),
       )
-      .join('&')
+      .join("&");
   }
 
   protected addQueryParams(rawQuery?: QueryParamsType): string {
-    const queryString = this.toQueryString(rawQuery)
-    return queryString ? `?${queryString}` : ''
+    const queryString = this.toQueryString(rawQuery);
+    return queryString ? `?${queryString}` : "";
   }
 
   private contentFormatters: Record<ContentType, (input: any) => any> = {
     [ContentType.Json]: (input: any) =>
-      input !== null && (typeof input === 'object' || typeof input === 'string')
+      input !== null && (typeof input === "object" || typeof input === "string")
         ? JSON.stringify(input)
         : input,
     [ContentType.JsonApi]: (input: any) =>
-      input !== null && (typeof input === 'object' || typeof input === 'string')
+      input !== null && (typeof input === "object" || typeof input === "string")
         ? JSON.stringify(input)
         : input,
     [ContentType.Text]: (input: any) =>
-      input !== null && typeof input !== 'string' ? JSON.stringify(input) : input,
+      input !== null && typeof input !== "string"
+        ? JSON.stringify(input)
+        : input,
     [ContentType.FormData]: (input: any) => {
       if (input instanceof FormData) {
-        return input
+        return input;
       }
 
       return Object.keys(input || {}).reduce((formData, key) => {
-        const property = input[key]
+        const property = input[key];
         formData.append(
           key,
           property instanceof Blob
             ? property
-            : typeof property === 'object' && property !== null
+            : typeof property === "object" && property !== null
               ? JSON.stringify(property)
               : `${property}`,
-        )
-        return formData
-      }, new FormData())
+        );
+        return formData;
+      }, new FormData());
     },
     [ContentType.UrlEncoded]: (input: any) => this.toQueryString(input),
-  }
+  };
 
-  protected mergeRequestParams(params1: RequestParams, params2?: RequestParams): RequestParams {
+  protected mergeRequestParams(
+    params1: RequestParams,
+    params2?: RequestParams,
+  ): RequestParams {
     return {
       ...this.baseApiParams,
       ...params1,
@@ -391,31 +403,33 @@ export class HttpClient<SecurityDataType = unknown> {
         ...(params1.headers || {}),
         ...((params2 && params2.headers) || {}),
       },
-    }
+    };
   }
 
-  protected createAbortSignal = (cancelToken: CancelToken): AbortSignal | undefined => {
+  protected createAbortSignal = (
+    cancelToken: CancelToken,
+  ): AbortSignal | undefined => {
     if (this.abortControllers.has(cancelToken)) {
-      const abortController = this.abortControllers.get(cancelToken)
+      const abortController = this.abortControllers.get(cancelToken);
       if (abortController) {
-        return abortController.signal
+        return abortController.signal;
       }
-      return void 0
+      return void 0;
     }
 
-    const abortController = new AbortController()
-    this.abortControllers.set(cancelToken, abortController)
-    return abortController.signal
-  }
+    const abortController = new AbortController();
+    this.abortControllers.set(cancelToken, abortController);
+    return abortController.signal;
+  };
 
   public abortRequest = (cancelToken: CancelToken) => {
-    const abortController = this.abortControllers.get(cancelToken)
+    const abortController = this.abortControllers.get(cancelToken);
 
     if (abortController) {
-      abortController.abort()
-      this.abortControllers.delete(cancelToken)
+      abortController.abort();
+      this.abortControllers.delete(cancelToken);
     }
-  }
+  };
 
   public request = async <T = any, E = any>({
     body,
@@ -429,55 +443,63 @@ export class HttpClient<SecurityDataType = unknown> {
     ...params
   }: FullRequestParams): Promise<HttpResponse<T, E>> => {
     const secureParams =
-      ((typeof secure === 'boolean' ? secure : this.baseApiParams.secure) &&
+      ((typeof secure === "boolean" ? secure : this.baseApiParams.secure) &&
         this.securityWorker &&
         (await this.securityWorker(this.securityData))) ||
-      {}
-    const requestParams = this.mergeRequestParams(params, secureParams)
-    const queryString = query && this.toQueryString(query)
-    const payloadFormatter = this.contentFormatters[type || ContentType.Json]
-    const responseFormat = format || requestParams.format
+      {};
+    const requestParams = this.mergeRequestParams(params, secureParams);
+    const queryString = query && this.toQueryString(query);
+    const payloadFormatter = this.contentFormatters[type || ContentType.Json];
+    const responseFormat = format || requestParams.format;
 
     return this.customFetch(
-      `${baseUrl || this.baseUrl || ''}${path}${queryString ? `?${queryString}` : ''}`,
+      `${baseUrl || this.baseUrl || ""}${path}${queryString ? `?${queryString}` : ""}`,
       {
         ...requestParams,
         headers: {
           ...(requestParams.headers || {}),
-          ...(type && type !== ContentType.FormData ? { 'Content-Type': type } : {}),
+          ...(type && type !== ContentType.FormData
+            ? { "Content-Type": type }
+            : {}),
         },
-        signal: (cancelToken ? this.createAbortSignal(cancelToken) : requestParams.signal) || null,
-        body: typeof body === 'undefined' || body === null ? null : payloadFormatter(body),
+        signal:
+          (cancelToken
+            ? this.createAbortSignal(cancelToken)
+            : requestParams.signal) || null,
+        body:
+          typeof body === "undefined" || body === null
+            ? null
+            : payloadFormatter(body),
       },
     ).then(async (response) => {
-      const r = response as HttpResponse<T, E>
-      r.data = null as unknown as T
-      r.error = null as unknown as E
+      const r = response as HttpResponse<T, E>;
+      r.data = null as unknown as T;
+      r.error = null as unknown as E;
 
       const data = !responseFormat
         ? r
         : await response[responseFormat]()
             .then((data) => {
               if (r.ok) {
-                r.data = data
+                r.data = data;
               } else {
-                r.error = data
+                r.error = data;
               }
-              return r
+              return r;
             })
             .catch((e) => {
-              r.error = e
-              return r
-            })
+              r.error = e;
+              return r;
+            });
 
       if (cancelToken) {
-        this.abortControllers.delete(cancelToken)
+        this.abortControllers.delete(cancelToken);
       }
 
-      if (!response.ok) throw data
-      return data
-    })
-  }
+      if (!response.ok) throw data;
+      return data;
+    });
+  };
 }
 
 /**
@@ -487,10 +509,10 @@ export class HttpClient<SecurityDataType = unknown> {
  * API v2
  */
 export class Api<SecurityDataType extends unknown> {
-  http: HttpClient<SecurityDataType>
+  http: HttpClient<SecurityDataType>;
 
   constructor(http: HttpClient<SecurityDataType>) {
-    this.http = http
+    this.http = http;
   }
 
   api = {
@@ -506,8 +528,8 @@ export class Api<SecurityDataType extends unknown> {
     twitchLoginApiAuthLoginTwitchGet: (params: RequestParams = {}) =>
       this.http.request<any, any>({
         path: `/api/auth/login/twitch`,
-        method: 'GET',
-        format: 'json',
+        method: "GET",
+        format: "json",
         ...params,
       }),
 
@@ -523,8 +545,8 @@ export class Api<SecurityDataType extends unknown> {
     callbackApiAuthCallbackGet: (params: RequestParams = {}) =>
       this.http.request<any, any>({
         path: `/api/auth/callback`,
-        method: 'GET',
-        format: 'json',
+        method: "GET",
+        format: "json",
         ...params,
       }),
 
@@ -541,8 +563,8 @@ export class Api<SecurityDataType extends unknown> {
     readUsersMeApiUsersMeGet: (params: RequestParams = {}) =>
       this.http.request<Record<string, any>, HTTPValidationError>({
         path: `/api/users/me`,
-        method: 'GET',
-        format: 'json',
+        method: "GET",
+        format: "json",
         ...params,
       }),
 
@@ -556,13 +578,16 @@ export class Api<SecurityDataType extends unknown> {
      * @response `200` `any` Successful Response
      * @response `422` `HTTPValidationError` Validation Error
      */
-    setRiotIdApiUsersMeRiotidPost: (data: RiotIDRequest, params: RequestParams = {}) =>
+    setRiotIdApiUsersMeRiotidPost: (
+      data: RiotIDRequest,
+      params: RequestParams = {},
+    ) =>
       this.http.request<any, HTTPValidationError>({
         path: `/api/users/me/riotid`,
-        method: 'POST',
+        method: "POST",
         body: data,
         type: ContentType.Json,
-        format: 'json',
+        format: "json",
         ...params,
       }),
 
@@ -576,13 +601,16 @@ export class Api<SecurityDataType extends unknown> {
      * @response `200` `any` Successful Response
      * @response `422` `HTTPValidationError` Validation Error
      */
-    setHdevApiKeyApiUsersMeHdevApiKeyPost: (data: HdevApiKeyRequest, params: RequestParams = {}) =>
+    setHdevApiKeyApiUsersMeHdevApiKeyPost: (
+      data: HdevApiKeyRequest,
+      params: RequestParams = {},
+    ) =>
       this.http.request<any, HTTPValidationError>({
         path: `/api/users/me/hdev_api_key`,
-        method: 'POST',
+        method: "POST",
         body: data,
         type: ContentType.Json,
-        format: 'json',
+        format: "json",
         ...params,
       }),
 
@@ -602,10 +630,10 @@ export class Api<SecurityDataType extends unknown> {
     ) =>
       this.http.request<any, HTTPValidationError>({
         path: `/api/users/me/overlay`,
-        method: 'POST',
+        method: "POST",
         body: data,
         type: ContentType.Json,
-        format: 'json',
+        format: "json",
         ...params,
       }),
 
@@ -619,11 +647,14 @@ export class Api<SecurityDataType extends unknown> {
      * @response `200` `SOverlayResponse` Successful Response
      * @response `422` `HTTPValidationError` Validation Error
      */
-    getOverlayApiOverlayOverlayIdGet: (overlayId: string, params: RequestParams = {}) =>
+    getOverlayApiOverlayOverlayIdGet: (
+      overlayId: string,
+      params: RequestParams = {},
+    ) =>
       this.http.request<SOverlayResponse, HTTPValidationError>({
         path: `/api/overlay/${overlayId}`,
-        method: 'GET',
-        format: 'json',
+        method: "GET",
+        format: "json",
         ...params,
       }),
 
@@ -639,8 +670,8 @@ export class Api<SecurityDataType extends unknown> {
     pingApiUtilsPingGet: (params: RequestParams = {}) =>
       this.http.request<any, any>({
         path: `/api/utils/ping`,
-        method: 'GET',
-        format: 'json',
+        method: "GET",
+        format: "json",
         ...params,
       }),
 
@@ -660,27 +691,27 @@ export class Api<SecurityDataType extends unknown> {
          * Limit
          * Limit number of streamers returned
          */
-        limit?: number | null
+        limit?: number | null;
         /**
          * Verified Only
          * Return only verified streamers
          * @default false
          */
-        verified_only?: boolean
+        verified_only?: boolean;
         /**
          * Refresh Cache
          * Force refresh cache from Twitch API
          * @default false
          */
-        refresh_cache?: boolean
+        refresh_cache?: boolean;
       },
       params: RequestParams = {},
     ) =>
       this.http.request<StreamerResponse[], HTTPValidationError>({
         path: `/api/streamers/online`,
-        method: 'GET',
+        method: "GET",
         query: query,
-        format: 'json',
+        format: "json",
         ...params,
       }),
 
@@ -701,32 +732,32 @@ export class Api<SecurityDataType extends unknown> {
          * Return only live streamers
          * @default false
          */
-        live_only?: boolean
+        live_only?: boolean;
         /**
          * Verified Only
          * Return only verified streamers
          * @default false
          */
-        verified_only?: boolean
+        verified_only?: boolean;
         /**
          * Limit
          * Limit number of streamers returned
          */
-        limit?: number | null
+        limit?: number | null;
         /**
          * Refresh Cache
          * Force refresh cache from Twitch API
          * @default false
          */
-        refresh_cache?: boolean
+        refresh_cache?: boolean;
       },
       params: RequestParams = {},
     ) =>
       this.http.request<StreamerResponse[], HTTPValidationError>({
         path: `/api/streamers/`,
-        method: 'GET',
+        method: "GET",
         query: query,
-        format: 'json',
+        format: "json",
         ...params,
       }),
 
@@ -747,15 +778,15 @@ export class Api<SecurityDataType extends unknown> {
          * Force refresh cache from Twitch API
          * @default false
          */
-        refresh_cache?: boolean
+        refresh_cache?: boolean;
       },
       params: RequestParams = {},
     ) =>
       this.http.request<Record<string, any>, HTTPValidationError>({
         path: `/api/streamers/stats`,
-        method: 'GET',
+        method: "GET",
         query: query,
-        format: 'json',
+        format: "json",
         ...params,
       }),
 
@@ -775,43 +806,43 @@ export class Api<SecurityDataType extends unknown> {
          * Sort streamers by field
          * @default "followers"
          */
-        sort_by?: SortBy
+        sort_by?: SortBy;
         /**
          * Sort direction
          * @default "desc"
          */
-        sort_order?: SortOrder
+        sort_order?: SortOrder;
         /**
          * Live Only
          * Return only live streamers
          * @default false
          */
-        live_only?: boolean
+        live_only?: boolean;
         /**
          * Verified Only
          * Return only verified streamers
          * @default false
          */
-        verified_only?: boolean
+        verified_only?: boolean;
         /**
          * Limit
          * Limit number of streamers returned
          */
-        limit?: number | null
+        limit?: number | null;
         /**
          * Refresh Cache
          * Force refresh cache from Twitch API
          * @default false
          */
-        refresh_cache?: boolean
+        refresh_cache?: boolean;
       },
       params: RequestParams = {},
     ) =>
       this.http.request<StreamerResponse[], HTTPValidationError>({
         path: `/api/streamers/sorted`,
-        method: 'GET',
+        method: "GET",
         query: query,
-        format: 'json',
+        format: "json",
         ...params,
       }),
 
@@ -831,7 +862,7 @@ export class Api<SecurityDataType extends unknown> {
          * Criteria for top streamers
          * @default "followers"
          */
-        by?: SortBy
+        by?: SortBy;
         /**
          * Limit
          * Number of top streamers to return
@@ -839,33 +870,33 @@ export class Api<SecurityDataType extends unknown> {
          * @max 50
          * @default 10
          */
-        limit?: number
+        limit?: number;
         /**
          * Live Only
          * Consider only live streamers
          * @default false
          */
-        live_only?: boolean
+        live_only?: boolean;
         /**
          * Verified Only
          * Consider only verified streamers
          * @default false
          */
-        verified_only?: boolean
+        verified_only?: boolean;
         /**
          * Refresh Cache
          * Force refresh cache from Twitch API
          * @default false
          */
-        refresh_cache?: boolean
+        refresh_cache?: boolean;
       },
       params: RequestParams = {},
     ) =>
       this.http.request<StreamerResponse[], HTTPValidationError>({
         path: `/api/streamers/top`,
-        method: 'GET',
+        method: "GET",
         query: query,
-        format: 'json',
+        format: "json",
         ...params,
       }),
 
@@ -885,43 +916,43 @@ export class Api<SecurityDataType extends unknown> {
          * Primary sort criteria
          * @default "live_status"
          */
-        primary_sort?: SortBy
+        primary_sort?: SortBy;
         /**
          * Secondary sort criteria
          * @default "followers"
          */
-        secondary_sort?: SortBy
+        secondary_sort?: SortBy;
         /**
          * Sort direction
          * @default "desc"
          */
-        sort_order?: SortOrder
+        sort_order?: SortOrder;
         /**
          * Verified Only
          * Return only verified streamers
          * @default false
          */
-        verified_only?: boolean
+        verified_only?: boolean;
         /**
          * Limit
          * Limit number of streamers returned
          */
-        limit?: number | null
+        limit?: number | null;
         /**
          * Refresh Cache
          * Force refresh cache from Twitch API
          * @default false
          */
-        refresh_cache?: boolean
+        refresh_cache?: boolean;
       },
       params: RequestParams = {},
     ) =>
       this.http.request<StreamerResponse[], HTTPValidationError>({
         path: `/api/streamers/mixed-sort`,
-        method: 'GET',
+        method: "GET",
         query: query,
-        format: 'json',
+        format: "json",
         ...params,
       }),
-  }
+  };
 }
