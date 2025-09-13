@@ -1,11 +1,8 @@
-import { resolveValue } from '@intlify/core-base'
 import messages from '@intlify/unplugin-vue-i18n/messages'
 import { useLocalStorage } from '@vueuse/core'
 import { watch } from 'vue'
-import type { I18n } from 'vue-i18n'
-import { createI18n, registerMessageResolver } from 'vue-i18n'
-
-registerMessageResolver(resolveValue)
+import { createI18n } from 'vue-i18n'
+import type en from './locales/en.json'
 
 export const AVAILABLE_LOCALES = [
   { code: 'en', name: 'English' },
@@ -13,28 +10,22 @@ export const AVAILABLE_LOCALES = [
 ] as const
 
 type ValidLocale = (typeof AVAILABLE_LOCALES)[number]['code']
+type Lang = typeof en
+
+declare module 'vue-i18n' {
+  export interface DefineLocaleMessage extends Lang {}
+}
 
 function getDefaultLocale(): ValidLocale {
   const saved = localStorage.getItem('lang')
   if (saved && AVAILABLE_LOCALES.some((l) => l.code === saved)) {
     return saved as ValidLocale
   }
-
-  const browserLang = (navigator.language || 'en').toLowerCase().split('-')[0]
-
+  const browserLang = (navigator.language || 'en').toLowerCase().split('-')
   return AVAILABLE_LOCALES.some((l) => l.code === browserLang) ? (browserLang as ValidLocale) : 'en'
 }
 
 const locale = useLocalStorage<ValidLocale>('lang', getDefaultLocale())
-
-async function loadLocaleMessages(i18n: I18n, locale: ValidLocale) {
-  try {
-    const messages = await import(`./locales/${locale}.json`)
-    i18n.global.setLocaleMessage(locale, messages.default)
-  } catch (e) {
-    console.error(`Failed to load ${locale} locale:`, e)
-  }
-}
 
 export const i18n = createI18n({
   legacy: false,
@@ -43,26 +34,25 @@ export const i18n = createI18n({
   messages,
 })
 
-async function setupI18n() {
-  if (!i18n.global.availableLocales.includes('en')) {
-    await loadLocaleMessages(i18n, 'en')
+async function loadLocaleMessages(locale: ValidLocale) {
+  if (!i18n.global.availableLocales.includes(locale)) {
+    try {
+      const messages = await import(`./locales/${locale}.json`)
+      i18n.global.setLocaleMessage(locale, messages.default)
+    } catch (e) {
+      console.error(`Failed to load ${locale} locale:`, e)
+    }
   }
+}
 
-  if (locale.value !== 'en') {
-    await loadLocaleMessages(i18n, locale.value)
-  }
-
-  return i18n
+if (locale.value !== 'en') {
+  loadLocaleMessages(locale.value)
 }
 
 watch(locale, async (newLocale) => {
-  if (!i18n.global.availableLocales.includes(newLocale)) {
-    await loadLocaleMessages(i18n, newLocale)
-  }
+  await loadLocaleMessages(newLocale)
   i18n.global.locale.value = newLocale
 })
-
-setupI18n()
 
 export function setLocale(newLocale: ValidLocale) {
   locale.value = newLocale

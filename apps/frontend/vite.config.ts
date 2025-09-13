@@ -18,7 +18,7 @@ export default defineConfig(({ mode }) => {
       ViteMinifyPlugin({}),
       vue(),
       VueI18nPlugin({
-        module: 'petite-vue-i18n',
+        module: 'vue-i18n',
         include: [path.resolve(__dirname, './src/i18n/locales/**')],
       }),
       mode === 'analyze' &&
