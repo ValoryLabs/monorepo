@@ -2,6 +2,7 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from scalar_fastapi import get_scalar_api_reference, Theme, Layout
 import uvicorn
 
 from app.config import settings, logger
@@ -68,6 +69,15 @@ app.add_middleware(
 app.add_middleware(PerformanceMiddleware)
 
 app.include_router(api_router, prefix="/api")
+
+@app.get("/sdocs", include_in_schema=False)
+async def scalar_html():
+    return get_scalar_api_reference(
+        openapi_url=app.openapi_url,
+        title=app.title,
+        theme=Theme.ALTERNATE,
+        layout=Layout.MODERN
+    )
 
 if __name__ == "__main__":
     uvicorn.run(

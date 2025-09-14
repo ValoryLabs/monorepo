@@ -18,6 +18,7 @@ dependencies = [
     "python-dotenv>=1.0.1",
     "python-jose>=3.3.0",
     "redis>=6.2.0",
+    "scalar-fastapi>=1.4.0",
     "sqlalchemy>=2.0.37",
     "uuid>=1.30",
     "uvicorn>=0.34.0",
