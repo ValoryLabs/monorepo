@@ -1,5 +1,10 @@
+import type {
+  AccountV2Data,
+  AccountV2Response,
+  MMRV3Data,
+  MMRV3Response,
+} from '@/api/henrikdev-openapi'
 import { useValorantStore } from '@/stores'
-import type { AxiosResponse } from 'axios'
 import { apiClient } from '.'
 
 export const getAccountInformation = async (): Promise<boolean> => {
@@ -10,29 +15,33 @@ export const getAccountInformation = async (): Promise<boolean> => {
       throw new Error('PUUID is not set')
     }
 
-    const response: AxiosResponse = await apiClient.get(
+    const response = await apiClient.get<AccountV2Response>(
       `/v2/by-puuid/account/${valorantStore.puuid}`,
     )
-
-    const accountInfo = {
-      account_level: 0,
-      name: '',
-      tag: '',
-    }
 
     if (response.data.status === 200) {
       if (!response.data.data) {
         throw new Error('Response data is empty')
       }
 
-      accountInfo.account_level = response.data.data.account_level
-      accountInfo.name = response.data.data.name
-      accountInfo.tag = response.data.data.tag
+      const accountData: AccountV2Data = response.data.data
+
+      const accountInfo = {
+        account_level: accountData.account_level,
+        card: accountData.card,
+        name: accountData.name,
+        platforms: accountData.platforms,
+        puuid: accountData.puuid,
+        region: accountData.region,
+        tag: accountData.tag,
+        title: accountData.title,
+        updated_at: accountData.updated_at,
+      }
 
       valorantStore.AccountInformation = accountInfo
       return true
     } else {
-      throw new Error('Invalid response status')
+      throw new Error(`Invalid response status: ${response.data.status}`)
     }
   } catch (error) {
     console.error('Error fetching account information:', error)
@@ -48,49 +57,53 @@ export const getMMRInformation = async (): Promise<boolean> => {
       throw new Error('PUUID or region is not set')
     }
 
-    const response: AxiosResponse = await apiClient.get(
+    const response = await apiClient.get<MMRV3Response>(
       `/v3/by-puuid/mmr/${valorantStore.region}/pc/${valorantStore.puuid}`,
     )
-
-    const mmrInformation = {
-      peak: {
-        tier: {
-          id: 0,
-          name: '',
-        },
-        rr: 0,
-      },
-      current: {
-        tier: {
-          id: 0,
-          name: '',
-        },
-        rr: 0,
-        last_change: 0,
-        elo: 0,
-      },
-      leaderboard_placement: null,
-    }
 
     if (response.data.status === 200) {
       if (!response.data.data) {
         throw new Error('Response data is empty')
       }
 
-      mmrInformation.peak.tier.id = response.data.data.peak.tier.id
-      mmrInformation.peak.tier.name = response.data.data.peak.tier.name
-      mmrInformation.peak.rr = response.data.data.peak.rr
-      mmrInformation.current.tier.id = response.data.data.current.tier.id
-      mmrInformation.current.tier.name = response.data.data.current.tier.name
-      mmrInformation.current.rr = response.data.data.current.rr
-      mmrInformation.current.last_change = response.data.data.current.last_change
-      mmrInformation.current.elo = response.data.data.current.elo
-      mmrInformation.leaderboard_placement = response.data.data.current.leaderboard_placement?.rank
+      const mmrData: MMRV3Data = response.data.data
+
+      const mmrInformation = {
+        account: {
+          name: mmrData.account.name,
+          puuid: mmrData.account.puuid,
+          tag: mmrData.account.tag,
+        },
+        peak: mmrData.peak
+          ? {
+              tier: {
+                id: mmrData.peak.tier.id,
+                name: mmrData.peak.tier.name,
+              },
+              rr: mmrData.peak.rr,
+              season: mmrData.peak.season,
+              ranking_schema: mmrData.peak.ranking_schema,
+            }
+          : null,
+        current: {
+          tier: {
+            id: mmrData.current.tier.id,
+            name: mmrData.current.tier.name,
+          },
+          rr: mmrData.current.rr,
+          last_change: mmrData.current.last_change,
+          elo: mmrData.current.elo,
+          games_needed_for_rating: mmrData.current.games_needed_for_rating,
+          rank_protection_shields: mmrData.current.rank_protection_shields,
+        },
+        leaderboard_placement: mmrData.current.leaderboard_placement?.rank || null,
+        seasonal: mmrData.seasonal,
+      }
 
       valorantStore.MMRInformation = mmrInformation
       return true
     } else {
-      throw new Error('Invalid response status')
+      throw new Error(`Invalid response status: ${response.data.status}`)
     }
   } catch (error) {
     console.error('Error fetching MMR information:', error)

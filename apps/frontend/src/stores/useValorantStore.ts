@@ -1,31 +1,6 @@
+import type { AccountV2Data, MMRV3Response } from '@/api/henrikdev-openapi'
 import { defineStore } from 'pinia'
 import { type Ref, ref } from 'vue'
-
-export interface AccountInformation {
-  account_level: number
-  name: string
-  tag: string
-}
-
-export interface MMRInformation {
-  peak: {
-    tier: {
-      id: number | string
-      name: string
-    }
-    rr: number
-  }
-  current: {
-    tier: {
-      id: number | string
-      name: string
-    }
-    rr: number
-    last_change: number
-    elo: number
-  }
-  leaderboard_placement: number | null
-}
 
 export const useValorantStore = defineStore(
   'valorantStore',
@@ -35,23 +10,34 @@ export const useValorantStore = defineStore(
     const puuid: Ref<string> = ref<string>('')
     const region: Ref<string> = ref<string>('')
 
-    const AccountInformation: Ref<AccountInformation> = ref({
+    const AccountInformation: Ref<AccountV2Data> = ref({
       account_level: 0,
+      card: '',
       name: '',
+      platforms: [],
+      puuid: '',
+      region: '',
       tag: '',
+      title: '',
+      updated_at: '',
     })
 
-    const MMRInformation: Ref<MMRInformation> = ref({
+    const MMRInformation: Ref<MMRV3Response> = ref({
+      account: {
+        name: '',
+        puuid: '',
+        tag: '',
+      },
       peak: {
         tier: {
-          id: 'Unranked',
+          id: 0,
           name: 'Unranked',
         },
         rr: 0,
       },
       current: {
         tier: {
-          id: 'Unranked',
+          id: 0,
           name: 'Unranked',
         },
         rr: 0,
