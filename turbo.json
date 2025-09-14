@@ -8,6 +8,9 @@
       "dependsOn": ["^check-types"]
     },
     "lint": {},
+    "format": {
+      "outputs": ["**/*.{ts,tsx,vue,js,jsx,json,md}"]
+    },
     "dev": {
       "persistent": true,
       "cache": false
