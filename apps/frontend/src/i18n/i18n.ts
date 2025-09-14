@@ -22,7 +22,7 @@ function getDefaultLocale(): ValidLocale {
   if (saved && AVAILABLE_LOCALES.some((l) => l.code === saved)) {
     return saved as ValidLocale
   }
-  const browserLang = (navigator.language || 'en').toLowerCase().split('-')
+  const browserLang = (navigator.language || 'en').toLowerCase().split('-')[0]
   return AVAILABLE_LOCALES.some((l) => l.code === browserLang) ? (browserLang as ValidLocale) : 'en'
 }
 
