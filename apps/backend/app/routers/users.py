@@ -1,5 +1,7 @@
 from typing import Optional
 
+from uuid import UUID
+
 from fastapi import APIRouter, Cookie, Depends, HTTPException, status
 from jose import ExpiredSignatureError, JWTError, jwt
 from pydantic import BaseModel
@@ -42,6 +44,16 @@ class OverlaySettingsRequest(BaseModel):
     disabledProgress: Optional[bool] = None
     progressColor: Optional[str] = None
     progressBgColor: Optional[str] = None
+
+class UserProfile(BaseModel):
+    id: int
+    twitch_id: str | None
+    broadcaster_type: str | None
+    twitch_display_name: str | None
+    username: str
+    avatar_url: str | None
+    overlay_id: UUID
+
 
 async def get_current_user(
         token: str | None = Cookie(default=None, alias="Authorization"),
@@ -95,18 +107,18 @@ async def read_users_me(
         current_user: User = Depends(get_current_user),
         session: AsyncSession = Depends(get_session),
         cache: Redis = Depends(get_redis)
-) -> dict:
+) -> UserProfile:
     overlay = await OverlaysDAO.find_by_user_id(session, cache, int(current_user.id))
 
-    return {
-        "id": current_user.id,
-        "twitch_id": current_user.twitch_id,
-        "broadcaster_type": current_user.broadcaster_type,
-        "twitch_display_name": current_user.twitch_display_name,
-        "username": current_user.username,
-        "avatar_url": current_user.avatar_url,
-        "overlay_id": overlay.id
-    }
+    return UserProfile(
+        id=current_user.id,
+        twitch_id=current_user.twitch_id,
+        broadcaster_type=current_user.broadcaster_type,
+        twitch_display_name=current_user.twitch_display_name,
+        username=current_user.username,
+        avatar_url=current_user.avatar_url,
+        overlay_id=overlay.id
+    )
 
 @router.post("/me/riotid", summary="Установить Riot ID")
 async def set_riot_id(

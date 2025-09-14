@@ -226,6 +226,27 @@ export interface StreamerResponse {
   viewers?: number | null;
 }
 
+/** UserProfile */
+export interface UserProfile {
+  /** Id */
+  id: number;
+  /** Twitch Id */
+  twitch_id: string | null;
+  /** Broadcaster Type */
+  broadcaster_type: string | null;
+  /** Twitch Display Name */
+  twitch_display_name: string | null;
+  /** Username */
+  username: string;
+  /** Avatar Url */
+  avatar_url: string | null;
+  /**
+   * Overlay Id
+   * @format uuid
+   */
+  overlay_id: string;
+}
+
 /** ValidationError */
 export interface ValidationError {
   /** Location */
@@ -557,11 +578,11 @@ export class Api<SecurityDataType extends unknown> {
      * @name ReadUsersMeApiUsersMeGet
      * @summary Получить информацию о текущем пользователе
      * @request GET:/api/users/me
-     * @response `200` `Record<string,any>` Successful Response
+     * @response `200` `UserProfile` Successful Response
      * @response `422` `HTTPValidationError` Validation Error
      */
     readUsersMeApiUsersMeGet: (params: RequestParams = {}) =>
-      this.http.request<Record<string, any>, HTTPValidationError>({
+      this.http.request<UserProfile, HTTPValidationError>({
         path: `/api/users/me`,
         method: "GET",
         format: "json",
