@@ -22,7 +22,7 @@ watch(fullKeyPressed, (v) => {
 <template>
   <div class="inline-flex w-dvw h-dvh overflow-x-hidden">
     <LeftSidebar />
-    <main class="inline-flex w-dvw h-dvh bg-background overflow-scroll">
+    <main class="inline-flex w-dvw h-dvh bg-background overflow-hidden">
       <router-view />
     </main>
   </div>
