@@ -13,7 +13,7 @@ const { t } = useI18n()
 
 const router = useRouter()
 
-const { l, c } = useMagicKeys()
+const { l } = useMagicKeys()
 
 const authStore = useAuthStore()
 
@@ -29,11 +29,7 @@ const props = withDefaults(
 watch(l, (v) => {
   if (v && !authStore.isAuthenticated) {
     router.push({ name: 'signin' })
-  }
-})
-
-watch(c, (v) => {
-  if (v && authStore.isAuthenticated) {
+  } else if (v && authStore.isAuthenticated) {
     router.push({ name: 'configurator-home' })
   }
 })
@@ -63,7 +59,7 @@ watch(c, (v) => {
       <TooltipContent>
         <span class="flex items-center justify-center gap-1">
           <span>{{ t('components.tooltips.goToConfigurator') }}</span>
-          <Kbd class="size-4 px-0 text-[10px]" keys="C" />
+          <Kbd class="size-4 px-0 text-[10px]" keys="L" />
         </span>
       </TooltipContent>
     </Tooltip>
