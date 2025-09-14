@@ -1,5 +1,5 @@
 {
-  "name": "monorepo-valory",
+  "name": "valory",
   "version": "0.0.0",
   "private": true,
   "workspaces": [
@@ -12,9 +12,8 @@
     "format": "prettier --write \"**/*.{ts,tsx,vue,js,jsx,json,md}\""
   },
   "devDependencies": {
-    "eslint-config-turbo": "^2.5.6",
     "prettier": "latest",
-    "turbo": "2.4.5-canary.6"
+    "turbo": "^2.5.6"
   },
   "packageManager": "bun@1.2.21"
 }
