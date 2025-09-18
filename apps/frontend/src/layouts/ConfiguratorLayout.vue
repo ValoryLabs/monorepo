@@ -1,25 +1,10 @@
 <script setup lang="ts">
 import { LeftSidebar } from '@/components/features/configuration-page/left-sidebar'
-import { useUserStore } from '@/stores'
-import { useMagicKeys } from '@vueuse/core'
-import { storeToRefs } from 'pinia'
-import { watch } from 'vue'
-
-const userStore = useUserStore()
-const { configuratorActive } = storeToRefs(userStore)
-
-const fullKeyString = userStore.fullShortcut
-
-const { [fullKeyString]: fullKeyPressed } = useMagicKeys()
-
-watch(fullKeyPressed, (v) => {
-  if (v && configuratorActive) {
-    userStore.toggleFullscreen()
-  }
-})
+import { SettingsModal } from '@/components/features/configuration-page/settings'
 </script>
 
 <template>
+  <SettingsModal />
   <div class="inline-flex w-dvw h-dvh overflow-x-hidden">
     <LeftSidebar />
     <main class="inline-flex w-dvw h-dvh bg-background overflow-hidden">

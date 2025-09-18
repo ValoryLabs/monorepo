@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { TiltCard } from '@/components/ui'
-import { useUserStore } from '@/stores'
+import { useSettingsStore } from '@/stores'
 import { Ban, Check } from 'lucide-vue-next'
 import { storeToRefs } from 'pinia'
 import { PreviewHeader, PreviewRoot } from '.'
 
-const userStore = useUserStore()
-const { previewImage } = storeToRefs(userStore)
+const settingsStore = useSettingsStore()
+const { previewImage } = storeToRefs(settingsStore)
 
 interface IImage {
   name: string
@@ -72,7 +72,7 @@ const images: IImage[] = [
 <template>
   <PreviewRoot>
     <PreviewHeader />
-    <div class="flex w-full flex-wrap justify-start gap-6 mt-2">
+    <div class="flex w-full flex-wrap justify-start gap-6 mt-2 ml-2">
       <button
         class="group flex cursor-pointer flex-col items-start gap-3 text-sm"
         v-for="image in images"
