@@ -3,6 +3,7 @@ package main
 import (
 	config "github.com/ValoryLabs/monorepo/app"
 	fiber_middleware "github.com/ValoryLabs/monorepo/app/middlewares"
+	routes "github.com/ValoryLabs/monorepo/app/routes"
 	utils "github.com/ValoryLabs/monorepo/app/utils"
 	"github.com/gofiber/fiber/v2"
 
@@ -19,6 +20,8 @@ func main() {
 	app.Get("/", func(c *fiber.Ctx) error {
 		return c.SendString("Hello, World!")
 	})
+
+	routes.UsersRoutes(app)
 
 	utils.StartServer(app)
 }
