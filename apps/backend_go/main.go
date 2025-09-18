@@ -1,10 +1,9 @@
 package main
 
 import (
-	"log"
-
 	config "github.com/ValoryLabs/monorepo/app"
 	fiber_middleware "github.com/ValoryLabs/monorepo/app/middlewares"
+	utils "github.com/ValoryLabs/monorepo/app/utils"
 	"github.com/gofiber/fiber/v2"
 
 	_ "github.com/joho/godotenv/autoload" // load .env file automatically
@@ -21,5 +20,5 @@ func main() {
 		return c.SendString("Hello, World!")
 	})
 
-	log.Fatal(app.Listen(":3000"))
+	utils.StartServer(app)
 }
