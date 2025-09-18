@@ -5,7 +5,7 @@ import (
 )
 
 func GetUsers(c *fiber.Ctx) error {
-	return c.JSON(fiber.Map{
+	return c.Status(200).JSON(fiber.Map{
 		"message": "Get users controller",
 	})
 }
