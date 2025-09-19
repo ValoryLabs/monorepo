@@ -23,7 +23,7 @@ const { t } = useI18n()
           {{ t('footer.left.description') }}
         </span>
         <span class="text-xs text-[#7D7D7D]">
-          © 2023-2025 Valory. {{ t('footer.copyright') }}
+          © 2025 ValoryLabs. {{ t('footer.copyright') }}
         </span>
         <div class="flex flex-wrap gap-2">
           <Button
@@ -40,15 +40,6 @@ const { t } = useI18n()
             <component :is="social.icon" :size="20" />
           </Button>
         </div>
-        <iframe
-          src="https://status.valory.su/badge?theme=dark"
-          title="Valory Status Badge"
-          width="250"
-          height="30"
-          frameborder="0"
-          scrolling="no"
-          style="color-scheme: normal"
-        ></iframe>
       </div>
       <div
         class="flex"

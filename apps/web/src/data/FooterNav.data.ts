@@ -26,6 +26,10 @@ export const FOOTER_NAV_PRODUCT_DATA: FooterNavData[] = [
         name: 'terms',
         url: '/terms',
       },
+      {
+        name: 'status',
+        url: '/status',
+      },
     ],
   },
   {

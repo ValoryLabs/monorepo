@@ -24,6 +24,14 @@ const router = createRouter({
       component: Callback,
     },
     {
+      path: '/status',
+      name: 'status',
+      component: { render: () => null },
+      beforeEnter() {
+        window.location.href = 'https://status.valory.su/'
+      },
+    },
+    {
       path: '/configurator',
       name: 'configurator',
       component: ConfiguratorLayout,
