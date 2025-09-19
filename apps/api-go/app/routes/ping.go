@@ -7,6 +7,5 @@ import (
 )
 
 func PingRoutes(app *fiber.App, api huma.API) {
-	route := huma.NewGroup(api, "/ping")
-	huma.Get(route, "/", controllers.Ping)
+	huma.Get(api, "/ping", controllers.Ping)
 }
