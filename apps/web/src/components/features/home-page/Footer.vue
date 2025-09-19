@@ -3,7 +3,7 @@ import { Valory } from '@/components/shared/icons'
 import { LanguageSwitcher } from '@/components/ui'
 import { Button } from '@/components/ui/button'
 import { FOOTER_NAV_PRODUCT_DATA, SocialLinksData } from '@/data'
-import { hidden, moveTo } from '@/lib/utils.ts'
+import { cn, hidden, moveTo } from '@/lib/utils.ts'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 
@@ -58,7 +58,7 @@ const router = useRouter()
             </RouterLink>
           </div>
         </div>
-        <div class="flex flex-col gap-2">
+        <div :class="cn('flex gap-2', hidden ? 'flex-row' : 'flex-col')">
           <Button
             as="a"
             v-for="social in SocialLinksData"
