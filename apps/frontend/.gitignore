@@ -1,8 +1,0 @@
-.eslintcache
-node_modules
-dist
-dist-ssr
-package-lock.json
-pnpm-lock.yaml
-*.tsbuildinfo
-auto-imports.d.ts

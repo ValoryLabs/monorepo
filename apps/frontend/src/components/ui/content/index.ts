@@ -1,7 +1,0 @@
-export { default as Content } from './Content.vue'
-export { default as ContentContainer } from './ContentContainer.vue'
-export { default as ContentHeader } from './ContentHeader.vue'
-export { default as ContentPageLastMod } from './ContentPageLastMod.vue'
-export { default as ContentPageTitle } from './ContentPageTitle.vue'
-export { default as ContentParagraph } from './ContentParagraph.vue'
-export { default as ContentParagraphTitle } from './ContentParagraphTitle.vue'
