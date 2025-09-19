@@ -1,0 +1,10 @@
+app/migrations/versions/
+.idea/
+uv.lock
+valory_backend.egg-info/
+app/migrations/version/*
+__pycache__
+uv.lock
+sqlite.db
+.venv
+Pipfile.lock
