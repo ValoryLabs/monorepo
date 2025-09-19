@@ -36,7 +36,7 @@ func main() {
 	api := humafiber.New(app, humaConfig)
 
 	app.Get("/docs", func(c *fiber.Ctx) error {
-		html := `<!doctype html>
+		var html = []byte(`<!doctype html>
 <html>
 <head>
     <title>Valory API Documentation</title>
@@ -53,9 +53,9 @@ func main() {
         data-configuration='{"theme": "alternate"}'></script>
     <script src="https://cdn.jsdelivr.net/npm/@scalar/api-reference"></script>
 </body>
-</html>`
+</html>`)
 		c.Set("Content-Type", "text/html")
-		return c.SendString(html)
+		return c.Send(html)
 	})
 
 	routes.UsersRoutes(app, api)
