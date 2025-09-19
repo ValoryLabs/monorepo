@@ -35,10 +35,6 @@ func main() {
 
 	api := humafiber.New(app, humaConfig)
 
-	app.Get("/ping", func(c *fiber.Ctx) error {
-		return c.Status(500).SendString("Pong!")
-	})
-
 	app.Get("/docs", func(c *fiber.Ctx) error {
 		html := `<!doctype html>
 <html>
@@ -63,6 +59,7 @@ func main() {
 	})
 
 	routes.UsersRoutes(app, api)
+	routes.PingRoutes(app, api)
 
 	utils.StartServer(app)
 }
