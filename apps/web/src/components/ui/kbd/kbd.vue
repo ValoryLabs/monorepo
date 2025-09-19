@@ -1,0 +1,46 @@
+<script setup lang="ts">
+import { cn } from '@/lib/utils'
+import type { HTMLAttributes } from 'vue'
+import { computed } from 'vue'
+
+interface KbdProps {
+  keys?: string[] | string
+  separator?: string
+  class?: HTMLAttributes['class']
+}
+
+const props = withDefaults(defineProps<KbdProps>(), {
+  separator: '+',
+  keys: () => [],
+})
+
+const normalizedKeys = computed(() => {
+  if (typeof props.keys === 'string') {
+    return [props.keys]
+  }
+  return Array.isArray(props.keys) ? props.keys : []
+})
+
+const hasLongKeys = computed(() => {
+  return normalizedKeys.value.some((key) => key.length > 1)
+})
+</script>
+
+<template>
+  <span
+    :class="
+      cn(
+        'inline-flex items-center justify-center gap-1 rounded border bg-white align-middle text-[10px] leading-loose font-medium text-black select-none',
+        [hasLongKeys ? 'size-4' : 'h-4 px-1'],
+        props.class,
+      )
+    "
+  >
+    <template v-for="(key, index) in normalizedKeys" :key="index">
+      <kbd>{{ key }}</kbd>
+      <span v-if="index < normalizedKeys.length - 1" class="text-black/50">
+        {{ separator }}
+      </span>
+    </template>
+  </span>
+</template>

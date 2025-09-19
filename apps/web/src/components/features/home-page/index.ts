@@ -1,0 +1,6 @@
+export { default as Footer } from './Footer.vue'
+export { default as Header } from './Header.vue'
+export { default as Hero } from './Hero.vue'
+export { default as LoginOrConfigurator } from './LoginOrConfigurator.vue'
+export { default as OpenSource } from './OpenSource.vue'
+export { default as Preview } from './Preview.vue'

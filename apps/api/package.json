@@ -1,0 +1,9 @@
+{
+  "name": "api",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "postinstall": "uv pip install -r pyproject.toml",
+    "dev": "bash -c 'source .venv/bin/activate && uvicorn main:app --reload'"
+  }
+}
