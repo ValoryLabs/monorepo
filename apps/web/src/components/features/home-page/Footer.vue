@@ -70,7 +70,7 @@ const router = useRouter()
             size="icon"
             class="h-fit w-fit cursor-pointer p-2"
           >
-            <component :is="social.icon" size="16" />
+            <component :is="social.icon" :size="16" />
           </Button>
         </div>
       </div>
