@@ -27,7 +27,7 @@ const router = useRouter()
         :class="[hidden ? 'max-w-52 h-[160px]' : 'h-full']"
       >
         <div @click="moveTo('main')" class="flex flex-row items-center gap-2">
-          <Valory :size="32" />
+          <Valory :size="28" />
         </div>
         <div class="flex flex-col gap-4">
           <div class="flex flex-row gap-2 -ml-2">
