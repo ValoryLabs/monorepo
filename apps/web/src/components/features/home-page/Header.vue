@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { LoginOrConfigurator } from '@/components/features/home-page/index.ts'
 import { Github, Valory } from '@/components/shared/icons'
-import { LinkPreview } from '@/components/ui'
+import { LanguageSwitcher, LinkPreview } from '@/components/ui'
 import { Button } from '@/components/ui/button'
 import { NAV_DATA } from '@/data'
 import { hidden, moveTo } from '@/lib/utils.ts'
 import router from '@/router'
-import { onMounted, onUnmounted, ref } from 'vue'
+import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRoute } from 'vue-router'
 
@@ -16,28 +16,12 @@ const route = useRoute()
 const isDev = import.meta.env.APP_DEV === 'true'
 
 const showHeader = ref(true)
-let lastScrollPosition = 0
-
-const handleScroll = () => {
-  const currentScrollPosition = window.scrollY
-  showHeader.value = currentScrollPosition <= lastScrollPosition
-  lastScrollPosition = currentScrollPosition
-}
-
-onMounted(() => {
-  window.addEventListener('scroll', handleScroll)
-})
-
-onUnmounted(() => {
-  window.removeEventListener('scroll', handleScroll)
-})
 </script>
 
 <template>
   <header
     :class="[
-      'fixed right-0 left-0 z-10 flex h-16 w-full justify-center transition-all duration-700',
-      showHeader ? 'top-6' : 'top-[-600px]',
+      'fixed right-0 left-0 top-6 z-10 flex h-16 w-full justify-center transition-all duration-700',
     ]"
   >
     <div
@@ -67,7 +51,7 @@ onUnmounted(() => {
           </li>
         </ul>
       </div>
-      <div class="right flex flex-row items-center gap-3">
+      <div class="right flex flex-row items-center gap-2">
         <LinkPreview url="https://github.com/ValoryLabs/Valory" text="Valory">
           <Button
             class="rounded-full border border-transparent bg-transparent text-white opacity-50 transition hover:border-white/10 hover:bg-white/10 hover:opacity-100"
@@ -76,7 +60,7 @@ onUnmounted(() => {
             <Github :size="16" />
           </Button>
         </LinkPreview>
-
+        <LanguageSwitcher variant="rounded" />
         <LoginOrConfigurator />
       </div>
     </div>

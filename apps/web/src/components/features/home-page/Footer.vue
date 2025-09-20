@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { Valory } from '@/components/shared/icons'
-import { LanguageSwitcher } from '@/components/ui'
 import { Button } from '@/components/ui/button'
 import { FOOTER_NAV_PRODUCT_DATA, SocialLinksData } from '@/data'
 import { cn, hidden, moveTo } from '@/lib/utils.ts'
@@ -22,20 +21,37 @@ const router = useRouter()
         {{ t('getStarted.button') }}
       </Button>
     </div>
-    <div class="flex justify-between gap-8">
-      <div class="flex flex-col gap-4" :class="[hidden ? 'max-w-52' : '']">
+    <div :class="cn('flex justify-between gap-8', hidden ? 'h-fit' : 'h-[160px]')">
+      <div
+        class="flex flex-col justify-between"
+        :class="[hidden ? 'max-w-52 h-[160px]' : 'h-full']"
+      >
         <div @click="moveTo('main')" class="flex flex-row items-center gap-2">
           <Valory :size="32" />
-          <span
-            class="font-valory leading-4 cursor-pointer text-xl transition-colors hover:text-gray-300"
-          >
-            VALORY
-          </span>
         </div>
-        <span class="text-xs font-medium text-white/40">
-          © 2025 ValoryLabs. {{ t('footer.copyright') }}
-        </span>
-        <LanguageSwitcher variant="default" class="w-fit border border-white/10 h-10" />
+        <div class="flex flex-col gap-4">
+          <div class="flex flex-row gap-2 -ml-2">
+            <Button
+              as="a"
+              v-for="social in SocialLinksData"
+              :key="social.name"
+              :aria-label="social.name"
+              :href="social.url"
+              target="_blank"
+              variant="ghost"
+              size="icon"
+              class="h-fit w-fit cursor-pointer p-2"
+            >
+              <component :is="social.icon" :size="16" />
+            </Button>
+          </div>
+          <div class="flex flex-col gap-1 text-xs font-medium text-white/40">
+            <span> © 2025 ValoryLabs. </span>
+            <span>
+              {{ t('footer.copyright') }}
+            </span>
+          </div>
+        </div>
       </div>
       <div
         class="flex"
@@ -57,21 +73,6 @@ const router = useRouter()
               }}
             </RouterLink>
           </div>
-        </div>
-        <div :class="cn('flex gap-2', hidden ? 'flex-row' : 'flex-col')">
-          <Button
-            as="a"
-            v-for="social in SocialLinksData"
-            :key="social.name"
-            :aria-label="social.name"
-            :href="social.url"
-            target="_blank"
-            variant="ghost"
-            size="icon"
-            class="h-fit w-fit cursor-pointer p-2"
-          >
-            <component :is="social.icon" :size="16" />
-          </Button>
         </div>
       </div>
     </div>
