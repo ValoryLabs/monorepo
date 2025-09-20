@@ -180,9 +180,9 @@ onUnmounted(() => {
 <template>
   <HoverCard>
     <HoverCardTrigger as-child>
-      <div @mouseenter="handleMouseEnter" @click="openLink(props.url)">
+      <a @mouseenter="handleMouseEnter" :href="props.url" target="_blank">
         <slot />
-      </div>
+      </a>
     </HoverCardTrigger>
 
     <HoverCardContent class="w-80 rounded-lg p-4 border-neutral-800" side="top">
@@ -200,15 +200,17 @@ onUnmounted(() => {
           >
             <div
               v-if="!metaData.ogImage"
-              class="h-full w-full rounded-md flex flex-col justify-center items-center"
+              @click="openLink(props.url)"
+              class="h-full cursor-pointer w-full rounded-md flex flex-col justify-center items-center"
             >
               <BookIcon class="size-6 text-[#e5e5e5]" />
             </div>
             <img
               v-else
+              @click="openLink(props.url)"
               :src="metaData.ogImage"
               :alt="metaData.title"
-              class="h-full w-full rounded-md object-cover"
+              class="h-full w-full cursor-pointer rounded-md object-cover"
               fetchpriority="high"
               loading="eager"
             />
@@ -220,7 +222,11 @@ onUnmounted(() => {
             >
               {{ metaData.title || repoName }}
             </h3>
-            <p v-if="metaData.description" class="line-clamp-3 text-xs text-[#CECECE]">
+            <p
+              @click="openLink(props.url)"
+              v-if="metaData.description"
+              class="line-clamp-3 text-xs text-[#CECECE] cursor-pointer"
+            >
               {{ metaData.description }}
             </p>
           </div>
