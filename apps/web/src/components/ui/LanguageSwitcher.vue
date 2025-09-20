@@ -54,7 +54,7 @@ const currentLanguageName = computed(() => {
       >
         <Globe class="size-4" />
         <span class="text-sm">{{ currentLanguageName }}</span>
-        <ChevronsUpDown class="size-4" />
+        <ChevronsUpDown class="size-4 ml-2" />
       </Button>
     </DropdownMenuTrigger>
     <DropdownMenuContent align="end" class="w-40">
