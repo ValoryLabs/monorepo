@@ -5,14 +5,13 @@ import { ColorPicker } from '@/components/ui/color-picker'
 import { Kbd } from '@/components/ui/kbd'
 import { Label } from '@/components/ui/label'
 import { SwitchToggle } from '@/components/ui/switch-toggle'
-import router from '@/router'
 import { useSettingsStore, useValorantOverlayStore } from '@/stores'
 import { storeToRefs } from 'pinia'
 import { useI18n } from 'vue-i18n'
 import { ConfigurationContent, ConfigurationRoot, ConfigurationSection } from '.'
 
 const settingsStore = useSettingsStore()
-const { configuratorActive } = storeToRefs(settingsStore)
+const { configuratorActive, settingsActive } = storeToRefs(settingsStore)
 
 const { t } = useI18n()
 
@@ -63,10 +62,7 @@ const {
         <span class="text-second text-sm whitespace-pre-line">
           {{ t('sidebar.configuration.profile.description') }}
         </span>
-        <Button
-          class="w-full justify-center mt-3"
-          @click="router.push({ name: 'configurator-settings' })"
-        >
+        <Button class="w-full justify-center mt-3" @click="settingsActive = true">
           {{ t('sidebar.configuration.profile.button') }}
         </Button>
       </div>

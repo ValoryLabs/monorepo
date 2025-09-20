@@ -10,20 +10,21 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { AVAILABLE_LOCALES } from '@/i18n'
+import { cn } from '@/lib/utils'
 import { useLocalStorage } from '@vueuse/core'
-import { Globe } from 'lucide-vue-next'
+import { ChevronsUpDown, Globe } from 'lucide-vue-next'
+import type { HTMLAttributes } from 'vue'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-interface Props {
-  variant?: 'default' | 'rounded'
-}
+const props = withDefaults(
+  defineProps<{ variant?: 'default' | 'rounded'; class?: HTMLAttributes['class'] }>(),
+  {
+    variant: 'default',
+  },
+)
 
-const props = withDefaults(defineProps<Props>(), {
-  variant: 'default',
-})
-
-const { locale } = useI18n<{ locale: string; availableLocales: string[] }>()
+const { t, locale } = useI18n<{ locale: string; availableLocales: string[] }>()
 const currentLocale = useLocalStorage<string>('lang', 'en')
 
 const currentLanguage = computed(() => {
@@ -39,27 +40,26 @@ const currentLanguageName = computed(() => {
   <DropdownMenu>
     <DropdownMenuTrigger as-child>
       <Button
-        v-if="props.variant === 'default'"
-        variant="ghost"
-        size="sm"
+        :variant="props.variant === 'default' ? 'ghost' : 'default'"
+        :size="props.variant === 'default' ? 'sm' : 'default'"
         aria-label="Language Switcher"
-        class="gap-2"
+        :class="
+          cn(
+            props.variant === 'default'
+              ? 'gap-2'
+              : 'mr-2 rounded-full border border-transparent bg-transparent text-white opacity-50 transition hover:border-white/10 hover:bg-white/10 hover:opacity-100',
+            props.class,
+          )
+        "
       >
         <Globe class="size-4" />
         <span class="text-sm">{{ currentLanguageName }}</span>
-      </Button>
-      <Button
-        v-else
-        aria-label="Language Switcher"
-        class="mr-2 rounded-full border border-transparent bg-transparent text-white opacity-50 transition hover:border-white/10 hover:bg-white/10 hover:opacity-100"
-      >
-        <Globe class="size-4" />
-        <span class="text-sm">{{ currentLanguageName }}</span>
+        <ChevronsUpDown class="size-4 ml-2" />
       </Button>
     </DropdownMenuTrigger>
     <DropdownMenuContent align="end" class="w-40">
       <DropdownMenuLabel>
-        {{ $t('components.languageSwitcher') }}
+        {{ t('components.languageSwitcher') }}
       </DropdownMenuLabel>
       <DropdownMenuSeparator />
       <DropdownMenuRadioGroup v-model="currentLocale">

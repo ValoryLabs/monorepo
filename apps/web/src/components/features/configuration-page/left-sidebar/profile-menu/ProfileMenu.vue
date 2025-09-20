@@ -25,7 +25,7 @@ const authStore = useAuthStore()
 const settingsStore = useSettingsStore()
 const userStore = useUserStore()
 const { user, loading, error } = storeToRefs(userStore)
-const { showLeftSidebar } = storeToRefs(settingsStore)
+const { showLeftSidebar, settingsActive } = storeToRefs(settingsStore)
 
 watch(error, (newError) => {
   if (newError) {
@@ -76,7 +76,7 @@ onMounted(() => {
       </DropdownMenuLabel>
       <DropdownMenuSeparator />
       <DropdownMenuGroup>
-        <DropdownMenuItem @click="router.push({ name: 'configurator-settings' })">
+        <DropdownMenuItem @click="() => (settingsActive = true)">
           <SettingsIcon class="mr-1 size-4" />
           <span>{{ t('profile_menu.settings') }}</span>
         </DropdownMenuItem>

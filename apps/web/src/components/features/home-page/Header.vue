@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { LoginOrConfigurator } from '@/components/features/home-page/index.ts'
 import { Github, Valory } from '@/components/shared/icons'
-import { LanguageSwitcher, LinkPreview } from '@/components/ui'
+import { LinkPreview } from '@/components/ui'
 import { Button } from '@/components/ui/button'
 import { NAV_DATA } from '@/data'
 import { hidden, moveTo } from '@/lib/utils.ts'
@@ -67,15 +67,16 @@ onUnmounted(() => {
           </li>
         </ul>
       </div>
-      <div class="right flex flex-row items-center gap-1">
+      <div class="right flex flex-row items-center gap-3">
         <LinkPreview url="https://github.com/ValoryLabs/Valory" text="Valory">
           <Button
             class="rounded-full border border-transparent bg-transparent text-white opacity-50 transition hover:border-white/10 hover:bg-white/10 hover:opacity-100"
+            size="icon"
           >
             <Github :size="16" />
           </Button>
         </LinkPreview>
-        <LanguageSwitcher variant="rounded" />
+
         <LoginOrConfigurator />
       </div>
     </div>

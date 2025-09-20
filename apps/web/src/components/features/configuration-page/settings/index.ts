@@ -1,5 +1,5 @@
 export { MiscTab } from './MiscTab'
 export { PersonalTab } from './PersonalTab'
-export { default as Settings } from './Settings.vue'
+export { default as SettingsModal } from './SettingsModal.vue'
 export { SpotifyTab } from './SpotifyTab'
 export { ValorantTab } from './ValorantTab'

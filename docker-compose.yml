@@ -1,7 +1,7 @@
 services:
   frontend:
     build:
-      context: ./apps/frontend
+      context: ./apps/web
       dockerfile: Dockerfile
       args:
         - APP_BACKEND_URL=${APP_BACKEND_URL}
@@ -23,7 +23,7 @@ services:
 
   backend:
     build:
-      context: ./apps/backend
+      context: ./apps/api
       dockerfile: Dockerfile
     ports:
       - "8000:8000"

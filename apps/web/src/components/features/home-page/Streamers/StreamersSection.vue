@@ -14,7 +14,7 @@ const { width } = useWindowSize()
 <template>
   <div
     id="streamers"
-    class="pt-24 container bg-background mx-auto xl:h-dvh flex xl:flex-row flex-col xl:items-end items-center justify-center gap-12"
+    class="pt-24 container bg-background mx-auto xl:h-dvh flex xl:flex-row flex-col items-center justify-center gap-12"
   >
     <div class="flex flex-col xl:items-start sm:items-center gap-4 xl:pb-14 xl:w-1/2">
       <span

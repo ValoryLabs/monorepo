@@ -13,6 +13,7 @@ export const useSettingsStore = defineStore(
     const showLeftSidebar: Ref<boolean> = ref(true)
     const showRightSidebar: Ref<boolean> = ref(true)
     const showShortcuts: Ref<boolean> = ref(true)
+    const settingsActive: Ref<boolean> = ref(false)
 
     const toggleConfigurator = (): void => {
       configuratorActive.value = !configuratorActive.value
@@ -42,6 +43,7 @@ export const useSettingsStore = defineStore(
       showLeftSidebar,
       showRightSidebar,
       showShortcuts,
+      settingsActive,
       toggleConfigurator,
       toggleFullscreen,
       togglePreview,
@@ -50,6 +52,7 @@ export const useSettingsStore = defineStore(
   {
     persist: {
       paths: [
+        'settingsActive',
         'profileActive',
         'configuratorActive',
         'previewActive',
