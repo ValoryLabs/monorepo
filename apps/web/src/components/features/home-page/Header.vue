@@ -6,7 +6,6 @@ import { Button } from '@/components/ui/button'
 import { NAV_DATA } from '@/data'
 import { hidden, moveTo } from '@/lib/utils.ts'
 import router from '@/router'
-import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRoute } from 'vue-router'
 
@@ -14,14 +13,12 @@ const { t } = useI18n()
 const route = useRoute()
 
 const isDev = import.meta.env.APP_DEV === 'true'
-
-const showHeader = ref(true)
 </script>
 
 <template>
   <header
     :class="[
-      'fixed right-0 left-0 top-6 z-10 flex h-16 w-full justify-center transition-all duration-700',
+      'fixed right-0 left-0 top-6 z-100 flex h-16 w-full justify-center transition-all duration-700',
     ]"
   >
     <div
