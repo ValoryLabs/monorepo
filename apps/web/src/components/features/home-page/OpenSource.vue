@@ -14,8 +14,8 @@ const { starsCount, loading } = useGitHubStars()
 
 <template>
   <section id="source" class="flex flex-col items-center justify-center gap-9 py-16 mt-16">
-    <Github :size="60" class="drop-shadow-[0_0_20px_rgba(255,255,255,0.4)]" />
-    <span class="text-center text-5xl font-extrabold drop-shadow-[0_0_20px_rgba(255,255,255,0.4)]">
+    <Github :size="60" />
+    <span class="text-center text-5xl font-extrabold">
       {{ t('source.title') }}
     </span>
     <span class="text-center text-lg whitespace-pre-line">
