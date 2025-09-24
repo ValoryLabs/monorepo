@@ -22,7 +22,7 @@ const isDev = import.meta.env.APP_DEV === 'true'
     ]"
   >
     <div
-      class="container flex items-center justify-between gap-48 rounded-full bg-black/30 py-1 text-sm backdrop-blur-sm"
+      class="container flex items-center justify-between rounded-full bg-black/30 py-1 text-sm backdrop-blur-sm"
     >
       <div class="left flex flex-row gap-8">
         <div
@@ -49,7 +49,7 @@ const isDev = import.meta.env.APP_DEV === 'true'
         </ul>
       </div>
       <div class="right flex flex-row items-center gap-2">
-        <LinkPreview url="https://github.com/ValoryLabs/Valory" text="Valory">
+        <LinkPreview v-if="!hidden" url="https://github.com/ValoryLabs/Valory" text="Valory">
           <Button
             class="rounded-full border border-transparent bg-transparent text-white opacity-50 transition hover:border-white/10 hover:bg-white/10 hover:opacity-100"
             size="icon"
@@ -57,7 +57,7 @@ const isDev = import.meta.env.APP_DEV === 'true'
             <Github :size="16" />
           </Button>
         </LinkPreview>
-        <LanguageSwitcher variant="rounded" />
+        <LanguageSwitcher v-if="!hidden" variant="rounded" />
         <LoginOrConfigurator />
       </div>
     </div>

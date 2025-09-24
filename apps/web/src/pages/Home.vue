@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { Hero, Preview } from '@/components/features/home-page'
 import { DefaultLayout } from '@/layouts'
-import { hidden } from '@/lib/utils.ts'
 import { useHead } from '@unhead/vue'
 import { defineAsyncComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
@@ -23,7 +22,7 @@ useHead({
 <template>
   <DefaultLayout>
     <Hero />
-    <Preview v-if="!hidden" />
+    <Preview />
     <Streamers />
     <OpenSource />
   </DefaultLayout>
