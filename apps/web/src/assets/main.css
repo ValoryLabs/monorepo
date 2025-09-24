@@ -192,14 +192,12 @@
     'Apple Color Emoji',
     'Segoe UI Emoji',
     Segoe UI Symbol;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
 }
 
 body {
   color: var(--foreground);
   background-color: var(--background);
+  @apply antialiased;
 }
 
 .font-valory {
