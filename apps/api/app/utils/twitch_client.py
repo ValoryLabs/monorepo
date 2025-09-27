@@ -1,5 +1,7 @@
 import asyncio
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Optional
+import time
+import json
 
 import aiohttp
 
@@ -7,29 +9,62 @@ from app.config import settings, logger
 
 
 class TwitchAPIClient:
-    """Client for interacting with Twitch API."""
+    """Client for interacting with Twitch API with enhanced caching and performance."""
 
     def __init__(self):
         self.access_token = settings.TWITCH_ACCESS_TOKEN
         self.client_id = settings.TWITCH_CLIENT_ID_FOR_CLIENT
+        self._session_cache: Optional[aiohttp.ClientSession] = None
+        self._cache_expiry = 0
+        self._session_ttl = 300  # 5 minutes session reuse
 
     async def _create_session(self) -> aiohttp.ClientSession:
-        """Create a new HTTP session with proper timeout and connector settings."""
-        timeout = aiohttp.ClientTimeout(total=30, connect=10)
+        """Create a new HTTP session with optimized performance settings."""
+        timeout = aiohttp.ClientTimeout(total=30, connect=10, sock_read=15)
         connector = aiohttp.TCPConnector(
-            limit=10,
-            limit_per_host=5,
-            ttl_dns_cache=300,
+            limit=30,  # Increased connection pool
+            limit_per_host=10,  # More connections per host
+            ttl_dns_cache=600,  # Cache DNS longer
             use_dns_cache=True,
-            keepalive_timeout=30,
-            enable_cleanup_closed=True
+            keepalive_timeout=60,  # Keep connections alive longer
+            enable_cleanup_closed=True,
+            force_close=False,  # Reuse connections
+            # Performance optimizations
+            ssl=False if "localhost" in self.client_id else None,  # Skip SSL for local
+            tcp_nodelay=True,  # Disable Nagle's algorithm for lower latency
         )
 
         return aiohttp.ClientSession(
             timeout=timeout,
             connector=connector,
-            headers={'User-Agent': 'Valory-API/1.0'}
+            headers={
+                'User-Agent': 'Valory-API/1.0',
+                'Connection': 'keep-alive',  # Explicitly request keep-alive
+                'Accept-Encoding': 'gzip, deflate'  # Enable compression
+            },
+            # Session-level optimizations
+            auto_decompress=True,
+            trust_env=False,  # Don't check environment for proxy settings
+            read_bufsize=65536  # Larger read buffer for better performance
         )
+
+    async def _get_cached_session(self) -> aiohttp.ClientSession:
+        """Get a cached session or create a new one if expired."""
+        current_time = time.time()
+        
+        if (self._session_cache is None or 
+            current_time > self._cache_expiry or 
+            self._session_cache.closed):
+            
+            # Close old session if it exists
+            if self._session_cache and not self._session_cache.closed:
+                await self._session_cache.close()
+            
+            # Create new session
+            self._session_cache = await self._create_session()
+            self._cache_expiry = current_time + self._session_ttl
+            
+        return self._session_cache
 
     async def get_streams_status(self, usernames: List[str]) -> Dict[str, Dict[str, Any]]:
         """Get live status for multiple streamers."""
@@ -52,7 +87,7 @@ class TwitchAPIClient:
                 params = [("user_login", username) for username in chunk]
                 url = "https://api.twitch.tv/helix/streams"
 
-                session = await self._create_session()
+                session = await self._get_cached_session()
                 try:
                     async with session.get(url, headers=headers, params=params) as response:
                         if response.status == 200:
@@ -75,8 +110,7 @@ class TwitchAPIClient:
                 except Exception as e:
                     logger.error(f"Error getting streams for chunk {i // 100 + 1}: {str(e)}")
                 finally:
-                    await session.close()
-                    # Small delay between chunks to avoid rate limiting
+                    # Don't close cached session, just add delay
                     await asyncio.sleep(0.1)
 
             for username in usernames:
@@ -112,8 +146,8 @@ class TwitchAPIClient:
             for i in range(0, len(usernames), 100):
                 chunk = usernames[i:i + 100]
 
-                # Create new session for each chunk
-                session = await self._create_session()
+                # Use cached session for better performance
+                session = await self._get_cached_session()
                 try:
                     # Get user basic info
                     params = [("login", username) for username in chunk]
@@ -141,7 +175,7 @@ class TwitchAPIClient:
                 except Exception as e:
                     logger.error(f"Error getting users for chunk {i // 100 + 1}: {str(e)}")
                 finally:
-                    await session.close()
+                    # Don't close cached session
                     await asyncio.sleep(0.1)
 
             # Get follower counts (separate requests due to API limitations)
@@ -159,7 +193,7 @@ class TwitchAPIClient:
             if "id" not in user_data:
                 continue
 
-            session = await self._create_session()
+            session = await self._get_cached_session()
             try:
                 follower_url = "https://api.twitch.tv/helix/channels/followers"
                 follower_params = {"broadcaster_id": user_data["id"]}
@@ -176,7 +210,13 @@ class TwitchAPIClient:
                 logger.warning(f"Failed to get followers for {username}: {str(e)}")
                 users_data[username]["followers"] = 0
             finally:
-                await session.close()
+                # Don't close cached session
                 await asyncio.sleep(0.05)  # Small delay to avoid rate limiting
+
+    async def cleanup(self):
+        """Clean up cached session resources."""
+        if self._session_cache and not self._session_cache.closed:
+            await self._session_cache.close()
+            self._session_cache = None
 
 twitch_client = TwitchAPIClient()

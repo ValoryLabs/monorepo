@@ -325,6 +325,10 @@ class Overlay(Base):
         Index('ix_overlays_user_active', 'user_id', 'is_active'),
         Index('ix_overlays_style_created', 'overlay_style', 'created_at'),
         Index('ix_overlays_updated_desc', text('updated_at DESC')),
+        # Additional performance indexes
+        Index('ix_overlays_user_style', 'user_id', 'overlay_style'),  # User's overlay by style
+        Index('ix_overlays_active_updated', 'is_active', 'updated_at'),  # Active overlays by update time
+        Index('ix_overlays_user_created_desc', 'user_id', text('created_at DESC')),  # User's latest overlays
 
         # Table metadata
         {'comment': 'Streaming overlay configurations with visual and functional settings'}

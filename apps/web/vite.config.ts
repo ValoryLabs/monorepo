@@ -16,17 +16,31 @@ export default defineConfig(({ mode }) => {
     plugins: [
       tailwindcss(),
       ViteMinifyPlugin({}),
-      vue(),
+      vue({
+        // Vue performance optimizations
+        reactivityTransform: true,
+        template: {
+          compilerOptions: {
+            // Remove comments in production
+            comments: !isProduction,
+          },
+        },
+      }),
       VueI18nPlugin({
         module: 'vue-i18n',
         include: [path.resolve(__dirname, './src/i18n/locales/**')],
+        // Compile-time optimizations for i18n
+        compositionOnly: true,
+        runtimeOnly: true,
       }),
       mode === 'analyze' &&
         visualizer({
           filename: 'dist/stats.html',
           open: true,
+          gzipSize: true,
+          brotliSize: true,
         }),
-    ],
+    ].filter(Boolean),
     resolve: {
       alias: {
         '@': fileURLToPath(new URL('./src', import.meta.url)),
@@ -43,7 +57,39 @@ export default defineConfig(({ mode }) => {
             'vue-router': ['vue-router'],
             'vue-i18n': ['vue-i18n'],
             pinia: ['pinia'],
+            'ui-components': ['lucide-vue-next', 'reka-ui', 'vaul-vue'],
+            'utilities': ['@vueuse/core', '@vueuse/motion', 'tinycolor2'],
+            'animations': ['canvas-confetti', 'motion-v'],
+            'http-client': ['axios', 'ofetch'],
           },
+          // Optimize chunk splitting for better caching
+          chunkFileNames: (chunkInfo) => {
+            const facadeModuleId = chunkInfo.facadeModuleId
+            if (facadeModuleId) {
+              const name = facadeModuleId.split('/').pop()?.replace('.vue', '') || 'chunk'
+              return `js/${name}-[hash].js`
+            }
+            return 'js/[name]-[hash].js'
+          },
+          assetFileNames: (assetInfo) => {
+            const name = assetInfo.name || 'asset'
+            if (/\.(png|jpe?g|svg|gif|webp|ico)$/i.test(name)) {
+              return 'images/[name]-[hash][extname]'
+            }
+            if (/\.(css)$/i.test(name)) {
+              return 'css/[name]-[hash][extname]'
+            }
+            if (/\.(woff2?|eot|ttf|otf)$/i.test(name)) {
+              return 'fonts/[name]-[hash][extname]'
+            }
+            return 'assets/[name]-[hash][extname]'
+          },
+        },
+        // Tree-shaking optimizations
+        treeshake: {
+          moduleSideEffects: false,
+          propertyReadSideEffects: false,
+          unknownGlobalSideEffects: false,
         },
       },
       esbuild: isProduction
@@ -57,13 +103,36 @@ export default defineConfig(({ mode }) => {
         : false,
     },
     base: '/',
+    // Development server optimizations
     ...(isProduction
-      ? {}
+      ? {
+          // Production optimizations
+          assetsInlineLimit: 4096, // Inline small assets
+          cssCodeSplit: true, // Split CSS for better caching
+        }
       : {
           server: {
             host: true,
             port: 3005,
             allowedHosts: ['beta.valory.su'],
+            // Development performance
+            fs: {
+              strict: false,
+            },
+            hmr: {
+              overlay: false, // Disable error overlay for performance
+            },
+          },
+          // Faster dev builds
+          optimizeDeps: {
+            include: [
+              'vue',
+              'vue-router', 
+              'pinia',
+              '@vueuse/core',
+              'axios',
+            ],
+            exclude: ['vue-demi'],
           },
         }),
   }

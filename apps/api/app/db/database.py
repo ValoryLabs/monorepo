@@ -13,11 +13,32 @@ from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 from app.config import database_url
 
 engine = create_async_engine(
-    database_url, pool_pre_ping=True, pool_size=20, max_overflow=10, echo=False
+    database_url, 
+    pool_pre_ping=True, 
+    pool_size=20, 
+    max_overflow=30,  # Increased overflow capacity
+    pool_recycle=3600,  # Recycle connections every hour
+    pool_timeout=30,  # Connection timeout
+    echo=False,
+    # Query optimization settings
+    query_cache_size=1000,  # Cache compiled queries
+    connect_args={
+        "server_settings": {
+            "jit": "off",  # Disable JIT for faster simple queries
+            "application_name": "valory_api",
+            "timezone": "UTC"
+        },
+        "command_timeout": 30,
+        "prepared_statement_cache_size": 100
+    }
 )
 
 async_session_factory = async_sessionmaker(
-    bind=engine, class_=AsyncSession, expire_on_commit=False
+    bind=engine, 
+    class_=AsyncSession, 
+    expire_on_commit=False,
+    autoflush=False,  # Disable autoflush for better performance
+    query_cls=None  # Use default query class
 )
 
 

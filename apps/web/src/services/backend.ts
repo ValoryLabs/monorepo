@@ -35,15 +35,66 @@ const API_TIMEOUT = 10000
 const MAX_RETRIES = 3
 const RETRY_DELAY = 1000
 
-function createSecureAxiosConfig(includeCredentials = false): AxiosRequestConfig {
-  return {
+// Response cache for GET requests
+const RESPONSE_CACHE = new Map<string, { data: any; timestamp: number; ttl: number }>()
+const CACHE_DEFAULT_TTL = 30000 // 30 seconds
+
+function createSecureAxiosConfig(includeCredentials = false, enableCache = false): AxiosRequestConfig {
+  const config: AxiosRequestConfig = {
     timeout: API_TIMEOUT,
     withCredentials: includeCredentials,
     headers: {
       'Content-Type': 'application/json',
+      'Accept': 'application/json',
     },
     validateStatus: (status) => status >= 200 && status < 300,
+    // Performance optimizations
+    decompress: true,
+    maxRedirects: 3,
   }
+  
+  // Add cache headers for GET requests
+  if (enableCache) {
+    config.headers = {
+      ...config.headers,
+      'Cache-Control': 'public, max-age=30',
+      'If-None-Match': '*',
+    }
+  }
+  
+  return config
+}
+
+function getCacheKey(url: string, params?: any): string {
+  const paramStr = params ? JSON.stringify(params, Object.keys(params).sort()) : ''
+  return `${url}${paramStr}`
+}
+
+function getFromCache<T>(cacheKey: string): T | null {
+  const cached = RESPONSE_CACHE.get(cacheKey)
+  if (!cached) return null
+  
+  const now = Date.now()
+  if (now > cached.timestamp + cached.ttl) {
+    RESPONSE_CACHE.delete(cacheKey)
+    return null
+  }
+  
+  return cached.data as T
+}
+
+function setCache(cacheKey: string, data: any, ttl = CACHE_DEFAULT_TTL): void {
+  // Prevent cache from growing too large
+  if (RESPONSE_CACHE.size > 100) {
+    const oldestKey = RESPONSE_CACHE.keys().next().value
+    RESPONSE_CACHE.delete(oldestKey)
+  }
+  
+  RESPONSE_CACHE.set(cacheKey, {
+    data,
+    timestamp: Date.now(),
+    ttl,
+  })
 }
 
 function validateUserData(data: { apiKey?: string; riotID?: string }): void {
@@ -174,11 +225,22 @@ export async function getOverlayData(id: string): Promise<OverlayData | null> {
       throw new Error('Backend URL is not configured')
     }
 
-    const config = createSecureAxiosConfig(false)
+    // Check cache first
+    const cacheKey = getCacheKey(`${baseURL}/api/overlay/${id}`)
+    const cachedData = getFromCache<OverlayData>(cacheKey)
+    if (cachedData) {
+      console.info('Overlay data retrieved from cache')
+      return cachedData
+    }
+
+    const config = createSecureAxiosConfig(false, true) // Enable cache headers
 
     const fetchOverlay = () => axios.get<OverlayData>(`${baseURL}/api/overlay/${id}`, config)
 
     const response: AxiosResponse<OverlayData> = await retryWithBackoff(fetchOverlay)
+
+    // Cache successful response
+    setCache(cacheKey, response.data, 60000) // Cache for 1 minute
 
     console.info('Overlay data fetched successfully')
     return response.data
@@ -230,5 +292,16 @@ export async function getOverlayData(id: string): Promise<OverlayData | null> {
 }
 
 export function clearApiCache(): void {
+  RESPONSE_CACHE.clear()
   console.info('API cache cleared')
 }
+
+// Clean expired cache entries periodically
+setInterval(() => {
+  const now = Date.now()
+  for (const [key, value] of RESPONSE_CACHE.entries()) {
+    if (now > value.timestamp + value.ttl) {
+      RESPONSE_CACHE.delete(key)
+    }
+  }
+}, 60000) // Clean every minute

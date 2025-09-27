@@ -2,7 +2,9 @@ import logging
 from datetime import datetime, timedelta
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from apscheduler.triggers.interval import IntervalTrigger
+from apscheduler.executors.asyncio import AsyncIOExecutor
 
+from app.config import settings
 from app.db.redis import redis_manager
 from app.routers.streamers import update_streamers_cache
 
@@ -13,7 +15,22 @@ class StreamerScheduler:
     """Scheduler for automatic streamer data updates using AsyncIOScheduler."""
 
     def __init__(self):
-        self.scheduler = AsyncIOScheduler()
+        # Configure scheduler with performance optimizations
+        executors = {
+            'default': AsyncIOExecutor(max_workers=1)  # Single worker for streamer updates
+        }
+        
+        job_defaults = {
+            'coalesce': True,
+            'max_instances': 1,
+            'misfire_grace_time': 120
+        }
+        
+        self.scheduler = AsyncIOScheduler(
+            executors=executors,
+            job_defaults=job_defaults,
+            timezone='UTC'
+        )
         self.is_running = False
         self.consecutive_failures = 0
         self.max_consecutive_failures = 3
@@ -49,16 +66,19 @@ class StreamerScheduler:
         """Start the scheduler."""
         if not self.is_running:
             try:
-                # Add job to run every 5 minutes
+                # Add job to run based on configuration (default every 5 minutes)
+                update_interval = getattr(settings, 'SCHEDULER_UPDATE_INTERVAL', 5)
                 self.scheduler.add_job(
-                    func=self.update_streamers_task,  # Прямо async функцию
-                    trigger=IntervalTrigger(minutes=5),
+                    func=self.update_streamers_task,
+                    trigger=IntervalTrigger(minutes=update_interval),
                     id='update_streamers',
                     name='Update Streamers Data',
                     replace_existing=True,
                     max_instances=1,
                     coalesce=True,
-                    misfire_grace_time=60
+                    misfire_grace_time=120,  # Increased grace time
+                    # Jitter to prevent thundering herd
+                    jitter=30
                 )
 
                 self.scheduler.start()

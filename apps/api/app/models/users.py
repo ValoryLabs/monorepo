@@ -7,7 +7,8 @@ from sqlalchemy import (
     Boolean,
     Index,
     UniqueConstraint,
-    CheckConstraint
+    CheckConstraint,
+    text
 )
 from sqlalchemy.orm import relationship, Mapped, mapped_column
 from sqlalchemy.sql import func
@@ -155,9 +156,14 @@ class User(Base):
             name='ck_users_avatar_url_format'
         ),
 
-        # Composite index for efficient queries
+        # Composite indexes for efficient queries
         Index('ix_users_active_created', 'is_active', 'created_at'),
         Index('ix_users_twitch_lookup', 'twitch_id', 'twitch_display_name'),
+        # Additional performance indexes
+        Index('ix_users_username_lower', text('LOWER(username)')),  # Case-insensitive username search
+        Index('ix_users_active_twitch', 'is_active', 'twitch_id'),  # Active users with Twitch
+        Index('ix_users_riot_integration', 'riot_id', 'is_active'),  # Users with Riot integration
+        Index('ix_users_hdev_integration', 'hdev_api_key', 'is_active'),  # Users with HDEV API
 
         # Table comment
         {'comment': 'Application users with gaming platform integrations'}
