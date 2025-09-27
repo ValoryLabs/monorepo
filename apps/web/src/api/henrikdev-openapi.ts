@@ -2452,72 +2452,6 @@ export class Api<SecurityDataType extends unknown> {
      * No description
      *
      * @tags valorant
-     * @name StoredMatchesById
-     * @request GET:/valorant/v1/by-puuid/lifetime/matches/{affinity}/{puuid}
-     * @response `200` `StoredMatchesResponse` Stored match history retrieved successfully
-     * @response `400` `SendError` Bad Request
-     * @response `404` `SendError` Account not found
-     * @response `500` `SendError` Internal Server Error
-     */
-    storedMatchesById: (
-      affinity: string,
-      puuid: string,
-      query?: {
-        /** Game mode filter (optional) */
-        mode?: string;
-        /** Map filter (optional) */
-        map?: string;
-        /**
-         * Number of results (optional)
-         * @format int32
-         */
-        size?: number;
-      },
-      params: RequestParams = {},
-    ) =>
-      this.http.request<StoredMatchesResponse, SendError>({
-        path: `/valorant/v1/by-puuid/lifetime/matches/${affinity}/${puuid}`,
-        method: "GET",
-        query: query,
-        format: "json",
-        ...params,
-      }),
-
-    /**
-     * No description
-     *
-     * @tags valorant
-     * @name StoredMmrHistoryById
-     * @request GET:/valorant/v1/by-puuid/lifetime/mmr-history/{affinity}/{puuid}
-     * @response `200` `StoredMMRResponse` Stored MMR history retrieved successfully
-     * @response `400` `SendError` Bad Request
-     * @response `404` `SendError` Account not found
-     * @response `500` `SendError` Internal Server Error
-     */
-    storedMmrHistoryById: (
-      affinity: string,
-      puuid: string,
-      query?: {
-        /**
-         * Number of results (optional)
-         * @format int32
-         */
-        size?: number;
-      },
-      params: RequestParams = {},
-    ) =>
-      this.http.request<StoredMMRResponse, SendError>({
-        path: `/valorant/v1/by-puuid/lifetime/mmr-history/${affinity}/${puuid}`,
-        method: "GET",
-        query: query,
-        format: "json",
-        ...params,
-      }),
-
-    /**
-     * No description
-     *
-     * @tags valorant
      * @name GetMmrHistoryById
      * @request GET:/valorant/v1/by-puuid/mmr-history/{affinity}/{puuid}
      * @response `200` `MMRHistoryV1Response` MMR history retrieved successfully
@@ -2556,6 +2490,72 @@ export class Api<SecurityDataType extends unknown> {
       this.http.request<MMRV1Response, SendError>({
         path: `/valorant/v1/by-puuid/mmr/${affinity}/${puuid}`,
         method: "GET",
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @tags valorant
+     * @name StoredMatchesById
+     * @request GET:/valorant/v1/by-puuid/stored-matches/{affinity}/{puuid}
+     * @response `200` `StoredMatchesResponse` Stored match history retrieved successfully
+     * @response `400` `SendError` Bad Request
+     * @response `404` `SendError` Account not found
+     * @response `500` `SendError` Internal Server Error
+     */
+    storedMatchesById: (
+      affinity: string,
+      puuid: string,
+      query?: {
+        /** Game mode filter (optional) */
+        mode?: string;
+        /** Map filter (optional) */
+        map?: string;
+        /**
+         * Number of results (optional)
+         * @format int32
+         */
+        size?: number;
+      },
+      params: RequestParams = {},
+    ) =>
+      this.http.request<StoredMatchesResponse, SendError>({
+        path: `/valorant/v1/by-puuid/stored-matches/${affinity}/${puuid}`,
+        method: "GET",
+        query: query,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @tags valorant
+     * @name StoredMmrHistoryById
+     * @request GET:/valorant/v1/by-puuid/stored-mmr-history/{affinity}/{puuid}
+     * @response `200` `StoredMMRResponse` Stored MMR history retrieved successfully
+     * @response `400` `SendError` Bad Request
+     * @response `404` `SendError` Account not found
+     * @response `500` `SendError` Internal Server Error
+     */
+    storedMmrHistoryById: (
+      affinity: string,
+      puuid: string,
+      query?: {
+        /**
+         * Number of results (optional)
+         * @format int32
+         */
+        size?: number;
+      },
+      params: RequestParams = {},
+    ) =>
+      this.http.request<StoredMMRResponse, SendError>({
+        path: `/valorant/v1/by-puuid/stored-mmr-history/${affinity}/${puuid}`,
+        method: "GET",
+        query: query,
         format: "json",
         ...params,
       }),
@@ -2662,74 +2662,6 @@ export class Api<SecurityDataType extends unknown> {
     ) =>
       this.http.request<any, SendError>({
         path: `/valorant/v1/leaderboard/${affinity}`,
-        method: "GET",
-        query: query,
-        format: "json",
-        ...params,
-      }),
-
-    /**
-     * No description
-     *
-     * @tags valorant
-     * @name StoredMatches
-     * @request GET:/valorant/v1/lifetime/matches/{affinity}/{name}/{tag}
-     * @response `200` `StoredMatchesResponse` Stored match history retrieved successfully
-     * @response `400` `SendError` Bad Request
-     * @response `404` `SendError` Account not found
-     * @response `500` `SendError` Internal Server Error
-     */
-    storedMatches: (
-      affinity: string,
-      name: string,
-      tag: string,
-      query?: {
-        /** Game mode filter (optional) */
-        mode?: string;
-        /** Map filter (optional) */
-        map?: string;
-        /**
-         * Number of results (optional)
-         * @format int32
-         */
-        size?: number;
-      },
-      params: RequestParams = {},
-    ) =>
-      this.http.request<StoredMatchesResponse, SendError>({
-        path: `/valorant/v1/lifetime/matches/${affinity}/${name}/${tag}`,
-        method: "GET",
-        query: query,
-        format: "json",
-        ...params,
-      }),
-
-    /**
-     * No description
-     *
-     * @tags valorant
-     * @name StoredMmrHistory
-     * @request GET:/valorant/v1/lifetime/mmr-history/{affinity}/{name}/{tag}
-     * @response `200` `StoredMMRResponse` Stored MMR history retrieved successfully
-     * @response `400` `SendError` Bad Request
-     * @response `404` `SendError` Account not found
-     * @response `500` `SendError` Internal Server Error
-     */
-    storedMmrHistory: (
-      affinity: string,
-      name: string,
-      tag: string,
-      query?: {
-        /**
-         * Number of results (optional)
-         * @format int32
-         */
-        size?: number;
-      },
-      params: RequestParams = {},
-    ) =>
-      this.http.request<StoredMMRResponse, SendError>({
-        path: `/valorant/v1/lifetime/mmr-history/${affinity}/${name}/${tag}`,
         method: "GET",
         query: query,
         format: "json",
@@ -2976,6 +2908,74 @@ export class Api<SecurityDataType extends unknown> {
       this.http.request<StatusV1, SendError>({
         path: `/valorant/v1/status/${affinity}`,
         method: "GET",
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @tags valorant
+     * @name StoredMatches
+     * @request GET:/valorant/v1/stored-matches/{affinity}/{name}/{tag}
+     * @response `200` `StoredMatchesResponse` Stored match history retrieved successfully
+     * @response `400` `SendError` Bad Request
+     * @response `404` `SendError` Account not found
+     * @response `500` `SendError` Internal Server Error
+     */
+    storedMatches: (
+      affinity: string,
+      name: string,
+      tag: string,
+      query?: {
+        /** Game mode filter (optional) */
+        mode?: string;
+        /** Map filter (optional) */
+        map?: string;
+        /**
+         * Number of results (optional)
+         * @format int32
+         */
+        size?: number;
+      },
+      params: RequestParams = {},
+    ) =>
+      this.http.request<StoredMatchesResponse, SendError>({
+        path: `/valorant/v1/stored-matches/${affinity}/${name}/${tag}`,
+        method: "GET",
+        query: query,
+        format: "json",
+        ...params,
+      }),
+
+    /**
+     * No description
+     *
+     * @tags valorant
+     * @name StoredMmrHistory
+     * @request GET:/valorant/v1/stored-mmr-history/{affinity}/{name}/{tag}
+     * @response `200` `StoredMMRResponse` Stored MMR history retrieved successfully
+     * @response `400` `SendError` Bad Request
+     * @response `404` `SendError` Account not found
+     * @response `500` `SendError` Internal Server Error
+     */
+    storedMmrHistory: (
+      affinity: string,
+      name: string,
+      tag: string,
+      query?: {
+        /**
+         * Number of results (optional)
+         * @format int32
+         */
+        size?: number;
+      },
+      params: RequestParams = {},
+    ) =>
+      this.http.request<StoredMMRResponse, SendError>({
+        path: `/valorant/v1/stored-mmr-history/${affinity}/${name}/${tag}`,
+        method: "GET",
+        query: query,
         format: "json",
         ...params,
       }),
