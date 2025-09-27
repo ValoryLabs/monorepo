@@ -106,7 +106,7 @@ export default defineConfig(({ mode }) => {
           server: {
             host: true,
             port: 3005,
-            allowedHosts: ['beta.valory.su'],
+            allowedHosts: ['beta.valory.su', 'api.valory.su'],
             fs: {
               strict: false,
             },
