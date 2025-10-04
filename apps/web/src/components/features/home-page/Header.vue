@@ -29,7 +29,12 @@ const isDev = import.meta.env.APP_DEV === 'true'
           class="relative inline-flex gap-2 logo cursor-pointer"
           @click="router.push({ name: 'home' })"
         >
+            <div @click="moveTo('main')" class="flex flex-row items-center gap-2">
           <Valory :size="30" />
+              <span class="font-valory inline-block bg-linear-to-b from-[#f2f2f2] to-[#dddddd] bg-clip-text text-lg leading-none text-transparent">
+                VALORY
+              </span>
+            </div>
           <span
             v-if="isDev"
             class="absolute -top-2 left-3 inline-flex text-xs px-1.5 py-0.5 h-fit font-semibold items-center justify-center rounded-full border text-white transition border-white/10 bg-neutral-900"
