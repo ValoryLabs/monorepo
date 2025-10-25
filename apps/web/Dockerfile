@@ -23,4 +23,4 @@ RUN bunx --bun vite build --mode production
 FROM devforth/spa-to-http:latest
 COPY --from=builder /app/dist/ .
 
-CMD ["--port", "3115"]
+CMD ["--port", "2096"]
