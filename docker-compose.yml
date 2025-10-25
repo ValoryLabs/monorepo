@@ -6,7 +6,7 @@ services:
       args:
         - APP_BACKEND_URL=${APP_BACKEND_URL}
     ports:
-      - "8081:8080"
+      - "3115:3115"
     depends_on:
       - backend
     env_file:
