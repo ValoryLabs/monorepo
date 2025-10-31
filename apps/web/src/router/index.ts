@@ -32,6 +32,14 @@ const router = createRouter({
       },
     },
     {
+      path: '/contact',
+      name: 'contact',
+      component: { render: () => null },
+      beforeEnter() {
+        window.location.href = 'https://discord.gg/pYV4PBV5YW'
+      },
+    },
+    {
       path: '/configurator',
       name: 'configurator',
       component: ConfiguratorLayout,
@@ -104,6 +112,10 @@ router.beforeEach(async (to) => {
   ) {
     return { name: 'configurator-home' }
   }
+})
+
+router.afterEach(() => {
+  window.scrollTo({ top: 0, behavior: 'smooth' })
 })
 
 export default router

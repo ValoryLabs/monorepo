@@ -26,8 +26,11 @@ const router = useRouter()
         class="flex flex-col justify-between"
         :class="[hidden ? 'max-w-52 h-[160px]' : 'h-full']"
       >
-        <div @click="moveTo('main')" class="flex flex-row items-center gap-2">
+        <div @click="moveTo('main')" class="flex flex-row items-center gap-2 cursor-pointer">
           <Valory :size="28" />
+          <span class="font-valory inline-block bg-linear-to-b from-[#f2f2f2] to-[#dddddd] bg-clip-text text-lg leading-none text-transparent">
+            VALORY
+          </span>
         </div>
         <div class="flex flex-col gap-4">
           <div class="flex flex-row gap-2 -ml-2">
