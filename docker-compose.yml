@@ -119,9 +119,6 @@ services:
       args:
         - APP_BACKEND_URL=${API_DOMAIN}
     container_name: frontend
-    depends_on:
-      backend:
-        condition: service_healthy
     environment:
       APP_BACKEND_URL: ${API_DOMAIN}
     env_file:
@@ -137,19 +134,6 @@ services:
         reservations:
           cpus: "0.3"
           memory: 512M
-    healthcheck:
-      test:
-        [
-          "CMD",
-          "wget",
-          "--no-verbose",
-          "--tries=1",
-          "--spider",
-          "http://localhost:8080/",
-        ]
-      interval: 30s
-      timeout: 10s
-      retries: 3
 
   caddy:
     image: caddy:2-alpine
