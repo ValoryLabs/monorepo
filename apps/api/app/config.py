@@ -39,7 +39,7 @@ class Settings(BaseSettings):
     DATABASE_PORT: int = 5432
 
     REDIS_PASSWORD: str = "password"
-    REDIS_HOST: str = "localhost"
+    REDIS_HOST: str = "dragonfly"
     REDIS_PORT: int = 6379
 
     CACHE_TTL: int = 60 * 60 * 24 * 31
