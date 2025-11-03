@@ -82,11 +82,11 @@ services:
     build:
       context: ./apps/api
       dockerfile: Dockerfile
-      args:
-        - REDIS_HOST=dragonfly
-        - APP_FRONTEND_URL=${DOMAIN}
-        - APP_BACKEND_URL=${API_DOMAIN}
     container_name: backend
+    environment:
+      REDIS_HOST: dragonfly
+      APP_FRONTEND_URL: ${DOMAIN}
+      APP_BACKEND_URL: ${API_DOMAIN}
     depends_on:
       postgres:
         condition: service_healthy
