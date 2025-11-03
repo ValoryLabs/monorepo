@@ -1,16 +1,128 @@
 services:
-  frontend:
-    build:
-      context: ./apps/web
-      dockerfile: Dockerfile
-      args:
-        - APP_BACKEND_URL=${APP_BACKEND_URL}
+  postgres:
+    image: postgres:17-alpine
+    container_name: postgres
     ports:
-      - "9443:8080"
+      - "${DATABASE_PORT:-5432}:${DATABASE_PORT:-5432}"
+    environment:
+      POSTGRES_DB: ${DATABASE_NAME}
+      POSTGRES_USER: ${DATABASE_LOGIN}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      PGPORT: ${DATABASE_PORT:-5432}
+    command: -p ${DATABASE_PORT:-5432}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - app_network
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 1G
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "pg_isready -U ${POSTGRES_USER} -p ${DATABASE_PORT:-5432}",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  postgresus:
+    container_name: postgresus
+    image: rostislavdugin/postgresus:latest
+    ports:
+      - "4005:4005"
+    volumes:
+      - ./postgresus-data:/postgresus-data
+    restart: unless-stopped
+
+  dragonfly:
+    image: docker.dragonflydb.io/dragonflydb/dragonfly:latest
+    container_name: dragonfly
+    ulimits:
+      memlock: -1
+    ports:
+      - "${REDIS_PORT:-6379}:${REDIS_PORT:-6379}"
+    volumes:
+      - dragonfly_data:/data
+    networks:
+      - app_network
+    restart: unless-stopped
+    command:
+      - --port=${REDIS_PORT:-6379}
+      - --requirepass=${REDIS_PASSWORD}
+      - --maxmemory=512mb
+      - --cache_mode=true
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 768M
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "redis-cli",
+          "-p",
+          "${REDIS_PORT:-6379}",
+          "-a",
+          "${REDIS_PASSWORD}",
+          "--raw",
+          "incr",
+          "ping",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    image: ${DOCKER_REGISTRY}/backend:${DEPLOY_TAG:-latest}
+    container_name: backend
     depends_on:
-      - backend
+      postgres:
+        condition: service_healthy
+      dragonfly:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      REDIS_URL: redis://:${REDIS_PASSWORD}@dragonfly:6379/0
+      DOCKER_ENV: "true"
     env_file:
       - .env
+    networks:
+      - app_network
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 1G
+        reservations:
+          cpus: "0.2"
+          memory: 512M
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  frontend:
+    image: ${DOCKER_REGISTRY}/frontend:${DEPLOY_TAG:-latest}
+    container_name: frontend
+    depends_on:
+      backend:
+        condition: service_healthy
+    environment:
+      APP_BACKEND_URL: ${API_DOMAIN}
+    env_file:
+      - .env
+    networks:
+      - app_network
+    restart: unless-stopped
     deploy:
       resources:
         limits:
@@ -19,19 +131,48 @@ services:
         reservations:
           cpus: "0.3"
           memory: 512M
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "wget",
+          "--no-verbose",
+          "--tries=1",
+          "--spider",
+          "http://localhost:8080/",
+        ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  caddy:
+    image: caddy:2-alpine
+    container_name: caddy
+    depends_on:
+      - frontend
+      - backend
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    environment:
+      DOMAIN: ${DOMAIN}
+      BACKEND_HOST: backend:8000
+      FRONTEND_HOST: frontend:8080
+    volumes:
+      - ./apps/caddy/Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+    networks:
+      - app_network
     restart: unless-stopped
 
-  backend:
-    build:
-      context: ./apps/api
-      dockerfile: Dockerfile
-    ports:
-      - "8443:8443"
-    env_file:
-      - .env
-    restart: unless-stopped
-    deploy:
-      resources:
-        limits:
-          cpus: "0.2"
-          memory: 512M
+volumes:
+  postgres_data:
+  dragonfly_data:
+  caddy_data:
+  caddy_config:
+
+networks:
+  app_network:
+    driver: bridge

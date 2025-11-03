@@ -6,13 +6,14 @@ from pydantic import computed_field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
-if os.getenv('DOCKER_ENV'):
-    BASE_DIR = Path('/app')
+if os.getenv("DOCKER_ENV"):
+    BASE_DIR = Path("/app")
 else:
     BASE_DIR = Path(__file__).resolve().parents[3]
 
 ENV_FILE = BASE_DIR / ".env"
 LOG_FILE_PATH = BASE_DIR / "log.txt"
+
 
 class Settings(BaseSettings):
     PROJECT_NAME: str = "VALORY.SU"
@@ -63,28 +64,26 @@ class Settings(BaseSettings):
     @property
     def REDIS_URL(self) -> str:
         if self.REDIS_PASSWORD:
-            if self.REDIS_LOGIN and self.REDIS_LOGIN != "user":
-                return f"redis://{self.REDIS_LOGIN}:{self.REDIS_PASSWORD}@{self.REDIS_IP}:{self.REDIS_PORT}/0"
-            else:
-                return f"redis://:{self.REDIS_PASSWORD}@{self.REDIS_IP}:{self.REDIS_PORT}/0"
+            return f"redis://default:{self.REDIS_PASSWORD}@localhost:{self.REDIS_PORT}/0"
         else:
-            return f"redis://{self.REDIS_IP}:{self.REDIS_PORT}/0"
+            raise ValueError("REDIS_PASSWORD is not set")
 
 
 def setup_logging():
     """Setup logging configuration."""
     logging.basicConfig(
         level=logging.INFO,
-        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+        format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
         handlers=[
             logging.FileHandler(LOG_FILE_PATH),  # Используем определенную переменную
-            logging.StreamHandler()
-        ]
+            logging.StreamHandler(),
+        ],
     )
 
     # Set specific log levels
-    logging.getLogger('apscheduler').setLevel(logging.WARNING)
-    logging.getLogger('aiohttp').setLevel(logging.WARNING)
+    logging.getLogger("apscheduler").setLevel(logging.WARNING)
+    logging.getLogger("aiohttp").setLevel(logging.WARNING)
+
 
 setup_logging()
 logger = logging.getLogger(__name__)
