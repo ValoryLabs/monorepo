@@ -7,6 +7,7 @@ from app.schedule import streamer_scheduler
 
 router = APIRouter()
 
+
 @router.get("/ping")
 async def ping():
     return {
@@ -15,5 +16,10 @@ async def ping():
         "timestamp": datetime.now().isoformat(),
         "uptime": time.time(),
         "scheduler_running": streamer_scheduler.is_running,
-        "redis_connected": redis_manager.redis is not None
+        "redis_connected": redis_manager.redis is not None,
     }
+
+
+@router.get("/health")
+async def health_check():
+    return {"status": "ok"}
