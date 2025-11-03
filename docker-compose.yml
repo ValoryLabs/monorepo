@@ -24,7 +24,7 @@ services:
       test:
         [
           "CMD-SHELL",
-          "pg_isready -U ${POSTGRES_USER} -p ${DATABASE_PORT:-5432}",
+          "pg_isready -U ${DATABASE_LOGIN} -p ${DATABASE_PORT:-5432}",
         ]
       interval: 10s
       timeout: 5s
@@ -79,7 +79,9 @@ services:
       retries: 5
 
   backend:
-    image: ${DOCKER_REGISTRY}/backend:${DEPLOY_TAG:-latest}
+    build:
+      context: ./apps/api
+      dockerfile: Dockerfile
     container_name: backend
     depends_on:
       postgres:
@@ -110,7 +112,11 @@ services:
       start_period: 40s
 
   frontend:
-    image: ${DOCKER_REGISTRY}/frontend:${DEPLOY_TAG:-latest}
+    build:
+      context: ./apps/web
+      dockerfile: Dockerfile
+      args:
+        - APP_BACKEND_URL=${API_DOMAIN}
     container_name: frontend
     depends_on:
       backend:
