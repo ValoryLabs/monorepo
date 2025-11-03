@@ -4,19 +4,14 @@
 
 {$DOMAIN} {
     handle /api/* {
-        reverse_proxy {$BACKEND_HOST} {
+        reverse_proxy backend:8000 {
             header_up Host {host}
             header_up X-Real-IP {remote}
-
-            # Health check
-            health_uri /api/utils/health
-            health_interval 30s
-            health_timeout 10s
         }
     }
 
     handle {
-        reverse_proxy {$FRONTEND_HOST} {
+        reverse_proxy frontend:8080 {
             header_up Host {host}
             header_up X-Real-IP {remote}
         }
