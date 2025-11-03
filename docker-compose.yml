@@ -85,8 +85,8 @@ services:
     container_name: backend
     environment:
       REDIS_HOST: dragonfly
-      APP_FRONTEND_URL: ${DOMAIN}
-      APP_BACKEND_URL: ${API_DOMAIN}
+      APP_FRONTEND_URL: ${APP_FRONTEND_URL}
+      APP_BACKEND_URL: ${APP_BACKEND_URL}
     depends_on:
       postgres:
         condition: service_healthy
@@ -117,7 +117,7 @@ services:
       context: ./apps/web
       dockerfile: Dockerfile
       args:
-        - APP_BACKEND_URL=https://${API_DOMAIN}
+        - APP_BACKEND_URL=${APP_BACKEND_URL}
     container_name: frontend
     env_file:
       - .env
