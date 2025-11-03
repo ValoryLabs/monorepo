@@ -82,6 +82,10 @@ services:
     build:
       context: ./apps/api
       dockerfile: Dockerfile
+      args:
+        - REDIS_HOST=dragonfly
+        - APP_FRONTEND_URL=${DOMAIN}
+        - APP_BACKEND_URL=${API_DOMAIN}
     container_name: backend
     depends_on:
       postgres:
@@ -117,10 +121,8 @@ services:
       context: ./apps/web
       dockerfile: Dockerfile
       args:
-        - APP_BACKEND_URL=${API_DOMAIN}
+        - APP_BACKEND_URL=https://${API_DOMAIN}
     container_name: frontend
-    environment:
-      APP_BACKEND_URL: https://${API_DOMAIN}
     env_file:
       - .env
     networks:
