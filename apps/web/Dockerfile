@@ -1,4 +1,3 @@
-# Базовый образ с Bun
 FROM oven/bun:1-alpine AS base
 WORKDIR /app
 
