@@ -62,7 +62,7 @@ class Settings(BaseSettings):
     @computed_field
     @property
     def REDIS_URL(self) -> str:
-        if self.REDIS_PASSWORD and self.REDIS_HOST:
+        if self.DEBUG or (self.REDIS_PASSWORD and self.REDIS_HOST):
             return f"redis://default:{self.REDIS_PASSWORD}@{self.REDIS_HOST}:{self.REDIS_PORT}/0"
         else:
             raise ValueError("REDIS_PASSWORD or REDIS_HOST is not set")

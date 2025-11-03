@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { cn } from '@/lib/utils'
-import type { LabelProps } from 'radix-vue'
-import { Label } from 'radix-vue'
+import type { LabelProps } from 'reka-ui'
+import { Label } from 'reka-ui'
 import type { HTMLAttributes } from 'vue'
 import { computed } from 'vue'
 
