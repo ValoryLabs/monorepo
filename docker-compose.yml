@@ -120,7 +120,7 @@ services:
         - APP_BACKEND_URL=${API_DOMAIN}
     container_name: frontend
     environment:
-      APP_BACKEND_URL: ${API_DOMAIN}
+      APP_BACKEND_URL: https://${API_DOMAIN}
     env_file:
       - .env
     networks:
