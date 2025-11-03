@@ -7,11 +7,9 @@
         reverse_proxy {$BACKEND_HOST} {
             header_up Host {host}
             header_up X-Real-IP {remote}
-            header_up X-Forwarded-For {remote}
-            header_up X-Forwarded-Proto {scheme}
 
             # Health check
-            health_uri /health
+            health_uri /api/utils/health
             health_interval 30s
             health_timeout 10s
         }
@@ -21,8 +19,6 @@
         reverse_proxy {$FRONTEND_HOST} {
             header_up Host {host}
             header_up X-Real-IP {remote}
-            header_up X-Forwarded-For {remote}
-            header_up X-Forwarded-Proto {scheme}
         }
     }
 
