@@ -3,18 +3,33 @@
 }
 
 {$DOMAIN} {
-    handle /api/* {
-        reverse_proxy backend:8000 {
-            header_up Host {host}
-            header_up X-Real-IP {remote}
+    reverse_proxy frontend:8080 {
+        header_up Host {host}
+        header_up X-Real-IP {remote}
+    }
+
+    log {
+        output file /var/log/caddy/access.log {
+            roll_size 100mb
+            roll_keep 5
         }
     }
 
-    handle {
-        reverse_proxy frontend:8080 {
-            header_up Host {host}
-            header_up X-Real-IP {remote}
-        }
+    header {
+        Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+        X-Content-Type-Options "nosniff"
+        X-Frame-Options "DENY"
+        Referrer-Policy "strict-origin-when-cross-origin"
+        -Server
+    }
+
+    encode gzip zstd
+}
+
+{$API_DOMAIN} {
+    reverse_proxy backend:8000 {
+        header_up Host {host}
+        header_up X-Real-IP {remote}
     }
 
     log {
