@@ -1,5 +1,5 @@
 {
-    email {$EMAIL}
+    email misha@valory.su
 }
 
 {$DOMAIN} {
