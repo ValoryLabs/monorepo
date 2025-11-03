@@ -22,8 +22,6 @@
         Referrer-Policy "strict-origin-when-cross-origin"
         -Server
     }
-
-    encode gzip zstd
 }
 
 {$API_DOMAIN} {
@@ -46,6 +44,4 @@
         Referrer-Policy "strict-origin-when-cross-origin"
         -Server
     }
-
-    encode gzip zstd
 }
