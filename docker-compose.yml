@@ -92,10 +92,6 @@ services:
         condition: service_healthy
       dragonfly:
         condition: service_healthy
-    environment:
-      REDIS_HOST: dragonfly
-      APP_FRONTEND_URL: ${DOMAIN}
-      APP_BACKEND_URL: ${API_DOMAIN}
     env_file:
       - .env
     networks:
