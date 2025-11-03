@@ -87,9 +87,8 @@ services:
       dragonfly:
         condition: service_healthy
     environment:
-      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
-      REDIS_URL: redis://:${REDIS_PASSWORD}@dragonfly:6379/0
-      DOCKER_ENV: "true"
+      APP_FRONTEND_URL: ${DOMAIN}
+      APP_BACKEND_URL: ${API_DOMAIN}
     env_file:
       - .env
     networks:
