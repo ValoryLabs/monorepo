@@ -38,9 +38,8 @@ class Settings(BaseSettings):
     DATABASE_IP: str = "localhost"
     DATABASE_PORT: int = 5432
 
-    REDIS_LOGIN: str = "user"
     REDIS_PASSWORD: str = "password"
-    REDIS_IP: str = "localhost"
+    REDIS_HOST: str = "localhost"
     REDIS_PORT: int = 6379
 
     CACHE_TTL: int = 60 * 60 * 24 * 31
@@ -63,10 +62,10 @@ class Settings(BaseSettings):
     @computed_field
     @property
     def REDIS_URL(self) -> str:
-        if self.REDIS_PASSWORD:
-            return f"redis://default:{self.REDIS_PASSWORD}@localhost:{self.REDIS_PORT}/0"
+        if self.REDIS_PASSWORD and self.REDIS_HOST:
+            return f"redis://default:{self.REDIS_PASSWORD}@{self.REDIS_HOST}:{self.REDIS_PORT}/0"
         else:
-            raise ValueError("REDIS_PASSWORD is not set")
+            raise ValueError("REDIS_PASSWORD or REDIS_HOST is not set")
 
 
 def setup_logging():
