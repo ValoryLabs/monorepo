@@ -145,8 +145,7 @@ services:
       - "443:443/udp"
     environment:
       DOMAIN: ${DOMAIN}
-      BACKEND_HOST: backend:8000
-      FRONTEND_HOST: frontend:8080
+      API_DOMAIN: ${API_DOMAIN}
     volumes:
       - ./apps/caddy/Caddyfile:/etc/caddy/Caddyfile
       - caddy_data:/data
