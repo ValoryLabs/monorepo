@@ -27,7 +27,7 @@ export const useUserStore = defineStore(
       error.value = false
 
       try {
-        const response = await axios.get(`https://${import.meta.env.API_DOMAIN}/api/users/me`, {
+        const response = await axios.get(`https://${import.meta.env.APP_BACKEND}/api/users/me`, {
           withCredentials: true,
         })
         user.value = await response.data

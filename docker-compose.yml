@@ -128,7 +128,7 @@ services:
       context: ./apps/web
       dockerfile: Dockerfile
       args:
-        - API_DOMAIN=${API_DOMAIN}
+        - APP_BACKEND=${APP_BACKEND}
     container_name: frontend
     env_file:
       - .env

@@ -77,6 +77,7 @@ All dependencies are installed automatically via `uv install` command using the 
    ALGORITHM="HS256"
    DOMAIN=localhost:3000
    API_DOMAIN=localhost:8000
+   APP_BACKEND
    ```
 
 5. Initialize database:
