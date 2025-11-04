@@ -155,6 +155,7 @@ services:
     environment:
       DOMAIN: ${DOMAIN}
       API_DOMAIN: ${API_DOMAIN}
+      POSTGRESUS_DOMAIN: ${POSTGRESUS_DOMAIN}
     volumes:
       - ./apps/caddy/Caddyfile:/etc/caddy/Caddyfile
       - caddy_data:/data
