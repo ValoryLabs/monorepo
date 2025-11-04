@@ -96,8 +96,8 @@ services:
     container_name: backend
     environment:
       REDIS_HOST: valkey
-      DOMAIN: ${DOMAIN}
-      API_DOMAIN: ${API_DOMAIN}
+      APP_FRONTEND: ${APP_FRONTEND}
+      APP_BACKEND: ${APP_BACKEND}
     depends_on:
       postgres:
         condition: service_healthy
@@ -155,8 +155,8 @@ services:
       - "443:443"
       - "443:443/udp"
     environment:
-      DOMAIN: ${DOMAIN}
-      API_DOMAIN: ${API_DOMAIN}
+      APP_FRONTEND: ${DOMAIN}
+      APP_BACKEND: ${APP_BACKEND}
       POSTGRESUS_DOMAIN: ${POSTGRESUS_DOMAIN}
     env_file:
       - .env

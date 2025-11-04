@@ -75,9 +75,8 @@ All dependencies are installed automatically via `uv install` command using the 
 
    SECRET_KEY=your_secret_key_here
    ALGORITHM="HS256"
-   DOMAIN=localhost:3000
-   API_DOMAIN=localhost:8000
-   APP_BACKEND
+   APP_FRONTEND=localhost:3000
+   APP_BACKEND=localhost:8000
    ```
 
 5. Initialize database:

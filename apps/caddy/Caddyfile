@@ -2,7 +2,7 @@
     email misha@valory.su
 }
 
-{$DOMAIN} {
+{$APP_FRONTEND} {
     reverse_proxy frontend:8080 {
         header_up Host {host}
         header_up X-Real-IP {remote}
@@ -24,7 +24,7 @@
     }
 }
 
-{$API_DOMAIN} {
+{$APP_BACKEND} {
     reverse_proxy backend:8000 {
         header_up Host {host}
         header_up X-Real-IP {remote}

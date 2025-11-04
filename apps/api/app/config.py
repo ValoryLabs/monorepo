@@ -18,8 +18,8 @@ LOG_FILE_PATH = BASE_DIR / "log.txt"
 class Settings(BaseSettings):
     DEBUG: bool = False
 
-    DOMAIN: str
-    API_DOMAIN: str
+    APP_FRONTEND: str
+    APP_BACKEND: str
 
     DATABASE_HOST: str = "localhost"
     DATABASE_USER: str = "user"
@@ -49,7 +49,7 @@ class Settings(BaseSettings):
     @computed_field
     @property
     def REDIRECT_URI(self) -> str:
-        return f"{self.API_DOMAIN}/api/auth/callback"
+        return f"{self.APP_BACKEND}/api/auth/callback"
 
     @computed_field
     @property
