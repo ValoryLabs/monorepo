@@ -84,7 +84,7 @@ export const useStreamersStore = defineStore('streamersStore', () => {
       })
 
       const response = await axios.get(
-        `${import.meta.env.APP_BACKEND_URL}/api/streamers/mixed-sort?${params}`,
+        `https://${import.meta.env.API_DOMAIN}/api/streamers/mixed-sort?${params}`,
       )
 
       streamers.value = parseResponseData(response.data)

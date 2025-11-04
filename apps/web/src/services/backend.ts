@@ -96,7 +96,7 @@ export async function updateUserData(): Promise<UpdateUserDataResponse> {
   try {
     validateUserData({ apiKey: store.apiKey, riotID: store.riotID })
 
-    const baseURL = import.meta.env.APP_BACKEND_URL
+    const baseURL = import.meta.env.API_DOMAIN
     if (!baseURL) {
       throw new Error('Backend URL is not configured')
     }
@@ -169,7 +169,7 @@ export async function getOverlayData(id: string): Promise<OverlayData | null> {
       throw new Error('Invalid overlay ID format')
     }
 
-    const baseURL = import.meta.env.APP_BACKEND_URL
+    const baseURL = import.meta.env.API_DOMAIN
     if (!baseURL) {
       throw new Error('Backend URL is not configured')
     }

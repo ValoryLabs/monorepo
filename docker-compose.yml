@@ -1,12 +1,12 @@
 services:
   postgres:
-    image: postgres:17-alpine
-    container_name: postgres
+    image: postgres:18-alpine
+    container_name: ${DATABASE_HOST:-postgres}
     ports:
       - "${DATABASE_PORT:-5432}:${DATABASE_PORT:-5432}"
     environment:
       POSTGRES_DB: ${DATABASE_NAME}
-      POSTGRES_USER: ${DATABASE_LOGIN}
+      POSTGRES_USER: ${DATABASE_USER}
       POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
       PGPORT: ${DATABASE_PORT:-5432}
     command: -p ${DATABASE_PORT:-5432}
@@ -20,11 +20,14 @@ services:
         limits:
           cpus: "0.5"
           memory: 1G
+        reservations:
+          cpus: "0.2"
+          memory: 512M
     healthcheck:
       test:
         [
           "CMD-SHELL",
-          "pg_isready -U ${DATABASE_LOGIN} -p ${DATABASE_PORT:-5432}",
+          "pg_isready -U ${DATABASE_USER} -p ${DATABASE_PORT:-5432}",
         ]
       interval: 10s
       timeout: 5s
@@ -39,39 +42,50 @@ services:
       - ./postgresus-data:/postgresus-data
     restart: unless-stopped
 
-  dragonfly:
-    image: docker.dragonflydb.io/dragonflydb/dragonfly:latest
-    container_name: dragonfly
-    ulimits:
-      memlock: -1
+  valkey:
+    image: valkey/valkey:latest
+    container_name: ${REDIS_HOST:-valkey}
     ports:
       - "${REDIS_PORT:-6379}:${REDIS_PORT:-6379}"
     volumes:
-      - dragonfly_data:/data
+      - valkey_data:/data
     networks:
       - app_network
     restart: unless-stopped
     command:
-      - --port=${REDIS_PORT:-6379}
-      - --requirepass=${REDIS_PASSWORD}
-      - --maxmemory=512mb
-      - --cache_mode=true
+      - valkey-server
+      - --port
+      - "${REDIS_PORT:-6379}"
+      - --requirepass
+      - "${REDIS_PASSWORD}"
+      - --user
+      - "${REDIS_USER:-default}"
+      - ">+@all"
+      - "--maxmemory"
+      - "512mb"
+      - "--maxmemory-policy"
+      - "allkeys-lru"
+      - "--save"
+      - ""
     deploy:
       resources:
         limits:
           cpus: "0.5"
           memory: 768M
+        reservations:
+          cpus: "0.2"
+          memory: 256M
     healthcheck:
       test:
         [
           "CMD",
-          "redis-cli",
+          "valkey-cli",
           "-p",
           "${REDIS_PORT:-6379}",
+          "-u",
+          "${REDIS_USER:-default}",
           "-a",
           "${REDIS_PASSWORD}",
-          "--raw",
-          "incr",
           "ping",
         ]
       interval: 10s
@@ -84,13 +98,13 @@ services:
       dockerfile: Dockerfile
     container_name: backend
     environment:
-      REDIS_HOST: dragonfly
-      APP_FRONTEND_URL: ${APP_FRONTEND_URL}
-      APP_BACKEND_URL: ${APP_BACKEND_URL}
+      REDIS_HOST: valkey
+      DOMAIN: ${DOMAIN}
+      API_DOMAIN: ${API_DOMAIN}
     depends_on:
       postgres:
         condition: service_healthy
-      dragonfly:
+      valkey:
         condition: service_healthy
     env_file:
       - .env
@@ -117,7 +131,7 @@ services:
       context: ./apps/web
       dockerfile: Dockerfile
       args:
-        - APP_BACKEND_URL=${APP_BACKEND_URL}
+        - API_DOMAIN=${API_DOMAIN}
     container_name: frontend
     env_file:
       - .env
@@ -156,7 +170,7 @@ services:
 
 volumes:
   postgres_data:
-  dragonfly_data:
+  valkey_data:
   caddy_data:
   caddy_config:
 

@@ -43,18 +43,19 @@ async def lifespan(app: FastAPI):
     except Exception as e:
         logger.error(f"Error during shutdown: {str(e)}")
 
+
 app = FastAPI(
-    title=settings.PROJECT_NAME,
-    description=settings.PROJECT_DESCRIPTION,
-    version=settings.VERSION,
+    title="VALORY",
+    description="VALORY API",
+    version="2.0.0",
     docs_url="/docs" if settings.DEBUG else None,
     redoc_url="/redoc" if settings.DEBUG else None,
-    lifespan=lifespan
+    lifespan=lifespan,
 )
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[settings.APP_FRONTEND_URL] if not settings.DEBUG else ["*"],
+    allow_origins=[settings.DOMAIN, f"https://{settings.DOMAIN}"] if not settings.DEBUG else ["*"],
     allow_credentials=True,
     allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allow_headers=[
@@ -70,14 +71,13 @@ app.add_middleware(PerformanceMiddleware)
 
 app.include_router(api_router, prefix="/api")
 
+
 @app.get("/sdocs", include_in_schema=False)
 async def scalar_html():
     return get_scalar_api_reference(
-        openapi_url=app.openapi_url,
-        title=app.title,
-        theme=Theme.ALTERNATE,
-        layout=Layout.MODERN
+        openapi_url=app.openapi_url, title=app.title, theme=Theme.ALTERNATE, layout=Layout.MODERN
     )
+
 
 if __name__ == "__main__":
     uvicorn.run(

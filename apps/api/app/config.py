@@ -16,31 +16,29 @@ LOG_FILE_PATH = BASE_DIR / "log.txt"
 
 
 class Settings(BaseSettings):
-    PROJECT_NAME: str = "VALORY.SU"
-    PROJECT_DESCRIPTION: str = "API"
-    VERSION: str = "1.0.0"
     DEBUG: bool = False
 
-    SECRET_KEY: str
-    ALGORITHM: str
+    DOMAIN: str
+    API_DOMAIN: str
 
-    APP_FRONTEND_URL: str
-    APP_BACKEND_URL: str
+    DATABASE_HOST: str = "localhost"
+    DATABASE_USER: str = "user"
+    DATABASE_PASSWORD: str = "password"
+    DATABASE_PORT: int = 5432
+    DATABASE_NAME: str = "database"
+
+    REDIS_HOST: str = "localhost"
+    REDIS_USER: str = "default"
+    REDIS_PASSWORD: str = "password"
+    REDIS_PORT: int = 6379
 
     TWITCH_CLIENT_ID: str
     TWITCH_CLIENT_SECRET: str
     TWITCH_CLIENT_ID_FOR_CLIENT: str
     TWITCH_ACCESS_TOKEN: str
 
-    DATABASE_LOGIN: str = "user"
-    DATABASE_PASSWORD: str = "password"
-    DATABASE_NAME: str = "database"
-    DATABASE_IP: str = "localhost"
-    DATABASE_PORT: int = 5432
-
-    REDIS_PASSWORD: str = "password"
-    REDIS_HOST: str = "dragonfly"
-    REDIS_PORT: int = 6379
+    SECRET_KEY: str
+    ALGORITHM: str
 
     CACHE_TTL: int = 60 * 60 * 24 * 31
 
@@ -52,20 +50,20 @@ class Settings(BaseSettings):
     @computed_field
     @property
     def REDIRECT_URI(self) -> str:
-        return f"{self.APP_BACKEND_URL}/api/auth/callback"
+        return f"{self.API_DOMAIN}/api/auth/callback"
 
     @computed_field
     @property
     def DB_URL(self) -> str:
-        return f"postgresql+asyncpg://{self.DATABASE_LOGIN}:{self.DATABASE_PASSWORD}@{self.DATABASE_IP}:{self.DATABASE_PORT}/{self.DATABASE_NAME}"
+        return f"postgresql+asyncpg://{self.DATABASE_USER}:{self.DATABASE_PASSWORD}@{self.DATABASE_HOST}:{self.DATABASE_PORT}/{self.DATABASE_NAME}"
 
     @computed_field
     @property
     def REDIS_URL(self) -> str:
-        if self.DEBUG or (self.REDIS_PASSWORD and self.REDIS_HOST):
-            return f"redis://default:{self.REDIS_PASSWORD}@{self.REDIS_HOST}:{self.REDIS_PORT}/0"
+        if self.DEBUG or (self.REDIS_PASSWORD and self.REDIS_USER and self.REDIS_HOST):
+            return f"redis://{self.REDIS_USER}:{self.REDIS_PASSWORD}@{self.REDIS_HOST}:{self.REDIS_PORT}/0"
         else:
-            raise ValueError("REDIS_PASSWORD or REDIS_HOST is not set")
+            raise ValueError("REDIS_PASSWORD or REDIS_USER or REDIS_HOST is not set")
 
 
 def setup_logging():
@@ -74,7 +72,7 @@ def setup_logging():
         level=logging.INFO,
         format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
         handlers=[
-            logging.FileHandler(LOG_FILE_PATH),  # Используем определенную переменную
+            logging.FileHandler(LOG_FILE_PATH),
             logging.StreamHandler(),
         ],
     )

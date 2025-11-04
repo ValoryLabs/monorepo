@@ -10,8 +10,8 @@ COPY --from=installer /app/node_modules node_modules
 COPY tsconfig.json tsconfig.app.json tsconfig.node.json ./
 COPY . .
 
-ARG APP_BACKEND_URL
-ENV APP_BACKEND_URL=$APP_BACKEND_URL
+ARG API_DOMAIN
+ENV API_DOMAIN=$API_DOMAIN
 ENV NODE_ENV=production
 
 ENV NODE_OPTIONS="--max-old-space-size=1536 --max-semi-space-size=64"
