@@ -58,14 +58,11 @@ services:
       - "${REDIS_PORT:-6379}"
       - --requirepass
       - "${REDIS_PASSWORD}"
-      - --user
-      - "${REDIS_USER:-default}"
-      - ">+@all"
-      - "--maxmemory"
-      - "512mb"
-      - "--maxmemory-policy"
-      - "allkeys-lru"
-      - "--save"
+      - --maxmemory
+      - 512mb
+      - --maxmemory-policy
+      - allkeys-lru
+      - --save
       - ""
     deploy:
       resources:
@@ -82,8 +79,6 @@ services:
           "valkey-cli",
           "-p",
           "${REDIS_PORT:-6379}",
-          "-u",
-          "${REDIS_USER:-default}",
           "-a",
           "${REDIS_PASSWORD}",
           "ping",
