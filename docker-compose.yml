@@ -38,6 +38,8 @@ services:
     image: rostislavdugin/postgresus:latest
     ports:
       - "4005:4005"
+    networks:
+      - app_network
     volumes:
       - ./postgresus-data:/postgresus-data
     restart: unless-stopped
@@ -156,6 +158,8 @@ services:
       DOMAIN: ${DOMAIN}
       API_DOMAIN: ${API_DOMAIN}
       POSTGRESUS_DOMAIN: ${POSTGRESUS_DOMAIN}
+    env_file:
+      - .env
     volumes:
       - ./apps/caddy/Caddyfile:/etc/caddy/Caddyfile
       - caddy_data:/data
