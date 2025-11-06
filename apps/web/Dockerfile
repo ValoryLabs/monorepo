@@ -3,6 +3,8 @@ WORKDIR /app
 
 FROM base AS pruner
 RUN apk add --no-cache git
+COPY package.json ./
+RUN echo 'packageManager: "bun@1.3.1"' >> package.json
 COPY . .
 RUN bun install -g turbo && \
     turbo prune web --docker
