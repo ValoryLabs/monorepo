@@ -3,7 +3,7 @@ WORKDIR /app
 
 FROM base AS installer
 COPY package.json ./
-RUN bun install --production=false
+RUN bun install --production
 
 FROM base AS builder
 COPY --from=installer /app/node_modules node_modules
