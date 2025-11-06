@@ -41,10 +41,13 @@ WORKDIR /app
 
 RUN groupadd -r appuser && useradd -r -g appuser appuser
 
+COPY --from=builder /app/.venv /app/.venv
+COPY --from=builder /app /app
+
+RUN chown -R appuser:appuser /app
+
 ENV PATH="/app/.venv/bin:$PATH" \
     DOCKER_ENV=true
-
-COPY --from=builder --chown=appuser:appuser /app /app
 
 USER appuser
 
@@ -55,4 +58,7 @@ CMD ["uvicorn", "main:app", \
     "--port", "8000", \
     "--workers", "2", \
     "--loop", "uvloop", \
-    "--interface", "auto"]
+    "--interface", "auto", \
+    "--timeout-keep-alive", "5", \
+    "--limit-concurrency", "200", \
+    "--limit-max-requests", "1000"]
