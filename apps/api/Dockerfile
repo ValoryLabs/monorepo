@@ -41,16 +41,19 @@ WORKDIR /app
 
 RUN groupadd -r appuser && useradd -r -g appuser appuser
 
+COPY --from=builder /app/.venv /app/.venv
+COPY --from=builder /app /app
+
+RUN chown -R appuser:appuser /app
+
 ENV PATH="/app/.venv/bin:$PATH" \
     DOCKER_ENV=true
-
-COPY --from=builder --chown=appuser:appuser /app /app
 
 USER appuser
 
 EXPOSE 8000
 
-CMD ["/app/.venv/bin/gunicorn", "main:app", \
+CMD ["gunicorn", "main:app", \
     "--worker-class", "uvicorn.workers.UvicornWorker", \
     "--bind", "0.0.0.0:8000", \
     "--workers", "2", \
