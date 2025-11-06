@@ -13,7 +13,7 @@ ARG APP_BACKEND
 ENV APP_BACKEND=$APP_BACKEND
 ENV NODE_ENV=production
 
-RUN bun run build --mode production
+RUN bun run build
 
 FROM devforth/spa-to-http:latest
 COPY --from=builder /app/dist/ .
