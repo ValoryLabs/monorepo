@@ -2,8 +2,8 @@ FROM oven/bun:1-alpine AS base
 WORKDIR /app
 
 FROM base AS installer
-COPY package.json bun.lock ./
-RUN bun install --frozen-lockfile --production=false
+COPY package.json ./
+RUN bun install --production=false
 
 FROM base AS builder
 COPY --from=installer /app/node_modules node_modules
