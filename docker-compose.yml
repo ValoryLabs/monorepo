@@ -9,7 +9,17 @@ services:
       POSTGRES_USER: ${DATABASE_USER}
       POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
       PGPORT: ${DATABASE_PORT:-5432}
-    command: -p ${DATABASE_PORT:-5432}
+    command:
+      - -p
+      - "${DATABASE_PORT:-5432}"
+      - -c
+      - shared_buffers=256MB
+      - -c
+      - effective_cache_size=768MB
+      - -c
+      - maintenance_work_mem=128MB
+      - -c
+      - max_connections=100
     volumes:
       - postgres_data:/var/lib/postgresql/data
     networks:
@@ -18,11 +28,11 @@ services:
     deploy:
       resources:
         limits:
-          cpus: "0.5"
+          cpus: "0.75"
           memory: 1G
         reservations:
-          cpus: "0.2"
-          memory: 512M
+          cpus: "0.1"
+          memory: 256M
     healthcheck:
       test:
         [
@@ -43,6 +53,14 @@ services:
     volumes:
       - ./postgresus-data:/postgresus-data
     restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "0.15"
+          memory: 128M
+        reservations:
+          cpus: "0.05"
+          memory: 64M
 
   valkey:
     image: valkey/valkey:latest
@@ -61,7 +79,7 @@ services:
       - --requirepass
       - "${REDIS_PASSWORD}"
       - --maxmemory
-      - 512mb
+      - 384mb
       - --maxmemory-policy
       - allkeys-lru
       - --save
@@ -69,11 +87,11 @@ services:
     deploy:
       resources:
         limits:
-          cpus: "0.5"
-          memory: 768M
+          cpus: "0.3"
+          memory: 512M
         reservations:
-          cpus: "0.2"
-          memory: 256M
+          cpus: "0.05"
+          memory: 128M
     healthcheck:
       test:
         [
@@ -111,11 +129,11 @@ services:
     deploy:
       resources:
         limits:
-          cpus: "0.5"
-          memory: 1G
+          cpus: "0.6"
+          memory: 768M
         reservations:
-          cpus: "0.2"
-          memory: 512M
+          cpus: "0.1"
+          memory: 256M
     healthcheck:
       test: ["CMD", "curl", "-f", "http://0.0.0.0:8000/api/utils/health"]
       interval: 30s
@@ -138,11 +156,11 @@ services:
     deploy:
       resources:
         limits:
-          cpus: "0.8"
-          memory: 1.5G
+          cpus: "0.5"
+          memory: 1G
         reservations:
-          cpus: "0.3"
-          memory: 512M
+          cpus: "0.1"
+          memory: 256M
 
   caddy:
     image: caddy:2-alpine
@@ -167,6 +185,14 @@ services:
     networks:
       - app_network
     restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "0.2"
+          memory: 256M
+        reservations:
+          cpus: "0.05"
+          memory: 64M
 
 volumes:
   postgres_data:
