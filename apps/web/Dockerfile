@@ -1,13 +1,11 @@
 FROM oven/bun:1-alpine AS base
-ENV PNPM_HOME="/pnpm"
-ENV PATH="$PNPM_HOME:$PATH"
-RUN corepack enable
+WORKDIR /app
 
 FROM base AS pruner
-WORKDIR /app
-RUN bun install -g turbo
+RUN apk add --no-cache git
 COPY . .
-RUN turbo prune web --docker
+RUN bun install -g turbo && \
+    turbo prune web --docker
 
 FROM base AS installer
 WORKDIR /app
