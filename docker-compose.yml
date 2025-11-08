@@ -64,7 +64,7 @@ services:
 
   portainer:
     container_name: portainer
-    image: portainer/portainer-ce:lts
+    image: portainer/portainer-ce:latest
     restart: always
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
@@ -72,6 +72,8 @@ services:
     ports:
       - 9443:9443
       - 8020:8000 # Remove if you do not intend to use Edge Agents
+    networks:
+      - app_network
 
   valkey:
     image: valkey/valkey:latest
@@ -211,11 +213,7 @@ volumes:
   caddy_data:
   caddy_config:
   portainer_data:
-    name: portainer_data
 
 networks:
   app_network:
     driver: bridge
-
-  default:
-    name: portainer_network
