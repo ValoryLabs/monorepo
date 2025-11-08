@@ -187,5 +187,8 @@ volumes:
   portainer_data:
 
 networks:
+  app_network:
+    driver: bridge
+
   web:
     external: true
