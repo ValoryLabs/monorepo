@@ -61,7 +61,10 @@
 }
 
 {$PORTAINER_DOMAIN} {
-    reverse_proxy portainer:9443 {
+    reverse_proxy https://portainer:9443 {
+        transport http {
+            tls_insecure_skip_verify
+        }
         header_up Host {host}
         header_up X-Real-IP {remote}
     }
@@ -72,3 +75,4 @@
             roll_keep 5
         }
     }
+}
