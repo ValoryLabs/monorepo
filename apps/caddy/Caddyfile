@@ -59,3 +59,16 @@
         }
     }
 }
+
+{$PORTAINER_DOMAIN} {
+    reverse_proxy portainer:9443 {
+        header_up Host {host}
+        header_up X-Real-IP {remote}
+    }
+
+    log {
+        output file /var/log/caddy/access.log {
+            roll_size 100mb
+            roll_keep 5
+        }
+    }

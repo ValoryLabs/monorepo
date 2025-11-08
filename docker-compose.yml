@@ -62,6 +62,17 @@ services:
           cpus: "0.05"
           memory: 64M
 
+  portainer:
+    container_name: portainer
+    image: portainer/portainer-ce:lts
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+    ports:
+      - 9443:9443
+      - 8020:8000 # Remove if you do not intend to use Edge Agents
+
   valkey:
     image: valkey/valkey:latest
     container_name: ${REDIS_HOST:-valkey}
@@ -199,7 +210,12 @@ volumes:
   valkey_data:
   caddy_data:
   caddy_config:
+  portainer_data:
+    name: portainer_data
 
 networks:
   app_network:
     driver: bridge
+
+  default:
+    name: portainer_network
