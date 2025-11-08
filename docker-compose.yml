@@ -24,6 +24,7 @@ services:
       - postgres_data:/var/lib/postgresql/data
     networks:
       - app_network
+      - web
     restart: unless-stopped
     deploy:
       resources:
@@ -50,6 +51,7 @@ services:
       - "4005:4005"
     networks:
       - app_network
+      - web
     volumes:
       - ./postgresus-data:/postgresus-data
     restart: unless-stopped
@@ -71,9 +73,10 @@ services:
       - portainer_data:/data
     ports:
       - 9443:9443
-      - 8020:8000 # Remove if you do not intend to use Edge Agents
+      - 8020:8000
     networks:
       - app_network
+      - web
 
   valkey:
     image: valkey/valkey:latest
@@ -84,6 +87,7 @@ services:
       - valkey_data:/data
     networks:
       - app_network
+      - web
     restart: unless-stopped
     command:
       - valkey-server
@@ -138,6 +142,7 @@ services:
       - .env
     networks:
       - app_network
+      - web
     restart: unless-stopped
     deploy:
       resources:
@@ -165,6 +170,7 @@ services:
       - .env
     networks:
       - app_network
+      - web
     restart: unless-stopped
     deploy:
       resources:
@@ -175,45 +181,11 @@ services:
           cpus: "0.1"
           memory: 256M
 
-  caddy:
-    image: caddy:2-alpine
-    container_name: caddy
-    depends_on:
-      - frontend
-      - backend
-    ports:
-      - "80:80"
-      - "443:443"
-      - "443:443/udp"
-    environment:
-      APP_FRONTEND: ${APP_FRONTEND}
-      APP_BACKEND: ${APP_BACKEND}
-      POSTGRESUS_DOMAIN: ${POSTGRESUS_DOMAIN}
-    env_file:
-      - .env
-    volumes:
-      - ./apps/caddy/Caddyfile:/etc/caddy/Caddyfile
-      - caddy_data:/data
-      - caddy_config:/config
-    networks:
-      - app_network
-    restart: unless-stopped
-    deploy:
-      resources:
-        limits:
-          cpus: "0.2"
-          memory: 256M
-        reservations:
-          cpus: "0.05"
-          memory: 64M
-
 volumes:
   postgres_data:
   valkey_data:
-  caddy_data:
-  caddy_config:
   portainer_data:
 
 networks:
-  app_network:
-    driver: bridge
+  web:
+    external: true
