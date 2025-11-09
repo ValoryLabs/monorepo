@@ -116,7 +116,7 @@ export default defineConfig(({ mode }) => {
           },
           optimizeDeps: {
             include: ['vue', 'vue-router', 'pinia', '@vueuse/core', 'axios'],
-            exclude: ['vue-demi'],
+            exclude: ['vue-demi', '@number-flow/vue', 'number-flow'],
           },
         }),
   }

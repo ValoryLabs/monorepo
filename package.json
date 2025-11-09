@@ -2,6 +2,9 @@
   "name": "valory",
   "version": "0.0.0",
   "private": true,
+  "overrides": {
+    "rollup": "4.52.0"
+  },
   "workspaces": [
     "apps/*"
   ],
