@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
+  "overrides": {
+    "rollup": "npm:@rollup/wasm-node"
+  },
   "engines": {
     "node": ">=18.0.0",
     "npm": ">=9.0.0",
