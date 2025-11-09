@@ -84,6 +84,10 @@ const router = createRouter({
 router.beforeEach(async (to) => {
   const authStore = useAuthStore()
 
+  if (window.rybbit && typeof window.rybbit.pageview === 'function') {
+    window.rybbit.pageview()
+  }
+
   if (isMobile && (to.path === '/configurator' || to.path.startsWith('/configurator/'))) {
     return { name: 'not-supported' }
   }
