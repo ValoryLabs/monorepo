@@ -75,7 +75,7 @@ useSeoMeta({
     :toastOptions="{
       unstyled: true,
       class:
-        'bg-black/70 p-4 text-foreground rounded-md flex w-[356px] items-center text-sm gap-3 backdrop-blur-md border border-white/10',
+        'fixed z-999 right-4 top-4 bg-black/70 p-4 text-foreground rounded-md flex w-[356px] items-center text-sm gap-3 backdrop-blur-md border border-white/10',
     }"
   />
 
