@@ -1,21 +1,19 @@
 <script lang="ts" setup>
+import type { HTMLAttributes } from 'vue'
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+import { ChevronsUpDown, Globe } from 'lucide-vue-next'
+import { useLocalStorage } from '@vueuse/core'
 import { Button } from '@/components/ui/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuLabel,
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { AVAILABLE_LOCALES } from '@/i18n'
 import { cn } from '@/lib/utils'
-import { useLocalStorage } from '@vueuse/core'
-import { ChevronsUpDown, Globe } from 'lucide-vue-next'
-import type { HTMLAttributes } from 'vue'
-import { computed } from 'vue'
-import { useI18n } from 'vue-i18n'
 
 const props = withDefaults(
   defineProps<{ variant?: 'default' | 'rounded'; class?: HTMLAttributes['class'] }>(),
@@ -60,10 +58,6 @@ const isRounded = computed(() => props.variant === 'rounded')
       </Button>
     </DropdownMenuTrigger>
     <DropdownMenuContent align="end" class="w-40">
-      <DropdownMenuLabel>
-        {{ t('components.languageSwitcher') }}
-      </DropdownMenuLabel>
-      <DropdownMenuSeparator />
       <DropdownMenuRadioGroup v-model="currentLocale">
         <DropdownMenuRadioItem
           v-for="lang of AVAILABLE_LOCALES"
