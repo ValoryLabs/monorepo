@@ -52,7 +52,7 @@ class Settings(BaseSettings):
     @computed_field
     @property
     def REDIRECT_URI(self) -> str:
-        return f"{self.APP_BACKEND}/api/auth/callback"
+        return f"https://{self.APP_BACKEND}/api/auth/callback"
 
     @computed_field
     @property

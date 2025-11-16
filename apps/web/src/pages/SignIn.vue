@@ -9,7 +9,7 @@ import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
 
 const redirectToAuth = () => {
-  window.location.href = `${import.meta.env.APP_BACKEND}/api/auth/login/twitch`
+  window.location.href = `https://${import.meta.env.APP_BACKEND}/api/auth/login/twitch`
 }
 </script>
 
