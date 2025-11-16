@@ -133,8 +133,6 @@ services:
       - "8040:8000"
     environment:
       REDIS_HOST: valkey
-      APP_FRONTEND: ${APP_FRONTEND}
-      APP_BACKEND: ${APP_BACKEND}
     depends_on:
       postgres:
         condition: service_healthy
