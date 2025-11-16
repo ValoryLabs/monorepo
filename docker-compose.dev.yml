@@ -88,63 +88,6 @@ services:
       timeout: 5s
       retries: 5
 
-  backend:
-    build:
-      context: ./apps/api
-      dockerfile: Dockerfile
-    container_name: backend
-    ports:
-      - "8040:8000"
-    environment:
-      REDIS_HOST: valkey
-    depends_on:
-      postgres:
-        condition: service_healthy
-      valkey:
-        condition: service_healthy
-    env_file:
-      - .env
-    networks:
-      - app_network
-    restart: unless-stopped
-    deploy:
-      resources:
-        limits:
-          cpus: "0.6"
-          memory: 768M
-        reservations:
-          cpus: "0.1"
-          memory: 256M
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://0.0.0.0:8000/api/utils/health"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 40s
-
-  frontend:
-    build:
-      context: ./apps/web
-      dockerfile: Dockerfile
-      args:
-        - APP_BACKEND=${APP_BACKEND}
-    container_name: frontend
-    ports:
-      - "8041:8080"
-    env_file:
-      - .env
-    networks:
-      - app_network
-    restart: unless-stopped
-    deploy:
-      resources:
-        limits:
-          cpus: "0.5"
-          memory: 1G
-        reservations:
-          cpus: "0.1"
-          memory: 256M
-
 volumes:
   postgres_data:
   valkey_data:
