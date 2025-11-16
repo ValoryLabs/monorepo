@@ -130,7 +130,7 @@ services:
       dockerfile: Dockerfile
     container_name: backend
     ports:
-      - "8030:8000"
+      - "8040:8000"
     environment:
       REDIS_HOST: valkey
       APP_FRONTEND: ${APP_FRONTEND}
@@ -169,7 +169,7 @@ services:
         - APP_BACKEND=${APP_BACKEND}
     container_name: frontend
     ports:
-      - "8031:8080"
+      - "8041:8080"
     env_file:
       - .env
     networks:
