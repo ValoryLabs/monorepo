@@ -1,0 +1,154 @@
+services:
+  postgres:
+    image: postgres:18-alpine
+    container_name: ${DATABASE_HOST:-postgres}
+    ports:
+      - "${DATABASE_PORT:-5432}:${DATABASE_PORT:-5432}"
+    environment:
+      POSTGRES_DB: ${DATABASE_NAME}
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      PGPORT: ${DATABASE_PORT:-5432}
+    command:
+      - -p
+      - "${DATABASE_PORT:-5432}"
+      - -c
+      - shared_buffers=256MB
+      - -c
+      - effective_cache_size=768MB
+      - -c
+      - maintenance_work_mem=128MB
+      - -c
+      - max_connections=100
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - app_network
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "0.75"
+          memory: 1G
+        reservations:
+          cpus: "0.1"
+          memory: 256M
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "pg_isready -U ${DATABASE_USER} -d ${DATABASE_NAME} -p ${DATABASE_PORT:-5432}",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  valkey:
+    image: valkey/valkey:latest
+    container_name: ${REDIS_HOST:-valkey}
+    ports:
+      - "${REDIS_PORT:-6379}:${REDIS_PORT:-6379}"
+    volumes:
+      - valkey_data:/data
+    networks:
+      - app_network
+    restart: unless-stopped
+    command:
+      - valkey-server
+      - --port
+      - "${REDIS_PORT:-6379}"
+      - --requirepass
+      - "${REDIS_PASSWORD}"
+      - --maxmemory
+      - 384mb
+      - --maxmemory-policy
+      - allkeys-lru
+      - --save
+      - ""
+    deploy:
+      resources:
+        limits:
+          cpus: "0.3"
+          memory: 512M
+        reservations:
+          cpus: "0.05"
+          memory: 128M
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "valkey-cli",
+          "-p",
+          "${REDIS_PORT:-6379}",
+          "-a",
+          "${REDIS_PASSWORD}",
+          "ping",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./apps/api
+      dockerfile: Dockerfile
+    container_name: backend
+    ports:
+      - "8040:8000"
+    environment:
+      REDIS_HOST: valkey
+    depends_on:
+      postgres:
+        condition: service_healthy
+      valkey:
+        condition: service_healthy
+    env_file:
+      - .env
+    networks:
+      - app_network
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "0.6"
+          memory: 768M
+        reservations:
+          cpus: "0.1"
+          memory: 256M
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://0.0.0.0:8000/api/utils/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  frontend:
+    build:
+      context: ./apps/web
+      dockerfile: Dockerfile
+      args:
+        - APP_BACKEND=${APP_BACKEND}
+    container_name: frontend
+    ports:
+      - "8041:8080"
+    env_file:
+      - .env
+    networks:
+      - app_network
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 1G
+        reservations:
+          cpus: "0.1"
+          memory: 256M
+
+volumes:
+  postgres_data:
+  valkey_data:
+
+networks:
+  app_network:
+    driver: bridge
