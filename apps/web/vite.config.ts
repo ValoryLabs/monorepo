@@ -16,17 +16,27 @@ export default defineConfig(({ mode }) => {
     plugins: [
       tailwindcss(),
       ViteMinifyPlugin({}),
-      vue(),
+      vue({
+        template: {
+          compilerOptions: {
+            comments: !isProduction,
+          },
+        },
+      }),
       VueI18nPlugin({
         module: 'vue-i18n',
         include: [path.resolve(__dirname, './src/i18n/locales/**')],
+        compositionOnly: true,
+        runtimeOnly: true,
       }),
       mode === 'analyze' &&
         visualizer({
           filename: 'dist/stats.html',
           open: true,
+          gzipSize: true,
+          brotliSize: true,
         }),
-    ],
+    ].filter(Boolean),
     resolve: {
       alias: {
         '@': fileURLToPath(new URL('./src', import.meta.url)),
@@ -43,7 +53,37 @@ export default defineConfig(({ mode }) => {
             'vue-router': ['vue-router'],
             'vue-i18n': ['vue-i18n'],
             pinia: ['pinia'],
+            'ui-components': ['lucide-vue-next', 'reka-ui', 'vaul-vue'],
+            utilities: ['@vueuse/core', '@vueuse/motion', 'tinycolor2'],
+            animations: ['canvas-confetti', 'motion-v'],
+            'http-client': ['axios', 'ofetch'],
           },
+          chunkFileNames: (chunkInfo) => {
+            const facadeModuleId = chunkInfo.facadeModuleId
+            if (facadeModuleId) {
+              const name = facadeModuleId.split('/').pop()?.replace('.vue', '') || 'chunk'
+              return `js/${name}-[hash].js`
+            }
+            return 'js/[name]-[hash].js'
+          },
+          assetFileNames: (assetInfo) => {
+            const name = assetInfo.name || 'asset'
+            if (/\.(png|jpe?g|svg|gif|webp|ico)$/i.test(name)) {
+              return 'images/[name]-[hash][extname]'
+            }
+            if (/\.(css)$/i.test(name)) {
+              return 'css/[name]-[hash][extname]'
+            }
+            if (/\.(woff2?|eot|ttf|otf)$/i.test(name)) {
+              return 'fonts/[name]-[hash][extname]'
+            }
+            return 'assets/[name]-[hash][extname]'
+          },
+        },
+        treeshake: {
+          moduleSideEffects: false,
+          propertyReadSideEffects: false,
+          unknownGlobalSideEffects: false,
         },
       },
       esbuild: isProduction
@@ -58,12 +98,25 @@ export default defineConfig(({ mode }) => {
     },
     base: '/',
     ...(isProduction
-      ? {}
+      ? {
+          assetsInlineLimit: 4096,
+          cssCodeSplit: true,
+        }
       : {
           server: {
             host: true,
             port: 3005,
-            allowedHosts: ['beta.valory.su'],
+            allowedHosts: ['beta.valory.su', 'api.valory.su'],
+            fs: {
+              strict: false,
+            },
+            hmr: {
+              overlay: false,
+            },
+          },
+          optimizeDeps: {
+            include: ['vue', 'vue-router', 'pinia', '@vueuse/core', 'axios'],
+            exclude: ['vue-demi'],
           },
         }),
   }

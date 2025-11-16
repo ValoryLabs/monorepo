@@ -30,7 +30,7 @@ const { t } = useI18n()
       >
         {{ t('main.title') }}
       </span>
-      <span class="whitespace-pre-line text-center text-xl font-light">
+      <span class="whitespace-pre-line text-center text-xl font-light px-12">
         {{ t('main.subtitle') }}
       </span>
       <span class="flex w-full flex-col items-center justify-center gap-3 lg:flex-row">

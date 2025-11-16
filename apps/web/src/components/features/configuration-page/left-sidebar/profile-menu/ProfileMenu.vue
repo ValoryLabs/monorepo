@@ -10,7 +10,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { Skeleton } from '@/components/ui/skeleton'
-import { openLink } from '@/lib/utils.ts'
+import { cn, openLink } from '@/lib/utils.ts'
 import router from '@/router'
 import { useAuthStore, useSettingsStore, useUserStore } from '@/stores'
 import { ChevronsUpDown, LifeBuoy, LogOut, NotebookText, SettingsIcon } from 'lucide-vue-next'
@@ -40,13 +40,19 @@ onMounted(() => {
 
 <template>
   <DropdownMenu>
-    <div v-if="loading" class="inline-flex items-center gap-2">
-      <Skeleton class="size-8 flex flex-shrink-0 rounded-sm" />
-      <div class="flex flex-col gap-1 items-start w-full">
-        <Skeleton class="line-clamp-1 h-3 w-24 rounded-md" />
-        <Skeleton class="line-clamp-3 h-2 w-16 rounded-md" />
-      </div>
-      <Skeleton class="size-8 flex flex-shrink-0 rounded-sm" />
+    <div
+      v-if="loading"
+      class="flex items-center gap-2"
+      :class="cn(!showLeftSidebar ? 'flex-col' : '')"
+    >
+      <template v-if="showLeftSidebar">
+        <Skeleton class="size-8 flex flex-shrink-0 rounded-sm" />
+        <div class="flex flex-col gap-1 items-start w-full">
+          <Skeleton class="line-clamp-1 h-3 w-24 rounded-md" />
+          <Skeleton class="line-clamp-3 h-2 w-16 rounded-md" />
+        </div>
+      </template>
+      <Skeleton v-else class="size-8 flex flex-shrink-0 rounded-sm" />
     </div>
     <div v-else-if="error" class="font-bold w-full flex items-center justify-center h-5 mb-2">
       {{ t('profile_menu.error') }}

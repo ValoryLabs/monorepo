@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import { LoginOrConfigurator } from '@/components/features/home-page/index.ts'
 import { Github, Valory } from '@/components/shared/icons'
-import { LinkPreview } from '@/components/ui'
+import { LanguageSwitcher, LinkPreview } from '@/components/ui'
 import { Button } from '@/components/ui/button'
 import { NAV_DATA } from '@/data'
 import { hidden, moveTo } from '@/lib/utils.ts'
 import router from '@/router'
-import { onMounted, onUnmounted, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRoute } from 'vue-router'
 
@@ -14,34 +13,16 @@ const { t } = useI18n()
 const route = useRoute()
 
 const isDev = import.meta.env.APP_DEV === 'true'
-
-const showHeader = ref(true)
-let lastScrollPosition = 0
-
-const handleScroll = () => {
-  const currentScrollPosition = window.scrollY
-  showHeader.value = currentScrollPosition <= lastScrollPosition
-  lastScrollPosition = currentScrollPosition
-}
-
-onMounted(() => {
-  window.addEventListener('scroll', handleScroll)
-})
-
-onUnmounted(() => {
-  window.removeEventListener('scroll', handleScroll)
-})
 </script>
 
 <template>
   <header
     :class="[
-      'fixed right-0 left-0 z-10 flex h-16 w-full justify-center transition-all duration-700',
-      showHeader ? 'top-6' : 'top-[-600px]',
+      'fixed right-0 left-0 top-6 z-100 flex h-16 w-full justify-center transition-all duration-700',
     ]"
   >
     <div
-      class="container flex items-center justify-between gap-48 rounded-full bg-black/30 py-1 text-sm backdrop-blur-sm"
+      class="container flex items-center justify-between rounded-full bg-black/30 py-1 text-sm backdrop-blur-sm"
     >
       <div class="left flex flex-row gap-8">
         <div
@@ -67,8 +48,8 @@ onUnmounted(() => {
           </li>
         </ul>
       </div>
-      <div class="right flex flex-row items-center gap-3">
-        <LinkPreview url="https://github.com/ValoryLabs/Valory" text="Valory">
+      <div class="right flex flex-row items-center gap-2">
+        <LinkPreview v-if="!hidden" url="https://github.com/ValoryLabs/Valory" text="Valory">
           <Button
             class="rounded-full border border-transparent bg-transparent text-white opacity-50 transition hover:border-white/10 hover:bg-white/10 hover:opacity-100"
             size="icon"
@@ -76,7 +57,7 @@ onUnmounted(() => {
             <Github :size="16" />
           </Button>
         </LinkPreview>
-
+        <LanguageSwitcher v-if="!hidden" variant="rounded" />
         <LoginOrConfigurator />
       </div>
     </div>

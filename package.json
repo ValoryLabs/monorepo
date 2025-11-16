@@ -6,14 +6,13 @@
     "apps/*"
   ],
   "scripts": {
-    "build": "turbo run build",
-    "dev": "turbo run dev --parallel",
-    "lint": "turbo run lint",
-    "format": "turbo run format"
+    "build": "bun run --if-present --workspaces build",
+    "dev": "bun run --if-present --workspaces dev",
+    "lint": "bun run --if-present --workspaces lint",
+    "format": "bun run --if-present --workspaces format"
   },
   "devDependencies": {
-    "prettier": "latest",
-    "turbo": "^2.5.6"
+    "prettier": "latest"
   },
   "packageManager": "bun@1.2.21"
 }

@@ -1,5 +1,5 @@
-import json
 from datetime import datetime, timedelta, timezone
+import json
 import random
 import string
 from urllib.parse import urlencode
@@ -10,7 +10,7 @@ from fastapi.responses import RedirectResponse
 from redis.asyncio import Redis
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.config import settings, logger
+from app.config import logger, settings
 from app.db.database import get_session
 from app.db.redis import get_redis
 from app.utils.auth import authenticate_user, create_user_session
@@ -42,16 +42,13 @@ async def cache_oauth_state(cache: Redis, state: str, ttl: int = 600) -> None:
 
 
 async def make_request(
-        method: str, url: str, headers: dict | None = None, data: dict | None = None, timeout: int = 30
+    method: str, url: str, headers: dict | None = None, data: dict | None = None, timeout: int = 30
 ) -> dict:
     """
     Send an asynchronous HTTP request with improved error handling.
     """
     if not url:
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail="URL cannot be empty"
-        )
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="URL cannot be empty")
 
     try:
         timeout_config = aiohttp.ClientTimeout(total=timeout)
@@ -62,8 +59,7 @@ async def make_request(
                 if response.status != 200:
                     logger.error(f"HTTP {response.status} error for {url}: {response_text}")
                     raise HTTPException(
-                        status_code=response.status,
-                        detail=f"External API request failed: {response.status}"
+                        status_code=response.status, detail=f"External API request failed: {response.status}"
                     )
 
                 try:
@@ -71,21 +67,16 @@ async def make_request(
                 except Exception:
                     logger.error(f"Failed to parse JSON response from {url}: {response_text}")
                     raise HTTPException(
-                        status_code=status.HTTP_502_BAD_GATEWAY,
-                        detail="Invalid response format from external API"
+                        status_code=status.HTTP_502_BAD_GATEWAY, detail="Invalid response format from external API"
                     )
 
     except aiohttp.ClientError as e:
         logger.error(f"Client error for {url}: {str(e)}")
-        raise HTTPException(
-            status_code=status.HTTP_502_BAD_GATEWAY,
-            detail="Failed to connect to external service"
-        )
+        raise HTTPException(status_code=status.HTTP_502_BAD_GATEWAY, detail="Failed to connect to external service")
     except Exception as e:
         logger.error(f"Unexpected error for {url}: {str(e)}")
         raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail="Internal server error during external request"
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Internal server error during external request"
         )
 
 
@@ -118,8 +109,7 @@ async def fetch_user_info(access_token: str) -> dict | None:
     except Exception as e:
         logger.error(f"Unexpected error fetching user info: {str(e)}")
         raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail="Failed to fetch user information"
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Failed to fetch user information"
         )
 
 
@@ -143,10 +133,7 @@ async def fetch_twitch_token(code: str) -> dict:
 
         if not response.get("access_token"):
             logger.error("No access token in Twitch API response")
-            raise HTTPException(
-                status_code=status.HTTP_400_BAD_REQUEST,
-                detail="Invalid authorization code"
-            )
+            raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Invalid authorization code")
 
         logger.info("Successfully exchanged code for Twitch token")
         return response
@@ -156,8 +143,7 @@ async def fetch_twitch_token(code: str) -> dict:
     except Exception as e:
         logger.error(f"Unexpected error fetching Twitch token: {str(e)}")
         raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail="Failed to exchange authorization code"
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Failed to exchange authorization code"
         )
 
 
@@ -203,17 +189,12 @@ async def twitch_login(cache: Redis = Depends(get_redis)) -> RedirectResponse:
 
     except Exception as e:
         logger.error(f"Failed to initiate Twitch login: {str(e)}")
-        raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail="Failed to initiate OAuth login"
-        )
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Failed to initiate OAuth login")
 
 
 @router.get("/callback", summary="Handle Twitch OAuth callback")
 async def callback(
-        request: Request,
-        session: AsyncSession = Depends(get_session),
-        cache: Redis = Depends(get_redis)
+    request: Request, session: AsyncSession = Depends(get_session), cache: Redis = Depends(get_redis)
 ) -> RedirectResponse:
     """
     Handle Twitch OAuth callback with enhanced security and Redis caching.
@@ -227,27 +208,18 @@ async def callback(
         # Handle OAuth errors
         if error:
             logger.warning(f"OAuth error received: {error}")
-            raise HTTPException(
-                status_code=status.HTTP_400_BAD_REQUEST,
-                detail=f"OAuth authorization failed: {error}"
-            )
+            raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=f"OAuth authorization failed: {error}")
 
         # Validate required parameters
         if not code or not state:
             logger.warning("Missing code or state parameter in OAuth callback")
-            raise HTTPException(
-                status_code=status.HTTP_400_BAD_REQUEST,
-                detail="Missing required OAuth parameters"
-            )
+            raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Missing required OAuth parameters")
 
         # Validate state parameter against cookie
         cookie_state = request.cookies.get("twitch_state")
         if not cookie_state or state != cookie_state:
             logger.warning(f"State mismatch: cookie={cookie_state}, param={state}")
-            raise HTTPException(
-                status_code=status.HTTP_400_BAD_REQUEST,
-                detail="Invalid state parameter"
-            )
+            raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Invalid state parameter")
 
         # Validate state parameter against Redis cache (if available)
         if cache:
@@ -284,17 +256,14 @@ async def callback(
                 await cache.setex(
                     code_cache_key,
                     300,  # 5 minutes
-                    json.dumps(api_response, ensure_ascii=False)
+                    json.dumps(api_response, ensure_ascii=False),
                 )
                 logger.debug(f"Token response cached for code: {code[:10]}...")
 
         access_token = api_response.get("access_token")
         if not access_token:
             logger.error("No access token received from Twitch")
-            raise HTTPException(
-                status_code=status.HTTP_400_BAD_REQUEST,
-                detail="Failed to obtain access token"
-            )
+            raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Failed to obtain access token")
 
         # Check if we have cached user info for this token
         user_cache_key = f"twitch_user:{access_token[:20]}"
@@ -311,17 +280,14 @@ async def callback(
             user_info = await fetch_user_info(access_token)
             if not user_info:
                 logger.error("Failed to fetch user information from Twitch")
-                raise HTTPException(
-                    status_code=status.HTTP_400_BAD_REQUEST,
-                    detail="Failed to fetch user information"
-                )
+                raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Failed to fetch user information")
 
             # Cache user info for 10 minutes
             if cache:
                 await cache.setex(
                     user_cache_key,
                     600,  # 10 minutes
-                    json.dumps(user_info, ensure_ascii=False)
+                    json.dumps(user_info, ensure_ascii=False),
                 )
                 logger.debug("User info cached")
 
@@ -330,10 +296,7 @@ async def callback(
 
         if not user:
             logger.error("User authentication failed")
-            raise HTTPException(
-                status_code=status.HTTP_401_UNAUTHORIZED,
-                detail="Authentication failed"
-            )
+            raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Authentication failed")
 
         # Cache Twitch access token for potential future use
         if cache:
@@ -341,7 +304,7 @@ async def callback(
             await cache.setex(
                 twitch_token_key,
                 3600,  # 1 hour
-                access_token
+                access_token,
             )
             logger.debug(f"Twitch token cached for user {user.id}")
 
@@ -355,16 +318,14 @@ async def callback(
                 "user_id": user.id,
                 "username": user.username,
                 "twitch_id": user.twitch_id,
-                "login_time": datetime.now(timezone.utc).isoformat()
+                "login_time": datetime.now(timezone.utc).isoformat(),
             }
             await cache.setex(
-                session_cache_key,
-                session_data["expires_in"],
-                json.dumps(session_info, ensure_ascii=False)
+                session_cache_key, session_data["expires_in"], json.dumps(session_info, ensure_ascii=False)
             )
 
         # Create response
-        frontend_url = f"{settings.APP_FRONTEND_URL}/callback"
+        frontend_url = f"https://{settings.APP_FRONTEND}/callback"
         response = RedirectResponse(url=frontend_url, status_code=status.HTTP_302_FOUND)
 
         # Set authentication cookie
@@ -382,11 +343,7 @@ async def callback(
         )
 
         # Clean up state cookie
-        response.delete_cookie(
-            "twitch_state",
-            domain=".valory.su" if not settings.DEBUG else None,
-            path="/"
-        )
+        response.delete_cookie("twitch_state", domain=".valory.su" if not settings.DEBUG else None, path="/")
 
         # Log successful authentication
         logger.info(f"Successfully authenticated user {user.id} via Twitch OAuth")
@@ -404,6 +361,5 @@ async def callback(
     except Exception as e:
         logger.error(f"Unexpected error in OAuth callback: {str(e)}")
         raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail="Internal server error during authentication"
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Internal server error during authentication"
         )

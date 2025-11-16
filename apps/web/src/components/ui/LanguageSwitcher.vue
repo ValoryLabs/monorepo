@@ -34,18 +34,20 @@ const currentLanguage = computed(() => {
 const currentLanguageName = computed(() => {
   return currentLanguage.value?.name || 'English'
 })
+
+const isRounded = computed(() => props.variant === 'rounded')
 </script>
 
 <template>
   <DropdownMenu>
     <DropdownMenuTrigger as-child>
       <Button
-        :variant="props.variant === 'default' ? 'ghost' : 'default'"
-        :size="props.variant === 'default' ? 'sm' : 'default'"
+        :variant="!isRounded ? 'ghost' : 'default'"
+        :size="!isRounded ? 'sm' : 'default'"
         aria-label="Language Switcher"
         :class="
           cn(
-            props.variant === 'default'
+            !isRounded
               ? 'gap-2'
               : 'mr-2 rounded-full border border-transparent bg-transparent text-white opacity-50 transition hover:border-white/10 hover:bg-white/10 hover:opacity-100',
             props.class,
@@ -54,7 +56,7 @@ const currentLanguageName = computed(() => {
       >
         <Globe class="size-4" />
         <span class="text-sm">{{ currentLanguageName }}</span>
-        <ChevronsUpDown class="size-4 ml-2" />
+        <ChevronsUpDown class="size-4 ml-2" v-if="!isRounded" />
       </Button>
     </DropdownMenuTrigger>
     <DropdownMenuContent align="end" class="w-40">
