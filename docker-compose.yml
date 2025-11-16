@@ -21,7 +21,7 @@ services:
       - -c
       - max_connections=100
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - ../postgres_data:/var/lib/postgresql/data
     networks:
       - app_network
       - web
@@ -53,7 +53,7 @@ services:
       - app_network
       - web
     volumes:
-      - ./postgresus-data:/postgresus-data
+      - ../postgresus-data:/postgresus-data
     restart: unless-stopped
     deploy:
       resources:
@@ -70,7 +70,7 @@ services:
     restart: always
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - portainer_data:/data
+      - ../portainer_data:/data
     ports:
       - 9443:9443
       - 8020:8000
