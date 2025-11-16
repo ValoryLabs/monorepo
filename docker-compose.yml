@@ -129,6 +129,8 @@ services:
       context: ./apps/api
       dockerfile: Dockerfile
     container_name: backend
+    ports:
+      - "8000:8000"
     environment:
       REDIS_HOST: valkey
       APP_FRONTEND: ${APP_FRONTEND}
@@ -166,6 +168,8 @@ services:
       args:
         - APP_BACKEND=${APP_BACKEND}
     container_name: frontend
+    ports:
+      - "8080:8080"
     env_file:
       - .env
     networks:
