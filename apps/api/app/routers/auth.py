@@ -364,7 +364,7 @@ async def callback(
             )
 
         # Create response
-        frontend_url = f"{settings.APP_FRONTEND_URL}/callback"
+        frontend_url = f"{settings.APP_FRONTEND}/callback"
         response = RedirectResponse(url=frontend_url, status_code=status.HTTP_302_FOUND)
 
         # Set authentication cookie

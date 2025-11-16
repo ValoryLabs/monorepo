@@ -497,9 +497,10 @@ export class HttpClient<SecurityDataType = unknown> {
       r.data = null as unknown as T;
       r.error = null as unknown as E;
 
+      const responseToParse = responseFormat ? response.clone() : response;
       const data = !responseFormat
         ? r
-        : await response[responseFormat]()
+        : await responseToParse[responseFormat]()
             .then((data) => {
               if (r.ok) {
                 r.data = data;
@@ -524,10 +525,10 @@ export class HttpClient<SecurityDataType = unknown> {
 }
 
 /**
- * @title VALORY
- * @version 2.0.0
+ * @title VALORY.SU
+ * @version 1.0.0
  *
- * API v2
+ * API
  */
 export class Api<SecurityDataType extends unknown> {
   http: HttpClient<SecurityDataType>;

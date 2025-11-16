@@ -23,8 +23,8 @@ class Settings(BaseSettings):
     SECRET_KEY: str
     ALGORITHM: str
 
-    APP_FRONTEND_URL: str
-    APP_BACKEND_URL: str
+    APP_FRONTEND: str
+    APP_BACKEND: str
 
     TWITCH_CLIENT_ID: str
     TWITCH_CLIENT_SECRET: str
@@ -52,7 +52,7 @@ class Settings(BaseSettings):
     @computed_field
     @property
     def REDIRECT_URI(self) -> str:
-        return f"{self.APP_BACKEND_URL}/api/auth/callback"
+        return f"{self.APP_BACKEND}/api/auth/callback"
 
     @computed_field
     @property

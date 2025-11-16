@@ -57,7 +57,7 @@ export const useValorantOverlayStore = defineStore(
           progressBgColor: progressBgColor.value,
         }
 
-        await axios.post(`${import.meta.env.APP_BACKEND_URL}/api/users/me/overlay`, settings, {
+        await axios.post(`${import.meta.env.APP_BACKEND}/api/users/me/overlay`, settings, {
           withCredentials: true,
         })
 

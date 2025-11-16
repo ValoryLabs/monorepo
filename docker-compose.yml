@@ -4,7 +4,7 @@ services:
       context: ./apps/web
       dockerfile: Dockerfile
       args:
-        - APP_BACKEND_URL=${APP_BACKEND_URL}
+        - APP_BACKEND=${APP_BACKEND}
     ports:
       - "9443:8080"
     depends_on:
