@@ -21,7 +21,7 @@ services:
       - -c
       - max_connections=100
     volumes:
-      - ../postgres_data:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data
     networks:
       - app_network
       - web
@@ -53,7 +53,7 @@ services:
       - app_network
       - web
     volumes:
-      - postgresus-data:/postgresus-data
+      - postgresus_data:/postgresus-data
     restart: unless-stopped
     deploy:
       resources:
