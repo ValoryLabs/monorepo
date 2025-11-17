@@ -48,10 +48,10 @@ useHead({
   script: !isDev
     ? [
         {
-          src: 'https://umami.valory.su/script.js',
+          src: 'https://tracking.valory.su/api/script.js',
           defer: true,
           async: false,
-          'data-website-id': '63823b34-44f1-41b8-b78e-ea19f31c594d',
+          'data-site-id': '286193869f46',
         },
       ]
     : [],
