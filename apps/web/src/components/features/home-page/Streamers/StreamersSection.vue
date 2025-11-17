@@ -3,9 +3,8 @@ import {
   StreamersMarquee,
   StreamersMarquee5lim,
 } from '@/components/features/home-page/Streamers/index.ts'
-import { useStreamersStore } from '@/stores'
 import { useWindowSize } from '@vueuse/core'
-import { storeToRefs } from 'pinia'
+import axios from 'axios'
 import { onMounted, ref, type Ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
@@ -13,13 +12,29 @@ const { t } = useI18n()
 
 const { width } = useWindowSize()
 
-const streamersStore = useStreamersStore()
-const { loading } = storeToRefs(streamersStore)
-
 const streamers: Ref<any[]> = ref([])
 
+const loading = ref(false)
+const error = ref<string | null>(null)
+
+const getStreamersStats = async () => {
+  try {
+    loading.value = true
+    error.value = null
+
+    const response = await axios.get(`https://${import.meta.env.APP_BACKEND}/api/streamers/stats`)
+    return response.data
+  } catch (err: any) {
+    error.value = err.response?.data?.detail || err.message || 'Failed to fetch streamers stats'
+    console.error('Error fetching streamers stats:', err)
+    return []
+  } finally {
+    loading.value = false
+  }
+}
+
 onMounted(async () => {
-  streamers.value = await streamersStore.getStreamersStats()
+  streamers.value = await getStreamersStats()
 })
 </script>
 

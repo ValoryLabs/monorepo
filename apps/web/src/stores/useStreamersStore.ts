@@ -97,22 +97,6 @@ export const useStreamersStore = defineStore('streamersStore', () => {
     }
   }
 
-  const getStreamersStats = async () => {
-    try {
-      loading.value = true
-      error.value = null
-
-      const response = await axios.get(`https://${import.meta.env.APP_BACKEND}/api/streamers/stats`)
-      return response.data
-    } catch (err: any) {
-      error.value = err.response?.data?.detail || err.message || 'Failed to fetch streamers stats'
-      console.error('Error fetching streamers stats:', err)
-      return []
-    } finally {
-      loading.value = false
-    }
-  }
-
   const refreshStreamers = async () => {
     await fetchStreamers({ refresh_cache: true })
   }
@@ -129,6 +113,5 @@ export const useStreamersStore = defineStore('streamersStore', () => {
     fetchStreamers,
     refreshStreamers,
     clearError,
-    getStreamersStats,
   }
 })
