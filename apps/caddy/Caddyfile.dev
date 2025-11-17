@@ -12,3 +12,8 @@ api.valory.localhost {
     tls internal
     reverse_proxy 127.0.0.1:8000
 }
+
+go.api.valorant.localhost {
+    tls internal
+    reverse_proxy 127.0.0.1:8080
+}

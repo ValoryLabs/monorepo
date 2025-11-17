@@ -1,0 +1,11 @@
+{
+  "name": "api-go",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "air",
+    "build": "go build -o backend_go main.go",
+    "dev:linux": "air -c .air.linux.conf",
+    "dev:windows": "air -c .air.windows.conf"
+  }
+}
