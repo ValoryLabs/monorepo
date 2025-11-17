@@ -3,6 +3,7 @@ import {
   StreamersMarquee,
   StreamersMarquee5lim,
 } from '@/components/features/home-page/Streamers/index.ts'
+import NumberFlow from '@number-flow/vue'
 import { useWindowSize } from '@vueuse/core'
 import axios from 'axios'
 import { onMounted, ref, type Ref } from 'vue'
@@ -57,23 +58,30 @@ onMounted(async () => {
       </span>
       <div class="w-full flex flex-row gap-6 items-center mt-4">
         <div class="flex flex-col items-center">
-          <span v-if="loading">-</span>
-          <span v-else class="text-3xl font-bold">{{ streamers.total_streamers }}</span>
+          <span class="text-3xl font-bold">
+            <NumberFlow :value="loading ? 0 : streamers.total_streamers" />
+          </span>
           <span class="text-neutral-300">стримеров</span>
         </div>
         <div class="flex flex-col items-center">
           <span v-if="loading">-</span>
-          <span v-else class="text-3xl font-bold">{{ streamers.total_followers }}</span>
+          <span v-else class="text-3xl font-bold">
+            <NumberFlow :value="loading ? 0 : streamers.total_followers" />
+          </span>
           <span class="text-neutral-300">фолловеров</span>
         </div>
         <div class="flex flex-col items-center">
           <span v-if="loading">-</span>
-          <span v-else class="text-3xl font-bold">{{ streamers.online_streamers }}</span>
+          <span v-else class="text-3xl font-bold">
+            <NumberFlow :value="loading ? 0 : streamers.online_streamers" />
+          </span>
           <span class="text-neutral-300">онлайн</span>
         </div>
         <div class="flex flex-col items-center">
           <span v-if="loading">-</span>
-          <span v-else class="text-3xl font-bold">{{ streamers.total_viewers }}</span>
+          <span v-else class="text-3xl font-bold">
+            <NumberFlow :value="loading ? 0 : streamers.total_viewers" />
+          </span>
           <span class="text-neutral-300">зрителей</span>
         </div>
       </div>
