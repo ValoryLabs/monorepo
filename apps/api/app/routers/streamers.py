@@ -1,22 +1,47 @@
 import json
-from typing import List, Optional, Any, Dict
-from fastapi import APIRouter, Depends, Query, HTTPException
+from typing import Any, Dict, List, Optional
 
+from fastapi import APIRouter, Depends, HTTPException, Query
 from redis.asyncio import Redis
 
 from app.config import logger
 from app.db.redis import get_redis
-from app.schemas.streamers import StreamerResponse, SortBy, SortOrder
+from app.schemas.streamers import SortBy, SortOrder, StreamerResponse
 from app.utils.twitch_client import twitch_client
 
 router = APIRouter()
 STREAMER_USERNAMES = [
-    "hardywtffell", "akakiryuuu", "akaira", "samuraj", "pa1ka", "hiemo0",
-    "averash1", "MAGICXcmd", "TimoshkaXgenius", "kirisaa", "mplatooo",
-    "sharrny", "Sindics", "asyouwisxh", "hytaim", "d3nzvlr", "keilaqt",
-    "poluvme", "kkkayten", "ssshapa", "pyrolll", "batujnax", "q1ngvl",
-    "4min21sec", "ka1davl", "kospa1n", "callmeakumu", "yoh7zzz", "pholmys",
-    "dukynho", "digisaka"
+    "hardywtffell",
+    "akakiryuuu",
+    "akaira",
+    "samuraj",
+    "pa1ka",
+    "hiemo0",
+    "averash1",
+    "MAGICXcmd",
+    "TimoshkaXgenius",
+    "kirisaa",
+    "mplatooo",
+    "sharrny",
+    "Sindics",
+    "asyouwisxh",
+    "hytaim",
+    "d3nzvlr",
+    "keilaqt",
+    "poluvme",
+    "kkkayten",
+    "ssshapa",
+    "pyrolll",
+    "batujnax",
+    "q1ngvl",
+    "4min21sec",
+    "ka1davl",
+    "kospa1n",
+    "callmeakumu",
+    "yoh7zzz",
+    "pholmys",
+    "dukynho",
+    "digisaka",
 ]
 
 
@@ -55,17 +80,18 @@ async def update_streamers_cache(cache: Redis | None) -> list[Any]:
                 "verified": user_info.get("verified", False),
                 "viewers": stream_info.get("viewers"),
                 "game": stream_info.get("game"),
-                "title": stream_info.get("title")
+                "title": stream_info.get("title"),
             }
             combined_data.append(streamer_data)
 
         # Cache the data for 5 minutes
         if cache:
             import json
+
             await cache.setex(
                 "streamers:live_data",
                 300,  # 5 minutes
-                json.dumps(combined_data, ensure_ascii=False)
+                json.dumps(combined_data, ensure_ascii=False),
             )
             logger.info(f"Updated cache with {len(combined_data)} streamers")
 
@@ -105,10 +131,10 @@ async def get_cached_streamers_data(cache: Redis, refresh_cache: bool = False) -
 
 @router.get("/online", response_model=List[StreamerResponse], summary="Get online streamers")
 async def get_online_streamers(
-        limit: Optional[int] = Query(None, ge=1, le=100, description="Limit number of streamers returned"),
-        verified_only: bool = Query(False, description="Return only verified streamers"),
-        refresh_cache: bool = Query(False, description="Force refresh cache from Twitch API"),
-        cache: Redis = Depends(get_redis)
+    limit: Optional[int] = Query(None, ge=1, le=100, description="Limit number of streamers returned"),
+    verified_only: bool = Query(False, description="Return only verified streamers"),
+    refresh_cache: bool = Query(False, description="Force refresh cache from Twitch API"),
+    cache: Redis = Depends(get_redis),
 ) -> List[StreamerResponse]:
     """
     Get list of streamers who are currently live streaming.
@@ -147,11 +173,11 @@ async def get_online_streamers(
 
 @router.get("/", response_model=List[StreamerResponse], summary="Get all streamers")
 async def get_all_streamers(
-        live_only: bool = Query(False, description="Return only live streamers"),
-        verified_only: bool = Query(False, description="Return only verified streamers"),
-        limit: Optional[int] = Query(None, ge=1, le=100, description="Limit number of streamers returned"),
-        refresh_cache: bool = Query(False, description="Force refresh cache from Twitch API"),
-        cache: Redis = Depends(get_redis)
+    live_only: bool = Query(False, description="Return only live streamers"),
+    verified_only: bool = Query(False, description="Return only verified streamers"),
+    limit: Optional[int] = Query(None, ge=1, le=100, description="Limit number of streamers returned"),
+    refresh_cache: bool = Query(False, description="Force refresh cache from Twitch API"),
+    cache: Redis = Depends(get_redis),
 ) -> List[StreamerResponse]:
     """
     Get list of all streamers with real-time data from Twitch API.
@@ -183,9 +209,9 @@ async def get_all_streamers(
             else:
                 # Parse follower count for sorting offline streamers
                 followers_str = streamer["followers"]
-                if followers_str.endswith('k'):
+                if followers_str.endswith("k"):
                     return (0, float(followers_str[:-1]) * 1000)
-                elif followers_str.endswith('M'):
+                elif followers_str.endswith("M"):
                     return (0, float(followers_str[:-1]) * 1000000)
                 else:
                     return (0, int(followers_str) if followers_str.isdigit() else 0)
@@ -205,8 +231,8 @@ async def get_all_streamers(
 
 @router.get("/stats", summary="Get streamers statistics")
 async def get_streamers_stats(
-        refresh_cache: bool = Query(False, description="Force refresh cache from Twitch API"),
-        cache: Redis = Depends(get_redis)
+    refresh_cache: bool = Query(False, description="Force refresh cache from Twitch API"),
+    cache: Redis = Depends(get_redis),
 ) -> dict:
     """
     Get real-time statistics about streamers.
@@ -224,8 +250,25 @@ async def get_streamers_stats(
         verified_streamers = len([s for s in streamers_data if s["verified"]])
         verified_online = len([s for s in streamers_data if s["live"] and s["verified"]])
 
+        total_followers = 0
+        for s in streamers_data:
+            followers = s.get("followers", 0)
+            if isinstance(followers, str):
+                total_followers += parse_follower_count(followers)
+            elif isinstance(followers, int):
+                total_followers += followers
+            else:
+                logger.warning(f"Unexpected followers type for {s.get('username')}: {type(followers)}")
+
         # Calculate total viewers for online streams
-        total_viewers = sum(s.get("viewers", 0) for s in streamers_data if s["live"] and s.get("viewers"))
+        total_viewers = 0
+        for s in streamers_data:
+            if s["live"] and s.get("viewers"):
+                viewers = s.get("viewers")
+                if isinstance(viewers, (int, float)):
+                    total_viewers += int(viewers)
+                elif isinstance(viewers, str) and viewers.isdigit():
+                    total_viewers += int(viewers)
 
         stats = {
             "total_streamers": total_streamers,
@@ -234,10 +277,11 @@ async def get_streamers_stats(
             "verified_streamers": verified_streamers,
             "verified_online": verified_online,
             "total_viewers": total_viewers,
+            "total_followers": total_followers,
             "online_percentage": round((online_streamers / total_streamers) * 100, 2) if total_streamers > 0 else 0,
             "verified_percentage": round((verified_streamers / total_streamers) * 100, 2) if total_streamers > 0 else 0,
             "last_updated": "real-time",
-            "cache_refreshed": refresh_cache
+            "cache_refreshed": refresh_cache,
         }
 
         return stats
@@ -253,9 +297,9 @@ def parse_follower_count(followers_str: str) -> int:
         return 0
 
     try:
-        if followers_str.endswith('M'):
+        if followers_str.endswith("M"):
             return int(float(followers_str[:-1]) * 1000000)
-        elif followers_str.endswith('k'):
+        elif followers_str.endswith("k"):
             return int(float(followers_str[:-1]) * 1000)
         else:
             return int(followers_str) if followers_str.isdigit() else 0
@@ -263,8 +307,9 @@ def parse_follower_count(followers_str: str) -> int:
         return 0
 
 
-def sort_streamers(streamers_data: List[Dict[str, Any]], sort_by: SortBy, sort_order: SortOrder) -> List[
-    Dict[str, Any]]:
+def sort_streamers(
+    streamers_data: List[Dict[str, Any]], sort_by: SortBy, sort_order: SortOrder
+) -> List[Dict[str, Any]]:
     """Sort streamers data by specified criteria."""
 
     def get_sort_key(streamer):
@@ -286,13 +331,13 @@ def sort_streamers(streamers_data: List[Dict[str, Any]], sort_by: SortBy, sort_o
 
 @router.get("/sorted", response_model=List[StreamerResponse], summary="Get sorted streamers")
 async def get_sorted_streamers(
-        sort_by: SortBy = Query(SortBy.followers, description="Sort streamers by field"),
-        sort_order: SortOrder = Query(SortOrder.desc, description="Sort direction"),
-        live_only: bool = Query(False, description="Return only live streamers"),
-        verified_only: bool = Query(False, description="Return only verified streamers"),
-        limit: Optional[int] = Query(None, ge=1, le=100, description="Limit number of streamers returned"),
-        refresh_cache: bool = Query(False, description="Force refresh cache from Twitch API"),
-        cache: Redis = Depends(get_redis)
+    sort_by: SortBy = Query(SortBy.followers, description="Sort streamers by field"),
+    sort_order: SortOrder = Query(SortOrder.desc, description="Sort direction"),
+    live_only: bool = Query(False, description="Return only live streamers"),
+    verified_only: bool = Query(False, description="Return only verified streamers"),
+    limit: Optional[int] = Query(None, ge=1, le=100, description="Limit number of streamers returned"),
+    refresh_cache: bool = Query(False, description="Force refresh cache from Twitch API"),
+    cache: Redis = Depends(get_redis),
 ) -> List[StreamerResponse]:
     """
     Get list of streamers sorted by specified criteria.
@@ -335,12 +380,12 @@ async def get_sorted_streamers(
 
 @router.get("/top", response_model=List[StreamerResponse], summary="Get top streamers")
 async def get_top_streamers(
-        by: SortBy = Query(SortBy.followers, description="Criteria for top streamers"),
-        limit: int = Query(10, ge=1, le=50, description="Number of top streamers to return"),
-        live_only: bool = Query(False, description="Consider only live streamers"),
-        verified_only: bool = Query(False, description="Consider only verified streamers"),
-        refresh_cache: bool = Query(False, description="Force refresh cache from Twitch API"),
-        cache: Redis = Depends(get_redis)
+    by: SortBy = Query(SortBy.followers, description="Criteria for top streamers"),
+    limit: int = Query(10, ge=1, le=50, description="Number of top streamers to return"),
+    live_only: bool = Query(False, description="Consider only live streamers"),
+    verified_only: bool = Query(False, description="Consider only verified streamers"),
+    refresh_cache: bool = Query(False, description="Force refresh cache from Twitch API"),
+    cache: Redis = Depends(get_redis),
 ) -> List[StreamerResponse]:
     """
     Get top streamers by specified criteria.
@@ -381,13 +426,13 @@ async def get_top_streamers(
 
 @router.get("/mixed-sort", response_model=List[StreamerResponse], summary="Get streamers with mixed sorting")
 async def get_mixed_sorted_streamers(
-        primary_sort: SortBy = Query(SortBy.live_status, description="Primary sort criteria"),
-        secondary_sort: SortBy = Query(SortBy.followers, description="Secondary sort criteria"),
-        sort_order: SortOrder = Query(SortOrder.desc, description="Sort direction"),
-        verified_only: bool = Query(False, description="Return only verified streamers"),
-        limit: Optional[int] = Query(None, ge=1, le=100, description="Limit number of streamers returned"),
-        refresh_cache: bool = Query(False, description="Force refresh cache from Twitch API"),
-        cache: Redis = Depends(get_redis)
+    primary_sort: SortBy = Query(SortBy.live_status, description="Primary sort criteria"),
+    secondary_sort: SortBy = Query(SortBy.followers, description="Secondary sort criteria"),
+    sort_order: SortOrder = Query(SortOrder.desc, description="Sort direction"),
+    verified_only: bool = Query(False, description="Return only verified streamers"),
+    limit: Optional[int] = Query(None, ge=1, le=100, description="Limit number of streamers returned"),
+    refresh_cache: bool = Query(False, description="Force refresh cache from Twitch API"),
+    cache: Redis = Depends(get_redis),
 ) -> List[StreamerResponse]:
     """
     Get streamers with mixed sorting (e.g., live status first, then by followers).
@@ -448,4 +493,3 @@ async def get_mixed_sorted_streamers(
     except Exception as e:
         logger.error(f"Error getting mixed sorted streamers: {str(e)}")
         raise HTTPException(status_code=500, detail="Failed to get mixed sorted streamers")
-

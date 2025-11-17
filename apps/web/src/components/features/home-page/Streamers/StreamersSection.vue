@@ -3,12 +3,24 @@ import {
   StreamersMarquee,
   StreamersMarquee5lim,
 } from '@/components/features/home-page/Streamers/index.ts'
+import { useStreamersStore } from '@/stores'
 import { useWindowSize } from '@vueuse/core'
+import { storeToRefs } from 'pinia'
+import { onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
 
 const { width } = useWindowSize()
+
+const streamersStore = useStreamersStore()
+const { loading, error } = storeToRefs(streamersStore)
+
+let streamers: any[] = []
+
+onMounted(async () => {
+  streamers = await streamersStore.getStreamersStats()
+})
 </script>
 
 <template>
@@ -28,6 +40,24 @@ const { width } = useWindowSize()
       <span class="text-lg font-normal xl:text-left text-center text-neutral-400">
         {{ t('streamers.subtitle') }}
       </span>
+      <div class="w-full flex flex-row gap-6 items-center mt-4">
+        <div class="flex flex-col items-center">
+          <span class="text-3xl font-bold">{{ streamers.total_streamers }}</span>
+          <span class="text-neutral-300">стримеров</span>
+        </div>
+        <div class="flex flex-col items-center">
+          <span class="text-3xl font-bold">{{ streamers.total_followers }}</span>
+          <span class="text-neutral-300">фолловеров</span>
+        </div>
+        <div class="flex flex-col items-center">
+          <span class="text-3xl font-bold">{{ streamers.online_streamers }}</span>
+          <span class="text-neutral-300">онлайн</span>
+        </div>
+        <div class="flex flex-col items-center">
+          <span class="text-3xl font-bold">{{ streamers.total_viewers }}</span>
+          <span class="text-neutral-300">зрителей</span>
+        </div>
+      </div>
     </div>
     <div
       class="relative flex size-full xl:max-w-1/2 flex-col overflow-hidden items-center justify-center"
