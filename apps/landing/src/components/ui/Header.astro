@@ -15,8 +15,11 @@ const isDev = import.meta.env.DEV;
     class="container flex items-center justify-between bg-black/30 rounded-full py-1 text-sm backdrop-blur-sm transition-all duration-300"
   >
     <div class="left flex flex-row gap-8">
-      <a href="/" class="relative inline-flex gap-2 logo cursor-pointer">
-        <Valory class="text-[#ff0016] size-7.5" />
+      <a
+        href="/"
+        class="relative flex flex-row items-center gap-2 logo cursor-pointer"
+      >
+        <Valory class="size-7.5" />
         {
           isDev && (
             <span class="absolute -top-2 left-3 inline-flex text-xs px-1.5 py-0.5 h-fit font-semibold items-center justify-center rounded-full border text-white transition border-white/10 bg-neutral-900">

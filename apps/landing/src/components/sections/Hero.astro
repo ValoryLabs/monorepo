@@ -1,0 +1,120 @@
+---
+// import LoginOrConfigurator from "@/components/features/home-page/LoginOrConfigurator.astro";
+import { Discord } from "@/components/icons";
+import { ParticlesBg, Sparkles } from "@/components/ui";
+import { Button } from "@/components/ui/button";
+
+const handleConfetti = () => {
+  if (typeof window !== "undefined") {
+    import("@/composables/useConfetti").then(({ triggerConfetti }) =>
+      triggerConfetti(),
+    );
+  }
+};
+---
+
+<section id="main" class="relative flex h-dvh items-center justify-center">
+  <div
+    class="select-none relative flex flex-col items-center justify-center gap-9"
+  >
+    <Sparkles
+      colors={{ first: "#ffffff", second: "#ffffff" }}
+      sparklesCount={5}
+      class="relative m-auto"
+      client:load
+    >
+      <a
+        href="https://discord.gg/pYV4PBV5YW"
+        target="_blank"
+        class="flex cursor-pointer items-center gap-2 rounded-full border border-white/10 bg-[#7289DA]/25 py-1 pl-3 pr-4 text-sm font-semibold drop-shadow-[0_0_20px_rgba(0,59,255,1)] transition duration-150 hover:bg-[#7289DA]/40"
+        onclick="window.triggerConfetti && window.triggerConfetti()"
+      >
+        <Discord size={20} />
+        Be part of our Discord family!
+      </a>
+    </Sparkles>
+    <span
+      class="text-center leading-none text-4xl xl:text-[90px] sm:text-6xl font-black uppercase"
+    >
+      The ultimate tool<br /> for STREAM
+    </span>
+    <span class="text-center text-xl font-light px-12">
+      Show your Valorant stats effortlessly.<br />
+      Engage your audience and keep the focus on the game
+    </span>
+    <span
+      class="flex w-full flex-col items-center justify-center gap-3 lg:flex-row"
+    >
+      <Button
+        variant="default"
+        class="justify-center h-14 min-w-[240px] rounded-xl text-lg"
+      >
+        Let's start create
+      </Button>
+      <Button
+        variant="alternative"
+        class="justify-center h-14 min-w-[240px] rounded-xl text-lg"
+      >
+        How does it work?
+      </Button>
+    </span>
+  </div>
+  <div
+    class="animate-fade absolute -bottom-96 -z-10 h-[90dvh] w-[80dvw] rounded-full bg-[#0046ff] opacity-50 blur-[160px]"
+  >
+  </div>
+  <div
+    class="animate-fade-2 absolute -bottom-96 -z-10 h-[500px] w-full rounded-full bg-[#2e3e75] opacity-50 blur-[160px]"
+  >
+  </div>
+  <div
+    class="animate-fade-2 absolute -bottom-96 -z-10 h-[300px] w-[70dvw] rounded-full bg-[#f2f2f2]/20 blur-[160px]"
+  >
+  </div>
+  <ParticlesBg
+    class="absolute inset-0 -z-10"
+    quantity={100}
+    ease={100}
+    color="#FFF"
+    staticity={10}
+    refresh={true}
+    client:load
+  />
+</section>
+
+<style>
+  .animate-fade {
+    animation: fade 10s infinite;
+  }
+
+  .animate-fade-2 {
+    animation: fade-2 5s infinite;
+  }
+
+  @keyframes fade {
+    0% {
+      --tw-blur: blur(160px);
+      opacity: 0.6;
+    }
+    50% {
+      --tw-blur: blur(100px);
+      opacity: 0.4;
+    }
+    100% {
+      --tw-blur: blur(160px);
+      opacity: 0.6;
+    }
+  }
+
+  @keyframes fade-2 {
+    0% {
+      opacity: 0.5;
+    }
+    50% {
+      opacity: 0.8;
+    }
+    100% {
+      opacity: 0.5;
+    }
+  }
+</style>
