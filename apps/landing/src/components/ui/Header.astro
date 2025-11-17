@@ -1,0 +1,141 @@
+---
+import { Github, Valory } from "@/components/icons";
+import { Button } from "@/components/ui/button";
+import { NAV_DATA } from "@/data";
+import { ArrowRight } from "@lucide/astro";
+
+const isDev = import.meta.env.DEV;
+---
+
+<header
+  id="main-header"
+  class="fixed top-6 right-0 left-0 z-100 flex h-16 w-full justify-center transition-transform duration-300 ease-in-out translate-y-0"
+>
+  <div
+    class="container flex items-center justify-between bg-black/30 rounded-full py-1 text-sm backdrop-blur-sm transition-all duration-300"
+  >
+    <div class="left flex flex-row gap-8">
+      <a href="/" class="relative inline-flex gap-2 logo cursor-pointer">
+        <Valory class="text-[#ff0016] size-7.5" />
+        {
+          isDev && (
+            <span class="absolute -top-2 left-3 inline-flex text-xs px-1.5 py-0.5 h-fit font-semibold items-center justify-center rounded-full border text-white transition border-white/10 bg-neutral-900">
+              DEV
+            </span>
+          )
+        }
+      </a>
+      <ul class="flex items-center justify-between gap-6 nav-links">
+        {
+          NAV_DATA.map((nav) => (
+            <li
+              class="cursor-pointer font-medium text-[#F2F2F2]/80 transition duration-150 hover:text-[#F2F2F2]"
+              data-section={nav.point}
+            >
+              {nav.name}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <div class="right flex flex-row items-center gap-3">
+      <a
+        href="https://github.com/ValoryLabs/Valory"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="github-link"
+      >
+        <Button
+          class="rounded-full border border-transparent bg-transparent text-white opacity-50 transition hover:border-white/10 hover:bg-white/10 hover:opacity-100"
+          size="icon"
+        >
+          <Github size={16} />
+        </Button>
+      </a>
+      <Button>Let's start create <ArrowRight size={16} /></Button>
+      <!-- <LanguageSwitcher client:load variant="rounded" /> -->
+      <!-- <LoginOrConfigurator client:load /> -->
+    </div>
+  </div>
+</header>
+
+<script>
+  // Scroll handling logic
+  let isHeaderVisible = true;
+  let isHeaderFixed = false;
+  let lastScrollY = 0;
+  const heroHeight = 600;
+
+  const header = document.getElementById("main-header");
+
+  function handleScroll() {
+    const currentScrollY = window.scrollY;
+
+    if (currentScrollY < heroHeight) {
+      isHeaderVisible = true;
+      isHeaderFixed = false;
+      lastScrollY = currentScrollY;
+      updateHeaderClasses();
+      return;
+    }
+
+    isHeaderFixed = true;
+
+    if (currentScrollY > lastScrollY) {
+      isHeaderVisible = false;
+    } else {
+      isHeaderVisible = true;
+    }
+
+    lastScrollY = currentScrollY;
+    updateHeaderClasses();
+  }
+
+  function updateHeaderClasses() {
+    if (!header) return;
+
+    if (!isHeaderVisible && isHeaderFixed) {
+      header.classList.add("-translate-y-[150%]");
+      header.classList.remove("translate-y-0");
+    } else {
+      header.classList.remove("-translate-y-[150%]");
+      header.classList.add("translate-y-0");
+    }
+  }
+
+  // Smooth scroll to sections
+  function moveTo(sectionId: string) {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }
+
+  // Add event listeners
+  function initializeHeader() {
+    // Scroll event listener
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    // Navigation click handlers
+    const navLinks = document.querySelectorAll(".nav-links li");
+    navLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        const section = link.getAttribute("data-section");
+        if (section) {
+          moveTo(section);
+        }
+      });
+    });
+  }
+
+  // Initialize on page load
+  document.addEventListener("DOMContentLoaded", initializeHeader);
+
+  // Reinitialize after view transitions (if using Astro view transitions)
+  document.addEventListener("astro:page-load", initializeHeader);
+
+  // Cleanup on page navigation
+  document.addEventListener("astro:before-swap", () => {
+    window.removeEventListener("scroll", handleScroll);
+  });
+</script>

@@ -1,0 +1,25 @@
+---
+import type { HTMLTag } from "astro/types";
+import { type ButtonVariants, buttonVariants } from ".";
+import { cn } from "@/lib/utils";
+
+interface Props {
+  as?: HTMLTag;
+  variant?: ButtonVariants["variant"];
+  size?: ButtonVariants["size"];
+  class?: string;
+  href?: string;
+}
+
+const {
+  as: Element = "button",
+  variant,
+  size,
+  class: className,
+  ...props
+} = Astro.props;
+---
+
+<Element class={cn(buttonVariants({ variant, size }), className)} {...props}>
+  <slot />
+</Element>

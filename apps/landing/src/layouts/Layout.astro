@@ -1,17 +1,91 @@
 ---
-import '../assets/style.css'
+import "@/assets/style.css";
+import { Header } from "@/components/ui";
+import { SEO } from "astro-seo";
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+}
+
+const {
+  title = "Stream Overlay for Valorant - VALORY",
+  description = "Enhance your Valorant stream with VALORY overlays. Engage viewers, showcase progress, and make your stream unforgettable!",
+  image = "https://valory.su/meta.webp",
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, "https://valory.su");
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Google Fonts Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Preload Google Fonts -->
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400..900&family=Jersey+15&family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Rajdhani:wght@300;400;500;600;700&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Manrope:wght@200..800&family=Oxanium:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Russo+One&family=Space+Grotesk:wght@300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Outfit:wght@100..900&family=Public+Sans:ital,wght@0,100..900;1,100..900&family=Sora:wght@100..800&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap"
+    />
+
+    <!-- Load Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400..900&family=Jersey+15&family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Rajdhani:wght@300;400;500;600;700&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Manrope:wght@200..800&family=Oxanium:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Russo+One&family=Space+Grotesk:wght@300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Outfit:wght@100..900&family=Public+Sans:ital,wght@0,100..900;1,100..900&family=Sora:wght@100..800&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <SEO
+      title={title}
+      description={description}
+      canonical={canonicalURL.toString()}
+      openGraph={{
+        basic: {
+          title: title,
+          type: "website",
+          image: image,
+          url: canonicalURL.toString(),
+        },
+        optional: {
+          siteName: "VALORY",
+        },
+      }}
+      twitter={{
+        card: "summary_large_image",
+        title: title,
+        description: description,
+        image: image,
+      }}
+      extend={{
+        link: [{ rel: "icon", href: "/favicon.ico", type: "image/x-icon" }],
+        meta: [
+          {
+            name: "keywords",
+            content:
+              "valorant, valorant overlay, stream overlay, OBS overlay, valorant stream, valorant streaming, valorant tracker, valorant rank tracker, valory",
+          },
+          {
+            name: "author",
+            content: "MAGICX, misha@valory.su",
+          },
+          {
+            property: "telegram:channel",
+            content: "@magicxcmd",
+          },
+        ],
+      }}
+    />
+  </head>
+  <body>
+    <Header />
+    <slot />
+  </body>
 </html>

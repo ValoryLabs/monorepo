@@ -7,7 +7,7 @@ import { fileURLToPath, URL } from "node:url";
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
-  integrations: [vue()],
+  integrations: [vue({ devtools: true })],
 
   vite: {
     plugins: [tailwindcss()],
