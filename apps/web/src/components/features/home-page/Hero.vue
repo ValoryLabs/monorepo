@@ -17,13 +17,15 @@ const { t } = useI18n()
         :sparkles-count="5"
         class="relative m-auto"
       >
-        <span
+        <a
           @click="triggerConfetti()"
+          href="https://discord.gg/pYV4PBV5YW"
+          target="_blank"
           class="flex cursor-pointer items-center gap-2 rounded-full border border-white/10 bg-[#7289DA]/25 py-1 pl-3 pr-4 text-sm font-semibold drop-shadow-[0_0_20px_rgba(0,59,255,1)] transition duration-150 hover:bg-[#7289DA]/40"
         >
           <Discord :size="20" />
           {{ t('main.discord') }}
-        </span>
+        </a>
       </Sparkles>
       <span
         class="whitespace-pre-line text-center leading-none text-4xl xl:text-[90px] sm:text-6xl font-black uppercase"
