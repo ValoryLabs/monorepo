@@ -6,7 +6,7 @@ import {
 import { useStreamersStore } from '@/stores'
 import { useWindowSize } from '@vueuse/core'
 import { storeToRefs } from 'pinia'
-import { onMounted } from 'vue'
+import { onMounted, ref, type Ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
@@ -14,12 +14,12 @@ const { t } = useI18n()
 const { width } = useWindowSize()
 
 const streamersStore = useStreamersStore()
-const { loading, error } = storeToRefs(streamersStore)
+const { loading } = storeToRefs(streamersStore)
 
-let streamers: any[] = []
+const streamers: Ref<any[]> = ref([])
 
 onMounted(async () => {
-  streamers = await streamersStore.getStreamersStats()
+  streamers.value = await streamersStore.getStreamersStats()
 })
 </script>
 
@@ -42,19 +42,23 @@ onMounted(async () => {
       </span>
       <div class="w-full flex flex-row gap-6 items-center mt-4">
         <div class="flex flex-col items-center">
-          <span class="text-3xl font-bold">{{ streamers.total_streamers }}</span>
+          <span v-if="loading">-</span>
+          <span v-else class="text-3xl font-bold">{{ streamers.total_streamers }}</span>
           <span class="text-neutral-300">стримеров</span>
         </div>
         <div class="flex flex-col items-center">
-          <span class="text-3xl font-bold">{{ streamers.total_followers }}</span>
+          <span v-if="loading">-</span>
+          <span v-else class="text-3xl font-bold">{{ streamers.total_followers }}</span>
           <span class="text-neutral-300">фолловеров</span>
         </div>
         <div class="flex flex-col items-center">
-          <span class="text-3xl font-bold">{{ streamers.online_streamers }}</span>
+          <span v-if="loading">-</span>
+          <span v-else class="text-3xl font-bold">{{ streamers.online_streamers }}</span>
           <span class="text-neutral-300">онлайн</span>
         </div>
         <div class="flex flex-col items-center">
-          <span class="text-3xl font-bold">{{ streamers.total_viewers }}</span>
+          <span v-if="loading">-</span>
+          <span v-else class="text-3xl font-bold">{{ streamers.total_viewers }}</span>
           <span class="text-neutral-300">зрителей</span>
         </div>
       </div>
