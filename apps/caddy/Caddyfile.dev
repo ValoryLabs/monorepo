@@ -5,6 +5,11 @@
 
 valory.localhost {
     tls internal
+    reverse_proxy localhost:4321
+}
+
+app.valory.localhost {
+    tls internal
     reverse_proxy 127.0.0.1:3005
 }
 
