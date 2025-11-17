@@ -56,7 +56,7 @@ onMounted(async () => {
       <span class="text-lg font-normal xl:text-left text-center text-neutral-400">
         {{ t('streamers.subtitle') }}
       </span>
-      <div class="w-full flex flex-row gap-6 items-center mt-4">
+      <div class="w-full flex flex-row gap-6 items-center xl:justify-start justify-center mt-4">
         <div class="flex flex-col items-center">
           <span class="text-3xl font-bold">
             <NumberFlow :value="loading ? 0 : streamers.total_streamers" />
