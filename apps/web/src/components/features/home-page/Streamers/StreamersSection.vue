@@ -64,22 +64,19 @@ onMounted(async () => {
           <span class="text-neutral-300">стримеров</span>
         </div>
         <div class="flex flex-col items-center">
-          <span v-if="loading">-</span>
-          <span v-else class="text-3xl font-bold">
+          <span class="text-3xl font-bold">
             <NumberFlow :value="loading ? 0 : streamers.total_followers" />
           </span>
           <span class="text-neutral-300">фолловеров</span>
         </div>
         <div class="flex flex-col items-center">
-          <span v-if="loading">-</span>
-          <span v-else class="text-3xl font-bold">
+          <span class="text-3xl font-bold">
             <NumberFlow :value="loading ? 0 : streamers.online_streamers" />
           </span>
           <span class="text-neutral-300">онлайн</span>
         </div>
         <div class="flex flex-col items-center">
-          <span v-if="loading">-</span>
-          <span v-else class="text-3xl font-bold">
+          <span class="text-3xl font-bold">
             <NumberFlow :value="loading ? 0 : streamers.total_viewers" />
           </span>
           <span class="text-neutral-300">зрителей</span>
