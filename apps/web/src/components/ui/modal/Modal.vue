@@ -4,10 +4,16 @@ import { cn } from '@/lib/utils'
 import { XIcon } from 'lucide-vue-next'
 import type { HTMLAttributes } from 'vue'
 
-const props = defineProps<{
-  modelValue: boolean
-  class?: HTMLAttributes['class']
-}>()
+const props = withDefaults(
+  defineProps<{
+    modelValue: boolean
+    class?: HTMLAttributes['class']
+    closeBtn?: boolean
+  }>(),
+  {
+    closeBtn: false,
+  },
+)
 const emit = defineEmits<{
   'update:modelValue': [value: boolean]
 }>()
@@ -29,7 +35,7 @@ const emit = defineEmits<{
             )
           "
         >
-          <div class="absolute top-4 right-4">
+          <div v-if="!props.closeBtn" class="absolute top-4 right-4">
             <Button
               variant="ghost"
               size="icon"

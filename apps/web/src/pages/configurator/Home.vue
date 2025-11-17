@@ -1,8 +1,9 @@
 <script setup lang="ts">
+import { BetaModal } from '@/components/features/configuration-page'
 import { HeroText } from '@/components/features/configuration-page/home'
 import { FeaturesCardSection } from '@/components/features/configuration-page/home/features-cards'
 import { ValoryOutline } from '@/components/shared/icons'
-import { useUserStore } from '@/stores'
+import { useSettingsStore, useUserStore } from '@/stores'
 import { useHead } from '@unhead/vue'
 import { storeToRefs } from 'pinia'
 import { useI18n } from 'vue-i18n'
@@ -12,12 +13,16 @@ const { t } = useI18n()
 const userStore = useUserStore()
 const { user } = storeToRefs(userStore)
 
+const settingsStore = useSettingsStore()
+const { betaModalActive } = storeToRefs(settingsStore)
+
 useHead({
   title: t('pages.configurator.home'),
 })
 </script>
 
 <template>
+  <BetaModal v-if="betaModalActive" />
   <div class="container h-full pt-10 flex flex-col justify-center items-center gap-6">
     <!--    <FeaturesAvatarGroup />-->
     <div class="relative flex flex-col">

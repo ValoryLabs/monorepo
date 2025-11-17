@@ -320,5 +320,16 @@
     "dashboard": "Dashboard",
     "valorant": "Valorant",
     "spotify": "Spotify"
+  },
+  "beta": {
+    "title": "Welcome to VALORY",
+    "subtitle": "Enjoy your stay!",
+    "description": [
+      "VALORY is in beta testing stage",
+      "By continuing to use the platform, you acknowledge and accept that the website may contain bugs, errors, and unstable functionality. We are actively working on improving the service and appreciate your patience.",
+      "You can support the project by sharing your ideas and suggestions in our Discord community or by creating an issue on GitHub.",
+      "Your feedback will help make project better!"
+    ],
+    "continue": "Continue"
   }
 }

@@ -14,6 +14,7 @@ export const useSettingsStore = defineStore(
     const showRightSidebar: Ref<boolean> = ref(true)
     const showShortcuts: Ref<boolean> = ref(true)
     const settingsActive: Ref<boolean> = ref(false)
+    const betaModalActive: Ref<boolean> = ref(true)
 
     const toggleConfigurator = (): void => {
       configuratorActive.value = !configuratorActive.value
@@ -47,6 +48,7 @@ export const useSettingsStore = defineStore(
       toggleConfigurator,
       toggleFullscreen,
       togglePreview,
+      betaModalActive,
     }
   },
   {
@@ -64,6 +66,7 @@ export const useSettingsStore = defineStore(
         'showShortcuts',
         'resetShortcut',
         'fullShortcut',
+        'betaModalActive',
       ],
     },
   },
