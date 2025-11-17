@@ -29,7 +29,7 @@ const isDev = import.meta.env.APP_DEV === 'true'
           class="relative inline-flex gap-2 logo cursor-pointer"
           @click="router.push({ name: 'home' })"
         >
-          <Valory :size="30" />
+          <Valory class="text-[#ff0016] size-7.5" />
           <span
             v-if="isDev"
             class="absolute -top-2 left-3 inline-flex text-xs px-1.5 py-0.5 h-fit font-semibold items-center justify-center rounded-full border text-white transition border-white/10 bg-neutral-900"

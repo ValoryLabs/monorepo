@@ -17,8 +17,8 @@ useHead({
     <div class="m-auto flex items-center justify-center">
       <div class="container flex flex-col content-center items-center justify-center gap-3">
         <div class="relative flex flex-row items-center gap-2">
-          <Valory :size="38" />
-          <Valory :size="96" class="absolute left-0 blur-[120px]" />
+          <Valory class="text-[#ff0016] size-9.5" />
+          <Valory class="text-[#ff0016] size-24 absolute left-0 blur-[120px]" />
         </div>
         <div class="flex flex-col items-center justify-center gap-4 py-3">
           <span class="text-valory text-lg font-bold uppercase">

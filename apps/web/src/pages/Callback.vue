@@ -38,7 +38,7 @@ if (token) {
         <div class="relative flex flex-col items-center justify-center gap-4">
           <Loading />
           <span class="text-base font-bold">{{ $t('components.login.logging') }}</span>
-          <Valory :size="96" class="absolute inset-0 m-auto blur-[120px] -z-10" />
+          <Valory class="text-[#ff0016] size-24 absolute inset-0 m-auto blur-[120px] -z-10" />
         </div>
       </div>
     </div>

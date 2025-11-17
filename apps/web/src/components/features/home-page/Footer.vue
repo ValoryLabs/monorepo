@@ -26,8 +26,15 @@ const router = useRouter()
         class="flex flex-col justify-between"
         :class="[hidden ? 'max-w-52 h-[160px]' : 'h-full']"
       >
-        <div @click="moveTo('main')" class="flex flex-row items-center gap-2">
-          <Valory :size="28" />
+        <div @click="moveTo('main')" class="group flex flex-row items-center gap-3 cursor-pointer">
+          <Valory
+            class="size-7 group-hover:text-[#970000] text-[#ff0016] transition-colors duration-300"
+          />
+          <span
+            class="font-valory text-lg group-hover:text-white/80 transition-colors duration-300"
+          >
+            VALORY
+          </span>
         </div>
         <div class="flex flex-col gap-4">
           <div class="flex flex-row gap-2 -ml-2">

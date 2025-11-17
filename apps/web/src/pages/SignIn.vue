@@ -21,8 +21,8 @@ const redirectToAuth = () => {
       <div class="w-full max-w-80 space-y-8">
         <div class="flex flex-col items-center gap-3">
           <div class="relative flex flex-row items-center gap-2">
-            <Valory :size="26" />
-            <Valory :size="96" class="absolute left-0 blur-[120px]" />
+            <Valory class="text-[#ff0016] size-9.5" />
+            <Valory class="text-[#ff0016] size-24 absolute left-0 blur-[120px]" />
             <span
               class="font-valory inline-block bg-linear-to-b from-[#f2f2f2] to-[#dddddd] bg-clip-text text-lg leading-none text-transparent"
             >

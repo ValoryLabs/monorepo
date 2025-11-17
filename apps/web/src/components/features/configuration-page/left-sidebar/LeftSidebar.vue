@@ -26,7 +26,7 @@ const router = useRouter()
             @click="router.push('/')"
             class="relative flex cursor-pointer items-center justify-baseline gap-2 py-3"
           >
-            <Valory class="size-6" />
+            <Valory class="size-6 text-[#ff0016]" />
           </div>
         </div>
         <Navigation />
