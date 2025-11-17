@@ -1,16 +1,3 @@
-<template>
-  <div ref="containerRef" class="relative flex items-center justify-center">
-    <div class="relative flex w-full flex-col gap-32" style="perspective: 1000px">
-      <ContainerScrollTitle :translate="translateY">
-        <slot name="title"></slot>
-      </ContainerScrollTitle>
-      <ContainerScrollCard :rotate="rotate" :scale="scale" :translate="translateCardY">
-        <slot name="card" />
-      </ContainerScrollCard>
-    </div>
-  </div>
-</template>
-
 <script setup lang="ts">
 import { useElementBounding, useScroll, useWindowSize } from '@vueuse/core'
 import { computed, onMounted, onUnmounted, ref } from 'vue'
@@ -53,3 +40,16 @@ const scale = computed(() => {
 const translateY = computed(() => -100 * scrollYProgress.value)
 const translateCardY = computed(() => scrollYProgress.value * 30 - 30)
 </script>
+
+<template>
+  <div ref="containerRef" class="relative flex items-center justify-center">
+    <div class="relative flex w-full flex-col gap-28" style="perspective: 1000px">
+      <ContainerScrollTitle :translate="translateY">
+        <slot name="title"></slot>
+      </ContainerScrollTitle>
+      <ContainerScrollCard :rotate="rotate" :scale="scale" :translate="translateCardY">
+        <slot name="card" />
+      </ContainerScrollCard>
+    </div>
+  </div>
+</template>
