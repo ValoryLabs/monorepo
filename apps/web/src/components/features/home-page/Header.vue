@@ -18,14 +18,10 @@ const isDev = import.meta.env.APP_DEV === 'true'
 const isHeaderVisible = ref(true)
 const isHeaderFixed = ref(false)
 let lastScrollY = 0
-let heroHeight = 0
+const heroHeight = 600
 
 const handleScroll = () => {
   const currentScrollY = window.scrollY
-
-  if (!heroHeight) {
-    heroHeight = window.innerHeight
-  }
 
   if (currentScrollY < heroHeight) {
     isHeaderVisible.value = true
@@ -47,7 +43,6 @@ const handleScroll = () => {
 
 onMounted(() => {
   window.addEventListener('scroll', handleScroll, { passive: true })
-  heroHeight = window.innerHeight
 })
 
 onUnmounted(() => {
