@@ -1,24 +1,14 @@
 ---
 // import LoginOrConfigurator from "@/components/features/home-page/LoginOrConfigurator.astro";
-import { Discord } from "@/components/icons";
-import { ParticlesBg, Sparkles } from "@/components/ui";
-import { Button } from "@/components/ui/button";
-
-const handleConfetti = () => {
-  if (typeof window !== "undefined") {
-    import("@/composables/useConfetti").then(({ triggerConfetti }) =>
-      triggerConfetti(),
-    );
-  }
-};
+import { Discord } from '@/components/icons'
+import { ParticlesBg, Sparkles } from '@/components/ui'
+import { Button } from '@/components/ui/button'
 ---
 
 <section id="main" class="relative flex h-dvh items-center justify-center">
-  <div
-    class="select-none relative flex flex-col items-center justify-center gap-9"
-  >
+  <div class="relative flex flex-col items-center justify-center gap-9 select-none">
     <Sparkles
-      colors={{ first: "#ffffff", second: "#ffffff" }}
+      colors={{ first: '#ffffff', second: '#ffffff' }}
       sparklesCount={5}
       class="relative m-auto"
       client:load
@@ -26,35 +16,24 @@ const handleConfetti = () => {
       <a
         href="https://discord.gg/pYV4PBV5YW"
         target="_blank"
-        class="flex cursor-pointer items-center gap-2 rounded-full border border-white/10 bg-[#7289DA]/25 py-1 pl-3 pr-4 text-sm font-semibold drop-shadow-[0_0_20px_rgba(0,59,255,1)] transition duration-150 hover:bg-[#7289DA]/40"
-        onclick="window.triggerConfetti && window.triggerConfetti()"
+        class="flex cursor-pointer items-center gap-2 rounded-full border border-white/10 bg-[#7289DA]/25 py-1 pr-4 pl-3 text-sm font-semibold drop-shadow-[0_0_20px_rgba(0,59,255,1)] transition duration-150 hover:bg-[#7289DA]/40"
       >
         <Discord size={20} />
         Be part of our Discord family!
       </a>
     </Sparkles>
-    <span
-      class="text-center leading-none text-4xl xl:text-[90px] sm:text-6xl font-black uppercase"
-    >
+    <span class="text-center text-4xl leading-none font-black uppercase sm:text-6xl xl:text-[90px]">
       The ultimate tool<br /> for STREAM
     </span>
-    <span class="text-center text-xl font-light px-12">
+    <span class="px-12 text-center text-xl font-light">
       Show your Valorant stats effortlessly.<br />
       Engage your audience and keep the focus on the game
     </span>
-    <span
-      class="flex w-full flex-col items-center justify-center gap-3 lg:flex-row"
-    >
-      <Button
-        variant="default"
-        class="justify-center h-14 min-w-[240px] rounded-xl text-lg"
-      >
+    <span class="flex w-full flex-col items-center justify-center gap-3 lg:flex-row">
+      <Button variant="default" class="h-14 min-w-[240px] justify-center rounded-xl text-lg">
         Let's start create
       </Button>
-      <Button
-        variant="alternative"
-        class="justify-center h-14 min-w-[240px] rounded-xl text-lg"
-      >
+      <Button variant="alternative" class="h-14 min-w-[240px] justify-center rounded-xl text-lg">
         How does it work?
       </Button>
     </span>
