@@ -1,0 +1,91 @@
+---
+import { PREVIEW_TABS_DATA } from '@/data/PreviewTabs.data.ts'
+const defaultTab = PREVIEW_TABS_DATA[0]?.value || 'dashboard'
+let activeTab = defaultTab
+---
+
+<section class="relative container" id="custom-tabs">
+  <div class="mt-16 mb-16 flex flex-col">
+    <div
+      class="flex w-full flex-row gap-1 border border-white/10 bg-black/5 backdrop-blur-sm"
+      id="tabs-list"
+    >
+      {
+        PREVIEW_TABS_DATA.map((tab) => (
+          <button
+            class="tab-trigger"
+            data-value={tab.value}
+            aria-selected={tab.value === defaultTab}
+          >
+            {tab.value}
+          </button>
+        ))
+      }
+    </div>
+
+    {
+      PREVIEW_TABS_DATA.map((tab) => (
+        <div
+          class="tab-content"
+          data-value={tab.value}
+          style={`display: ${tab.value === defaultTab ? 'block' : 'none'}`}
+        >
+          <img
+            src={tab.content}
+            class="pointer-events-none mx-auto h-full object-cover object-left-top"
+            alt="hero"
+            height="3104"
+            width="5480"
+          />
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const list = document.getElementById('tabs-list')
+    const triggers = Array.from(list.querySelectorAll('.tab-trigger'))
+    const contents = Array.from(document.querySelectorAll('.tab-content'))
+    triggers.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const selected = btn.getAttribute('data-value')
+        triggers.forEach((el) =>
+          el.setAttribute(
+            'aria-selected',
+            el.getAttribute('data-value') === selected ? 'true' : 'false',
+          ),
+        )
+        contents.forEach((content) => {
+          content.style.display = content.getAttribute('data-value') === selected ? 'block' : 'none'
+        })
+      })
+    })
+  })
+</script>
+
+<style>
+  .tab-trigger {
+    /* Добавьте стили для кнопок вкладок */
+    padding: 0.5rem 1rem;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .tab-trigger[aria-selected='true'],
+  .tab-trigger.active {
+    /* Стили для активной вкладки */
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .tab-content {
+    /* Стили для контента вкладок */
+  }
+
+  .tab-content[hidden] {
+    display: none;
+  }
+</style>
