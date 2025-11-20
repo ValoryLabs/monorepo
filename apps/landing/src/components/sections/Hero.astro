@@ -1,12 +1,11 @@
 ---
-// import LoginOrConfigurator from "@/components/features/home-page/LoginOrConfigurator.astro";
 import { Discord } from '@/components/icons'
-import { ParticlesBg, Sparkles } from '@/components/ui'
+import { Sparkles } from '@/components/ui'
 import { Button } from '@/components/ui/button'
 ---
 
 <section id="main" class="relative flex items-center justify-center">
-  <div class="relative mt-64 flex flex-col items-center justify-center gap-9 select-none">
+  <div class="relative mt-58 flex flex-col items-center justify-center gap-9 select-none">
     <Sparkles
       colors={{ first: '#ffffff', second: '#ffffff' }}
       sparklesCount={5}
@@ -22,43 +21,22 @@ import { Button } from '@/components/ui/button'
         Be part of our Discord family!
       </a>
     </Sparkles>
-    <span class="text-center text-4xl leading-none font-black uppercase sm:text-6xl xl:text-[90px]">
-      The ultimate tool <br /> for STREAM
+    <span class="text-center text-4xl leading-[0.8] font-bold sm:text-6xl xl:text-[90px]">
+      Your streaming<br /> command center
     </span>
     <span class="px-12 text-center text-xl font-light">
-      Show your Valorant stats effortlessly.<br />
-      Engage your audience and keep the focus on the game
+      Automate overlays, track performance, and interact with viewers<br /> — all without leaving your
+      game.
     </span>
     <span class="flex w-full flex-col items-center justify-center gap-3 lg:flex-row">
-      <Button variant="default" class="h-14 min-w-[240px] justify-center rounded-xl text-lg">
+      <Button variant="default" class="h-12 min-w-52 justify-center rounded-xl text-lg">
         Let's start create
       </Button>
-      <Button variant="alternative" class="h-14 min-w-[240px] justify-center rounded-xl text-lg">
+      <Button variant="alternative" class="h-12 min-w-52 justify-center rounded-xl text-lg">
         How does it work?
       </Button>
     </span>
   </div>
-  <div
-    class="animate-fade absolute -bottom-[40rem] -z-10 h-[90dvh] w-[80dvw] rounded-full bg-[#0046ff] opacity-50 blur-[160px]"
-  >
-  </div>
-  <div
-    class="animate-fade-2 absolute -bottom-[40rem] -z-10 h-[500px] w-full rounded-full bg-[#2e3e75] opacity-50 blur-[160px]"
-  >
-  </div>
-  <div
-    class="animate-fade-2 absolute -bottom-[40rem] -z-10 h-[300px] w-[70dvw] rounded-full bg-[#f2f2f2]/20 blur-[160px]"
-  >
-  </div>
-  <ParticlesBg
-    class="absolute inset-0 -z-10"
-    quantity={100}
-    ease={100}
-    color="#FFF"
-    staticity={10}
-    refresh={true}
-    client:load
-  />
 </section>
 
 <style>

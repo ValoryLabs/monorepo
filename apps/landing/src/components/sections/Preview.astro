@@ -6,14 +6,11 @@ let activeTab = defaultTab
 
 <section class="relative container" id="custom-tabs">
   <div class="mt-16 mb-16 flex flex-col">
-    <div
-      class="flex w-full flex-row gap-1 border border-white/10 bg-black/5 backdrop-blur-sm"
-      id="tabs-list"
-    >
+    <div class="flex w-full flex-row gap-1 border border-white/10 bg-black/5" id="tabs-list">
       {
         PREVIEW_TABS_DATA.map((tab) => (
           <button
-            class="tab-trigger"
+            class="tab-trigger capitalize"
             data-value={tab.value}
             aria-selected={tab.value === defaultTab}
           >
@@ -26,7 +23,7 @@ let activeTab = defaultTab
     {
       PREVIEW_TABS_DATA.map((tab) => (
         <div
-          class="tab-content"
+          class="tab-content border border-t-0 border-l-0 border-white/10"
           data-value={tab.value}
           style={`display: ${tab.value === defaultTab ? 'block' : 'none'}`}
         >
