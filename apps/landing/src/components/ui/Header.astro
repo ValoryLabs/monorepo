@@ -8,7 +8,7 @@ const isDev = import.meta.env.DEV
 
 <header
   id="main-header"
-  class="fixed top-0 right-0 left-0 z-100 flex h-16 w-full translate-y-0 justify-center bg-black/60 backdrop-blur-md transition-transform duration-300 ease-in-out"
+  class="header-bg fixed top-0 right-0 left-0 z-100 flex h-16 w-full translate-y-0 justify-center transition-transform duration-300 ease-in-out"
 >
   <div
     class="flex w-full items-center justify-between px-6 py-1 py-2 text-sm transition-all duration-300"
@@ -63,3 +63,60 @@ const isDev = import.meta.env.DEV
     }
   }
 </script>
+
+<style>
+  .header-bg {
+    background: linear-gradient(
+      rgb(0, 0, 0) 0%,
+      rgba(0, 0, 0, 1) 2.04082%,
+      rgba(0, 0, 0, 0.997) 4.08163%,
+      rgba(0, 0, 0, 0.993) 6.12245%,
+      rgba(0, 0, 0, 0.99) 8.16327%,
+      rgba(0, 0, 0, 0.98) 10.2041%,
+      rgba(0, 0, 0, 0.97) 12.2449%,
+      rgba(0, 0, 0, 0.96) 14.2857%,
+      rgba(0, 0, 0, 0.947) 16.3265%,
+      rgba(0, 0, 0, 0.933) 18.3673%,
+      rgba(0, 0, 0, 0.917) 20.4082%,
+      rgba(0, 0, 0, 0.899) 22.449%,
+      rgba(0, 0, 0, 0.88) 24.4898%,
+      rgba(0, 0, 0, 0.86) 26.5306%,
+      rgba(0, 0, 0, 0.837) 28.5714%,
+      rgba(0, 0, 0, 0.81) 30.6122%,
+      rgba(0, 0, 0, 0.79) 32.6531%,
+      rgba(0, 0, 0, 0.76) 34.6939%,
+      rgba(0, 0, 0, 0.73) 36.7347%,
+      rgba(0, 0, 0, 0.7) 38.7755%,
+      rgba(0, 0, 0, 0.67) 40.8163%,
+      rgba(0, 0, 0, 0.64) 42.8571%,
+      rgba(0, 0, 0, 0.61) 44.898%,
+      rgba(0, 0, 0, 0.58) 46.9388%,
+      rgba(0, 0, 0, 0.55) 48.9796%,
+      rgba(0, 0, 0, 0.52) 51.0204%,
+      rgba(0, 0, 0, 0.49) 53.0612%,
+      rgba(0, 0, 0, 0.46) 55.102%,
+      rgba(0, 0, 0, 0.43) 57.1429%,
+      rgba(0, 0, 0, 0.4) 59.1837%,
+      rgba(0, 0, 0, 0.37) 61.2245%,
+      rgba(0, 0, 0, 0.34) 63.2653%,
+      rgba(0, 0, 0, 0.31) 65.3061%,
+      rgba(0, 0, 0, 0.28) 67.3469%,
+      rgba(0, 0, 0, 0.21) 69.3878%,
+      rgba(0, 0, 0, 0.19) 71.4286%,
+      rgba(0, 0, 0, 0.163) 73.4694%,
+      rgba(0, 0, 0, 0.14) 75.5102%,
+      rgba(0, 0, 0, 0.12) 77.551%,
+      rgba(0, 0, 0, 0.1) 79.5918%,
+      rgba(0, 0, 0, 0.083) 81.6327%,
+      rgba(0, 0, 0, 0.067) 83.6735%,
+      rgba(0, 0, 0, 0.053) 85.7143%,
+      rgba(0, 0, 0, 0.04) 87.7551%,
+      rgba(0, 0, 0, 0.03) 89.7959%,
+      rgba(0, 0, 0, 0.02) 91.8367%,
+      rgba(0, 0, 0, 0.01) 93.8776%,
+      rgba(0, 0, 0, 0.003) 95.9184%,
+      rgba(0, 0, 0, 0) 97.9592%,
+      rgba(0, 0, 0, 0) 100%
+    );
+  }
+</style>
