@@ -18,7 +18,7 @@ const isDev = import.meta.env.DEV
         <!-- <Valory class="size-7.5" /> -->
         <span class="font-valory">VALORY{isDev ? '.DEV' : ''}</span>
       </a>
-      <ul class="nav-links flex items-center justify-between gap-6">
+      <ul class="nav-links hidden items-center justify-between gap-6 md:flex">
         {
           NAV_DATA.map((nav) => (
             <li
@@ -32,15 +32,18 @@ const isDev = import.meta.env.DEV
       </ul>
     </div>
     <div class="right flex flex-row items-center gap-6">
-      <a
-        href="https://github.com/ValoryLabs/Valory"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="flex cursor-pointer flex-row items-center gap-1 font-medium text-[#f2f2f2] transition duration-150 hover:text-[#F2F2F2]/80"
-      >
-        <span>Github</span>
-        <ExternalLink size={16} />
-      </a>
+      <div class="hidden flex-row items-center justify-center gap-6 md:flex">
+        <a
+          href="https://github.com/ValoryLabs/Valory"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex cursor-pointer flex-row items-center gap-1 font-medium text-[#f2f2f2] transition duration-150 hover:text-[#F2F2F2]/80"
+        >
+          <span>Github</span>
+          <ExternalLink size={16} />
+        </a>
+      </div>
+
       <Button class="gap-0.5">
         <span>Let's start create</span>
         <ChevronRight size={16} stroke-width={2} />
