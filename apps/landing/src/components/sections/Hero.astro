@@ -2,9 +2,14 @@
 import { Discord } from '@/components/icons'
 import { Sparkles } from '@/components/ui'
 import { Button } from '@/components/ui/button'
+import { ArrowRight, Zap } from '@lucide/astro'
 ---
 
 <section id="main" class="relative flex items-center justify-center">
+  <div
+    class="absolute inset-0 bg-[linear-gradient(to_right,hsl(0,0%,8%)_1px,transparent_1px),linear-gradient(to_bottom,hsl(0,0%,8%)_1px,transparent_1px)] [mask-image:linear-gradient(to_bottom,transparent_0%,black_30%,black_80%,transparent_100%)] bg-[size:26px_26px]"
+  >
+  </div>
   <div class="relative mt-58 flex flex-col items-center justify-center gap-9 select-none">
     <Sparkles
       colors={{ first: '#ffffff', second: '#ffffff' }}
@@ -29,12 +34,16 @@ import { Button } from '@/components/ui/button'
       game.
     </span>
     <span class="flex w-full flex-col items-center justify-center gap-3 lg:flex-row">
-      <Button variant="default" class="h-12 min-w-52 justify-center rounded-xl text-lg">
+      <Button variant="default" class="h-12 min-w-52 justify-center gap-2 rounded-xl text-lg">
         Let's start create
+        <ArrowRight size={16} />
       </Button>
-      <Button variant="alternative" class="h-12 min-w-52 justify-center rounded-xl text-lg">
+      <!-- <Button variant="alternative" class="h-12 min-w-52 justify-center rounded-xl text-lg">
         How does it work?
-      </Button>
+      </Button> -->
+    </span>
+    <span class="flex items-center gap-1 text-sm font-medium text-[hsla(0,0%,100%,.56)] uppercase">
+      <Zap size={16} />Absolutely free!
     </span>
   </div>
 </section>
