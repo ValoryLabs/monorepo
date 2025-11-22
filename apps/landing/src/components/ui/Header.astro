@@ -1,4 +1,5 @@
 ---
+import { Valory } from '@/components/icons'
 import { Button } from '@/components/ui/button'
 import { NAV_DATA } from '@/data'
 import { ChevronRight, ExternalLink } from '@lucide/astro'
@@ -14,8 +15,8 @@ const isDev = import.meta.env.DEV
     class="flex w-full items-center justify-between px-6 py-1 py-2 text-sm transition-all duration-300"
   >
     <div class="left flex flex-row gap-8">
-      <a href="/" class="logo relative mr-2 flex cursor-pointer flex-row items-center gap-2">
-        <!-- <Valory class="size-7.5" /> -->
+      <a href="/" class="logo relative mr-2 flex cursor-pointer flex-row items-center gap-2.5">
+        <Valory class="size-5.5 text-red-500" />
         <span class="font-valory">VALORY{isDev ? '.DEV' : ''}</span>
       </a>
       <ul class="nav-links hidden items-center justify-between gap-6 md:flex">
