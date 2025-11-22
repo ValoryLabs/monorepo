@@ -1,6 +1,5 @@
 ---
 import { Discord } from '@/components/icons'
-import { Sparkles } from '@/components/ui'
 import { Button } from '@/components/ui/button'
 import { ArrowRight, Zap } from '@lucide/astro'
 ---
@@ -11,21 +10,14 @@ import { ArrowRight, Zap } from '@lucide/astro'
   >
   </div>
   <div class="relative mt-58 flex flex-col items-center justify-center gap-9 select-none">
-    <Sparkles
-      colors={{ first: '#ffffff', second: '#ffffff' }}
-      sparklesCount={5}
-      class="relative m-auto"
-      client:load
+    <a
+      href="https://discord.gg/pYV4PBV5YW"
+      target="_blank"
+      class="flex cursor-pointer items-center gap-2 rounded-full border border-white/10 bg-[#7289DA]/25 py-1 pr-4 pl-3 text-sm font-semibold drop-shadow-[0_0_20px_rgba(0,59,255,1)] transition duration-150 hover:bg-[#7289DA]/40"
     >
-      <a
-        href="https://discord.gg/pYV4PBV5YW"
-        target="_blank"
-        class="flex cursor-pointer items-center gap-2 rounded-full border border-white/10 bg-[#7289DA]/25 py-1 pr-4 pl-3 text-sm font-semibold drop-shadow-[0_0_20px_rgba(0,59,255,1)] transition duration-150 hover:bg-[#7289DA]/40"
-      >
-        <Discord size={20} />
-        Be part of our Discord family!
-      </a>
-    </Sparkles>
+      <Discord size={20} />
+      Be part of our Discord family!
+    </a>
     <span class="text-center text-4xl leading-[0.8] font-bold sm:text-6xl xl:text-[90px]">
       Your streaming<br /> command center
     </span>
