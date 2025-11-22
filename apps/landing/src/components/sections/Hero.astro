@@ -1,7 +1,8 @@
 ---
 import { Discord } from '@/components/icons'
 import { Button } from '@/components/ui/button'
-import { ArrowRight, Zap } from '@lucide/astro'
+import { ArrowRight, Zap, Gift } from '@lucide/astro'
+import { ZodPipeline } from 'astro:schema'
 ---
 
 <section id="main" class="relative flex items-center justify-center">
@@ -34,9 +35,18 @@ import { ArrowRight, Zap } from '@lucide/astro'
         How does it work?
       </Button> -->
     </span>
-    <span class="flex items-center gap-1 text-sm font-medium text-[hsla(0,0%,100%,.56)] uppercase">
-      <Zap size={16} />Absolutely free!
-    </span>
+    <div class="flew-row flex items-center gap-3">
+      <span
+        class="flex items-center gap-1 text-sm font-medium text-[hsla(0,0%,100%,.56)] uppercase"
+      >
+        <Gift size={16} />Absolutely free
+      </span>
+      <span
+        class="flex items-center gap-1 text-sm font-medium text-[hsla(0,0%,100%,.56)] uppercase"
+      >
+        <Zap size={16} /> Fast setup
+      </span>
+    </div>
   </div>
 </section>
 
