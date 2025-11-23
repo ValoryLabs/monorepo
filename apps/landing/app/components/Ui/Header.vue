@@ -21,7 +21,7 @@
             <li
               v-for="nav in NAV_DATA"
               :key="nav.name"
-              class="cursor-pointer font-medium text-[#f2f2f2] transition duration-150 hover:text-[#F2F2F2]/80"
+              class="cursor-pointer font-medium text-white transition duration-150 hover:text-white/80"
             >
               {{ nav.name }}
             </li>
@@ -33,16 +33,15 @@
               href="https://github.com/ValoryLabs/Valory"
               target="_blank"
               rel="noopener noreferrer"
-              class="flex cursor-pointer flex-row items-center gap-1 font-medium text-[#f2f2f2] transition duration-150 hover:text-[#F2F2F2]/80"
+              class="flex cursor-pointer flex-row items-center gap-1 font-medium transition duration-150 hover:text-white/80"
             >
               <span>Github</span>
               <Icon name="lucide:external-link" :size="16" />
             </a>
           </div>
 
-          <UiButton class="gap-0.5">
+          <UiButton class="gap-0.5 font-medium">
             <span>Let's start create</span>
-            <Icon name="lucide:chevron-right" :size="16" :stroke-width="2" />
           </UiButton>
           <!-- <LanguageSwitcher client:load variant="rounded" /> -->
           <!-- <LoginOrConfigurator client:load /> -->

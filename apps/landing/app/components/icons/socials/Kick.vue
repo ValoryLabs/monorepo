@@ -1,17 +1,21 @@
 <script setup lang="ts">
-interface Props {
-  size?: number
-  color?: string
-}
+  import { type HTMLAttributes } from "vue";
 
-const props = withDefaults(defineProps<Props>(), {
-  size: 24,
-  color: '#F2F2F2',
-})
+  interface Props {
+    size?: number;
+    color?: string;
+    class?: HTMLAttributes["class"];
+  }
+
+  const props = withDefaults(defineProps<Props>(), {
+    size: 24,
+  });
 </script>
 
 <template>
   <svg
+    :class="props.class"
+    fill="currentColor"
     viewBox="0 0 512 512"
     xmlns="http://www.w3.org/2000/svg"
     :width="props.size"
@@ -25,7 +29,7 @@ const props = withDefaults(defineProps<Props>(), {
 </template>
 
 <style scoped>
-svg {
-  margin-bottom: 0;
-}
+  svg {
+    margin-bottom: 0;
+  }
 </style>

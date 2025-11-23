@@ -1,3 +1,4 @@
 <template>
-  <div>adas</div>
+  <SectionsHero />
+  <SectionsPreview />
 </template>
