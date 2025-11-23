@@ -1,11 +1,24 @@
-dist/
-.astro/
-node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-.env
-.env.production
+# Nuxt dev/build outputs
+.output
+.data
+.nuxt
+.nitro
+.cache
+dist
+
+# Node dependencies
+node_modules
+
+# Logs
+logs
+*.log
+
+# Misc
 .DS_Store
-.idea/
+.fleet
+.idea
+
+# Local env files
+.env
+.env.*
+!.env.example

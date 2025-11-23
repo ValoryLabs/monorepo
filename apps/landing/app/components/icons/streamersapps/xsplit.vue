@@ -1,0 +1,29 @@
+<script setup lang="ts">
+interface Props {
+  size?: number
+  color?: string
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  size: 24,
+  color: '#f2f2f2',
+})
+</script>
+
+<template>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    :width="props.size"
+    :height="props.size"
+  >
+    <path
+      :fill="props.color"
+      fill-rule="evenodd"
+      d="M5 1a4 4 0 0 0 -4 4v14a4 4 0 0 0 4 4h14a4 4 0 0 0 4 -4V5a4 4 0 0 0 -4 -4H5Zm-0.234 8.182V3.793l6.816 5.111v4.451l-6.816 5.112v-5.389l2.598 -1.948 -2.598 -1.948Zm5.566 3.548v-2.263l-4.316 3.236v2.264l4.316 -3.237Zm8.902 -1.81V5.533l-6.816 5.111v4.452l6.816 5.111v-5.389l-2.598 -1.948 2.598 -1.948Zm-5.566 0.348v2.264l4.316 -3.236V8.032l-4.316 3.236Z"
+      clip-rule="evenodd"
+      stroke-width="1"
+    ></path>
+  </svg>
+</template>
