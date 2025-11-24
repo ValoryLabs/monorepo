@@ -4,10 +4,15 @@
 
 <template>
   <section id="main" class="relative flex items-center justify-center">
-    <div
-      class="absolute inset-0 bg-[linear-gradient(to_right,hsl(0,0%,8%)_1px,transparent_1px),linear-gradient(to_bottom,hsl(0,0%,8%)_1px,transparent_1px)] [mask-image:linear-gradient(to_bottom,transparent_0%,black_30%,black_80%,transparent_100%)] bg-[size:26px_26px]"
-    ></div>
-    <div class="relative mt-58 flex flex-col items-center justify-center gap-9 select-none">
+    <div class="mobile:-bottom-60 absolute inset-0 overflow-hidden">
+      <div class="relative h-full w-full">
+        <div class="blur-overlay absolute inset-0 z-20"></div>
+        <video autoplay muted loop playsinline class="h-auto w-full object-cover">
+          <source src="/preview.webm" type="video/webm" />
+        </video>
+      </div>
+    </div>
+    <div class="relative z-100 mt-58 flex flex-col items-center justify-center gap-9 select-none">
       <a
         href="https://discord.gg/pYV4PBV5YW"
         target="_blank"
@@ -65,6 +70,16 @@
 </template>
 
 <style>
+  .blur-overlay {
+    background:
+      linear-gradient(0deg, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
+      linear-gradient(90deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0) 50.48%, rgba(0, 0, 0, 0.8)),
+      linear-gradient(180deg, rgba(0, 0, 0, 0) 20%, #000);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    margin-bottom: -5px;
+  }
+
   .animate-fade {
     animation: fade 10s infinite;
   }
