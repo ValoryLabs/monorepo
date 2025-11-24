@@ -53,18 +53,6 @@
         How does it work?
       </Button> -->
       </span>
-      <div class="flew-row flex items-center gap-3">
-        <span
-          class="flex items-center gap-1 text-sm font-medium text-[hsla(0,0%,100%,.56)] uppercase"
-        >
-          <Icon name="lucide:gift" :size="16" />Absolutely free
-        </span>
-        <span
-          class="flex items-center gap-1 text-sm font-medium text-[hsla(0,0%,100%,.56)] uppercase"
-        >
-          <Icon name="lucide:clock" :size="16" /> Fast setup
-        </span>
-      </div>
     </div>
   </section>
 </template>
