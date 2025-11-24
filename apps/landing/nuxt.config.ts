@@ -50,6 +50,22 @@ export default defineNuxtConfig({
     serverBundle: "local",
   },
 
+  fonts: {
+    families: [
+      {
+        name: "Inter",
+        provider: "google",
+        weights: [100, 200, 300, 400, 500, 600, 700, 800, 900],
+      },
+      {
+        name: "Russo One",
+        provider: "google",
+      },
+    ],
+
+    priority: ["google", "bunny"],
+  },
+
   nitro: {
     preset: "bun",
   },
