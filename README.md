@@ -17,7 +17,8 @@
 [![Stars](https://img.shields.io/github/stars/ValoryLabs/Valory?style=flat&color=green)](https://github.com/ValoryLabs/Valory/stargazers)
 [![Forks](https://img.shields.io/github/forks/ValoryLabs/Valory?style=flat&color=green)](https://github.com/ValoryLabs/Valory/forks)
 [![Issues](https://img.shields.io/github/issues/ValoryLabs/Valory?style=flat)](https://github.com/ValoryLabs/Valory/issues)
-![GitHub last commit](https://img.shields.io/github/last-commit/ValoryLabs/Valory)
+![GitHub last commit](https://img.shields.io/github/last-commit/ValoryLabs/Valory)  
+![GitHub Repo Views](https://gitviews.com/repo/ValoryLabs/monorepo.svg)
 
 </div>
 
