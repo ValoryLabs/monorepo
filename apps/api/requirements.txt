@@ -32,7 +32,7 @@ multidict==6.4.3
 passlib==1.7.4
 propcache==0.3.1
 psycopg2-binary==2.9.10
-pyasn1==0.4.8
+pyasn1==0.6.4
 pydantic==2.11.3
 pydantic-core==2.33.1
 pydantic-settings==2.9.1
